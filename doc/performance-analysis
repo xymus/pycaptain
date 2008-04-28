@@ -1,0 +1,11 @@
+# differences
+
+game.doTurn harvestables
+	10 fps
+game.doTurn astres
+	1-2 fps
+game.doTurn player.doTurn
+	4 fps
+
+game.doTurn all objects.doTurn
+	450fps

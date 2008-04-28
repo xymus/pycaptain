@@ -1,0 +1,282 @@
+format 37
+"ships"
+  revision 3
+  modified_by 27 "xymus"
+
+
+  
+  // class settings
+  default_attribute_visibility protected default_relation_visibility protected default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition no show_members_visibility no show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_infonote no shadow yes
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes drawing_language uml draw_all_relations yes shadow yes
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no draw_all_relations yes shadow yes
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 9
+  diagram_format A4
+
+  mark_for_import
+  
+  classview 128037 "Class view1"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 128037 "Diagram2"
+      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    class 128037 "Object"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128165 "OreSource"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128293 "Astre"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128010 "Ship"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128010 // <generalisation>
+	relation 128010 ---|>
+	  a public
+	    classrelation_ref 128010 // <generalisation>
+	  b multiplicity "" parent class_ref 128037 // Object
+      end
+    end
+
+    class 128138 "ShipWithTurrets"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128138 // <generalisation>
+	relation 128138 ---|>
+	  a public
+	    classrelation_ref 128138 // <generalisation>
+	  b multiplicity "" parent class_ref 128010 // Ship
+      end
+    end
+
+    class 128266 "DockableShip"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128266 // <generalisation>
+	relation 128266 ---|>
+	  a public
+	    classrelation_ref 128266 // <generalisation>
+	  b multiplicity "" parent class_ref 128138 // ShipWithTurrets
+      end
+
+      classrelation 128906 // <generalisation>
+	relation 128906 ---|>
+	  a public
+	    classrelation_ref 128906 // <generalisation>
+	  b multiplicity "" parent class_ref 128010 // Ship
+      end
+    end
+
+    class 128394 "HarvesterShip"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128522 // <generalisation>
+	relation 128522 ---|>
+	  a public
+	    classrelation_ref 128522 // <generalisation>
+	  b multiplicity "" parent class_ref 128138 // ShipWithTurrets
+      end
+
+      classrelation 128650 // <generalisation>
+	relation 128650 ---|>
+	  a public
+	    classrelation_ref 128650 // <generalisation>
+	  b multiplicity "" parent class_ref 128266 // DockableShip
+      end
+    end
+
+    class 128522 "FighterShip"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128778 // <generalisation>
+	relation 128778 ---|>
+	  a public
+	    classrelation_ref 128778 // <generalisation>
+	  b multiplicity "" parent class_ref 128266 // DockableShip
+      end
+
+      classrelation 129290 // <generalisation>
+	relation 129290 ---|>
+	  a public
+	    classrelation_ref 129290 // <generalisation>
+	  b multiplicity "" parent class_ref 128010 // Ship
+      end
+
+      classrelation 129418 // <generalisation>
+	relation 129418 ---|>
+	  a public
+	    classrelation_ref 129418 // <generalisation>
+	  b multiplicity "" parent class_ref 128906 // SingleWeaponShip
+      end
+    end
+
+    class 128650 "Flagship"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129034 // <generalisation>
+	relation 129034 ---|>
+	  a public
+	    classrelation_ref 129034 // <generalisation>
+	  b multiplicity "" parent class_ref 128138 // ShipWithTurrets
+      end
+
+      classrelation 129162 // <generalisation>
+	relation 129162 ---|>
+	  a public
+	    classrelation_ref 129162 // <generalisation>
+	  b multiplicity "" parent class_ref 128778 // HangarShip
+      end
+    end
+
+    class 128778 "HangarShip"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128906 "SingleWeaponShip"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129546 // <generalisation>
+	relation 129546 ---|>
+	  a public
+	    classrelation_ref 129546 // <generalisation>
+	  b multiplicity "" parent class_ref 128010 // Ship
+      end
+    end
+
+    class 129034 "Sun"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129674 // <generalisation>
+	relation 129674 ---|>
+	  a public
+	    classrelation_ref 129674 // <generalisation>
+	  b multiplicity "" parent class_ref 128293 // Astre
+      end
+    end
+
+    class 129162 "Nebula"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129802 // <generalisation>
+	relation 129802 ---|>
+	  a public
+	    classrelation_ref 129802 // <generalisation>
+	  b multiplicity "" parent class_ref 128293 // Astre
+      end
+    end
+
+    class 129290 "Planet"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129930 // <generalisation>
+	relation 129930 ---|>
+	  a public
+	    classrelation_ref 129930 // <generalisation>
+	  b multiplicity "" parent class_ref 128293 // Astre
+      end
+    end
+  end
+end

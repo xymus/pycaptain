@@ -1,0 +1,3943 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/media/pros/pyfl/art/weapons"
+   sodipodi:docname="weapons.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-canon.png"
+   inkscape:export-xdpi="62.224865"
+   inkscape:export-ydpi="62.224865">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3"
+     inkscape:cx="384.67644"
+     inkscape:cy="395.45558"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1280"
+     inkscape:window-height="741"
+     inkscape:window-x="0"
+     inkscape:window-y="59" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3625">
+      <stop
+         style="stop-color:#397e83;stop-opacity:1"
+         id="stop3627"
+         offset="0" />
+      <stop
+         style="stop-color:#757575;stop-opacity:1;"
+         id="stop3629"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4955">
+      <stop
+         id="stop4957"
+         offset="0"
+         style="stop-color:#3600ff;stop-opacity:1;" />
+      <stop
+         style="stop-color:#001aff;stop-opacity:0.54081631;"
+         offset="0.44444445"
+         id="stop4961" />
+      <stop
+         id="stop4982"
+         offset="0.63327068"
+         style="stop-color:#007cff;stop-opacity:0.31632653;" />
+      <stop
+         style="stop-color:#007fff;stop-opacity:0;"
+         offset="0.95427525"
+         id="stop4984" />
+      <stop
+         id="stop4959"
+         offset="1"
+         style="stop-color:#0082ff;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4707">
+      <stop
+         style="stop-color:#131313;stop-opacity:1;"
+         id="stop4709"
+         offset="0" />
+      <stop
+         style="stop-color:#757575;stop-opacity:1;"
+         id="stop4711"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3650">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3652" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3654" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3423">
+      <stop
+         offset="0"
+         id="stop3425"
+         style="stop-color:#e6e6e6;stop-opacity:0.26530612;" />
+      <stop
+         offset="0.5"
+         id="stop3429"
+         style="stop-color:#838383;stop-opacity:0.39795917;" />
+      <stop
+         offset="1"
+         id="stop3427"
+         style="stop-color:#d7d7d7;stop-opacity:0;" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient7144"
+       r="25.5"
+       gradientTransform="matrix(0.1180113,0,0,7.4046344e-2,382.40353,-263.20268)"
+       cx="362"
+       cy="299.83093"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="299.83093"
+       fx="362" />
+    <linearGradient
+       id="linearGradient3155">
+      <stop
+         offset="0"
+         id="stop3157"
+         style="stop-color:#ff0000;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop3159"
+         style="stop-color:#ff7100;stop-opacity:1;" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient19898"
+       gradientTransform="matrix(1,0,0,0.257485,0,301.4825)"
+       r="27.833334"
+       cy="406.02884"
+       fx="584"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient19892"
+       fy="406.02884"
+       cx="584" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient17937"
+       r="23"
+       cy="354.86218"
+       fx="215.5"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="354.86218"
+       cx="215.5" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient14990"
+       r="26.856915"
+       gradientTransform="matrix(1,0,0,3.1300258,0,-507.18136)"
+       cx="448.25"
+       cy="238.11044"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="238.11044"
+       fx="448.25" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient14982"
+       gradientTransform="matrix(1,0,0,3.1300258,0,-507.18136)"
+       r="26.856915"
+       cy="238.11044"
+       fx="448.25"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="238.11044"
+       cx="448.25" />
+    <linearGradient
+       id="linearGradient13997">
+      <stop
+         offset="0"
+         id="stop13999"
+         style="stop-color:#567e81;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop14001"
+         style="stop-color:#757575;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient19892">
+      <stop
+         offset="0"
+         id="stop19894"
+         style="stop-color:#9595ff;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop19896"
+         style="stop-color:#2626a0;stop-opacity:1;" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient7140"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient7147"
+       r="7.6428571"
+       gradientTransform="matrix(0.3544901,0,0,0.9690807,323.2733,-614.87781)"
+       cx="352.85715"
+       cy="406.64789"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="406.64789"
+       fx="352.85715" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3165"
+       r="7.6666665"
+       gradientTransform="matrix(0.6687307,0,0,0.2180644,66.344607,350.70952)"
+       cx="235.16666"
+       cy="447.79517"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3155"
+       fy="447.79517"
+       fx="235.16666" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4202"
+       r="7.6428571"
+       gradientTransform="matrix(0.3544901,0,0,0.9690807,298.97713,-616.10139)"
+       cx="352.85715"
+       cy="406.64789"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="406.64789"
+       fx="352.85715" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4204"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4208"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient6158"
+       r="10.453739"
+       gradientTransform="matrix(0.7885794,1.4990711e-2,-1.2398537e-2,0.6522193,28.148208,145.30444)"
+       cx="251.37959"
+       cy="489.97391"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="489.97391"
+       fx="251.37959" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient7141"
+       r="10.453739"
+       gradientTransform="matrix(0.798189,1.5248038e-2,-1.2549623e-2,0.6634151,8.8251617,145.38288)"
+       cx="286.8717"
+       cy="489.66061"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3155"
+       fy="489.66061"
+       fx="286.8717" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient8117"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient9095"
+       r="10.453739"
+       gradientTransform="matrix(0.798189,1.5248038e-2,-1.2549623e-2,0.6634151,8.8251617,145.38288)"
+       cx="286.8717"
+       cy="489.66061"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3155"
+       fy="489.66061"
+       fx="286.8717" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient9098"
+       r="10.453739"
+       gradientTransform="matrix(0.6250627,1.1940755e-2,-9.8276236e-3,0.5195211,48.941736,209.32175)"
+       cx="286.8717"
+       cy="489.66061"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3155"
+       fy="489.66061"
+       fx="286.8717" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2193"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2197"
+       r="7.6428571"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,365.69951,-489.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="406.64789"
+       fx="352.85715" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2207"
+       r="7.6428571"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,361.62928,-489.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="406.64789"
+       fx="352.85715" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4192"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4198"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4209"
+       r="11.258074"
+       gradientTransform="matrix(0.9218612,0,0,0.4245678,-731.3273,-12.875626)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4215"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient4217"
+       r="11.258074"
+       gradientTransform="matrix(1.1922965,0,0,0.5306614,-826.01141,-70.472627)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2277"
+       r="7.6428571"
+       gradientTransform="matrix(0,0.3544901,-0.9690807,0,616.10139,298.97713)"
+       cx="352.85715"
+       cy="406.64789"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="406.64789"
+       fx="352.85715" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2220"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3232"
+       r="16.763456"
+       gradientTransform="matrix(1,0,0,8.6068705e-2,0,434.60573)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3234"
+       r="16.763456"
+       gradientTransform="matrix(1,0,0,8.6068705e-2,0,427.29428)"
+       cx="292.97794"
+       cy="467.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="467.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3242"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756574e-2,-102.17125,519.24805)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3246"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756574e-2,-111.00098,512.65704)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3250"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756574e-2,-623.20173,130.32282)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3254"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756574e-2,-632.03146,123.73181)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3269"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756548e-2,-120.12042,505.8497)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3271"
+       r="16.763456"
+       gradientTransform="matrix(0.4245888,0,0,9.3756548e-2,-614.08241,137.13)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3277"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3283"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3287"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3315"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3321"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3327"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3348"
+       r="7.6421413"
+       gradientTransform="matrix(0.6279382,0,0,1.7748252,55.517383,-260.49665)"
+       cx="438.98911"
+       cy="479.16537"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="479.16537"
+       fx="438.98911" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3352"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient6259"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient6257"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient6255"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient6253"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient5260"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       r="10.23313"
+       cy="399.63202"
+       fx="228.40594"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       cx="228.40596" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3211"
+       r="42.5"
+       cy="276.36218"
+       fx="158"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3183"
+       fy="276.36218"
+       cx="158" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3153"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       r="13"
+       cy="493.86218"
+       fx="100"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       cx="100" />
+    <linearGradient
+       id="linearGradient3147">
+      <stop
+         offset="0"
+         id="stop3149"
+         style="stop-color:#ff7e00;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop3155"
+         style="stop-color:#ffff00;stop-opacity:0.85714287;" />
+      <stop
+         offset="1"
+         id="stop3151"
+         style="stop-color:#ffff00;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3183">
+      <stop
+         offset="0"
+         id="stop3185"
+         style="stop-color:#004fff;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop3187"
+         style="stop-color:#dbfffa;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5254">
+      <stop
+         offset="0"
+         id="stop5256"
+         style="stop-color:#000000;stop-opacity:1;" />
+      <stop
+         offset="1"
+         id="stop5258"
+         style="stop-color:#6a6a6a;stop-opacity:1;" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3478"
+       r="42.5"
+       cx="158"
+       cy="276.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3183"
+       fy="276.36218"
+       fx="158" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3490"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3498"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3502"
+       r="11.258074"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-627.09452,-291.7286)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3506"
+       r="11.258074"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-647.09456,-291.7286)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3510"
+       r="11.258074"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-667.09456,-291.7286)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3529"
+       r="15.584945"
+       gradientTransform="matrix(1.6692429,-4.9396428e-2,-6.3107446e-2,0.4518212,-216.79188,342.93007)"
+       cx="379.95929"
+       cy="609.06964"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="609.06964"
+       fx="379.95929" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3539"
+       r="16.763456"
+       gradientTransform="matrix(0.5271773,-1.041625e-8,0,8.9524357e-2,-411.06687,606.90638)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3541"
+       r="16.763456"
+       gradientTransform="matrix(0.5271773,-1.041625e-8,0,8.9524357e-2,-816.85134,373.96334)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3547"
+       r="16.763456"
+       gradientTransform="matrix(0.5271773,-1.041625e-8,0,8.9524363e-2,-425.20862,623.31024)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3549"
+       r="16.763456"
+       gradientTransform="matrix(0.5271773,-1.041625e-8,0,8.9524363e-2,-830.99306,390.36716)"
+       cx="292.97794"
+       cy="475.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="475.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3553"
+       r="16.763456"
+       gradientTransform="matrix(0.6712462,0,0,9.2867866e-2,275.08056,-321.31192)"
+       cx="292.97794"
+       cy="467.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="467.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3559"
+       r="16.763456"
+       gradientTransform="matrix(0.6712462,0,0,9.2867866e-2,275.28055,-337.31192)"
+       cx="292.97794"
+       cy="467.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="467.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3563"
+       r="16.763456"
+       gradientTransform="matrix(0.386845,0,0,0.1009651,358.40384,-357.09766)"
+       cx="292.97794"
+       cy="467.53436"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="467.53436"
+       fx="292.97794" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2320"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2348"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2350"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2352"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2354"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2356"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2358"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2360"
+       r="42.5"
+       cx="158"
+       cy="276.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3183"
+       fy="276.36218"
+       fx="158" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2377"
+       r="42.5"
+       cx="158"
+       cy="276.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3183"
+       fy="276.36218"
+       fx="158" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2391"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2393"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2395"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2397"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2399"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2401"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3320"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3336"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3338"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3359"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3381"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3392"
+       r="11.258074"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-686.82111,-291.7286)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3397"
+       r="7.6421413"
+       gradientTransform="matrix(0.2286909,0,0,0.6463795,176.91086,410.50774)"
+       cx="438.98911"
+       cy="479.16537"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="479.16537"
+       fx="438.98911" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3405"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3407"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3415"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3419"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-416.76655,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3423"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-421.00919,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3430"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-420.05237,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3433"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-415.80973,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3437"
+       r="11.258074"
+       gradientTransform="matrix(0.60505,0,0,0.2081118,-534.19987,146.24568)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3443"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-415.80973,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3445"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-420.05237,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3449"
+       r="11.258074"
+       gradientTransform="matrix(0.2122894,0,0,0.218329,-443.39766,126.76631)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3453"
+       r="11.258074"
+       gradientTransform="matrix(0.2122894,0,0,0.218329,-443.39766,112.57506)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3456"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-420.58759,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3459"
+       r="11.258074"
+       gradientTransform="matrix(0.1057458,0,0,2.9701471,-416.34495,-1384.1921)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3480"
+       r="11.258074"
+       gradientTransform="matrix(0,-0.1057458,2.9701471,0,-1384.1921,416.34495)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2408"
+       r="13"
+       gradientTransform="matrix(1,0,0,4.8846154,0,-1918.4646)"
+       cx="100"
+       cy="493.86218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3147"
+       fy="493.86218"
+       fx="100" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient2410"
+       r="10.23313"
+       gradientTransform="matrix(1.2926369,3.4021902e-2,-0.3778897,14.357637,84.176683,-5330.8394)"
+       cx="228.40596"
+       cy="399.63202"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient5254"
+       fy="399.63202"
+       fx="228.40594" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3391"
+       r="42.5"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3393"
+       r="11.258074"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-707.09453,-291.7286)"
+       cx="235.2896"
+       cy="545.64941"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="545.64941"
+       fx="235.2896" />
+    <radialGradient
+       inkscape:collect="always"
+       id="radialGradient3444"
+       r="42.5"
+       gradientTransform="matrix(0,0.2114831,-0.2114831,0,518.67495,557.3083)"
+       cx="357"
+       cy="509.36218"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient13997"
+       fy="509.36218"
+       fx="357" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3446"
+       x1="342"
+       y1="481.14276"
+       x2="377.10046"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient3423"
+       y2="510.53879" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5042"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.2964138,-0.2964138,0,517.43144,528.7526)"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2434"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2436"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,363.69951,-449.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2438"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,359.62928,-449.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2440"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2444"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,367.62928,-449.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3434"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,367.22941,-449.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3436"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,360.02939,-449.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3454"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.3695464,-0.659343,0,449.7042,363.69951)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3475"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6116508,1.5767789e-2,-9.6167562e-3,0.6860286,29.447309,128.64343)"
+       cx="251.37959"
+       cy="489.97391"
+       fx="251.37959"
+       fy="489.97391"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3477"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="radialGradient3479"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.4848214,1.2559732e-2,-7.6226622e-3,0.5464517,45.575526,195.97922)"
+       cx="286.8717"
+       cy="489.66061"
+       fx="286.8717"
+       fy="489.66061"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3484"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6114017,1.5991526e-2,-9.6128393e-3,0.695763,29.508,123.71758)"
+       cx="251.37959"
+       cy="489.97391"
+       fx="251.37959"
+       fy="489.97391"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3493"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7885794,1.4990711e-2,-1.2398537e-2,0.6522193,-51.851792,145.30444)"
+       cx="251.37959"
+       cy="489.97391"
+       fx="251.37959"
+       fy="489.97391"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3495"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="radialGradient3497"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6250627,1.1940755e-2,-9.8276236e-3,0.5195211,-31.058264,209.32175)"
+       cx="286.8717"
+       cy="489.66061"
+       fx="286.8717"
+       fy="489.66061"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="radialGradient3499"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6346403,7.5417223e-3,-9.9782083e-3,0.328127,46.098371,304.85751)"
+       cx="286.8717"
+       cy="489.66061"
+       fx="286.8717"
+       fy="489.66061"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3507"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7885794,1.4990711e-2,-1.2398537e-2,0.6522193,27.648338,145.30444)"
+       cx="251.37959"
+       cy="489.97391"
+       fx="251.37959"
+       fy="489.97391"
+       r="10.453739" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3520"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3532"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3546"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3548"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3689876,0,0,0.6946486,368.68927,-463.34189)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3550"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3689876,0,0,0.6946486,363.86158,-463.34189)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3552"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3556"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3689876,0,0,0.6946486,359.0339,-463.34189)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3570"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3572"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,365.69951,-409.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3574"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3695464,0,0,0.659343,363.66437,-409.7042)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3576"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3423"
+       id="linearGradient3481"
+       gradientUnits="userSpaceOnUse"
+       x1="335.43033"
+       y1="499.36218"
+       x2="363.44183"
+       y2="516.10162" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3483"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.2565244,-0.2565244,0,461.90563,582.42464)"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3501"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.2643422,-0.2643422,0,465.77463,578.68983)"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3554"
+       cx="407.90005"
+       cy="637.83405"
+       fx="407.90005"
+       fy="637.83405"
+       r="25.687569"
+       gradientTransform="matrix(1,0,0,0.5803246,0,264.21202)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3560"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9241823,0,0,0.5044839,31.957185,311.95852)"
+       cx="407.90005"
+       cy="637.83405"
+       fx="407.90005"
+       fy="637.83405"
+       r="25.687569" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3569"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.5803246,0,264.21202)"
+       cx="407.90005"
+       cy="637.83405"
+       fx="407.90005"
+       fy="637.83405"
+       r="25.687569" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3423"
+       id="linearGradient3580"
+       x1="428.76007"
+       y1="626.16278"
+       x2="419.84006"
+       y2="647.76282"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3588"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.2964138,-0.2964138,0,617.43144,528.7526)"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3423"
+       id="linearGradient3590"
+       gradientUnits="userSpaceOnUse"
+       x1="342"
+       y1="481.14276"
+       x2="377.10046"
+       y2="510.53879" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3423"
+       id="linearGradient3623"
+       gradientUnits="userSpaceOnUse"
+       x1="428.76007"
+       y1="626.16278"
+       x2="419.84006"
+       y2="647.76282" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3650"
+       id="linearGradient3656"
+       x1="397.76007"
+       y1="669.56281"
+       x2="445.24005"
+       y2="669.56281"
+       gradientUnits="userSpaceOnUse" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3665">
+      <path
+         id="path3667"
+         d="M 751.03439,-228.1276 C 750.94629,-227.80778 750.87126,-227.48146 750.81007,-227.14404 L 745.86322,-199.80448 C 744.88419,-194.40573 747.83942,-188.94199 752.49004,-187.54528 C 752.63991,-187.50028 752.79269,-187.47502 752.9422,-187.43952 C 753.08676,-187.3867 753.22869,-187.32345 753.37855,-187.27844 C 758.02918,-185.88174 763.39316,-188.84701 765.41062,-193.93389 L 775.63632,-219.68807 C 777.5201,-224.43783 775.79429,-229.32663 771.77167,-231.08769 L 771.77957,-231.11533 L 770.86492,-231.39003 L 761.06509,-234.33317 C 761.03879,-234.34137 761.01309,-234.34879 760.98669,-234.35672 C 756.62673,-235.66613 752.35601,-232.9249 751.03439,-228.1276 z "
+         style="opacity:1;fill:url(#linearGradient3669);fill-opacity:1;stroke:none;stroke-width:0.89632803;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3650"
+       id="linearGradient3669"
+       gradientUnits="userSpaceOnUse"
+       x1="397.76007"
+       y1="669.56281"
+       x2="445.24005"
+       y2="669.56281"
+       gradientTransform="matrix(0.2736215,-0.9574904,0.9619693,0.2889044,0,0)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4707"
+       id="linearGradient4655"
+       x1="401.39999"
+       y1="462.56219"
+       x2="392.80002"
+       y2="468.16217"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-28.4,-6.4)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4707"
+       id="linearGradient4659"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,-1,-28.4,943.72436)"
+       x1="402.70001"
+       y1="462.6622"
+       x2="392.89999"
+       y2="467.06219" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4681"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4685"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4707"
+       id="linearGradient4713"
+       x1="380.08469"
+       y1="468.83551"
+       x2="370.19687"
+       y2="468.83551"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4734"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2768491,0,0,0.9750497,347.76992,-579.30508)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="radialGradient4736"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6728497,0,0,0.1703035,27.393237,369.19701)"
+       cx="235.16666"
+       cy="447.79517"
+       fx="235.16666"
+       fy="447.79517"
+       r="7.6666665" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4738"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4744"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2768491,0,0,0.9750497,353.76992,-579.30508)"
+       cx="352.85715"
+       cy="406.64789"
+       fx="352.85715"
+       fy="406.64789"
+       r="7.6428571" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3155"
+       id="radialGradient4746"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6728497,0,0,0.1703035,27.393237,375.19701)"
+       cx="235.16666"
+       cy="447.79517"
+       fx="235.16666"
+       fy="447.79517"
+       r="7.6666665" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4752"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4754"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6279382,0,0,1.7748252,23.517383,-260.49665)"
+       cx="438.98911"
+       cy="479.16537"
+       fx="438.98911"
+       fy="479.16537"
+       r="7.6421413" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4758"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.6279382,0,0,-1.7748252,562.83346,1446.8852)"
+       cx="438.98911"
+       cy="479.16537"
+       fx="438.98911"
+       fy="479.16537"
+       r="7.6421413" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4818"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5303894,-0.3867905,-0.2616318,-0.3587645,255.23327,860.61617)"
+       cx="452.20312"
+       cy="505.76562"
+       fx="452.20312"
+       fy="505.76562"
+       r="12.071875" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4822"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5303894,0.3867905,-0.2616318,0.3587645,255.23327,157.91717)"
+       cx="452.20312"
+       cy="505.76562"
+       fx="452.20312"
+       fy="505.76562"
+       r="12.071875" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4826"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4931"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4933"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2115411,0,0,0.93216,-733.63481,-292.2286)"
+       cx="235.2896"
+       cy="545.64941"
+       fx="235.2896"
+       fy="545.64941"
+       r="11.258074" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4937"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2286909,0,0,0.6463795,122.41086,373.69322)"
+       cx="438.98911"
+       cy="479.16537"
+       fx="438.98911"
+       fy="479.16537"
+       r="7.6421413" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4955"
+       id="radialGradient4978"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.226188,0,0,1.226188,-243.49549,-234.75032)"
+       cx="470.75"
+       cy="737.11218"
+       fx="470.75"
+       fy="737.11218"
+       r="19" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient4988"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5004"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5372436,0,0,2.0714795e-2,482.97244,277.0011)"
+       cx="360"
+       cy="729.36218"
+       fx="360"
+       fy="729.36218"
+       r="26" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5008"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5372436,0,0,2.0714796e-2,-76.461101,-850.54349)"
+       cx="360"
+       cy="729.36218"
+       fx="360"
+       fy="729.36218"
+       r="26" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5029"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5035"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6143571,-5.8853458e-8,0,3.414576e-2,-1449.7363,440.26424)"
+       cx="360"
+       cy="729.36218"
+       fx="360"
+       fy="729.36218"
+       r="26" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5037"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3444073,0,0,1.0158045e-2,132.63439,660.07827)"
+       cx="360"
+       cy="729.36218"
+       fx="360"
+       fy="729.36218"
+       r="26" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5052"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5087"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient5096"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient2577"
+       gradientUnits="userSpaceOnUse"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient13997"
+       id="radialGradient3586"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.1675498,-0.747701,0,950.54188,478.96711)"
+       cx="357"
+       cy="509.36218"
+       fx="357"
+       fy="509.36218"
+       r="42.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3625"
+       id="radialGradient3623"
+       cx="445.625"
+       cy="540.19098"
+       fx="445.625"
+       fy="540.19098"
+       r="13.84375"
+       gradientTransform="matrix(-0.9171901,0,0,0.3964976,833.70489,295.08538)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Capa 1">
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient2577);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       transform="matrix(0,0.1603909,0.1603909,0,336.63421,452.30833)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path2575" />
+    <path
+       style="opacity:1;fill:url(#radialGradient3623);fill-opacity:1;stroke:#000000;stroke-width:0.95947301;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 424.38017,501.67302 C 427.15167,501.67302 429.42471,504.12912 429.42471,507.16203 C 429.42471,510.19495 427.15167,512.65108 424.38017,512.65104 C 423.34935,512.65104 422.39743,512.29385 421.59994,511.71007 C 421.59457,511.7048 421.5767,511.71533 421.57128,511.71007 C 421.39134,511.57701 421.24634,511.42773 421.08403,511.27095 C 418.53902,509.4014 412.28461,507.88962 404.03003,507.19339 C 412.17889,506.5062 418.36298,504.98739 420.96938,503.14721 C 421.86708,502.22777 423.05456,501.673 424.38017,501.67302 z "
+       id="path3610" />
+    <rect
+       inkscape:transform-center-y="-9.5585057"
+       transform="matrix(0.7448838,-0.6671942,-0.3695756,-0.9292007,0,0)"
+       style="opacity:1;fill:url(#radialGradient5008);fill-opacity:1;stroke:#000000;stroke-width:0.58925492;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5006"
+       width="27.936665"
+       height="1.0771692"
+       x="102.97823"
+       y="-835.97357"
+       inkscape:transform-center-x="-10.671571" />
+    <path
+       style="opacity:1;fill:url(#radialGradient4978);fill-opacity:1;stroke:none;stroke-width:0.86842096;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 331.68076,649.22128 C 322.15949,650.18616 314.65864,657.84767 313.87665,667.42252 L 332.01169,667.42252 L 332.01169,649.22128 C 331.90344,649.23047 331.78852,649.21033 331.68076,649.22128 z M 335.45337,649.22128 L 335.45337,667.42252 L 353.6546,667.42252 C 352.85664,657.73942 345.13487,650.04349 335.45337,649.22128 z M 313.87665,670.798 C 314.72171,680.43187 322.37776,688.17353 332.01169,688.99924 L 332.01169,670.798 L 313.87665,670.798 z M 335.45337,670.798 L 335.45337,688.99924 C 345.09469,688.1735 352.80195,680.43179 353.6546,670.798 L 335.45337,670.798 z "
+       id="path4945"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/inertia.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="opacity:1;fill:url(#radialGradient4822);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 369.74248,513.064 C 367.3042,516.40751 362.62441,517.14021 359.2809,514.70193 C 358.17459,513.89515 357.35462,512.84765 356.83999,511.6778 L 354.35604,512.78614 C 355.11725,514.50403 356.16721,515.78266 357.68538,516.88978 C 362.23989,520.21119 368.6255,519.22611 371.9469,514.6716 L 369.74248,513.064 z "
+       id="path4820"
+       inkscape:transform-center-y="5.072347"
+       inkscape:transform-center-x="1.96181"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/ejump.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       inkscape:transform-center-x="1.96181"
+       inkscape:transform-center-y="-5.072352"
+       id="path4816"
+       d="M 369.74248,505.46934 C 367.3042,502.12583 362.62441,501.39313 359.2809,503.83141 C 358.17459,504.63819 357.35462,505.68569 356.83999,506.85554 L 354.35604,505.7472 C 355.11725,504.02931 356.16721,502.75068 357.68538,501.64356 C 362.23989,498.32215 368.6255,499.30723 371.9469,503.86174 L 369.74248,505.46934 z "
+       style="opacity:1;fill:url(#radialGradient4818);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/ejump.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <rect
+       id="rect4740"
+       x="449.48062"
+       y="-190.22289"
+       inkscape:export-xdpi="77.502876"
+       width="3.9549873"
+       height="14.839408"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-ydpi="77.502876"
+       style="opacity:1;fill:url(#radialGradient4744);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.70915782;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect4742"
+       x="179.22154"
+       y="450.40466"
+       inkscape:export-xdpi="77.502876"
+       width="9.6670637"
+       height="2.1068196"
+       ry="0"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-ydpi="77.502876"
+       style="opacity:1;fill:url(#radialGradient4746);fill-opacity:1;stroke:#000000;stroke-width:0.70915782;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient4681);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/sucker.png"
+       transform="matrix(0,0.1618936,-0.1618936,0,428.51184,413.4679)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path4679" />
+    <image
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/biosphere.png"
+       width="48.555653"
+       xlink:href="bio.png"
+       height="49.776958"
+       sodipodi:absref="/media/pros/pyfl/art/weapons/bio.png"
+       y="-235.25449"
+       x="735.81219"
+       id="image3582"
+       transform="matrix(0.2888678,0.957369,-0.9618473,0.2735868,0.2,-40.2)"
+       clip-path="url(#clipPath3665)" />
+    <image
+       y="658.91956"
+       x="323.36865"
+       id="image3496"
+       height="20.378036"
+       width="20.793915"
+       sodipodi:absref="/media/pros/pyfl/art/weapons/blue.png"
+       xlink:href="blue.png"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/inertia.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path3479"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.2446809,-0.2446809,0,455.95001,585.42771)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/inertia.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="fill:url(#linearGradient3481);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.97243452;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <image
+       id="image3473"
+       x="356.79111"
+       y="617.51892"
+       sodipodi:absref="/media/pros/pyfl/art/weapons/bio.png"
+       height="25.228725"
+       xlink:href="bio.png"
+       width="25.228725"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/biosphere.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="rect3417"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-lr.png"
+       inkscape:export-ydpi="76"
+       d="M 258.1875 388.0625 L 258.1875 390.8125 L 213.59375 390.8125 L 213.59375 392.875 L 230.03125 392.875 L 230.03125 395.03125 L 213.59375 395.03125 L 213.59375 397.09375 L 258.1875 397.09375 L 258.1875 399.875 L 261.40625 399.875 L 261.40625 388.0625 L 258.1875 388.0625 z M 233.375 392.875 L 244.21875 392.875 L 244.21875 395.03125 L 233.375 395.03125 L 233.375 392.875 z M 247.59375 392.875 L 258.1875 392.875 L 258.1875 395.03125 L 247.59375 395.03125 L 247.59375 392.875 z "
+       style="fill:url(#radialGradient3480);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3555"
+       x="461.02411"
+       y="-294.91031"
+       inkscape:export-xdpi="92"
+       width="21.833567"
+       height="2.0345759"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3559);fill-opacity:1;stroke:#000000;stroke-width:0.85104203;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3551"
+       x="460.8241"
+       y="-278.91031"
+       inkscape:export-xdpi="92"
+       width="21.833567"
+       height="2.0345759"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3553);fill-opacity:1;stroke:#000000;stroke-width:0.85104203;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3350"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1180113,-0.1180113,0,392.1058,552.83442)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3352);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path2215"
+       d="M 223.03476,491.75608 L 223.03476,496.16547"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88801157px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       d="M 226.13461,491.75608 L 226.13461,496.16547"
+       id="path2213"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88801157px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:url(#radialGradient3507);fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 216.71875 461.5 C 212.77244 461.5 209.5625 464.70993 209.5625 468.65625 C 209.5625 472.60256 212.77243 475.78125 216.71875 475.78125 C 217.76584 475.78125 218.75979 475.56128 219.65625 475.15625 L 219.71875 475.1875 L 227.59375 473.625 L 227.5625 464.46875 L 219.8125 462.09375 L 219.6875 462.15625 C 218.78115 461.74031 217.78071 461.5 216.71875 461.5 z "
+       id="path4212"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr-0.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74" />
+    <rect
+       id="rect3129"
+       x="445.82565"
+       y="-228.17746"
+       inkscape:export-xdpi="77.502876"
+       width="5.0641451"
+       height="14.748566"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-ydpi="77.502876"
+       style="opacity:1;fill:url(#radialGradient7147);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect2181"
+       x="217.24347"
+       y="447.00888"
+       inkscape:export-xdpi="77.502876"
+       width="9.6078844"
+       height="2.6976674"
+       ry="0"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-ydpi="77.502876"
+       style="opacity:1;fill:url(#radialGradient3165);fill-opacity:1;stroke:#000000;stroke-width:0.8;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path6134"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1080674,-0.1080674,0,268.9011,411.39868)"
+       inkscape:export-xdpi="77.502876"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-ydpi="77.502876"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient7140);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:7.40278752;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       d="M 239.75 421.125 L 239.75 423.21875 L 214.5625 423.21875 L 214.5625 424.90625 L 239.75 424.90625 L 239.75 427 L 243.40625 427 L 243.40625 421.125 L 239.75 421.125 z "
+       id="rect4197"
+       style="opacity:1;fill:url(#radialGradient2277);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.80000001;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path4200"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,383.70167)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient4204);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path7138"
+       inkscape:export-xdpi="74.523598"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr-0.png"
+       inkscape:export-ydpi="74.523598"
+       d="M 220.28983,465.35223 L 215.99132,466.46509 C 217.7582,466.58871 219.14688,467.51247 219.14688,468.64443 C 219.14688,469.76619 217.78487,470.68684 216.04102,470.82377 L 220.21529,471.93663 L 226.55125,471.14836 L 226.52641,466.54237 L 220.28983,465.35223 z "
+       style="fill:url(#radialGradient3499);fill-opacity:1;stroke:#000000;stroke-width:0.64063609;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path2191"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,453.70167)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient2193);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <rect
+       id="rect2195"
+       x="495.21793"
+       y="-234.85497"
+       inkscape:export-xdpi="76"
+       width="1.7574804"
+       height="18.352573"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-ydpi="76"
+       style="opacity:1;fill:url(#radialGradient2197);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.67374891;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect2199"
+       x="491.14771"
+       y="-234.85497"
+       inkscape:export-xdpi="76"
+       width="1.7574804"
+       height="18.352573"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-ydpi="76"
+       style="opacity:1;fill:url(#radialGradient2207);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.67374891;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path4190"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1037256,-0.1037256,0,267.95658,458.58739)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient4192);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path4196"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,477.28956)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient4198);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <rect
+       id="rect4200"
+       x="-526.64496"
+       y="215.51834"
+       width="17.991179"
+       height="6.5425105"
+       transform="matrix(0,-1,1,0,0,0)"
+       style="opacity:1;fill:url(#radialGradient4209);fill-opacity:1;stroke:#000000;stroke-width:0.96287197;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path4211"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1180113,-0.1180113,0,276.09032,509.70167)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missiles-2.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient4215);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <rect
+       id="rect4213"
+       x="-561.28394"
+       y="214.9938"
+       width="23.269037"
+       height="8.177392"
+       transform="matrix(0,-1,1,0,0,0)"
+       style="opacity:1;fill:url(#radialGradient4217);fill-opacity:1;stroke:#000000;stroke-width:0.92824578;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missiles-2.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       d="M 219.867,537.79552 L 219.867,561.46218"
+       id="path4219"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missiles-2.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path2218"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,7.3416225e-2,-7.3416225e-2,0,339.18318,511.75932)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-0.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient2220);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <rect
+       id="rect3218"
+       x="276.71448"
+       y="466.59155"
+       inkscape:export-xdpi="92"
+       width="32.526913"
+       height="1.885618"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3234);fill-opacity:1.0;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3220"
+       x="276.71448"
+       y="474.59155"
+       inkscape:export-xdpi="92"
+       width="32.526913"
+       height="1.885618"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3232);fill-opacity:1.0;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3238"
+       x="15.318619"
+       y="562.80542"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(0.7657927,-0.6430875,0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3242);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3244"
+       x="6.488873"
+       y="556.21442"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(0.7657927,-0.6430875,0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3246);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3248"
+       x="-505.71185"
+       y="173.88029"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(-0.7657927,-0.6430875,-0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3250);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3252"
+       x="-514.5415"
+       y="167.28932"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(-0.7657927,-0.6430875,-0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3254);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3265"
+       x="-2.6305437"
+       y="549.40723"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(0.7657927,-0.6430875,0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3269);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3267"
+       x="-496.59253"
+       y="180.6875"
+       inkscape:export-xdpi="92"
+       width="13.810557"
+       height="2.0540464"
+       transform="matrix(-0.7657927,-0.6430875,-0.5077181,0.8615233,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3271);fill-opacity:1;stroke:#000000;stroke-width:0.68008387;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3273"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,537.70167)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-launcher.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3277);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <rect
+       id="rect3275"
+       x="-580.12573"
+       y="209.72179"
+       inkscape:export-xdpi="76"
+       width="4.1284676"
+       height="14.364408"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-launcher.png"
+       inkscape:export-ydpi="76"
+       style="opacity:1;fill:url(#radialGradient3502);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3281"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.2114831,-0.2114831,0,438.67495,437.3083)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3283);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851022;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3285"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.2114831,-0.2114831,0,438.67495,477.3083)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3287);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       id="path3289"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1052254,-0.1052254,0,385.61387,473.64843)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       d="M 333.06829,501.8699 C 328.77474,501.86989 325.28703,505.3576 325.28704,509.65115 C 325.28704,513.94472 328.77474,517.40116 333.06829,517.40115 C 337.36184,517.40117 340.84955,513.9447 340.84954,509.65115 C 340.84954,505.35762 337.36184,501.86989 333.06829,501.8699 z M 333.06829,503.58865 C 334.46658,503.58866 335.76168,504.08963 336.78704,504.90115 L 328.34954,513.33865 C 327.5527,512.32032 327.06829,511.04765 327.06829,509.65115 C 327.06829,506.33168 329.74883,503.58865 333.06829,503.58865 z M 337.81829,505.9324 C 338.62153,506.96353 339.09954,508.25465 339.09954,509.65115 C 339.09953,512.9706 336.38775,515.65115 333.06829,515.65115 C 331.6628,515.65118 330.37097,515.17605 329.34954,514.3699 L 337.81829,505.9324 z "
+       id="path3305"
+       style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3309"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.2114831,-0.2114831,0,478.67495,437.3083)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/ejump.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3315);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       id="path3311"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1052254,-0.1052254,0,425.61387,473.64843)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/ejump.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3317"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.2114831,-0.2114831,0,478.67495,477.3083)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3321);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3319"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1052254,-0.1052254,0,425.61387,513.64843)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#00ffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       id="path3323"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.2114831,-0.2114831,0,518.67495,477.3083)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3327);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       id="path3325"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1052254,-0.1052254,0,465.61387,513.64843)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       d="M 335.91142,579.6936 C 330.68333,581.56668 326.86963,586.37361 326.47272,592.23275 C 326.03107,598.75238 330.02586,604.55948 335.87217,606.69496 C 333.97517,603.57744 332.7521,598.70237 332.7521,593.2139 C 332.75209,587.69791 333.99812,582.8089 335.91142,579.6936 z "
+       id="path3329"
+       style="opacity:1;fill:url(#radialGradient3348);fill-opacity:1;stroke:#000000;stroke-width:0.90798199;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g6237"
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,627.86731)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-nuke.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path3167"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient2399);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         id="path3169"
+         style="fill:url(#radialGradient2401);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g2325"
+       transform="matrix(0,1,-1,0,907.36252,382.90698)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-nuke.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path3213"
+         sodipodi:cx="145"
+         sodipodi:cy="233.36218"
+         transform="matrix(0.1289708,0,0,0.1289708,249.89098,601.0524)"
+         d="M 181 233.36218 A 36 36 0 1 1  109,233.36218 A 36 36 0 1 1  181 233.36218 z"
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="36"
+         sodipodi:rx="36" />
+      <path
+         id="path3267"
+         d="M 268.59174,627.16072 C 267.80138,627.16072 267.00986,627.40337 266.31099,627.89272 L 268.01744,630.32882 C 268.18038,630.21436 268.37763,630.14758 268.59174,630.14758 C 268.80586,630.14758 269.0031,630.21436 269.16605,630.32882 L 270.87249,627.89272 C 270.17362,627.40337 269.38211,627.16072 268.59174,627.16072 z "
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path3269"
+         d="M 264.61632,631.15027 C 264.61632,632.85659 265.62787,634.29966 267.23129,634.88326 L 268.2481,632.09175 C 267.86341,631.95148 267.58906,631.58329 267.58906,631.15027 L 264.61632,631.15027 z "
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path3271"
+         d="M 269.59443,631.15027 C 269.59443,631.58329 269.32008,631.95148 268.93539,632.09175 L 269.95219,634.88326 C 271.55561,634.29966 272.56717,632.85659 272.56717,631.15027 L 269.59443,631.15027 z "
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g6241"
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,609.51533)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path6243"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient2395);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         id="path6245"
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         style="fill:url(#radialGradient2397);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g6247"
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,645.29612)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-pulse.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path6249"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient2391);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         id="path6251"
+         style="fill:url(#radialGradient2393);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <path
+       id="path3181"
+       sodipodi:cx="158"
+       sodipodi:cy="276.36218"
+       transform="matrix(0,0.1107631,-0.1107631,0,306.82395,651.42696)"
+       inkscape:export-xdpi="92"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-pulse.png"
+       inkscape:export-ydpi="92"
+       d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient2377);fill-opacity:1;stroke:#000000;stroke-width:4.51413873;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3486"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,557.70167)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3490);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       id="path3494"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,577.70167)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3498);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <rect
+       id="rect3504"
+       x="-600.12579"
+       y="209.72179"
+       width="4.1284676"
+       height="14.364408"
+       transform="matrix(0,-1,1,0,0,0)"
+       style="opacity:1;fill:url(#radialGradient3506);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g3480"
+       transform="translate(-56.203046,-17.060023)">
+      <path
+         id="path3468"
+         sodipodi:cx="145"
+         sodipodi:cy="233.36218"
+         transform="matrix(0.1289708,0,0,0.1289708,253.66222,585.02465)"
+         d="M 181 233.36218 A 36 36 0 1 1  109,233.36218 A 36 36 0 1 1  181 233.36218 z"
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="36"
+         sodipodi:rx="36" />
+      <path
+         d="M 272.36298,611.13297 C 271.57262,611.13297 270.7811,611.37562 270.08223,611.86497 L 271.78868,614.30107 C 271.95162,614.18661 272.14887,614.11983 272.36298,614.11983 C 272.5771,614.11983 272.77434,614.18661 272.93729,614.30107 L 274.64373,611.86497 C 273.94486,611.37562 273.15335,611.13297 272.36298,611.13297 z "
+         id="path3470"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 268.38756,615.12252 C 268.38756,616.82884 269.39911,618.27191 271.00253,618.85551 L 272.01934,616.064 C 271.63465,615.92373 271.3603,615.55554 271.3603,615.12252 L 268.38756,615.12252 z "
+         id="path3472"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 273.36567,615.12252 C 273.36567,615.55554 273.09132,615.92373 272.70663,616.064 L 273.72343,618.85551 C 275.32685,618.27191 276.33841,616.82884 276.33841,615.12252 L 273.36567,615.12252 z "
+         id="path3474"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <rect
+       id="rect3508"
+       x="-620.12579"
+       y="209.72179"
+       width="4.1284676"
+       height="14.364408"
+       transform="matrix(0,-1,1,0,0,0)"
+       style="opacity:1;fill:url(#radialGradient3510);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3476"
+       sodipodi:cx="158"
+       sodipodi:cy="276.36218"
+       transform="matrix(0.1107631,0,0,0.1107631,198.65937,587.4508)"
+       d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient3478);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="rect3512"
+       inkscape:export-xdpi="62"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/hangar.png"
+       inkscape:export-ydpi="62"
+       d="M 392.33681,586.10069 L 365.69444,588.49224 L 365.69444,590.05911 L 365.69444,601.91374 L 365.69444,603.46 L 392.33681,605.87216 L 392.33681,599.50158 L 392.33681,592.45065 L 392.33681,586.10069 z "
+       style="opacity:1;fill:url(#radialGradient3529);fill-opacity:1;stroke:#000000;stroke-width:0.76433259;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3531"
+       inkscape:export-xdpi="62"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/hangar.png"
+       inkscape:export-ydpi="62"
+       d="M 390.84918,587.77387 L 384.52373,589.76065 L 384.52373,591.06231 L 384.52373,600.91054 L 384.52373,602.19509 L 390.84918,604.19898 L 390.84918,598.90664 L 390.84918,593.04909 L 390.84918,587.77387 z "
+       style="opacity:1;fill:#282828;fill-opacity:1;stroke:#000000;stroke-width:0.33945057;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3535"
+       x="-265.1893"
+       y="648.49768"
+       inkscape:export-xdpi="92"
+       width="17.147444"
+       height="1.9613256"
+       transform="matrix(0.942303,-0.3347611,0.8123641,0.5831506,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3539);fill-opacity:1;stroke:#000000;stroke-width:0.74050206;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3537"
+       x="-670.97369"
+       y="415.55469"
+       inkscape:export-xdpi="92"
+       width="17.147444"
+       height="1.9613256"
+       transform="matrix(-0.942303,-0.3347611,-0.8123641,0.5831506,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3541);fill-opacity:1;stroke:#000000;stroke-width:0.74050206;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3543"
+       x="-279.33112"
+       y="664.90161"
+       inkscape:export-xdpi="92"
+       width="17.147444"
+       height="1.9613256"
+       transform="matrix(0.942303,-0.3347611,0.8123641,0.5831506,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3547);fill-opacity:1;stroke:#000000;stroke-width:0.74050206;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3545"
+       x="-685.11536"
+       y="431.95856"
+       inkscape:export-xdpi="92"
+       width="17.147444"
+       height="1.9613256"
+       transform="matrix(-0.942303,-0.3347611,-0.8123641,0.5831506,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3549);fill-opacity:1;stroke:#000000;stroke-width:0.74050206;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       id="rect3561"
+       x="465.44943"
+       y="-310.99899"
+       inkscape:export-xdpi="92"
+       width="12.582872"
+       height="2.2119725"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/building.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3563);fill-opacity:1;stroke:#000000;stroke-width:0.67364556;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path2318"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,0.2114831,-0.2114831,0,438.67495,557.3083)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/generator.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient2320);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <g
+       id="g2330"
+       transform="matrix(1.5098319,0,0,1.5098319,-168.74394,-320.23226)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/generator.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76">
+      <path
+         id="path2322"
+         sodipodi:cx="145"
+         sodipodi:cy="233.36218"
+         transform="matrix(0.1289708,0,0,0.1289708,313.66222,599.02465)"
+         d="M 181 233.36218 A 36 36 0 1 1  109,233.36218 A 36 36 0 1 1  181 233.36218 z"
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="36"
+         sodipodi:rx="36" />
+      <path
+         d="M 332.36298,625.13297 C 331.57262,625.13297 330.7811,625.37562 330.08223,625.86497 L 331.78868,628.30107 C 331.95162,628.18661 332.14887,628.11983 332.36298,628.11983 C 332.5771,628.11983 332.77434,628.18661 332.93729,628.30107 L 334.64373,625.86497 C 333.94486,625.37562 333.15335,625.13297 332.36298,625.13297 z "
+         id="path2324"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 328.38756,629.12252 C 328.38756,630.82884 329.39911,632.27191 331.00253,632.85551 L 332.01934,630.064 C 331.63465,629.92373 331.3603,629.55554 331.3603,629.12252 L 328.38756,629.12252 z "
+         id="path2326"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 333.36567,629.12252 C 333.36567,629.55554 333.09132,629.92373 332.70663,630.064 L 333.72343,632.85551 C 335.32685,632.27191 336.33841,630.82884 336.33841,629.12252 L 333.36567,629.12252 z "
+         id="path2328"
+         style="fill:#fffa00;fill-opacity:1;stroke:#000000;stroke-width:0.11039897;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,668.83964)"
+       id="g3330"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-miner.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path3332"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient3336);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         id="path3334"
+         style="fill:url(#radialGradient3338);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3340"
+       transform="matrix(0.8795791,0.4757526,-0.4757526,0.8795791,292.03881,-63.700714)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-miner.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <rect
+         id="rect3324"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3326"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3328"
+         x="-761.95996"
+         y="-37.750332"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3322"
+         x="339.25394"
+         y="671.80768"
+         width="13.042535"
+         height="1.7288263"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path3318"
+         sodipodi:cx="342"
+         inkscape:export-xdpi="76"
+         transform="matrix(0,8.3973817e-2,-8.3973817e-2,0,387.70857,643.95305)"
+         inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+         inkscape:export-ydpi="76"
+         sodipodi:ry="42"
+         d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+         sodipodi:type="arc"
+         style="opacity:1;fill:url(#radialGradient3320);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:cy="499.36218"
+         sodipodi:rx="42" />
+    </g>
+    <g
+       transform="translate(-155.62524,77.79899)"
+       id="g3347"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mine.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76">
+      <rect
+         id="rect3349"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3351"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3353"
+         x="-761.95996"
+         y="-37.750332"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3355"
+         x="339.25394"
+         y="671.80768"
+         width="13.042535"
+         height="1.7288263"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path3357"
+         sodipodi:cx="342"
+         sodipodi:cy="499.36218"
+         transform="matrix(0,8.3973817e-2,-8.3973817e-2,0,387.70857,643.95305)"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+         inkscape:export-ydpi="76"
+         d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+         sodipodi:type="arc"
+         style="opacity:1;fill:url(#radialGradient3359);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="42"
+         sodipodi:rx="42" />
+    </g>
+    <rect
+       id="rect3363"
+       x="-639.85229"
+       y="209.72179"
+       inkscape:export-xdpi="76"
+       width="4.1284676"
+       height="14.364408"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-miner-t.png"
+       inkscape:export-ydpi="76"
+       style="fill:url(#radialGradient3392);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g3369"
+       transform="matrix(0.8604695,0.509502,-0.509502,0.8604695,261.41049,-117.19881)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-miner-t.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76">
+      <rect
+         id="rect3371"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3373"
+         x="-416.18475"
+         y="634.92175"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(0.5,-0.8660254,0.8660254,0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3375"
+         x="-761.95996"
+         y="-37.750332"
+         width="13.042535"
+         height="1.7288263"
+         transform="matrix(-0.5,-0.8660254,0.8660254,-0.5,0,0)"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         id="rect3377"
+         x="339.25394"
+         y="671.80768"
+         width="13.042535"
+         height="1.7288263"
+         style="opacity:1;fill:#000000;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.68538731;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         id="path3379"
+         sodipodi:cx="342"
+         inkscape:export-xdpi="76"
+         transform="matrix(0,8.3973817e-2,-8.3973817e-2,0,387.70857,643.95305)"
+         inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+         inkscape:export-ydpi="76"
+         sodipodi:ry="42"
+         d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+         sodipodi:type="arc"
+         style="opacity:1;fill:url(#radialGradient3381);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:cy="499.36218"
+         sodipodi:rx="42" />
+    </g>
+    <g
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,697.7849)"
+       id="g3399"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path3401"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient3405);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         id="path3403"
+         style="fill:url(#radialGradient3407);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <path
+       id="path3395"
+       d="M 279.0285,716.49945 C 277.12446,717.18162 275.73554,718.93227 275.59099,721.06613 C 275.43014,723.44053 276.88502,725.55544 279.0142,726.33317 C 278.32333,725.19779 277.87789,723.42232 277.87789,721.42346 C 277.87789,719.41457 278.33169,717.63403 279.0285,716.49945 z "
+       style="opacity:1;fill:url(#radialGradient3397);fill-opacity:1;stroke:#000000;stroke-width:0.33068103;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3411"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1491686,-0.1491686,0,289.23488,342.93981)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-lr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3415);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.70382373;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <g
+       transform="matrix(0,0.1058882,-9.8419647e-2,0,311.02155,721.29612)"
+       id="g2400"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-counter.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path2402"
+         sodipodi:cx="100"
+         sodipodi:cy="493.86218"
+         transform="matrix(0.8594791,0,0,1.2440945,137.22532,-156.04904)"
+         d="M 113 493.86218 A 13 63.5 0 1 1  87,493.86218 A 13 63.5 0 1 1  113 493.86218 z"
+         sodipodi:type="arc"
+         style="fill:url(#radialGradient2408);fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="63.5"
+         sodipodi:rx="13" />
+      <path
+         id="path2404"
+         d="M 223.15761,334.25 C 217.74896,334.25 213.37635,338.62261 213.37636,344.03125 C 213.37636,344.36929 213.40539,344.70199 213.43886,345.03125 L 213.43886,459.15625 L 232.90761,459.15625 L 232.90761,345.03125 C 232.94108,344.70199 232.97011,344.36929 232.97011,344.03125 C 232.97011,338.6226 228.56626,334.24998 223.15761,334.25 z "
+         style="fill:url(#radialGradient2410);fill-opacity:1;stroke:#000000;stroke-width:0.87250984;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3397"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-counter.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92">
+      <path
+         id="path2406"
+         sodipodi:cx="158"
+         sodipodi:cy="276.36218"
+         transform="matrix(0,8.8612852e-2,-8.8612852e-2,0,300.70246,730.9267)"
+         inkscape:export-xdpi="92"
+         inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-pulse.png"
+         inkscape:export-ydpi="92"
+         d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+         sodipodi:type="arc"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:11.28504475;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:ry="42"
+         sodipodi:rx="42" />
+      <path
+         id="path3383"
+         sodipodi:cx="158"
+         inkscape:export-xdpi="92"
+         transform="matrix(0,2.9245148e-2,-2.9245148e-2,0,284.29547,740.3068)"
+         inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-pulse.png"
+         inkscape:export-ydpi="92"
+         sodipodi:ry="42"
+         d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+         sodipodi:type="arc"
+         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:11.28504467;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         sodipodi:cy="276.36218"
+         sodipodi:rx="42" />
+    </g>
+    <path
+       id="path3385"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="92"
+       transform="matrix(0,0.1180113,-0.1180113,0,275.09032,617.70167)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/turret-counter.png"
+       inkscape:export-ydpi="92"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3391);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <rect
+       id="rect3387"
+       x="-660.12579"
+       y="209.72179"
+       inkscape:export-xdpi="92"
+       width="4.1284676"
+       height="14.364408"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/turret-counter.png"
+       inkscape:export-ydpi="92"
+       style="opacity:1;fill:url(#radialGradient3393);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3404"
+       sodipodi:cx="158"
+       sodipodi:cy="276.36218"
+       transform="matrix(0,0.1182967,-0.1182967,0,248.79547,639.37066)"
+       inkscape:export-xdpi="92"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/turret-counter.png"
+       inkscape:export-ydpi="92"
+       d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:8.45332118;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3406"
+       sodipodi:cx="158"
+       inkscape:export-xdpi="92"
+       transform="matrix(0,3.9041793e-2,-3.9041793e-2,0,226.89241,651.89294)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/turret-counter.png"
+       inkscape:export-ydpi="92"
+       sodipodi:ry="42"
+       d="M 200 276.36218 A 42 42 0 1 1  116,276.36218 A 42 42 0 1 1  200 276.36218 z"
+       sodipodi:type="arc"
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:25.61357774;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="276.36218"
+       sodipodi:rx="42" />
+    <path
+       style="fill:url(#radialGradient5042);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 369.40547,617.67222 C 362.53341,617.67222 356.96629,623.23936 356.9663,630.11139 C 356.9663,636.98344 362.5334,642.59434 369.40547,642.59435 C 376.27752,642.59435 381.84462,636.98348 381.84463,630.11139 C 381.84463,623.23934 376.27751,617.67222 369.40547,617.67222 z M 369.40547,619.55562 C 375.2417,619.55561 380.00504,624.27517 380.00504,630.11139 C 380.00502,635.94758 375.24168,640.71096 369.40547,640.71096 C 363.56926,640.71099 358.8497,635.94761 358.8497,630.11139 C 358.84968,624.27513 363.56925,619.55562 369.40547,619.55562 z "
+       id="path3410"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/biosphere.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="fill:url(#linearGradient3446);fill-opacity:1.0;fill-rule:evenodd;stroke:#000000;stroke-width:3.97243448;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/biosphere.png"
+       transform="matrix(0,0.2517348,-0.2517348,0,495.12038,544.03287)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path3418" />
+    <path
+       style="fill:url(#radialGradient3484);fill-opacity:1;stroke:#000000;stroke-width:0.72755277;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 176.71875 461.5 C 172.77244 461.5 169.5625 464.70993 169.5625 468.65625 C 169.5625 472.60256 172.77243 475.78125 176.71875 475.78125 C 177.29078 475.78125 177.84171 475.72085 178.375 475.59375 L 178.4375 475.625 L 184.53125 473.96875 L 184.5 464.1875 L 180.21875 462.40625 L 180.125 462.34375 C 179.71982 462.12355 179.29138 461.95182 178.84375 461.8125 C 178.80329 461.79991 178.75951 461.79314 178.71875 461.78125 L 178.5 461.6875 L 178.46875 461.71875 C 177.90657 461.57652 177.32493 461.5 176.71875 461.5 z "
+       id="path3469"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr-1.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74" />
+    <path
+       style="fill:url(#radialGradient3479);fill-opacity:1;stroke:#000000;stroke-width:0.72259241;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 178.64577,463.26181 L 175.362,465.11513 C 176.71178,465.32101 177.77263,466.8594 177.77263,468.74453 C 177.77263,470.61267 176.73214,472.14589 175.39997,472.37394 L 178.58882,474.22725 L 183.42905,472.91448 L 183.41008,465.24382 L 178.64577,463.26181 z "
+       inkscape:export-ydpi="74.523598"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr-1.png"
+       inkscape:export-xdpi="74.523598"
+       id="path3473" />
+    <path
+       style="fill:url(#radialGradient3493);fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 148.09324,473.62624 L 140.21765,475.17652 L 132.39287,471.85313 L 132.51945,465.32016 L 140.32078,462.10859 L 148.0698,464.48095 L 148.09324,473.62624 z "
+       inkscape:export-ydpi="74.523598"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr.png"
+       inkscape:export-xdpi="74.523598"
+       id="path3487" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient3495);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.69988012;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="74.523598"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr.png"
+       inkscape:export-xdpi="74.523598"
+       transform="matrix(0,0.1702171,-0.1702171,0,221.7196,410.42832)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path3489" />
+    <path
+       style="fill:url(#radialGradient3497);fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 140.5044,463.43191 L 136.27076,465.19389 C 138.01098,465.38963 139.3787,466.85221 139.3787,468.64443 C 139.3787,470.4205 138.03724,471.87816 136.31971,472.09497 L 140.43099,473.85695 L 146.67133,472.60888 L 146.64686,465.31625 L 140.5044,463.43191 z "
+       inkscape:export-ydpi="74.523598"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-mr.png"
+       inkscape:export-xdpi="74.523598"
+       id="path3491" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient3520);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar.png"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,7.3416225e-2,-7.3416225e-2,0,319.18318,511.75932)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path3510" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.94222233;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 283.32761,537.29762 L 283.32761,543.10874 L 283.32761,558.73866 L 283.32761,564.54977 L 286.67413,562.25448 L 286.67413,558.73866 L 286.67413,540.81345 L 286.67413,537.29762 L 283.32761,537.29762 z "
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar.png"
+       inkscape:export-xdpi="76"
+       id="path3512" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.94222233;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 278.58001,537.30653 L 278.58001,543.49332 L 278.58001,560.13364 L 278.58001,566.32042 L 281.90872,563.87674 L 281.90872,560.13364 L 281.90872,541.04964 L 281.90872,537.30653 L 278.58001,537.30653 z "
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar.png"
+       inkscape:export-xdpi="76"
+       id="path3514" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.94222233;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 283.32761,536.12925 L 283.32761,530.31813 L 283.32761,514.68821 L 283.32761,508.8771 L 286.67413,511.17239 L 286.67413,514.68821 L 286.67413,532.61342 L 286.67413,536.12925 L 283.32761,536.12925 z "
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar.png"
+       inkscape:export-xdpi="76"
+       id="path3516" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.94222233;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 278.58001,536.12034 L 278.58001,529.93355 L 278.58001,513.29323 L 278.58001,507.10645 L 281.90872,509.55013 L 281.90872,513.29323 L 281.90872,532.37723 L 281.90872,536.12034 L 278.58001,536.12034 z "
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar.png"
+       inkscape:export-xdpi="76"
+       id="path3518" />
+    <path
+       id="path3522"
+       sodipodi:cx="342"
+       sodipodi:cy="499.36218"
+       transform="matrix(0,7.3416225e-2,-7.3416225e-2,0,297.18318,511.75932)"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-ydpi="76"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient3532);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:ry="42"
+       sodipodi:rx="42" />
+    <path
+       id="path3524"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-ydpi="76"
+       d="M 263.32761,537.29762 L 263.32761,543.10874 L 263.32761,558.73866 L 263.32761,564.54977 L 266.67413,562.25448 L 266.67413,558.73866 L 266.67413,540.81345 L 266.67413,537.29762 L 263.32761,537.29762 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222239;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3526"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-ydpi="76"
+       d="M 258.58001,537.30653 L 258.58001,543.49332 L 258.58001,560.13364 L 258.58001,566.32042 L 261.90872,563.87674 L 261.90872,560.13364 L 261.90872,541.04964 L 261.90872,537.30653 L 258.58001,537.30653 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222239;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3528"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-ydpi="76"
+       d="M 263.32761,536.12925 L 263.32761,530.31813 L 263.32761,514.68821 L 263.32761,508.8771 L 266.67413,511.17239 L 266.67413,514.68821 L 266.67413,532.61342 L 266.67413,536.12925 L 263.32761,536.12925 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222239;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path3530"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-ydpi="76"
+       d="M 258.58001,536.12034 L 258.58001,529.93355 L 258.58001,513.29323 L 258.58001,507.10645 L 261.90872,509.55013 L 261.90872,513.29323 L 261.90872,532.37723 L 261.90872,536.12034 L 258.58001,536.12034 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222239;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.19708347px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 184.18954,489.51062 L 184.18954,498.41093"
+       id="path3534" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.19708347px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3536"
+       d="M 186.98031,489.51062 L 186.98031,498.41093" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient3546);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       transform="matrix(0,0.1400428,-0.1400428,0,246.09203,446.16689)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path3538" />
+    <rect
+       id="rect3554"
+       x="488.35648"
+       y="-194.84633"
+       inkscape:export-xdpi="76"
+       width="1.7548227"
+       height="19.335293"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       inkscape:export-ydpi="76"
+       style="opacity:1;fill:url(#radialGradient3556);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.69102913;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient3548);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.69102913;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       height="19.335293"
+       width="1.7548227"
+       inkscape:export-xdpi="76"
+       y="-194.84633"
+       x="498.01184"
+       id="rect3540" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient3550);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.69102913;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       height="19.335293"
+       width="1.7548227"
+       inkscape:export-xdpi="76"
+       y="-194.84633"
+       x="493.18417"
+       id="rect3542" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient3552);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-1.png"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1326139,-0.1326139,0,242.38232,448.70758)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path3544" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.10801959px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 143.14476,490.36684 L 143.14476,497.75623"
+       id="path3558" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.10801959px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3560"
+       d="M 146.02461,490.36684 L 146.02461,497.75623" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient3570);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       transform="matrix(0,0.1180113,-0.1180113,0,195.09032,453.70167)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path3562" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient3574);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.67374891;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       height="18.352573"
+       width="1.7574804"
+       inkscape:export-xdpi="76"
+       y="-154.85497"
+       x="493.1828"
+       id="rect3566" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient3576);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-sr-0.png"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1037256,-0.1037256,0,187.95658,458.58738)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path3568" />
+    <path
+       style="fill:url(#radialGradient3501);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 333.76562,657.99921 C 327.63713,657.99919 322.67187,662.96447 322.67188,669.09296 C 322.67188,675.22145 327.63711,680.21795 333.76562,680.21796 C 339.89414,680.21795 344.85937,675.2215 344.85938,669.09296 C 344.85938,662.96445 339.89411,657.99921 333.76562,657.99921 z M 332.79688,659.71796 C 332.84774,659.7128 332.90202,659.7223 332.95312,659.71796 L 332.95312,668.31171 L 324.39062,668.31171 C 324.75984,663.79094 328.30138,660.17353 332.79688,659.71796 z M 334.57812,659.71796 C 339.14925,660.10618 342.79512,663.73982 343.17188,668.31171 L 334.57812,668.31171 L 334.57812,659.71796 z M 324.39062,669.90546 L 332.95312,669.90546 L 332.95312,678.49921 C 328.40443,678.10936 324.78963,674.45411 324.39062,669.90546 z M 334.57812,669.90546 L 343.17188,669.90546 C 342.76929,674.45408 339.13029,678.10934 334.57812,678.49921 L 334.57812,669.90546 z "
+       id="path3499"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/inertia.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="opacity:1;fill:url(#linearGradient3623);fill-opacity:1;stroke:none;stroke-width:0.89632803;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 436.37357,616.60434 C 436.0405,616.60749 435.70496,616.62494 435.36274,616.65867 L 407.63727,619.40245 C 402.16169,619.94219 397.76007,624.26624 397.76007,629.10072 C 397.76007,629.25651 397.77991,629.40969 397.78896,629.56254 C 397.77991,629.71539 397.76007,629.86857 397.76007,630.02436 C 397.76007,634.85884 402.16169,639.18289 407.63727,639.72264 L 435.36274,642.46641 C 440.47544,642.97041 444.67919,639.98066 445.21106,635.64773 L 445.23993,635.64773 L 445.23993,634.69692 L 445.23993,624.50966 C 445.24022,624.48224 445.23993,624.4556 445.23993,624.42816 C 445.23993,619.89583 441.36961,616.55714 436.37357,616.60434 z "
+       id="path3565" />
+    <path
+       style="opacity:1;fill:url(#radialGradient3569);fill-opacity:1.0;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 437.59375 614.65625 C 437.23336 614.65987 436.8703 614.67994 436.5 614.71875 L 406.5 617.875 C 400.57521 618.49589 395.81249 623.46999 395.8125 629.03125 C 395.8125 629.21046 395.83396 629.38668 395.84375 629.5625 C 395.83396 629.73832 395.8125 629.91454 395.8125 630.09375 C 395.81249 635.65501 400.57521 640.62911 406.5 641.25 L 436.5 644.40625 C 442.03214 644.98602 446.58075 641.54681 447.15625 636.5625 L 447.1875 636.5625 L 447.1875 635.46875 L 447.1875 623.75 C 447.18781 623.71847 447.1875 623.68782 447.1875 623.65625 C 447.1875 618.44256 442.99966 614.60195 437.59375 614.65625 z M 436.375 616.59375 C 441.37104 616.54655 445.25 619.90517 445.25 624.4375 C 445.25 624.46494 445.25029 624.4726 445.25 624.5 L 445.25 634.6875 L 445.25 635.65625 L 445.21875 635.65625 C 444.68688 639.98918 440.48771 642.97273 435.375 642.46875 L 407.625 639.71875 C 402.14942 639.179 397.75 634.86574 397.75 630.03125 C 397.75 629.87546 397.77219 629.71533 397.78125 629.5625 C 397.7722 629.40965 397.75 629.24955 397.75 629.09375 C 397.75 624.25927 402.14942 619.94597 407.625 619.40625 L 435.375 616.65625 C 435.71722 616.62252 436.04193 616.59687 436.375 616.59375 z "
+       id="rect3509"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/biosphere-1.png"
+       inkscape:export-xdpi="62"
+       inkscape:export-ydpi="62" />
+    <path
+       id="path3616"
+       d="M 436.37357,616.60434 C 436.0405,616.60749 435.70496,616.62494 435.36274,616.65867 L 407.63727,619.40245 C 402.16169,619.94219 397.76007,624.26624 397.76007,629.10072 C 397.76007,629.25651 397.77991,629.40969 397.78896,629.56254 C 397.77991,629.71539 397.76007,629.86857 397.76007,630.02436 C 397.76007,634.85884 402.16169,639.18289 407.63727,639.72264 L 435.36274,642.46641 C 440.47544,642.97041 444.67919,639.98066 445.21106,635.64773 L 445.23993,635.64773 L 445.23993,634.69692 L 445.23993,624.50966 C 445.24022,624.48224 445.23993,624.4556 445.23993,624.42816 C 445.23993,619.89583 441.36961,616.55714 436.37357,616.60434 z "
+       style="opacity:1;fill:none;fill-opacity:1.0;stroke:none;stroke-width:0.89632803;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:url(#linearGradient4655);fill-opacity:1.0;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 347.6,464.96218 C 354.4,464.76218 367.8,457.56218 371.8,453.36218 L 375.2,459.36218 C 370,461.76218 354.6,467.56218 347.6,467.96218"
+       id="path3671"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/sucker.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4657"
+       d="M 347.6,472.36218 C 354.4,472.56218 367.8,479.76218 371.8,483.96218 L 375.2,477.96218 C 370,475.56218 354.6,469.76218 347.6,469.36218"
+       style="fill:url(#linearGradient4659);fill-opacity:1.0;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/sucker.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:url(#linearGradient4713);fill-opacity:1.0;fill-rule:evenodd;stroke:#000000;stroke-width:1.03187037px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 379.56875,465.10114 C 375.5054,466.69435 356.06852,467.27699 349.225,467.47614 L 349.225,468.41364 L 349.225,469.28864 L 349.225,470.19489 C 356.06852,470.39404 375.5054,470.9767 379.56875,472.56989 L 379.56875,468.88239 L 379.56875,468.78864 L 379.56875,465.10114 z "
+       id="path4661"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/sucker.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4683"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1443686,-0.1443686,0,419.76052,419.46145)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/sucker.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:url(#radialGradient4685);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 253.59375 505 L 253.59375 507.09375 L 253.59375 511.1875 L 253.59375 513.28125 L 253.59375 527.84375 L 253.59375 529.9375 L 253.59375 534.03125 L 253.59375 536.125 L 256.90625 536.125 L 256.90625 534.03125 L 256.90625 532.375 L 256.90625 530.28125 L 256.90625 513.28125 L 256.90625 509.5625 L 256.90625 507.4375 L 253.59375 505 z "
+       id="path4717"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4722"
+       d="M 253.59375,568.52465 L 253.59375,566.4309 L 253.59375,562.33715 L 253.59375,560.2434 L 253.59375,545.6809 L 253.59375,543.58715 L 253.59375,539.4934 L 253.59375,537.39965 L 256.90625,537.39965 L 256.90625,539.4934 L 256.90625,541.14965 L 256.90625,543.2434 L 256.90625,560.2434 L 256.90625,563.96215 L 256.90625,566.08715 L 253.59375,568.52465 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.63105905;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-2.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4724"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-0.png"
+       inkscape:export-ydpi="76"
+       d="M 300.72762,537.29762 L 300.72762,543.10874 L 300.72762,558.73866 L 300.72762,564.54977 L 304.07414,562.25448 L 304.07414,558.73866 L 304.07414,540.81345 L 304.07414,537.29762 L 300.72762,537.29762 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path4726"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/solar-0.png"
+       inkscape:export-ydpi="76"
+       d="M 300.72762,536.12925 L 300.72762,530.31813 L 300.72762,514.68821 L 300.72762,508.8771 L 304.07414,511.17239 L 304.07414,514.68821 L 304.07414,532.61342 L 304.07414,536.12925 L 300.72762,536.12925 z "
+       style="opacity:1;fill:#383863;fill-opacity:0.94222263;stroke:#000000;stroke-width:0.61323518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient4734);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.70915782;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="77.502876"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       height="14.839408"
+       width="3.9549873"
+       inkscape:export-xdpi="77.502876"
+       y="-190.22289"
+       x="443.48062"
+       id="rect4728" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient4736);fill-opacity:1;stroke:#000000;stroke-width:0.70915782;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="77.502876"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       ry="0"
+       height="2.1068196"
+       width="9.6670637"
+       inkscape:export-xdpi="77.502876"
+       y="444.40466"
+       x="179.22154"
+       id="rect4730" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient4738);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:5.95571332;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="77.502876"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/laser-sr.png"
+       inkscape:export-xdpi="77.502876"
+       transform="matrix(0,0.1343248,-0.1343248,0,242.01305,402.41865)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path4732" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient4752);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1180113,-0.1180113,0,352.1058,552.83442)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path4748" />
+    <path
+       style="opacity:1;fill:url(#radialGradient4754);fill-opacity:1;stroke:#000000;stroke-width:0.90798199;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4750"
+       d="M 303.91142,579.6936 C 298.68333,581.56668 294.86963,586.37361 294.47272,592.23275 C 294.03107,598.75238 298.02586,604.55948 303.87217,606.69496 C 301.97517,603.57744 300.7521,598.70237 300.7521,593.2139 C 300.75209,587.69791 301.99812,582.8089 303.91142,579.6936 z " />
+    <path
+       d="M 282.43942,606.69496 C 287.66751,604.82188 291.48121,600.01495 291.87812,594.15581 C 292.31977,587.63618 288.32498,581.82908 282.47867,579.6936 C 284.37567,582.81112 285.59874,587.68619 285.59874,593.17466 C 285.59875,598.69065 284.35272,603.57966 282.43942,606.69496 z "
+       id="path4756"
+       style="opacity:1;fill:url(#radialGradient4758);fill-opacity:1;stroke:#000000;stroke-width:0.90798199;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 303.91142,579.6936 C 298.68333,581.56668 294.86963,586.37361 294.47272,592.23275 C 294.03107,598.75238 298.02586,604.55948 303.87217,606.69496 C 301.97517,603.57744 300.7521,598.70237 300.7521,593.2139 C 300.75209,587.69791 301.99812,582.8089 303.91142,579.6936 z "
+       id="path4772"
+       style="opacity:1;fill:url(#radialGradient4754);fill-opacity:1;stroke:#000000;stroke-width:0.90798199;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient4826);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       transform="matrix(0,0.2114831,-0.2114831,0,478.67495,597.3083)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path4824" />
+    <path
+       id="path4828"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1716364,-0.1716364,0,458.77701,610.93587)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 372.38678,669.63403 L 378.64979,669.63403"
+       id="path4834"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 378.39716,669.63702 L 376.67988,667.91973"
+       id="path4836"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4838"
+       d="M 378.39716,669.63403 L 376.67988,671.35131"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4847"
+       d="M 373.74979,669.63403 L 367.48679,669.63403"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4849"
+       d="M 367.73942,669.63702 L 369.45669,667.91973"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 367.73942,669.63403 L 369.45669,671.35131"
+       id="path4851"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4885"
+       d="M 373.06974,668.95401 L 373.06974,675.21701"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4887"
+       d="M 373.06676,674.96438 L 374.78405,673.24711"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 373.06974,674.96438 L 371.35247,673.24711"
+       id="path4889"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 373.06974,670.31702 L 373.06974,664.05402"
+       id="path4893"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 373.06676,664.30665 L 374.78405,666.02392"
+       id="path4895"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       id="path4897"
+       d="M 373.06974,664.30665 L 371.35247,666.02392"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/jammer.png"
+       inkscape:export-xdpi="76"
+       inkscape:export-ydpi="76" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:ry="42"
+       style="opacity:1;fill:url(#radialGradient4931);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.77901173;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-launcher.png"
+       inkscape:export-xdpi="76"
+       transform="matrix(0,0.1180113,-0.1180113,0,274.59032,644.24192)"
+       sodipodi:cy="499.36218"
+       sodipodi:cx="342"
+       id="path4927" />
+    <rect
+       style="opacity:1;fill:url(#radialGradient4933);fill-opacity:1;stroke:#000000;stroke-width:0.683447;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/missile-launcher.png"
+       transform="matrix(0,-1,1,0,0,0)"
+       height="14.364408"
+       width="4.1284676"
+       inkscape:export-xdpi="76"
+       y="209.22179"
+       x="-686.66602"
+       id="rect4929" />
+    <path
+       style="opacity:1;fill:url(#radialGradient4937);fill-opacity:1;stroke:#000000;stroke-width:0.33068103;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 224.5285,679.68493 C 222.62446,680.3671 221.23554,682.11775 221.09099,684.25161 C 220.93014,686.62601 222.38502,688.74092 224.5142,689.51865 C 223.82333,688.38327 223.37789,686.6078 223.37789,684.60894 C 223.37789,682.60005 223.83169,680.81951 224.5285,679.68493 z "
+       id="path4935" />
+    <rect
+       inkscape:transform-center-x="-10.671596"
+       y="291.57111"
+       x="662.4118"
+       height="1.0771692"
+       width="27.936665"
+       id="rect5002"
+       style="opacity:1;fill:url(#radialGradient5004);fill-opacity:1;stroke:#000000;stroke-width:0.58925492;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0.7448838,0.6671942,-0.3695756,0.9292007,0,0)"
+       inkscape:transform-center-y="9.5586097" />
+    <path
+       sodipodi:rx="42"
+       sodipodi:cy="499.36218"
+       style="opacity:1;fill:url(#radialGradient4988);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:ry="42"
+       inkscape:export-ydpi="76"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       transform="matrix(0,0.1100501,-0.1100501,0,440.35647,673.06599)"
+       inkscape:export-xdpi="76"
+       sodipodi:cx="342"
+       id="path4986" />
+    <path
+       style="opacity:1;fill:#383863;fill-opacity:0.77333332;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 405.46875,684.65625 L 404.0625,686.9375 C 413.63593,697.95563 414.91572,717.5365 406.875,730.65625 C 405.9811,732.11477 405.12781,733.24488 404.0625,734.46875 L 405.46875,736.75 C 406.63552,735.40957 407.55221,734.15994 408.53125,732.5625 C 417.34258,718.18538 415.96969,696.72011 405.46875,684.65625 z "
+       id="path5010" />
+    <path
+       id="path5023"
+       d="M 336.09248,744.43595 L 334.83938,746.35018 C 343.12347,763.48839 344.0626,786.35754 336.89686,797.38913 C 336.10023,798.61549 335.34223,799.48825 334.39763,800.3653 L 335.60832,803.63593 C 336.64289,802.67536 337.45754,801.69737 338.33004,800.35418 C 346.18255,788.26536 345.17936,763.20984 336.09248,744.43595 z "
+       style="fill:#9d9b00;fill-opacity:0.77333331;stroke:#000000;stroke-width:1.00000012;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.95545554px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 325.68683,784.64059 L 336.96332,750.79648"
+       id="path5039"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.87592947px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 336.37519,797.46604 L 325.41524,784.92042"
+       id="path5041"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.95810241px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 325.6755,784.83229 L 341.44578,784.661"
+       id="path5043"
+       sodipodi:nodetypes="cc" />
+    <path
+       id="path5085"
+       sodipodi:cx="342"
+       inkscape:export-xdpi="76"
+       transform="matrix(4.8535643e-3,0.109943,-0.109943,4.8535643e-3,379.11505,744.97433)"
+       inkscape:export-filename="/media/pros/pyfl/art/weapons/mass-mr.png"
+       inkscape:export-ydpi="76"
+       sodipodi:ry="42"
+       d="M 384 499.36218 A 42 42 0 1 1  300,499.36218 A 42 42 0 1 1  384 499.36218 z"
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient5096);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:4.72851038;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:cy="499.36218"
+       sodipodi:rx="42" />
+  </g>
+</svg>

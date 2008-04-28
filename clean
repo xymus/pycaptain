@@ -1,0 +1,6 @@
+rm src/prefs.cfg
+rm src/*/*.pyc
+rm src/*/*~
+rm src/*.pyc
+rm src/*~
+

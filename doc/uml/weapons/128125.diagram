@@ -1,0 +1,39 @@
+format 37
+
+classcanvas 128125 class_ref 128125 // Weapon
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 354 66 2000
+  end
+classcanvas 128253 class_ref 128253 // Missile
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 213 183 2000
+  end
+classcanvas 128381 class_ref 128381 // Bullet
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 333 186 2000
+  end
+classcanvas 128509 class_ref 128509 // Laser
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 448 189 2000
+  end
+classcanvas 128637 class_ref 128637 // Bomb
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 332 278 2000
+  end
+relationcanvas 128765 relation_ref 128125 // <generalisation>
+  from ref 128637 z 1999 to ref 128381
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128893 relation_ref 128253 // <generalisation>
+  from ref 128253 z 1999 to ref 128125
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129021 relation_ref 128381 // <generalisation>
+  from ref 128381 z 1999 to ref 128125
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129149 relation_ref 128509 // <generalisation>
+  from ref 128509 z 1999 to ref 128125
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

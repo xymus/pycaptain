@@ -1,0 +1,87 @@
+format 37
+
+classcanvas 128010 class_ref 128010 // Ship
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 205 118 2000
+  end
+classcanvas 128037 class_ref 128037 // Object
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 204 28 2000
+  end
+classcanvas 128138 class_ref 128138 // ShipWithTurrets
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 82 216 2000
+  end
+classcanvas 128165 class_ref 128165 // OreSource
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 673 136 2000
+  end
+classcanvas 128293 class_ref 128293 // Astre
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 571 201 2000
+  end
+classcanvas 128394 class_ref 128394 // HarvesterShip
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 148 321 2000
+  end
+classcanvas 128522 class_ref 128522 // FighterShip
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 284 320 2000
+  end
+classcanvas 128650 class_ref 128650 // Flagship
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 27 318 2000
+  end
+classcanvas 130698 class_ref 128906 // SingleWeaponShip
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 263 216 2000
+  end
+classcanvas 131082 class_ref 129034 // Sun
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 489 322 2000
+  end
+classcanvas 131210 class_ref 129162 // Nebula
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 566 322 2000
+  end
+classcanvas 131338 class_ref 129290 // Planet
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 649 321 2000
+  end
+relationcanvas 128778 relation_ref 128010 // <generalisation>
+  from ref 128010 z 1999 to ref 128037
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128906 relation_ref 128138 // <generalisation>
+  from ref 128138 z 1999 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129418 relation_ref 128522 // <generalisation>
+  from ref 128394 z 1999 to ref 128138
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130442 relation_ref 129034 // <generalisation>
+  from ref 128650 z 1999 to ref 128138
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130826 relation_ref 129418 // <generalisation>
+  from ref 128522 z 1999 to ref 130698
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130954 relation_ref 129546 // <generalisation>
+  from ref 130698 z 1999 to ref 128010
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131466 relation_ref 129674 // <generalisation>
+  from ref 131082 z 1999 to ref 128293
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131594 relation_ref 129802 // <generalisation>
+  from ref 131210 z 1999 to ref 128293
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131722 relation_ref 129930 // <generalisation>
+  from ref 131338 z 1999 to ref 128293
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

@@ -1,0 +1,25 @@
+
+author: Alexis Laferrière
+email: "%s.%s@xymus.net" % ("alexis","laf")
+
+
+##How to setup
+#On linux/ubuntu
+Install pygame and psyco by installing the packages python-pygame, python-psyco and (only for ubuntu hardy) libsdl1.2-debian-esd, with apt-get or synaptic.
+
+#On windows
+Install the latest version of python from python.org and the latest stable version of pygame from pygame.org. Note that it may be impossible to launch a server or use the quick play fucntion from a windows machine.
+
+#On Mac OSX
+Install the latest version of python from python.org and you may need to compile pygame from source, which can be found at pygame.org.
+
+##How to play
+#Launch a local game
+Execute client.py and use the quick play function.
+
+#Join a network game
+Execute client.py and connect to a known server or to the test server ageei.uqam.ca.
+
+#Launch a server
+Execute server.py specifying the ip adresses to open sockets on as arguments.
+

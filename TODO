@@ -1,0 +1,10 @@
+sever - create "universe" package, or file, from Game.generateWorld()
+common.ids - automate assignations - wait, eventually
+client.gui - add attack order 
+client.gui - add jump gauge
+client.gui - add self destruct button
+server/admin - add admin password to control shutdown
+server.stats - balance!
+server.stats - complete recent flagships' turrets
+server.ai.AiTurret - correct bad optimization
+
