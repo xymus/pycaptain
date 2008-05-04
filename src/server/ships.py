@@ -239,7 +239,7 @@ class ShipSingleWeapon( Ship ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         Ship.__init__( self, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         self.player = player
-        if stats.weapon.weaponType == ids.WT_MASS or stats.weapon.weaponType == ids.WT_MASS:
+        if stats.weapon.weaponType == ids.WT_MASS or stats.weapon.weaponType == ids.WT_BOMB:
             self.weapon = MassWeapon( stats.weapon )
         elif stats.weapon.weaponType == ids.WT_LASER:
             self.weapon = LaserWeapon( stats.weapon )

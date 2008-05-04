@@ -1,6 +1,6 @@
 port = 41596
 salt = "uz"
-defaultPath = "/home/xymus/pyfl.pyfg"
+defaultSavePath = ""
 
 universeWidth = 36000
 universeHeight = 36000

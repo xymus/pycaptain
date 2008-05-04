@@ -594,6 +594,7 @@ Buildable = { ids.T_LASER_SR:	T_LASER_SR,
               ids.T_SAIL: 	 T_SAIL,
               ids.T_JAMMER: 	 T_JAMMER,
 
+              ids.T_AI_MISSILE_0:  T_AI_MISSILE_0,
               ids.S_HARVESTER: HARVESTER,
               ids.S_FIGHTER: FIGHTER,
               ids.S_BOMBER: BOMBER,

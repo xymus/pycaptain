@@ -7,4 +7,5 @@ server/admin - add admin password to control shutdown
 server.stats - balance!
 server.stats - complete recent flagships' turrets
 server.ai.AiTurret - correct bad optimization
+ai - standardize harvester and fighter behavior
 

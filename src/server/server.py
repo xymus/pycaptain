@@ -18,18 +18,19 @@ addresses:\tList of addresses on which to open a listening socket (other of loca
     exit()
 
 class Server:
-    def __init__( self, addresses=['localhost'] ):
+    def __init__( self, scenarioName="Quad", addresses=['localhost'] ):
         self.updatingPlayer = {}
         self.addresses = addresses 
         self.shutdown = False
         self.network = None
-        self.game = Game()
-        self.path = config.defaultPath
+        exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
+        self.game = Game( Scenario )
+        self.path = config.defaultSavePath
  
     def run(self):
       optimalFrame = 1.0/config.fps
 
-      self.game.generateWorld()
+    #  self.game.generateWorld()
 
       self.network = Network( self.game, self.addresses, config.port, comms.version )
 
@@ -137,12 +138,4 @@ try:
     psyco.full()
 except ImportError:
     pass
-
-#if __name__ == '__main__':
-#    if len( argv ) > 1:
-#        server = Server( argv[1:] )
-#    else:
-#        server = Server()
-#    server.run()
-
 

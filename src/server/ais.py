@@ -541,8 +541,7 @@ class AiWeaponTurret( AiTurret ):
         if self.target and not self.target.alive:
             self.target = None
 
-
-        if not self.target and attack and self.foundNothingAt < game.tick: # -config.fps/2: # doesn't have a target, non or out of range
+        if not self.target and ship.attacking: # attack: # and self.foundNothingAt < game.tick: # -config.fps/2: # doesn't have a target, non or out of range
          #   posTargets = []
             bestObj = None
             bestAngle = 2*pi

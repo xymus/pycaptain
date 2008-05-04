@@ -220,7 +220,7 @@ class Client:
 
     def launchLocalServer( self ):
         from server.server import Server
-        self.server = Server( ["localhost"] )
+        self.server = Server( addresses=["localhost"] )
 
         self.serverThread = Thread( name="server", target=self.server.run )
         self.serverThread.start()
