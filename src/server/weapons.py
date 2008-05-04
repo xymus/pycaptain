@@ -158,7 +158,7 @@ class Missile( Ship ):
         self.ttl = weapon.stats.projectileTtl #30*5
         self.originalTtl = weapon.stats.projectileTtl
         self.lostTarget = False
-        self.thinkFreq = randint( 3, config.fps/2)
+        self.thinkFreq = randint( 2, config.fps/3) # randint( 3, config.fps/2)
 
         self.xi = launcher.xi
         self.yi = launcher.yi

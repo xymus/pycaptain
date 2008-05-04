@@ -31,7 +31,7 @@ class Quad ( Scenario ):
         mercury = Planet( stats.P_MERCURY, -4100, 1400 )
         venus = Planet( stats.P_VENUS, 5000, 2200 )
         self.earth = Planet( stats.P_EARTH, -3100, 6700 )
-        mars = Planet( stats.P_MARS, -7800, -2200 )
+        self.mars = Planet( stats.P_MARS, -7800, -2200 )
         moon = Planet( stats.P_MOON, -3900, 6400 )
         jupiter = Planet( stats.P_JUPITER, -12000, -4800 )
         saturn = Planet( stats.P_SATURN, 13000, 2500 )
@@ -55,7 +55,7 @@ class Quad ( Scenario ):
             asteroid = Asteroid( sol.xp+dist*cos(angle), sol.yp+dist*sin(angle), 300 )
             game.harvestables.append( asteroid )
 
-        for i in range( 30 ): # asteroids outer mars
+        for i in range( 30 ): # asteroids outer self.mars
             dist = 9000
             angle = (1-2*random())*pi/8+pi*9/8
             asteroid = Asteroid( sol.xp+dist*cos(angle), sol.yp+dist*sin(angle), 200 )
@@ -116,9 +116,9 @@ class Quad ( Scenario ):
   #      for i in range( 15 ):
    #         asteroid = Asteroid( 8500, 6800, 800 )
      #       game.objects.append( asteroid )
-        self.sol = [sol, mercury, venus, self.earth, moon, mars, jupiter, saturn, neptune, nebula, nebula2 ]
-        game.astres = [sol, mercury, venus, self.earth, moon, mars, jupiter, saturn, neptune, nebula, nebula2, blackHole0 ] + self.alphaCentaury + self.beta + self.gamma
-     #   game.objects = game.objects #  + [sol, mercury, venus, self.earth, moon, mars, jupiter, saturn, neptune, nebula, nebula2 ] + self.alphaCentaury + self.beta
+        self.sol = [sol, mercury, venus, self.earth, moon, self.mars, jupiter, saturn, neptune, nebula, nebula2 ]
+        game.astres = [sol, mercury, venus, self.earth, moon, self.mars, jupiter, saturn, neptune, nebula, nebula2, blackHole0 ] + self.alphaCentaury + self.beta + self.gamma
+     #   game.objects = game.objects #  + [sol, mercury, venus, self.earth, moon, self.mars, jupiter, saturn, neptune, nebula, nebula2 ] + self.alphaCentaury + self.beta
 
         for i in range( 5 ):
             self.addRandomNpc( game )
@@ -140,22 +140,22 @@ class Quad ( Scenario ):
 
 
         self.marsDefense = Faction( stats.R_HUMAN, "Mars Defenses" )
-        obase = OrbitalBase( self.marsDefense, stats.ORBITALBASE, AiGovernor( self.marsDefense ),mars.xp+mars.stats.maxRadius*1.5,mars.yp+mars.stats.maxRadius*1.5,0, 0, 0.0,0.0,0.0, 0)
+        obase = OrbitalBase( self.marsDefense, stats.ORBITALBASE, AiGovernor( self.marsDefense ),self.mars.xp+self.mars.stats.maxRadius*1.5,self.mars.yp+self.mars.stats.maxRadius*1.5,0, 0, 0.0,0.0,0.0, 0)
         for t in obase.turrets:
             t.install = TurretInstall( stats.T_MASS_SR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_SR_0 )
             t.ai = AiWeaponTurret()
-        obase.orbiting = mars
+        obase.orbiting = self.mars
         obase.yi = 1
         obase.ore = obase.stats.maxOre
         obase.ri = -0.008
         game.objects.append( obase )
 
         for i in xrange( 20 ):
-            radius = mars.stats.maxRadius*(2.5)
-            dist = mars.stats.maxRadius*(1.5+1*random())
+            radius = self.mars.stats.maxRadius*(2.5)
+            dist = self.mars.stats.maxRadius*(1.5+1*random())
             angle = 2*pi*random() # AiPilotDefense
-            fighter = ShipSingleWeapon(self.marsDefense, stats.FIGHTER, AiPilotDefense(mars,radius),mars.xp+dist*cos(angle),mars.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
+            fighter = ShipSingleWeapon(self.marsDefense, stats.FIGHTER, AiPilotDefense(self.mars,radius),self.mars.xp+dist*cos(angle),self.mars.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
             game.objects.append( fighter )
             self.marsDefense.ships.append( fighter )
 
@@ -293,7 +293,7 @@ class Quad ( Scenario ):
 
         spots = []
         for o in self.sol:
-          if isinstance( o, Planet ) and not isinstance( o, Sun ):
+          if isinstance( o, Planet ) and not isinstance( o, Sun ) and o != self.earth and o != self.mars:
               spots.append( o )
         spot = choice( spots )
 
