@@ -6,7 +6,6 @@ from common.utils import *
 from common.gfxs import *
 from common import config
 import stats
-from turrets import *
 
 
 class OreBatch:
@@ -45,7 +44,7 @@ class Ship( Object ):
         self.shipyards = []
 
     def getRadiusAt( self, ang ): # absolute angle with another object
-        return self.stats.maxRadius # 0 #self.fradius( ang )
+        return self.stats.maxRadius
 
     def doTurn(self, game):
         # ai
@@ -72,8 +71,6 @@ class Ship( Object ):
                     self.xi = self.yi = 0
                 if fabs(self.ri) < 0.0005:
                     self.ri = 0
-         #   else:
-         #       print "inertia control"
 
         if (not self.ai or self.ai.dockingTo) and randint( 0, config.fps*10 ) == 0:
         #    zDiff = -2 + 4*randint( 0, 1 )
@@ -175,8 +172,10 @@ class Ship( Object ):
             gfxs.append( GfxExplosion( (self.xp+randint(-1*self.stats.maxRadius,self.stats.maxRadius)+xi*i, self.yp+randint(-1*self.stats.maxRadius,self.stats.maxRadius)+yi*i), self.stats.maxRadius/(2+random()*3), delai=i ) )
         return ([],[self],gfxs) 
 
-from ais import *
-from weapons import *
+from ais import * # useless?
+from weapons import * # useless?
+from turrets import *
+
 class ShipWithTurrets( Ship ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         Ship.__init__( self, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
@@ -248,14 +247,6 @@ class ShipSingleWeapon( Ship ):
         else:
             raise Warning(  "warning: weapon not mass, laser nor missile: %s" % stats.weapon.weaponType )
 # TODO add different weapon typee for bombs
-
-class Turret:
-    def __init__( self, stats ): # , weapon, ai ): # the stats duplicates the stats from ship
-        self.stats = stats
-        self.install = None
-        self.weapon = None
-        self.ai = None
-        self.rr = (self.stats.maxAngle+self.stats.minAngle)/2
   #      self.zp = 1
 
 class Builder:
@@ -264,7 +255,7 @@ class Builder:
         self.goal = 0
         self.buildAt = 0
 
-class TurretBuildable( Turret ):
+class TurretBuildable( Turret ): # unused? TODO if so, remove
     def __init__( self, stats ): # the stats duplicates the stats from ship
         Turret.__init__( self, stats )
         self.building = None
@@ -307,12 +298,6 @@ class FlagShip( ShipWithTurrets ):
         self.charging = True
         self.lastRepairsAt = 0
         self.repairDelay = 10
-
-        # hangar
-    #    self.awayFighters = []
-    #    self.awayHarvesters = []
-    #    self.dockedFighters = []
-    #    self.dockedHarvesters = []
         
         self.civilianShips = []
         self.civilianValue = 1
@@ -338,10 +323,8 @@ class FlagShip( ShipWithTurrets ):
 
         self.jumpCharge = 0
         self.jumpOverheat = 0
-
         
     def doTurn( self, game ):
-
         self.inertiaMod = 1
         thrustBoost = 0
         nebulaOreSum = 0
@@ -351,45 +334,7 @@ class FlagShip( ShipWithTurrets ):
           if b.building:
             b.build = b.build+self.getBuildRate()
             if b.build >= b.buildCost:
-                weapon = None
-                if b.building.weapon:
-            #       b.activated = True
-                    if b.building.weapon.weaponType == ids.WT_MASS:
-                        weapon = MassWeaponTurret( b.building.weapon )
-                   # if b.building.weapon.weponType == ids.WT_BOMB:
-                   #     b.weapon = MassWeaponTurret( b.building.weapon )
-                    elif b.building.weapon.weaponType == ids.WT_LASER:
-                        weapon = LaserWeaponTurret( b.building.weapon )
-                    elif b.building.weapon.weaponType == ids.WT_MISSILE:
-                        weapon = MissileWeaponTurret( b.building.weapon )
-                    elif b.building.weapon.weaponType == ids.WT_MISSILE_SPECIAL:
-                        weapon = SpecialMissileWeaponTurret( b.building.weapon )
-            #    elif b.building.orePer
-
-             #       else:
-              #          print b.building.weapon.weaponType
-
-                ai = None
-                if b.building.ai:
-                    if b.building.ai == ids.TA_COMBAT_STABLE:
-                        ai = AiWeaponTurret()
-                    elif b.building.ai == ids.TA_COMBAT_ROTATING:
-                        ai = AiWeaponTurret()
-                    elif b.building.ai == ids.TA_ROTATING:
-                        ai = AiRotatingTurret()
-                    elif b.building.ai == ids.TA_SOLAR:
-                        ai = AiSolarTurret()
-                    elif b.building.ai == ids.TA_MISSILE_SPECIAL:
-                        ai = AiSpecialMissileTurret()
-
-
-         #       print b.building, weapon, ai
-                b.install = TurretInstall( b.building )
-                b.weapon = weapon
-                b.ai = ai
-                b.activated = True
-             #   b.stats = b.building
-                b.building = None
+                b.buildInstall( b.building )
 
           if b.install and b.activated:
               if b.install.stats.orePerFrame <= self.ore \
@@ -606,16 +551,6 @@ class FlagShip( ShipWithTurrets ):
 
     def getHullRepairRate( self ):
         return 0.05*self.getBuildRate()
-
-  #  def getMaxShips( self ):
-  #      ships = self.stats.maxSmallShips
-  #      for turret in self.turrets:
-  #          if turret.install and turret.activated and turret.install.stats.special == ids.S_HANGAR:
-  #              ships = ships+turret.install.stats.specialValue
-  #      return ships
-
-  #  def getMaxMissiles( self ):
-   #     return self.stats.maxSmallShips
 
     def getHangarSpace( self ):
         space = self.stats.hangarSpace

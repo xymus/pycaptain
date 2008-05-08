@@ -334,7 +334,7 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
 
     def giveShip( self, player, shipId ):
       if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
-        self.scenario.addShipForPlayer( self, player, shipId )
+        self.scenario.spawn( self, player, shipId )
 
     def addPlayer( self, player ):
         self.relations[ player ] = {}

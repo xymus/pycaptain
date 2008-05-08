@@ -608,7 +608,7 @@ class AiRotatingTurret( AiTurret ):
 
 class AiSolarTurret( AiTurret ):
     def doTurn( self, ship, turret, game, attack):
-        if not self.target or game.tick%config.fps*10==0:
+        if not self.target or game.tick%(config.fps*10)==0:
             sunDist = None
             for obj in game.astres:
                 if isinstance( obj, Sun ):

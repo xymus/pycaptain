@@ -8,5 +8,6 @@ class Scenario:
     def doTurn( self, game ):
         pass
 
-    def addShipForPlayer( self, game, player, shipId ):
+    def spawn( self, game, player, shipId ):
         pass
+

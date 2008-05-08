@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from time import sleep, time
 from sys import argv, exit
 from threading import Thread
@@ -11,16 +9,13 @@ from common import comms
 
 from common import config
 
-
-if "--help" in argv or "-h" in argv:
-    print """Usage: %s [addresses]
-addresses:\tList of addresses on which to open a listening socket (other of localhost, which is always being opened).""" % argv[0]
-    exit()
-
 class Server:
-    def __init__( self, scenarioName="Quad", addresses=['localhost'] ):
+    def __init__( self, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None ):
+        # TODO implement adminPassword, private, port
+        
         self.updatingPlayer = {}
         self.addresses = addresses 
+        self.force = force
         self.shutdown = False
         self.network = None
         exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
@@ -34,7 +29,7 @@ class Server:
 
       self.network = Network( self.game, self.addresses, config.port, comms.version )
 
-      if not self.network.socketsOpened:
+      if not self.network.socketsOpened and not self.force:
           print "Failed to open any sockets, shutdown"
           self.shutdown = True
       else:

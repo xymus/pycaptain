@@ -460,15 +460,17 @@ MINE = ObjectStats( ids.S_MINE, 2 )
 
 ### turrets
 # type,energyCostToBuild,oreCostToBuild,timeToBuild, energyPerFrame,orePerFrame, energyPerUse,orePerUse, freqOfFire,turretSpeed, ai, weapon=None,weaponPositions=None, special=None
-T_LASER_SR = 	TurretInstallStats( ids.T_LASER_SR, 0,75,5*config.fps, 0,0, 1,0, 0.3*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_LASER_SR,weaponPositions=[RPos(0,11)] )
+T_LASER_SR_0 = 	TurretInstallStats( ids.T_LASER_SR_0, 0,75,5*config.fps, 0,0, 1,0, 0.3*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_LASER_SR,weaponPositions=[RPos(0,11)] )
+T_LASER_SR_1 = 	TurretInstallStats( ids.T_LASER_SR_1, 0,75,5*config.fps, 0,0, 1,0, 0.3*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_LASER_SR,weaponPositions=[RPos(0.5,11),RPos(-0.5,11)], upgradeFrom=T_LASER_SR_0 )
 T_LASER_MR_0 = 	TurretInstallStats( ids.T_LASER_MR_0, 0,250,10*config.fps, 0,0, 0.5,0, 1*config.fps,0.004, ids.TA_COMBAT_ROTATING, weapon=W_LASER_MR_0,weaponPositions=[RPos(0,10)] )
 T_LASER_MR_1 = 	TurretInstallStats( ids.T_LASER_MR_1, 0,750,10*config.fps, 0,0, 0.5,0, 1*config.fps,0.004, ids.TA_COMBAT_ROTATING, weapon=W_LASER_MR_1,weaponPositions=[RPos(0,10)], upgradeFrom=T_LASER_MR_0 )
 
 T_MASS_SR_0 = 	TurretInstallStats( ids.T_MASS_SR_0, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0,weaponPositions=[RPos(0,15)] )
 T_MASS_SR_1 = 	TurretInstallStats( ids.T_MASS_SR_1, 0,100,15*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_1,weaponPositions=[RPos(0,15)], upgradeFrom=T_MASS_SR_0 ) # [RPos(0.2,15), RPos(-0.2,15)]
 T_MASS_SR_2 = 	TurretInstallStats( ids.T_MASS_SR_2, 0,100,45*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_2,weaponPositions=[RPos(0,15)], upgradeFrom=T_MASS_SR_1 ) # [RPos(0.2,15), RPos(0,15), RPos(-0.2,15)]
-T_MASS_MR = 	TurretInstallStats( ids.T_MASS_MR, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0,22)] )
-T_MASS_LR = 	TurretInstallStats( ids.T_MASS_LR, 0,700,30*config.fps, 0,0, 0,1, 2*config.fps,0.01, ids.TA_COMBAT_ROTATING, weapon=W_MASS_LR,weaponPositions=[RPos(0,11)], upgradeFrom=T_MASS_MR )
+T_MASS_MR_0 = 	TurretInstallStats( ids.T_MASS_MR_0, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0,22)] )
+T_MASS_MR_1 = 	TurretInstallStats( ids.T_MASS_MR_1, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0.3,22),RPos(-0.3,22)], upgradeFrom=T_MASS_MR_0 )
+T_MASS_LR = 	TurretInstallStats( ids.T_MASS_LR, 0,700,30*config.fps, 0,0, 0,1, 2*config.fps,0.01, ids.TA_COMBAT_ROTATING, weapon=W_MASS_LR,weaponPositions=[RPos(0,11)], upgradeFrom=T_MASS_MR_0 )
 
 T_MISSILE_0 = 	TurretInstallStats( ids.T_MISSILES_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_MISSILE,weaponPositions=[RPos(0,10)] )
 T_MISSILE_1 = 	TurretInstallStats( ids.T_MISSILES_1, 0,350,60*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_MISSILE,weaponPositions=[RPos(0.5,10),RPos(-0.5,10)], upgradeFrom=T_MISSILE_0 )
@@ -489,7 +491,9 @@ T_BIOSPHERE = TurretInstallStats( ids.T_BIOSPHERE, 0,250,20*config.fps, 0,0, 0,0
 T_BIOSPHERE_1 = TurretInstallStats( ids.T_BIOSPHERE_1, 0,500,40*config.fps, 0,0, 0,0, 0.5*config.fps,0, None, special=ids.S_CIVILIAN, specialValue=2000, upgradeFrom=T_BIOSPHERE ) # specialValue=civilian boost, / 1000
 T_SUCKER = TurretInstallStats( ids.T_SUCKER, 0,150,20*config.fps, 0,0, 0,0, 0.5*config.fps,0, None, special=ids.S_SUCKER, specialValue=2 ) # specialValue=ore/(fps/3) frame when in nebula
 T_INERTIA = TurretInstallStats( ids.T_INERTIA, 0,500,40*config.fps, 0.2,0, 0,0, 0.5*config.fps,0.2,  ids.TA_ROTATING, special=ids.S_INERTIA, specialValue=1.05 ) # specialValue=inertia mod, WARNING must not go over 1.1!
-T_SAIL = TurretInstallStats( ids.T_SAIL, 0,300,20*config.fps, 0,0, 0,0, 0.5*config.fps,0.01,  ids.TA_SOLAR, special=ids.S_SAIL, specialValue=1 ) # specialValue= + thrust boost
+T_SAIL_0 = TurretInstallStats( ids.T_SAIL_0, 0,300,20*config.fps, 0,0, 0,0, 0.5*config.fps,0.01,  ids.TA_SOLAR, special=ids.S_SAIL, specialValue=1 ) # specialValue= + thrust boost
+T_SAIL_1 = TurretInstallStats( ids.T_SAIL_1, 0,600,20*config.fps, 0,0, 0,0, 0.5*config.fps,0.01,  ids.TA_SOLAR, upgradeFrom=T_SAIL_0, special=ids.S_SAIL, specialValue=2 ) # specialValue= + thrust boost
+T_SAIL_2 = TurretInstallStats( ids.T_SAIL_2, 0,1000,20*config.fps, 0,0, 0,0, 0.5*config.fps,0.01,  ids.TA_SOLAR, upgradeFrom=T_SAIL_1, special=ids.S_SAIL, specialValue=3 ) # specialValue= + thrust boost
 T_JAMMER = TurretInstallStats( ids.T_JAMMER, 0,300,40*config.fps, 0.3,0, 0,0, 0.5*config.fps,0.2,  None, special=ids.S_JAMMER, specialValue=300 ) # specialValue= range
 T_SCANNER = TurretInstallStats( ids.T_SCANNER, 0,300,40*config.fps, 0.3,0, 0,0, 0.5*config.fps,0.2,  ids.TA_TARGET, special=ids.S_SCANNER, specialValue=1000 ) # specialValue= range
 
@@ -501,7 +505,7 @@ HARVESTER =		HarvesterShipStats( ids.S_HARVESTER, 11, 0.2, 0.1, 0.02, 30, 15, [T
 NOMAD_HARVESTER =		HarvesterShipStats( ids.S_NOMAD_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 600 )
 NOMAD_HARVESTER_1 =		HarvesterShipStats( ids.S_NOMAD_HARVESTER_1, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 900 )
 EVOLVED_HARVESTER =	HarvesterShipStats( ids.S_EVOLVED_HARVESTER, 11, 0.3, 0.2, 0.02, 30, 15, [TurretStats(4,0, 0, 0, False)], 35, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 400 )
-AI_HARVESTER =		HarvesterShipStats( ids.S_AI_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 950 ) # TODO I fear that over 1000 it could easily lost due tologic in ai.AiPilot.goTo
+AI_HARVESTER =		HarvesterShipStats( ids.S_AI_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 950 ) # TODO I fear that over 1000, harvesters the ship could easily get lost due to logic in ai.AiPilot.goTo
 EXTRA_HARVESTER =	HarvesterShipStats( ids.S_EXTRA_HARVESTER, 11, 0.35, 0.1, 0.02, 30, 15, [TurretStats(12,0, 0, 0, False)], 30, [ids.S_HARVESTER], None, [(11,pi)], T_RED_SPOTLIGHT, 600 )
 
 # extras'
@@ -517,33 +521,33 @@ R_HUMAN = 	RaceStats( ids.R_HUMAN,
 [FLAGSHIP_0, FLAGSHIP_1, FLAGSHIP_2 ], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
 [HARVESTER, FIGHTER, BOMBER ], 
-[T_LASER_SR, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR,
+[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
 T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
 T_NUKE, T_PULSE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL, T_JAMMER ],
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
 HARVESTER ) # WARNING turret upgrades must be before their parent, see game.py:updatePlayer turrets section
 
 R_AI = 		RaceStats( ids.R_AI, 
 [], 
 [ids.M_NUKE, ids.M_MINER, ids.M_COUNTER, ids.M_AI], 
 [AI_HARVESTER, AI_FIGHTER, AI_BOMBER],
-[T_LASER_SR, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR,
+[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
 T_AI_MISSILE_0,
 T_NUKE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL, T_JAMMER ],
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
 AI_HARVESTER )
 
 R_NOMAD = 	RaceStats( ids.R_NOMAD, 
 [FLAGSHIP_0, FLAGSHIP_1, FLAGSHIP_2 ], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
 [HARVESTER, FIGHTER, BOMBER ], 
-[T_LASER_SR, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR,
+[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
 T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
 T_NUKE, T_PULSE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL, T_JAMMER ],
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
 HARVESTER  )
 
 R_EXTRA = 	RaceStats( ids.R_EXTRA, 
@@ -557,20 +561,22 @@ R_EVOLVED = 	RaceStats( ids.R_EVOLVED,
 [], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
 [EVOLVED_HARVESTER, EVOLVED_FIGHTER, EVOLVED_BOMBER],
-[T_LASER_SR, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR,
+[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
 T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
 T_NUKE, T_PULSE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL, T_JAMMER ],
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
 EVOLVED_HARVESTER )
 
-Buildable = { ids.T_LASER_SR:	T_LASER_SR, 
+Buildable = { ids.T_LASER_SR_0:	T_LASER_SR_0, 
+              ids.T_LASER_SR_1:	T_LASER_SR_1, 
               ids.T_LASER_MR_0:	T_LASER_MR_0, 
               ids.T_LASER_MR_1:	T_LASER_MR_1, 
               ids.T_MASS_SR_0:	T_MASS_SR_0, 
               ids.T_MASS_SR_1:	T_MASS_SR_1, 
               ids.T_MASS_SR_2:	T_MASS_SR_2, 
-              ids.T_MASS_MR:	T_MASS_MR, 
+              ids.T_MASS_MR_0:	T_MASS_MR_0,  
+              ids.T_MASS_MR_1:	T_MASS_MR_1, 
               ids.T_MASS_LR:	T_MASS_LR, 
               ids.T_MISSILES_0:	T_MISSILE_0, 
               ids.T_MISSILES_1:	T_MISSILE_1, 
@@ -591,7 +597,9 @@ Buildable = { ids.T_LASER_SR:	T_LASER_SR,
               ids.T_BIOSPHERE_1: T_BIOSPHERE_1,
               ids.T_INERTIA: 	 T_INERTIA,
               ids.T_SUCKER: 	 T_SUCKER,
-              ids.T_SAIL: 	 T_SAIL,
+              ids.T_SAIL_0: 	 T_SAIL_0,
+              ids.T_SAIL_1: 	 T_SAIL_1,
+              ids.T_SAIL_2: 	 T_SAIL_2,
               ids.T_JAMMER: 	 T_JAMMER,
 
               ids.T_AI_MISSILE_0:  T_AI_MISSILE_0,
@@ -667,8 +675,4 @@ PlayableShips = { ids.S_FLAGSHIP_0: ShipChoice( FLAGSHIP_0, R_HUMAN, 0 ),
                #   ids.S_AI_FS_1: ShipChoice( AI_FS_1, 0 ),
                 #  ids.S_AI_FS_2: ShipChoice( AI_FS_2, 0 ) 
 }
-
-
-
-
 

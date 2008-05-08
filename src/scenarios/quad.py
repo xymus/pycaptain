@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 #
 # Author: Alexis Laferriere
 # Description: First scenario with 4 solar systems, sol at the center.
@@ -25,6 +23,7 @@ from server import stats
 class Quad ( Scenario ):
     def __init__( self, game ):
 
+        self.harvestersAtSpawn = 4
         self.wantedBadGuys = 5
 
         sol = Sun( stats.S_SOL, 0, 0 )
@@ -170,7 +169,7 @@ class Quad ( Scenario ):
           angle = pi*i*2/nbrBases
           obase = OrbitalBase( self.earthDefense, stats.ORBITALBASE, AiGovernor( self.earthDefense ),self.earth.xp+dist*cos(angle),self.earth.yp+dist*sin(angle),0, 0, 0.0,0.0,0.0, 0)
           for t in obase.turrets:
-            t.install = TurretInstall( stats.T_MASS_MR )
+            t.install = TurretInstall( stats.T_MASS_MR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_MR )
             t.ai = AiWeaponTurret()
           obase.ori = angle+pi/2
@@ -206,11 +205,11 @@ class Quad ( Scenario ):
         flagship = FlagShip( self.evolvedSwarm0, stats.EVOLVED_FS_1, AiCaptain( self.evolvedSwarm0 ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
-            t.install = TurretInstall( stats.T_MASS_MR )
+            t.install = TurretInstall( stats.T_MASS_MR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_MR )
             t.ai = AiWeaponTurret()
         for t in flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR )
+            t.install = TurretInstall( stats.T_LASER_SR_0 )
             t.weapon = LaserWeaponTurret( stats.W_LASER_SR )
             t.ai = AiWeaponTurret()
         for i in range(4):
@@ -323,7 +322,7 @@ class Quad ( Scenario ):
             t.weapon = LaserWeaponTurret( stats.W_LASER_MR_0 )
             t.ai = AiTurret()
         for t in flagship.turrets[:2]+flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR )
+            t.install = TurretInstall( stats.T_LASER_SR_0 )
             t.weapon = LaserWeaponTurret( stats.W_LASER_SR )
             t.ai = AiWeaponTurret()
 
@@ -345,11 +344,11 @@ class Quad ( Scenario ):
         flagship = FlagShip( player, stats.FLAGSHIP_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
-            t.install = TurretInstall( stats.T_MASS_MR )
+            t.install = TurretInstall( stats.T_MASS_MR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_MR )
             t.ai = AiWeaponTurret()
         for t in flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR )
+            t.install = TurretInstall( stats.T_LASER_SR_0 )
             t.weapon = LaserWeaponTurret( stats.W_LASER_SR )
             t.ai = AiWeaponTurret()
         for i in range(4):
@@ -472,7 +471,7 @@ class Quad ( Scenario ):
           flagship.missiles[ ids.M_LARVA ].amount = 100
         game.addPlayer( player )
 
-    def addShipForPlayer( self, game, player, shipId ):
+    def spawn( self, game, player, shipId ):
     #  if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
         player.race = stats.PlayableShips[ shipId ].race
         shipStats = stats.PlayableShips[ shipId ].stats
@@ -494,7 +493,7 @@ class Quad ( Scenario ):
         
         game.objects.append( flagship )
 
-        for i in range(config.harvestersAtSpawn):
+        for i in range(self.harvestersAtSpawn):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
