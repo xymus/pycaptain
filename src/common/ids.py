@@ -118,11 +118,12 @@ B_EGG_0		= 207
 
 ### Turrets
 # human's Ts (and basics)
-T_LASER_SR 	= 300
-T_LASER_MR_0 	= 301
-T_LASER_MR_1 	= 302
+T_LASER_SR_0 	= 300
+T_LASER_SR_1    = 301
+T_LASER_MR_0 	= 302
+T_LASER_MR_1 	= 303
 
-T_MASS_MR 	= 310
+T_MASS_MR_0 	= 310
 T_MASS_SR_0 	= 311
 T_MASS_SR_1 	= 313
 T_MASS_SR_2 	= 314
@@ -157,9 +158,11 @@ T_SUCKER 	= 357
 T_EJUMP 	= 358
 T_INERTIA 	= 359
 T_BIOSPHERE_1	= 360
-T_SAIL		= 361
+T_SAIL_0	= 361
 T_JAMMER	= 362
 T_SCANNER	= 363
+T_SAIL_1        = 364
+T_SAIL_2        = 365
 
 # ai's Ts
 T_AI_MISSILE_0	= 370

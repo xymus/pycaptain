@@ -155,14 +155,16 @@ class Imgs( Rc ):
 
         self[ ids.S_MINE ] = self.loadImage( "mine.png" ) 
 
-        self[ ids.T_LASER_SR ] = self.loadImage( "turrets/laser-sr.png" ) 
+        self[ ids.T_LASER_SR_0 ] = self.loadImage( "turrets/laser-sr-0.png" ) 
+        self[ ids.T_LASER_SR_1 ] = self.loadImage( "turrets/laser-sr-1.png" ) 
         self[ ids.T_LASER_MR_0 ] = self.loadImage( "turrets/laser-mr-0.png" ) 
         self[ ids.T_LASER_MR_1 ] = self.loadImage( "turrets/laser-mr-1.png" ) 
 
         self[ ids.T_MASS_SR_0 ] = self.loadImage( "turrets/mass-sr-0.png" ) 
         self[ ids.T_MASS_SR_1 ] = self.loadImage( "turrets/mass-sr-1.png" ) 
         self[ ids.T_MASS_SR_2 ] = self.loadImage( "turrets/mass-sr-2.png" ) 
-        self[ ids.T_MASS_MR ] = self.loadImage( "turrets/mass-mr.png" ) 
+        self[ ids.T_MASS_MR_0 ] = self.loadImage( "turrets/mass-mr-0.png" ) 
+        self[ ids.T_MASS_MR_1 ] = self.loadImage( "turrets/mass-mr-1.png" ) 
         self[ ids.T_MASS_LR ] = self.loadImage( "turrets/mass-lr.png" ) 
 
         self[ ids.T_MISSILES_0 ] = self.loadImage( "turrets/missile-0.png" ) 
@@ -201,7 +203,9 @@ class Imgs( Rc ):
         self[ ids.T_EJUMP ] = self.loadImage( "turrets/ejump.png" )
         self[ ids.T_INERTIA ] = self.loadImage( "turrets/inertia.png" )
         self[ ids.T_BIOSPHERE_1 ] = self.loadImage( "turrets/biosphere-1.png" )
-        self[ ids.T_SAIL ] = self.loadImage( "turrets/sail.png" )
+        self[ ids.T_SAIL_0 ] = self.loadImage( "turrets/sail-0.png" )
+        self[ ids.T_SAIL_1 ] = self.loadImage( "turrets/sail-1.png" )
+        self[ ids.T_SAIL_2 ] = self.loadImage( "turrets/sail-2.png" )
         self[ ids.T_JAMMER ] = self.loadImage( "turrets/jammer.png" )
 
 

@@ -24,14 +24,16 @@ class Texts( Rc ):
         self[0] 	= "Destroy"
         self[-1] 	= "Cancel"
 
-        self[ids.T_LASER_SR] 	= "Laser defense"
+        self[ids.T_LASER_SR_0] 	= "Laser defense"
+        self[ids.T_LASER_SR_1] 	= "Laser defense x2"
         self[ids.T_LASER_MR_0] 	= "Medium laser"
         self[ids.T_LASER_MR_1] 	= "Heavy laser"
 
         self[ids.T_MASS_SR_0] 	= "Machine gun"
         self[ids.T_MASS_SR_1] 	= "Repeater"
         self[ids.T_MASS_SR_2] 	= "Heavy repeater"
-        self[ids.T_MASS_MR] 	= "Mass canon"
+        self[ids.T_MASS_MR_0] 	= "Mass canon"
+        self[ids.T_MASS_MR_1] 	= "Mass canon x2"
         self[ids.T_MASS_LR] 	= "Mass driver"
 
         self[ids.T_MISSILES_0] 	= "Missile launcher"
@@ -58,7 +60,9 @@ class Texts( Rc ):
         self[ ids.T_SUCKER ] 		= "Nebula harvester"
         self[ ids.T_EJUMP ] 		= "Jump battery"
         self[ ids.T_INERTIA ] 		= "Mass reducer"
-        self[ ids.T_SAIL ] 		= "Solar sail"
+        self[ ids.T_SAIL_0 ] 		= "Solar sail"
+        self[ ids.T_SAIL_1 ] 		= "Solar sail x2"
+        self[ ids.T_SAIL_2 ] 		= "Solar sail x3"
         self[ ids.T_JAMMER ] 		= "Missile jammer"
 
         self[ ids.T_AI_MISSILE_0 ]	= "Missile launcher"

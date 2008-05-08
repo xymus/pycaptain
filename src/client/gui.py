@@ -146,10 +146,12 @@ class Gui:
         self.oreMaxs = []
 
         self.categories = {
-			ids.T_LASER_SR 		: 2,
+			ids.T_LASER_SR_0	: 2,
+			ids.T_LASER_SR_1	: 2,
 			ids.T_LASER_MR_0 	: 2,
 			ids.T_LASER_MR_1 	: 2,
-			ids.T_MASS_MR 		: 2,
+			ids.T_MASS_MR_0		: 2,
+			ids.T_MASS_MR_1		: 2,
 			ids.T_MASS_SR_0 	: 2,
 			ids.T_MASS_SR_1 	: 2,
 			ids.T_MASS_SR_2 	: 2,
@@ -177,7 +179,9 @@ class Gui:
 			ids.T_BIOSPHERE_1	: 0,
 			ids.T_INERTIA		: 0,
 			ids.T_SUCKER		: 0,
-			ids.T_SAIL		: 0,
+			ids.T_SAIL_0		: 0,
+			ids.T_SAIL_1		: 0,
+			ids.T_SAIL_2		: 0,
 			ids.T_JAMMER		: 0,
 
 			ids.T_AI_MISSILE_0	: 2,
