@@ -322,7 +322,7 @@ class FlagShip( ShipWithTurrets ):
         self.noOreCloseAt = -1000
 
         self.jumpCharge = 0
-        self.jumpOverheat = 0
+        self.jumpRecover = 0
         
     def doTurn( self, game ):
         self.inertiaMod = 1
@@ -454,13 +454,14 @@ class FlagShip( ShipWithTurrets ):
         ## Jumps
         if self.jumping:
             self.jumpCharge += 1 
-            if self.jumpCharge == 100: # TODO set variable max charge, stats?
+            if self.jumpCharge == self.getJumpChargeDelay():
                 (ao0,ro0,ag0) = self.jump( self.jumping, game )
                 (ao,ro,ag) = (ao+ao0,ro+ro0,ag+ag0) 
                 self.jumping = False
-                self.jumpOverheat = config.fps*10 # TODO set variable value in stats?
-        elif self.jumpOverheat:
-            self.jumpOverheat -= 1
+                self.jumpRecover = self.getJumpRecoverDelay() #config.fps*10 # TODO set variable value in stats?
+                self.jumpCharge = 0
+        elif self.jumpRecover:
+            self.jumpRecover -= 1
 
         ## update value tu civilians
         if game.tick%config.fps==3:
@@ -514,7 +515,7 @@ class FlagShip( ShipWithTurrets ):
         if self.jumping:
             can = True
         else:
-            can = not self.jumpOverheat and self.energy >= self.stats.jumpEnergyCost
+            can = not self.jumpRecover and self.energy >= self.stats.jumpEnergyCost
         if can:
             #for obj in game.astres:
             #    if isinstance( obj, Nebula ) and distLowerThanObjects( self, obj, self.stats.maxRadius+obj.stats.maxRadius):
@@ -569,8 +570,13 @@ class FlagShip( ShipWithTurrets ):
 
         return space
 
-    def getJumpDelay( self ):
-        return config.fps*3
+    def getJumpChargeDelay( self ):
+        return self.stats.jumpChargeDelay
+    jumpChargeDelay = property( fget=getJumpChargeDelay )
+
+    def getJumpRecoverDelay( self ):
+        return self.stats.jumpRecoverDelay
+    jumpRecoverDelay = property( fget=getJumpRecoverDelay )
 
     def getJumpCost( self ):
         return self.stats.jumpEnergyCost

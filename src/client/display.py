@@ -76,6 +76,18 @@ class Display:
         corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
 	self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
+    def drawRoNCutHalfVert( self, img, pos, rotation, part=0 ):
+        """pos: center position
+           rotation: rotation cw, in radians
+           part: 0==upper part or 1==down"""
+        if rotation != 0:
+            tempSurface = pygame.transform.rotate( img, degrees(rotation) )
+        else:
+            tempSurface = img
+
+        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2+self.getHeight(tempSurface)/2*part ) # correct to top left
+	self.screen.blit( tempSurface, corrPosition, ( 0, self.getHeight( tempSurface )/2*part, self.getWidth( tempSurface ), self.getHeight( tempSurface )/2*(part+1) ) )
+
     def drawRoNCutQtl( self, img, pos, rotation ):
         if rotation != 0:
             tempSurface = pygame.transform.rotate( img, degrees(rotation) )

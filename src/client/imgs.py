@@ -258,7 +258,10 @@ class Imgs( Rc ):
         self.uiBottomRight1 =  self.loadImageWithDisplay( "ui/bottom-right-1.png" )
         self.uiBottomLeft =  self.loadImageWithDisplay( "ui/bottom-left.png" )
         self.uiTop = self.loadImageWithDisplay( "ui/top.png" ) # 189 72
-
+        
+        self.uiJumpGlass = self.loadImageWithDisplay( "ui/top-glass.png" )
+        self.uiJumpFillCharging = self.loadImageWithDisplay( "ui/top-fill-green.png" )
+        self.uiJumpFillRecover = self.loadImageWithDisplay( "ui/top-fill-red.png" )
         yield 83
         # tubes
         self.uiTubeTop2 =  self.loadImageWithDisplay( "ui/top-2-tubes.png" ) 

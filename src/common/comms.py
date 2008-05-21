@@ -167,7 +167,7 @@ def LoadCOObjects( text ):
 
 # stats -> client
 class COPlayerStats:
-    def __init__(self, gameTick, dead, ore, maxOre, energy, maxEnergy, shieldIntegrity, hullIntegrity, canJump, repairing, charging, hangarSpace, shipsSpace, missilesSpace, jumpCharge, jumpOverheat, oreInProcess, turrets, missiles, ships, radars ): # , buildableTurrets
+    def __init__(self, gameTick, dead, ore, maxOre, energy, maxEnergy, shieldIntegrity, hullIntegrity, canJump, repairing, charging, hangarSpace, shipsSpace, missilesSpace, jumpCharge, jumpRecover, oreInProcess, turrets, missiles, ships, radars ): # , buildableTurrets
          self.gameTick = gameTick
          self.dead = dead
          self.ore = ore
@@ -182,7 +182,7 @@ class COPlayerStats:
          self.oreInProcess = oreInProcess
          self.canJump = canJump
          self.jumpCharge = jumpCharge
-         self.jumpOverheat = jumpOverheat
+         self.jumpRecover = jumpRecover
     #     self.xr = xr
     #     self.yr = yr
     #     self.maxRadar = maxRadar
@@ -199,7 +199,7 @@ class COPlayerStats:
       if self.dead:
         dump = "%i" % ( self.gameTick )
       else:
-        dump = "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpOverheat )
+        dump = "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpRecover )
 
         dump = dump + ";"
         for oip in self.oreInProcess:

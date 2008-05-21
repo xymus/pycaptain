@@ -69,7 +69,7 @@ class MultipleWeaponsShipStats( ShipStats ):
         self.turrets = turrets
 
 class Flagship( MultipleWeaponsShipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, hangars=None, civilianBonus=1000, pulseResistant=False):
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, hangars=None, civilianBonus=1000, pulseResistant=False, jumpChargeDelay=3*config.fps, jumpRecoverDelay=20*config.fps):
         MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines)
         self.maxEnergy = maxEnergy
         self.maxOre = maxOre
@@ -86,7 +86,9 @@ class Flagship( MultipleWeaponsShipStats ):
         else:
             self.hangars = [(RPos(0,0), 0)]
         self.pulseResistant = pulseResistant
-       
+
+        self.jumpChargeDelay = jumpChargeDelay # TODO customize to each ship
+        self.jumpRecoverDelay = jumpRecoverDelay       
         global bestSpeed
         global bestShield
         global bestHull
@@ -118,7 +120,7 @@ class CivilianShipStats( ShipStats ):
         self.influenceRadius = influenceRadius
 
 class TurretStats:
-    def __init__(self,rx,ry,minAngle,maxAngle,overShip,asAngle=False):
+    def __init__(self,rx,ry,minAngle=0,maxAngle=0,overShip=True,asAngle=False,civilian=False):
         if asAngle:
             self.dist = rx
             self.distAngle = ry
@@ -128,7 +130,11 @@ class TurretStats:
         self.minAngle = minAngle
         self.maxAngle = maxAngle
         self.overShip = overShip
-        self.defaultAngle = (self.minAngle+self.maxAngle)/2
+        self.civilian = civilian
+        if self.maxAngle < self.minAngle:
+            self.defaultAngle = (self.minAngle+self.maxAngle+2*pi)/2
+        else:
+            self.defaultAngle = (self.minAngle+self.maxAngle)/2
 
 class TurretInstallStats:
     def __init__( self, type,energyCostToBuild,oreCostToBuild,timeToBuild, energyPerFrame,orePerFrame, energyPerUse,orePerUse, freqOfFire,turretSpeed, ai, category=None, weapon=None,weaponPositions=None, special=None, specialValue=None, upgradeFrom=None, civilian=False ):
@@ -313,8 +319,8 @@ BOMBER =	SingleWeaponShipStats( ids.S_BOMBER, 15, 0.5, 0, 0.010, 30, 25, W_BOMB_
 # FIGHTER =	SingleWeaponShipStats( ids.S_FIGHTER, 10, 0.6, 0, 0.012, 15, 10, W_LASER_SR )
 
 FLAGSHIP_0 =	Flagship( ids.S_FLAGSHIP_0, 80, 0.1, 0.05, 0.002, 350, 500,
-                [TurretStats(53, 8, 0,2*pi/3, True),
-                 TurretStats(53,-8, 4*pi/3,2*pi, True),
+                [TurretStats(53, 8, 5*pi/3,2*pi/3, True),
+                 TurretStats(53,-8, 4*pi/3,1*pi/3, True),
                  TurretStats(13,16, 0,pi, True),
                  TurretStats(13,-16, pi,2*pi, True),
                  TurretStats(-20.5,41.5, 0,4*pi/3, True),
@@ -387,27 +393,23 @@ AI_FIGHTER =	SingleWeaponShipStats( ids.S_AI_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, 
 AI_BOMBER =	SingleWeaponShipStats( ids.S_AI_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_AI_MISSILE, [ids.S_AI_BOMBER], None, [(8,pi)] )
 
 AI_BASE =	Flagship( ids.S_AI_BASE, 100, 0, 0, 0.002, 400, 1500,
-                [ TurretStats(75,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
-          #      [ TurretStats(60,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
+                [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
                 1000, 1000, 1000, 100000, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
 AI_FS_0 =	Flagship( ids.S_AI_FS_0, 100, 0.1, 0.05, 0.002, 300, 800,
-                [ TurretStats(75,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
-          #      [ TurretStats(60,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
+                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
                 1000, 1000, 300, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
 AI_FS_1 =	Flagship( ids.S_AI_FS_1, 100, 0.1, 0.05, 0.002, 400, 800,
-                [ TurretStats(75,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
-          #      [ TurretStats(60,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
+                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
                 1000, 1000, 400, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
 AI_FS_2 =	Flagship( ids.S_AI_FS_2, 100, 0.1, 0.05, 0.002, 500, 800,
-                [ TurretStats(75,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
-          #      [ TurretStats(60,i*pi*2/3+pi/3, i*pi*2/3,i*pi*2/3+2*pi/3, False, asAngle=True) for i in xrange( 3 ) ],
+                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
                 1000, 1000, 800, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
 

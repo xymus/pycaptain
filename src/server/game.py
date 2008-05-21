@@ -268,7 +268,7 @@ class Game:
            ## stats if flagship
             pstats = COPlayerStats( self.tick, False, player.flagship.ore, player.flagship.stats.maxOre, player.flagship.energy, player.flagship.stats.maxEnergy, 
 player.flagship.shield/player.flagship.stats.maxShield, player.flagship.hull/player.flagship.stats.maxHull,  player.flagship.canJump( self ),
-player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), shipsSpace, missilesSpace, player.flagship.jumpCharge, player.flagship.jumpOverheat, oreProcess, turrets, missiles, ships, radars )
+player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), shipsSpace, missilesSpace, 100*player.flagship.jumpCharge/player.flagship.jumpChargeDelay, 100*player.flagship.jumpRecover/player.flagship.jumpRecoverDelay, oreProcess, turrets, missiles, ships, radars )
             t7 = time()
 
             t = t7 - t0

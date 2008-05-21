@@ -276,8 +276,3 @@ class KeyCatcher( ControlBase ):
         if key == self.key and self.fUpEvent:
             self.fUpEvent( self, (0,0) )
 
-
-
-
-
-

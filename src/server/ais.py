@@ -502,9 +502,6 @@ class AiTurret:
 
         return ( [], [], addGfxs )
 
-  #   def aquireNewTarget(  self, ship, turret, game ):
-  #       pass
-
     def getAngleToTarget( self, ship, turret, pos, target ):
         if turret.weapon.stats.speed == 0: 
             targetPos = (target.xp, target.yp)
@@ -514,7 +511,6 @@ class AiTurret:
         angle = angleBetween( pos, targetPos )
             
         return (angle-ship.ori)%(2*pi)
-         #   self.angleToTarget = self.rTarget = (angle-ship.ori)%(2*pi)
 
     def angleInRange( self, ship, turret, angle ):
          if turret.stats.minAngle == 0 and turret.stats.maxAngle == 0:
@@ -523,7 +519,10 @@ class AiTurret:
              return True
 
          angle = angle % (2*pi)
-         return angle <= turret.stats.maxAngle and angle >= turret.stats.minAngle
+         if turret.stats.maxAngle < turret.stats.minAngle:
+            return angle >= turret.stats.maxAngle or angle <= turret.stats.minAngle
+         else:
+            return angle <= turret.stats.maxAngle and angle >= turret.stats.minAngle
 
     def distInRange( self, ship, turret, dist ):
         return dist <= turret.weapon.stats.maxRange and dist >= turret.weapon.stats.minRange
@@ -569,8 +568,6 @@ class AiWeaponTurret( AiTurret ):
 
         ( ao0, ro0, ag0 ) = AiTurret.doTurn( self, ship, turret, game, attack)
 
-     #   print turret.weapon, self.target, turret.weapon.canFire( ship, game )
-    #    print turret.weapon.canFire( ship, turret, game )
         if self.target and turret.weapon.canFire( ship, turret, game ):
           if isinstance( turret.weapon, MissileWeaponTurret ):
                 dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
@@ -579,14 +576,11 @@ class AiWeaponTurret( AiTurret ):
                     ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
           else:
             angleD1 = angleDiff(self.angleToTarget, turret.rr)
-     #       print "ai should fire?"
             if fabs(angleD1) < pi/18: # * turret.weapon.stats.certainty/100:
                 dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
-         #       print "dist,", dist
                 if dist >= turret.weapon.stats.minRange and dist-self.target.stats.maxRadius <= turret.weapon.stats.maxRange:
                     ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, self.target )
                     ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
-                 #   print "ai fire!"
 
         return  ( ao0, ro0, ag0 )
 
@@ -595,7 +589,6 @@ class AiSpecialMissileTurret( AiTurret ):
         ( ao0, ro0, ag0 ) = AiTurret.doTurn( self, ship, turret, game, attack)
         if ship.missiles[ turret.weapon.stats.projectile.img ].target \
           and turret.weapon.canFire( ship, turret, game ):
-          #  print turret.weapon.stats.projectile.img, "fire!"
             ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, ship.missiles[ turret.weapon.stats.projectile.img ].target )
             ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
             ship.missiles[ turret.weapon.stats.projectile.img ].target = None
@@ -629,8 +622,6 @@ class AiSolarTurret( AiTurret ):
             turret.rr = angle
 
         return ([],[],[])
-
-  #   def aquireNewTarget( self, ship, turret, game ):
 
 class AiTargeterTurret( AiTurret ):
     def doTurn( self, ship, turret, game, attack):

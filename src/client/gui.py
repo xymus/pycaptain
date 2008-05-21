@@ -67,7 +67,7 @@ class Gui:
             self.drawProgress( 95+i*0.05 )
         
 
-        self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2-189/2+146,30), 30, self.eJump)
+        self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2+100,30), 30, self.eJump)
         self.butJumpNow = RoundControl(None, (64,30), 30, self.eJumpNow)
         self.ctrlRadar = RoundControlInvisible( (73,70), 77, self.eRadar)
         self.butRadarFullscreen = RectControl( self.imgs.uiButFullscreen, (80,1), (106,22), self.eRadarFullscreen)
@@ -384,8 +384,15 @@ class Gui:
                 minRange = 10
             #    radius = 50
                 o = self.getViewportPos( (turret.xp, turret.yp) )
-                minAngle = min(turret.minAngle, turret.maxAngle)
-                maxAngle = max(turret.minAngle, turret.maxAngle)
+              #  minAngle = min(turret.minAngle, turret.maxAngle)
+              #  maxAngle = max(turret.minAngle, turret.maxAngle)
+                if turret.maxAngle < turret.minAngle:
+                    minAngle = turret.minAngle
+                    maxAngle = turret.maxAngle+2*pi
+                else:
+                    minAngle = turret.minAngle
+                    maxAngle = turret.maxAngle
+
                 if turret.range:
                     self.display.drawArc( (255,255,255,255), o, turret.range, minAngle, maxAngle, 1 )
                     maxRange = turret.range
@@ -499,8 +506,6 @@ class Gui:
            if stats.hullIntegrity < 1:
                self.display.draw( self.imgs.uiRepairFill1, (self.display.resolution[0]-74,self.display.resolution[1]-112) )
 
-
-
      ## msg box
         if self.deployChatBox:
             if self.chatBoxX < self.chatBoxXMax:
@@ -520,9 +525,37 @@ class Gui:
             self.tbChatBox.visible= False
        #     self.display.draw( self.imgs.uiChatBoxLeft, (self.chatBoxX,self.display.resolution[1]-200) ) 
 
+
+     ## tubes
+        for i in range( 241, self.display.resolution[0]/2+100 ): # top-left
+            self.display.draw( self.imgs.uiTubeTop1, (i,0) )
+        
+        if stats.jumpCharge:
+            self.display.drawLine( (0,255,0,255), (self.display.resolution[0]/2+100,14), (self.display.resolution[0]-80,14), 6 )
+
+        for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]-165 ): # top-right
+            self.display.draw( self.imgs.uiTubeTop2, (i,0) )
+
+
+     ## jump charge
+        jumpCenter = (self.display.resolution[0]/2+100, 30)
+        if stats.jumpRecover:
+            # draw green fill self.imgs.uiJumpRecover
+            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillRecover, jumpCenter, (100-stats.jumpRecover)*2*pi/3/100, part=1 )
+         #   print stats.jumpRecover
+    
+        elif stats.jumpCharge:
+            # draw green fill self.imgs.uiJumpCharging
+            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillCharging, jumpCenter, (100-stats.jumpCharge)*2*pi/3/100, part=1 )
+            
+        # draw jump glass
+        self.display.drawRo( self.imgs.uiJumpGlass, jumpCenter, 0 )
+
+
+
      ## main uis     
         self.display.draw( self.imgs.uiTopLeft0, (0,0) )
-        self.display.draw( self.imgs.uiTop, (self.display.resolution[0]/2-189/2,0) )
+     #   self.display.draw( self.imgs.uiTop, (self.display.resolution[0]/2-189/2,0) )
         self.display.draw( self.imgs.uiTopRight1, (self.display.resolution[0]-self.display.getWidth(self.imgs.uiTopRight1),0) )
         self.display.draw( self.imgs.uiBottomRight1, (self.display.resolution[0]-self.display.getWidth(self.imgs.uiBottomRight1),self.display.resolution[1]-self.display.getHeight(self.imgs.uiBottomRight1)) )
         self.display.draw( self.imgs.uiBottomLeft, (0,self.display.resolution[1]-self.display.getHeight(self.imgs.uiBottomLeft)) )
@@ -532,11 +565,6 @@ class Gui:
             self.display.drawText( self.sPlayer.name, (8,self.display.resolution[1]-130), size=13 )
             self.display.drawText( self.texts[ self.sPlayer.race ], (8,self.display.resolution[1]-104), size=11 )
 
-     ## tubes
-        for i in range( 241, self.display.resolution[0]/2-189/2 ): # top-left
-            self.display.draw( self.imgs.uiTubeTop1, (i,0) )
-        for i in range( self.display.resolution[0]/2-189/2+189, self.display.resolution[0]-165 ): # top-right
-            self.display.draw( self.imgs.uiTubeTop2, (i,0) )
 
     ## hangars
         for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 ) ): # bottom-right

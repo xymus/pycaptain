@@ -1,7 +1,6 @@
-sever - create "universe" package, or file, from Game.generateWorld()
-common.ids - automate assignations - wait, eventually
+# features:
+common.ids - automate assignations - not now
 client.gui - add attack order 
-client.gui - add jump gauge
 client.gui - add self destruct button
 server/admin - add admin password to control shutdown
 server.stats - balance!
@@ -9,4 +8,15 @@ server.stats - complete recent flagships' turrets
 server.ai.AiTurret - correct bad optimization
 ai - standardize harvester and fighter behavior
 ships.flagship - standardize missile and small ships buildin behavior
+common.comms - reduce bandith use - maybe by changing exchange protocols to event driven
+client - divides main ships images in layers, allowing lights to cover turrets
+client.network/client - make sure that all orders are sent
+common.config - move universe width to scenario and in commms
+server.stats - use civilian/non-weapon only turrets
+... - implement a direct network interface to speed up solo and/or local play
+
+# bugs:
+server.ai.aiturretsolar - solve aim at closest sun in range, currently seams to alway aim at last sun in list
+server.stats/ships? - allow disabling of AiMissile turret
+
 
