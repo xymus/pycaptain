@@ -1,4 +1,4 @@
-port = 41596
+port = 41598
 salt = "uz"
 defaultSavePath = ""
 

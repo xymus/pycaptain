@@ -105,9 +105,19 @@ W_LARVA_0		= 162
 W_EXTRA_FIGHTER		= 164
 W_EXTRA_BOMBER		= 165
 
+W_ESPHERE_0             = 170
+#W_ESPHERE_1             = 171
+#W_ESPHERE_2             = 172
+W_BURST_LASER_0         = 173
+#W_BURST_LASER_1         = 174
+#W_BURST_LASER_2         = 175
+W_OMNI_LASER_0          = 176
+W_OMNI_LASER_1          = 177
+W_OMNI_LASER_2          = 178
+W_SUBSPACE_WAVE_0       = 179
+W_SUBSPACE_WAVE_1       = 180
 
 ### bullets / projectiles
-# MISSILE_0	= 200
 B_BULLET_0	= 201
 B_BOMB_0	= 202
 B_ROCK_0	= 203
@@ -115,6 +125,9 @@ B_ROCK_1	= 204
 B_AI_0		= 205
 B_FIRE_0	= 206
 B_EGG_0		= 207
+B_ESPHERE       = 208
+B_WAVE_0        = 209
+B_WAVE_1        = 210
 
 ### Turrets
 # human's Ts (and basics)
@@ -172,6 +185,19 @@ T_ROCK_THROWER_0	= 380
 T_ROCK_THROWER_1	= 383
 T_DRAGON_0		= 381
 T_LARVA_0		= 382
+
+# evolved's Ts
+T_ESPHERE_0             = 390
+T_ESPHERE_1             = 391
+T_ESPHERE_2             = 392
+T_BURST_LASER_0         = 393
+T_BURST_LASER_1         = 394
+T_BURST_LASER_2         = 395
+T_OMNI_LASER_0          = 396
+T_OMNI_LASER_1          = 397
+T_OMNI_LASER_2          = 398
+T_SUBSPACE_WAVE_0       = 399
+T_SUBSPACE_WAVE_1       = 389 # TODO
 
 ### Turret AI type
 # ?why isn't it the class passed directly as argument of the stats? ...there must be a reason...
@@ -259,12 +285,13 @@ P_BETA_2	= 731
 P_GAIA		= 740
 
 ### Gfxs
-# TODO: should be changed to Fxs. ?worth it?
+# TODO: should be changed to Fxs. worth it?
 G_LASER_SMALL	= 800
 G_EXPLOSION	= 801
 G_SHIELD	= 802
 G_FRAGMENT	= 803
 G_EXHAUST	= 804
+G_LIGHTNING     = 805
 
 R_NEUTRAL	= 1000
 R_HOSTILE	= 1001
@@ -298,6 +325,7 @@ M_PROBE		= 2204
 M_COUNTER	= 2205
 M_AI		= 2206
 M_LARVA		= 2207
+M_EVOLVED	= 2208
 
 ### Special ability of turrets
 S_INTERDICTOR	= 3000

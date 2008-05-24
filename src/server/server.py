@@ -1,6 +1,7 @@
 from time import sleep, time
 from sys import argv, exit
 from threading import Thread
+from md5 import md5
 
 from network import Network
 from game import Game
@@ -11,11 +12,19 @@ from common import config
 
 class Server:
     def __init__( self, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None ):
-        # TODO implement adminPassword, private, port
+        # TODO implement private, port
         
         self.updatingPlayer = {}
-        self.addresses = addresses 
+        self.addresses = addresses
+        self.private = private        
         self.force = force
+        self.port = port
+        if adminPassword:
+            self.adminPassword = md5(adminPassword).hexdigest()
+        else:
+            self.adminPassword = None
+            print "Warning: no admin password set."
+
         self.shutdown = False
         self.network = None
         exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
@@ -27,7 +36,7 @@ class Server:
 
     #  self.game.generateWorld()
 
-      self.network = Network( self.game, self.addresses, config.port, comms.version )
+      self.network = Network( self.game, self.addresses, config.port, comms.version, self.adminPassword )
 
       if not self.network.socketsOpened and not self.force:
           print "Failed to open any sockets, shutdown"
@@ -116,16 +125,16 @@ class Server:
      # self.game.saveToDisk( path )
 
     def fUpdatePlayer( self, player ):
-         self.updatingPlayer[ player ] = True
-         try:
+            self.updatingPlayer[ player ] = True
+  #       try:
             cobj, stats, gfxs, players, astres, possibles = self.game.getUpdates( player )
          #   ty = time()
          #   print len(players)
             self.network.updatePlayer( player, cobj, gfxs, stats, players, astres, possibles )
             self.updatingPlayer[ player ] = False
-         except Exception, ex:
-            self.updatingPlayer[ player ] = False
-            raise ex
+   #      except Exception, ex:
+    #        self.updatingPlayer[ player ] = False
+     #       raise ex
 
 
 try:

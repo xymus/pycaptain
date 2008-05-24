@@ -2,7 +2,6 @@ from random import choice, random, randint
 
 import ids
 
-
 class Gfx:
     def doTurn( self ):
         return []
@@ -99,9 +98,20 @@ class GfxExhaust( GfxFragment ):
     def doTurn( self ):
         self.alpha = self.alpha - self.ii
         return GfxFragment.doTurn( self )
-#    def __init__( self,  ):
-        
-#    def __init__( self, (ox,oy), z, (xi,yi) ):
 
-#class GfxBullet( Gfx ):
-#    def __init__( self, (ox,oy), z, (xi,yi), eid ):
+class GfxLightning( Gfx ):
+    def __init__( self, (xp, yp), z, (xd,yd), strength=1 ):
+        self.xp = xp
+        self.yp = yp
+        self.z = z
+        self.xd = xd
+        self.yd = yd
+        self.width = width
+        self.color = color
+        self.strength = strength
+        self.maxRadius = 10
+
+    def doTurn( self ):
+        Gfx.doTurn( self )
+        return [ self ]
+

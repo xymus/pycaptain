@@ -2,6 +2,7 @@
 
 from socket import SocketType
 from sys import argv, exit
+from md5 import md5
 
 from common import config
 
@@ -9,7 +10,10 @@ class Admin:
     def __init__( self, server="localhost", port=config.port, password=None ):
         self.server = server
         self.port = port
-        self.password = password
+        if password:
+            self.password = md5(password).hexdigest()
+        else:
+            self.password = None
         self.socket = SocketType()
 
     def connect( self ):
@@ -82,6 +86,9 @@ if __name__ == '__main__':
 
   #  if not specMessage:
   #      message = raw_input( "message: " )
+
+  if not message:
+    usage()
 
   admin = Admin( server, port, password )
   admin.connect()

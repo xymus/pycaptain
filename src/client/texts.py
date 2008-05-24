@@ -67,6 +67,19 @@ class Texts( Rc ):
 
         self[ ids.T_AI_MISSILE_0 ]	= "Missile launcher"
 
+        
+        self[ ids.T_ESPHERE_0 ]	        = "E-Sphere launcher"
+        self[ ids.T_ESPHERE_1 ]	        = "E-Sphere launcher v2"
+        self[ ids.T_ESPHERE_2 ]	        = "E-Sphere launcher v3"
+        self[ ids.T_BURST_LASER_0 ]	        = "Burst laser"
+        self[ ids.T_BURST_LASER_1 ]	        = "Burst laser v2"
+        self[ ids.T_BURST_LASER_2 ]	        = "Burst laser v3"
+        self[ ids.T_OMNI_LASER_0 ]	        = "Omnidirectional laser"
+        self[ ids.T_OMNI_LASER_1 ]	        = "Omnidirectional laser v2"
+        self[ ids.T_OMNI_LASER_2 ]	        = "Omnidirectional laser v3"
+        self[ ids.T_SUBSPACE_WAVE_0 ]	        = "Subspace percuter"
+        self[ ids.T_SUBSPACE_WAVE_1 ]	        = "Subspace percuter v2"
+
         self[ids.C_WEAPON] 		= "Weapons"
         self[ids.C_MISSILE] 		= "Missiles"
         self[ids.C_OTHER] 		= "Others"

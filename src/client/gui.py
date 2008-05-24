@@ -185,6 +185,19 @@ class Gui:
 			ids.T_JAMMER		: 0,
 
 			ids.T_AI_MISSILE_0	: 2,
+                        
+			ids.T_ESPHERE_0 	: 2,
+			ids.T_ESPHERE_1 	: 2,
+			ids.T_ESPHERE_2 	: 2,
+			ids.T_BURST_LASER_0 	: 2,
+			ids.T_BURST_LASER_1 	: 2,
+			ids.T_BURST_LASER_2 	: 2,
+			ids.T_OMNI_LASER_0 	: 2,
+			ids.T_OMNI_LASER_1 	: 2,
+			ids.T_OMNI_LASER_2 	: 2,
+			ids.T_SUBSPACE_WAVE_0 	: 2,
+			ids.T_SUBSPACE_WAVE_1 	: 2,
+
 			0	: 0,
 			-1	: 0}
     #    self.ctr = ( 78, 26 )

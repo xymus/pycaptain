@@ -124,7 +124,7 @@ class Sol( Scenario ):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
-      flagship.ore = 500
+      flagship.ore = 5000
       flagship.ori = 2*pi*random()
       player.flagship = flagship
       game.objects.append( flagship )
@@ -157,11 +157,18 @@ class Sol( Scenario ):
         flagship.energy = flagship.stats.maxEnergy / 2
         flagship.oir = 2*pi*random()
 
-        for t in flagship.turrets[:-2]:
-            t.buildInstall( stats.T_MASS_MR_0  )
+        if player.race == stats.R_EVOLVED:
+            smallTurret = stats.T_BURST_LASER_0
+            mediumTurret = stats.T_SUBSPACE_WAVE_0
+        else:
+            smallTurret = stats.T_MASS_SR_0
+            mediumTurret = stats.T_MASS_MR_0
 
         for t in flagship.turrets[-2:]:
-            t.buildInstall( stats.T_MASS_SR_0  )
+            t.buildInstall( smallTurret )
+
+        for t in flagship.turrets[:-2]:
+            t.buildInstall( mediumTurret )
 
         player.flagship = flagship        
         game.objects.append( flagship )

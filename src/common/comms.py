@@ -414,6 +414,8 @@ class COGfxs:
                 dump = dump + ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i:%i" % (ids.G_FRAGMENT, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type,gfx.ttl)
     #            print "fragment!"
      #           print "shield"
+            elif isinstance( gfx, GfxLightning ):
+                dump = dump + ";%i:%i:%i:%i:%i:%i:%i:%i" % (ids.G_Lightning, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
         return dump
 
 def LoadCOGfxs( text ): # TODO
@@ -435,6 +437,8 @@ def LoadCOGfxs( text ): # TODO
             gfx = GfxFragment( (int(ss[1]),int(ss[2])), int(ss[3]), float(ss[4]), float(ss[5]), float(ss[6]), float(ss[7]), int(ss[8]), int(ss[9]) )
         elif int(ss[ 0 ]) == ids.G_EXHAUST:
             gfx = GfxExhaust( (int(ss[1]),int(ss[2])), int(ss[3]), float(ss[4]), float(ss[5]), float(ss[6]), float(ss[7]) )
+        elif int(ss[ 0 ]) == ids.G_LIGHTNING:
+            gfx = GfxLightning( (int(ss[1]),int(ss[2])), int(ss[3]), (int(ss[4]),int(ss[5])), int(ss[6]) )
      #       print "fragment!"
 
         else: print int(ss[ 0 ])

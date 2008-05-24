@@ -15,14 +15,13 @@ class ObjectStats:
 class OrbitableStats( ObjectStats ):
     def __init__(self,id,radius):
         ObjectStats.__init__(self,id,radius)
-   #     print id, self.maxRadius
-    #    self.img = id
-     #   self.radius = radius
-    #    self.maxRadius = self.radius
         self.orbitable = True
 
 class WeaponStats:
-   def __init__(self,id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType,projectile=None,projectileTtl=None, laserWidth=None ): # id not for img in this only case
+   def __init__(self,id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType, \
+           projectile=None,projectileTtl=5*config.fps, laserWidth=None, \
+           soundAtFire=ids.S_EX_FIRE, soundAtHit=ids.S_EX_FIRE, gfxAtFire=ids.G_EXPLOSION, gfxAtHit=ids.G_EXPLOSION \
+           ): # id not for img in this only case
         self.img = id
         self.minRange = minRange
         self.maxRange = maxRange
@@ -35,6 +34,11 @@ class WeaponStats:
         self.projectile = projectile
         self.projectileTtl = projectileTtl
         self.laserWidth = laserWidth
+
+        self.soundAtFire = soundAtFire
+        self.soundAtHit = soundAtHit
+        self.gfxAtFire = gfxAtFire
+        self.gfxAtHit = gfxAtHit
 
 ## ships
 class ShipStats( ObjectStats ):
@@ -135,6 +139,7 @@ class TurretStats:
             self.defaultAngle = (self.minAngle+self.maxAngle+2*pi)/2
         else:
             self.defaultAngle = (self.minAngle+self.maxAngle)/2
+        self.civilianEffect = 0 # TODO to replace ids.S_CIVILIAN and nuclear reactor effect
 
 class TurretInstallStats:
     def __init__( self, type,energyCostToBuild,oreCostToBuild,timeToBuild, energyPerFrame,orePerFrame, energyPerUse,orePerUse, freqOfFire,turretSpeed, ai, category=None, weapon=None,weaponPositions=None, special=None, specialValue=None, upgradeFrom=None, civilian=False ):
@@ -245,6 +250,9 @@ B_ROCK_0 =  	ObjectStats( ids.B_ROCK_0, 4 )
 B_ROCK_1 =  	ObjectStats( ids.B_ROCK_1, 7 )
 B_AI_0 =  	ObjectStats( ids.B_AI_0, 4 )
 B_FIRE_0 =  	ObjectStats( ids.B_FIRE_0, 5 )
+B_ESPHERE =     ObjectStats( ids.B_ESPHERE, 7 )
+B_WAVE_0 =      ObjectStats( ids.B_WAVE_0, 7 )
+B_WAVE_1 =      ObjectStats( ids.B_WAVE_1, 7 )
 
 # id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType,projectile=None
 W_LASER_SR = 	WeaponStats( ids.W_LASER_SR, 30,250,20, 1,0, 1,0, ids.WT_LASER, laserWidth=1) #, laserColor=ids.RED)
@@ -279,6 +287,16 @@ W_EXTRA_BOMBER = 	WeaponStats( ids.W_EXTRA_BOMBER, 50, 300, 90, 0,20, 0.5*config
 # ais'
 W_AI_MISSILE = 		WeaponStats( ids.W_AI_MISSILE, 70, 600, 0, 10,5, 1*config.fps,10, ids.WT_MISSILE, projectile=MISSILE_AI, projectileTtl=10*config.fps)
 
+# evolved's
+W_ESPHERE_0 = 	WeaponStats( ids.W_ESPHERE_0, 50, 500, 50, 10,5, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
+#W_ESPHERE_1 = 	WeaponStats( ids.W_ESPHERE_1, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
+#W_ESPHERE_2 = 	WeaponStats( ids.W_ESPHERE_2, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
+W_BURST_LASER_0 = 	WeaponStats( ids.W_BURST_LASER_0, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_LASER, laserWidth=2 )
+W_OMNI_LASER_0 = 	WeaponStats( ids.W_OMNI_LASER_0, 50, 500, 50, 2,0, 1,10, ids.WT_LASER, laserWidth=4 )
+W_OMNI_LASER_1 = 	WeaponStats( ids.W_OMNI_LASER_1, 50, 500, 50, 3,0, 1,10, ids.WT_LASER, laserWidth=5 )
+W_OMNI_LASER_2 = 	WeaponStats( ids.W_OMNI_LASER_2, 50, 500, 50, 4,0, 1,10, ids.WT_LASER, laserWidth=6 )
+W_SUBSPACE_WAVE_0 = 	WeaponStats( ids.W_SUBSPACE_WAVE_0, 50, 500, 50, 0,10, 1*config.fps,5, ids.WT_MASS, projectile=B_WAVE_0, projectileTtl=5*config.fps)
+W_SUBSPACE_WAVE_1 = 	WeaponStats( ids.W_SUBSPACE_WAVE_1, 50, 500, 50, 0,20, 1*config.fps,5, ids.WT_MASS, projectile=B_WAVE_1, projectileTtl=5*config.fps)
 
 ASTEROIDS =	[ OrbitableStats( ids.A_0, 46 ), OrbitableStats( ids.A_1, 41 ), OrbitableStats( ids.A_2, 26 ), OrbitableStats( ids.A_3, 37 ), OrbitableStats( ids.A_4, 24 ) ] #[ OrbitableStats( 0, 10 ), OrbitableStats( 1, 20 ), OrbitableStats( 2, 30 ) ], \
                   #[ OrbitableStats( 3, 10 ), OrbitableStats( 4, 20 ), OrbitableStats( 5, 30 ) ], \
@@ -415,14 +433,14 @@ AI_FS_2 =	Flagship( ids.S_AI_FS_2, 100, 0.1, 0.05, 0.002, 500, 800,
 
  ## evolved
 EVOLVED_FIGHTER =	SingleWeaponShipStats( ids.S_EVOLVED_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, W_LASER_SR, [ids.S_EVOLVED_FIGHTER], None, [(8,pi)], weaponPositions=[RPos(0.3,12), RPos(-0.3,12)] )
-EVOLVED_BOMBER =	SingleWeaponShipStats( ids.S_EVOLVED_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_LASER_MR_0, [ids.S_EVOLVED_BOMBER], None, [(8,pi)], weaponPositions=[RPos(0,15)] ) # [RPos(0.3,12), RPos(0,15), RPos(-0.3,12)]
+EVOLVED_BOMBER =	SingleWeaponShipStats( ids.S_EVOLVED_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_ESPHERE_0, [ids.S_EVOLVED_BOMBER], None, [(8,pi)], weaponPositions=[RPos(0,15)] ) # [RPos(0.3,12), RPos(0,15), RPos(-0.3,12)]
 
   # id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines
 EVOLVED_FS_0 =  Flagship( ids.S_EVOLVED_FS_0, 70, 0.1, 0.05, 0.001, 300, 800, 
-                [TurretStats(8,21,0,pi, True),
-                 TurretStats(8,-21,pi,2*pi, True),
-                 TurretStats(-43,22,pi/3,4*pi/3, True),
-                 TurretStats(-43,-22,2*pi/3,5*pi/3, True)], 
+                [TurretStats(92, 35, 19*pi/12,11*pi/12, True),
+                 TurretStats(92,-35, 13*pi/12,5*pi/12, True),
+                 TurretStats(-82,47, pi/12,5*pi/4, True),
+                 TurretStats(-82,-47,3*pi/4,23*pi/12, True)], 
                 3000, 3000, 400, 500, 0.3*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)] )
 EVOLVED_FS_1 =  Flagship( ids.S_EVOLVED_FS_1, 140, 0.1, 0.04, 0.001, 200, 1000, 
                 [TurretStats(63,-53, pi*6/5,2*pi, True),
@@ -519,6 +537,19 @@ T_LARVA_0 = 	TurretInstallStats( ids.T_LARVA_0, 0,100,15*config.fps, 0,0, 0,0, 0
 # ais'
 T_AI_MISSILE_0 = 	TurretInstallStats( ids.T_AI_MISSILE_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE,weaponPositions=[RPos(0,5)] )
 
+# evolved's
+T_ESPHERE_0 =       TurretInstallStats( ids.T_ESPHERE_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_ESPHERE_0,weaponPositions=[RPos(0,0)] )
+T_ESPHERE_1 =       TurretInstallStats( ids.T_ESPHERE_1, 0,100,30*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_ESPHERE_0,weaponPositions=[RPos(0,0),RPos(0,14)], upgradeFrom=T_ESPHERE_0 )
+T_ESPHERE_2 =       TurretInstallStats( ids.T_ESPHERE_2, 0,100,60*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_ESPHERE_0,weaponPositions=[RPos(0,0),RPos(0,14),RPos(0,25)], upgradeFrom=T_ESPHERE_1 )
+T_BURST_LASER_0 =       TurretInstallStats( ids.T_BURST_LASER_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_BURST_LASER_0,weaponPositions=[RPos(0,5)] )
+T_BURST_LASER_1 =       TurretInstallStats( ids.T_BURST_LASER_1, 0,100,10*config.fps, 0,0, 2,0, 0.35*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_BURST_LASER_0,weaponPositions=[RPos(0,5)],upgradeFrom=T_BURST_LASER_0 )
+T_BURST_LASER_2 =       TurretInstallStats( ids.T_BURST_LASER_2, 0,100,10*config.fps, 0,0, 2,0, 0.20*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_BURST_LASER_0,weaponPositions=[RPos(0,5)],upgradeFrom=T_BURST_LASER_1 )
+T_OMNI_LASER_0 =       TurretInstallStats( ids.T_OMNI_LASER_0, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_0,weaponPositions=[RPos(0,0)] )
+T_OMNI_LASER_1 =       TurretInstallStats( ids.T_OMNI_LASER_1, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_1,weaponPositions=[RPos(0,0)],upgradeFrom=T_OMNI_LASER_0 )
+T_OMNI_LASER_2 =       TurretInstallStats( ids.T_OMNI_LASER_2, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_2,weaponPositions=[RPos(0,0)],upgradeFrom=T_OMNI_LASER_1 )
+T_SUBSPACE_WAVE_0 =       TurretInstallStats( ids.T_SUBSPACE_WAVE_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_SUBSPACE_WAVE_0,weaponPositions=[RPos(0,5)] )
+T_SUBSPACE_WAVE_1 =       TurretInstallStats( ids.T_SUBSPACE_WAVE_1, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_SUBSPACE_WAVE_1,weaponPositions=[RPos(0,5)],upgradeFrom=T_SUBSPACE_WAVE_0 )
+
 R_HUMAN = 	RaceStats( ids.R_HUMAN,
 [FLAGSHIP_0, FLAGSHIP_1, FLAGSHIP_2 ], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
@@ -563,11 +594,15 @@ R_EVOLVED = 	RaceStats( ids.R_EVOLVED,
 [], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
 [EVOLVED_HARVESTER, EVOLVED_FIGHTER, EVOLVED_BOMBER],
-[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
+[#T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+#T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
 T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
 T_NUKE, T_PULSE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER,
+T_ESPHERE_2, T_ESPHERE_1, T_ESPHERE_0,
+T_BURST_LASER_2, T_BURST_LASER_1, T_BURST_LASER_0,
+T_OMNI_LASER_2, T_OMNI_LASER_1, T_OMNI_LASER_0,
+T_SUBSPACE_WAVE_0, T_SUBSPACE_WAVE_1 ],
 EVOLVED_HARVESTER )
 
 Buildable = { ids.T_LASER_SR_0:	T_LASER_SR_0, 
@@ -605,6 +640,19 @@ Buildable = { ids.T_LASER_SR_0:	T_LASER_SR_0,
               ids.T_JAMMER: 	 T_JAMMER,
 
               ids.T_AI_MISSILE_0:  T_AI_MISSILE_0,
+
+              ids.T_ESPHERE_0:  T_ESPHERE_0,
+              ids.T_ESPHERE_1:  T_ESPHERE_1,
+              ids.T_ESPHERE_2:  T_ESPHERE_2,
+              ids.T_BURST_LASER_0:  T_BURST_LASER_0,
+              ids.T_BURST_LASER_1:  T_BURST_LASER_1,
+              ids.T_BURST_LASER_2:  T_BURST_LASER_2,
+              ids.T_OMNI_LASER_0:  T_OMNI_LASER_0,
+              ids.T_OMNI_LASER_1:  T_OMNI_LASER_1,
+              ids.T_OMNI_LASER_2:  T_OMNI_LASER_2,
+              ids.T_SUBSPACE_WAVE_0:  T_SUBSPACE_WAVE_0,
+              ids.T_SUBSPACE_WAVE_1:  T_SUBSPACE_WAVE_1,
+
               ids.S_HARVESTER: HARVESTER,
               ids.S_FIGHTER: FIGHTER,
               ids.S_BOMBER: BOMBER,

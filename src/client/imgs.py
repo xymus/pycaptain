@@ -217,6 +217,20 @@ class Imgs( Rc ):
 
         self[ ids.T_AI_MISSILE_0 ] = self.loadImage( "turrets/ai-missile-0.png" ) 
 
+
+        self[ ids.T_ESPHERE_0 ] = self.loadImage( "turrets/esphere-0.png" ) 
+        self[ ids.T_ESPHERE_1 ] = self.loadImage( "turrets/esphere-1.png" ) 
+        self[ ids.T_ESPHERE_2 ] = self.loadImage( "turrets/esphere-2.png" ) 
+        self[ ids.T_BURST_LASER_0 ] = self.loadImage( "turrets/burst-laser-0.png" ) 
+        self[ ids.T_BURST_LASER_1 ] = self.loadImage( "turrets/burst-laser-1.png" ) 
+        self[ ids.T_BURST_LASER_2 ] = self.loadImage( "turrets/burst-laser-2.png" ) 
+        self[ ids.T_OMNI_LASER_0 ] = self.loadImage( "turrets/omni-laser-0.png" ) 
+        self[ ids.T_OMNI_LASER_1 ] = self.loadImage( "turrets/omni-laser-1.png" ) 
+        self[ ids.T_OMNI_LASER_2 ] = self.loadImage( "turrets/omni-laser-2.png" ) 
+        self[ ids.T_SUBSPACE_WAVE_0 ] = self.loadImage( "turrets/ssw-0.png" ) 
+        self[ ids.T_SUBSPACE_WAVE_1 ] = self.loadImage( "turrets/ssw-1.png" ) 
+
+
       #  self[ ids.MISSILE_0 ] = self.loadImage( "missiles/missile.png" ) 
         self[ ids.B_BULLET_0 ] = self.loadImage( "projectiles/bullet.png" )  
         self[ ids.B_BOMB_0 ] = self.loadImage( "projectiles/bomb.png" ) 
@@ -224,6 +238,9 @@ class Imgs( Rc ):
         self[ ids.B_ROCK_1 ] = self.loadImage( "projectiles/rock-1.png" )  
         self[ ids.B_FIRE_0 ] = self.loadImage( "projectiles/fire.png" )  
         self[ ids.B_AI_0 ] = self.loadImage( "projectiles/ai.png" )  
+        self[ ids.B_ESPHERE ] = self.loadImage( "projectiles/esphere.png" )  
+        self[ ids.B_WAVE_0 ] = self.loadImage( "projectiles/wave-0.png" )  
+        self[ ids.B_WAVE_1 ] = self.loadImage( "projectiles/wave-1.png" )  
 
         yield 60
         self.background =  self.loadImageWithDisplay( "background0.jpg" ) 

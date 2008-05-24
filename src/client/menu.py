@@ -1,3 +1,4 @@
+from md5 import md5
 
 from controls import *
 from common.comms import COInput
@@ -50,6 +51,8 @@ class LoginMenu( ControlFrame ):
         self.addControls( controls )
         self.eEnter = self.eOk
 
+        self.initialPassword = password
+
     def draw( self ):
         self.display.beginDraw()
 
@@ -79,7 +82,11 @@ class LoginMenu( ControlFrame ):
             return (True, False, None, None, None, False, False)
         elif self.ok:
             self.ok = False
-            return (False, self.cUser.text,self.cPassword.text,self.cServer.text,int(self.cPort.text), False, False)
+            if self.cPassword.text == self.initialPassword:
+                password = self.initialPassword
+            else:
+                password = md5(self.cPassword.text).hexdigest()
+            return (False, self.cUser.text, password, self.cServer.text,int(self.cPort.text), False, False)
         elif self.local:
             self.local = False
             return (False,False, None, None, None, True, False)

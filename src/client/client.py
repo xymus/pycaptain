@@ -2,7 +2,6 @@
 
 from sys import exit, argv
 from os import getlogin
-#from crypt import crypt
 from time import time, sleep
 from threading import Thread
 

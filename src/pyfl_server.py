@@ -6,12 +6,12 @@ from server.server import Server
 from common import config
 
 # usage text
-usage = """Usage: %s [-h|--help] [-a addresse] [-p port] [-s scenario] [-private] [-admin password]
+usage = """Usage: %s [-h|--help] [-a addresse] [-p port] [-s scenario] [-private] [-w password]
 \taddresse\tNetwork addreses to open ports on. Can use multiples -a.
 \tport\tPort to be used. (Yet to be implemented)
 \tscenario\tScenario name to load.
 \tprivate\tOnly players already registered by admin are accepted. (Yet to be implemented)
-\tadmin pw\tSet password for administrator interface. (Yet to be implemented)
+\tw pw\tSet password for administrator interface. (Yet to be implemented)
 default is: %s""" % (argv[0], "%s -a localhost -p %s -s Sol"%(argv[0], config.port) )
 
 # help!
@@ -37,7 +37,7 @@ if len( argv ) > 1:
             ports.append( v )
         elif last == "-s":
             scenario = v
-        elif last == "-admin":
+        elif last == "-w":
             adminPassword = v
         last = None
     elif v == "-private":

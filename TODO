@@ -1,14 +1,14 @@
 # features:
 common.ids - automate assignations - not now
-client.gui - add attack order 
+client.gui - add aim and ttack order 
 client.gui - add self destruct button
 server/admin - add admin password to control shutdown
 server.stats - balance!
 server.stats - complete recent flagships' turrets
 server.ai.AiTurret - correct bad optimization
 ai - standardize harvester and fighter behavior
-ships.flagship - standardize missile and small ships buildin behavior
-common.comms - reduce bandith use - maybe by changing exchange protocols to event driven
+ships.flagship - standardize missile and small ships building behavior
+common.comms - reduce bandwidth use - maybe by changing exchange protocols to event driven
 client - divides main ships images in layers, allowing lights to cover turrets
 client.network/client - make sure that all orders are sent
 common.config - move universe width to scenario and in commms

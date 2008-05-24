@@ -21,10 +21,11 @@ class PlayerConnection:
         return self.authentified
 
 class Network:
-    def __init__( self, game, addresses, port, versionString ):
+    def __init__( self, game, addresses, port, versionString, adminPassword ):
         self.game = game
         self.versionString = versionString
         self.shutdownOrder = False
+        self.adminPassword = adminPassword
 
         self.connections = []
         self.playerCons = []
@@ -97,7 +98,10 @@ class Network:
                for msg in msgs.splitlines():
          #        print "\"%s\"" % msg
                  words = msg.split()
-                 word = words[0]
+                 if len( words ) > 0:
+                    word = words[0]
+                 else:
+                    continue
 
 
              ### login
@@ -174,14 +178,15 @@ class Network:
                      
 
              ### admin functions
+                # elif self.adminPassword and self.adminPassword == word[-1]:
                  elif word == "shutdown":
-                     self.shutdownOrder = True
+                     self.shutdownOrder = (not self.adminPassword or self.adminPassword == words[-1])
                  elif word == "sysmsg":
-                     self.sendSysmsg( msg[ len(word)+1: ] )
+                     self.sendSysmsg( msg[ len(word)+1:-1 ] )
                  elif word == "adminmsg":
-                     self.sendMsgall( msg[ len(word)+1: ], "admin" )
+                     self.sendMsgall( msg[ len(word)+1:-1 ], "admin" )
                  elif word == "code":
-                     code = msg[ len(word)+1: ]
+                     code = msg[ len(word)+1:-1 ]
                      if code:
                          self.codes.append( code )
                msgs = ""

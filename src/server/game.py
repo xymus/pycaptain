@@ -168,7 +168,7 @@ class Game:
                     activable = False
                 elif turret.install:
                     t = turret.install.stats.type
-                    activable = (turret.install.stats.orePerFrame>0 or turret.install.stats.energyPerFrame>0 or turret.install.stats.energyPerUse>0 or turret.install.stats.orePerUse>0 or ( turret.install.stats.weapon!=None and turret.install.stats.weapon.img == ids.W_MISSILE ))
+                    activable = (turret.install.stats.orePerFrame>0 or turret.install.stats.energyPerFrame>0 or turret.install.stats.energyPerUse>0 or turret.install.stats.orePerUse>0 or ( turret.install.stats.weapon!=None and turret.install.stats.ai == ids.TA_COMBAT_STABLE )) # TODO find better representation than ids.TA_COMBAT_STABLE || weapon.img == ids.W_MISSILE ))
                 else:
                     t = 0
                     activable = False
@@ -201,7 +201,7 @@ class Game:
 
                 if turret.install:
                     for option in turret.install.stats.overs+[turret.install.stats]:
-               #         print option.type, turret.install.stats.overs+[turret.install.stats]
+                    #    print turret.install.stats.type, option.type, turret.install.stats.overs+[turret.install.stats]
                         options.remove( option )
                     #removedOptions = turret.install.stats.overs+[turret.install.stats]
                 elif turret.building:
