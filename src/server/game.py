@@ -79,9 +79,13 @@ class Game:
       ### remove dead objects
         for o1 in removedObjects:
             if isinstance( o1, FlagShip ):
+             #   print o1.player
                 if isinstance( o1.player, Human ):
-                    player.flagship = None
+               #     print "definately human"
+                    o1.player.flagship = None
+                    o1.player.needToUpdatePossibles = True
                 elif not isinstance( o1.player, Faction ):
+                    print "not human"
                     self.removePlayer( o1.player )
 
             
@@ -147,7 +151,10 @@ class Game:
             elif obj.player == None:
                 cobj.relation = ids.U_NEUTRAL
             elif obj.player != player:
-                cobj.relation = ids.U_ENNEMY
+                if self.getRelationBetween( obj.player, player ) < 0: 
+                    cobj.relation = ids.U_ENNEMY
+                else:
+                    cobj.relation = ids.U_FRIENDLY
 
             self.uidsSent[ player ].append( obj )
             cobjs1.append( cobj )
@@ -302,8 +309,9 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
         possibles = []
         if player.needToUpdatePossibles:
             player.needToUpdatePossibles = False
-            for p in stats.PlayableShips:
-               c = stats.PlayableShips[ p ]
+            for p,c in stats.PlayableShips.items():
+            #   c = stats.PlayableShips[ p ]
+               print c.stats.img, player.points, c.points
                if player.points >= c.points:
                  possibles.append( COPossible( c.stats.img, c.race.type, c.turrets, c.speed, c.shield, c.hull, c.hangar, c.canJump, c.civilians  ) )
             
@@ -335,6 +343,8 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
     def giveShip( self, player, shipId ):
       if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
         self.scenario.spawn( self, player, shipId )
+      else:
+          raise Exception( "giveShip aborted, already has ship (%s) or selected ship unplayable (%s)." % (not player.flagshipi, player.points >= stats.PlayableShips[ shipId ].points)  )
 
     def addPlayer( self, player ):
         self.relations[ player ] = {}

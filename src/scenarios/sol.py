@@ -124,7 +124,7 @@ class Sol( Scenario ):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
-      flagship.ore = 5000
+#      flagship.ore = 5000
       flagship.ori = 2*pi*random()
       player.flagship = flagship
       game.objects.append( flagship )
@@ -145,6 +145,7 @@ class Sol( Scenario ):
 
     def spawn( self, game, player, shipId ):
     #  if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
+        print "spawning"
         player.race = stats.PlayableShips[ shipId ].race
         shipStats = stats.PlayableShips[ shipId ].stats
 

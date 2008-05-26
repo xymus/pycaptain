@@ -136,7 +136,8 @@ class Ship( Object ):
 
         if self.hull == 0: # dead
             if sender:
-                sender.points += self.stats.pointsWorth
+                print sender.points, self.stats.pointsWorth
+                sender.points = sender.points + self.stats.pointsWorth
             (ao0, ro0, ag0 ) = self.die( game )
             return (ao0,ro0,ag0+gfxs)
         else: # alive
@@ -633,7 +634,10 @@ class FlagShip( ShipWithTurrets ):
         turret.install = None
 
         turret.building = toBuild
-        turret.rr = (turret.stats.maxAngle+turret.stats.minAngle)/2
+        if turret.stats.maxAngle < turret.stats.minAngle:
+            turret.rr = (turret.stats.maxAngle+turret.stats.minAngle)/2+pi
+        else:
+            turret.rr = (turret.stats.maxAngle+turret.stats.minAngle)/2
 
         if toBuild:
             self.ore = self.ore-toBuild.oreCostToBuild

@@ -16,7 +16,7 @@ class Animation:
         self.tick = 0
 
     def getImage( self ):
-        return self.images[ self.tick/self.tickPerFrame ]
+        return self.images[ int(self.tick/self.tickPerFrame) ]
 
     def update( self ):
         self.tick = (self.tick+1)%(len(self.images)*self.tickPerFrame)
@@ -48,8 +48,11 @@ class Imgs( Rc ):
 
     def loadAnimation( self, path, count, tickPerFrame=1 ):
         image = self.loadImageWithDisplay( path )
-        dw = self.display.getWidth(image)/count
-        images = [ self.display.getSubsurface( image, ( i*dw, 0, (i+1)*dw-1, self.display.getHeight(image) ) ) for i in xrange(count) ]
+        dw = 1.0*self.display.getWidth(image)/count
+        print self.display.getWidth(image)
+        for i in xrange(count):
+            print ( i*dw, 0, (i+1)*dw-1, self.display.getHeight(image) ) 
+        images = [ self.display.getSubsurface( image, ( i*dw, 0, dw, self.display.getHeight(image) ) ) for i in xrange(count) ]
         animation = Animation( images, tickPerFrame )
         self.animations.append( animation )
         return animation
@@ -349,7 +352,11 @@ class Imgs( Rc ):
         self.uiMsgBoxCenter = self.loadImageWithDisplay( "ui/msgbox-center.png" )
         self.uiMsgBoxRight = self.loadImageWithDisplay( "ui/msgbox-right.png" )
 
-      #  self.buildOptions = {}
+        self.uiAlertRed = self.loadAnimation( "ui/alerts/light-red.png", 10 )
+        self.uiAlertRadar = self.loadAnimation( "ui/alerts/light-radar.png", 20 )
+        self.uiAlertYellow = self.loadAnimation( "ui/alerts/light-yellow.png", 20 )
+        self.uiAlertYellowLarge = self.loadAnimation( "ui/alerts/light-yellow-large.png", 20 )
+
         self.option = self.loadImageWithDisplay( "ui/option.png" )
 
         self.shipsIcons = { ids.S_FIGHTER: self.loadImageWithDisplay( "icons/ships/fighter.png" ),

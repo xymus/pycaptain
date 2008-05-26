@@ -14,16 +14,18 @@ class Player:
     def __init__(self, race, name):
         self.name = name
         self.race = race
-        self.points = 0
+        self._points = 0
 
     def doTurn( self, game ):
         pass
 
-    def getPoints( self ):
-        return self.__points
-    def setPoints( self, value ):
-        self.__points = value
-    points = property( getPoints, setPoints )
+    def __getPoints( self ):
+        print "getting points"
+        return self._points
+    def __setPoints( self, value ):
+        self._points = value
+        print "made points virtual"
+    points = property( fget=__getPoints, fset=__setPoints )
 
 class Human( Player ):
     def __init__(self, race, username="", password=""):
@@ -36,11 +38,14 @@ class Human( Player ):
         self.online = True
         self.inPlay = False
 
-    def setPoints( self, value ):
+    def __getPoints( self ):
+        print "getting points"
+        return self._points
+    def __setPoints( self, value ):
         self.needToUpdatePossibles = True
-        print value
-        self.__points = value
-
+        print "made points", value
+        self._points = value
+    points = property( fget=__getPoints, fset=__setPoints )
 
     def doTurn( self, game ):
         if self.flagship:

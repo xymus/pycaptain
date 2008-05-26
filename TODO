@@ -18,5 +18,7 @@ server.stats - use civilian/non-weapon only turrets
 # bugs:
 server.ai.aiturretsolar - solve aim at closest sun in range, currently seams to alway aim at last sun in list
 server.stats/ships? - allow disabling of AiMissile turret
+server.ais - harvester going backwards when nothing is found
+server.weapons - pojectiles dying too soon
 
 

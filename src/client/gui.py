@@ -441,8 +441,22 @@ class Gui:
    #     self.display.draw( self.imgs.uiDigitalBack, (self.display.resolution[0]-234,8) )
     #    self.display.draw( self.imgs.uiDigitalBack, (self.display.resolution[0]-292,607) )
 
+    ### energy and shield
         self.display.drawRoNCutQbl( self.imgs.uiEnergyFill, (self.display.resolution[0]-72, 22), (1-float(stats.energy)/stats.maxEnergy)*pi/2 )
         self.display.drawRoNCutQbl( self.imgs.uiShieldFill, (self.display.resolution[0]-72, 22), (1-stats.shieldIntegrity)*pi/2 )
+
+        if 1.0*stats.energy/stats.maxEnergy < 0.2:
+            self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, 22-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
+
+        if stats.shieldIntegrity < 0.25:
+            self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertRed )/2, 22-self.display.getHeight( self.imgs.uiAlertRed )/2) )
+
+        if 1.0*stats.ore/stats.maxOre < 0.2:
+            self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
+
+  #      print stats.hullIntegrity
+        if stats.hullIntegrity < 0.5:
+            self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertRed )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertRed )/2) )
 
         self.display.drawRoNCutQtl( self.imgs.uiOreFill, (self.display.resolution[0]-74, self.display.resolution[1]-24), (1-float(stats.ore)/stats.maxOre)*pi/2 )
    #     print float(stats.ore)/stats.maxOre
@@ -553,6 +567,7 @@ class Gui:
      ## jump charge
         jumpCenter = (self.display.resolution[0]/2+100, 30)
         if stats.jumpRecover:
+            self.display.draw( self.imgs.uiAlertYellow, (self.display.resolution[0]/2+100-self.display.getHeight( self.imgs.uiAlertYellow )/2, 30-self.display.getHeight( self.imgs.uiAlertYellow )/2) )
             # draw green fill self.imgs.uiJumpRecover
             self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillRecover, jumpCenter, (100-stats.jumpRecover)*2*pi/3/100, part=1 )
          #   print stats.jumpRecover
@@ -564,7 +579,16 @@ class Gui:
         # draw jump glass
         self.display.drawRo( self.imgs.uiJumpGlass, jumpCenter, 0 )
 
+        ennemyInRange = False
+        for obj in objects:
+            if obj.relation == ids.U_ENNEMY:
+                ennemyInRange = True
+                break
 
+        if ennemyInRange:
+            self.display.draw( self.imgs.uiAlertRadar, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRadar )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRadar )/2) )
+           # self.display.draw( self.imgs.uiAlertRed, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRed )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRed )/2) )
+            
 
      ## main uis     
         self.display.draw( self.imgs.uiTopLeft0, (0,0) )
@@ -870,7 +894,7 @@ class Gui:
                	#         print "hit o:%i, relation:%i" % (o.uid, o.relation)
                         order = None
 
-                        if o.relation == ids.U_ENNEMY:
+                        if o.relation == ids.U_ENNEMY or o.relation == ids.U_FRIENDLY:
                             order = OrderAttack( o.uid )
                         elif o.relation == ids.U_FLAGSHIP: # or o.relation == ids.U_FLAGSHIP_TURRET:
                             order = OrderStopMove( 0 )

@@ -205,11 +205,11 @@ class AiPilotFaction( AiPilot ):
         pass
 
     def hitted( self, ship, game, angle, sender, energy, mass, pulse ):
-        print "hitted"
+#        print "hitted"
         AiPilot.hitted( self, ship, game, angle, sender, energy, mass, pulse )
         self.hittedAt = game.tick
         if sender and not self.attacking and game.getRelationBetween( ship.player, sender )<0:
-            print "looking"
+#            print "looking"
             bestDist = 10000
             for obj in game.objects:
                 if isinstance( obj, Ship ):
@@ -217,7 +217,7 @@ class AiPilotFaction( AiPilot ):
                     if dist and dist < bestDist:
                         bestDist = dist
                         self.attacking = obj
-                        print "now attacking"
+#                        print "now attacking"
                     
 
     def needsHelp( self, game ):

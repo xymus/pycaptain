@@ -1,11 +1,12 @@
-import pygame
 import os
 import sys
+from math import degrees, pi, hypot, cos, sin, radians, fabs
+from time import time
+import pygame
 
 #from visible import VisibleObject
 from common.comms import COObject, COInput
-from math import degrees, pi, hypot, cos, sin, radians, fabs
-from time import time
+from imgs import Animation
 
 class Display:
     def __init__(self, resolution=( 640, 640 ), fullscreen=False):
@@ -56,9 +57,13 @@ class Display:
         pass
 
     def draw( self, img, pos ):
+        if isinstance( img, Animation ):
+            img = img.getImage()
 	self.screen.blit( img, pos )
 
     def drawRo( self, img, pos, rotation ):
+        if img is Animation:
+            img = img.getImage()
         if rotation != 0:
             tempSurface = pygame.transform.rotate( img, degrees(rotation) )
         else:
@@ -262,9 +267,13 @@ class Display:
 
 
     def getWidth(self, img):
+        if isinstance( img, Animation ):
+            img = img.getImage()
         return img.get_width()
 
     def getHeight(self, img):
+        if isinstance( img, Animation ):
+            img = img.getImage()
         return img.get_height()
 
     def getInputs(self, inputs):

@@ -436,7 +436,7 @@ EVOLVED_FIGHTER =	SingleWeaponShipStats( ids.S_EVOLVED_FIGHTER, 8, 0.6, 0, 0.012
 EVOLVED_BOMBER =	SingleWeaponShipStats( ids.S_EVOLVED_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_ESPHERE_0, [ids.S_EVOLVED_BOMBER], None, [(8,pi)], weaponPositions=[RPos(0,15)] ) # [RPos(0.3,12), RPos(0,15), RPos(-0.3,12)]
 
   # id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines
-EVOLVED_FS_0 =  Flagship( ids.S_EVOLVED_FS_0, 70, 0.1, 0.05, 0.001, 300, 800, 
+EVOLVED_FS_0 =  Flagship( ids.S_EVOLVED_FS_0, 125, 0.1, 0.05, 0.001, 300, 800, 
                 [TurretStats(92, 35, 19*pi/12,11*pi/12, True),
                  TurretStats(92,-35, 13*pi/12,5*pi/12, True),
                  TurretStats(-82,47, pi/12,5*pi/4, True),
