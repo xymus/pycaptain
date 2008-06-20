@@ -1,12 +1,14 @@
 #!/usr/bin/python
 
 from sys import exit, argv
-from os import getlogin
+import os
+
 from time import time, sleep
 from threading import Thread
 
 from gui import Gui
 from network import Network
+from directnetwork import DirectNetwork
 from common.comms import COObject, COInput, CopyCOInput, version
 from universe import Universe
 from menu import LoginMenu
@@ -219,20 +221,23 @@ class Client:
 
     def launchLocalServer( self ):
         from server.server import Server
-        self.server = Server( addresses=["localhost"] )
+        from server.directnetwork import DirectNetwork as DirectNetworkServer
+        self.server = Server( addresses=["localhost"], networkType=DirectNetworkServer, force=True, scenarioName="Sol" )
 
         self.serverThread = Thread( name="server", target=self.server.run )
         self.serverThread.start()
-        self.runningServer = True
 
         sleep( 0.1 )
-
-        try:
-            user = getlogin()
-        except:
-            user = "echec"
-        self.network = Network( "localhost", config.port, user, "", version ) #TODO check getlogin for windows
-        self.network.connect()
+        if self.server.network:
+            self.runningServer = True
+            
+            if os.name == "posix":
+                user = os.getlogin()
+            else:
+                user = "echec"
+                
+            self.network = DirectNetwork( self.server.network )
+            self.network.connect( user ) 
 
 try:
     import psyco

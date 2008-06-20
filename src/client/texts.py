@@ -30,10 +30,10 @@ class Texts( Rc ):
         self[ids.T_LASER_MR_1] 	= "Heavy laser"
 
         self[ids.T_MASS_SR_0] 	= "Machine gun"
-        self[ids.T_MASS_SR_1] 	= "Repeater"
-        self[ids.T_MASS_SR_2] 	= "Heavy repeater"
-        self[ids.T_MASS_MR_0] 	= "Mass canon"
-        self[ids.T_MASS_MR_1] 	= "Mass canon x2"
+        self[ids.T_MASS_SR_1] 	= "Machine gun x2"
+        self[ids.T_MASS_SR_2] 	= "Machine gun x3"
+        self[ids.T_MASS_MR_0] 	= "Mass cannon"
+        self[ids.T_MASS_MR_1] 	= "Mass cannon x2"
         self[ids.T_MASS_LR] 	= "Mass driver"
 
         self[ids.T_MISSILES_0] 	= "Missile launcher"
@@ -65,8 +65,16 @@ class Texts( Rc ):
         self[ ids.T_SAIL_2 ] 		= "Solar sail x3"
         self[ ids.T_JAMMER ] 		= "Missile jammer"
 
-        self[ ids.T_AI_MISSILE_0 ]	= "Missile launcher"
-
+        self[ ids.T_AI_FLAK_0 ] = "Flak cannon"
+        self[ ids.T_AI_FLAK_1 ] = "Flak cannon x2"
+        self[ ids.T_AI_FLAK_2 ] = "Flak cannon x3"
+        self[ ids.T_AI_FLAK_3 ] = "Flak cannon x4"
+        self[ ids.T_AI_OMNI_LASER_0 ] = "Omni laser"
+        self[ ids.T_AI_OMNI_LASER_1 ] = "Omni laser x2"
+        self[ ids.T_AI_MISSILE_0 ] = "Missile launcher"
+        self[ ids.T_AI_MISSILE_1 ] = "Missile launcher x2"
+        self[ ids.T_AI_MISSILE_2 ] = "Missile launcher x3"
+        self[ ids.T_AI_MISSILE_3 ] = "Missile launcher x4"
         
         self[ ids.T_ESPHERE_0 ]	        = "E-Sphere launcher"
         self[ ids.T_ESPHERE_1 ]	        = "E-Sphere launcher v2"
@@ -80,8 +88,23 @@ class Texts( Rc ):
         self[ ids.T_SUBSPACE_WAVE_0 ]	        = "Subspace percuter"
         self[ ids.T_SUBSPACE_WAVE_1 ]	        = "Subspace percuter v2"
 
+        self[ ids.T_DISCHARGER_0 ]	        = "Discharger"
+        self[ ids.T_DISCHARGER_1 ]	        = "Heavy discharger"
+        self[ ids.T_REPEATER_0 ]	        = "Repeater"
+        self[ ids.T_REPEATER_1 ]	        = "Repeater 2x"
+        self[ ids.T_REPEATER_2 ]	        = "Repeater 3x"
+        self[ ids.T_REPEATER_3 ]	        = "Repeater 4x"
+        self[ ids.T_NOMAD_CANNON_0 ]	        = "Canon"
+        self[ ids.T_NOMAD_CANNON_1 ]	        = "Canon 2x"
+        self[ ids.T_NOMAD_CANNON_2 ]	        = "Canon 3x"
+        self[ ids.T_NOMAD_MISSILE_0 ]	    = "Missile launcher"
+        self[ ids.T_NOMAD_MISSILE_1 ]	    = "Missile launcher 2x"
+        self[ ids.T_NOMAD_SUCKER_0 ]	    = "Nebula harvester"
+        self[ ids.T_NOMAD_SUCKER_1 ]	    = "Nebula harvester 2x"
+        self[ ids.T_NOMAD_SUCKER_2 ]	    = "Nebula harvester 3x"
+
         self[ids.C_WEAPON] 		= "Weapons"
-        self[ids.C_MISSILE] 		= "Missiles"
+        self[ids.C_MISSILE]		= "Missiles"
         self[ids.C_OTHER] 		= "Others"
 
 

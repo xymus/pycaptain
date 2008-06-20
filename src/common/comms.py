@@ -29,6 +29,12 @@ class COInput:
         self.mouseDownAtV = (0,0)
         self.mouseUpAtV = (0,0)
         self.mouseUpped = False
+        self.mouseRightUpped = False
+		
+        self.right = False
+        self.left = False
+        self.up = False
+        self.down = False
 
 
     def dump(self):
@@ -396,26 +402,19 @@ class COGfxs:
 
     def dump(self):
         dump = "%i" % ( len(self.gfxs) )
-    #    print len( self.gfxs )
         for gfx in self.gfxs:
             if isinstance( gfx, GfxLaser ):
                 dump = dump + ";%i:%i:%i:%i:%i:%i:%i:%i" % (ids.G_LASER_SMALL, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.width, gfx.color)
-       #         print "laser!"
             elif isinstance( gfx, GfxExplosion ):
                 dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_EXPLOSION, gfx.xp,gfx.yp,gfx.radius,gfx.sound,gfx.delai)
-      #          print "explosion!"
             elif isinstance( gfx, GfxShield ):
                 dump = dump + ";%i:%i:%i:%i:%i:%.3f:%.3f" % (ids.G_SHIELD, gfx.xp,gfx.yp,gfx.radius,gfx.strength,gfx.angle,gfx.hit)
-     #           print "shield!"
             elif isinstance( gfx, GfxExhaust ): # careful, GfxExhaust inherits of GfxFragment
                 pass # TODO, removed because not used on client side
-          #      dump = dump + ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i" % (ids.G_EXHAUST, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type)
             elif isinstance( gfx, GfxFragment ):
                 dump = dump + ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i:%i" % (ids.G_FRAGMENT, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type,gfx.ttl)
-    #            print "fragment!"
-     #           print "shield"
             elif isinstance( gfx, GfxLightning ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i:%i:%i" % (ids.G_Lightning, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
+                dump = dump + ";%i:%i:%i:%i:%i:%i:%i" % (ids.G_LIGHTNING, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
         return dump
 
 def LoadCOGfxs( text ): # TODO
@@ -423,14 +422,12 @@ def LoadCOGfxs( text ): # TODO
     es = text.split(";")
     n = int(es[0])
     for e in es[1:]:
-      #  print e
         ss = e.split(":")
 
         if int(ss[ 0 ]) == ids.G_LASER_SMALL:
             gfx = GfxLaser( (int(ss[1]),int(ss[2])), int(ss[3]), (int(ss[4]),int(ss[5])), int(ss[6]), int(ss[7]) )
         elif int(ss[ 0 ]) == ids.G_EXPLOSION:
             gfx = GfxExplosion( (int(ss[1]),int(ss[2])), int(ss[3]), int(ss[4]), int(ss[5]) )
-        #    print "ex"
         elif int(ss[ 0 ]) == ids.G_SHIELD:
             gfx = GfxShield( (int(ss[1]),int(ss[2])), int(ss[3]), int(ss[4]), float(ss[5]), float(ss[6]) )
         elif int(ss[ 0 ]) == ids.G_FRAGMENT:
@@ -439,11 +436,8 @@ def LoadCOGfxs( text ): # TODO
             gfx = GfxExhaust( (int(ss[1]),int(ss[2])), int(ss[3]), float(ss[4]), float(ss[5]), float(ss[6]), float(ss[7]) )
         elif int(ss[ 0 ]) == ids.G_LIGHTNING:
             gfx = GfxLightning( (int(ss[1]),int(ss[2])), int(ss[3]), (int(ss[4]),int(ss[5])), int(ss[6]) )
-     #       print "fragment!"
 
         else: print int(ss[ 0 ])
         gfxs.append( gfx )
-    return gfxs # COGfx( int(es[0]), int(es[1]), int(es[2]), int(es[3]) )
-
-
+    return gfxs
 

@@ -59,7 +59,7 @@ class Display:
     def draw( self, img, pos ):
         if isinstance( img, Animation ):
             img = img.getImage()
-	self.screen.blit( img, pos )
+        self.screen.blit( img, pos )
 
     def drawRo( self, img, pos, rotation ):
         if img is Animation:
@@ -70,7 +70,122 @@ class Display:
             tempSurface = img
 
         corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
-	self.screen.blit( tempSurface, corrPosition )
+        self.screen.blit( tempSurface, corrPosition )
+
+    def drawClipped( self, img, pos, src ):
+	    self.screen.blit( img, pos, src )
+
+    def drawText( self, text, (x,y), color=(255,255,255,255), size=15 ):
+        if not self.fonts.has_key( size ):
+            try:
+                self.fonts[ size ] = pygame.font.Font( os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ), size )
+            except:
+                self.fonts[ size ] = pygame.font.Font( None, size ) # pygame.font.get_default_font()
+
+        s = self.fonts[ size ].render( text, True, color )
+        self.screen.blit( s, (x,y) )
+
+    def drawRect( self, rect, color, width=0 ):
+        if width == 0:
+            self.screen.fill( color, rect )
+        else:
+            pygame.draw.rect( self.screen, color, rect, width )
+
+    def drawLine( self, color, o, d, width=1):
+        pygame.draw.line( self.screen, color, o, d, width )
+
+    def drawCircle( self, color, o, radius, width=0):
+        pygame.draw.circle( self.screen, color, o, radius, width )
+
+    def drawArc( self, color, o, radius, minAngle, maxAngle, width=1):
+        pygame.draw.arc( self.screen, color, (o[0]-radius, o[1]-radius, 2*radius, 2*radius ), minAngle, maxAngle, width )
+
+    def drawPoint( self, o, color):
+        self.screen.set_at(o, color )
+
+    def finalizeDraw( self ):
+        pygame.display.flip()
+
+    def clear( self, color=(0,0,0) ):
+        self.screen.fill( color )
+
+    def drawBackground( self, img, (ix, iy) ):
+        bgx = ix % self.background.get_width()
+        bgy = iy % self.background.get_height()
+        for x in range( bgx - self.background.get_width(), bgx+self.resolution[ 0 ], self.background.get_width() ):
+            for y in range( bgy - self.background.get_height(), bgy+self.resolution[ 1 ], self.background.get_height() ):
+                self.screen.blit( self.background, (x,y) )
+
+
+    def getWidth(self, img):
+        if isinstance( img, Animation ):
+            img = img.getImage()
+        return img.get_width()
+
+    def getHeight(self, img):
+        if isinstance( img, Animation ):
+            img = img.getImage()
+        return img.get_height()
+
+    def getInputs(self, inputs=None):
+        quit = False
+
+        if not inputs:
+            inputs = COInput()
+
+        inputs.keys = []
+
+       # inputs.up = pygame.key.get_pressed()[ pygame.K_UP ]
+       # inputs.down = pygame.key.get_pressed()[ pygame.K_DOWN ]
+       # inputs.left = pygame.key.get_pressed()[ pygame.K_LEFT ]
+       # inputs.right = pygame.key.get_pressed()[ pygame.K_RIGHT ]
+
+        inputs.mouseDowned = False
+        inputs.mouseUpped = False
+        
+        inputs.mouseRightDowned = False
+        inputs.mouseRightUpped = False
+
+        e = pygame.event.poll()
+        while e.type != pygame.NOEVENT:
+            if e.type == pygame.QUIT:
+                quit = True
+            elif e.type == pygame.KEYDOWN:
+                inputs.keys.append( [e.key, e.unicode] )
+
+            elif e.type == pygame.MOUSEBUTTONDOWN:
+              if e.button == 1:
+                inputs.mouseDownAt = e.pos
+                inputs.mouseDowned = True
+              elif e.button == 3:
+                inputs.mouseRightDowned = True
+
+            elif e.type == pygame.MOUSEBUTTONUP:
+              if e.button == 1:
+                inputs.mouseUpAt = e.pos
+                inputs.mouseUpped = True
+              elif e.button == 3:
+                inputs.mouseRightUpped = True
+
+            e = pygame.event.poll()
+
+        return (quit, inputs)
+
+    def close(self):
+        pygame.display.quit()
+
+    def setCursor( self, cursor=None ):
+        if not cursor:
+            cursor = self.cursorArrow
+        pygame.mouse.set_cursor( cursor[0], cursor[1], cursor[2], cursor[3] )
+
+    def takeScreenshot( self, path=None ):
+        if not path:
+            path = os.path.join( sys.path[0], "screen-%i.bmp"%time() )
+        print "screenshot saved to %s" % path
+        pygame.image.save( self.screen, path )
+
+
 
     def drawRoNCutHalfHorz( self, img, pos, rotation ):
         if rotation != 0:
@@ -220,113 +335,4 @@ class Display:
         tempSurface = pygame.transform.rotozoom( img, degrees(rotation), resize )
         corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
 	self.screen.blit( tempSurface, corrPosition )
-
-    def drawClipped( self, img, pos, src ):
-	self.screen.blit( img, pos, src )
-
-    def drawText( self, text, (x,y), color=(255,255,255,255), size=15 ):
-        if not self.fonts.has_key( size ):
-            try:
-                self.fonts[ size ] = pygame.font.Font( os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ), size )
-            except:
-                self.fonts[ size ] = pygame.font.Font( None, size ) # pygame.font.get_default_font()
-
-        s = self.fonts[ size ].render( text, True, color )
-        self.screen.blit( s, (x,y) )
-
-    def drawRect( self, rect, color, width=0 ):
-        if width == 0:
-            self.screen.fill( color, rect )
-        else:
-            pygame.draw.rect( self.screen, color, rect, width )
-
-    def drawLine( self, color, o, d, width=1):
-        pygame.draw.line( self.screen, color, o, d, width )
-
-    def drawCircle( self, color, o, radius, width=0):
-        pygame.draw.circle( self.screen, color, o, radius, width )
-
-    def drawArc( self, color, o, radius, minAngle, maxAngle, width=1):
-        pygame.draw.arc( self.screen, color, (o[0]-radius, o[1]-radius, 2*radius, 2*radius ), minAngle, maxAngle, width )
-
-    def drawPoint( self, o, color):
-        self.screen.set_at(o, color )
-
-    def finalizeDraw( self ):
-        pygame.display.flip()
-
-    def clear( self, color=(0,0,0) ):
-        self.screen.fill( color )
-
-    def drawBackground( self, img, (ix, iy) ):
-        bgx = ix % self.background.get_width()
-        bgy = iy % self.background.get_height()
-        for x in range( bgx - self.background.get_width(), bgx+self.resolution[ 0 ], self.background.get_width() ):
-           for y in range( bgy - self.background.get_height(), bgy+self.resolution[ 1 ], self.background.get_height() ):
-	       self.screen.blit( self.background, (x,y) )
-
-
-    def getWidth(self, img):
-        if isinstance( img, Animation ):
-            img = img.getImage()
-        return img.get_width()
-
-    def getHeight(self, img):
-        if isinstance( img, Animation ):
-            img = img.getImage()
-        return img.get_height()
-
-    def getInputs(self, inputs):
-        quit = False
-
-        inputs.keys = []
-
-        inputs.up = pygame.key.get_pressed()[ pygame.K_UP ]
-        inputs.down = pygame.key.get_pressed()[ pygame.K_DOWN ]
-        inputs.left = pygame.key.get_pressed()[ pygame.K_LEFT ]
-        inputs.right = pygame.key.get_pressed()[ pygame.K_RIGHT ]
-
-        inputs.mouseDowned = False
-        inputs.mouseUpped = False
-        inputs.mouseRightDowned = False
-        inputs.mouseRightUpped = False
-
-        e = pygame.event.poll()
-        while e.type != pygame.NOEVENT:
-            if e.type == pygame.QUIT:
-                quit = True
-            elif e.type == pygame.KEYDOWN:
-                inputs.keys.append( [e.key, e.unicode] )
-            elif e.type == pygame.MOUSEBUTTONDOWN:
-              if e.button == 1:
-                inputs.mouseDownAt = e.pos
-                inputs.mouseDowned = True
-              elif e.button == 3:
-                inputs.mouseRightDowned = True
-
-            elif e.type == pygame.MOUSEBUTTONUP:
-              if e.button == 1:
-                inputs.mouseUpAt = e.pos
-                inputs.mouseUpped = True
-              elif e.button == 3:
-                inputs.mouseRightUpped = True
-
-            e = pygame.event.poll()
-
-        return (quit, inputs)
-
-    def close(self):
-        pygame.display.quit()
-
-    def setCursor( self, cursor=None ):
-        if not cursor:
-            cursor = self.cursorArrow
-        pygame.mouse.set_cursor( cursor[0], cursor[1], cursor[2], cursor[3] )
-
-    def takeScreenshot( self, path=None ):
-        if not path:
-            path = os.path.join( sys.path[0], "screen-%i.bmp"%time() )
-        print "screenshot saved to %s" % path
-        pygame.image.save( self.screen, path )
-
 

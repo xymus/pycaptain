@@ -7,6 +7,7 @@ class ControlFrame:
         self.eEnter = None
         self.tabOrder = {}
         self.tabOrderReverse = {}
+        self.inputs = None
 
     def addControl( self, control ):
         if len( self.controls ) > 0:
@@ -23,8 +24,8 @@ class ControlFrame:
 
     def setControls( self, controls ):
         self.controls = []
-        self.tabOrder = []
-        self.tabOrderReverse = []
+        self.tabOrder = {}
+        self.tabOrderReverse = {}
         for control in controls:
             self.addControl( control )
 
@@ -34,28 +35,49 @@ class ControlFrame:
                 self.eEnter( self, (0,0) )
 
         if self.selected:
-            #if letter == "\t" and 
-            self.selected.keyInput( key, letter )
+            if letter == "\t":
+                self.selected = self.tabOrder[ self.selected ]
+            else:
+                self.selected.keyInput( key, letter )
+             
         else:
             for control in self.controls:
                 if isinstance( control, KeyCatcher ):
                     control.keyInput( key, letter )
 
-   # def mouse( self, pos, goingDown=False, goingUp=False, butLeft=False, butRight=False ):
-   #     if goingUp:
-   #         for control in self.controls:
-   #             if control.hits( self.inputs.mouseUpAt ):
-   #                 self.focus = control
-   #                 break
+    def manageInputs( self, display ):
+        (quit, self.inputs) = display.getInputs( self.inputs )
 
+        if self.inputs.mouseUpped:
+            up = self.inputs.mouseUpAt
+        else:
+            up = None
+            
+        if self.inputs.mouseDowned:
+            down = self.inputs.mouseDownAt
+        else:
+            down = None
+            
+        if self.inputs.mouseUpped or self.inputs.mouseDowned:
+            for control in self.controls:
+                if control.hits( up=up, down=down ):
+                #    print self.inputs.mouseUpped, self.inputs.mouseDowned, self.inputs.mouseUpAt, self.inputs.mouseDownAt
+                    self.selected = control
+                    break
+
+        if self.inputs.keys:
+            for k in self.inputs.keys:
+                self.keyInput( k[0], k[1] )
+
+        return quit
 
 class ControlBase:
-    def __init__( self, fUpEvent, fDownEvent=None, uid=None ):
+    def __init__( self, fUpEvent=None, fDownEvent=None, uid=None ):
         self.fUpEvent = fUpEvent
         self.fDownEvent = fDownEvent
         self.uid = uid
 
-    def hits( self, (x,y) ):
+    def hits( self, up=None, down=None ):
         return False
 
     def draw( self, display, focused=False ):
@@ -64,8 +86,9 @@ class ControlBase:
     def keyInput( self, key, letter=None ):
         pass
 
-class Control:
+class Control( ControlBase ):
     def __init__( self, img, topLeft, fIn, fUpEvent=None, fDownEvent=None, fOverEvent=None, uid=None ):
+   # def __init__( self, img, topLeft, fIn, fEvent=None, uid=None ):
         self.img = img
         self.topLeft = topLeft
         self.fIn = fIn
@@ -79,11 +102,19 @@ class Control:
         self.visible = True
         self.useEnter = False
 
-    def hits( self, (x,y) ):
-        res = self.fIn( (x,y) )
-        if res and self.enabled and self.fUpEvent:
-            self.fUpEvent( self, (x,y) )
-        return res
+    def hits( self, up=None, down=None ):
+   # def mouseHits( self, mouseButton=1, pos=None, up=False ):
+        hit = False
+        if self.enabled:
+            if up and self.fIn( up ):
+                hit = True
+                if self.fUpEvent:
+                    self.fUpEvent( self, up )
+            if down and self.fIn( down ):
+                hit = True
+                if self.fDownEvent:
+                    self.fDownEvent( self, down )
+        return hit
 
     def draw( self, display, focused=False ):
       if self.visible and self.img:
@@ -97,6 +128,7 @@ class Control:
         display.drawClipped( self.img, self.topLeft, rect )
 
     def keyInput( self, key, letter=None ):
+   # def keyHits( self, key, letter=None ):
         pass
 
 class RoundControl( Control ):
@@ -187,7 +219,7 @@ class Label( Control ):
         Control.__init__( self, None, topLeft, None, None, None, uid=None )
         self.text = text
 
-    def hits( self, (x,y) ):
+    def hits( self, up=None, down=None ):
         pass
 
     def draw( self, display, focused=False ):
@@ -222,51 +254,6 @@ class ProgressBar( RectControl ):
         display.drawRect( (self.topLeft[0], self.topLeft[1], self.rw, self.rh), (255,255,255), 1 )
         display.drawRect( (self.topLeft[0]+2, self.topLeft[1]+2, (self.rw-4)*self.progress, self.rh-4), (255,255,255) )
 
-
-class OptionButton( RectControl ):
-    def __init__( self, img, (rx,ry), (rw,rh), fUpEvent, turretImg, text, fDownEvent=None, uid=None ):
-        RectControl.__init__( self, img, (rx,ry), (rw,rh), fUpEvent, fDownEvent, uid=uid )
-        self.turretImg = turretImg
-        self.text = text
-        self.r = 0
-        self.ri = 0.02
-        self.turretCenter = (rx+rw-rh/2,ry+rh/2)
-         
-    def draw( self, display, focused=False ):
-      #  RectControl.draw( self, display, focused )
-        if self.visible:
-            rect = (0,0,display.getWidth(self.img),display.getHeight(self.img))
-            display.drawClipped( self.img, self.topLeft, rect )
-
-            if self.enabled:
-                textColor = (255,255,255,255)
-            else:
-                textColor = (128,128,128,255)
-
-            display.drawText( self.text, (self.topLeft[0]+16,self.topLeft[1]+8), textColor )
-            if self.turretImg:
-              display.drawRo( self.turretImg, self.turretCenter, self.r )
-        self.r = (self.r + self.ri)%(2*pi)
-
-class TurretButton( RoundControl ):
-    def __init__( self, img, (cx,cy), radius, fUpEvent, turretImg, fDownEvent=None, uid=None ):
-        RoundControl.__init__( self, img, (cx,cy), radius, fUpEvent, fDownEvent, uid=uid )
-        self.turretImg = turretImg
-        self.rx = self.topLeft[0]
-        self.ry = self.topLeft[1]
-        self.r = 0
-        self.ri = 0.02
-        self.turretCenter = (self.rx+self.radius,self.ry+self.radius)
-         
-    def draw( self, display, focused=False ):
-        if self.visible:
-          rect = (0,0,display.getWidth(self.img)/3,display.getHeight(self.img))
-
-          display.drawClipped( self.img, self.topLeft, rect )
-          if self.turretImg:
-            display.drawRo( self.turretImg, self.turretCenter, self.r )
-        self.r = (self.r + self.ri)%(2*pi)
-
 class KeyCatcher( ControlBase ):
     def __init__( self, fUpEvent, key, fDownEvent=None, uid=None ):
         ControlBase.__init__( self, fUpEvent, fDownEvent, uid=uid )
@@ -275,4 +262,8 @@ class KeyCatcher( ControlBase ):
     def keyInput( self, key, letter=None ):
         if key == self.key and self.fUpEvent:
             self.fUpEvent( self, (0,0) )
+
+class Panel( ControlBase ):
+    def __init__( self, img, (x,y) ):
+        pass
 

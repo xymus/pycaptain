@@ -14,11 +14,11 @@ client.network/client - make sure that all orders are sent
 common.config - move universe width to scenario and in commms
 server.stats - use civilian/non-weapon only turrets
 ... - implement a direct network interface to speed up solo and/or local play
+common.comms.playerStats - add infor for radar alerts instead of using objects
 
 # bugs:
 server.ai.aiturretsolar - solve aim at closest sun in range, currently seams to alway aim at last sun in list
 server.stats/ships? - allow disabling of AiMissile turret
 server.ais - harvester going backwards when nothing is found
 server.weapons - pojectiles dying too soon
-
 

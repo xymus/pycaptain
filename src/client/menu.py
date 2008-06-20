@@ -28,24 +28,24 @@ class LoginMenu( ControlFrame ):
 
         self.cOk = LabelButton( (120+diff+60,100+(diff+height)*4), (60, height), self.eOk, "Ok" )
         self.cQuit = LabelButton( (120,100+(diff+height)*4), (60, height), self.eQuit, "Quit" )
-        self.cLocal = LabelButton( (120+(diff+60)*3+diff,100), (200, height), self.eLocal, "Quick play" )
+        self.cLocal = LabelButton( (120+(diff+60)*3+diff,100), (200, height), self.eLocal, "Single player" )
         self.cFullscreen = LabelButton( (120+(diff+60)*3+diff,200), (200, height), self.eFullscreen, "Toggle Fullscreen" )
 
         self.cError = Label( (40,100+(diff+height)*5), " " )
 
-        controls = [ self.cUser,
-                          self.cPassword,
-                          self.cServer,
-                          self.cPort,
-                          self.cOk,
-                          self.cLocal,
-                          self.cFullscreen,
-                          self.cQuit,
-                          Label( (40,100), "user" ),
-                          Label( (40,100+(diff+height)), "password" ),
-                          Label( (40,100+(diff+height)*2), "server" ),
-                          Label( (40,100+(diff+height)*3), "port" ),
-                          self.cError
+        controls = [    self.cUser,
+                        self.cPassword,
+                        self.cServer,
+                        self.cPort,
+                        self.cOk,
+                        self.cLocal,
+                        self.cFullscreen,
+                        self.cQuit,
+                        Label( (40,100), "user" ),
+                        Label( (40,100+(diff+height)), "password" ),
+                        Label( (40,100+(diff+height)*2), "server" ),
+                        Label( (40,100+(diff+height)*3), "port" ),
+                        self.cError
                         ]
 
         self.addControls( controls )
@@ -64,18 +64,19 @@ class LoginMenu( ControlFrame ):
         self.display.finalizeDraw()
 
     def getUpdates( self ):
-        (quit,self.inputs) = self.display.getInputs( self.inputs )
-        self.quit = self.quit or quit
+#        (quit,self.inputs) = self.display.getInputs( self.inputs )
+#        self.quit = self.quit or quit
 
-        if self.inputs.mouseUpped:
-            for control in self.controls:
-                if control.hits( self.inputs.mouseUpAt ):
-                    self.selected = control
-                    break
+        self.quit = self.manageInputs( self.display ) or self.quit
+#        if self.inputs.mouseUpped:
+#            for control in self.controls:
+#                if control.hits( self.inputs.mouseUpAt ):
+#                    self.selected = control
+#                    break
 
-        if self.inputs.keys:
-          for k in self.inputs.keys:
-            self.keyInput( k[0], k[1] )
+#        if self.inputs.keys:
+#          for k in self.inputs.keys:
+#            self.keyInput( k[0], k[1] )
 
         if self.quit:
             self.quit = False

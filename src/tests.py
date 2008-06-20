@@ -1,9 +1,17 @@
 #!/usr/bin/python
 
+import os
+import sys
+
 class Tests:
     def __init__( self, server=True, client=True ):
         self.testClient = client
         self.testServer = server
+        
+        self.scenarioNames = filter( 
+            lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_" and f != "scenario.py", 
+            os.listdir( os.path.join( sys.path[0], "scenarios" ) ) )
+        self.scenarioNames = [ n[:-3] for n in self.scenarioNames]
 
     def verbose( self, text, level=0 ):
         return "%s# %s" % ("  "*level, text)
@@ -18,25 +26,56 @@ class Tests:
             yield self.verbose( "Client", 0 )
             yield self.verbose( "Client display", level=1 )
             from client.display import Display
-            display = Display( resolution=(32,32) )
+            display = Display( resolution=(100,100) )
 
             yield self.verbose( "Client sound mixer", level=1 )
             from client.mixer import Mixer
             mixer = Mixer()
+            
+            yield self.verbose( "Setting volume to mute", level=2 )
+            mixer.setVolume(0)
 
             yield self.verbose( "Client resources", level=1 )
 
             yield self.verbose( "Images", level=2 )
-            from client.imgs import Imgs
+            from client.imgs import Imgs, Image, Animation
             imgs = Imgs( display )
+            yield self.verbose( "Loading images", level=3 )
             for p in imgs.loadAll( display ):
                 pass
+                
+            yield self.verbose( "Drawing images", level=3 )
+            import pygame # To be removed for other implementation
+            for k, v in imgs.__dict__.items():
+                if isinstance( v, Image ) or isinstance( v, pygame.Surface ):
+                    display.beginDraw()
+                    if isinstance( v, Image ):
+                        display.draw( imgs[k], (0,0) )
+                    if  isinstance( v, pygame.Surface ):
+                        display.draw( v, (0,0) )
+                    display.finalizeDraw()
+                    
+            yield self.verbose( "Drawing animations", level=3 )
+            for k, v in imgs.__dict__.items():
+                if isinstance( v, Animation ):
+                    for j in xrange( 0, 500 ):
+                        imgs.updateAnimations()
+                        display.beginDraw()
+                        display.draw( v, (0,0) )
+                        display.finalizeDraw()
 
             yield self.verbose( "Sounds", level=2 )
             from client.snds import Snds
+            
+            yield self.verbose( "Loading sounds", level=3 )
             snds = Snds( mixer )
             for p in snds.loadAll( mixer ):
                 pass
+                
+            yield self.verbose( "Playing sounds", level=3 )
+            for k, v in snds.__dict__.items():
+                if isinstance( v, pygame.mixer.Sound ):
+                    mixer.play( v )
 
             yield self.verbose( "Texts", level=2 )
             from client.texts import Texts
@@ -53,22 +92,20 @@ class Tests:
             from server.game import Game
             games = []
 
-            yield self.verbose( "Loading empty scenario", level=1 )
+            yield self.verbose( "Scenarios", level=1 )
+            
+            yield self.verbose( "Loading empty scenario", level=2 )
             exec( "from scenarios.scenario import Scenario as Scenario" )
             games.append( Game( Scenario ) )
 
-            yield self.verbose( "Loading scenario Quad", level=2 )
-            exec( "from scenarios.quad import Quad as Scenario" )
-            games.append( Game( Scenario ) )
-
-            yield self.verbose( "Loading scenario Sol", level=2 )
-            exec( "from scenarios.sol import Sol as Scenario" )
-            games.append( Game( Scenario ) )
+            for name in self.scenarioNames:
+                yield self.verbose( "Loading scenario %s"%name, level=2 )
+                exec( "from scenarios.%s import %s as Scenario"%( name, name.capitalize() ) )
+                games.append( Game( Scenario ) )
 
             # yield self.verbose( "Game from Sol", level=1 )
             # from server.game import Game
             # game = Game( Scenario )
-
                 
             yield self.verbose( "Players", level=1 )
             from server.players import Player
@@ -123,17 +160,17 @@ class Tests:
             from server.ships import ShipWithTurrets
             ship0 = ShipWithTurrets( None, stats.HARVESTER, None, 0, 0 )
 
-            yield self.verbose( "Turret instanciation", level=1 )
+         #   yield self.verbose( "Turret instanciation", level=1 )
 
-            yield self.verbose( "Turret building", level=1 )
+         #   yield self.verbose( "Turret building", level=1 )
 
-            yield self.verbose( "Turret fire", level=1 )
+         #   yield self.verbose( "Turret fire", level=1 )
 
-            yield self.verbose( "AIs", level=1 )
+         #   yield self.verbose( "AIs", level=1 )
 
             yield self.verbose( "Server", level=1 )
             from server.server import Server
-            server = Server( scenarioName="Scenario", force=True )
+            server = Server( scenarioName="Scenario", force=True, adminPassword="password" )
 
             yield True
 
@@ -141,19 +178,35 @@ if __name__ == '__main__':
     from sys import argv
 
     if "server" in argv[1:]:
-        print "Testing only server"
-        testClient = False
+        print "Testing server"
+        testServer = True
     else:
+        testServer = False
+
+    if "client" in argv[1:]:
+        print "Testing client"
+        testClient = True
+    else:
+        testClient = False
+        
+    if not testClient and not testServer:
+        testServer = True
         testClient = True
 
-#    if "client" in argv[1:]:
-#        print "Testing only client"
-#        testServer = False
-#    else:
-#        testServer = True
-
-    
-    test = Tests( client=testClient )
+    test = Tests( client=testClient, server=testServer )
     for res in test.forRun():
         if res: print res
-
+        
+    try:
+        import psyco
+        psyco.full()
+        hasPsyco = True
+    except ImportError:
+        hasPsyco = False
+        
+    if hasPsyco:
+        print "### retesting with psyco"
+        test = Tests( client=testClient, server=testServer )
+        for res in test.forRun():
+            if res: print res
+        

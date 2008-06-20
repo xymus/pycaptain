@@ -460,13 +460,15 @@ class AiTurret:
     def doTurn( self, ship, turret, game, attack):
 
         pos = ship.getTurretPos( turret )
-        if ship.ai.attacking and ship.ai.attacking.alive and ship.ai.attacking != self.target and self.inRange( ship, turret, pos, ship.ai.attacking ): # test if main target is in range
+        
+        ## test if main target is in range
+        if ship.ai.attacking and ship.ai.attacking.alive and ship.ai.attacking != self.target and self.objectInRange( ship, turret, pos, ship.ai.attacking ): 
             att = self.getAngleToTarget( ship, turret, pos, ship.ai.attacking )
             if self.angleInRange( ship, turret, att ):
                 self.target = ship.ai.attacking
 
-        addGfxs = []
-        if self.target and self.inRange( ship, turret, pos, self.target ): # already have a target, previous or super
+        ## already have a target, previous or super
+        if self.target and self.objectInRange( ship, turret, pos, self.target ): 
             att = self.getAngleToTarget( ship, turret, pos, self.target )
             if self.angleInRange( ship, turret, att ):
                 self.angleToTarget = self.rTarget = att
@@ -487,10 +489,11 @@ class AiTurret:
       #        else:
       #          self.rTarget = turret.stats.maxAngle
 
-        if not self.target: # still doesn't have a target
+        ## return to default position
+        if not self.target:
             self.angleToTarget = self.rTarget = turret.stats.defaultAngle
-
         
+        ## turn turret
         angleD = angleDiff(self.rTarget, turret.rr)
         if fabs( angleD ) > turret.install.stats.turretSpeed:
             if angleD < 0:
@@ -500,7 +503,7 @@ class AiTurret:
         else:
             turret.rr = self.rTarget
 
-        return ( [], [], addGfxs )
+        return ( [], [], [] )
 
     def getAngleToTarget( self, ship, turret, pos, target ):
         if turret.weapon.stats.speed == 0: 
@@ -520,14 +523,14 @@ class AiTurret:
 
          angle = angle % (2*pi)
          if turret.stats.maxAngle < turret.stats.minAngle:
-            return angle >= turret.stats.maxAngle or angle <= turret.stats.minAngle
+            return not (angle >= turret.stats.maxAngle and angle <= turret.stats.minAngle)
          else:
             return angle <= turret.stats.maxAngle and angle >= turret.stats.minAngle
 
     def distInRange( self, ship, turret, dist ):
         return dist <= turret.weapon.stats.maxRange and dist >= turret.weapon.stats.minRange
 
-    def inRange( self, ship, turret, pos, target ):
+    def objectInRange( self, ship, turret, pos, target ):
         dist = distLowerThanReturn( pos, (target.xp, target.yp), turret.weapon.stats.maxRange+target.stats.maxRadius)
         if dist:
             return dist >= turret.weapon.stats.minRange
@@ -537,9 +540,21 @@ class AiTurret:
 class AiWeaponTurret( AiTurret ):
     def doTurn( self, ship, turret, game, attack):
 
+        ## remove dead target
         if self.target and not self.target.alive:
             self.target = None
-
+            
+        ## check if target still in range
+        if self.target:
+            pos = ship.getTurretPos( turret )
+            if not self.objectInRange( ship, turret, pos, self.target ):
+                self.target = None
+            else:
+                att = self.getAngleToTarget( ship, turret, pos, self.target )
+                if not self.angleInRange(  ship, turret, att ):
+                    self.target = None
+                    
+        ## find new target
         if not self.target and self.foundNothingAt < game.tick: #  and attack: # attack: #-config.fps/2: # doesn't have a target, non or out of range
          #   posTargets = []
             bestObj = None
@@ -547,9 +562,9 @@ class AiWeaponTurret( AiTurret ):
             pos = ship.getTurretPos( turret )
             foundSomethingClose = False
             for obj in game.objects:
-                if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and obj.ai and obj.ai.attacking and game.getRelationBetween( obj.ai.attacking.player, ship.player ) < 0 and self.inRange( ship, turret, pos, obj ):
+                if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and obj.ai and obj.ai.attacking and obj.ai.attacking.player and game.getRelationBetween( obj.ai.attacking.player, ship.player ) < 0 and self.objectInRange( ship, turret, pos, obj ):
                    att = self.getAngleToTarget( ship, turret, pos, obj )
-                   foundSomethingClose = False
+                   foundSomethingClose = True
                    if self.angleInRange(  ship, turret, att ) and fabs( angleDiff( turret.rr, att )) < bestAngle:
                          bestObj = obj
 
@@ -562,28 +577,39 @@ class AiWeaponTurret( AiTurret ):
               else:
                 self.foundNothingAt = game.tick+config.fps/3
 
-        if not self.target: # still doesn't have a target
-            self.angleToTarget = self.rTarget = turret.stats.defaultAngle
-
+        ## return to default position
+      #  if not self.target: # still doesn't have a target
+      #      self.angleToTarget = self.rTarget = turret.stats.defaultAngle
 
         ( ao0, ro0, ag0 ) = AiTurret.doTurn( self, ship, turret, game, attack)
 
         if self.target and turret.weapon.canFire( ship, turret, game ):
-          if isinstance( turret.weapon, MissileWeaponTurret ):
-                dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
-                if dist >= turret.weapon.stats.minRange and dist-self.target.stats.maxRadius <= turret.weapon.stats.maxRange:
-                    ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, self.target )
-                    ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
-          else:
-            angleD1 = angleDiff(self.angleToTarget, turret.rr)
-            if fabs(angleD1) < pi/18: # * turret.weapon.stats.certainty/100:
-                dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
-                if dist >= turret.weapon.stats.minRange and dist-self.target.stats.maxRadius <= turret.weapon.stats.maxRange:
-                    ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, self.target )
-                    ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
+            ( ao1, ro1, ag1 ) = self.fireAtWill( ship, turret, game )
+            ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
 
-        return  ( ao0, ro0, ag0 )
+        return ( ao0, ro0, ag0 )
 
+    def fireAtWill( self, ship, turret, game ):
+        if isinstance( turret.weapon, LaserWeaponTurret ):
+            angleError = pi/8
+        else:
+            angleError = pi/16
+            
+        if angleError >= 2*pi or fabs(angleDiff(self.angleToTarget, turret.rr)) < angleError: # * turret.weapon.stats.certainty/100:
+            dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
+            if dist >= turret.weapon.stats.minRange and dist-self.target.stats.maxRadius <= turret.weapon.stats.maxRange:
+                return turret.weapon.fire( ship, turret, game, self.target )
+        return ([],[],[])
+        
+        
+class AiWeaponTurretStable( AiWeaponTurret ):
+    def fireAtWill( self, ship, turret, game ):
+        dist = distBetween( ship.getTurretPos( turret ), (self.target.xp, self.target.yp) )
+        if dist >= turret.weapon.stats.minRange and dist-self.target.stats.maxRadius <= turret.weapon.stats.maxRange:
+            return turret.weapon.fire( ship, turret, game, self.target )
+        else:
+            return ([],[],[])
+        
 class AiSpecialMissileTurret( AiTurret ):
     def doTurn( self, ship, turret, game, attack):
         ( ao0, ro0, ag0 ) = AiTurret.doTurn( self, ship, turret, game, attack)

@@ -100,16 +100,18 @@ class GfxExhaust( GfxFragment ):
         return GfxFragment.doTurn( self )
 
 class GfxLightning( Gfx ):
-    def __init__( self, (xp, yp), z, (xd,yd), strength=1 ):
+    def __init__( self, (xp, yp), z, (xd,yd), laserWidth=1, color=0, sound=ids.S_EX_JUMP, delai=0 ):
         self.xp = xp
         self.yp = yp
         self.z = z
         self.xd = xd
         self.yd = yd
-        self.width = width
+    #    self.width = width
         self.color = color
-        self.strength = strength
+        self.strength = laserWidth
         self.maxRadius = 10
+        self.sound = sound
+        self.delai = delai
 
     def doTurn( self ):
         Gfx.doTurn( self )

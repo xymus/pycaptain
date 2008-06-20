@@ -134,23 +134,22 @@ class MenuShips( ControlFrame ):
         self.display.finalizeDraw()
 
     def getInputs( self ):
-        (quit,self.inputs) = self.display.getInputs( self.inputs )
-        self.quit = self.quit or quit
+#        (quit,self.inputs) = self.display.getInputs( self.inputs )
+#        self.quit = self.quit or quit
+#
+#        if self.inputs.mouseUpped:
+#            for control in self.controls:
+#                if control.hits( self.inputs.mouseUpAt ):
+#                    self.focus = control
+#                    break
+#
+#        if self.inputs.keys:
+#          for k in self.inputs.keys:
+#            self.keyInput( k[0], k[1] )
 
-        if self.inputs.mouseUpped:
-            for control in self.controls:
-                if control.hits( self.inputs.mouseUpAt ):
-                    self.focus = control
-                    break
-
-        if self.inputs.keys:
-          for k in self.inputs.keys:
-            self.keyInput( k[0], k[1] )
+        self.quit = self.manageInputs( self.display ) or self.quit
 
         choice = self.choice
         self.choice = None
         return self.quit, choice
-
-
-
 

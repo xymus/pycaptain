@@ -11,7 +11,7 @@ from common import comms
 from common import config
 
 class Server:
-    def __init__( self, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None ):
+    def __init__( self, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network ):
         # TODO implement private, port
         
         self.updatingPlayer = {}
@@ -19,6 +19,7 @@ class Server:
         self.private = private        
         self.force = force
         self.port = port
+        self.networkType = networkType
         if adminPassword:
             self.adminPassword = md5(adminPassword).hexdigest()
         else:
@@ -27,7 +28,11 @@ class Server:
 
         self.shutdown = False
         self.network = None
+      #  try:
         exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
+      #  except ImportError:
+      #      print ""
+            
         self.game = Game( Scenario )
         self.path = config.defaultSavePath
  
@@ -36,9 +41,9 @@ class Server:
 
     #  self.game.generateWorld()
 
-      self.network = Network( self.game, self.addresses, config.port, comms.version, self.adminPassword )
+      self.network = self.networkType( self.game, self.addresses, config.port, comms.version, self.adminPassword )
 
-      if not self.network.socketsOpened and not self.force:
+      if not self.network.listening and not self.force:
           print "Failed to open any sockets, shutdown"
           self.shutdown = True
       else:

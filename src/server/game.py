@@ -144,6 +144,15 @@ class Game:
             cobj.uid = k
             if obj == player.flagship:
                 cobj.relation = ids.U_FLAGSHIP
+            # missile, sun or blackhole
+            elif player.flagship and ( \
+                    isinstance( obj, Mine ) or \
+                    isinstance( obj, NukeMissile ) or \
+                    isinstance( obj, PulseMissile ) ):
+                    # TODO apply sun and black hole rule, doewn't work for now because astres are sent seperatly
+                  #  (isinstance( obj, Sun ) and utils.distLowerThanObjects( player.flagship, obj, obj.stats.damageRadius) or \
+                  #  (isinstance( obj, BlackHole ) and utils.distLowerThanObjects( player.flagship, obj, obj.stats.gravitationalRadius ) ) ) ):
+                cobj.relation = ids.U_DEADLY
             elif obj.player == player:
                 cobj.relation = ids.U_OWN
             elif obj.stats.orbitable:
@@ -344,7 +353,7 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
       if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
         self.scenario.spawn( self, player, shipId )
       else:
-          raise Exception( "giveShip aborted, already has ship (%s) or selected ship unplayable (%s)." % (not player.flagshipi, player.points >= stats.PlayableShips[ shipId ].points)  )
+          raise Exception( "giveShip aborted, already has ship (%s) or selected ship unplayable (%s)." % (not player.flagship, player.points >= stats.PlayableShips[ shipId ].points)  )
 
     def addPlayer( self, player ):
         self.relations[ player ] = {}

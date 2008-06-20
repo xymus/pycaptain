@@ -34,6 +34,7 @@ class Network:
         self.updating = {}
 
         self.socketsOpened = [] 
+        self.listening = False
         for address in addresses:
           try:
             socket = SocketType()
@@ -44,6 +45,7 @@ class Network:
             print "opened socket on %s:%i" % (address,port)
             self.sockets.append( socket )
             self.socketsOpened.append( address )
+            self.listening = True
 
             tSocket = Thread( name="socket on %s:%i"%(address,port), target=self.fManageSocket, args=(socket,) )
             tSocket.start()

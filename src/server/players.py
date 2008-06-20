@@ -1,10 +1,8 @@
 from random import random, choice, randint
 from math import sin, cos, pi
 
-#from ships import FlagShip
 from common.comms import COInput
 from common.orders import *
-
 from common import config
 from common import utils
 import stats
@@ -14,18 +12,10 @@ class Player:
     def __init__(self, race, name):
         self.name = name
         self.race = race
-        self._points = 0
+        self.points = 0
 
     def doTurn( self, game ):
         pass
-
-    def __getPoints( self ):
-        print "getting points"
-        return self._points
-    def __setPoints( self, value ):
-        self._points = value
-        print "made points virtual"
-    points = property( fget=__getPoints, fset=__setPoints )
 
 class Human( Player ):
     def __init__(self, race, username="", password=""):
@@ -37,15 +27,6 @@ class Human( Player ):
         self.inputs = COInput()
         self.online = True
         self.inPlay = False
-
-    def __getPoints( self ):
-        print "getting points"
-        return self._points
-    def __setPoints( self, value ):
-        self.needToUpdatePossibles = True
-        print "made points", value
-        self._points = value
-    points = property( fget=__getPoints, fset=__setPoints )
 
     def doTurn( self, game ):
         if self.flagship:
@@ -107,23 +88,31 @@ class Computer( Player ):
 
     def manageFagship( self, ship, game ):
             if not game.tick%50:
-              for k in ship.ai.launching:
-                if k == ids.S_HARVESTER:
-                    ship.ai.launching[ k ] = True
+                ## activated turrets
+                for turret in ship.turrets:
+                    turret.activated = True
+            
+                ## launch harvesters
+                for k in ship.ai.launching:
+                    if isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
+                        ship.ai.launching[ k ] = True
 
             if ship.ai.attacking:
+                ## launch fighters
                 for k in ship.ai.launching:
-                    if k != ids.S_HARVESTER:
+                    if not isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
                         ship.ai.launching[ k ] = True
 
                 dist = (ship.stats.maxRadius + ship.ai.attacking.stats.maxRadius)*1.5
                 angle = utils.angleBetweenObjects( ship.ai.attacking, ship )+pi/8
              #   angle = 2*pi*random()
+                ## evasion maneuver
                 ship.ai.goTo( ship, (ship.ai.attacking.xp+cos(angle)*dist, ship.ai.attacking.yp+sin(angle)*dist) )
 
+            ## recall fighters when not in combat
             elif not game.tick%(config.fps*10):
                 for k in ship.ai.launching:
-                    if k != ids.S_HARVESTER:
+                    if not isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
                         ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
                 
                 

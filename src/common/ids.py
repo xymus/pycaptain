@@ -117,6 +117,12 @@ W_OMNI_LASER_2          = 178
 W_SUBSPACE_WAVE_0       = 179
 W_SUBSPACE_WAVE_1       = 180
 
+W_NOMAD_REPEATER        = 181
+W_NOMAD_CANNON           = 182
+W_DISCHARGER_0          = 183
+W_DISCHARGER_1          = 184
+W_NOMAD_MISSILE         = 185
+
 ### bullets / projectiles
 B_BULLET_0	= 201
 B_BOMB_0	= 202
@@ -179,6 +185,15 @@ T_SAIL_2        = 365
 
 # ai's Ts
 T_AI_MISSILE_0	= 370
+T_AI_MISSILE_1	= 371
+T_AI_MISSILE_2	= 372
+T_AI_MISSILE_3	= 373
+T_AI_FLAK_0	    = 374
+T_AI_FLAK_1	    = 375
+T_AI_FLAK_2	    = 376
+T_AI_FLAK_3	    = 377
+T_AI_OMNI_LASER_0	= 378
+T_AI_OMNI_LASER_1	= 379
 
 # extra's Ts
 T_ROCK_THROWER_0	= 380
@@ -197,25 +212,41 @@ T_OMNI_LASER_0          = 396
 T_OMNI_LASER_1          = 397
 T_OMNI_LASER_2          = 398
 T_SUBSPACE_WAVE_0       = 399
-T_SUBSPACE_WAVE_1       = 389 # TODO
+T_SUBSPACE_WAVE_1       = 400 # TODO
+
+# Nomad's
+T_DISCHARGER_0          = 410
+T_DISCHARGER_1          = 411
+T_REPEATER_0          = 412
+T_REPEATER_1          = 413
+T_REPEATER_2          = 414
+T_REPEATER_3          = 415
+T_NOMAD_CANNON_0          = 416
+T_NOMAD_CANNON_1          = 417
+T_NOMAD_CANNON_2          = 418
+T_NOMAD_MISSILE_0          = 419
+T_NOMAD_MISSILE_1          = 420
+T_NOMAD_SUCKER_0          = 421
+T_NOMAD_SUCKER_1          = 422
+T_NOMAD_SUCKER_2          = 423
 
 ### Turret AI type
 # ?why isn't it the class passed directly as argument of the stats? ...there must be a reason...
-TA_COMBAT_STABLE 	= 400
-TA_COMBAT_ROTATING 	= 401
-TA_ROTATING 		= 402
-TA_SOLAR 		= 403
-TA_HARVESTER 		= 404
-TA_MISSILE_SPECIAL 	= 405
-TA_TARGET		= 406
+TA_COMBAT_STABLE 	= 450
+TA_COMBAT_ROTATING 	= 451
+TA_ROTATING 		= 452
+TA_SOLAR 		= 453
+TA_HARVESTER 		= 454
+TA_MISSILE_SPECIAL 	= 455
+TA_TARGET		= 456
 
 ### Weapon Type
 ## Allows build of the correct inheritance of Weapon
-WT_LASER		= 410
-WT_MASS			= 411
-WT_BOMB			= 412
-WT_MISSILE		= 413
-WT_MISSILE_SPECIAL 	= 414
+WT_LASER		= 460
+WT_MASS			= 461
+WT_BOMB			= 462
+WT_MISSILE		= 463
+WT_MISSILE_SPECIAL 	= 464
 
 ### Orders
 O_MOVE			= 500
@@ -249,6 +280,7 @@ U_ENNEMY	= 604
 U_RESOURCE	= 605
 U_ORBITABLE	= 606
 U_NEUTRAL	= 607
+U_DEADLY        = 608
 
 ### Astres type
 A_SUN		= 200

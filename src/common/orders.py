@@ -102,4 +102,3 @@ class OrderSelfDestruct( Order ):
 #        self.other = other
 #        self.level = level
 
-

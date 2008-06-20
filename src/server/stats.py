@@ -4,6 +4,7 @@ from math import pi, atan2, hypot
 
 from common import ids
 from common import config
+from common import gfxs
 
 class ObjectStats:
     def __init__(self,id,radius):
@@ -20,7 +21,7 @@ class OrbitableStats( ObjectStats ):
 class WeaponStats:
    def __init__(self,id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType, \
            projectile=None,projectileTtl=5*config.fps, laserWidth=None, \
-           soundAtFire=ids.S_EX_FIRE, soundAtHit=ids.S_EX_FIRE, gfxAtFire=ids.G_EXPLOSION, gfxAtHit=ids.G_EXPLOSION \
+           soundAtFire=ids.S_EX_FIRE, soundAtHit=ids.S_EX_FIRE, gfxAtFire=None, gfxAtHit=ids.G_EXPLOSION \
            ): # id not for img in this only case
         self.img = id
         self.minRange = minRange
@@ -39,6 +40,10 @@ class WeaponStats:
         self.soundAtHit = soundAtHit
         self.gfxAtFire = gfxAtFire
         self.gfxAtHit = gfxAtHit
+
+#class BombWeaponStats( WeaponStats ):
+#    self.explosionRange = explosionRange
+#    self.pulseLength = pulseLength
 
 ## ships
 class ShipStats( ObjectStats ):
@@ -255,10 +260,10 @@ B_WAVE_0 =      ObjectStats( ids.B_WAVE_0, 7 )
 B_WAVE_1 =      ObjectStats( ids.B_WAVE_1, 7 )
 
 # id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType,projectile=None
-W_LASER_SR = 	WeaponStats( ids.W_LASER_SR, 30,250,20, 1,0, 1,0, ids.WT_LASER, laserWidth=1) #, laserColor=ids.RED)
+W_LASER_SR = 	WeaponStats( ids.W_LASER_SR, 30,250,20, 1,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=1) #, laserColor=ids.RED)
 # W_LASER_SR_FIGHTER = 	WeaponStats( ids.W_LASER_SR, 30,250,20, 1,0, 1,0, ids.WT_LASER)
-W_LASER_MR_0 = 	WeaponStats( ids.W_LASER_MR_0, 50,400,50, 3,0, 1,0, ids.WT_LASER, laserWidth=2 ) # , laserColor=ids.RED) # 0.5*config.fps
-W_LASER_MR_1 = 	WeaponStats( ids.W_LASER_MR_1, 50,500,50, 5,0, 1,0, ids.WT_LASER, laserWidth=3 ) # , laserColor=ids.RED) # 0.5*config.fps
+W_LASER_MR_0 = 	WeaponStats( ids.W_LASER_MR_0, 50,400,50, 3,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=2 ) # , laserColor=ids.RED) # 0.5*config.fps
+W_LASER_MR_1 = 	WeaponStats( ids.W_LASER_MR_1, 50,500,50, 5,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=3 ) # , laserColor=ids.RED) # 0.5*config.fps
 
 W_MASS_SR_0 = 	WeaponStats( ids.W_MASS_SR, 50, 300, 20, 0,3, 0.3*config.fps,15, ids.WT_MASS, projectile=BULLET_0)
 W_MASS_SR_1 = 	WeaponStats( ids.W_MASS_SR, 50, 300, 20, 0,3, 0.2*config.fps,15, ids.WT_MASS, projectile=BULLET_0)
@@ -291,12 +296,16 @@ W_AI_MISSILE = 		WeaponStats( ids.W_AI_MISSILE, 70, 600, 0, 10,5, 1*config.fps,1
 W_ESPHERE_0 = 	WeaponStats( ids.W_ESPHERE_0, 50, 500, 50, 10,5, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
 #W_ESPHERE_1 = 	WeaponStats( ids.W_ESPHERE_1, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
 #W_ESPHERE_2 = 	WeaponStats( ids.W_ESPHERE_2, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_MASS, projectile=B_ESPHERE)
-W_BURST_LASER_0 = 	WeaponStats( ids.W_BURST_LASER_0, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_LASER, laserWidth=2 )
-W_OMNI_LASER_0 = 	WeaponStats( ids.W_OMNI_LASER_0, 50, 500, 50, 2,0, 1,10, ids.WT_LASER, laserWidth=4 )
-W_OMNI_LASER_1 = 	WeaponStats( ids.W_OMNI_LASER_1, 50, 500, 50, 3,0, 1,10, ids.WT_LASER, laserWidth=5 )
-W_OMNI_LASER_2 = 	WeaponStats( ids.W_OMNI_LASER_2, 50, 500, 50, 4,0, 1,10, ids.WT_LASER, laserWidth=6 )
+W_BURST_LASER_0 = 	WeaponStats( ids.W_BURST_LASER_0, 50, 500, 50, 10,0, 1*config.fps,10, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=2 )
+W_OMNI_LASER_0 = 	WeaponStats( ids.W_OMNI_LASER_0, 50, 500, 50, 2,0, 1,10, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=4 )
+W_OMNI_LASER_1 = 	WeaponStats( ids.W_OMNI_LASER_1, 50, 500, 50, 3,0, 1,10, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=5 )
+W_OMNI_LASER_2 = 	WeaponStats( ids.W_OMNI_LASER_2, 50, 500, 50, 4,0, 1,10, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=6 )
 W_SUBSPACE_WAVE_0 = 	WeaponStats( ids.W_SUBSPACE_WAVE_0, 50, 500, 50, 0,10, 1*config.fps,5, ids.WT_MASS, projectile=B_WAVE_0, projectileTtl=5*config.fps)
 W_SUBSPACE_WAVE_1 = 	WeaponStats( ids.W_SUBSPACE_WAVE_1, 50, 500, 50, 0,20, 1*config.fps,5, ids.WT_MASS, projectile=B_WAVE_1, projectileTtl=5*config.fps)
+
+# nomad
+W_DISCHARGER_0 = 	WeaponStats( ids.W_DISCHARGER_0, 50, 400, 50, 3,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLightning, laserWidth=2 )
+W_DISCHARGER_1 = 	WeaponStats( ids.W_DISCHARGER_1, 50, 400, 50, 3,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLightning, laserWidth=2 )
 
 ASTEROIDS =	[ OrbitableStats( ids.A_0, 46 ), OrbitableStats( ids.A_1, 41 ), OrbitableStats( ids.A_2, 26 ), OrbitableStats( ids.A_3, 37 ), OrbitableStats( ids.A_4, 24 ) ] #[ OrbitableStats( 0, 10 ), OrbitableStats( 1, 20 ), OrbitableStats( 2, 30 ) ], \
                   #[ OrbitableStats( 3, 10 ), OrbitableStats( 4, 20 ), OrbitableStats( 5, 30 ) ], \
@@ -336,7 +345,7 @@ FIGHTER =	SingleWeaponShipStats( ids.S_FIGHTER, 15, 0.6, 0, 0.012, 20, 20, W_MAS
 BOMBER =	SingleWeaponShipStats( ids.S_BOMBER, 15, 0.5, 0, 0.010, 30, 25, W_BOMB_0, [ids.S_BOMBER], None, [(15,pi)] )
 # FIGHTER =	SingleWeaponShipStats( ids.S_FIGHTER, 10, 0.6, 0, 0.012, 15, 10, W_LASER_SR )
 
-FLAGSHIP_0 =	Flagship( ids.S_FLAGSHIP_0, 80, 0.1, 0.05, 0.002, 350, 500,
+FLAGSHIP_0 =	Flagship( ids.S_FLAGSHIP_0, 80, 0.13, 0.05, 0.002, 350, 500,
                 [TurretStats(53, 8, 5*pi/3,2*pi/3, True),
                  TurretStats(53,-8, 4*pi/3,1*pi/3, True),
                  TurretStats(13,16, 0,pi, True),
@@ -344,8 +353,8 @@ FLAGSHIP_0 =	Flagship( ids.S_FLAGSHIP_0, 80, 0.1, 0.05, 0.002, 350, 500,
                  TurretStats(-20.5,41.5, 0,4*pi/3, True),
                  TurretStats(-20.5,-41.5, 2*pi/3,2*pi, True),
                  ],
-                 1000, 1000, 500, 500, 0.4*config.fps, 2500, [ids.F_FLAGSHIP_0], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)] ) 
-FLAGSHIP_1 =	Flagship( ids.S_FLAGSHIP_1, 100, 0.1, 0.05, 0.002, 300, 500, 
+                 1000, 1000, 500, 500, 0.8*config.fps, 2500, [ids.F_FLAGSHIP_0], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)] ) 
+FLAGSHIP_1 =	Flagship( ids.S_FLAGSHIP_1, 100, 0.11, 0.05, 0.002, 300, 500, 
                  [TurretStats(40.5,11.5,pi/4,3*pi/4, True), # up
                  TurretStats(19,11.5,pi/4,3*pi/4, True),
                  TurretStats(0.5,11.5,pi/4,3*pi/4, True),
@@ -357,13 +366,13 @@ FLAGSHIP_1 =	Flagship( ids.S_FLAGSHIP_1, 100, 0.1, 0.05, 0.002, 300, 500,
                  TurretStats(-45.5,41.5, 0,4*pi/3, True), # wings
                  TurretStats(-45.5,-41.5, 2*pi/3,2*pi, True) ],
                 3000, 3000, 300, 500, 0.7*config.fps, 2500, [ids.F_FLAGSHIP_1], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)],
-                hangars=[(RPos(0, 0 ), pi/2), (RPos(0, 0 ), 3*pi/2)] )
+                hangars=[(RPos(0, 0 ), pi/2), (RPos(0, 0 ), 3*pi/2)], civilianBonus=750 )
 FLAGSHIP_2 =	Flagship( ids.S_FLAGSHIP_2, 70, 0.1, 0.05, 0.002, 400, 500, 
                 [TurretStats(8,21,0,pi, True),
                  TurretStats(8,-21,pi,2*pi, True),
                  TurretStats(-43,22,pi/3,4*pi/3, True),
                  TurretStats(-43,-22,2*pi/3,5*pi/3, True)], 
-                3000, 3000, 1000, 500, 0.2*config.fps, 2500, [ids.F_FLAGSHIP_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)] )
+                3000, 3000, 1000, 500, 0.6*config.fps, 2500, [ids.F_FLAGSHIP_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)] )
 
 
 ORBITALBASE =	Flagship( ids.S_ORBITALBASE, 45, 0, 0, 0.002, 800, 1000,
@@ -373,16 +382,14 @@ ORBITALBASE =	Flagship( ids.S_ORBITALBASE, 45, 0, 0, 0.002, 800, 1000,
  ## Nomad
 NOMAD_FIGHTER =	SingleWeaponShipStats( ids.S_NOMAD_FIGHTER, 15, 0.6, 0, 0.012, 20, 20, W_MASS_SR_FIGHTER, [ids.S_NOMAD_FIGHTER], None, [(15,pi)] )
 
-NOMAD_FS_0 =	Flagship( ids.S_NOMAD_FS_0, 80, 0.1, 0.05, 0.001, 350, 500,
-                [TurretStats(53, 8, 0,2*pi/3, True),
-                 TurretStats(53,-8, 4*pi/3,2*pi, True),
-                 TurretStats(13,16, 0,pi, True),
-                 TurretStats(13,-16, pi,2*pi, True),
-                 TurretStats(-20.5,41.5, 0,4*pi/3, True),
-                 TurretStats(-20.5,-41.5, 2*pi/3,2*pi, True),
+NOMAD_FS_0 =	Flagship( ids.S_NOMAD_FS_0, 80, 0.09, 0.05, 0.001, 350, 500,
+                [TurretStats(102, 20, 5*pi/3,pi, True),
+                 TurretStats(102,-26, 13*pi/13,pi/3, True),
+                 TurretStats(-100,20, 0,4*pi/3, True),
+                 TurretStats(-100,-20, 2*pi/3,2*pi, True),
                  ],
-                 1000, 1000, 500, 500, 0.4*config.fps, 2500, [ids.S_NOMAD_FS_0], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)] ) 
-NOMAD_FS_1 =	Flagship( ids.S_NOMAD_FS_1, 100, 0.1, 0.05, 0.002, 300, 500, 
+                 3000, 3000, 800, 500, 1*config.fps, 2500, [ids.S_NOMAD_FS_0], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)], civilianBonus=1500 ) 
+NOMAD_FS_1 =	Flagship( ids.S_NOMAD_FS_1, 100, 0.08, 0.05, 0.002, 300, 500, 
                  [TurretStats(40.5,11.5,pi/4,3*pi/4, True), # up
                  TurretStats(19,11.5,pi/4,3*pi/4, True),
                  TurretStats(0.5,11.5,pi/4,3*pi/4, True),
@@ -393,43 +400,45 @@ NOMAD_FS_1 =	Flagship( ids.S_NOMAD_FS_1, 100, 0.1, 0.05, 0.002, 300, 500,
                  TurretStats(-22.5,-11.5,5*pi/4,7*pi/4, True),
                  TurretStats(-45.5,41.5, 0,4*pi/3, True), # wings
                  TurretStats(-45.5,-41.5, 2*pi/3,2*pi, True) ],
-                3000, 3000, 300, 500, 0.7*config.fps, 2500, [ids.S_NOMAD_FS_1], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)],
-                hangars=[(RPos(0, 0 ), pi/2), (RPos(0, 0 ), 3*pi/2)] )
-NOMAD_FS_2 =	Flagship( ids.S_NOMAD_FS_2, 70, 0.1, 0.05, 0.002, 400, 500, 
+                3000, 3000, 300, 500, 0.8*config.fps, 2500, [ids.S_NOMAD_FS_1], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)],
+                hangars=[(RPos(0, 0 ), pi/2), (RPos(0, 0 ), 3*pi/2)], civilianBonus=2000 )
+NOMAD_FS_2 =	Flagship( ids.S_NOMAD_FS_2, 70, 0.08, 0.05, 0.002, 400, 500, 
                 [TurretStats(8,21,0,pi, True),
                  TurretStats(8,-21,pi,2*pi, True),
                  TurretStats(-43,22,pi/3,4*pi/3, True),
                  TurretStats(-43,-22,2*pi/3,5*pi/3, True)], 
-                3000, 3000, 1000, 500, 0.2*config.fps, 2500, [ids.S_NOMAD_FS_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)] )
+                3000, 3000, 1000, 500, 0.6*config.fps, 2500, [ids.S_NOMAD_FS_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)], civilianBonus=2000 )
 NOMAD_BASE =	Flagship( ids.S_NOMAD_BASE, 45, 0, 0, 0.002, 800, 1000,
                 [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
                 1000, 1000, 1000, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [] )
 
 
  ## AIs
-AI_FIGHTER =	SingleWeaponShipStats( ids.S_AI_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, W_LASER_SR, [ids.S_AI_FIGHTER], None, [(8,pi)] )
+AI_FIGHTER =	SingleWeaponShipStats( ids.S_AI_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, W_LASER_SR, [ids.S_AI_FIGHTER], None, [(8,pi)], [RPos(8,0)] )
 AI_BOMBER =	SingleWeaponShipStats( ids.S_AI_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_AI_MISSILE, [ids.S_AI_BOMBER], None, [(8,pi)] )
 
 AI_BASE =	Flagship( ids.S_AI_BASE, 100, 0, 0, 0.002, 400, 1500,
-                [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
+                [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
                 1000, 1000, 1000, 100000, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
-AI_FS_0 =	Flagship( ids.S_AI_FS_0, 100, 0.1, 0.05, 0.002, 300, 800,
-                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
-                1000, 1000, 300, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
-                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
-AI_FS_1 =	Flagship( ids.S_AI_FS_1, 100, 0.1, 0.05, 0.002, 400, 800,
-                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
+AI_FS_0 =	Flagship( ids.S_AI_FS_0, 100, 0, 0, 0.002, 300, 800,
+                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
+                1000, 1000, 300, 100, 0.4*config.fps, 1000, None, [ids.F_AI_0], [],
+                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ],
+                jumpChargeDelay=3*config.fps, jumpRecoverDelay=1*config.fps, civilianBonus=500 )
+AI_FS_1 =	Flagship( ids.S_AI_FS_1, 100, 0, 0, 0.002, 400, 800,
+                [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ], 
                 1000, 1000, 400, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
-                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
-AI_FS_2 =	Flagship( ids.S_AI_FS_2, 100, 0.1, 0.05, 0.002, 500, 800,
-                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ] + \
-                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), False, asAngle=True) for i in xrange( 3 ) ],
-                1000, 1000, 800, 500, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
-                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
+                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ],
+                jumpChargeDelay=3*config.fps, jumpRecoverDelay=1*config.fps, civilianBonus=500 )
+AI_FS_2 =	Flagship( ids.S_AI_FS_2, 100, 0.1, 0.045, 0.002, 500, 800,
+                [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
+                [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
+                1000, 1000, 800, 500, 0.3*config.fps, 1000, None, [ids.F_AI_0], [],
+                [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ], civilianBonus=500 )
 
  ## evolved
 EVOLVED_FIGHTER =	SingleWeaponShipStats( ids.S_EVOLVED_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, W_LASER_SR, [ids.S_EVOLVED_FIGHTER], None, [(8,pi)], weaponPositions=[RPos(0.3,12), RPos(-0.3,12)] )
@@ -437,38 +446,42 @@ EVOLVED_BOMBER =	SingleWeaponShipStats( ids.S_EVOLVED_BOMBER, 8, 0.6, 0, 0.012, 
 
   # id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines
 EVOLVED_FS_0 =  Flagship( ids.S_EVOLVED_FS_0, 125, 0.1, 0.05, 0.001, 300, 800, 
-                [TurretStats(92, 35, 19*pi/12,11*pi/12, True),
-                 TurretStats(92,-35, 13*pi/12,5*pi/12, True),
-                 TurretStats(-82,47, pi/12,5*pi/4, True),
-                 TurretStats(-82,-47,3*pi/4,23*pi/12, True)], 
-                3000, 3000, 400, 500, 0.3*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)] )
+                [TurretStats(84, 33, 19*pi/12,11*pi/12, True),
+                 TurretStats(84,-33, 13*pi/12,5*pi/12, True),
+                 TurretStats(-80,46, pi/12,5*pi/4, True),
+                 TurretStats(-80,-46,3*pi/4,23*pi/12, True)], 
+                3000, 3000, 400, 500, 0.8*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)], civilianBonus=2000 )
 EVOLVED_FS_1 =  Flagship( ids.S_EVOLVED_FS_1, 140, 0.1, 0.04, 0.001, 200, 1000, 
-                [TurretStats(63,-53, pi*6/5,2*pi, True),
-                 TurretStats(23,-53, pi*7/5,pi*9/5, True),
-                 TurretStats(94,47, 0,pi*4/5, True),
-                 TurretStats(53,47, pi*1/5,pi*4/5, True),
-                 TurretStats(114,-6, -pi/2,pi/2, True)], 
-                3000, 3000, 900, 500, 0.3*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)],
-                hangars=[(RPos(-0.14, 44 ), pi/2), (RPos(-0.14, 44 ), pi/-2), (RPos(-0.07, 85 ), pi/2), (RPos(-0.07, 85 ), pi/-2), ] )
-EVOLVED_FS_2 =  Flagship( ids.S_EVOLVED_FS_2, 140, 0.1, 0.04, 0.001, 200, 1200, 
-                [TurretStats(63,-53, pi*6/5,2*pi, True),
-                 TurretStats(23,-53, pi*7/5,pi*9/5, True),
-                 TurretStats(94,47, 0,pi*4/5, True),
-                 TurretStats(53,47, pi*1/5,pi*4/5, True),
-                 TurretStats(114,-6, -pi/2,pi/2, True)], 
-                3000, 3000, 250, 500, 0.3*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)],
+                [TurretStats(102,7, pi*3/2,pi/2, True),
+                 TurretStats(83,-43, 13*pi/12,pi*5/12, True),
+                 TurretStats(43,-43, 13*pi/12,pi*4/5, True),
+                 TurretStats(57,48, pi*21/12,pi*11/12, True),
+                 TurretStats(19,48, pi/12,pi*11/12, True)], 
+                3000, 3000, 900, 500, 0.6*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)],
+                hangars=[(RPos(-0.14, 44 ), pi/2), (RPos(-0.14, 44 ), pi/-2), (RPos(-0.07, 85 ), pi/2), (RPos(-0.07, 85 ), pi/-2), ], civilianBonus=2000 )
+EVOLVED_FS_2 =  Flagship( ids.S_EVOLVED_FS_2, 140, 0.11, 0.04, 0.001, 200, 1200, 
+                [TurretStats(89,-36, pi*17/12,pi*5/12, True),
+                 TurretStats(89,-6,  pi*19/12,pi*9/12, True),
+                 TurretStats(71,-58, pi*13/12,pi*5/12, True),
+                 TurretStats(34,-58, pi*13/12,pi*4/5, True),
+                 TurretStats(57,33,  pi*21/12,pi*11/12, True),
+                 TurretStats(20,33,  pi/12,pi*11/12, True),
+                 TurretStats(-29,-77,pi*11/12,pi/12, True),
+                 TurretStats(-11,47, pi/12,pi*11/12, True),
+                 TurretStats(-43,52, pi/12,pi*13/12, True) ], 
+                3000, 3000, 250, 500, 0.5*config.fps, 2500, None, [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)],
                 hangars=[(RPos(-0.14, 44 ), pi/2), (RPos(-0.14, 44 ), pi/-2), (RPos(-0.07, 85 ), pi/2), (RPos(-0.07, 85 ), pi/-2), ] )
 
  ## extras
 EXTRA_FS_0 =  Flagship( ids.S_EXTRA_FS_0, 70, 0.08, 0.02, 0.002, 1000, 0,  # Asteroid
                 [TurretStats(12,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, True, asAngle=True) for i in xrange( 3 )], 
-                3000, 3000, 400, 500, 0.2*config.fps, 500, [ ids.S_EXTRA_FS_0 ], None, [(70,pi)] ) # TODO
+                3000, 3000, 400, 500, 0.7*config.fps, 500, [ ids.S_EXTRA_FS_0 ], None, [(70,pi)] ) # TODO
 EXTRA_FS_1 =  Flagship( ids.S_EXTRA_FS_1, 70, 0.1, 0.02, 0.004, 2000, 0, # dragon
                 [TurretStats(52,i*pi/12-pi/12, i*pi/12-pi/12-pi/3,i*pi/12-pi/12+pi/3, True, asAngle=True) for i in xrange( 3 )], 
-                3000, 3000, 500, 500, 0.2*config.fps, 750, [ ids.S_EXTRA_FS_1 ], None, [(70,pi)] ) # TODO
+                3000, 3000, 500, 500, 0.6*config.fps, 750, [ ids.S_EXTRA_FS_1 ], None, [(70,pi)] ) # TODO
 EXTRA_FS_2 =  Flagship( ids.S_EXTRA_FS_2, 70, 0.1, 0.02, 0.003, 2000, 0, # dead flagship
                 [TurretStats(30,i*pi*2/4, i*pi*2/4-pi*3/4,i*pi*2/4+pi*3/4, True, asAngle=True) for i in xrange( 4 )], 
-                3000, 3000, 200, 500, 0.2*config.fps, 750, [ ids.S_EXTRA_FS_2 ], None, [(70,pi)] ) # TODO
+                3000, 3000, 200, 500, 0.5*config.fps, 750, [ ids.S_EXTRA_FS_2 ], None, [(70,pi)] ) # TODO
 
 EXTRA_FIGHTER =	SingleWeaponShipStats( ids.S_EXTRA_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, W_EXTRA_FIGHTER, [ids.S_EXTRA_FIGHTER], None, [(8,pi)], weaponPositions=[RPos(0,12)] ) # TODO
 EXTRA_BOMBER =	SingleWeaponShipStats( ids.S_EXTRA_BOMBER, 8, 0.6, 0, 0.012, 20, 20, W_EXTRA_BOMBER, [ids.S_EXTRA_BOMBER], None, [(8,pi)], weaponPositions=[RPos(0,0)] ) # TODO
@@ -522,8 +535,8 @@ T_SPOTLIGHT = 	TurretInstallStats( ids.T_SPOTLIGHT, 0, 70, 3*config.fps, 1,0, 0,
 T_RED_SPOTLIGHT = 	TurretInstallStats( ids.T_RED_SPOTLIGHT, 0, 70, 3*config.fps, 1,0, 0,0, 0.5*config.fps,0.2, ids.TA_HARVESTER, special=ids.S_MINE )
 
 HARVESTER =		HarvesterShipStats( ids.S_HARVESTER, 11, 0.2, 0.1, 0.02, 30, 15, [TurretStats(0,0, 0, 0, False)], 50, [ids.S_HARVESTER], None, [(11,pi)], T_HARVESTER, 600 )
-NOMAD_HARVESTER =		HarvesterShipStats( ids.S_NOMAD_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 600 )
-NOMAD_HARVESTER_1 =		HarvesterShipStats( ids.S_NOMAD_HARVESTER_1, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 900 )
+NOMAD_HARVESTER =		HarvesterShipStats( ids.S_NOMAD_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 60, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 600 )
+NOMAD_HARVESTER_1 =		HarvesterShipStats( ids.S_NOMAD_HARVESTER_1, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(12,0, 0, 0, False), TurretStats(0,0, 0, 0, False), TurretStats(-12,0, 0, 0, False)], 120, [ids.S_HARVESTER], None, [(14,pi)], T_SPOTLIGHT, 900 )
 EVOLVED_HARVESTER =	HarvesterShipStats( ids.S_EVOLVED_HARVESTER, 11, 0.3, 0.2, 0.02, 30, 15, [TurretStats(4,0, 0, 0, False)], 35, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 400 )
 AI_HARVESTER =		HarvesterShipStats( ids.S_AI_HARVESTER, 11, 0.15, 0.1, 0.02, 30, 15, [TurretStats(7,0, 0, 0, False), TurretStats(-7,0, 0, 0, False)], 70, [ids.S_HARVESTER], None, [(11,pi)], T_SPOTLIGHT, 950 ) # TODO I fear that over 1000, harvesters the ship could easily get lost due to logic in ai.AiPilot.goTo
 EXTRA_HARVESTER =	HarvesterShipStats( ids.S_EXTRA_HARVESTER, 11, 0.35, 0.1, 0.02, 30, 15, [TurretStats(12,0, 0, 0, False)], 30, [ids.S_HARVESTER], None, [(11,pi)], T_RED_SPOTLIGHT, 600 )
@@ -535,7 +548,18 @@ T_DRAGON_0 = 	TurretInstallStats( ids.T_DRAGON_0, 0,100,5*config.fps, 0,0, 0,1, 
 T_LARVA_0 = 	TurretInstallStats( ids.T_LARVA_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_LARVA_0,weaponPositions=[RPos(0,0)] )
 
 # ais'
-T_AI_MISSILE_0 = 	TurretInstallStats( ids.T_AI_MISSILE_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE,weaponPositions=[RPos(0,5)] )
+T_AI_FLAK_0 = 	TurretInstallStats( ids.T_AI_FLAK_0, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0, weaponPositions=[RPos(0,20)] )
+T_AI_FLAK_1 = 	TurretInstallStats( ids.T_AI_FLAK_1, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0, weaponPositions=[RPos(0.2,20),RPos(-0.2,20)], upgradeFrom=T_AI_FLAK_0 )
+T_AI_FLAK_2 = 	TurretInstallStats( ids.T_AI_FLAK_2, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0, weaponPositions=[RPos(0.2,20),RPos(0,20),RPos(-0.2,20)], upgradeFrom=T_AI_FLAK_1 )
+T_AI_FLAK_3 = 	TurretInstallStats( ids.T_AI_FLAK_3, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0, weaponPositions=[RPos(0.4,20),RPos(0.2,20),RPos(-0.2,20),RPos(-0.4,20)], upgradeFrom=T_AI_FLAK_2 )
+
+T_AI_OMNI_LASER_0 =       TurretInstallStats( ids.T_AI_OMNI_LASER_0, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_0,weaponPositions=[RPos(0,0)] )
+T_AI_OMNI_LASER_1 =       TurretInstallStats( ids.T_AI_OMNI_LASER_1, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_0,weaponPositions=[RPos(-6,pi/2),RPos(6,pi/2)],upgradeFrom=T_AI_OMNI_LASER_0 )
+
+T_AI_MISSILE_0 = 	TurretInstallStats( ids.T_AI_MISSILE_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE, weaponPositions=[RPos(0,5)] )
+T_AI_MISSILE_1 = 	TurretInstallStats( ids.T_AI_MISSILE_1, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE, weaponPositions=[RPos(0.2,5),RPos(-0.2,5)], upgradeFrom=T_AI_MISSILE_0 )
+T_AI_MISSILE_2 = 	TurretInstallStats( ids.T_AI_MISSILE_2, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE, weaponPositions=[RPos(0.2,5),RPos(0,5),RPos(-0.2,5)], upgradeFrom=T_AI_MISSILE_1 )
+T_AI_MISSILE_3 = 	TurretInstallStats( ids.T_AI_MISSILE_3, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_AI_MISSILE, weaponPositions=[RPos(0.4,5),RPos(0.2,5),RPos(-0.2,5),RPos(-0.4,5)], upgradeFrom=T_AI_MISSILE_2 )
 
 # evolved's
 T_ESPHERE_0 =       TurretInstallStats( ids.T_ESPHERE_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_ESPHERE_0,weaponPositions=[RPos(0,0)] )
@@ -549,6 +573,23 @@ T_OMNI_LASER_1 =       TurretInstallStats( ids.T_OMNI_LASER_1, 0,100,10*config.f
 T_OMNI_LASER_2 =       TurretInstallStats( ids.T_OMNI_LASER_2, 0,100,10*config.fps, 0,0, 2,0, 1, 0.05, ids.TA_COMBAT_STABLE, weapon=W_OMNI_LASER_2,weaponPositions=[RPos(0,0)],upgradeFrom=T_OMNI_LASER_1 )
 T_SUBSPACE_WAVE_0 =       TurretInstallStats( ids.T_SUBSPACE_WAVE_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_SUBSPACE_WAVE_0,weaponPositions=[RPos(0,5)] )
 T_SUBSPACE_WAVE_1 =       TurretInstallStats( ids.T_SUBSPACE_WAVE_1, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=W_SUBSPACE_WAVE_1,weaponPositions=[RPos(0,5)],upgradeFrom=T_SUBSPACE_WAVE_0 )
+
+# Nomad's
+T_DISCHARGER_0 = 	TurretInstallStats( ids.T_DISCHARGER_0, 0,250,10*config.fps, 0,0, 0.5,0, 1*config.fps,0.01, ids.TA_COMBAT_ROTATING, weapon=W_DISCHARGER_0,weaponPositions=[RPos(0,33)] )
+T_DISCHARGER_1 = 	TurretInstallStats( ids.T_DISCHARGER_1, 0,250,10*config.fps, 0,0, 0.5,0, 1 *config.fps,0.015, ids.TA_COMBAT_ROTATING, weapon=W_DISCHARGER_1,weaponPositions=[RPos(0,33)],upgradeFrom=T_DISCHARGER_0 )
+
+T_REPEATER_0 = 	TurretInstallStats( ids.T_REPEATER_0, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0,weaponPositions=[RPos(0,15)] )
+T_REPEATER_1 = 	TurretInstallStats( ids.T_REPEATER_1, 0,100,15*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0,weaponPositions=[RPos(0.2,15), RPos(-0.2,15)], upgradeFrom=T_REPEATER_0 )
+T_REPEATER_2 = 	TurretInstallStats( ids.T_REPEATER_2, 0,100,45*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0,weaponPositions=[RPos(0.3,15), RPos(0,15), RPos(-0.3,15)], upgradeFrom=T_REPEATER_1 )
+T_REPEATER_3 = 	TurretInstallStats( ids.T_REPEATER_3, 0,100,45*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=W_MASS_SR_0,weaponPositions=[RPos(0.4,15), RPos(0.2,15), RPos(-0.2,15), RPos(-0.4,15) ], upgradeFrom=T_REPEATER_2 )
+
+T_NOMAD_CANNON_0 = 	TurretInstallStats( ids.T_NOMAD_CANNON_0, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0,22)] )
+T_NOMAD_CANNON_1 = 	TurretInstallStats( ids.T_NOMAD_CANNON_1, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0.3,22),RPos(-0.3,22)], upgradeFrom=T_NOMAD_CANNON_0 )
+T_NOMAD_CANNON_2 = 	TurretInstallStats( ids.T_NOMAD_CANNON_2, 0,200,10*config.fps, 0,0, 0,1, 0.8*config.fps,0.02, ids.TA_COMBAT_ROTATING, weapon=W_MASS_MR,weaponPositions=[RPos(0.3,22),RPos(-0.3,22)], upgradeFrom=T_NOMAD_CANNON_1 )
+
+T_NOMAD_MISSILE_0 = 	TurretInstallStats( ids.T_NOMAD_MISSILE_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_MISSILE,weaponPositions=[RPos(0,10)] )
+T_NOMAD_MISSILE_1 = 	TurretInstallStats( ids.T_NOMAD_MISSILE_1, 0,350,60*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=W_MISSILE,weaponPositions=[RPos(0.5,10),RPos(-0.5,10)], upgradeFrom=T_NOMAD_MISSILE_0 )
+
 
 R_HUMAN = 	RaceStats( ids.R_HUMAN,
 [FLAGSHIP_0, FLAGSHIP_1, FLAGSHIP_2 ], 
@@ -565,9 +606,11 @@ R_AI = 		RaceStats( ids.R_AI,
 [], 
 [ids.M_NUKE, ids.M_MINER, ids.M_COUNTER, ids.M_AI], 
 [AI_HARVESTER, AI_FIGHTER, AI_BOMBER],
-[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
-T_AI_MISSILE_0,
+[#T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
+#T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
+T_AI_FLAK_0, T_AI_FLAK_1, T_AI_FLAK_2, T_AI_FLAK_3, 
+T_AI_OMNI_LASER_1, T_AI_OMNI_LASER_0,
+T_AI_MISSILE_3, T_AI_MISSILE_2, T_AI_MISSILE_1, T_AI_MISSILE_0,
 T_NUKE,T_MINER,
 T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
 AI_HARVESTER )
@@ -575,13 +618,14 @@ AI_HARVESTER )
 R_NOMAD = 	RaceStats( ids.R_NOMAD, 
 [FLAGSHIP_0, FLAGSHIP_1, FLAGSHIP_2 ], 
 [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
-[HARVESTER, FIGHTER, BOMBER ], 
-[T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
-T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
-T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
-T_NUKE, T_PULSE,T_MINER,
-T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER ],
-HARVESTER  )
+[NOMAD_HARVESTER, NOMAD_HARVESTER_1, NOMAD_FIGHTER ], 
+[T_REPEATER_3, T_REPEATER_2, T_REPEATER_1, T_REPEATER_0, 
+T_NOMAD_CANNON_2, T_NOMAD_CANNON_1, T_NOMAD_CANNON_0,
+T_NOMAD_MISSILE_1, T_NOMAD_MISSILE_0,
+T_NUKE, T_PULSE,
+T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SUCKER, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER,
+T_DISCHARGER_1, T_DISCHARGER_0 ],
+NOMAD_HARVESTER  )
 
 R_EXTRA = 	RaceStats( ids.R_EXTRA, 
 [], 
@@ -596,8 +640,8 @@ R_EVOLVED = 	RaceStats( ids.R_EVOLVED,
 [EVOLVED_HARVESTER, EVOLVED_FIGHTER, EVOLVED_BOMBER],
 [#T_LASER_SR_1, T_LASER_SR_0, T_LASER_MR_1, T_LASER_MR_0,
 #T_MASS_SR_2, T_MASS_SR_1, T_MASS_SR_0, T_MASS_LR, T_MASS_MR_1, T_MASS_MR_0,
-T_MISSILE_2, T_MISSILE_1, T_MISSILE_0, 
-T_NUKE, T_PULSE,T_MINER,
+T_MISSILE_1, T_MISSILE_0, 
+T_PULSE,T_MINER,
 T_COUNTER,T_INTERDICTOR, T_RADAR, T_GENERATOR, T_SOLAR_2, T_SOLAR_1, T_SOLAR_0, T_HANGAR, T_BIOSPHERE_1, T_BIOSPHERE, T_INERTIA, T_SAIL_2, T_SAIL_1, T_SAIL_0, T_JAMMER,
 T_ESPHERE_2, T_ESPHERE_1, T_ESPHERE_0,
 T_BURST_LASER_2, T_BURST_LASER_1, T_BURST_LASER_0,
@@ -639,7 +683,16 @@ Buildable = { ids.T_LASER_SR_0:	T_LASER_SR_0,
               ids.T_SAIL_2: 	 T_SAIL_2,
               ids.T_JAMMER: 	 T_JAMMER,
 
+              ids.T_AI_FLAK_0:  T_AI_FLAK_0,
+              ids.T_AI_FLAK_1:  T_AI_FLAK_1,
+              ids.T_AI_FLAK_2:  T_AI_FLAK_2,
+              ids.T_AI_FLAK_3:  T_AI_FLAK_3,
+              ids.T_AI_OMNI_LASER_0:  T_AI_OMNI_LASER_0,
+              ids.T_AI_OMNI_LASER_1:  T_AI_OMNI_LASER_1,
               ids.T_AI_MISSILE_0:  T_AI_MISSILE_0,
+              ids.T_AI_MISSILE_1:  T_AI_MISSILE_1,
+              ids.T_AI_MISSILE_2:  T_AI_MISSILE_2,
+              ids.T_AI_MISSILE_3:  T_AI_MISSILE_3,
 
               ids.T_ESPHERE_0:  T_ESPHERE_0,
               ids.T_ESPHERE_1:  T_ESPHERE_1,
@@ -652,6 +705,21 @@ Buildable = { ids.T_LASER_SR_0:	T_LASER_SR_0,
               ids.T_OMNI_LASER_2:  T_OMNI_LASER_2,
               ids.T_SUBSPACE_WAVE_0:  T_SUBSPACE_WAVE_0,
               ids.T_SUBSPACE_WAVE_1:  T_SUBSPACE_WAVE_1,
+
+              ids.T_DISCHARGER_0:  T_DISCHARGER_0,
+              ids.T_DISCHARGER_1:  T_DISCHARGER_1,
+              ids.T_REPEATER_0:  T_REPEATER_0,
+              ids.T_REPEATER_1:  T_REPEATER_1,
+              ids.T_REPEATER_2:  T_REPEATER_2,
+              ids.T_REPEATER_3:  T_REPEATER_3,
+              ids.T_NOMAD_CANNON_0:  T_NOMAD_CANNON_0,
+              ids.T_NOMAD_CANNON_1:  T_NOMAD_CANNON_1,
+              ids.T_NOMAD_CANNON_2:  T_NOMAD_CANNON_2,
+              ids.T_NOMAD_MISSILE_0:  T_NOMAD_MISSILE_0,
+              ids.T_NOMAD_MISSILE_1:  T_NOMAD_MISSILE_1,
+             # ids.T_NOMAD_SUCKER_0:  T_NOMAD_SUCKER_0,
+             # ids.T_NOMAD_SUCKER_1:  T_NOMAD_SUCKER_1,
+             # ids.T_NOMAD_SUCKER_2:  T_NOMAD_SUCKER_2,
 
               ids.S_HARVESTER: HARVESTER,
               ids.S_FIGHTER: FIGHTER,
@@ -690,12 +758,16 @@ Costs = { ids.S_HARVESTER: Cost( 0, 100, 10*config.fps, 10 ),
           ids.S_EXTRA_FIGHTER: Cost( 0, 70, 10*config.fps, 3 ),
           ids.S_EXTRA_BOMBER: Cost( 0, 70, 10*config.fps, 3 ),
 
+          ids.S_NOMAD_HARVESTER: Cost( 0, 75, 8*config.fps, 6 ),
+          ids.S_NOMAD_HARVESTER_1: Cost( 0, 150, 8*config.fps, 8 ),
+          ids.S_NOMAD_FIGHTER: Cost( 0, 120, 15*config.fps, 14 ),
+
           ids.M_NORMAL: Cost( 0, 10, 2*config.fps, 1 ),
           ids.M_NUKE:   Cost( 0, 500, 60*config.fps, 40 ),
           ids.M_PULSE: Cost( 0, 150, 30*config.fps, 10 ),
           ids.M_MINER: Cost( 0, 120, 15*config.fps, 10 ),
           ids.M_COUNTER: Cost( 0, 50, 10*config.fps, 5 ),
-          ids.M_AI: Cost( 0, 10, 10*config.fps, 5 ),
+          ids.M_AI: Cost( 0, 10, 2*config.fps, 2 ),
           ids.M_LARVA: Cost( 0, 10, 10*config.fps, 5 ),
         }
 

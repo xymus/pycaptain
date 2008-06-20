@@ -49,9 +49,8 @@ class Imgs( Rc ):
     def loadAnimation( self, path, count, tickPerFrame=1 ):
         image = self.loadImageWithDisplay( path )
         dw = 1.0*self.display.getWidth(image)/count
-        print self.display.getWidth(image)
-        for i in xrange(count):
-            print ( i*dw, 0, (i+1)*dw-1, self.display.getHeight(image) ) 
+     #   for i in xrange(count):
+     #       print ( i*dw, 0, (i+1)*dw-1, self.display.getHeight(image) ) 
         images = [ self.display.getSubsurface( image, ( i*dw, 0, dw, self.display.getHeight(image) ) ) for i in xrange(count) ]
         animation = Animation( images, tickPerFrame )
         self.animations.append( animation )
@@ -125,7 +124,7 @@ class Imgs( Rc ):
         self[ ids.S_NOMAD_FS_0 ] 	= self.loadImage( "ships/nomad-fs-0.png" )
         self[ ids.S_NOMAD_FS_1 ] 	= self.loadImage( "ships/nomad-fs-1.png" )
         self[ ids.S_NOMAD_FS_2 ] 	= self.loadImage( "ships/nomad-fs-2.png" )
-        self[ ids.S_NOMAD_HARVESTER] = self.loadImage( "ships/nomad-harvester.png" )
+        self[ ids.S_NOMAD_HARVESTER] = self.loadImage( "ships/nomad-harvester-0.png" )
         self[ ids.S_NOMAD_HARVESTER_1] = self.loadImage( "ships/nomad-harvester-1.png" )
 
         self[ ids.S_EVOLVED_FIGHTER ] = self.loadImage( "ships/evolved-fighter.png" )
@@ -218,7 +217,16 @@ class Imgs( Rc ):
         self[ ids.T_LARVA_0 ] = self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
         self[ ids.T_DRAGON_0 ] = self.loadImage( "turrets/dragon-0.png" ) # TODO
 
+        self[ ids.T_AI_FLAK_0 ] = self.loadImage( "turrets/ai-flak-0.png" ) 
+        self[ ids.T_AI_FLAK_1 ] = self.loadImage( "turrets/ai-flak-1.png" ) 
+        self[ ids.T_AI_FLAK_2 ] = self.loadImage( "turrets/ai-flak-2.png" ) 
+        self[ ids.T_AI_FLAK_3 ] = self.loadImage( "turrets/ai-flak-3.png" ) 
+        self[ ids.T_AI_OMNI_LASER_0 ] = self.loadImage( "turrets/ai-omni-laser-0.png" ) 
+        self[ ids.T_AI_OMNI_LASER_1 ] = self.loadImage( "turrets/ai-omni-laser-1.png" ) 
         self[ ids.T_AI_MISSILE_0 ] = self.loadImage( "turrets/ai-missile-0.png" ) 
+        self[ ids.T_AI_MISSILE_1 ] = self.loadImage( "turrets/ai-missile-1.png" ) 
+        self[ ids.T_AI_MISSILE_2 ] = self.loadImage( "turrets/ai-missile-2.png" ) 
+        self[ ids.T_AI_MISSILE_3 ] = self.loadImage( "turrets/ai-missile-3.png" ) 
 
 
         self[ ids.T_ESPHERE_0 ] = self.loadImage( "turrets/esphere-0.png" ) 
@@ -232,6 +240,25 @@ class Imgs( Rc ):
         self[ ids.T_OMNI_LASER_2 ] = self.loadImage( "turrets/omni-laser-2.png" ) 
         self[ ids.T_SUBSPACE_WAVE_0 ] = self.loadImage( "turrets/ssw-0.png" ) 
         self[ ids.T_SUBSPACE_WAVE_1 ] = self.loadImage( "turrets/ssw-1.png" ) 
+
+
+        self[ ids.T_DISCHARGER_0 ] = self.loadImage( "turrets/discharger-0.png" ) 
+        self[ ids.T_DISCHARGER_1 ] = self.loadImage( "turrets/discharger-1.png" ) 
+        self[ ids.T_REPEATER_0 ] = self.loadImage( "turrets/repeater-0.png" ) 
+        self[ ids.T_REPEATER_1 ] = self.loadImage( "turrets/repeater-1.png" ) 
+        self[ ids.T_REPEATER_2 ] = self.loadImage( "turrets/repeater-2.png" ) 
+        self[ ids.T_REPEATER_3 ] = self.loadImage( "turrets/repeater-3.png" ) 
+        self[ ids.T_NOMAD_CANNON_0 ] = self.loadImage( "turrets/cannon-0.png" ) 
+        self[ ids.T_NOMAD_CANNON_1 ] = self.loadImage( "turrets/cannon-1.png" ) 
+        self[ ids.T_NOMAD_CANNON_2 ] = self.loadImage( "turrets/cannon-2.png" ) 
+
+        self[ ids.T_NOMAD_MISSILE_0 ] = self.loadImage( "turrets/nomad-missile-0.png" ) 
+        self[ ids.T_NOMAD_MISSILE_1 ] = self.loadImage( "turrets/nomad-missile-1.png" ) 
+
+        self[ ids.T_NOMAD_SUCKER_0 ] = self.loadImage( "turrets/nomad-sucker-0.png" ) 
+        self[ ids.T_NOMAD_SUCKER_1 ] = self.loadImage( "turrets/nomad-sucker-1.png" ) 
+        self[ ids.T_NOMAD_SUCKER_2 ] = self.loadImage( "turrets/nomad-sucker-2.png" ) 
+
 
 
       #  self[ ids.MISSILE_0 ] = self.loadImage( "missiles/missile.png" ) 
@@ -262,6 +289,8 @@ class Imgs( Rc ):
         self[ ids.F_FIGHTER_2 ] = self.loadImage( "fragments/fighter-2.png" )
 
         self[ ids.F_AI_0 ] = self.loadImage( "fragments/ai-0.png" )
+        
+        self[ ids.G_LIGHTNING ] = self.loadImage( "gfxs/lightning-0.png" )
 
         yield 77
      #   self[ ids.E_0 ] = self.loadImage( "exhaust/particle0.png", True )
@@ -353,7 +382,8 @@ class Imgs( Rc ):
         self.uiMsgBoxRight = self.loadImageWithDisplay( "ui/msgbox-right.png" )
 
         self.uiAlertRed = self.loadAnimation( "ui/alerts/light-red.png", 10 )
-        self.uiAlertRadar = self.loadAnimation( "ui/alerts/light-radar.png", 20 )
+        self.uiAlertRadarRed = self.loadAnimation( "ui/alerts/light-radar-red.png", 20 )
+        self.uiAlertRadarYellow = self.loadAnimation( "ui/alerts/light-radar-yellow.png", 20 )
         self.uiAlertYellow = self.loadAnimation( "ui/alerts/light-yellow.png", 20 )
         self.uiAlertYellowLarge = self.loadAnimation( "ui/alerts/light-yellow-large.png", 20 )
 
@@ -370,6 +400,10 @@ class Imgs( Rc ):
                             ids.S_AI_FIGHTER: self.loadImageWithDisplay( "icons/ships/ai-fighter.png" ),
                             ids.S_AI_BOMBER: self.loadImageWithDisplay( "icons/ships/ai-bomber.png" ),
                             ids.S_AI_HARVESTER: self.loadImageWithDisplay( "icons/ships/ai-harvester.png" ),
+                            
+                            ids.S_NOMAD_FIGHTER: self.loadImageWithDisplay( "icons/ships/nomad-fighter.png" ),
+                            ids.S_NOMAD_HARVESTER: self.loadImageWithDisplay( "icons/ships/nomad-harvester-0.png" ),
+                            ids.S_NOMAD_HARVESTER_1: self.loadImageWithDisplay( "icons/ships/nomad-harvester-1.png" ),
                             }
 
         self.missilesIcons = { ids.M_NORMAL: self.loadImageWithDisplay( "icons/missiles/missile.png" ),

@@ -27,6 +27,7 @@ class Network:
         self.players = None
         self.stats = None
         self.possibles = []
+        self.lag = 0
 
         self.connectState = (None,"working")
         

@@ -37,8 +37,9 @@ class Sol( Scenario ):
         self.moon.yi = 0.1
         self.moon.orbiting = self.earth
 
+        self.blackHole = BlackHole( stats.BH_0, 10000, -10000 )
         
-        for i in xrange( 20 ): # civilians around self.earth
+        for i in xrange( 10 ): # civilians around self.earth
             dist = randint( 100, 800 )
             angle = 2*pi*random()
 
@@ -52,13 +53,13 @@ class Sol( Scenario ):
             asteroid = Asteroid( self.sol.xp+dist*cos(angle), self.sol.yp+dist*sin(angle), 300 )
             game.harvestables.append( asteroid )
 
-        for i in range( 30 ): # asteroids outer self.mars
+        for i in range( 50 ): # asteroids outer self.mars
             dist = 9000
             angle = (1-2*random())*pi/8+pi*9/8
             asteroid = Asteroid( self.sol.xp+dist*cos(angle), self.sol.yp+dist*sin(angle), 200 )
             game.harvestables.append( asteroid )
 
-        game.astres = [self.sol, self.mercury, self.venus, self.earth, self.moon, self.mars, self.jupiter, self.saturn, self.neptune, self.moon]
+        game.astres = [self.sol, self.mercury, self.venus, self.earth, self.moon, self.mars, self.jupiter, self.saturn, self.neptune, self.moon, self.blackHole ]
 
         for i in xrange( self.wantedBadGuys ):
             self.addRandomNpc( game )
@@ -101,11 +102,12 @@ class Sol( Scenario ):
             t.buildInstall( stats.T_LASER_MR_0 )
         for t in flagship.turrets[:2]+flagship.turrets[-2:]:
             t.buildInstall( stats.T_LASER_SR_0 )
+            
       elif i < 3:
         flagship = FlagShip( player, stats.FLAGSHIP_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets:
-            t.install = TurretInstall( stats.T_MASS_SR_0 )
+            t.buildInstall( stats.T_MASS_SR_0 )
         for i in range(10):
            fighter = ShipSingleWeapon(flagship.player, stats.FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ ids.S_FIGHTER ].docked.append( fighter )
@@ -117,14 +119,14 @@ class Sol( Scenario ):
         flagship = FlagShip( player, stats.FLAGSHIP_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
-            t.install = TurretInstall( stats.T_MASS_MR_0 )
+            t.buildInstall( stats.T_MASS_MR_0 )
         for t in flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR_0 )
+            t.buildInstall( stats.T_LASER_SR_0 )
         for i in range(4):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
-#      flagship.ore = 5000
+      flagship.ore = 5000
       flagship.ori = 2*pi*random()
       player.flagship = flagship
       game.objects.append( flagship )
@@ -161,15 +163,21 @@ class Sol( Scenario ):
         if player.race == stats.R_EVOLVED:
             smallTurret = stats.T_BURST_LASER_0
             mediumTurret = stats.T_SUBSPACE_WAVE_0
+        elif player.race == stats.R_NOMAD:
+            smallTurret = stats.T_REPEATER_1
+            mediumTurret = stats.T_NOMAD_CANNON_0
+        elif player.race == stats.R_AI:
+            smallTurret = stats.T_AI_FLAK_1
+            mediumTurret = stats.T_AI_OMNI_LASER_0
         else:
             smallTurret = stats.T_MASS_SR_0
             mediumTurret = stats.T_MASS_MR_0
 
+        for t in flagship.turrets[:2]:
+            t.buildInstall( mediumTurret )
+            
         for t in flagship.turrets[-2:]:
             t.buildInstall( smallTurret )
-
-        for t in flagship.turrets[:-2]:
-            t.buildInstall( mediumTurret )
 
         player.flagship = flagship        
         game.objects.append( flagship )

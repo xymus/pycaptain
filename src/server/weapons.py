@@ -18,18 +18,18 @@ class Weapon:
 
     def fire( self, ship, game ):
         self.lastFireAt = game.tick
+    #    gfxs = []
+    #    if self.stats.gfxAtFire:
+    #        for self.getPoss( ship, game ):
+    #            gfxs.append(  )
         return ([],[],[])
 
     def getPoss( self, ship, game ):
-       # poss = []
-        for pos in ship.stats.weaponPositions:
+         for pos in ship.stats.weaponPositions:
             yield (ship.xp + pos.dist*cos(pos.angle+ship.ori), ship.yp + pos.dist*sin(pos.angle+ship.ori) )
-       # return poss
-     #   return [ (ship.xp + pos.dist*cos(pos.angle+ship.ori), ship.yp + pos.dist*sin(pos.angle+ship.ori) ) for pos in ship.stats.weaponPositions ]
-
+ 
 class WeaponTurret( Weapon ):
     def canFire( self, ship, turret, game ):
-     #   print self.lastFireAt, self.stats.freqOfFire, game.tick
         return Weapon.canFire( self, ship, game ) \
            and ship.energy >= turret.install.stats.energyPerUse \
            and ship.ore >= turret.install.stats.orePerUse
@@ -42,10 +42,8 @@ class WeaponTurret( Weapon ):
 
     def getPoss( self, ship, turret, game ):
         turretPos = ship.getTurretPos( turret )
-      #  poss = []
         for pos in turret.install.stats.weaponPositions:
             yield (turretPos[0] + pos.dist*cos(pos.angle+turret.rr+ship.ori), turretPos[1] + pos.dist*sin(pos.angle+turret.rr+ship.ori) )
-      #  return poss
 
 class LaserWeapon( Weapon ):
     def fire( self, ship, game, target ):
@@ -75,7 +73,7 @@ class LaserWeapon( Weapon ):
             d = ( xo + cos(ori)*weapon.stats.maxRange, yo + sin(ori)*weapon.stats.maxRange )
         
       #  print (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, 0
-        gfxs.append( GfxLaser( (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, color=ship.player.race.type ) )
+        gfxs.append( weapon.stats.gfxAtFire( (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, color=ship.player.race.type ) )
         
         return (ao, ro, gfxs) # (None, None)
 
@@ -86,6 +84,8 @@ class LaserWeaponTurret( WeaponTurret, LaserWeapon ):
           (ao0, ro0, gfxs0) = self.hits( o, ship.ori+turret.rr, game, ship, target, turret.weapon )
           (ao, ro, gfxs) = (ao+ao0, ro+ro0, gfxs+gfxs0)
         return (ao,ro,gfxs)
+
+#class LightningWeapon( LaserWeapon ):
 
 class MissileWeapon( Weapon ):
     def fire( self, ship, game, target ):
@@ -146,6 +146,48 @@ class MassWeaponTurret( WeaponTurret ):
           gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
         return (ao,ro,gfxs)
 
+class OmniWeapon( Weapon ):
+    pass
+    
+class OmniWeaponTurret( Weapon ):
+
+    def hits( self, (xo,yo), ori, game, ship, target, weapon ):
+        """Logic: compares the angle to target with the weapon orientation to atan( target.radius / dist between weapon and target )"""
+        angle = utils.angleBetween( (xo,yo), (target.xp,target.yp) )
+        dist = utils.distBetween( (xo,yo), (target.xp,target.yp) )
+        angleSec = atan( float(target.stats.radius)/dist )
+        diff = (ori-angle)%(2*pi)
+
+        if diff < angleSec or 2*pi-diff < angleSec: ## hit!
+            a = ori+pi
+            hullBefore = target.hull
+            (ao, ro, gfxs) = target.hit( game, pi+ori, ship.player, weapon.stats.energyDamage, weapon.stats.massDamage )  
+            if hullBefore != target.hull: # went throught the shield
+                d = ( target.xp+target.stats.maxRadius/4*cos(a), target.yp+target.stats.maxRadius/4*sin(a))
+            else:
+                d = ( target.xp+target.stats.maxRadius*cos(a), target.yp+target.stats.maxRadius*sin(a))
+        else:
+            (ao, ro, gfxs) = ([],[],[])
+            d = ( xo + cos(ori)*weapon.stats.maxRange, yo + sin(ori)*weapon.stats.maxRange )
+        
+      #  print (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, 0
+        gfxs.append( weapon.stats.gfxAtFire( (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, color=ship.player.race.type ) )
+        
+        return (ao, ro, gfxs) # (None, None)
+
+class BombWeapon( Weapon ):
+    def fire( self, ship, game, target ):
+        (ao,ro,ag) = ([],[],[])
+        for obj in game.objects:
+            if obj.alive and obj.player and utils.distLowerThanObjects( self, obj, self.stats.explosionRange + obj.stats.maxRadius ):
+                 if ship.ai.player:
+                     sender = ship.ai.player
+                 else:
+                     sender = None
+                 (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, ship ), sender, self.stats.energyDamage, self.stats.massDamage, pulse=self.stats.pulseLength ) # self.weapon.stats.pulseLength
+                 (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
+        ag0 = [ GfxExplosion( (ship.xp,ship.yp), self.stats.explosionRange, sound=ids.S_EX_PULSE ) ]
+        return (ao, ro+ro0, ag+ag0)
 
 
 class Missile( Ship ):
@@ -158,7 +200,7 @@ class Missile( Ship ):
         self.ttl = weapon.stats.projectileTtl #30*5
         self.originalTtl = weapon.stats.projectileTtl
         self.lostTarget = False
-        self.thinkFreq = randint( 2, config.fps/3) # randint( 3, config.fps/2)
+        self.thinkFreq = 1 #randint( 2, config.fps/3) # randint( 3, config.fps/2)
 
         self.xi = launcher.xi
         self.yi = launcher.yi
@@ -252,7 +294,14 @@ class NukeMissile( Missile ):
                      sender = self.launcher.player
                  else:
                      sender = None
+
+                 waveEffect = 0.05
+                 angle = utils.angleBetweenObjects( self, obj )
+                 dist = utils.distBetweenObjects( self, obj )
+                 obj.xi += cos(angle)*(self.explosionRange-dist-obj.stats.maxRadius)*waveEffect
+                 obj.yi += sin(angle)*(self.explosionRange-dist-obj.stats.maxRadius)*waveEffect
                  (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self ), sender, self.weapon.stats.energyDamage, self.weapon.stats.massDamage )
+
                  (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
         self.alive = False
         ro0 = [ self ]

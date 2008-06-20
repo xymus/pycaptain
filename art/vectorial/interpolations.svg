@@ -2436,258 +2436,6 @@
        r="67.147362" />
     <filter
        inkscape:collect="always"
-       id="filter7499"
-       x="-0.113023"
-       width="1.226046"
-       y="-0.24855311"
-       height="1.4971062">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7501" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7503"
-       x="-0.11283959"
-       width="1.2256792"
-       y="-0.19197562"
-       height="1.3839512">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7505" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7507"
-       x="-0.11424623"
-       width="1.2284925"
-       y="-0.15958025"
-       height="1.3191605">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7509" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7511"
-       x="-0.11864677"
-       width="1.2372935"
-       y="-0.13947808"
-       height="1.2789562">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7513" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7515"
-       x="-0.12664318"
-       width="1.2532864"
-       y="-0.12664335"
-       height="1.2532867">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7517" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7519"
-       x="-0.13947788"
-       width="1.2789558"
-       y="-0.11864698"
-       height="1.237294">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7521" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7523"
-       x="-0.15958003"
-       width="1.3191601"
-       y="-0.11424641"
-       height="1.2284928">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7525" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7527"
-       x="-0.19197538"
-       width="1.3839508"
-       y="-0.11283977"
-       height="1.2256795">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7529" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7531"
-       x="-0.24855258"
-       width="1.4971052"
-       y="-0.11305899"
-       height="1.226118">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7533" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7535"
-       x="-0.36516094"
-       width="1.7303219"
-       y="-0.11396629"
-       height="1.2279326">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7537" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7539"
-       x="-0.24855339"
-       width="1.4971068"
-       y="-0.11301828"
-       height="1.2260366">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7541" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7543"
-       x="-0.19197656"
-       width="1.3839531"
-       y="-0.11283944"
-       height="1.2256789">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7545" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7547"
-       x="-0.15958087"
-       width="1.3191617"
-       y="-0.1142461"
-       height="1.2284922">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7549" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7551"
-       x="-0.13947851"
-       width="1.278957"
-       y="-0.11864656"
-       height="1.2372931">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7553" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7555"
-       x="-0.12664377"
-       width="1.2532875"
-       y="-0.12664315"
-       height="1.2532863">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7557" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7559"
-       x="-0.11864742"
-       width="1.2372948"
-       y="-0.13947784"
-       height="1.2789557">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7561" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7563"
-       x="-0.11424686"
-       width="1.2284937"
-       y="-0.15958021"
-       height="1.3191604">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7565" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7567"
-       x="-0.11284037"
-       width="1.2256807"
-       y="-0.19197553"
-       height="1.3839511">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7569" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7571"
-       x="-0.11269532"
-       width="1.2253906"
-       y="-0.24855294"
-       height="1.4971059">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7573" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7575"
-       x="-0.1008"
-       width="1.2016"
-       y="-0.10079999"
-       height="1.2016">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7577" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter7579"
-       x="-0.11258819"
-       width="1.2251764"
-       y="-0.36516227"
-       height="1.7303245">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="6.3"
-         id="feGaussianBlur7581" />
-    </filter>
-    <filter
-       inkscape:collect="always"
        id="filter7583"
        x="-0.1008"
        width="1.2016"
@@ -4795,6 +4543,410 @@
        fx="75"
        fy="277.56531"
        r="62.601448" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3932"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.4547238,0,335.53315)"
+       cx="224.80447"
+       cy="615.34528"
+       fx="224.80447"
+       fy="615.34528"
+       r="66.889038" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3936"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.5877808,0,253.62622)"
+       cx="374.99298"
+       cy="615.27032"
+       fx="374.99298"
+       fy="615.27032"
+       r="66.997757" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3940"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.7159171,0,174.784)"
+       cx="524.99194"
+       cy="615.25708"
+       fx="524.99194"
+       fy="615.25708"
+       r="66.172859" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3944"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.8506481,0,91.888257)"
+       cx="674.99109"
+       cy="615.24677"
+       fx="674.99109"
+       fy="615.24677"
+       r="63.718552" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3948"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.9999987,0,8.2450259e-4)"
+       cx="824.9903"
+       cy="615.23639"
+       fx="824.9903"
+       fy="615.23639"
+       r="59.695278" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3952"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.1755704,0,-108.01547)"
+       cx="974.98944"
+       cy="615.22607"
+       fx="974.98944"
+       fy="615.22607"
+       r="54.202145" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3956"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.3968055,0,-244.12101)"
+       cx="1124.9886"
+       cy="615.2157"
+       fx="1124.9886"
+       fy="615.2157"
+       r="47.374352" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3960"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.7013095,0,-431.44938)"
+       cx="1274.9878"
+       cy="615.20532"
+       fx="1274.9878"
+       fy="615.20532"
+       r="39.380051" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3963"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.1984326,0,-737.52813)"
+       cx="1424.9869"
+       cy="615.41058"
+       fx="1424.9869"
+       fy="615.41058"
+       r="30.4161" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3966"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,3.2041136,0,-1357.7639)"
+       cx="1574.9497"
+       cy="616.01361"
+       fx="1574.9497"
+       fy="616.01361"
+       r="20.703199" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3969"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,2.1992318,0,-738.03161)"
+       cx="1724.8345"
+       cy="615.42029"
+       fx="1724.8345"
+       fy="615.42029"
+       r="30.416" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3972"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.701325,0,-431.48861)"
+       cx="1874.8199"
+       cy="615.24774"
+       fx="1874.8199"
+       fy="615.24774"
+       r="39.379807" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3975"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.3968167,0,-244.14725)"
+       cx="2024.8354"
+       cy="615.26453"
+       fx="2024.8354"
+       fy="615.26453"
+       r="47.3741" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3978"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.1755798,0,-108.03099)"
+       cx="2174.8511"
+       cy="615.28137"
+       fx="2174.8511"
+       fy="615.28137"
+       r="54.2019" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3981"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.0000049,0,-3.0406727e-3)"
+       cx="2324.8667"
+       cy="615.29816"
+       fx="2324.8667"
+       fy="615.29816"
+       r="59.695" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3984"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.8506543,0,91.894653)"
+       cx="2474.8823"
+       cy="615.31494"
+       fx="2474.8823"
+       fy="615.31494"
+       r="63.718201" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3987"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.7159212,0,174.80265)"
+       cx="2624.9006"
+       cy="615.33154"
+       fx="2624.9006"
+       fy="615.33154"
+       r="66.172501" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3990"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.5877852,0,253.65463)"
+       cx="2774.9504"
+       cy="615.3457"
+       fx="2774.9504"
+       fy="615.3457"
+       r="66.997299" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3993"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.4534057,0,336.35192)"
+       cx="2925"
+       cy="615.35938"
+       fx="2925"
+       fy="615.35938"
+       r="67.083527" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3396"
+       id="radialGradient3997"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.3083237,0,425.62948)"
+       cx="75"
+       cy="615.35938"
+       fx="75"
+       fy="615.35938"
+       r="67.147362" />
+    <filter
+       inkscape:collect="always"
+       id="filter4264"
+       x="-0.056511502"
+       width="1.113023"
+       y="-0.12427655"
+       height="1.2485531">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4266" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4268">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4270" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4272">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4274" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4276">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4278" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4280">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4282" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4284">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4286" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4288">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4290" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4292">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4294" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4296"
+       x="-0.12427629"
+       width="1.2485526"
+       y="-0.056529497"
+       height="1.113059">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4298" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4300"
+       x="-0.18258047"
+       width="1.3651609"
+       y="-0.056983146"
+       height="1.1139663">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4302" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4304"
+       x="-0.1242767"
+       width="1.2485534"
+       y="-0.056509139"
+       height="1.1130183">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4306" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4308">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4310" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4312">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4314" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4316">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4318" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4320">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4322" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4324">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4326" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4328">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4330" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4332">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4334" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4336"
+       x="-0.056347662"
+       width="1.1126953"
+       y="-0.12427647"
+       height="1.2485529">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4338" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4344"
+       x="-0.056294095"
+       width="1.1125882"
+       y="-0.18258113"
+       height="1.3651623">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.15"
+         id="feGaussianBlur4346" />
+    </filter>
   </defs>
   <metadata
      id="metadata28139">
@@ -5353,160 +5505,166 @@
        inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow.png"
        inkscape:export-xdpi="89.999992"
        inkscape:export-ydpi="89.999992" />
-    <path
-       style="opacity:0;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7583)"
-       d="M 150,615.3622 C 150,656.76221 116.4,690.36221 75,690.36221 C 33.6,690.36221 0,656.76221 0,615.3622 C 0,573.9622 33.6,540.3622 75,540.3622 C 116.4,540.3622 150,573.9622 150,615.3622 z"
-       id="path2614"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       id="path4221"
-       d="M 11.28125,594.65625 C 6.7097679,608.72578 6.7097681,621.99294 11.28125,636.0625 L 75,615.375 L 11.28125,594.65625 z M 75,615.375 L 138.71875,636.0625 C 143.29023,621.99294 143.29024,608.72578 138.71875,594.65625 L 75,615.375 z"
-       style="fill:url(#radialGradient7710);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7579)"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       inkscape:export-ydpi="150"
-       inkscape:export-xdpi="150"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       id="path4766"
-       d="M 3000,615.3622 C 3000,656.76221 2966.4,690.36221 2925,690.36221 C 2883.6,690.36221 2850,656.76221 2850,615.3622 C 2850,573.9622 2883.6,540.3622 2925,540.3622 C 2966.4,540.3622 3000,573.9622 3000,615.3622 z"
-       style="opacity:0;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7575)" />
-    <path
-       id="path4768"
-       d="M 2865.3044,584.94332 C 2858.5882,598.12449 2856.5127,611.22831 2858.827,625.83979 L 2924.9976,615.37481 L 2865.3044,584.94332 z M 2924.9976,615.37481 L 2984.6956,645.77543 C 2991.4118,632.59423 2993.4873,619.49041 2991.173,604.87896 L 2924.9976,615.37481 z"
-       style="fill:url(#radialGradient7706);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7571)"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7703);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7567)"
-       d="M 2829.1525,654.72574 C 2837.848,642.75752 2841.9479,630.1396 2841.9477,615.34621 C 2841.9477,615.34621 2841.9477,615.34595 2841.947,615.3462 C 2841.7001,615.34589 2774.9549,615.33096 2774.9549,615.33096 C 2774.9549,615.33096 2774.9551,615.33098 2774.9554,615.33123 C 2775.1552,615.47652 2829.1525,654.72574 2829.1525,654.72574 C 2829.1525,654.72574 2829.1525,654.72574 2829.1525,654.72574 M 2774.9549,615.33096 C 2774.9549,615.33096 2723.6005,578.03764 2723.6005,578.03745 C 2723.5893,578.02941 2720.7474,575.9657 2720.7474,575.9657 C 2712.5097,587.30402 2708.6256,599.25778 2708.6256,613.27283 C 2708.1681,613.90265 2707.9525,614.56672 2707.9531,615.34517 C 2708.2,615.34527 2771.4284,615.33162 2771.4284,615.33162 C 2771.4284,615.33162 2774.9549,615.33096 2774.9549,615.33096"
-       id="path5014"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7700);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7563)"
-       d="M 2672.2752,662.70583 C 2682.7358,652.24531 2688.7591,640.42412 2691.0732,625.81278 C 2691.0732,625.81278 2691.0732,625.81255 2691.0725,625.81267 C 2690.8422,625.776 2624.9074,615.31777 2624.9074,615.31777 C 2624.9074,615.31777 2624.9076,615.31776 2624.9079,615.31813 C 2625.0729,615.48319 2672.2752,662.70583 2672.2752,662.70583 C 2672.2752,662.70583 2672.2752,662.70583 2672.2752,662.70583 M 2624.9074,615.31777 C 2624.9074,615.31777 2582.5132,572.94256 2582.5132,572.94257 C 2582.4937,572.92313 2577.5254,567.95724 2577.5254,567.95724 C 2568.166,577.31672 2562.7767,587.89351 2560.7063,600.96711 C 2559.6052,602.06825 2558.9712,603.31253 2558.7282,604.85049 C 2558.9586,604.88698 2617.9412,614.21585 2617.9412,614.21585 C 2617.9412,614.21585 2624.9074,615.31777 2624.9074,615.31777"
-       id="path5016"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7697);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7559)"
-       d="M 2514.2625,669.51713 C 2526.2309,660.82168 2534.0289,650.08827 2538.6005,636.01887 C 2538.6005,636.01887 2538.6004,636.01862 2538.6,636.01869 C 2538.3912,635.95083 2474.8911,615.30246 2474.8911,615.30246 C 2474.8911,615.30246 2474.8913,615.30253 2474.8915,615.30273 C 2475.0205,615.48058 2514.2625,669.51713 2514.2625,669.51713 C 2514.2625,669.51713 2514.2625,669.51713 2514.2625,669.51713 M 2474.8911,615.30246 C 2474.8911,615.30246 2441.7208,569.66924 2441.7207,569.66904 C 2441.6964,569.63567 2435.5012,561.11281 2435.5012,561.11281 C 2425.4228,568.43528 2418.8558,577.47402 2415.0062,589.32217 C 2413.1164,590.69501 2411.8854,592.38962 2411.1641,594.61133 C 2411.3728,594.67922 2464.8288,612.03518 2464.8288,612.03518 C 2464.8288,612.03518 2474.8911,615.30246 2474.8911,615.30246"
-       id="path5018"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7694);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7555)"
-       d="M 2355.2831,674.99346 C 2368.4643,668.27741 2377.8456,658.89599 2384.5617,645.7149 C 2384.5617,645.7149 2384.5615,645.7146 2384.5612,645.71465 C 2384.3778,645.62111 2324.8774,615.28724 2324.8774,615.28724 C 2324.8774,615.28724 2324.8776,615.28726 2324.8777,615.28764 C 2324.9711,615.4711 2355.2831,674.99346 2355.2831,674.99346 C 2355.2831,674.99346 2355.2831,674.99346 2355.2831,674.99346 M 2324.8774,615.28724 C 2324.8774,615.28724 2300.8555,568.16788 2300.8555,568.16775 C 2300.8305,568.11895 2294.4495,555.60287 2294.4495,555.60287 C 2284.0435,560.90509 2276.6371,568.31143 2271.3349,578.71765 C 2268.56,580.13156 2266.5851,582.10677 2265.1717,584.88179 C 2265.355,584.97494 2312.3077,608.88608 2312.3077,608.88608 C 2312.3077,608.88608 2324.8774,615.28724 2324.8774,615.28724"
-       id="path5020"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7691);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7551)"
-       d="M 2195.5546,679.00001 C 2209.6243,674.42849 2220.3576,666.63018 2229.053,654.66201 C 2229.053,654.66201 2229.053,654.66162 2229.0526,654.66162 C 2228.8972,654.54876 2174.8635,615.27214 2174.8635,615.27214 C 2174.8635,615.27214 2174.8636,615.27227 2174.8637,615.2725 C 2174.9229,615.45547 2195.5546,679.00001 2195.5546,679.00001 C 2195.5546,679.00001 2195.5546,679.00001 2195.5546,679.00001 M 2174.8635,615.27214 C 2174.8635,615.27214 2159.5987,568.32838 2159.5986,568.32811 C 2159.5776,568.26292 2154.1471,551.56269 2154.1471,551.56269 C 2143.7799,554.93122 2135.8712,560.67735 2129.4639,569.49614 C 2125.7615,570.69909 2122.9372,572.75122 2120.6492,575.90088 C 2120.8046,576.01395 2160.5966,604.91119 2160.5966,604.91119 C 2160.5966,604.91119 2174.8635,615.27214 2174.8635,615.27214"
-       id="path5022"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7688);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7547)"
-       d="M 2035.3165,681.43746 C 2049.9278,679.12329 2061.7491,673.09999 2072.2096,662.63946 C 2072.2096,662.63946 2072.2096,662.63909 2072.2094,662.63898 C 2072.0831,662.51271 2024.8492,615.25746 2024.8492,615.25746 C 2024.8492,615.25746 2024.8494,615.25758 2024.8494,615.25783 C 2024.8772,615.4341 2035.3165,681.43746 2035.3165,681.43746 C 2035.3165,681.43746 2035.3165,681.43746 2035.3165,681.43746 M 2024.8492,615.25746 C 2024.8492,615.25746 2017.6684,569.98587 2017.6684,569.98577 C 2017.6556,569.90464 2014.3542,549.09159 2014.3542,549.09159 C 2004.3569,550.67501 1996.2687,554.79627 1989.1113,561.9536 C 1984.4973,562.68424 1980.7644,564.5866 1977.4614,567.88995 C 1977.5876,568.01621 2009.8846,600.29934 2009.8846,600.29934 C 2009.8846,600.29934 2024.8492,615.25746 2024.8492,615.25746"
-       id="path5024"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7685);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7543)"
-       d="M 1874.8201,682.24561 C 1889.6138,682.24563 1902.2317,678.14575 1914.1998,669.45041 C 1914.1998,669.45041 1914.1999,669.45 1914.1996,669.44991 C 1914.1029,669.31656 1874.8347,615.24293 1874.8347,615.24293 C 1874.8347,615.24293 1874.8347,615.2431 1874.8349,615.24334 C 1874.8347,615.40794 1874.8201,682.24561 1874.8201,682.24561 C 1874.8201,682.24561 1874.8201,682.24561 1874.8201,682.24561 M 1874.8347,615.24293 C 1874.8347,615.24293 1874.8251,572.93162 1874.8252,572.93134 C 1874.8251,572.83515 1874.8196,548.24991 1874.8196,548.24991 C 1865.4761,548.24994 1857.507,550.83915 1849.948,556.33114 C 1844.4977,556.33132 1839.8492,557.84175 1835.4402,561.0455 C 1835.5368,561.17893 1860.3208,595.27542 1860.3208,595.27542 C 1860.3208,595.27542 1874.8347,615.24293 1874.8347,615.24293"
-       id="path5026"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7682);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7539)"
-       d="M 1714.354,681.40166 C 1728.9654,683.71584 1742.0693,681.64042 1755.2505,674.92421 C 1755.2505,674.92421 1755.2504,674.92399 1755.2503,674.92372 C 1755.1818,674.78933 1724.8497,615.22621 1724.8497,615.22621 C 1724.8497,615.22621 1724.8499,615.22623 1724.8499,615.22653 C 1724.8261,615.37579 1714.354,681.40166 1714.354,681.40166 C 1714.354,681.40166 1714.354,681.40166 1714.354,681.40166 M 1724.8497,615.22621 C 1724.8497,615.22621 1730.9086,576.91684 1730.9085,576.9167 C 1730.9257,576.80821 1735.3149,549.05557 1735.3149,549.05557 C 1726.8554,547.71579 1719.2689,548.91736 1711.6377,552.80554 C 1705.4854,551.83133 1699.9683,552.70539 1694.4185,555.53336 C 1694.4871,555.66793 1712.0366,590.09219 1712.0366,590.09219 C 1712.0366,590.09219 1724.8497,615.22621 1724.8497,615.22621"
-       id="path5028"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7679);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7535)"
-       d="M 1554.2465,678.92041 C 1568.3161,683.49189 1581.5832,683.49187 1595.6528,678.92033 C 1595.6528,678.92033 1595.6528,678.92011 1595.6527,678.91992 C 1595.6103,678.78946 1574.9653,615.20165 1574.9653,615.20165 C 1574.9653,615.20165 1574.9653,615.20169 1574.9653,615.20193 C 1574.9228,615.3325 1554.2465,678.92041 1554.2465,678.92041 C 1554.2465,678.92041 1554.2465,678.92041 1554.2465,678.92041 M 1574.9653,615.20165 C 1574.9653,615.20165 1585.8535,581.66531 1585.8535,581.66495 C 1585.8918,581.54747 1595.6529,551.48273 1595.6529,551.48273 C 1588.2477,549.07665 1581.2648,549.07675 1573.8598,551.48263 C 1567.1953,549.31736 1560.911,549.31749 1554.2467,551.48313 C 1554.289,551.61369 1565.1512,585.01895 1565.1512,585.01895 C 1565.1512,585.01895 1574.9653,615.20165 1574.9653,615.20165"
-       id="path5030"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7676);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7531)"
-       d="M 1394.5708,674.89052 C 1407.7519,681.60672 1420.8558,683.68209 1435.4673,681.36781 C 1435.4673,681.36781 1435.4672,681.36769 1435.4673,681.36741 C 1435.448,681.24553 1425.0023,615.19737 1425.0023,615.19737 C 1425.0023,615.19737 1425.0023,615.19742 1425.0022,615.19752 C 1424.9461,615.30758 1394.5708,674.89052 1394.5708,674.89052 C 1394.5708,674.89052 1394.5708,674.89052 1394.5708,674.89052 M 1425.0023,615.19737 C 1425.0023,615.19737 1439.4027,586.91915 1439.4028,586.91886 C 1439.4651,586.79662 1455.403,555.49919 1455.403,555.49919 C 1449.159,552.3178 1442.9518,551.33472 1436.0305,552.43088 C 1429.0931,548.89622 1422.1966,547.80398 1414.5065,549.02222 C 1414.5259,549.14418 1419.4781,580.36809 1419.4781,580.36809 C 1419.4781,580.36809 1425.0023,615.19737 1425.0023,615.19737"
-       id="path5032"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7673);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7527)"
-       d="M 1235.6077,669.40779 C 1247.5759,678.10323 1260.1937,682.20304 1274.9874,682.203 C 1274.9874,682.203 1274.9873,682.20289 1274.9875,682.20258 C 1274.9875,682.09286 1275.0026,615.21003 1275.0026,615.21003 C 1275.0026,615.21003 1275.0026,615.21006 1275.0025,615.21029 C 1274.9379,615.29907 1235.6077,669.40779 1235.6077,669.40779 C 1235.6077,669.40779 1235.6077,669.40779 1235.6077,669.40779 M 1275.0026,615.21003 C 1275.0026,615.21003 1291.5775,592.38573 1291.5776,592.38548 C 1291.6664,592.26336 1314.3678,561.00267 1314.3678,561.00267 C 1309.3284,557.34129 1304.0155,555.61504 1297.7864,555.61507 C 1290.8576,550.58099 1283.5527,548.20748 1274.9881,548.20769 C 1274.9882,548.31742 1274.9941,576.41915 1274.9941,576.41915 C 1274.9941,576.41915 1275.0026,615.21003 1275.0026,615.21003"
-       id="path5034"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7670);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7523)"
-       d="M 1077.6142,662.59043 C 1088.0748,673.05106 1099.8959,679.07425 1114.5075,681.38846 C 1114.5075,681.38846 1114.5074,681.38833 1114.5076,681.38806 C 1114.5225,681.29337 1125.0025,615.22266 1125.0025,615.22266 C 1125.0025,615.22266 1125.0025,615.22269 1125.0024,615.22281 C 1124.9343,615.29082 1077.6142,662.59043 1077.6142,662.59043 C 1077.6142,662.59043 1077.6142,662.59043 1077.6142,662.59043 M 1125.0025,615.22266 C 1125.0025,615.22266 1142.4513,597.766 1142.4514,597.76578 C 1142.5678,597.6493 1172.3629,567.84074 1172.3629,567.84074 C 1168.5088,563.98677 1164.1536,561.76757 1158.7703,560.91487 C 1152.1638,554.3082 1144.6979,550.50431 1135.4696,549.04295 C 1135.4546,549.13784 1131.6133,573.42478 1131.6133,573.42478 C 1131.6133,573.42478 1125.0025,615.22266 1125.0025,615.22266"
-       id="path5036"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7667);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7519)"
-       d="M 920.78731,654.60656 C 929.48274,666.57482 940.2161,674.37306 954.28567,678.94454 C 954.28567,678.94454 954.28569,678.94446 954.28574,678.94432 C 954.3112,678.86603 975.00208,615.23517 975.00208,615.23517 C 975.00208,615.23517 975.00201,615.23522 975.00188,615.2353 C 974.93526,615.28368 920.78731,654.60656 920.78731,654.60656 C 920.78731,654.60656 920.78731,654.60656 920.78731,654.60656 M 975.00208,615.23517 C 975.00208,615.23517 992.11468,602.79619 992.11497,602.79599 C 992.25924,602.69111 1029.1916,575.84537 1029.1916,575.84537 C 1026.4455,572.06587 1023.056,569.60309 1018.6129,568.15931 C 1012.6635,559.9707 1005.3195,554.63528 995.69314,551.50767 C 995.66768,551.58599 989.15911,571.63204 989.15911,571.63204 C 989.15911,571.63204 975.00208,615.23517 975.00208,615.23517"
-       id="path5038"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7664);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7515)"
-       d="M 765.29499,645.65296 C 772.01111,658.83416 781.39242,668.21546 794.57363,674.93161 C 794.57363,674.93161 794.57366,674.93154 794.57373,674.93143 C 794.60487,674.87032 825.00133,615.24737 825.00133,615.24737 C 825.00133,615.24737 825.00128,615.2474 825.00115,615.24747 C 824.94001,615.2786 765.29499,645.65296 765.29499,645.65296 C 765.29499,645.65296 765.29499,645.65296 765.29499,645.65296 M 825.00133,615.24737 C 825.00133,615.24737 840.70789,607.24 840.70821,607.23982 C 840.87934,607.15258 884.68555,584.81968 884.68555,584.81968 C 882.91809,581.35079 880.44924,578.88187 876.98044,577.11431 C 872.03169,567.40209 865.1192,560.48974 855.40683,555.54121 C 855.3757,555.60234 847.40545,571.25323 847.40545,571.25323 C 847.40545,571.25323 825.00133,615.24737 825.00133,615.24737"
-       id="path5040"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7661);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7511)"
-       d="M 611.27256,635.95046 C 615.84402,650.02 623.64224,660.75337 635.61054,669.44882 C 635.61054,669.44882 635.61057,669.44877 635.61063,669.44868 C 635.64291,669.4043 675.00029,615.25933 675.00029,615.25933 C 675.00029,615.25933 675.00024,615.25934 675.00014,615.25938 C 674.94793,615.27633 611.27256,635.95046 611.27256,635.95046 C 611.27256,635.95046 611.27256,635.95046 611.27256,635.95046 M 675.00029,615.25933 C 675.00029,615.25933 688.413,610.89791 688.41337,610.89778 C 688.60908,610.83416 738.70966,594.54294 738.70966,594.54294 C 737.7472,591.58074 736.1054,589.32091 733.58571,587.49013 C 729.97663,576.38283 723.82014,567.90932 714.37158,561.04469 C 714.33933,561.08911 706.08297,572.4582 706.08297,572.4582 C 706.08297,572.4582 675.00029,615.25933 675.00029,615.25933"
-       id="path5042"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7658);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7507)"
-       d="M 458.81908,625.73815 C 461.1333,640.3496 467.15646,652.17073 477.61713,662.63139 C 477.61713,662.63139 477.61716,662.63137 477.61723,662.6313 C 477.64632,662.6022 524.99903,615.27098 524.99903,615.27098 C 524.99903,615.27098 524.99899,615.27099 524.99892,615.271 C 524.95826,615.27743 458.81908,625.73815 458.81908,625.73815 C 458.81908,625.73815 458.81908,625.73815 458.81908,625.73815 M 524.99903,615.27098 C 524.99903,615.27098 535.44648,613.61384 535.4469,613.61377 C 535.66371,613.57938 591.1648,604.77597 591.1648,604.77597 C 590.79935,602.46871 589.8483,600.60202 588.19659,598.95016 C 586.2477,586.64602 581.17557,576.69158 572.36666,567.88282 C 572.33756,567.91194 564.88762,575.36509 564.88762,575.36509 C 564.88762,575.36509 524.99903,615.27098 524.99903,615.27098"
-       id="path5044"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7655);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7503)"
-       d="M 307.99523,615.27065 C 307.99522,630.06424 312.09499,642.68206 320.79046,654.65034 C 320.79046,654.65034 320.79049,654.65032 320.79053,654.6503 C 320.81273,654.63417 374.99781,615.28518 374.99781,615.28518 C 374.99781,615.28518 374.99778,615.28518 374.99773,615.28518 C 374.9703,615.28518 307.99523,615.27065 307.99523,615.27065 C 307.99523,615.27065 307.99523,615.27065 307.99523,615.27065 M 374.99781,615.28518 C 374.99781,615.28518 382.04994,615.28358 382.05039,615.28357 C 382.28363,615.28353 441.99075,615.26998 441.99075,615.26998 C 441.99075,613.71256 441.55919,612.38417 440.64388,611.12414 C 440.64377,597.88801 436.97553,586.59858 429.19545,575.89034 C 429.17325,575.90648 423.49048,580.03712 423.49048,580.03712 C 423.49048,580.03712 374.99781,615.28518 374.99781,615.28518"
-       id="path5046"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
-    <path
-       style="fill:url(#radialGradient7652);fill-opacity:1;stroke:none;stroke-width:0.80000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7499)"
-       d="M 158.82594,604.86483 C 156.51169,619.47628 158.58713,632.5801 165.3033,645.7613 C 165.3033,645.7613 165.30331,645.7613 165.30334,645.76129 C 165.31556,645.75506 225.00133,615.36069 225.00133,615.36069 C 225.00133,615.36069 225.00132,615.36069 225.00129,615.36069 C 224.98774,615.35853 158.82594,604.86483 158.82594,604.86483 C 158.82594,604.86483 158.82594,604.86483 158.82594,604.86483 M 225.00133,615.36069 C 225.00133,615.36069 228.48423,615.91152 228.48471,615.91159 C 228.72863,615.95017 291.17184,625.82569 291.17184,625.82569 C 291.29367,625.05645 291.18448,624.36656 290.83103,623.6726 C 293.0233,609.83041 291.05705,597.41646 284.69444,584.92923 C 284.68222,584.93547 281.55273,586.53087 281.55273,586.53087 C 281.55273,586.53087 225.00133,615.36069 225.00133,615.36069"
-       id="path5048"
-       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
-       inkscape:export-xdpi="150"
-       inkscape:export-ydpi="150" />
+    <g
+       id="g3992"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ui/alerts/light-radar-yellow.png"
+       inkscape:export-xdpi="210"
+       inkscape:export-ydpi="210">
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ui/alerts/light-yellow-large.png"
+         id="path2614"
+         d="M 150,615.3622 C 150,656.76221 116.4,690.36221 75,690.36221 C 33.6,690.36221 0,656.76221 0,615.3622 C 0,573.9622 33.6,540.3622 75,540.3622 C 116.4,540.3622 150,573.9622 150,615.3622 z"
+         style="opacity:0;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         style="fill:url(#radialGradient3997);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4344);opacity:0.7"
+         d="M 11.28125,594.65625 C 6.7097679,608.72578 6.7097681,621.99294 11.28125,636.0625 L 75,615.375 L 11.28125,594.65625 z M 75,615.375 L 138.71875,636.0625 C 143.29023,621.99294 143.29024,608.72578 138.71875,594.65625 L 75,615.375 z"
+         id="path4221" />
+      <path
+         style="opacity:0;fill:#333333;fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;"
+         d="M 3000,615.3622 C 3000,656.76221 2966.4,690.36221 2925,690.36221 C 2883.6,690.36221 2850,656.76221 2850,615.3622 C 2850,573.9622 2883.6,540.3622 2925,540.3622 C 2966.4,540.3622 3000,573.9622 3000,615.3622 z"
+         id="path4766"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ui/alerts/light-yellow-large.png"
+         inkscape:export-xdpi="150"
+         inkscape:export-ydpi="150" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         style="fill:url(#radialGradient3993);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4336);opacity:0.7"
+         d="M 2865.3044,584.94332 C 2858.5882,598.12449 2856.5127,611.22831 2858.827,625.83979 L 2924.9976,615.37481 L 2865.3044,584.94332 z M 2924.9976,615.37481 L 2984.6956,645.77543 C 2991.4118,632.59423 2993.4873,619.49041 2991.173,604.87896 L 2924.9976,615.37481 z"
+         id="path4768" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5014"
+         d="M 2829.1525,654.72574 C 2837.848,642.75752 2841.9479,630.1396 2841.9477,615.34621 C 2841.9477,615.34621 2841.9477,615.34595 2841.947,615.3462 C 2841.7001,615.34589 2774.9549,615.33096 2774.9549,615.33096 C 2774.9549,615.33096 2774.9551,615.33098 2774.9554,615.33123 C 2775.1552,615.47652 2829.1525,654.72574 2829.1525,654.72574 C 2829.1525,654.72574 2829.1525,654.72574 2829.1525,654.72574 M 2774.9549,615.33096 C 2774.9549,615.33096 2723.6005,578.03764 2723.6005,578.03745 C 2723.5893,578.02941 2720.7474,575.9657 2720.7474,575.9657 C 2712.5097,587.30402 2708.6256,599.25778 2708.6256,613.27283 C 2708.1681,613.90265 2707.9525,614.56672 2707.9531,615.34517 C 2708.2,615.34527 2771.4284,615.33162 2771.4284,615.33162 C 2771.4284,615.33162 2774.9549,615.33096 2774.9549,615.33096"
+         style="fill:url(#radialGradient3990);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4332);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5016"
+         d="M 2672.2752,662.70583 C 2682.7358,652.24531 2688.7591,640.42412 2691.0732,625.81278 C 2691.0732,625.81278 2691.0732,625.81255 2691.0725,625.81267 C 2690.8422,625.776 2624.9074,615.31777 2624.9074,615.31777 C 2624.9074,615.31777 2624.9076,615.31776 2624.9079,615.31813 C 2625.0729,615.48319 2672.2752,662.70583 2672.2752,662.70583 C 2672.2752,662.70583 2672.2752,662.70583 2672.2752,662.70583 M 2624.9074,615.31777 C 2624.9074,615.31777 2582.5132,572.94256 2582.5132,572.94257 C 2582.4937,572.92313 2577.5254,567.95724 2577.5254,567.95724 C 2568.166,577.31672 2562.7767,587.89351 2560.7063,600.96711 C 2559.6052,602.06825 2558.9712,603.31253 2558.7282,604.85049 C 2558.9586,604.88698 2617.9412,614.21585 2617.9412,614.21585 C 2617.9412,614.21585 2624.9074,615.31777 2624.9074,615.31777"
+         style="fill:url(#radialGradient3987);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4328);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5018"
+         d="M 2514.2625,669.51713 C 2526.2309,660.82168 2534.0289,650.08827 2538.6005,636.01887 C 2538.6005,636.01887 2538.6004,636.01862 2538.6,636.01869 C 2538.3912,635.95083 2474.8911,615.30246 2474.8911,615.30246 C 2474.8911,615.30246 2474.8913,615.30253 2474.8915,615.30273 C 2475.0205,615.48058 2514.2625,669.51713 2514.2625,669.51713 C 2514.2625,669.51713 2514.2625,669.51713 2514.2625,669.51713 M 2474.8911,615.30246 C 2474.8911,615.30246 2441.7208,569.66924 2441.7207,569.66904 C 2441.6964,569.63567 2435.5012,561.11281 2435.5012,561.11281 C 2425.4228,568.43528 2418.8558,577.47402 2415.0062,589.32217 C 2413.1164,590.69501 2411.8854,592.38962 2411.1641,594.61133 C 2411.3728,594.67922 2464.8288,612.03518 2464.8288,612.03518 C 2464.8288,612.03518 2474.8911,615.30246 2474.8911,615.30246"
+         style="fill:url(#radialGradient3984);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4324);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5020"
+         d="M 2355.2831,674.99346 C 2368.4643,668.27741 2377.8456,658.89599 2384.5617,645.7149 C 2384.5617,645.7149 2384.5615,645.7146 2384.5612,645.71465 C 2384.3778,645.62111 2324.8774,615.28724 2324.8774,615.28724 C 2324.8774,615.28724 2324.8776,615.28726 2324.8777,615.28764 C 2324.9711,615.4711 2355.2831,674.99346 2355.2831,674.99346 C 2355.2831,674.99346 2355.2831,674.99346 2355.2831,674.99346 M 2324.8774,615.28724 C 2324.8774,615.28724 2300.8555,568.16788 2300.8555,568.16775 C 2300.8305,568.11895 2294.4495,555.60287 2294.4495,555.60287 C 2284.0435,560.90509 2276.6371,568.31143 2271.3349,578.71765 C 2268.56,580.13156 2266.5851,582.10677 2265.1717,584.88179 C 2265.355,584.97494 2312.3077,608.88608 2312.3077,608.88608 C 2312.3077,608.88608 2324.8774,615.28724 2324.8774,615.28724"
+         style="fill:url(#radialGradient3981);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4320);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5022"
+         d="M 2195.5546,679.00001 C 2209.6243,674.42849 2220.3576,666.63018 2229.053,654.66201 C 2229.053,654.66201 2229.053,654.66162 2229.0526,654.66162 C 2228.8972,654.54876 2174.8635,615.27214 2174.8635,615.27214 C 2174.8635,615.27214 2174.8636,615.27227 2174.8637,615.2725 C 2174.9229,615.45547 2195.5546,679.00001 2195.5546,679.00001 C 2195.5546,679.00001 2195.5546,679.00001 2195.5546,679.00001 M 2174.8635,615.27214 C 2174.8635,615.27214 2159.5987,568.32838 2159.5986,568.32811 C 2159.5776,568.26292 2154.1471,551.56269 2154.1471,551.56269 C 2143.7799,554.93122 2135.8712,560.67735 2129.4639,569.49614 C 2125.7615,570.69909 2122.9372,572.75122 2120.6492,575.90088 C 2120.8046,576.01395 2160.5966,604.91119 2160.5966,604.91119 C 2160.5966,604.91119 2174.8635,615.27214 2174.8635,615.27214"
+         style="fill:url(#radialGradient3978);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4316);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5024"
+         d="M 2035.3165,681.43746 C 2049.9278,679.12329 2061.7491,673.09999 2072.2096,662.63946 C 2072.2096,662.63946 2072.2096,662.63909 2072.2094,662.63898 C 2072.0831,662.51271 2024.8492,615.25746 2024.8492,615.25746 C 2024.8492,615.25746 2024.8494,615.25758 2024.8494,615.25783 C 2024.8772,615.4341 2035.3165,681.43746 2035.3165,681.43746 C 2035.3165,681.43746 2035.3165,681.43746 2035.3165,681.43746 M 2024.8492,615.25746 C 2024.8492,615.25746 2017.6684,569.98587 2017.6684,569.98577 C 2017.6556,569.90464 2014.3542,549.09159 2014.3542,549.09159 C 2004.3569,550.67501 1996.2687,554.79627 1989.1113,561.9536 C 1984.4973,562.68424 1980.7644,564.5866 1977.4614,567.88995 C 1977.5876,568.01621 2009.8846,600.29934 2009.8846,600.29934 C 2009.8846,600.29934 2024.8492,615.25746 2024.8492,615.25746"
+         style="fill:url(#radialGradient3975);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4312);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5026"
+         d="M 1874.8201,682.24561 C 1889.6138,682.24563 1902.2317,678.14575 1914.1998,669.45041 C 1914.1998,669.45041 1914.1999,669.45 1914.1996,669.44991 C 1914.1029,669.31656 1874.8347,615.24293 1874.8347,615.24293 C 1874.8347,615.24293 1874.8347,615.2431 1874.8349,615.24334 C 1874.8347,615.40794 1874.8201,682.24561 1874.8201,682.24561 C 1874.8201,682.24561 1874.8201,682.24561 1874.8201,682.24561 M 1874.8347,615.24293 C 1874.8347,615.24293 1874.8251,572.93162 1874.8252,572.93134 C 1874.8251,572.83515 1874.8196,548.24991 1874.8196,548.24991 C 1865.4761,548.24994 1857.507,550.83915 1849.948,556.33114 C 1844.4977,556.33132 1839.8492,557.84175 1835.4402,561.0455 C 1835.5368,561.17893 1860.3208,595.27542 1860.3208,595.27542 C 1860.3208,595.27542 1874.8347,615.24293 1874.8347,615.24293"
+         style="fill:url(#radialGradient3972);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4308);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5028"
+         d="M 1714.354,681.40166 C 1728.9654,683.71584 1742.0693,681.64042 1755.2505,674.92421 C 1755.2505,674.92421 1755.2504,674.92399 1755.2503,674.92372 C 1755.1818,674.78933 1724.8497,615.22621 1724.8497,615.22621 C 1724.8497,615.22621 1724.8499,615.22623 1724.8499,615.22653 C 1724.8261,615.37579 1714.354,681.40166 1714.354,681.40166 C 1714.354,681.40166 1714.354,681.40166 1714.354,681.40166 M 1724.8497,615.22621 C 1724.8497,615.22621 1730.9086,576.91684 1730.9085,576.9167 C 1730.9257,576.80821 1735.3149,549.05557 1735.3149,549.05557 C 1726.8554,547.71579 1719.2689,548.91736 1711.6377,552.80554 C 1705.4854,551.83133 1699.9683,552.70539 1694.4185,555.53336 C 1694.4871,555.66793 1712.0366,590.09219 1712.0366,590.09219 C 1712.0366,590.09219 1724.8497,615.22621 1724.8497,615.22621"
+         style="fill:url(#radialGradient3969);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4304);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5030"
+         d="M 1554.2465,678.92041 C 1568.3161,683.49189 1581.5832,683.49187 1595.6528,678.92033 C 1595.6528,678.92033 1595.6528,678.92011 1595.6527,678.91992 C 1595.6103,678.78946 1574.9653,615.20165 1574.9653,615.20165 C 1574.9653,615.20165 1574.9653,615.20169 1574.9653,615.20193 C 1574.9228,615.3325 1554.2465,678.92041 1554.2465,678.92041 C 1554.2465,678.92041 1554.2465,678.92041 1554.2465,678.92041 M 1574.9653,615.20165 C 1574.9653,615.20165 1585.8535,581.66531 1585.8535,581.66495 C 1585.8918,581.54747 1595.6529,551.48273 1595.6529,551.48273 C 1588.2477,549.07665 1581.2648,549.07675 1573.8598,551.48263 C 1567.1953,549.31736 1560.911,549.31749 1554.2467,551.48313 C 1554.289,551.61369 1565.1512,585.01895 1565.1512,585.01895 C 1565.1512,585.01895 1574.9653,615.20165 1574.9653,615.20165"
+         style="fill:url(#radialGradient3966);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4300);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5032"
+         d="M 1394.5708,674.89052 C 1407.7519,681.60672 1420.8558,683.68209 1435.4673,681.36781 C 1435.4673,681.36781 1435.4672,681.36769 1435.4673,681.36741 C 1435.448,681.24553 1425.0023,615.19737 1425.0023,615.19737 C 1425.0023,615.19737 1425.0023,615.19742 1425.0022,615.19752 C 1424.9461,615.30758 1394.5708,674.89052 1394.5708,674.89052 C 1394.5708,674.89052 1394.5708,674.89052 1394.5708,674.89052 M 1425.0023,615.19737 C 1425.0023,615.19737 1439.4027,586.91915 1439.4028,586.91886 C 1439.4651,586.79662 1455.403,555.49919 1455.403,555.49919 C 1449.159,552.3178 1442.9518,551.33472 1436.0305,552.43088 C 1429.0931,548.89622 1422.1966,547.80398 1414.5065,549.02222 C 1414.5259,549.14418 1419.4781,580.36809 1419.4781,580.36809 C 1419.4781,580.36809 1425.0023,615.19737 1425.0023,615.19737"
+         style="fill:url(#radialGradient3963);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4296);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5034"
+         d="M 1235.6077,669.40779 C 1247.5759,678.10323 1260.1937,682.20304 1274.9874,682.203 C 1274.9874,682.203 1274.9873,682.20289 1274.9875,682.20258 C 1274.9875,682.09286 1275.0026,615.21003 1275.0026,615.21003 C 1275.0026,615.21003 1275.0026,615.21006 1275.0025,615.21029 C 1274.9379,615.29907 1235.6077,669.40779 1235.6077,669.40779 C 1235.6077,669.40779 1235.6077,669.40779 1235.6077,669.40779 M 1275.0026,615.21003 C 1275.0026,615.21003 1291.5775,592.38573 1291.5776,592.38548 C 1291.6664,592.26336 1314.3678,561.00267 1314.3678,561.00267 C 1309.3284,557.34129 1304.0155,555.61504 1297.7864,555.61507 C 1290.8576,550.58099 1283.5527,548.20748 1274.9881,548.20769 C 1274.9882,548.31742 1274.9941,576.41915 1274.9941,576.41915 C 1274.9941,576.41915 1275.0026,615.21003 1275.0026,615.21003"
+         style="fill:url(#radialGradient3960);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4292);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5036"
+         d="M 1077.6142,662.59043 C 1088.0748,673.05106 1099.8959,679.07425 1114.5075,681.38846 C 1114.5075,681.38846 1114.5074,681.38833 1114.5076,681.38806 C 1114.5225,681.29337 1125.0025,615.22266 1125.0025,615.22266 C 1125.0025,615.22266 1125.0025,615.22269 1125.0024,615.22281 C 1124.9343,615.29082 1077.6142,662.59043 1077.6142,662.59043 C 1077.6142,662.59043 1077.6142,662.59043 1077.6142,662.59043 M 1125.0025,615.22266 C 1125.0025,615.22266 1142.4513,597.766 1142.4514,597.76578 C 1142.5678,597.6493 1172.3629,567.84074 1172.3629,567.84074 C 1168.5088,563.98677 1164.1536,561.76757 1158.7703,560.91487 C 1152.1638,554.3082 1144.6979,550.50431 1135.4696,549.04295 C 1135.4546,549.13784 1131.6133,573.42478 1131.6133,573.42478 C 1131.6133,573.42478 1125.0025,615.22266 1125.0025,615.22266"
+         style="fill:url(#radialGradient3956);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4288);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5038"
+         d="M 920.78731,654.60656 C 929.48274,666.57482 940.2161,674.37306 954.28567,678.94454 C 954.28567,678.94454 954.28569,678.94446 954.28574,678.94432 C 954.3112,678.86603 975.00208,615.23517 975.00208,615.23517 C 975.00208,615.23517 975.00201,615.23522 975.00188,615.2353 C 974.93526,615.28368 920.78731,654.60656 920.78731,654.60656 C 920.78731,654.60656 920.78731,654.60656 920.78731,654.60656 M 975.00208,615.23517 C 975.00208,615.23517 992.11468,602.79619 992.11497,602.79599 C 992.25924,602.69111 1029.1916,575.84537 1029.1916,575.84537 C 1026.4455,572.06587 1023.056,569.60309 1018.6129,568.15931 C 1012.6635,559.9707 1005.3195,554.63528 995.69314,551.50767 C 995.66768,551.58599 989.15911,571.63204 989.15911,571.63204 C 989.15911,571.63204 975.00208,615.23517 975.00208,615.23517"
+         style="fill:url(#radialGradient3952);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4284);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5040"
+         d="M 765.29499,645.65296 C 772.01111,658.83416 781.39242,668.21546 794.57363,674.93161 C 794.57363,674.93161 794.57366,674.93154 794.57373,674.93143 C 794.60487,674.87032 825.00133,615.24737 825.00133,615.24737 C 825.00133,615.24737 825.00128,615.2474 825.00115,615.24747 C 824.94001,615.2786 765.29499,645.65296 765.29499,645.65296 C 765.29499,645.65296 765.29499,645.65296 765.29499,645.65296 M 825.00133,615.24737 C 825.00133,615.24737 840.70789,607.24 840.70821,607.23982 C 840.87934,607.15258 884.68555,584.81968 884.68555,584.81968 C 882.91809,581.35079 880.44924,578.88187 876.98044,577.11431 C 872.03169,567.40209 865.1192,560.48974 855.40683,555.54121 C 855.3757,555.60234 847.40545,571.25323 847.40545,571.25323 C 847.40545,571.25323 825.00133,615.24737 825.00133,615.24737"
+         style="fill:url(#radialGradient3948);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4280);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5042"
+         d="M 611.27256,635.95046 C 615.84402,650.02 623.64224,660.75337 635.61054,669.44882 C 635.61054,669.44882 635.61057,669.44877 635.61063,669.44868 C 635.64291,669.4043 675.00029,615.25933 675.00029,615.25933 C 675.00029,615.25933 675.00024,615.25934 675.00014,615.25938 C 674.94793,615.27633 611.27256,635.95046 611.27256,635.95046 C 611.27256,635.95046 611.27256,635.95046 611.27256,635.95046 M 675.00029,615.25933 C 675.00029,615.25933 688.413,610.89791 688.41337,610.89778 C 688.60908,610.83416 738.70966,594.54294 738.70966,594.54294 C 737.7472,591.58074 736.1054,589.32091 733.58571,587.49013 C 729.97663,576.38283 723.82014,567.90932 714.37158,561.04469 C 714.33933,561.08911 706.08297,572.4582 706.08297,572.4582 C 706.08297,572.4582 675.00029,615.25933 675.00029,615.25933"
+         style="fill:url(#radialGradient3944);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4276);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5044"
+         d="M 458.81908,625.73815 C 461.1333,640.3496 467.15646,652.17073 477.61713,662.63139 C 477.61713,662.63139 477.61716,662.63137 477.61723,662.6313 C 477.64632,662.6022 524.99903,615.27098 524.99903,615.27098 C 524.99903,615.27098 524.99899,615.27099 524.99892,615.271 C 524.95826,615.27743 458.81908,625.73815 458.81908,625.73815 C 458.81908,625.73815 458.81908,625.73815 458.81908,625.73815 M 524.99903,615.27098 C 524.99903,615.27098 535.44648,613.61384 535.4469,613.61377 C 535.66371,613.57938 591.1648,604.77597 591.1648,604.77597 C 590.79935,602.46871 589.8483,600.60202 588.19659,598.95016 C 586.2477,586.64602 581.17557,576.69158 572.36666,567.88282 C 572.33756,567.91194 564.88762,575.36509 564.88762,575.36509 C 564.88762,575.36509 524.99903,615.27098 524.99903,615.27098"
+         style="fill:url(#radialGradient3940);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4272);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5046"
+         d="M 307.99523,615.27065 C 307.99522,630.06424 312.09499,642.68206 320.79046,654.65034 C 320.79046,654.65034 320.79049,654.65032 320.79053,654.6503 C 320.81273,654.63417 374.99781,615.28518 374.99781,615.28518 C 374.99781,615.28518 374.99778,615.28518 374.99773,615.28518 C 374.9703,615.28518 307.99523,615.27065 307.99523,615.27065 C 307.99523,615.27065 307.99523,615.27065 307.99523,615.27065 M 374.99781,615.28518 C 374.99781,615.28518 382.04994,615.28358 382.05039,615.28357 C 382.28363,615.28353 441.99075,615.26998 441.99075,615.26998 C 441.99075,613.71256 441.55919,612.38417 440.64388,611.12414 C 440.64377,597.88801 436.97553,586.59858 429.19545,575.89034 C 429.17325,575.90648 423.49048,580.03712 423.49048,580.03712 C 423.49048,580.03712 374.99781,615.28518 374.99781,615.28518"
+         style="fill:url(#radialGradient3936);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4268);opacity:0.7" />
+      <path
+         inkscape:export-ydpi="150"
+         inkscape:export-xdpi="150"
+         inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-yellow-large.png"
+         id="path5048"
+         d="M 158.82594,604.86483 C 156.51169,619.47628 158.58713,632.5801 165.3033,645.7613 C 165.3033,645.7613 165.30331,645.7613 165.30334,645.76129 C 165.31556,645.75506 225.00133,615.36069 225.00133,615.36069 C 225.00133,615.36069 225.00132,615.36069 225.00129,615.36069 C 224.98774,615.35853 158.82594,604.86483 158.82594,604.86483 C 158.82594,604.86483 158.82594,604.86483 158.82594,604.86483 M 225.00133,615.36069 C 225.00133,615.36069 228.48423,615.91152 228.48471,615.91159 C 228.72863,615.95017 291.17184,625.82569 291.17184,625.82569 C 291.29367,625.05645 291.18448,624.36656 290.83103,623.6726 C 293.0233,609.83041 291.05705,597.41646 284.69444,584.92923 C 284.68222,584.93547 281.55273,586.53087 281.55273,586.53087 C 281.55273,586.53087 225.00133,615.36069 225.00133,615.36069"
+         style="fill:url(#radialGradient3932);fill-opacity:1;stroke:none;stroke-width:0.80000000999999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter4264);opacity:0.7" />
+    </g>
     <path
        inkscape:export-ydpi="150"
        inkscape:export-xdpi="150"
@@ -6123,7 +6281,10 @@
        inkscape:export-xdpi="210"
        inkscape:export-ydpi="210" />
     <g
-       id="g4175">
+       id="g4175"
+       inkscape:export-filename="/media/pros/pyfl/trunk/art/exports/alerts/light-radar.png"
+       inkscape:export-xdpi="210"
+       inkscape:export-ydpi="210">
       <path
          inkscape:export-ydpi="210"
          inkscape:export-xdpi="210"

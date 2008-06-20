@@ -105,7 +105,7 @@ class Quad ( Scenario ):
 
         nebula2 = Nebula( stats.A_NEBULA_2, 8000, -16000 )
 
-        blackHole0 = BlackHole( stats.BH_0, -10000, -10000 )
+        blackHole0 = BlackHole( stats.BH_0, -30000, -20000 )
 
 
 #        for i in range( 15 ):
@@ -318,21 +318,15 @@ class Quad ( Scenario ):
         flagship = FlagShip( player, stats.FLAGSHIP_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[2:4]:
-            t.install = TurretInstall( stats.T_LASER_MR_0 )
-            t.weapon = LaserWeaponTurret( stats.W_LASER_MR_0 )
-            t.ai = AiTurret()
+            t.buildInstall( stats.T_LASER_MR_0 )
         for t in flagship.turrets[:2]+flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR_0 )
-            t.weapon = LaserWeaponTurret( stats.W_LASER_SR )
-            t.ai = AiWeaponTurret()
+            t.buildInstall( stats.T_LASER_SR_0 )
 
       elif i < 3:
         flagship = FlagShip( player, stats.FLAGSHIP_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets:
-            t.install = TurretInstall( stats.T_MASS_SR_0 )
-            t.weapon = MassWeaponTurret( stats.W_MASS_SR_0 )
-            t.ai = AiWeaponTurret()
+            t.buildInstall( stats.T_MASS_SR_0 )
         for i in range(10):
            fighter = ShipSingleWeapon(flagship.player, stats.FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ ids.S_FIGHTER ].docked.append( fighter )
@@ -344,13 +338,9 @@ class Quad ( Scenario ):
         flagship = FlagShip( player, stats.FLAGSHIP_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
-            t.install = TurretInstall( stats.T_MASS_MR_0 )
-            t.weapon = MassWeaponTurret( stats.W_MASS_MR )
-            t.ai = AiWeaponTurret()
+            t.buildInstall( stats.T_MASS_MR_0 )
         for t in flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_LASER_SR_0 )
-            t.weapon = LaserWeaponTurret( stats.W_LASER_SR )
-            t.ai = AiWeaponTurret()
+            t.buildInstall( stats.T_LASER_SR_0 )
         for i in range(4):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
@@ -483,12 +473,27 @@ class Quad ( Scenario ):
         flagship = FlagShip( player, shipStats, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre/2
         flagship.energy = flagship.stats.maxEnergy / 2
-        flagship.oir = 2*pi*random()
+        flagship.ori = 2*pi*random()
+        
+        if player.race == stats.R_EVOLVED:
+            smallTurret = stats.T_BURST_LASER_0
+            mediumTurret = stats.T_SUBSPACE_WAVE_0
+        elif player.race == stats.R_NOMAD:
+            smallTurret = stats.T_REPEATER_1
+            mediumTurret = stats.T_NOMAD_CANNON_0
+        elif player.race == stats.R_AI:
+            smallTurret = stats.T_AI_FLAK_1
+            mediumTurret = stats.T_AI_OMNI_LASER_0
+        else:
+            smallTurret = stats.T_MASS_SR_0
+            mediumTurret = stats.T_MASS_MR_0
 
+        for t in flagship.turrets[:2]:
+            t.buildInstall( mediumTurret )
+            
         for t in flagship.turrets[-2:]:
-            t.install = TurretInstall( stats.T_MASS_SR_0 )
-            t.weapon = MassWeaponTurret( stats.W_MASS_SR_0 )
-            t.ai = AiWeaponTurret()
+            t.buildInstall( smallTurret )
+            
         player.flagship = flagship
         
         game.objects.append( flagship )

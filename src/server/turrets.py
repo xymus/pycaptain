@@ -2,12 +2,13 @@ from ais import *
 from weapons import *
 
 class Turret:
-    def __init__( self, stats ): # , weapon, ai ): # the stats duplicates the stats from ship, the turret's stats are in install.stats
+    def __init__( self, stats ): # the stats duplicates the stats from ship, the turret install's stats are in install.stats
         self.stats = stats
         self.install = None
         self.weapon = None
         self.ai = None
-        self.rr = (self.stats.maxAngle+self.stats.minAngle)/2                                                     
+        self.rr = (self.stats.maxAngle+self.stats.minAngle)/2   
+                                                          
     def buildInstall( self, turretStats ): 
         self.weapon = None
         if turretStats.weapon:
@@ -23,7 +24,7 @@ class Turret:
         self.ai = None
         if turretStats.ai:
             if turretStats.ai == ids.TA_COMBAT_STABLE:
-                self.ai = AiWeaponTurret()
+                self.ai = AiWeaponTurretStable()
             elif turretStats.ai == ids.TA_COMBAT_ROTATING:
                 self.ai = AiWeaponTurret()
             elif turretStats.ai == ids.TA_ROTATING:

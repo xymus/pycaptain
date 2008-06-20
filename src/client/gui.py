@@ -4,6 +4,7 @@ from random import randint, random, choice
 from display import Display
 from mixer import Mixer
 from controls import *
+from specialcontrols import *
 from inputs import DisplayInput
 from time import time
 from common.utils import *
@@ -184,7 +185,16 @@ class Gui:
 			ids.T_SAIL_2		: 0,
 			ids.T_JAMMER		: 0,
 
+			ids.T_AI_FLAK_0	    : 2,
+			ids.T_AI_FLAK_1	    : 2,
+			ids.T_AI_FLAK_2	    : 2,
+			ids.T_AI_FLAK_3	    : 2,
+			ids.T_AI_OMNI_LASER_0	: 2,
+			ids.T_AI_OMNI_LASER_1	: 2,
 			ids.T_AI_MISSILE_0	: 2,
+			ids.T_AI_MISSILE_1	: 2,
+			ids.T_AI_MISSILE_2	: 2,
+			ids.T_AI_MISSILE_3	: 2,
                         
 			ids.T_ESPHERE_0 	: 2,
 			ids.T_ESPHERE_1 	: 2,
@@ -197,6 +207,21 @@ class Gui:
 			ids.T_OMNI_LASER_2 	: 2,
 			ids.T_SUBSPACE_WAVE_0 	: 2,
 			ids.T_SUBSPACE_WAVE_1 	: 2,
+
+			ids.T_DISCHARGER_0 	: 2,
+			ids.T_DISCHARGER_1 	: 2,
+			ids.T_REPEATER_0 	: 2,
+			ids.T_REPEATER_1 	: 2,
+			ids.T_REPEATER_2 	: 2,
+			ids.T_REPEATER_3 	: 2,
+			ids.T_NOMAD_CANNON_0 	: 2,
+			ids.T_NOMAD_CANNON_1 	: 2,
+			ids.T_NOMAD_CANNON_2 	: 2,
+			ids.T_NOMAD_MISSILE_0 	: 2,
+			ids.T_NOMAD_MISSILE_1 	: 2,
+			ids.T_NOMAD_SUCKER_0 	: 0,
+			ids.T_NOMAD_SUCKER_1 	: 0,
+			ids.T_NOMAD_SUCKER_2 	: 0,
 
 			0	: 0,
 			-1	: 0}
@@ -216,7 +241,7 @@ class Gui:
 
         self.laserColors = { ids.R_HUMAN: (255,0,0,0),
                              ids.R_AI: (0,255,0,0),
-                             ids.R_NOMAD: (0,0,255,0),
+                             ids.R_NOMAD: (255,255,255,0),
                              ids.R_EXTRA: (127,127,0,0),
                              ids.R_EVOLVED: (0,255,0,0) }
 
@@ -288,22 +313,34 @@ class Gui:
   #          self.display.drawRo( self.imgs[ obj.type ], (x, y), 0 )
 
     def drawGfx( self, gfx ):
+
         if isinstance( gfx, GfxLaser ): # (255,0,0,int(255*gfx.intensity))
             self.display.drawLine( self.laserColors[ gfx.color ], self.getViewportPos((gfx.xp,gfx.yp)), self.getViewportPos((gfx.xd,gfx.yd)), gfx.width)
+
         elif isinstance( gfx, GfxExplosion ):
           if gfx.delai == 0:
             self.display.drawCircle( (255,255,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius )
             if gfx.sound:
                 self.mixer.play( self.snds[ gfx.sound ] )
+
+        elif isinstance( gfx, GfxLightning ):
+            if gfx.delai == 0:
+                self.display.drawRo( self.imgs[ ids.G_LIGHTNING ], self.getViewportPos((gfx.xp,gfx.yp)), atan2( gfx.yd-gfx.yp, gfx.xd-gfx.xp ) )
+            self.display.drawLine( (255,255,255,255), self.getViewportPos((gfx.xp,gfx.yp)), self.getViewportPos((gfx.xd,gfx.yd)), gfx.strength)
+            if gfx.sound:
+                self.mixer.play( self.snds[ gfx.sound ] )
+
         elif isinstance( gfx, GfxShield ):
         #    self.display.drawCircle( (0,0,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius, 1 )
             arca = gfx.hit*self.shieldAngle
         #    print gfx.angle - arca, gfx.angle + arca
             self.display.drawArc( (65,65,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius, gfx.angle - arca, gfx.angle + arca, 2 )
+
         elif isinstance( gfx, GfxExhaust ):
             pass
      #       gfx.type = choice( imgs.exhausts )
  #           self.drawObject( gfx )
+
         elif isinstance( gfx, GfxFragment ):
             self.drawObject( gfx )
 
@@ -442,23 +479,25 @@ class Gui:
     #    self.display.draw( self.imgs.uiDigitalBack, (self.display.resolution[0]-292,607) )
 
     ### energy and shield
-        self.display.drawRoNCutQbl( self.imgs.uiEnergyFill, (self.display.resolution[0]-72, 22), (1-float(stats.energy)/stats.maxEnergy)*pi/2 )
+        if stats.maxEnergy:
+            self.display.drawRoNCutQbl( self.imgs.uiEnergyFill, (self.display.resolution[0]-72, 22), (1-float(stats.energy)/stats.maxEnergy)*pi/2 )
         self.display.drawRoNCutQbl( self.imgs.uiShieldFill, (self.display.resolution[0]-72, 22), (1-stats.shieldIntegrity)*pi/2 )
 
-        if 1.0*stats.energy/stats.maxEnergy < 0.2:
+        if stats.maxEnergy and 1.0*stats.energy/stats.maxEnergy < 0.2:
             self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, 22-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
 
         if stats.shieldIntegrity < 0.25:
             self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertRed )/2, 22-self.display.getHeight( self.imgs.uiAlertRed )/2) )
 
-        if 1.0*stats.ore/stats.maxOre < 0.2:
+        if stats.maxOre and 1.0*stats.ore/stats.maxOre < 0.2:
             self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
 
   #      print stats.hullIntegrity
         if stats.hullIntegrity < 0.5:
             self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertRed )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertRed )/2) )
 
-        self.display.drawRoNCutQtl( self.imgs.uiOreFill, (self.display.resolution[0]-74, self.display.resolution[1]-24), (1-float(stats.ore)/stats.maxOre)*pi/2 )
+        if stats.maxOre:
+            self.display.drawRoNCutQtl( self.imgs.uiOreFill, (self.display.resolution[0]-74, self.display.resolution[1]-24), (1-float(stats.ore)/stats.maxOre)*pi/2 )
    #     print float(stats.ore)/stats.maxOre
         if stats.hullIntegrity >= 0.5:
             hullImg = self.imgs.uiHullFill0
@@ -580,13 +619,19 @@ class Gui:
         self.display.drawRo( self.imgs.uiJumpGlass, jumpCenter, 0 )
 
         ennemyInRange = False
+        deadlyInRange = False
         for obj in objects:
             if obj.relation == ids.U_ENNEMY:
                 ennemyInRange = True
+            if obj.relation == ids.U_DEADLY:
+                deadlyInRange = True
+            if ennemyInRange and deadlyInRange:
                 break
 
+        if deadlyInRange:
+            self.display.draw( self.imgs.uiAlertRadarYellow, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRadarYellow )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRadarYellow )/2) )
         if ennemyInRange:
-            self.display.draw( self.imgs.uiAlertRadar, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRadar )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRadar )/2) )
+            self.display.draw( self.imgs.uiAlertRadarRed, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRadarRed )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRadarRed )/2) )
            # self.display.draw( self.imgs.uiAlertRed, (self.radarCenter[0]-self.display.getHeight( self.imgs.uiAlertRed )/2, self.radarCenter[1]-self.display.getHeight( self.imgs.uiAlertRed )/2) )
             
 

@@ -216,9 +216,9 @@ class ShipWithTurrets( Ship ):
         return objects
 
     def doTurn(self,game):
-        prevPos = (self.xp, self.yp)
+        prevPos = (self.xp, self.yp, self.ori)
         res = Ship.doTurn( self, game )
-        pastPos = (self.xp, self.yp)
+        pastPos = (self.xp, self.yp, self.ori)
         if prevPos != pastPos:
             self.turretPoss = {} # [None]*len(stats.turrets)
         return res
@@ -634,10 +634,7 @@ class FlagShip( ShipWithTurrets ):
         turret.install = None
 
         turret.building = toBuild
-        if turret.stats.maxAngle < turret.stats.minAngle:
-            turret.rr = (turret.stats.maxAngle+turret.stats.minAngle)/2+pi
-        else:
-            turret.rr = (turret.stats.maxAngle+turret.stats.minAngle)/2
+        turret.rr = turret.stats.defaultAngle
 
         if toBuild:
             self.ore = self.ore-toBuild.oreCostToBuild
