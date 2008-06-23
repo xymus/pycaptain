@@ -14,7 +14,7 @@ server.stats - implemet civilian/non-weapon only turrets
 server.directnetwork - speed up its performances
 common.comms.playerStats - add info for radar alerts instead of using objects
 common.comms - add scenario definition/briefing object containing universe width, fps, pickled stat file
-
+client.client - instanciate display and add client.windows.loading screens
 
 # bugs:
 server.ai.aiturretsolar - solve aim at closest sun in range, currently seams to alway aim at last sun in list

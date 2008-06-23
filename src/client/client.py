@@ -13,7 +13,6 @@ from common.comms import COObject, COInput, CopyCOInput, version
 from universe import Universe
 from menu import LoginMenu
 from menuships import MenuShips 
-from display import Display
 
 from common import config
 from sys import argv
@@ -27,7 +26,7 @@ if "--help" in argv or "-h" in argv:
     exit()
 
 class Client:
-    def __init__( self ):
+    def __init__( self, displayName="Sdl" ):
         self.network = None
         self.prefs = None
 

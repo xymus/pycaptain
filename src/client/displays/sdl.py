@@ -4,15 +4,16 @@ from math import degrees, pi, hypot, cos, sin, radians, fabs
 from time import time
 import pygame
 
-#from visible import VisibleObject
 from common.comms import COObject, COInput
-from imgs import Animation
+from client.imgs import Animation
 
-class Display:
+from __display import Display
+
+class Sdl( Display ):
     def __init__(self, resolution=( 640, 640 ), fullscreen=False):
+        Display.__init__(self)
         self.nfsResolution = resolution
         self.resolution = resolution
-    #    self.backgroundColor = ( 0, 0, 0, 1 )
 
         if __debug__:
             print "SDL v%i.%i.%i" % pygame.get_sdl_version()
@@ -56,10 +57,10 @@ class Display:
     def beginDraw( self ):
         pass
 
-    def draw( self, img, pos ):
-        if isinstance( img, Animation ):
-            img = img.getImage()
+    def _draw( self, img, pos ):
         self.screen.blit( img, pos )
+
+   ### def draw( self, img, pos ):
 
     def drawRo( self, img, pos, rotation ):
         if img is Animation:
@@ -69,21 +70,20 @@ class Display:
         else:
             tempSurface = img
 
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
+        corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 ) # correct to top left
         self.screen.blit( tempSurface, corrPosition )
 
     def drawClipped( self, img, pos, src ):
-	    self.screen.blit( img, pos, src )
+        self.screen.blit( img, pos, src )
 
-    def drawText( self, text, (x,y), color=(255,255,255,255), size=15 ):
-        if not self.fonts.has_key( size ):
-            try:
-                self.fonts[ size ] = pygame.font.Font( os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ), size )
-            except:
-                self.fonts[ size ] = pygame.font.Font( None, size ) # pygame.font.get_default_font()
+    def _drawFont( self, text, font, color, pos ):
+        s = font.render( text, True, color )
+        self._draw( s, pos )
+    
+    def _loadFont( self, size, path=None ):
+        return pygame.font.Font( os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ), size )
 
-        s = self.fonts[ size ].render( text, True, color )
-        self.screen.blit( s, (x,y) )
+   ### def drawText( self, text, (x,y), color=(255,255,255,255), size=15 ):
 
     def drawRect( self, rect, color, width=0 ):
         if width == 0:
@@ -109,12 +109,7 @@ class Display:
     def clear( self, color=(0,0,0) ):
         self.screen.fill( color )
 
-    def drawBackground( self, img, (ix, iy) ):
-        bgx = ix % self.background.get_width()
-        bgy = iy % self.background.get_height()
-        for x in range( bgx - self.background.get_width(), bgx+self.resolution[ 0 ], self.background.get_width() ):
-            for y in range( bgy - self.background.get_height(), bgy+self.resolution[ 1 ], self.background.get_height() ):
-                self.screen.blit( self.background, (x,y) )
+   ### def drawBackground( self, img, (ix, iy) ):
 
 
     def getWidth(self, img):
@@ -174,10 +169,10 @@ class Display:
     def close(self):
         pygame.display.quit()
 
-    def setCursor( self, cursor=None ):
-        if not cursor:
-            cursor = self.cursorArrow
+    def _setCursor( self, cursor ):
         pygame.mouse.set_cursor( cursor[0], cursor[1], cursor[2], cursor[3] )
+
+   ### def setCursor( self, cursor=None ):
 
     def takeScreenshot( self, path=None ):
         if not path:
@@ -186,15 +181,6 @@ class Display:
         pygame.image.save( self.screen, path )
 
 
-
-    def drawRoNCutHalfHorz( self, img, pos, rotation ):
-        if rotation != 0:
-            tempSurface = pygame.transform.rotate( img, degrees(rotation) )
-        else:
-            tempSurface = img
-
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
-	self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
     def drawRoNCutHalfVert( self, img, pos, rotation, part=0 ):
         """pos: center position
@@ -205,8 +191,8 @@ class Display:
         else:
             tempSurface = img
 
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2+self.getHeight(tempSurface)/2*part ) # correct to top left
-	self.screen.blit( tempSurface, corrPosition, ( 0, self.getHeight( tempSurface )/2*part, self.getWidth( tempSurface ), self.getHeight( tempSurface )/2*(part+1) ) )
+        corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2+self.getHeight(tempSurface)/2*part ) # correct to top left
+        self.screen.blit( tempSurface, corrPosition, ( 0, self.getHeight( tempSurface )/2*part, self.getWidth( tempSurface ), self.getHeight( tempSurface )/2*(part+1) ) )
 
     def drawRoNCutQtl( self, img, pos, rotation ):
         if rotation != 0:
@@ -214,8 +200,8 @@ class Display:
         else:
             tempSurface = img
 
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
-	self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface )/2 ) )
+        corrPosition = ( pos[0]-self.getWidth( tempSurface)/2, pos[1]-self.getHeight( tempSurface )/2 ) # correct to top left
+        self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface )/2 ) )
 
     def drawRoNCutQbl( self, img, pos, rotation ):
         if rotation != 0:
@@ -223,22 +209,22 @@ class Display:
         else:
             tempSurface = img
 
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1] ) # correct to top left-tempSurface.get_height()/2
-	self.screen.blit( tempSurface, corrPosition, ( 0, self.getHeight( tempSurface )/2, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
+        corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1] ) # correct to top left-self.getHeight( tempSurface )/2
+        self.screen.blit( tempSurface, corrPosition, ( 0, self.getHeight( tempSurface )/2, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
     def drawPie( self, img, pos, perc ):
         if perc <= 50:
             tempSurface = pygame.transform.rotate( img, degrees(perc*pi/50) )
-            corrPosition = ( pos[0], pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition, ( self.getWidth( tempSurface )/2, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
+            corrPosition = ( pos[0], pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition, ( self.getWidth( tempSurface )/2, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
         else:
             tempSurface = pygame.transform.rotate( img, degrees(pi) )
-            corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition ) # static
+            corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition ) # static
 
             tempSurface = pygame.transform.rotate( img, degrees(perc*pi/50) )
-            corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
+            corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
     def drawIncompletePie( self, img, pos, perc0, angleRange=100, angleCut=60 ):
         if perc0 > 100:
@@ -251,14 +237,13 @@ class Display:
             finalSurface = pygame.transform.rotate( tempSurface, (100-perc0)*(angleRange+angleCut)/100 )
             angle = ((100-perc0)*((angleRange+angleCut)*-2*pi/360)/100-pi)%(2*pi)
             
-            x0 = tempSurface.get_height()*sin(angle)
-            y1 = tempSurface.get_width()*sin(angle)
-        #    print angle, pi
+            x0 = self.getHeight( tempSurface )*sin(angle)
+            y1 = self.getWidth( tempSurface )*sin(angle)
             if angle < pi/2:
-                corrPosition = ( pos[0]-x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
+                corrPosition = ( pos[0]-x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
             else:
-                corrPosition = ( pos[0]-finalSurface.get_width()+x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
-	    self.screen.blit( finalSurface, corrPosition )
+                corrPosition = ( pos[0]-self.getWidth( finalSurface )+x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
+            self.screen.blit( finalSurface, corrPosition )
 
     def drawDoubleIncompletePie( self, (img0,img1), pos, (perc0,perc1) ):
         if perc0 > 100:
@@ -266,30 +251,27 @@ class Display:
         if perc1 > 100:
             perc1 = 100
 
-      #  print perc0, perc1
         if perc0 <= 50:
             roSurface = pygame.transform.rotate( img0, (50-perc0)*-120/50 )
             tempSurface = roSurface.subsurface(  ( 0, 0, self.getWidth( roSurface )/2, self.getHeight( roSurface ) ) )
             finalSurface = pygame.transform.rotate( tempSurface, (50-perc0)*120/50 )
             angle = (50-perc0)*(pi*2/3)/50 
             
-        #    y0 = tempSurface.get_height()*cos(angle)
-            x0 = tempSurface.get_height()*sin(angle)
-            y1 = tempSurface.get_width()*sin(angle)
-        #    x1 = tempSurface.get_width()*cos(angle)
+            x0 = self.getHeight( tempSurface )*sin(angle)
+            y1 = self.getWidth( tempSurface )*sin(angle)
             if angle < pi/2:
-                corrPosition = ( pos[0]-finalSurface.get_width()+x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
+                corrPosition = ( pos[0]-self.getWidth( finalSurface )+x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
             else:
-                corrPosition = ( pos[0]-x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
-	    self.screen.blit( finalSurface, corrPosition )
+                corrPosition = ( pos[0]-x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
+            self.screen.blit( finalSurface, corrPosition )
         else:
             tempSurface = img0 # pygame.transform.rotate( img0, 0 )
-            corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition ) # static
+            corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition ) # static
 
             tempSurface = pygame.transform.rotate( img0, (perc0-50)*-120/50 )
-            corrPosition = ( pos[0], pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition, ( self.getWidth( tempSurface )/2, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
+            corrPosition = ( pos[0], pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition, ( self.getWidth( tempSurface )/2, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
         if perc1 <= 50:
             roSurface = pygame.transform.rotate( img1, (50-perc1)*120/50 )
@@ -297,21 +279,21 @@ class Display:
             finalSurface = pygame.transform.rotate( tempSurface, (50-perc1)*-120/50 )
             angle = ((50-perc1)*(pi*-2/3)/50-pi)%(2*pi)
             
-            x0 = tempSurface.get_height()*sin(angle)
-            y1 = tempSurface.get_width()*sin(angle)
+            x0 = self.getHeight( tempSurface )*sin(angle)
+            y1 = self.getWidth( tempSurface )*sin(angle)
             if angle > pi/2:
-                corrPosition = ( pos[0]-x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
+                corrPosition = ( pos[0]-x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
             else:
-                corrPosition = ( pos[0]-finalSurface.get_width()+x0/2, pos[1]-(finalSurface.get_height()-y1)/2 )
-	    self.screen.blit( finalSurface, corrPosition )
+                corrPosition = ( pos[0]-self.getWidth( finalSurface )+x0/2, pos[1]-(self.getHeight( finalSurface )-y1)/2 )
+            self.screen.blit( finalSurface, corrPosition )
         else:
             tempSurface = img1
-            corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition ) # static
+            corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition ) # static
 
             tempSurface = pygame.transform.rotate( img1, (perc1-50)*120/50 )
-            corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 )
-	    self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
+            corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
+            self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
 
     def drawRoIfIn( self, img, pos, rotation, (xm, ym), alpha=1 ):
@@ -320,19 +302,15 @@ class Display:
         else:
             tempSurface = img
 
-     #   if alpha != 1:
-     #       tempSurface.set_alpha( int(alpha*255), pygame.RLEACCEL )
-        #    print alpha*255
-
-        w = tempSurface.get_width()
-        h = tempSurface.get_height()
+        w = self.getWidth( tempSurface )
+        h = self.getHeight( tempSurface )
         corrPosition = ( pos[0]-w/2, pos[1]-h/2 ) # correct to top left
         if corrPosition[0] < xm and corrPosition[0]+w > 0 \
           and corrPosition[1] < ym and corrPosition[1]+h > 0:
-	    self.screen.blit( tempSurface, corrPosition )
+            self.screen.blit( tempSurface, corrPosition )
 
     def drawRoRe( self, img, pos, resize ):
         tempSurface = pygame.transform.rotozoom( img, degrees(rotation), resize )
-        corrPosition = ( pos[0]-tempSurface.get_width()/2, pos[1]-tempSurface.get_height()/2 ) # correct to top left
-	self.screen.blit( tempSurface, corrPosition )
+        corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 ) # correct to top left
+        self.screen.blit( tempSurface, corrPosition )
 

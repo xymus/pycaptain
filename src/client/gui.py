@@ -1,7 +1,6 @@
 from math import pi, sqrt, cos, sin, hypot
 from random import randint, random, choice
 
-from display import Display
 from mixer import Mixer
 from controls import *
 from specialcontrols import *
@@ -30,8 +29,9 @@ def ihypot( h, c ):
         return 0
 
 class Gui:
-    def __init__( self, fullscreen, resolution ):
+    def __init__( self, fullscreen, resolution, displayName="sdl" ):
 
+        exec( "from displays.%s import %s as Display"%( displayName, displayName.capitalize() ) )
         self.display = Display( resolution, fullscreen ) #display
         self.mixer = Mixer()
 

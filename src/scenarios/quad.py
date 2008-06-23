@@ -3,7 +3,7 @@
 # Description: First scenario with 4 solar systems, sol at the center.
 # 
 
-from scenario import Scenario
+from __scenario import Scenario
 from random import randint
 
 from server.players import *

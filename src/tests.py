@@ -2,6 +2,7 @@
 
 import os
 import sys
+from math import pi
 
 class Tests:
     def __init__( self, server=True, client=True ):
@@ -9,9 +10,16 @@ class Tests:
         self.testServer = server
         
         self.scenarioNames = filter( 
-            lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_" and f != "scenario.py", 
+            lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
             os.listdir( os.path.join( sys.path[0], "scenarios" ) ) )
         self.scenarioNames = [ n[:-3] for n in self.scenarioNames]
+        
+        self.displayNames = filter( 
+            lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
+            os.listdir( os.path.join( sys.path[0], "client", "displays" ) ) )
+        self.displayNames = [ n[:-3] for n in self.displayNames]
+        
+        self.testImgPath = os.path.join( sys.path[0], "client", "imgs", "ships", "human-base.png" )
 
     def verbose( self, text, level=0 ):
         return "%s# %s" % ("  "*level, text)
@@ -24,9 +32,6 @@ class Tests:
 
         if self.testClient:
             yield self.verbose( "Client", 0 )
-            yield self.verbose( "Client display", level=1 )
-            from client.display import Display
-            display = Display( resolution=(100,100) )
 
             yield self.verbose( "Client sound mixer", level=1 )
             from client.mixer import Mixer
@@ -34,6 +39,50 @@ class Tests:
             
             yield self.verbose( "Setting volume to mute", level=2 )
             mixer.setVolume(0)
+            
+            yield self.verbose( "Client displays", level=1 )
+            for name in self.displayNames:
+                yield self.verbose( name.capitalize(), level=2 )
+                exec( "from client.displays.%s import %s as Display"%( name, name.capitalize() ) )
+                #from client.display import Display
+                display = Display( resolution=(100,100) )
+                
+                
+                yield self.verbose( "Clearing", level=3 )
+                display.beginDraw()
+                display.clear( (0,255,0) )
+                display.finalizeDraw()
+                
+                yield self.verbose( "Text", level=3 )
+                display.beginDraw()
+                display.drawText( "test", (4,4) )
+                display.finalizeDraw()
+                
+                yield self.verbose( "Line", level=3 )
+                display.beginDraw()
+                display.drawLine( (255,255,255), (0,100), (100,0) )
+                display.drawLine( (255,255,255), (0,0), (100,100) )
+                display.finalizeDraw()
+                
+                yield self.verbose( "Circle", level=3 )
+                display.beginDraw()
+                display.drawCircle( (255,255,255), (50,50), 45 )
+                display.finalizeDraw()
+                
+                yield self.verbose( "Loading image", level=3 )
+                img = display.load( self.testImgPath )
+                
+                yield self.verbose( "Drawing image", level=3 )
+                img = display.load( self.testImgPath )
+                display.beginDraw()
+                display.draw( img, (0,0) )
+                display.finalizeDraw()
+                
+                yield self.verbose( "Drawing image rotated", level=3 )
+                img = display.load( self.testImgPath )
+                display.beginDraw()
+                display.drawRo( img, (0,0), pi/3 )
+                display.finalizeDraw()
 
             yield self.verbose( "Client resources", level=1 )
 
@@ -95,7 +144,7 @@ class Tests:
             yield self.verbose( "Scenarios", level=1 )
             
             yield self.verbose( "Loading empty scenario", level=2 )
-            exec( "from scenarios.scenario import Scenario as Scenario" )
+            exec( "from scenarios.__scenario import Scenario as Scenario" )
             games.append( Game( Scenario ) )
 
             for name in self.scenarioNames:
@@ -170,7 +219,7 @@ class Tests:
 
             yield self.verbose( "Server", level=1 )
             from server.server import Server
-            server = Server( scenarioName="Scenario", force=True, adminPassword="password" )
+            server = Server( scenarioName="Sol", force=True, adminPassword="password" )
 
             yield True
 

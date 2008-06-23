@@ -1,6 +1,5 @@
-from scenario import Scenario
+from __scenario import Scenario
 
-from scenario import Scenario
 from random import randint
 
 from server.players import *
