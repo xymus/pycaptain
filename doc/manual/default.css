@@ -1,0 +1,165 @@
+body {
+	text-align: center;
+	text-transform: lowercase;
+	background-color: #ffffff;
+}
+
+#content {
+	width: 540px;
+	max-width: 770px;
+	text-align: left;
+	margin:0px auto;
+	
+/*
+	background-color: #ffffff;
+	border-width: 1px;
+	background-image: url('images/back.jpg');
+	background-attachment: fixed;
+*/
+}
+
+a img {
+	border-width: 0px;
+}
+
+h1, h2, h3 {
+	background-color: #ffffff;
+	border: solid 0px #bbbbbb;
+	border-bottom-width: 1px;
+}
+h1 {
+	margin: 0 25% 0 -.2em;
+	font-weight: 450;
+	font-size: 150%;
+}
+
+h2 {
+	margin: 1em 50% 0 -.4em;
+	font-weight: 350;
+	font-size: 130%;
+}
+h3 {
+	margin: 0.3em 20% 0 -.2em;
+	font-weight: 250;
+	font-size: 120%;
+}
+
+p, form {
+	padding: .1em .2em .2em;
+	margin: .1em .2em .4em;
+	border: solid 0px #cccccc;
+	border-left-width: 1px;
+}
+
+p {
+	text-transform: none;
+}
+
+p a {
+	text-transform: lowercase;
+}
+
+.error {
+	color: red;
+}
+
+.label {
+	text-align: right;
+}
+
+#logo  {
+	float: right;
+	padding: .2em;
+}
+
+#header {
+	letter-spacing: .1em;
+	background-color: #b6d0ff;/**/
+	border: solid  2px #777777;
+	padding: 2px .8em 1px;
+	margin: 8px 0px 0px;
+	font-weight: 100;
+	text-align: center;
+	font-size: larger;
+}
+#header a {
+	letter-spacing: .3em;
+	font-weight: 900;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#core {
+	padding: .5em .5em;
+}
+.pageTitle {
+	color: #ffffff;
+}
+
+#menu {
+	text-align: center;
+	height: 64px;
+}
+
+#menu .menuItem, #menu  .selectedMenuItem {
+	clear: center;
+	position: relative;
+	display: inline;
+	height: 64px;
+	width: 64px;
+}
+#menu .menuItem img, #menu  .selectedMenuItem img {
+	margin: 0px 3%;
+	padding: 2px 0px;
+	border-color: #777777;
+}
+#menu  .selectedMenuItem 
+{
+}
+#menu  .selectedMenuItem img {	
+	border-style: solid;
+	border-width: 0px;
+	border-top-width: 1px;
+}
+#menu  .selectedMenuItem a, #menu  .selectedMenuItem a:visited, #menu  .selectedMenuItem mt a:visited {
+	color: #777777;
+}
+
+
+#subMenu {
+	text-align: center;
+	margin-top: 3px;
+}
+
+#subMenu .mi, #subMenu .mt {
+	border-bottom: solid 1px;
+	border-color: #bbbbbb;
+
+	padding: 0px 6px;
+}
+
+.mi a, .mt a {
+	color: #000000;
+	text-decoration: none;
+}
+.mi a:visited, mt a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+.mi a:hover, mt a:hover {
+	text-decoration: underline;
+}
+#gad
+{
+	text-align: center;
+}
+form .tb {
+	background-color: none;
+	border-width: 0 0 1px 0;
+	border-color: #222;
+}
+
+.exlanation {
+	font-size: 75%;
+}
+

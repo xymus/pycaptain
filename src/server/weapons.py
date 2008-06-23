@@ -146,34 +146,25 @@ class MassWeaponTurret( WeaponTurret ):
           gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
         return (ao,ro,gfxs)
 
-class OmniWeapon( Weapon ):
-    pass
+#class OmniLaserWeapon( Weapon ):
+#    pass
     
-class OmniWeaponTurret( Weapon ):
+class OmniLaserWeaponTurret( LaserWeaponTurret ):
 
     def hits( self, (xo,yo), ori, game, ship, target, weapon ):
         """Logic: compares the angle to target with the weapon orientation to atan( target.radius / dist between weapon and target )"""
-        angle = utils.angleBetween( (xo,yo), (target.xp,target.yp) )
-        dist = utils.distBetween( (xo,yo), (target.xp,target.yp) )
-        angleSec = atan( float(target.stats.radius)/dist )
-        diff = (ori-angle)%(2*pi)
+        angle = utils.angleBetween( (target.xp,target.yp), (xo,yo) )
 
-        if diff < angleSec or 2*pi-diff < angleSec: ## hit!
-            a = ori+pi
-            hullBefore = target.hull
-            (ao, ro, gfxs) = target.hit( game, pi+ori, ship.player, weapon.stats.energyDamage, weapon.stats.massDamage )  
-            if hullBefore != target.hull: # went throught the shield
-                d = ( target.xp+target.stats.maxRadius/4*cos(a), target.yp+target.stats.maxRadius/4*sin(a))
-            else:
-                d = ( target.xp+target.stats.maxRadius*cos(a), target.yp+target.stats.maxRadius*sin(a))
+        hullBefore = target.hull
+        (ao, ro, gfxs) = target.hit( game, angle, ship.player, weapon.stats.energyDamage, weapon.stats.massDamage )  
+        if hullBefore != target.hull: # went throught the shield
+            d = ( target.xp+target.stats.maxRadius/4*cos(angle), target.yp+target.stats.maxRadius/4*sin(angle))
         else:
-            (ao, ro, gfxs) = ([],[],[])
-            d = ( xo + cos(ori)*weapon.stats.maxRange, yo + sin(ori)*weapon.stats.maxRange )
-        
-      #  print (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, 0
+            d = ( target.xp+target.stats.maxRadius*cos(angle), target.yp+target.stats.maxRadius*sin(angle))
+            
         gfxs.append( weapon.stats.gfxAtFire( (xo,yo), max( ship.zp, target.zp)+1, d, weapon.stats.laserWidth, color=ship.player.race.type ) )
         
-        return (ao, ro, gfxs) # (None, None)
+        return (ao, ro, gfxs) 
 
 class BombWeapon( Weapon ):
     def fire( self, ship, game, target ):
@@ -295,12 +286,13 @@ class NukeMissile( Missile ):
                  else:
                      sender = None
 
-                 waveEffect = 0.05
+                 waveEffect = 5
                  angle = utils.angleBetweenObjects( self, obj )
                  dist = utils.distBetweenObjects( self, obj )
-                 obj.xi += cos(angle)*(self.explosionRange-dist-obj.stats.maxRadius)*waveEffect
-                 obj.yi += sin(angle)*(self.explosionRange-dist-obj.stats.maxRadius)*waveEffect
-                 (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self ), sender, self.weapon.stats.energyDamage, self.weapon.stats.massDamage )
+                 modif = max((self.explosionRange-dist-obj.stats.maxRadius)/self.explosionRange, 1)
+                 obj.xi += cos(angle)*modif*waveEffect
+                 obj.yi += sin(angle)*modif*waveEffect
+                 (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self ), sender, modif*self.weapon.stats.energyDamage, self.weapon.stats.massDamage*modif )
 
                  (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
         self.alive = False

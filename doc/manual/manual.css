@@ -1,0 +1,47 @@
+body {
+	text-align: center;
+	text-transform: lowercase;
+	background: url( "imgs/back.jpg" ) repeat black;
+	color: #ffffff;
+}
+
+#content {
+	background-color: #111;
+	border: solid #1b1b1b 0px;
+	border-left-width: 2px;
+	border-right-width: 2px;
+}
+
+h1, h2, h3 {
+	background-color: #111;
+	border-color: #444;
+}
+h1 {
+	margin: 0 25% 0 -.4em;
+	font-size: 180%;
+}
+
+h2 {
+	margin: 1em 25% 0 .2em;
+	font-size: 150%;
+}
+h3 {
+	margin: 0.3em 25% 0 .8em;
+	font-size: 120%;
+}
+
+p, form {
+	border-color: #444;
+}
+
+.leftimg  {
+    float: left;
+    padding: .4em;
+}
+.rightimg  {
+    float: right;
+    padding: .3em;
+}
+.emailimg  {
+}
+    

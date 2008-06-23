@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="623.23338"
-     inkscape:cy="1244.4047"
+     inkscape:zoom="1.5"
+     inkscape:cx="701.75115"
+     inkscape:cy="1030.7318"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1205"
@@ -13198,7 +13198,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4393"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(4.9166028e-2,-6.6027908e-3,2.5120061e-2,0.18705,429.76516,284.53527)"
+       gradientTransform="matrix(4.916603e-2,-6.602791e-3,2.5120062e-2,0.18705,456.56313,313.07925)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13756,7 +13756,7 @@
        xlink:href="#linearGradient3384"
        id="radialGradient5479"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.2529801,0,0,1.8436174,-424.84923,-1370.8435)"
+       gradientTransform="matrix(0.2529801,0,0,1.8436174,-504.84923,-1370.8435)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13767,7 +13767,7 @@
        xlink:href="#linearGradient3411"
        id="radialGradient5481"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.2436362,0,0,0.1535471,-443.78518,-781.30145)"
+       gradientTransform="matrix(0.2436362,0,0,0.1535471,-523.78518,-781.30145)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13778,7 +13778,7 @@
        xlink:href="#linearGradient3384"
        id="radialGradient5483"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.6191146,0,0,0.5772558,-594.11399,-948.43538)"
+       gradientTransform="matrix(0.6191146,0,0,0.5772558,-674.11399,-948.43538)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13789,7 +13789,7 @@
        xlink:href="#linearGradient3411"
        id="radialGradient5485"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.3094466,0,0,0.3277704,-431.48578,-837.25655)"
+       gradientTransform="matrix(0.3094466,0,0,0.3277704,-511.48578,-837.25655)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13800,7 +13800,7 @@
        xlink:href="#linearGradient3411"
        id="radialGradient5487"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.5186003,0,0,0.2753351,-547.21217,-835.31847)"
+       gradientTransform="matrix(0.5186003,0,0,0.2753351,-627.21217,-835.31847)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13811,7 +13811,7 @@
        xlink:href="#linearGradient19892"
        id="radialGradient5489"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0,0.7168341,9.8167853e-2,0,711.04767,-622.1755)"
+       gradientTransform="matrix(0,0.7168341,9.8167853e-2,0,711.04767,-702.1755)"
        cx="434.83334"
        cy="206.06592"
        fx="434.83334"
@@ -13822,7 +13822,7 @@
        xlink:href="#linearGradient3384"
        id="radialGradient5491"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.4056918,0,0,0.2458872,-512.47694,-614.40451)"
+       gradientTransform="matrix(0.4056918,0,0,0.2458872,-592.47694,-614.40451)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13833,7 +13833,7 @@
        xlink:href="#linearGradient3384"
        id="radialGradient5493"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.6197202,0,0,0.4356214,-594.39209,-694.77823)"
+       gradientTransform="matrix(0.6197202,0,0,0.4356214,-674.39209,-694.77823)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13844,7 +13844,7 @@
        xlink:href="#linearGradient3411"
        id="radialGradient5495"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.4066238,0,0,0.1910827,-483.82323,-587.85189)"
+       gradientTransform="matrix(0.4066238,0,0,0.1910827,-563.82323,-587.85189)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13855,7 +13855,7 @@
        xlink:href="#linearGradient3411"
        id="radialGradient5497"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.2033952,0,0,0.2133477,-411.73181,-607.67127)"
+       gradientTransform="matrix(0.2033952,0,0,0.2133477,-491.73181,-607.67127)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -16665,7 +16665,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient10886"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(6.1474935e-2,-1.8352339e-2,3.1408956e-2,0.5199027,218.78649,369.05283)"
+       gradientTransform="matrix(6.1419625e-2,-2.0144411e-2,3.1380697e-2,0.5706702,218.82388,369.91704)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -16918,7 +16918,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient10958"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(6.1474935e-2,-1.8352339e-2,3.1408956e-2,0.5199027,218.78649,188.05283)"
+       gradientTransform="matrix(6.1172244e-2,-2.8989653e-2,3.1254305e-2,0.8212468,218.9912,101.03146)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -16957,6 +16957,149 @@
        fx="447.06158"
        fy="426.05655"
        r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient5154"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3379755,0,0,2.1078241,-424.15957,-1466.7984)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient5156"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2436362,0,0,0.1535471,-403.78518,-781.30145)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient5158"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6191146,0,0,0.5772558,-554.11399,-948.43538)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient5160"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3094466,0,0,0.3277704,-391.48578,-837.25655)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient5162"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5186003,0,0,0.2753351,-507.21217,-835.31847)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient19892"
+       id="radialGradient5164"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.7168341,9.8167853e-2,0,711.04767,-582.1755)"
+       cx="434.83334"
+       cy="206.06592"
+       fx="434.83334"
+       fy="206.06592"
+       r="27.000002" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient5166"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.4056918,0,0,0.2458872,-472.47694,-624.40451)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient5168"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6197202,0,0,0.4356214,-554.39209,-704.77823)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient5170"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.4066238,0,0,0.1910827,-443.82323,-597.85189)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient5172"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2033952,0,0,0.2133477,-371.73181,-617.67127)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5289"
+       id="radialGradient5176"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5770917,0,0,0.3660303,-534.67638,-721.19472)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5289"
+       id="radialGradient5178"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5770917,0,0,0.3660303,-534.67638,-765.29129)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5289"
+       id="radialGradient5180"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.5770917,0,0,0.3660303,-534.67638,-809.38778)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
   </defs>
   <metadata
      id="metadata7">
@@ -16977,7 +17120,10 @@
     <path
        id="path10984"
        d="M 740.4711,254.39758 L 714.88084,256.5167 L 714.88084,258.22877 L 714.88084,278.00732 L 714.88084,279.71938 L 740.4711,281.83851 L 740.4711,275.88818 L 740.4711,260.3479 L 740.4711,254.39758 z"
-       style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.78950065;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.78950065;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92" />
     <path
        transform="matrix(2.828944,0,0,2.828944,-864.80509,-1638.1851)"
        d="M 520,1248.3622 A 84,84 0 1 1 352,1248.3622 A 84,84 0 1 1 520,1248.3622 z"
@@ -18482,7 +18628,7 @@
     <g
        id="g4500"
        transform="matrix(0.7878147,0,0,0.7878147,50.551758,55.640086)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-1.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-1.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92">
       <rect
@@ -19055,7 +19201,7 @@
        sodipodi:rx="94"
        sodipodi:ry="94"
        d="M 511,260.36218 A 94,94 0 1 1 323,260.36218 A 94,94 0 1 1 511,260.36218 z"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-1.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92"
        transform="translate(-40,0)" />
@@ -19877,7 +20023,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.1882547,0.9821202,-0.9821202,0.1882547,0,0)"
        y="-717.10181"
        x="390.04816"
@@ -19888,7 +20034,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3488);fill-opacity:1;stroke:#000000;stroke-width:0.14718357;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2961"
        width="11.175753"
@@ -19899,7 +20045,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.4742009,-0.8804167,-0.8804167,0.4742009,0,0)"
        y="-622.06018"
        x="-617.0979"
@@ -19910,7 +20056,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.1882547,0.9821202,-0.9821202,0.1882547,0,0)"
        style="fill:url(#radialGradient3482);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2965"
@@ -19921,7 +20067,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.1150314,0.9933619,-0.9933619,-0.1150314,0,0)"
        y="-839.64899"
        x="143.12375"
@@ -19932,7 +20078,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3476);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2969"
        width="11.175754"
@@ -19943,7 +20089,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.1882547,0.9821202,-0.9821202,0.1882547,0,0)"
        style="fill:url(#radialGradient3473);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2971"
@@ -19954,7 +20100,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3470);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2973"
        width="8.7796688"
@@ -19965,7 +20111,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.9177923,-0.3970609,0.3970609,0.9177923,0,0)"
        y="446.17679"
        x="546.89801"
@@ -19976,7 +20122,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3460);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2979"
        width="11.175753"
@@ -19987,7 +20133,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        y="600.66156"
        x="389.35739"
        height="47.771702"
@@ -19998,7 +20144,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3454);fill-opacity:1;stroke:#000000;stroke-width:0.14718363;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2983"
        width="11.175756"
@@ -20009,7 +20155,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.5253628,0.8508783,0.8508783,0.5253628,0,0)"
        y="702.51971"
        x="-199.99872"
@@ -20020,7 +20166,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        y="622.20154"
        x="389.35739"
        height="47.771702"
@@ -20031,7 +20177,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.9302519,-0.3669216,-0.3669216,0.9302519,0,0)"
        y="-54.897018"
        x="-784.92126"
@@ -20042,7 +20188,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.975211,-0.2212769,-0.2212769,0.975211,0,0)"
        y="64.609276"
        x="-797.7699"
@@ -20053,7 +20199,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3434);fill-opacity:1;stroke:#000000;stroke-width:0.11562736;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2995"
        width="8.7796669"
@@ -20064,7 +20210,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3431);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3009"
        width="8.7796679"
@@ -20075,7 +20221,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.6792368,-0.7339191,-0.7339191,-0.6792368,0,0)"
        y="-747.07983"
        x="303.67157"
@@ -20086,7 +20232,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.1150314,0.9933619,-0.9933619,-0.1150314,0,0)"
        y="-859.18884"
        x="136.97914"
@@ -20097,7 +20243,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3416);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3023"
        width="11.175754"
@@ -20113,7 +20259,7 @@
        x="-134.37668"
        y="-817.62457"
        transform="matrix(0.1882547,-0.9821202,-0.9821202,-0.1882547,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20124,7 +20270,7 @@
        width="11.175753"
        id="rect3234"
        style="fill:url(#radialGradient3410);fill-opacity:1;stroke:#000000;stroke-width:0.14718357;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20135,7 +20281,7 @@
        x="-146.97993"
        y="-875.2702"
        transform="matrix(-0.4742009,0.8804167,-0.8804167,-0.4742009,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20146,7 +20292,7 @@
        id="rect3238"
        style="fill:url(#radialGradient3403);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        transform="matrix(0.1882547,-0.9821202,-0.9821202,-0.1882547,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20157,7 +20303,7 @@
        x="-387.30377"
        y="-778.2254"
        transform="matrix(-0.1150314,-0.9933619,-0.9933619,0.1150314,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20168,7 +20314,7 @@
        width="11.175754"
        id="rect3242"
        style="fill:url(#radialGradient3397);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20179,7 +20325,7 @@
        id="rect3244"
        style="fill:url(#radialGradient3394);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        transform="matrix(0.1882547,-0.9821202,-0.9821202,-0.1882547,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20190,13 +20336,13 @@
        width="8.7796688"
        id="rect3246"
        style="fill:url(#radialGradient3391);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(-0.4742009,-0.8804167,-0.8804167,0.4742009,0,0)"
        y="-578.47131"
        x="-603.39093"
@@ -20207,7 +20353,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3422);fill-opacity:1;stroke:#000000;stroke-width:0.14718357;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3019"
        width="11.175753"
@@ -20218,7 +20364,7 @@
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        style="fill:url(#radialGradient3442);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2991"
        width="11.175753"
@@ -20234,7 +20380,7 @@
        x="-133.27296"
        y="-831.68134"
        transform="matrix(-0.4742009,0.8804167,-0.8804167,-0.4742009,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20245,7 +20391,7 @@
        x="758.91748"
        y="-43.898689"
        transform="matrix(0.9177923,0.3970609,0.3970609,-0.9177923,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20256,7 +20402,7 @@
        width="11.175753"
        id="rect3252"
        style="fill:url(#radialGradient3382);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20267,7 +20413,7 @@
        height="47.771702"
        x="738.62506"
        y="196.75771"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20278,7 +20424,7 @@
        width="11.175756"
        id="rect3256"
        style="fill:url(#radialGradient3376);fill-opacity:1;stroke:#000000;stroke-width:0.14718363;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20289,7 +20435,7 @@
        x="-654.34399"
        y="421.9906"
        transform="matrix(-0.5253628,-0.8508783,0.8508783,-0.5253628,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20300,7 +20446,7 @@
        height="47.771702"
        x="738.62506"
        y="218.29768"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20311,7 +20457,7 @@
        x="-588.99536"
        y="-551.62561"
        transform="matrix(-0.9302519,0.3669216,-0.3669216,-0.9302519,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20322,7 +20468,7 @@
        width="11.175753"
        id="rect3264"
        style="fill:url(#radialGradient3364);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20333,7 +20479,7 @@
        x="-679.61414"
        y="-456.12622"
        transform="matrix(-0.975211,0.2212769,-0.2212769,-0.975211,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20344,7 +20490,7 @@
        width="8.7796669"
        id="rect3268"
        style="fill:url(#radialGradient3356);fill-opacity:1;stroke:#000000;stroke-width:0.11562736;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20355,13 +20501,13 @@
        width="8.7796679"
        id="rect3270"
        style="fill:url(#radialGradient3352);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
        inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        transform="matrix(0.9177923,-0.3970609,0.3970609,0.9177923,0,0)"
        y="489.76575"
        x="560.60516"
@@ -20377,7 +20523,7 @@
        x="695.5639"
        y="-384.38632"
        transform="matrix(0.6792368,0.7339191,-0.7339191,0.6792368,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20388,7 +20534,7 @@
        x="772.62463"
        y="-0.30972967"
        transform="matrix(0.9177923,0.3970609,0.3970609,-0.9177923,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20399,7 +20545,7 @@
        width="11.175753"
        id="rect3276"
        style="fill:url(#radialGradient3342);fill-opacity:1;stroke:#000000;stroke-width:0.14718357;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20410,7 +20556,7 @@
        x="-393.44839"
        y="-797.76526"
        transform="matrix(-0.1150314,-0.9933619,-0.9933619,0.1150314,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <rect
@@ -20421,7 +20567,7 @@
        width="11.175754"
        id="rect3280"
        style="fill:url(#radialGradient3335);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/ai-fs-2.png"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-2.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92" />
     <path
@@ -23921,10 +24067,10 @@
        inkscape:export-xdpi="87.310692"
        inkscape:export-ydpi="87.310692" />
     <rect
-       transform="matrix(0.9999895,4.5896585e-3,-4.5896585e-3,0.9999895,0,0)"
-       y="351.39435"
-       x="461.30243"
-       height="14.660375"
+       transform="matrix(0.9999895,4.5896584e-3,-4.5896584e-3,0.9999895,0,0)"
+       y="379.93832"
+       x="488.1004"
+       height="14.660376"
        width="3.4296565"
        id="rect4391"
        style="fill:url(#radialGradient4393);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -24335,7 +24481,7 @@
        inkscape:export-ydpi="76" />
     <rect
        y="-700.94287"
-       x="-319.60953"
+       x="-399.6095"
        height="171.45642"
        width="23.52714"
        id="rect5449"
@@ -24343,7 +24489,7 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <rect
        y="-725.50824"
-       x="-342.4325"
+       x="-422.4325"
        height="14.279879"
        width="22.658167"
        id="rect5451"
@@ -24351,7 +24497,7 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <rect
        y="-738.68243"
-       x="-336.56232"
+       x="-416.56232"
        height="53.684795"
        width="57.577671"
        id="rect5453"
@@ -24359,7 +24505,7 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <rect
        y="-718.15717"
-       x="-302.75601"
+       x="-382.75601"
        height="30.482643"
        width="28.778536"
        id="rect5455"
@@ -24367,7 +24513,7 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <rect
        y="-735.27209"
-       x="-331.4744"
+       x="-411.47437"
        height="25.606171"
        width="48.229832"
        id="rect5457"
@@ -24375,7 +24521,7 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <path
        id="path5459"
-       d="M 729.79259,-326.25565 L 734.72287,-323.30121 L 734.72287,-320.91429 L 734.72287,-293.33952 L 734.72287,-290.95261 L 729.79259,-287.99815 L 729.79259,-296.29397 L 729.79259,-317.95986 L 729.79259,-326.25565 z"
+       d="M 729.79259,-406.25565 L 734.72287,-403.30121 L 734.72287,-400.91429 L 734.72287,-373.33952 L 734.72287,-370.95261 L 729.79259,-367.99815 L 729.79259,-376.29397 L 729.79259,-397.95986 L 729.79259,-406.25565 z"
        style="fill:url(#radialGradient5489);fill-opacity:1;stroke:#000000;stroke-width:0.40917581;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        transform="matrix(0,1,-1,0,0,0)"
@@ -24383,7 +24529,7 @@
        id="rect5461"
        width="37.729328"
        height="22.867508"
-       x="-343.7092"
+       x="-423.70923"
        y="-525.05841" />
     <rect
        transform="matrix(0,1,-1,0,0,0)"
@@ -24391,24 +24537,24 @@
        id="rect5463"
        width="57.633987"
        height="40.512794"
-       x="-336.5885"
+       x="-416.5885"
        y="-536.48987" />
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-518.41968"
-       x="-314.66779"
+       x="-394.66779"
        height="17.770689"
        width="37.81601"
        id="rect5465"
        style="fill:url(#radialGradient5495);fill-opacity:1;stroke:#000000;stroke-width:0.16512984;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.81436855;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 496.61248,-336.37201 L 483.54944,-331.95503 L 483.54944,-328.38651 L 483.54944,-287.16138 L 483.54944,-283.59287 L 496.61248,-279.17588 L 496.61248,-291.57837 L 496.61248,-323.96954 L 496.61248,-336.37201 z"
+       d="M 496.61248,-416.37201 L 483.54944,-411.95503 L 483.54944,-408.38651 L 483.54944,-367.16138 L 483.54944,-363.59287 L 496.61248,-359.17588 L 496.61248,-371.57837 L 496.61248,-403.96954 L 496.61248,-416.37201 z"
        id="path5467" />
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-530.1488"
-       x="-327.11932"
+       x="-407.11932"
        height="19.841341"
        width="18.91576"
        id="rect5469"
@@ -24422,9 +24568,9 @@
        sodipodi:rx="40"
        sodipodi:ry="40"
        d="M 602,-305.63782 A 40,40 0 1 1 522,-305.63782 A 40,40 0 1 1 602,-305.63782 z"
-       transform="matrix(0.826087,0,0,0.826087,110.69565,-55.154403)" />
+       transform="matrix(0.826087,0,0,0.826087,110.69565,-135.1544)" />
     <path
-       transform="matrix(0.826087,0,0,0.826087,180.78261,-55.154403)"
+       transform="matrix(0.826087,0,0,0.826087,180.78261,-135.1544)"
        d="M 602,-305.63782 A 40,40 0 1 1 522,-305.63782 A 40,40 0 1 1 602,-305.63782 z"
        sodipodi:ry="40"
        sodipodi:rx="40"
@@ -25970,20 +26116,182 @@
        style="fill:url(#radialGradient5857);fill-opacity:1;stroke:none;stroke-width:0.41641816;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        sodipodi:type="arc" />
     <rect
-       style="opacity:1;fill:url(#radialGradient10886);fill-opacity:1;stroke:#000000;stroke-width:0.08420388;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#radialGradient10886);fill-opacity:1;stroke:#000000;stroke-width:0.08817962;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect10884"
-       width="4.2882886"
-       height="40.748253"
-       x="258.21927"
-       y="554.88641"
+       width="4.2844305"
+       height="44.727245"
+       x="258.22119"
+       y="573.89691"
        transform="matrix(0,1,1,0,0,0)" />
     <rect
        transform="matrix(0,1,1,0,0,0)"
-       y="373.88641"
-       x="258.21927"
-       height="40.748253"
-       width="4.2882886"
+       y="394.57724"
+       x="258.2298"
+       height="64.366615"
+       width="4.2671738"
        id="rect10956"
-       style="opacity:1;fill:url(#radialGradient10958);fill-opacity:1;stroke:#000000;stroke-width:0.08420388;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="opacity:1;fill:url(#radialGradient10958);fill-opacity:1;stroke:#000000;stroke-width:0.10556893;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-1.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92" />
+    <path
+       inkscape:export-ydpi="92"
+       inkscape:export-xdpi="92"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-0.png"
+       d="M 511,260.36218 A 94,94 0 1 1 323,260.36218 A 94,94 0 1 1 511,260.36218 z"
+       sodipodi:ry="94"
+       sodipodi:rx="94"
+       sodipodi:cy="260.36218"
+       sodipodi:cx="417"
+       id="path5121"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       transform="matrix(0.7943262,0,0,0.7943262,216.76596,53.549668)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-700.89508"
+       x="-283.5618"
+       height="196.02765"
+       width="31.431704"
+       id="rect5122"
+       style="fill:url(#radialGradient5154);fill-opacity:1;stroke:#000000;stroke-width:0.50000942;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-725.50824"
+       x="-302.4325"
+       height="14.279879"
+       width="22.658167"
+       id="rect5124"
+       style="fill:url(#radialGradient5156);fill-opacity:1;stroke:#000000;stroke-width:0.11458037;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-738.68243"
+       x="-296.56232"
+       height="53.684795"
+       width="57.577671"
+       id="rect5126"
+       style="fill:url(#radialGradient5158);fill-opacity:1;stroke:#000000;stroke-width:0.3541508;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-718.15717"
+       x="-262.75601"
+       height="30.482643"
+       width="28.778536"
+       id="rect5128"
+       style="fill:url(#radialGradient5160);fill-opacity:1;stroke:#000000;stroke-width:0.18866713;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-735.27209"
+       x="-291.4744"
+       height="25.606171"
+       width="48.229832"
+       id="rect5130"
+       style="fill:url(#radialGradient5162);fill-opacity:1;stroke:#000000;stroke-width:0.22385447;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       id="path5132"
+       d="M 729.79259,-286.25565 L 734.72287,-283.30121 L 734.72287,-280.91429 L 734.72287,-253.33952 L 734.72287,-250.95261 L 729.79259,-247.99815 L 729.79259,-256.29397 L 729.79259,-277.95986 L 729.79259,-286.25565 z"
+       style="fill:url(#radialGradient5164);fill-opacity:1;stroke:#000000;stroke-width:0.40917581;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       style="fill:url(#radialGradient5166);fill-opacity:1;stroke:#000000;stroke-width:0.18710463;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5134"
+       width="37.729328"
+       height="22.867508"
+       x="-303.7092"
+       y="-535.05841" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       style="fill:url(#radialGradient5168);fill-opacity:1;stroke:#000000;stroke-width:0.30780169;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5136"
+       width="57.633987"
+       height="40.512794"
+       x="-296.5885"
+       y="-546.48987" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       y="-528.41968"
+       x="-274.66779"
+       height="17.770689"
+       width="37.81601"
+       id="rect5138"
+       style="fill:url(#radialGradient5170);fill-opacity:1;stroke:#000000;stroke-width:0.16512984;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.81436855;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 506.61248,-296.37201 L 493.54944,-291.95503 L 493.54944,-288.38651 L 493.54944,-247.16138 L 493.54944,-243.59287 L 506.61248,-239.17588 L 506.61248,-251.57837 L 506.61248,-283.96954 L 506.61248,-296.37201 z"
+       id="path5140" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       y="-540.1488"
+       x="-287.11932"
+       height="19.841341"
+       width="18.91576"
+       id="rect5142"
+       style="fill:url(#radialGradient5172);fill-opacity:1;stroke:#000000;stroke-width:0.12340507;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       style="fill:url(#radialGradient5176);fill-opacity:1;stroke:#000000;stroke-width:0.27226976;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5146"
+       width="53.669521"
+       height="34.040813"
+       x="-294.60626"
+       y="-588.19324" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       y="-632.28973"
+       x="-294.60626"
+       height="34.040813"
+       width="53.669521"
+       id="rect5148"
+       style="fill:url(#radialGradient5178);fill-opacity:1;stroke:#000000;stroke-width:0.27226976;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="matrix(0,1,-1,0,0,0)" />
+    <rect
+       inkscape:export-ydpi="76"
+       inkscape:export-xdpi="76"
+       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-fs-0.png"
+       transform="matrix(0,1,-1,0,0,0)"
+       style="fill:url(#radialGradient5180);fill-opacity:1;stroke:#000000;stroke-width:0.27226976;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5150"
+       width="53.669521"
+       height="34.040813"
+       x="-294.60626"
+       y="-676.38629" />
   </g>
 </svg>

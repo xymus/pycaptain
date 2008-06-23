@@ -14,6 +14,8 @@ class Turret:
         if turretStats.weapon:
             if turretStats.weapon.weaponType == ids.WT_MASS:
                 self.weapon = MassWeaponTurret( turretStats.weapon )
+            elif turretStats.weapon.weaponType == ids.WT_OMNI_LASER:
+                self.weapon = OmniLaserWeaponTurret( turretStats.weapon )
             elif turretStats.weapon.weaponType == ids.WT_LASER:
                 self.weapon = LaserWeaponTurret( turretStats.weapon )
             elif turretStats.weapon.weaponType == ids.WT_MISSILE:

@@ -689,9 +689,12 @@ class AiPilotHarvester( AiPilot ):
         # idl orbiting harvesting	done harvesting -> docking
 	# docking	
 
+        ## abandonned
         if not self.flagship or not self.flagship.alive: #  or not distLowerThanObjects( self.flagship, ship, :
             self.flagship = None
             bestDist = 5000
+            
+            ## try to find another flagship
             for obj in game.objects:
               if isinstance( obj, Ship ) and obj.shipyards and obj.player and obj.player.race.defaultHarvester == ship.stats:
               #  dist = distBetweenObjects( ship, obj )
@@ -705,17 +708,25 @@ class AiPilotHarvester( AiPilot ):
             else:
                 ship.die( game )
 
+        ## if idle and worth looking for ore
         if not self.dockingTo and not self.harvesting and self.flagship and self.flagship.noOreCloseAt < game.tick-3*config.fps:
-              distFound = ship.stats.maxRange+1
-              for obj in game.harvestables:
-                    dist = distLowerThanObjectsReturn( ship, obj, distFound )
-                    if dist: 
-                        distFound = dist
-                        self.harvesting = obj
+            ## try to find more ore
+            distFound = ship.stats.maxRange+1
+            for obj in game.harvestables:
+                dist = distLowerThanObjectsReturn( ship, obj, distFound )
+                if dist: 
+                    distFound = dist
+                    self.harvesting = obj
+            if not self.harvesting:
+                self.flagship.noOreCloseAt = game.tick
 
-              if not self.harvesting: # found nothing
-                  self.flagship.noOreCloseAt = game.tick
-                  self.goTo( ship, self.getRandomGuardPosition(ship, self.flagship, 1) )
+        ## if still idle
+        if not self.dockingTo and self.flagship and not self.harvesting: # found nothing
+        
+            for turret in ship.turrets:
+                turret.ai.target = None
+                
+            self.goTo( ship, self.getRandomGuardPosition(ship, self.flagship, 2) )
 
         if self.harvesting:
             for turret in ship.turrets:
@@ -730,14 +741,10 @@ class AiPilotHarvester( AiPilot ):
                 self.orbiting = False
             elif not ship.orbiting: # self.idle and 
                 self.goTo( ship, self.harvesting, orbitAltitude=0.8 )
-        else:
-            for turret in ship.turrets:
-                turret.ai.target = None
 
         # turrets / weapons
         for turret in ship.turrets:
-           #if turret.weapon: # if turret is armed
-                turret.ai.doTurn( ship, turret, game, self.harvesting)
+            turret.ai.doTurn( ship, turret, game, self.harvesting)
 
         return AiPilot.doTurn( self, ship, game )
 

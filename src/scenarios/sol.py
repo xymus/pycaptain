@@ -173,11 +173,16 @@ class Sol( Scenario ):
             smallTurret = stats.T_MASS_SR_0
             mediumTurret = stats.T_MASS_MR_0
 
-        for t in flagship.turrets[:2]:
-            t.buildInstall( mediumTurret )
-            
-        for t in flagship.turrets[-2:]:
-            t.buildInstall( smallTurret )
+        if shipStats == stats.AI_FS_0 or shipStats == stats.AI_FS_1:
+            for t in flagship.turrets[-3:-2] + flagship.turrets[-1:]:
+                t.buildInstall( mediumTurret )
+            for t in flagship.turrets[:1] + flagship.turrets[-2:-1]:
+                t.buildInstall( smallTurret )
+        else:
+            for t in flagship.turrets[:2]:
+                t.buildInstall( mediumTurret )
+            for t in flagship.turrets[-2:]:
+                t.buildInstall( smallTurret )
 
         player.flagship = flagship        
         game.objects.append( flagship )

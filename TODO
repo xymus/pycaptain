@@ -1,20 +1,20 @@
 # features:
 common.ids - automate assignations - not now
-client.gui - add aim and ttack order 
+client.gui - add aim and attack order 
 client.gui - add self destruct button
-server/admin - add admin password to control shutdown
 server.stats - balance!
-server.stats - complete recent flagships' turrets
+server.stats - complete remaining flagships' turrets
 server.ai.AiTurret - correct bad optimization
 ai - standardize harvester and fighter behavior
 ships.flagship - standardize missile and small ships building behavior
 common.comms - reduce bandwidth use - maybe by changing exchange protocols to event driven
-client - divides main ships images in layers, allowing lights to cover turrets
 client.network/client - make sure that all orders are sent
 common.config - move universe width to scenario and in commms
-server.stats - use civilian/non-weapon only turrets
-... - implement a direct network interface to speed up solo and/or local play
-common.comms.playerStats - add infor for radar alerts instead of using objects
+server.stats - implemet civilian/non-weapon only turrets
+server.directnetwork - speed up its performances
+common.comms.playerStats - add info for radar alerts instead of using objects
+common.comms - add scenario definition/briefing object containing universe width, fps, pickled stat file
+
 
 # bugs:
 server.ai.aiturretsolar - solve aim at closest sun in range, currently seams to alway aim at last sun in list

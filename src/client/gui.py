@@ -530,7 +530,8 @@ class Gui:
             else:
                 relationFillImg = self.imgs.uiRelationFill0
             cRelation = (34, self.display.resolution[1]-108)
-            self.display.drawIncompletePie( relationFillImg, cRelation, (1-float(stats.ore)/stats.maxOre)*pi/2, relIn ) # min(self.rel,10) )
+            if relIn:
+                self.display.drawIncompletePie( relationFillImg, cRelation, (1-float(relIn)/100)*pi/2, relIn ) # min(self.rel,10) )
             relOutLength = 76
             relOutAngle = (relOut*100*pi/180/100)-(40*pi/180)
             self.display.drawLine( (32,32,32,255), cRelation, (cRelation[0]+relOutLength*cos(relOutAngle),cRelation[1]-relOutLength*sin(relOutAngle)), 3 )
@@ -691,7 +692,8 @@ class Gui:
      #   self.a = 5
         self.display.draw( self.imgs.uiHangarCenter, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarCenter)) )
    #     self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (self.a,100-self.a) ) 
-        self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (100*stats.missilesSpace/stats.hangarSpace,100*stats.shipsSpace/stats.hangarSpace) ) 
+        if stats.hangarSpace:
+            self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (100*stats.missilesSpace/stats.hangarSpace,100*stats.shipsSpace/stats.hangarSpace) ) 
         self.display.draw( self.imgs.uiHangarOver, (self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarOver)/2,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarOver)) )
 
      ## ships
@@ -871,7 +873,7 @@ class Gui:
 
  
         self.display.drawText( str( stats.maxRadar ), (142,55), size=13 )
-        self.display.drawText( str( stats.xr )+", "+str( stats.yr ), (139,83), size=13 )
+        self.display.drawText( "%0.1f - %0.1f"% ( stats.xr/1000, stats.yr/1000 ), (139,83), size=13 )
 
     # finalize!
         self.display.finalizeDraw()
