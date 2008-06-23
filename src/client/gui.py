@@ -29,44 +29,15 @@ def ihypot( h, c ):
         return 0
 
 class Gui:
-    def __init__( self, fullscreen, resolution, displayName="sdl" ):
+    def __init__( self, display, mixer, imgs, snds, texts, prefs ):
+        self.display = display
+        self.mixer = mixer
 
-        exec( "from displays.%s import %s as Display"%( displayName, displayName.capitalize() ) )
-        self.display = Display( resolution, fullscreen ) #display
-        self.mixer = Mixer()
+        self.imgs = imgs
+        self.snds = snds
+        self.texts = texts
+        self.prefs = prefs
 
-        self.imgs = Imgs( self.display )
-        self.snds = Snds( self.mixer )
-        self.texts = Texts()
-        self.prefs = Prefs()
-
-        self.txtTitle = u"PyCaptain"
-        self.txtAuthor = self.texts.createdBy % "Alexis Laferriere"
-        self.txtWebsite = "http://xymus.net/pyfl/"
-        self.txtThanksNasa = self.texts.courtesyNasa
-
-        loadingTextPos = (self.display.resolution[0]/8, self.display.resolution[1]/2-30)
-
-        self.drawStaticSplash()
-        self.display.drawText( self.texts.loadingImages, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.imgs.loadAll( self.display ):
-            self.drawProgress( i*0.8 )
-
-        self.drawStaticSplash( 80 )
-        self.display.drawText( self.texts.loadingSounds, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.snds.loadAll( self.mixer ):
-            self.drawProgress( 80+i*0.1 )
-
-        self.drawStaticSplash( 90 )
-        self.display.drawText( self.texts.loadingTexts, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.texts.loadAll():
-            self.drawProgress( 90+i*0.05 )
-
-        self.drawStaticSplash( 95 )
-        self.display.drawText( self.texts.loadingPreferences, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.prefs.loadAll():
-            self.drawProgress( 95+i*0.05 )
-        
 
         self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2+100,30), 30, self.eJump)
         self.butJumpNow = RoundControl(None, (64,30), 30, self.eJumpNow)
@@ -244,27 +215,6 @@ class Gui:
                              ids.R_NOMAD: (255,255,255,0),
                              ids.R_EXTRA: (127,127,0,0),
                              ids.R_EVOLVED: (0,255,0,0) }
-
-    def drawStaticSplash( self, defPerc=0 ):
-        self.display.beginDraw()
-        self.display.draw( self.imgs.splashBack, ( (self.display.resolution[0]-self.display.getWidth(self.imgs.splashBack))/2, (self.display.resolution[1]-self.display.getHeight(self.imgs.splashBack))/2 ) )
-        self.display.drawText( self.txtTitle, (self.display.resolution[0]/2-200+2, 200+2), color=(0,0,0), size=52 )
-        self.display.drawText( self.txtTitle, (self.display.resolution[0]/2-200, 200), color=(255,255,255), size=52 )
-        self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200+2, self.display.resolution[1]-80+2), color=(0,0,0), size=14 )
-        self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200, self.display.resolution[1]-80), color=(255,255,255), size=14 )
-        self.display.drawText( self.txtWebsite, (self.display.resolution[0]-200+2, self.display.resolution[1]-60+2), color=(0,0,0), size=13 )
-        self.display.drawText( self.txtWebsite, (self.display.resolution[0]-200, self.display.resolution[1]-60), color=(255,255,255), size=13 )
-        self.display.drawText( self.txtThanksNasa, (self.display.resolution[0]-200+2, self.display.resolution[1]-40+2), color=(0,0,0), size=12 )
-        self.display.drawText( self.txtThanksNasa, (self.display.resolution[0]-200, self.display.resolution[1]-40), color=(255,255,255), size=12 )
-        self.display.drawRect( (self.display.resolution[0]/8-2, self.display.resolution[1]/2-10-2, self.display.resolution[0]*6/8+4, 20+4), (255,255,255), 1 )
-        self.display.drawRect( (self.display.resolution[0]/8, self.display.resolution[1]/2-10, float(defPerc)/100*self.display.resolution[0]*6/8, 20), (255,255,255) )
-        self.display.finalizeDraw()
-
-    def drawProgress( self, i ):
-        self.display.beginDraw()
-       # self.display.clear()
-        self.display.drawRect( (self.display.resolution[0]/8, self.display.resolution[1]/2-10, float(i)/100*self.display.resolution[0]*6/8, 20), (255,255,255) )
-        self.display.finalizeDraw()
 
     def getViewportPos( self, (x,y), z=0 ):
     #    if z ==0:

@@ -13,6 +13,7 @@ from common.comms import COObject, COInput, CopyCOInput, version
 from universe import Universe
 from menu import LoginMenu
 from menuships import MenuShips 
+from screens.loading import LoadingScreen
 
 from common import config
 from sys import argv
@@ -27,6 +28,7 @@ if "--help" in argv or "-h" in argv:
 
 class Client:
     def __init__( self, displayName="Sdl" ):
+        self.displayName = displayName
         self.network = None
         self.prefs = None
 
@@ -51,8 +53,13 @@ class Client:
             fullscreen = False
             resolution = (960,680)
 
-        self.gui = Gui( fullscreen, resolution )
-        self.prefs = self.gui.prefs
+        exec( "from displays.%s import %s as Display"%( self.displayName.lower(), self.displayName.capitalize() ) )
+        self.display = Display( resolution, fullscreen )
+        
+        splash = LoadingScreen( self.display )
+        mixer, imgs, snds, texts, self.prefs = splash.loadAll()
+        
+        self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs )
 
         self.menu = LoginMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port )
         self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts )
