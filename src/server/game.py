@@ -257,7 +257,7 @@ class Game:
                 else:
                     buildPerc = -1
                 ships.append( COShips( k, len(sy.docked)>0 or len(sy.away)>0, not player.flagship.ai.launching[ k ],  len(sy.docked) + len(sy.away), buildPerc, player.flagship.canBuild( k ), True ) )
-                shipsSpace = shipsSpace + (len(sy.docked)+len(sy.away)) * stats.Costs[ k ].hangarSpace
+                shipsSpace = shipsSpace + (len(sy.docked)+len(sy.away)) * stats.statsDict[ k ].hangarSpaceNeed
 
             t5 = time()
            ## missiles
@@ -276,7 +276,7 @@ class Game:
                     buildPerc = -1
 
                 missiles.append( COShips( missile,  missile != ids.M_NORMAL and hasTurret, player.flagship.missiles[missile].amount>0, player.flagship.missiles[missile].amount, buildPerc, hasTurret and player.flagship.canBuild( missile ), hasTurret ) )
-                missilesSpace = missilesSpace + player.flagship.missiles[missile].amount*stats.Costs[ missile ].hangarSpace
+                missilesSpace = missilesSpace + player.flagship.missiles[missile].amount*stats.statsDict[ missile ].hangarSpaceNeed
 
             t6 = time()
             radars = [ CORadar( (player.flagship.xp, player.flagship.yp), player.flagship.getRadarRange() ) ]

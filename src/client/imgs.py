@@ -28,6 +28,7 @@ class Imgs( Rc ):
         self.display = display
         self.animations = []
         self.splashBack = self.loadImageWithDisplay( "splash/back.jpg" )
+        self.gameTitle = self.loadImageWithDisplay( "splash/title.png" )
 
     def updateAnimations( self ):
         for animation in self.animations:
@@ -149,11 +150,11 @@ class Imgs( Rc ):
         self[ ids.S_HARVESTER ] = self.loadImage( "ships/harvester.png" ) 
         self[ ids.S_FIGHTER ] = self.loadImage( "ships/human-fighter.png" ) 
         self[ ids.S_BOMBER ] = self.loadImage( "ships/human-bomber.png" ) 
-        self[ ids.S_FLAGSHIP_0 ] = self.loadImage( "ships/human-fs-0.png" ) 
-        self[ ids.S_FLAGSHIP_1 ] = self.loadImage( "ships/human-fs-1.png" ) 
-        self[ ids.S_FLAGSHIP_2 ] = self.loadImage( "ships/human-fs-2.png" ) 
+        self[ ids.S_HUMAN_FS_0 ] = self.loadImage( "ships/human-fs-0.png" ) 
+        self[ ids.S_HUMAN_FS_1 ] = self.loadImage( "ships/human-fs-1.png" ) 
+        self[ ids.S_HUMAN_FS_2 ] = self.loadImage( "ships/human-fs-2.png" ) 
         self[ ids.S_CIVILIAN_0 ] = self.loadImage( "ships/civilian.png" )
-        self[ ids.S_ORBITALBASE ] = self.loadImage( "ships/human-base.png" )
+        self[ ids.S_HUMAN_BASE ] = self.loadImage( "ships/human-base.png" )
 
         self[ ids.S_MINE ] = self.loadImage( "mine.png" ) 
 
@@ -280,9 +281,9 @@ class Imgs( Rc ):
         self[ ids.F_LARGE_0 ] = self.loadImage( "fragments/large-0.png" )
         self[ ids.F_LARGE_1 ] = self.loadImage( "fragments/large-1.png" )
 
-        self[ ids.F_FLAGSHIP_0 ] = self.loadImage( "fragments/flagship0-frag.png" )
-        self[ ids.F_FLAGSHIP_1 ] = self.loadImage( "fragments/flagship1-frag.png" )
-        self[ ids.F_FLAGSHIP_2 ] = self.loadImage( "fragments/flagship2-frag.png" )
+        self[ ids.F_HUMAN_FS_0 ] = self.loadImage( "fragments/flagship0-frag.png" )
+        self[ ids.F_HUMAN_FS_1 ] = self.loadImage( "fragments/flagship1-frag.png" )
+        self[ ids.F_HUMAN_FS_2 ] = self.loadImage( "fragments/flagship2-frag.png" )
 
         self[ ids.F_FIGHTER_0 ] = self.loadImage( "fragments/fighter-0.png" )
         self[ ids.F_FIGHTER_1 ] = self.loadImage( "fragments/fighter-1.png" )
@@ -297,6 +298,17 @@ class Imgs( Rc ):
      #   self[ ids.E_1 ] = self.loadImage( "exhaust/particle1.png", True )
      #   self[ ids.E_2 ] = self.loadImage( "exhaust/particle2.png", True )
         self.exhausts = [  ids.E_0, ids.E_1, ids.E_2 ]
+        
+        
+        # ctrls
+        self.ctrlLightRight =  self.loadImageWithDisplay( "controls/light-right/light.png" )
+        self.ctrlLightRightSelected =  self.loadImageWithDisplay( "controls/light-right/light-selected.png" )
+        self.ctrlLightRightDisabled =  self.loadImageWithDisplay( "controls/light-right/light-disabled.png" )
+        self.ctrlLightRightOver =  self.loadImageWithDisplay( "controls/light-right/light-over.png" )
+        self.ctrlLightLeft =  self.loadImageWithDisplay( "controls/light-left/light.png" )
+        self.ctrlLightLeftSelected =  self.loadImageWithDisplay( "controls/light-left/light-selected.png" )
+        self.ctrlLightLeftDisabled =  self.loadImageWithDisplay( "controls/light-left/light-disabled.png" )
+        self.ctrlLightLeftOver =  self.loadImageWithDisplay( "controls/light-left/light-over.png" )
 
         # ui
         self.uiTopLeft0 =  self.loadImageWithDisplay( "ui/top-left-0.png" ) # 241 45

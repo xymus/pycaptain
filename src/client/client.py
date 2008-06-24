@@ -6,14 +6,16 @@ import os
 from time import time, sleep
 from threading import Thread
 
-from gui import Gui
+from screens.gui import Gui
+from screens.join import JoinMenu
+from screens.ship import MenuShips 
+from screens.loading import LoadingScreen
+from screens.main import MainMenu
+
 from network import Network
 from directnetwork import DirectNetwork
 from common.comms import COObject, COInput, CopyCOInput, version
 from universe import Universe
-from menu import LoginMenu
-from menuships import MenuShips 
-from screens.loading import LoadingScreen
 
 from common import config
 from sys import argv
@@ -33,7 +35,7 @@ class Client:
         self.prefs = None
 
         self.gui = None
-        self.menu = None
+        self.joinMenu = None
         self.menuShips = None
 
         self.optimalFrame = 1.0/30
@@ -41,7 +43,7 @@ class Client:
 
         self.universe = Universe()
 
-        self.at = "menu"
+        self.at = "mainmenu"
         self.runningServer = False
 
     def run(self):
@@ -59,9 +61,12 @@ class Client:
         splash = LoadingScreen( self.display )
         mixer, imgs, snds, texts, self.prefs = splash.loadAll()
         
-        self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs )
+        from server import stats # TODO REMOVE, for testing purpose only
+        
+        self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs, stats.statsDict )
 
-        self.menu = LoginMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port )
+        self.mainmenu = MainMenu( self.gui.display, self.gui.imgs )
+        self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port )
         self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts )
        
         self.inputs = COInput()
@@ -76,7 +81,9 @@ class Client:
         while self.run:
             t0 = time()
 
-            if self.at == "menu":
+            if self.at == "mainmenu":
+                self.mainmenuLoop()
+            elif self.at == "menu":
                 self.menuLoop()
             elif self.at == "game":
                 self.gameLoop()
@@ -165,17 +172,29 @@ class Client:
 
             self.universe.doTurn()
 
+    def mainmenuLoop( self ):
+        self.mainmenu.draw( self.display )
+        self.mainmenu.manageInputs( self.display )
+        if self.mainmenu.quit:
+            self.run = False
+        elif self.mainmenu.quickPlay:
+            self.launchLocalServer()
+            if self.network:
+                self.at = "ship"
+        elif self.mainmenu.join:
+            self.at = "menu"
+            
     def menuLoop( self ):
-        self.menu.draw()
-        quit,user,password,server,port,local,toggleFullscreen = self.menu.getUpdates()
+        self.joinMenu.draw()
+        quit,user,password,server,port,local,toggleFullscreen = self.joinMenu.getUpdates()
         if user:
             ( self.server, self.port, self.user, self.password ) = ( server, port, user, password )
-            self.menu.cOk.enabled = False
+            self.joinMenu.ctrlOk.enabled = False
             self.network = Network( server, port, user, password, version )
             self.network.connect() # launchs thread
 
         if local:
-            self.menu.setError( "Launching local server..." )
+            self.joinMenu.setError( "Launching local server..." )
             self.launchLocalServer()
 
         if toggleFullscreen:
@@ -185,7 +204,7 @@ class Client:
             # server failed
             self.runningServer = False
             self.network = None
-            self.menu.setError( "Server failed to open any listening sockets, please wait a few minutes, kill dead processes or reboot." )
+            self.joinMenu.setError( "Server failed to open any listening sockets, please wait a few minutes, kill dead processes or reboot." )
             
 
         if self.network:
@@ -197,17 +216,19 @@ class Client:
                 if not self.runningServer and (self.server != self.prefs.server or self.user != self.prefs.user or self.password != self.prefs.password):
                     self.prefs.save( self.user, self.password, self.server )
             elif success == None: # still trying 
-                self.menu.setError( msg )
+                self.joinMenu.setError( msg )
             else: # failed
-                self.menu.cOk.enabled = True
-                self.menu.setError( msg )
+                self.joinMenu.ctrlOk.enabled = True
+                self.joinMenu.setError( msg )
                 
                 
         if quit:
             self.run = False
+        elif self.joinMenu.back:
+            self.at = "mainmenu"
 
     def shipLoop( self ):
-        self.menuShips.draw()
+        self.menuShips.draw( self.display )
 
         ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates()
         if stats and not stats.dead:

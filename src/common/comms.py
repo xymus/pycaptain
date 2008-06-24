@@ -30,6 +30,7 @@ class COInput:
         self.mouseUpAtV = (0,0)
         self.mouseUpped = False
         self.mouseRightUpped = False
+        self.mousePos = (0,0)
 		
         self.right = False
         self.left = False

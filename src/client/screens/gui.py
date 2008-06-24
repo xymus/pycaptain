@@ -1,11 +1,11 @@
 from math import pi, sqrt, cos, sin, hypot
 from random import randint, random, choice
-
-from mixer import Mixer
-from controls import *
-from specialcontrols import *
-from inputs import DisplayInput
 from time import time
+
+from client.mixer import Mixer
+from client.controls import *
+from client.specialcontrols import *
+#from client.inputs import DisplayInput
 from common.utils import *
 from common import utils
 from common.orders import *
@@ -13,23 +13,16 @@ from common.gfxs import *
 from common.comms import COObject
 from common import ids
 from common import config
-#from astres import *
-
-from imgs import Imgs
-from texts import Texts
-from snds import Snds
-from prefs import Prefs
 
 def ihypot( h, c ):
     i = h*h - c*c
- #   print h, c, i
     if i > 0:
         return sqrt( i )
     else:
         return 0
 
 class Gui:
-    def __init__( self, display, mixer, imgs, snds, texts, prefs ):
+    def __init__( self, display, mixer, imgs, snds, texts, prefs, stats=None ):
         self.display = display
         self.mixer = mixer
 
@@ -37,6 +30,7 @@ class Gui:
         self.snds = snds
         self.texts = texts
         self.prefs = prefs
+        self.stats = stats
 
 
         self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2+100,30), 30, self.eJump)
@@ -215,6 +209,8 @@ class Gui:
                              ids.R_NOMAD: (255,255,255,0),
                              ids.R_EXTRA: (127,127,0,0),
                              ids.R_EVOLVED: (0,255,0,0) }
+                             
+        self.informAbout = None
 
     def getViewportPos( self, (x,y), z=0 ):
     #    if z ==0:
@@ -825,6 +821,9 @@ class Gui:
         self.display.drawText( str( stats.maxRadar ), (142,55), size=13 )
         self.display.drawText( "%0.1f - %0.1f"% ( stats.xr/1000, stats.yr/1000 ), (139,83), size=13 )
 
+        if self.informAbout:
+            self.displayStats( self.informAbout )
+            
     # finalize!
         self.display.finalizeDraw()
 
@@ -913,6 +912,7 @@ class Gui:
                 order = OrderMove( inputs.mouseDownAtV[0], inputs.mouseDownAtV[1], angle )
                 self.orders.append( order )
 
+                
         inputs.orders = self.orders
 
         inputs.wc = self.display.resolution[0]
@@ -939,9 +939,43 @@ class Gui:
 
       #  msgs = self.msgs
       #  self.msgs = []
+      
+      
+        self.informAbout = None
+        if self.build != None:
+            for but in self.butsBuildOption:
+                if but.fIn( inputs.mousePos ):
+                    self.informAbout = but.uid
+                    
+        for but in self.butsShipBuild:
+            if but.fIn( inputs.mousePos ):
+                self.informAbout = but.uid
+                    
+        for but in self.butsMissileBuild:
+            if but.fIn( inputs.mousePos ):
+                self.informAbout = but.uid
+                
+                
 
         return (quit,inputs,[],[], False)
           #  hits = button.hits()
+          
+       
+### stats display logic ####   
+    def displayStats( self, k ):
+        if self.stats and self.stats.has_key( k ):
+            rect = (100,self.display.resolution[1]-200, 160, 80)
+            self.display.drawRect( rect, (30,30,30,128) )
+            self.display.drawRect( rect, (50,50,50,200), width=1 )
+            
+            ore = self.stats[ k ].oreCostToBuild
+            energy = self.stats[ k ].energyCostToBuild
+            time = self.stats[ k ].timeToBuild/config.fps
+            text = self.texts.infoBuild%locals()
+            vpos = rect[1]+8
+            for line in text.split("\n"):
+                self.display.drawText( line, (rect[0]+8,vpos), size=13 )
+                vpos += 16
     
 #### button commands ####
     def eJumpNow(self, sender, (x,y)):

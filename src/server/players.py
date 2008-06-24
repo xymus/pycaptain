@@ -51,7 +51,7 @@ class Human( Player ):
                     self.flagship.ai.goTo( self.flagship, game.uidsSent[ self ][ order.obj ], orbitAltitude=2 )
                 elif isinstance( order, OrderBuildTurret ):
                     if order.type:
-                        self.flagship.buildTurret( self.flagship.turrets[ order.tp ], stats.Buildable[ order.type ] )
+                        self.flagship.buildTurret( self.flagship.turrets[ order.tp ], stats.statsDict[ order.type ] )
                     else:
                         self.flagship.buildTurret( self.flagship.turrets[ order.tp ], None )
                 elif isinstance( order, OrderBuildShip ):
@@ -94,13 +94,13 @@ class Computer( Player ):
             
                 ## launch harvesters
                 for k in ship.ai.launching:
-                    if isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
+                    if isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
                         ship.ai.launching[ k ] = True
 
             if ship.ai.attacking:
                 ## launch fighters
                 for k in ship.ai.launching:
-                    if not isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
+                    if not isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
                         ship.ai.launching[ k ] = True
 
                 dist = (ship.stats.maxRadius + ship.ai.attacking.stats.maxRadius)*1.5
@@ -112,7 +112,7 @@ class Computer( Player ):
             ## recall fighters when not in combat
             elif not game.tick%(config.fps*10):
                 for k in ship.ai.launching:
-                    if not isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
+                    if not isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
                         ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
                 
                 

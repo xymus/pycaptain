@@ -371,15 +371,15 @@ class FlagShip( ShipWithTurrets ):
         for k,b in self.shipyards.iteritems():
      #    print count, hangarSpace
        # b = self.shipyards[ k ]
-         if b.building and count+stats.Costs[ k ].hangarSpace<= hangarSpace: #count < self.getMaxShips():
+         if b.building and count+stats.statsDict[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxShips():
             b.build = b.build+self.getBuildRate()
             if b.build >= b.buildCost:
          #       b.amount = b.amount+1
-                if isinstance( stats.Buildable[ k ], stats.HarvesterShipStats ):
-                    b.docked.append( HarvesterShip(self.player, stats.Buildable[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
+                if isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
+                    b.docked.append( HarvesterShip(self.player, stats.statsDict[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
                 else:
-                    b.docked.append( ShipSingleWeapon(self.player, stats.Buildable[ k ], AiPilotFighter(self),0,0,0, 4, 0.0,0.0,0.0, 0)  )
-                count = count + stats.Costs[ k ].hangarSpace
+                    b.docked.append( ShipSingleWeapon(self.player, stats.statsDict[ k ], AiPilotFighter(self),0,0,0, 4, 0.0,0.0,0.0, 0)  )
+                count = count + stats.statsDict[ k ].hangarSpaceNeed
                 if self.canBuild( k ):
                    self.buildShip( k )
                 else:
@@ -389,11 +389,11 @@ class FlagShip( ShipWithTurrets ):
 
         for k in self.missiles:
           b = self.missiles[ k ]
-          if b.building and count+stats.Costs[ k ].hangarSpace<= hangarSpace: #count < self.getMaxMissiles():
+          if b.building and count+stats.statsDict[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxMissiles():
             b.build = b.build+self.getBuildRate()
             if b.build >= b.buildCost:
                 b.amount = b.amount+1
-                count = count + stats.Costs[ k ].hangarSpace
+                count = count + stats.statsDict[ k ].hangarSpaceNeed
                 if self.canBuild( k ):
                    self.buildMissile( k )
                 else:
@@ -564,10 +564,10 @@ class FlagShip( ShipWithTurrets ):
     def getHangarUse( self ):
         space = 0
         for missile in self.missiles:
-            space = space+self.missiles[missile].amount*stats.Costs[ missile ].hangarSpace
+            space = space+self.missiles[missile].amount*stats.statsDict[ missile ].hangarSpaceNeed
 
         for ship in self.shipyards:
-            space = space+self.shipyards[ship].getCount()*stats.Costs[ ship ].hangarSpace
+            space = space+self.shipyards[ship].getCount()*stats.statsDict[ ship ].hangarSpaceNeed
 
         return space
 
@@ -649,30 +649,30 @@ class FlagShip( ShipWithTurrets ):
     def buildShip( self, toBuild, switch=False ):
         if switch and self.shipyards[ toBuild ].building:
             self.shipyards[ toBuild ].building = False
-            self.energy = self.energy+stats.Costs[ toBuild ].energyCostToBuild
-            self.ore = self.ore+stats.Costs[ toBuild ].oreCostToBuild
+            self.energy = self.energy+stats.statsDict[ toBuild ].energyCostToBuild
+            self.ore = self.ore+stats.statsDict[ toBuild ].oreCostToBuild
         else:
             self.shipyards[ toBuild ].building = True
             self.shipyards[ toBuild ].build = 0
-            self.shipyards[ toBuild ].buildCost = stats.Costs[ toBuild ].timeToBuild
-            self.energy = self.energy-stats.Costs[ toBuild ].energyCostToBuild
-            self.ore = self.ore-stats.Costs[ toBuild ].oreCostToBuild
+            self.shipyards[ toBuild ].buildCost = stats.statsDict[ toBuild ].timeToBuild
+            self.energy = self.energy-stats.statsDict[ toBuild ].energyCostToBuild
+            self.ore = self.ore-stats.statsDict[ toBuild ].oreCostToBuild
 
     def buildMissile( self, toBuild, switch=False ):
         if switch and self.missiles[ toBuild ].building:
             self.missiles[ toBuild ].building = False
-            self.energy = self.energy+stats.Costs[ toBuild ].energyCostToBuild
-            self.ore = self.ore+stats.Costs[ toBuild ].oreCostToBuild
+            self.energy = self.energy+stats.statsDict[ toBuild ].energyCostToBuild
+            self.ore = self.ore+stats.statsDict[ toBuild ].oreCostToBuild
         else:
             self.missiles[ toBuild ].building = True
             self.missiles[ toBuild ].build = 0
-            self.missiles[ toBuild ].buildCost = stats.Costs[ toBuild ].timeToBuild
-            self.energy = self.energy-stats.Costs[ toBuild ].energyCostToBuild
-            self.ore = self.ore-stats.Costs[ toBuild ].oreCostToBuild
+            self.missiles[ toBuild ].buildCost = stats.statsDict[ toBuild ].timeToBuild
+            self.energy = self.energy-stats.statsDict[ toBuild ].energyCostToBuild
+            self.ore = self.ore-stats.statsDict[ toBuild ].oreCostToBuild
 
     def canBuild( self, toBuild ):
-        return self.energy >= stats.Costs[ toBuild ].energyCostToBuild \
-          and self.ore >= stats.Costs[ toBuild ].oreCostToBuild
+        return self.energy >= stats.statsDict[ toBuild ].energyCostToBuild \
+          and self.ore >= stats.statsDict[ toBuild ].oreCostToBuild
 
     def launchMissile( self, type, (x,y) ):
         self.missiles[ type ].target = (x,y)

@@ -3,7 +3,7 @@
 # Description: First scenario with 4 solar systems, sol at the center.
 # 
 
-from __scenario import Scenario
+from scenarios import Scenario
 from random import randint
 
 from server.players import *
@@ -139,7 +139,7 @@ class Quad ( Scenario ):
 
 
         self.marsDefense = Faction( stats.R_HUMAN, "Mars Defenses" )
-        obase = OrbitalBase( self.marsDefense, stats.ORBITALBASE, AiGovernor( self.marsDefense ),self.mars.xp+self.mars.stats.maxRadius*1.5,self.mars.yp+self.mars.stats.maxRadius*1.5,0, 0, 0.0,0.0,0.0, 0)
+        obase = OrbitalBase( self.marsDefense, stats.HUMAN_BASE_2, AiGovernor( self.marsDefense ),self.mars.xp+self.mars.stats.maxRadius*1.5,self.mars.yp+self.mars.stats.maxRadius*1.5,0, 0, 0.0,0.0,0.0, 0)
         for t in obase.turrets:
             t.install = TurretInstall( stats.T_MASS_SR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_SR_0 )
@@ -154,7 +154,7 @@ class Quad ( Scenario ):
             radius = self.mars.stats.maxRadius*(2.5)
             dist = self.mars.stats.maxRadius*(1.5+1*random())
             angle = 2*pi*random() # AiPilotDefense
-            fighter = ShipSingleWeapon(self.marsDefense, stats.FIGHTER, AiPilotDefense(self.mars,radius),self.mars.xp+dist*cos(angle),self.mars.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
+            fighter = ShipSingleWeapon(self.marsDefense, stats.HUMAN_FIGHTER, AiPilotDefense(self.mars,radius),self.mars.xp+dist*cos(angle),self.mars.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
             game.objects.append( fighter )
             self.marsDefense.ships.append( fighter )
 
@@ -167,7 +167,7 @@ class Quad ( Scenario ):
         for i in xrange( nbrBases ):
           dist = self.earth.stats.maxRadius*1.8 #(1.8+0.4*random())
           angle = pi*i*2/nbrBases
-          obase = OrbitalBase( self.earthDefense, stats.ORBITALBASE, AiGovernor( self.earthDefense ),self.earth.xp+dist*cos(angle),self.earth.yp+dist*sin(angle),0, 0, 0.0,0.0,0.0, 0)
+          obase = OrbitalBase( self.earthDefense, stats.HUMAN_BASE_2, AiGovernor( self.earthDefense ),self.earth.xp+dist*cos(angle),self.earth.yp+dist*sin(angle),0, 0, 0.0,0.0,0.0, 0)
           for t in obase.turrets:
             t.install = TurretInstall( stats.T_MASS_MR_0 )
             t.weapon = MassWeaponTurret( stats.W_MASS_MR )
@@ -185,7 +185,7 @@ class Quad ( Scenario ):
             radius = self.earth.stats.maxRadius*(2.5)
             dist = self.earth.stats.maxRadius*(1.5+1*random())
             angle = 2*pi*random() # AiPilotDefense
-            fighter = ShipSingleWeapon(self.earthDefense, stats.FIGHTER, AiPilotPolice(self.earth,radius),self.earth.xp+dist*cos(angle),self.earth.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
+            fighter = ShipSingleWeapon(self.earthDefense, stats.HUMAN_FIGHTER, AiPilotPolice(self.earth,radius),self.earth.xp+dist*cos(angle),self.earth.yp+dist*sin(angle),0, 4, 0.0,0.0,0.0, 0)
             game.objects.append( fighter )
             self.earthDefense.ships.append( fighter )
 
@@ -315,7 +315,7 @@ class Quad ( Scenario ):
 
       player = GetComputerPlayer()
       if i < 2:
-        flagship = FlagShip( player, stats.FLAGSHIP_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[2:4]:
             t.buildInstall( stats.T_LASER_MR_0 )
@@ -323,19 +323,19 @@ class Quad ( Scenario ):
             t.buildInstall( stats.T_LASER_SR_0 )
 
       elif i < 3:
-        flagship = FlagShip( player, stats.FLAGSHIP_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets:
             t.buildInstall( stats.T_MASS_SR_0 )
         for i in range(10):
-           fighter = ShipSingleWeapon(flagship.player, stats.FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
+           fighter = ShipSingleWeapon(flagship.player, stats.HUMAN_FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ ids.S_FIGHTER ].docked.append( fighter )
         for i in range(4):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
       elif i < 4:
-        flagship = FlagShip( player, stats.FLAGSHIP_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
             t.buildInstall( stats.T_MASS_MR_0 )

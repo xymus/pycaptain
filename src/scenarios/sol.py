@@ -1,4 +1,4 @@
-from __scenario import Scenario
+from scenarios import Scenario
 
 from random import randint
 
@@ -18,7 +18,9 @@ from server import stats
 
 
 class Sol( Scenario ):
-    def __init__(self, game):        
+    def __init__(self, game):
+        Scenario.__init__(self, game )
+
         self.harvestersAtSpawn = 4
         self.wantedBadGuys = 10
 
@@ -95,7 +97,7 @@ class Sol( Scenario ):
 
       player = GetComputerPlayer()
       if i < 2:
-        flagship = FlagShip( player, stats.FLAGSHIP_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[2:4]:
             t.buildInstall( stats.T_LASER_MR_0 )
@@ -103,19 +105,19 @@ class Sol( Scenario ):
             t.buildInstall( stats.T_LASER_SR_0 )
             
       elif i < 3:
-        flagship = FlagShip( player, stats.FLAGSHIP_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets:
             t.buildInstall( stats.T_MASS_SR_0 )
         for i in range(10):
-           fighter = ShipSingleWeapon(flagship.player, stats.FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
+           fighter = ShipSingleWeapon(flagship.player, stats.HUMAN_FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ ids.S_FIGHTER ].docked.append( fighter )
         for i in range(4):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
       elif i < 4:
-        flagship = FlagShip( player, stats.FLAGSHIP_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship = FlagShip( player, stats.HUMAN_FS_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre
         for t in flagship.turrets[:-2]:
             t.buildInstall( stats.T_MASS_MR_0 )
@@ -145,8 +147,6 @@ class Sol( Scenario ):
 
 
     def spawn( self, game, player, shipId ):
-    #  if not player.flagship and player.points >= stats.PlayableShips[ shipId ].points:
-        print "spawning"
         player.race = stats.PlayableShips[ shipId ].race
         shipStats = stats.PlayableShips[ shipId ].stats
 
@@ -157,7 +157,7 @@ class Sol( Scenario ):
         flagship = FlagShip( player, shipStats, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
         flagship.ore = flagship.stats.maxOre/2
         flagship.energy = flagship.stats.maxEnergy / 2
-        flagship.oir = 2*pi*random()
+        flagship.ori = 2*pi*random()
 
         if player.race == stats.R_EVOLVED:
             smallTurret = stats.T_BURST_LASER_0

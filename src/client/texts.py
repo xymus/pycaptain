@@ -108,9 +108,9 @@ class Texts( Rc ):
         self[ids.C_OTHER] 		= "Others"
 
 
-        self[ids.S_FLAGSHIP_0] 		= "Frigate"
-        self[ids.S_FLAGSHIP_1] 		= "Battleship"
-        self[ids.S_FLAGSHIP_2] 		= "Carrier"
+        self[ids.S_HUMAN_FS_0] 		= "Frigate"
+        self[ids.S_HUMAN_FS_1] 		= "Battleship"
+        self[ids.S_HUMAN_FS_2] 		= "Carrier"
 
         self[ids.S_NOMAD_FS_0] 		= "Transport Ship t-5"
         self[ids.S_NOMAD_FS_1]	 	= "Colony Ship c-0"
@@ -141,6 +141,8 @@ class Texts( Rc ):
         self.uiMaxHull		= "Hull"
         self.uiCivilian		= "Civilian appreciation"
         self.uiSpeed		= "Speed"
+        
+        self.infoBuild = "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs"
 
         yield 100
 

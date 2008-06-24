@@ -134,6 +134,7 @@ class Sdl( Display ):
        # inputs.down = pygame.key.get_pressed()[ pygame.K_DOWN ]
        # inputs.left = pygame.key.get_pressed()[ pygame.K_LEFT ]
        # inputs.right = pygame.key.get_pressed()[ pygame.K_RIGHT ]
+        inputs.mousePos = pygame.mouse.get_pos()
 
         inputs.mouseDowned = False
         inputs.mouseUpped = False

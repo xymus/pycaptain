@@ -1,16 +1,18 @@
 from md5 import md5
 
-from controls import *
+from client.controls import *
+from client.specialcontrols import *
 from common.comms import COInput
-import imgs
+from common import ids
 
-class LoginMenu( ControlFrame ):
+class JoinMenu( ControlFrame ):
     def __init__(self, display, imgs, user="", password="", server="", port=""):
         ControlFrame.__init__( self )
         self.display = display
         self.imgs = imgs
 
         self.quit = False
+        self.back = False
         self.ok = False
         self.local = False
         self.toggleFullscreen = False
@@ -26,25 +28,32 @@ class LoginMenu( ControlFrame ):
         self.cServer = TextBox( (120,100+(diff+height)*2), (160,height), server )
         self.cPort = TextBox( (120,100+(diff+height)*3), (160,height), str(port), numeric=True )
 
-        self.cOk = LabelButton( (120+diff+60,100+(diff+height)*4), (60, height), self.eOk, "Ok" )
-        self.cQuit = LabelButton( (120,100+(diff+height)*4), (60, height), self.eQuit, "Quit" )
+     #   self.cOk = LabelButton( (120+diff+60,100+(diff+height)*4), (60, height), self.eOk, "Ok" )
+     #   self.cBack = LabelButton( (120,100+(diff+height)*4), (60, height), self.eBack, "Back" )
         self.cLocal = LabelButton( (120+(diff+60)*3+diff,100), (200, height), self.eLocal, "Single player" )
         self.cFullscreen = LabelButton( (120+(diff+60)*3+diff,200), (200, height), self.eFullscreen, "Toggle Fullscreen" )
 
         self.cError = Label( (40,100+(diff+height)*5), " " )
+        
+        self.ctrlOk =  LightControlLeft( (260,550), self.eOk, "Ok", imgs )
+        self.ctrlBack =     LightControlRight( (600,550), self.eBack, "Back", imgs )
 
+            
         controls = [    self.cUser,
                         self.cPassword,
                         self.cServer,
                         self.cPort,
-                        self.cOk,
-                        self.cLocal,
-                        self.cFullscreen,
-                        self.cQuit,
+                     #   self.cOk,
+                     #   self.cLocal,
+                     #   self.cFullscreen,
+                     #   self.cBack,
                         Label( (40,100), "user" ),
                         Label( (40,100+(diff+height)), "password" ),
                         Label( (40,100+(diff+height)*2), "server" ),
                         Label( (40,100+(diff+height)*3), "port" ),
+                        self.ctrlOk,
+                        self.ctrlBack,
+                        RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ),
                         self.cError
                         ]
 
@@ -58,8 +67,9 @@ class LoginMenu( ControlFrame ):
 
       #  self.display.clear( (0,0,0) )
         self.display.draw( self.imgs.splashBack, ( (self.display.resolution[0]-self.display.getWidth(self.imgs.splashBack))/2, (self.display.resolution[1]-self.display.getHeight(self.imgs.splashBack))/2 ) )
-        for control in self.controls:
-            control.draw( self.display )
+        ControlFrame.draw( self, self.display )
+        # for control in self.controls:
+        #    control.draw( self.display )
 
         self.display.finalizeDraw()
 
@@ -67,7 +77,8 @@ class LoginMenu( ControlFrame ):
 #        (quit,self.inputs) = self.display.getInputs( self.inputs )
 #        self.quit = self.quit or quit
 
-        self.quit = self.manageInputs( self.display ) or self.quit
+        self.back = False
+        self.quit = self.manageInputs( self.display )
 #        if self.inputs.mouseUpped:
 #            for control in self.controls:
 #                if control.hits( self.inputs.mouseUpAt ):
@@ -107,8 +118,8 @@ class LoginMenu( ControlFrame ):
     def eLocal( self, sender, (x,y) ):
         self.local = True
 
-    def eQuit( self, sender, (x,y) ):
-        self.quit = True
+    def eBack( self, sender, (x,y) ):
+        self.back = True
 
     def eFullscreen( self, sender, (x,y) ):
         self.toggleFullscreen = True

@@ -1,45 +1,45 @@
 from math import pi
 
-from controls import *
+from client.controls import *
+from client.specialcontrols import *
 from common.comms import *
 from common import ids
 
 class MenuShips( ControlFrame ):
     def __init__( self, display, imgs, texts ):
        ControlFrame.__init__( self )
-       self.display = display
        self.imgs = imgs
        self.texts = texts
 
        self.quit = False
        self.choice = None
 
-       self.shipR = 0
-       self.shipRr = 0.01
-
-       self.inputs = COInput()
-
        border = 50
        butsSize = (60,24)
        pbsSize = ((display.resolution[0]-3*border)/2,18) # 24
-
-       self.options = [  COPossible( ids.S_FLAGSHIP_0, ids.R_HUMAN, 4, 15, 25, 30, 40, 50, 10 ) ] # , 
-    #                    COPossible( ids.S_FLAGSHIP_1, ids.R_HUMAN, 10, 10, 20, 30, 40, 30, 10, 20 ), 
-   #                     COPossible( ids.S_FLAGSHIP_2, ids.R_HUMAN, 4, 15, 30, 30, 40, 100, 10, 20 ), 
-
-   #                     COPossible( ids.S_AI_FS_0, ids.R_AI, 3, 15, 30, 30, 40, 100, 10, 20 ), 
-   #                     COPossible( ids.S_AI_FS_1, ids.R_AI, 6, 15, 30, 30, 40, 100, 10, 20 ), 
-   #                     COPossible( ids.S_AI_FS_2, ids.R_AI, 8, 15, 30, 30, 40, 100, 10, 20 ), 
-
-   #                     COPossible( ids.S_EVOLVED_FS_0, ids.R_EVOLVED, 4, 15, 30, 30, 40, 100, 10, 20 ), 
-   #                     COPossible( ids.S_EVOLVED_FS_1, ids.R_EVOLVED, 5, 15, 30, 30, 40, 100, 10, 20 ) ] # TODO remove when really implemented
+       
+       self.options = [  COPossible( ids.S_HUMAN_FS_0, ids.R_HUMAN, 4, 15, 25, 30, 40, 50, 10 ) ] # TODO remove when implemented with stats object
        self.pOption = 0 
 
+       self.ctrlOk =    LightControlLeft( (260,550), self.eOk, texts.uiOk, imgs )
+       self.ctrlQuit =  LightControlRight( (600,550), self.eQuit, texts.uiQuit, imgs )
+       self.ctrlPrev =  LightControlRight( (-30,100), self.ePrev, texts.uiPrev, imgs )
+       self.ctrlNext =  LightControlRight( (-30,500), self.eNext, texts.uiNext, imgs )
+       
+       self.ctrlShip = RotatingImageHolder( None, (display.resolution[0]/4,display.resolution[1]/2), ri=0.01 )
+       
 
-       controls = [ LabelButton( (display.resolution[0]-3*border/2-2*butsSize[0], display.resolution[1]-border-butsSize[1]), butsSize, self.eQuit, texts.uiQuit ),
-                    LabelButton( (display.resolution[0]-border-butsSize[0], display.resolution[1]-border-butsSize[1]), butsSize, self.eOk, texts.uiOk ),
-                    LabelButton( (display.resolution[0]/2-border/2-butsSize[0], display.resolution[1]-border-butsSize[1]), butsSize, self.ePrev, texts.uiPrev ),
-                    LabelButton( (display.resolution[0]/2+border/2, display.resolution[1]-border-butsSize[1]), butsSize, self.eNext, texts.uiNext ) ]
+        
+       controls = [    ImageHolder( imgs.splashBack, (0,0) ),
+                      # ImageHolder( imgs.gameTitle, (40,40) ),
+                       
+                       self.ctrlOk,
+                       self.ctrlQuit,
+                       self.ctrlPrev,
+                       self.ctrlNext,
+                       
+                       self.ctrlShip,
+                       RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ), ]
 
        x = (display.resolution[0]+border)/2
 
@@ -120,34 +120,12 @@ class MenuShips( ControlFrame ):
             self.lblCanJump.text = self.texts.uiCanJump
         else:
             self.lblCanJump.text = ""
-
-    def draw( self ):
-        self.display.beginDraw()
-
-        self.display.draw( self.imgs.splashBack, ( (self.display.resolution[0]-self.display.getWidth(self.imgs.splashBack))/2, (self.display.resolution[1]-self.display.getHeight(self.imgs.splashBack))/2 ) )
-        for control in self.controls:
-            control.draw( self.display )
-
-        self.display.drawRo( self.imgs[ self.options[ self.pOption ].ship ], (self.display.resolution[0]/4,self.display.resolution[1]/2), self.shipR )
-        self.shipR = (self.shipR+self.shipRr)%(2*pi)
-
-        self.display.finalizeDraw()
+            
+        self.ctrlShip.img = self.imgs[ self.options[ self.pOption ].ship ]
 
     def getInputs( self ):
-#        (quit,self.inputs) = self.display.getInputs( self.inputs )
-#        self.quit = self.quit or quit
-#
-#        if self.inputs.mouseUpped:
-#            for control in self.controls:
-#                if control.hits( self.inputs.mouseUpAt ):
-#                    self.focus = control
-#                    break
-#
-#        if self.inputs.keys:
-#          for k in self.inputs.keys:
-#            self.keyInput( k[0], k[1] )
 
-        self.quit = self.manageInputs( self.display ) or self.quit
+        self.quit = self.manageInputs( display ) or self.quit
 
         choice = self.choice
         self.choice = None

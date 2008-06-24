@@ -18,7 +18,6 @@ class LoadingScreen:
         self.texts = Texts()
         self.prefs = Prefs()
 
-        self.txtTitle = u"PyCaptain"
         self.txtAuthor = self.texts.createdBy % "Alexis Laferriere"
         self.txtWebsite = "http://xymus.net/pyfl/"
         self.txtThanksNasa = self.texts.courtesyNasa
@@ -51,8 +50,7 @@ class LoadingScreen:
     def drawStaticSplash( self, defPerc=0 ):
         self.display.beginDraw()
         self.display.draw( self.imgs.splashBack, ( (self.display.resolution[0]-self.display.getWidth(self.imgs.splashBack))/2, (self.display.resolution[1]-self.display.getHeight(self.imgs.splashBack))/2 ) )
-        self.display.drawText( self.txtTitle, (self.display.resolution[0]/2-200+2, 200+2), color=(0,0,0), size=52 )
-        self.display.drawText( self.txtTitle, (self.display.resolution[0]/2-200, 200), color=(255,255,255), size=52 )
+        self.display.draw( self.imgs.gameTitle, (40,40) )
         self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200+2, self.display.resolution[1]-80+2), color=(0,0,0), size=14 )
         self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200, self.display.resolution[1]-80), color=(255,255,255), size=14 )
         self.display.drawText( self.txtWebsite, (self.display.resolution[0]-200+2, self.display.resolution[1]-60+2), color=(0,0,0), size=13 )

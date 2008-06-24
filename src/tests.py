@@ -144,7 +144,7 @@ class Tests:
             yield self.verbose( "Scenarios", level=1 )
             
             yield self.verbose( "Loading empty scenario", level=2 )
-            exec( "from scenarios.__scenario import Scenario as Scenario" )
+            exec( "from scenarios import Scenario as Scenario" )
             games.append( Game( Scenario ) )
 
             for name in self.scenarioNames:
@@ -203,7 +203,7 @@ class Tests:
 
             yield self.verbose( "Simple ship", level=3 )
             from server.ships import Ship
-            ship0 = Ship( stats.FIGHTER, None, 0, 0 )
+            ship0 = Ship( stats.HUMAN_FIGHTER, None, 0, 0 )
 
             yield self.verbose( "ShipWithTurrets", level=3 )
             from server.ships import ShipWithTurrets
