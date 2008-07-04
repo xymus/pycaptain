@@ -65,16 +65,6 @@ class Imgs( Rc ):
         self[ ids.A_2 ] = self.loadImage( "asteroids/3.png" )
         self[ ids.A_3 ] = self.loadImage( "asteroids/4.png" )
         self[ ids.A_4 ] = self.loadImage( "asteroids/5.png" )
-
-      #  self[ 0 ] = self.loadImage( "asteroids/gray10.png" )
-      #  self[ 1 ] = self.loadImage( "asteroids/gray20.png" )
-      #  self[ 2 ] = self.loadImage( "asteroids/gray30.png" ) 
-      #  self[ 3 ] = self.loadImage( "asteroids/dark10.png" )
-      #  self[ 4 ] = self.loadImage( "asteroids/dark20.png" )
-      #  self[ 5 ] = self.loadImage( "asteroids/dark30.png" )
-      #  self[ 6 ] = self.loadImage( "asteroids/beige10.png" )
-      #  self[ 7 ] = self.loadImage( "asteroids/beige20.png" )
-      #  self[ 8 ] = self.loadImage( "asteroids/beige30.png" )
         yield 5
 
         self[ ids.S_SOL ] = self.loadImage( "planets/sol.png" ) 
@@ -135,7 +125,7 @@ class Imgs( Rc ):
         self[ ids.S_EVOLVED_FS_2 ] 	= self.loadImage( "ships/evolved-fs-2.png" )
         self[ ids.S_EVOLVED_HARVESTER] = self.loadImage( "ships/evolved-harvester.png" )
 
-        self[ ids.S_EXTRA_FS_0 ] 	= self.loadImage( "ships/extra-fs-0.png" )
+        self[ ids.S_EXTRA_BASE ] 	= self.loadImage( "ships/extra-fs-0.png" )
         self[ ids.S_EXTRA_FS_1 ] 	= self.loadImage( "ships/extra-fs-1.png" )
         self[ ids.S_EXTRA_FS_2 ] 	= self.loadImage( "ships/extra-fs-2.png" )
         self[ ids.S_EXTRA_FIGHTER ] 	= self.loadImage( "ships/extra-fighter.png" )
@@ -147,14 +137,17 @@ class Imgs( Rc ):
         self[ ids.A_BLACK_HOLE ] = self.loadImage( "planets/black-hole.png" )
 
        # self[ 9 ] = self.loadImage( "ship.png" ) 
+        self[ ids.S_HUMAN_CARGO ] = self.loadImage( "ships/human-cargo.png" ) 
+        self[ ids.S_HUMAN_PIRATE ] = self.loadImage( "ships/human-pirate.png" ) 
         self[ ids.S_HARVESTER ] = self.loadImage( "ships/harvester.png" ) 
-        self[ ids.S_FIGHTER ] = self.loadImage( "ships/human-fighter.png" ) 
-        self[ ids.S_BOMBER ] = self.loadImage( "ships/human-bomber.png" ) 
+        self[ ids.S_HUMAN_FIGHTER ] = self.loadImage( "ships/human-fighter.png" ) 
+        self[ ids.S_HUMAN_BOMBER ] = self.loadImage( "ships/human-bomber.png" ) 
         self[ ids.S_HUMAN_FS_0 ] = self.loadImage( "ships/human-fs-0.png" ) 
         self[ ids.S_HUMAN_FS_1 ] = self.loadImage( "ships/human-fs-1.png" ) 
         self[ ids.S_HUMAN_FS_2 ] = self.loadImage( "ships/human-fs-2.png" ) 
         self[ ids.S_CIVILIAN_0 ] = self.loadImage( "ships/civilian.png" )
         self[ ids.S_HUMAN_BASE ] = self.loadImage( "ships/human-base.png" )
+        self[ ids.S_HUMAN_BASE_MINING ] = self.loadImage( "ships/human-base-mining.png" )
 
         self[ ids.S_MINE ] = self.loadImage( "mine.png" ) 
 
@@ -186,6 +179,9 @@ class Imgs( Rc ):
         self[ ids.M_COUNTER ] = self.loadImage( "missiles/missile-counter.png" ) 
         self[ ids.M_AI ] = self.loadImage( "missiles/ai-missile.png" ) 
         self[ ids.M_LARVA ] = self.loadImage( "missiles/extras-missile.png" ) 
+        self[ ids.M_EVOLVED ] = self.loadImage( "missiles/evolved-missile.png" )
+        self[ ids.M_EVOLVED_PULSE ] = self.loadImage( "missiles/evolved-pulse.png" )
+        self[ ids.M_EVOLVED_COUNTER ] = self.loadImage( "missiles/evolved-counter.png" )
         yield 48
 
         self[ ids.T_INTERDICTOR ] = self.loadImage( "turrets/interdictor.png" ) 
@@ -194,8 +190,12 @@ class Imgs( Rc ):
         self[ ids.T_MINER ] = self.loadImage( "turrets/miner.png" ) 
         self[ ids.T_COUNTER ] = self.loadImage( "turrets/counter.png" ) 
         self[ ids.T_RADAR ] = self.loadImage( "turrets/radar.png" ) 
+        self[ ids.T_RADAR_1 ] = self.loadImage( "turrets/radar-1.png" ) 
+        self[ ids.T_RADAR_2 ] = self.loadImage( "turrets/radar-2.png" ) 
         self[ ids.T_BUILDING ] = self.loadImage( "turrets/building.png" ) 
         self[ ids.T_GENERATOR ] = self.loadImage( "turrets/generator.png" ) 
+        self[ ids.T_GENERATOR_1 ] = self.loadImage( "turrets/generator-1.png" ) 
+        self[ ids.T_GENERATOR_2 ] = self.loadImage( "turrets/generator-2.png" ) 
         self[ ids.T_HANGAR ] = self.loadImage( "turrets/hangar.png" ) 
         self[ ids.T_SOLAR_0 ] = self.loadImage( "turrets/solar-0.png" ) 
         self[ ids.T_SOLAR_1 ] = self.loadImage( "turrets/solar-1.png" ) 
@@ -212,7 +212,7 @@ class Imgs( Rc ):
         self[ ids.T_JAMMER ] = self.loadImage( "turrets/jammer.png" )
 
 
-        yield 55
+        yield 53
         self[ ids.T_ROCK_THROWER_0 ] = self.loadImage( "turrets/rock-thrower-0.png" ) 
         self[ ids.T_ROCK_THROWER_1 ] = self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
         self[ ids.T_LARVA_0 ] = self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
@@ -242,7 +242,16 @@ class Imgs( Rc ):
         self[ ids.T_SUBSPACE_WAVE_0 ] = self.loadImage( "turrets/ssw-0.png" ) 
         self[ ids.T_SUBSPACE_WAVE_1 ] = self.loadImage( "turrets/ssw-1.png" ) 
 
+        self[ ids.T_DARK_EXTRACTOR_0 ] = self.loadImage( "turrets/dark-matter-extractor-0.png" ) 
+        self[ ids.T_DARK_EXTRACTOR_1 ] = self.loadImage( "turrets/dark-matter-extractor-1.png" ) 
+        self[ ids.T_DARK_ENGINE_0 ] = self.loadImage( "turrets/dark-matter-engine-0.png" ) 
+        
+        self[ ids.T_EVOLVED_MISSILE_0 ] = self.loadImage( "turrets/evolved-missile-0.png" ) 
+        self[ ids.T_EVOLVED_MISSILE_1 ] = self.loadImage( "turrets/evolved-missile-1.png" ) 
+        self[ ids.T_EVOLVED_PULSE ] = self.loadImage( "turrets/evolved-pulse.png" ) 
+        self[ ids.T_EVOLVED_COUNTER ] = self.loadImage( "turrets/evolved-counter.png" ) 
 
+        yield 55
         self[ ids.T_DISCHARGER_0 ] = self.loadImage( "turrets/discharger-0.png" ) 
         self[ ids.T_DISCHARGER_1 ] = self.loadImage( "turrets/discharger-1.png" ) 
         self[ ids.T_REPEATER_0 ] = self.loadImage( "turrets/repeater-0.png" ) 
@@ -273,9 +282,9 @@ class Imgs( Rc ):
         self[ ids.B_WAVE_0 ] = self.loadImage( "projectiles/wave-0.png" )  
         self[ ids.B_WAVE_1 ] = self.loadImage( "projectiles/wave-1.png" )  
 
-        yield 60
+        yield 57
         self.background =  self.loadImageWithDisplay( "background0.jpg" ) 
-        yield 70
+        yield 65
 
       ## fragment
         self[ ids.F_LARGE_0 ] = self.loadImage( "fragments/large-0.png" )
@@ -293,7 +302,7 @@ class Imgs( Rc ):
         
         self[ ids.G_LIGHTNING ] = self.loadImage( "gfxs/lightning-0.png" )
 
-        yield 77
+        yield 67
      #   self[ ids.E_0 ] = self.loadImage( "exhaust/particle0.png", True )
      #   self[ ids.E_1 ] = self.loadImage( "exhaust/particle1.png", True )
      #   self[ ids.E_2 ] = self.loadImage( "exhaust/particle2.png", True )
@@ -305,11 +314,28 @@ class Imgs( Rc ):
         self.ctrlLightRightSelected =  self.loadImageWithDisplay( "controls/light-right/light-selected.png" )
         self.ctrlLightRightDisabled =  self.loadImageWithDisplay( "controls/light-right/light-disabled.png" )
         self.ctrlLightRightOver =  self.loadImageWithDisplay( "controls/light-right/light-over.png" )
+        
         self.ctrlLightLeft =  self.loadImageWithDisplay( "controls/light-left/light.png" )
         self.ctrlLightLeftSelected =  self.loadImageWithDisplay( "controls/light-left/light-selected.png" )
         self.ctrlLightLeftDisabled =  self.loadImageWithDisplay( "controls/light-left/light-disabled.png" )
         self.ctrlLightLeftOver =  self.loadImageWithDisplay( "controls/light-left/light-over.png" )
+        
+        self.ctrlLightDown =  self.loadImageWithDisplay( "controls/light-down/light.png" )
+        self.ctrlLightDownSelected =  self.loadImageWithDisplay( "controls/light-down/light-selected.png" )
+        self.ctrlLightDownDisabled =  self.loadImageWithDisplay( "controls/light-down/light-disabled.png" )
+        self.ctrlLightDownOver =  self.loadImageWithDisplay( "controls/light-down/light-over.png" )
+        
+        self.ctrlLightUp =  self.loadImageWithDisplay( "controls/light-up/light.png" )
+        self.ctrlLightUpSelected =  self.loadImageWithDisplay( "controls/light-up/light-selected.png" )
+        self.ctrlLightUpDisabled =  self.loadImageWithDisplay( "controls/light-up/light-disabled.png" )
+        self.ctrlLightUpOver =  self.loadImageWithDisplay( "controls/light-up/light-over.png" )
+        
+        self.ctrlSelfDestructOpen = self.loadImageWithDisplay( "controls/self-destruct/open.png" )
+        self.ctrlSelfDestructClose = self.loadImageWithDisplay( "controls/self-destruct/close.png" )
+        self.ctrlSelfDestructExplode = self.loadImageWithDisplay( "controls/self-destruct/explode.png" )
+        self.ctrlSelfDestructBack = self.loadImageWithDisplay( "controls/self-destruct/back.png" )
 
+        yield 73
         # ui
         self.uiTopLeft0 =  self.loadImageWithDisplay( "ui/top-left-0.png" ) # 241 45
         self.uiTopLeft1 =  self.loadImageWithDisplay( "ui/top-left-1.png" ) 
@@ -323,7 +349,7 @@ class Imgs( Rc ):
         self.uiJumpGlass = self.loadImageWithDisplay( "ui/top-glass.png" )
         self.uiJumpFillCharging = self.loadImageWithDisplay( "ui/top-fill-green.png" )
         self.uiJumpFillRecover = self.loadImageWithDisplay( "ui/top-fill-red.png" )
-        yield 83
+        yield 76
         # tubes
         self.uiTubeTop2 =  self.loadImageWithDisplay( "ui/top-2-tubes.png" ) 
         self.uiTubeTop1 =  self.loadImageWithDisplay( "ui/top-1-tube.png" ) 
@@ -337,6 +363,7 @@ class Imgs( Rc ):
         self.uiTubeBottom2 =  self.loadImageWithDisplay( "ui/bottom-2-tubes.png" ) 
         self.uiTubeBottom1 =  self.loadImageWithDisplay( "ui/bottom-1-tube.png" ) 
 
+        yield 80
   #      self.uiTopRight =  self.loadImage( "ui/top-right.png" ) 
      #   self.uiButLaunch =  self.loadImage( "ui/launch.png" ) 
      #   self.uiButRecall =  self.loadImage( "ui/recall.png" ) 
@@ -354,7 +381,7 @@ class Imgs( Rc ):
         self.uiButFullscreen =  self.loadImageWithDisplay( "ui/fullscreen.png" ) 
         self.uiButCharge =  self.loadImageWithDisplay( "ui/charge.png" ) 
         self.uiButRepair =  self.loadImageWithDisplay( "ui/repair.png" ) 
-        yield 90
+        yield 83
 
         self.uiEnergyFill =  self.loadImageWithDisplay( "ui/energy-fill.png" ) 
         self.uiShieldFill =  self.loadImageWithDisplay( "ui/shield-fill.png" ) 
@@ -368,12 +395,11 @@ class Imgs( Rc ):
         self.uiRelationFill1 =  self.loadImageWithDisplay( "ui/relation-fill-green.png" ) 
         self.uiRelationFill2 =  self.loadImageWithDisplay( "ui/relation-fill-blue.png" ) 
 
-        yield 93
+        yield 86
         self.uiHullFill0 =  self.loadImageWithDisplay( "ui/hull-fill-green.png" ) 
         self.uiHullFill1 =  self.loadImageWithDisplay( "ui/hull-fill-yellow.png" ) 
         self.uiHullFill2 =  self.loadImageWithDisplay( "ui/hull-fill-red.png" ) 
  
-        yield 96
         self.uiHangarLeft = self.loadImageWithDisplay( "ui/hangar/hangar-left.png" ) # 64 39
         self.uiHangarCenter = self.loadImageWithDisplay( "ui/hangar/hangar-center.png" ) # 25 39
         self.uiHangarSlot = self.loadImageWithDisplay( "ui/hangar/hangar-slot.png" ) # 25 39
@@ -386,6 +412,7 @@ class Imgs( Rc ):
         self.uiTurretOn = self.loadImageWithDisplay( "ui/turret-on.png" )
         self.uiTurretOff = self.loadImageWithDisplay( "ui/turret-off.png" )
 
+        yield 90
         self.uiBuildGlass = self.loadImageWithDisplay( "ui/build-glass.png" )
         self.uiBuildFill = self.loadImageWithDisplay( "ui/build-fill.png" )
 
@@ -401,8 +428,9 @@ class Imgs( Rc ):
 
         self.option = self.loadImageWithDisplay( "ui/option.png" )
 
-        self.shipsIcons = { ids.S_FIGHTER: self.loadImageWithDisplay( "icons/ships/fighter.png" ),
-                            ids.S_BOMBER: self.loadImageWithDisplay( "icons/ships/bomber.png" ),
+        yield 93
+        self.shipsIcons = { ids.S_HUMAN_FIGHTER: self.loadImageWithDisplay( "icons/ships/fighter.png" ),
+                            ids.S_HUMAN_BOMBER: self.loadImageWithDisplay( "icons/ships/bomber.png" ),
                             ids.S_HARVESTER: self.loadImageWithDisplay( "icons/ships/harvester.png" ),
 
                             ids.S_EVOLVED_FIGHTER: self.loadImageWithDisplay( "icons/ships/evolved-fighter.png" ),
@@ -418,17 +446,21 @@ class Imgs( Rc ):
                             ids.S_NOMAD_HARVESTER_1: self.loadImageWithDisplay( "icons/ships/nomad-harvester-1.png" ),
                             }
 
+        yield 98
         self.missilesIcons = { ids.M_NORMAL: self.loadImageWithDisplay( "icons/missiles/missile.png" ),
                             ids.M_NUKE: self.loadImageWithDisplay( "icons/missiles/missile-nuke.png" ),
                             ids.M_PULSE: self.loadImageWithDisplay( "icons/missiles/missile-pulse.png" ),
                             ids.M_MINER: self.loadImageWithDisplay( "icons/missiles/missile-miner.png" ),
                             ids.M_COUNTER: self.loadImageWithDisplay( "icons/missiles/missile-counter.png" ),
                             ids.M_AI: self.loadImageWithDisplay( "icons/missiles/ai-missile.png" ),
-        	            ids.M_LARVA: self.loadImageWithDisplay( "missiles/extras-missile.png" ) 
+        	                ids.M_LARVA: self.loadImageWithDisplay( "icons/missiles/extras-missile.png" ),
+        	                ids.M_EVOLVED: self.loadImageWithDisplay( "icons/missiles/evolved-missile.png" ),
+        	                ids.M_EVOLVED_PULSE: self.loadImageWithDisplay( "icons/missiles/evolved-pulse.png" ),
+        	                ids.M_EVOLVED_COUNTER: self.loadImageWithDisplay( "icons/missiles/evolved-counter.png" ),
                             }
 
-        yield 99
-        self.notToRotate = [ ids.P_MARS, ids.P_MOON, ids.S_SOL ] # 59 33
+        self.notToRotate = [ ids.P_MARS, ids.P_MOON, ids.S_SOL, ids.B_ESPHERE, 
+            ids.M_EVOLVED, ids.M_EVOLVED_PULSE, ids.M_EVOLVED_COUNTER ] # 59 33
         yield 100
         
 

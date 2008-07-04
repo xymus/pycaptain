@@ -6,23 +6,20 @@ from common.comms import *
 from common import ids
 
 class MenuShips( ControlFrame ):
-    def __init__( self, display, imgs, texts ):
+    def __init__( self, display, imgs, texts, eQuit=None, eOk=None ):
        ControlFrame.__init__( self )
        self.imgs = imgs
        self.texts = texts
-
-       self.quit = False
-       self.choice = None
 
        border = 50
        butsSize = (60,24)
        pbsSize = ((display.resolution[0]-3*border)/2,18) # 24
        
-       self.options = [  COPossible( ids.S_HUMAN_FS_0, ids.R_HUMAN, 4, 15, 25, 30, 40, 50, 10 ) ] # TODO remove when implemented with stats object
+       self.options = []
        self.pOption = 0 
 
-       self.ctrlOk =    LightControlLeft( (260,550), self.eOk, texts.uiOk, imgs )
-       self.ctrlQuit =  LightControlRight( (600,550), self.eQuit, texts.uiQuit, imgs )
+       self.ctrlOk =    LightControlLeft( (260,550), eOk, texts.uiOk, imgs )
+       self.ctrlQuit =  LightControlRight( (600,550), eQuit, "Main menu", imgs )
        self.ctrlPrev =  LightControlRight( (-30,100), self.ePrev, texts.uiPrev, imgs )
        self.ctrlNext =  LightControlRight( (-30,500), self.eNext, texts.uiNext, imgs )
        
@@ -31,15 +28,15 @@ class MenuShips( ControlFrame ):
 
         
        controls = [    ImageHolder( imgs.splashBack, (0,0) ),
-                      # ImageHolder( imgs.gameTitle, (40,40) ),
-                       
+       
                        self.ctrlOk,
                        self.ctrlQuit,
                        self.ctrlPrev,
                        self.ctrlNext,
                        
                        self.ctrlShip,
-                       RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ), ]
+                       RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ),
+                       KeyCatcher( eQuit, letter="q" ) ]
 
        x = (display.resolution[0]+border)/2
 
@@ -83,15 +80,11 @@ class MenuShips( ControlFrame ):
        controls.append( self.lblCanJump )
 
        self.addControls( controls )
-       self.eEnter = self.eOk
+       self.eEnter = eOk
 
        self.changeSelected()
-
-    def eQuit( self, sender, (x,y) ):
-        self.quit = True
-
-    def eOk( self, sender, (x,y) ):
-        self.choice = self.options[ self.pOption ].ship
+       
+    selectedOption = property( fget=lambda self: self.options[ self.pOption ].ship )
 
     def eNext( self, sender, (x,y) ):
         self.pOption = (self.pOption+1)%len(self.options)
@@ -101,33 +94,30 @@ class MenuShips( ControlFrame ):
         self.pOption = (self.pOption-1)%len(self.options)
         self.changeSelected()
 
-    def changeSelected(self, option=None):
-        if not option:
-            option = self.options[ self.pOption ]
-
-     #   self.pbEnergy.progress = option.energy/100.0
-     #   self.pbOre.progress = option.ore/100.0
-        self.pbShield.progress = option.shield/100.0
-        self.pbHull.progress = option.hull/100.0
-        self.pbHangar.progress = option.hangar/100.0
-        self.pbCivilian.progress = option.civilians/100.0
-        self.pbSpeed.progress = option.speed/100.0
-
-        self.lblRace.text = self.texts.uiRaceS%self.texts[ option.race ]
-        self.lblShip.text = self.texts.uiShipS%self.texts[ option.ship ]
-        self.lblTurrets.text = self.texts.uiTurretsI%option.nbrTurrets
-        if option.canJump:
-            self.lblCanJump.text = self.texts.uiCanJump
-        else:
-            self.lblCanJump.text = ""
+    def changeSelected(self, option=None, options=None):
+        if options:
+            self.options = options
+            self.pOption = 0
             
-        self.ctrlShip.img = self.imgs[ self.options[ self.pOption ].ship ]
+        if self.options:
+            if not option:
+                option = self.options[ self.pOption ]
 
-    def getInputs( self ):
+         #   self.pbEnergy.progress = option.energy/100.0
+         #   self.pbOre.progress = option.ore/100.0
+            self.pbShield.progress = option.shield/100.0
+            self.pbHull.progress = option.hull/100.0
+            self.pbHangar.progress = option.hangar/100.0
+            self.pbCivilian.progress = option.civilians/100.0
+            self.pbSpeed.progress = option.speed/100.0
 
-        self.quit = self.manageInputs( display ) or self.quit
-
-        choice = self.choice
-        self.choice = None
-        return self.quit, choice
+            self.lblRace.text = self.texts.uiRaceS%self.texts[ option.race ]
+            self.lblShip.text = self.texts.uiShipS%self.texts[ option.ship ]
+            self.lblTurrets.text = self.texts.uiTurretsI%option.nbrTurrets
+            if option.canJump:
+                self.lblCanJump.text = self.texts.uiCanJump
+            else:
+                self.lblCanJump.text = ""
+                
+            self.ctrlShip.img = self.imgs[ self.options[ self.pOption ].ship ]
 

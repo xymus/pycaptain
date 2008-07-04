@@ -28,6 +28,7 @@ class DirectNetwork( Network ):
         self.connectState = (None,"working")
         
         self.server = serverNetwork
+        self.updated = False
         
     def connect(self, username):
     #    try:
@@ -46,15 +47,19 @@ class DirectNetwork( Network ):
     def sendShipChoice(self, s):
         self.server.choice( self, s )
 
-    def updatePlayer( self, objects, gfxs, stats, players, astres, possibles ):
+    def updatePlayer( self, objects, gfxs, stats, players, astres, possibles, msgalls, msgusers, sysmsgs ):
         self.objects =  objects
-        self.gfxs = gfxs.gfxs
+        self.gfxs += gfxs.gfxs
         self.stats = stats
         self.players = players
+        self.msgalls += msgalls
+        self.msgusers += msgusers
+        self.sysmsgs += sysmsgs
         if astres:
             self.astres = astres
         if possibles:
             self.possibles = possibles
+        self.updated = True
         
     def getUpdates(self): 
         shutdown = self.shutdown
@@ -75,6 +80,8 @@ class DirectNetwork( Network ):
         self.objects =  []
         self.gfxs =  []
         self.players =  None
+        
+        self.updated = False
         
         return ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles )
     

@@ -5,7 +5,6 @@ from common.comms import COInput
 from common.orders import *
 from common import config
 from common import utils
-import stats
 from common import ids
 
 class Player:
@@ -51,13 +50,13 @@ class Human( Player ):
                     self.flagship.ai.goTo( self.flagship, game.uidsSent[ self ][ order.obj ], orbitAltitude=2 )
                 elif isinstance( order, OrderBuildTurret ):
                     if order.type:
-                        self.flagship.buildTurret( self.flagship.turrets[ order.tp ], stats.statsDict[ order.type ] )
+                        self.flagship.buildTurret( self.flagship.turrets[ order.tp ], game.stats[ order.type ] )
                     else:
                         self.flagship.buildTurret( self.flagship.turrets[ order.tp ], None )
                 elif isinstance( order, OrderBuildShip ):
-                    self.flagship.buildShip( order.type, switch=True )
+                    self.flagship.buildShip( game, order.type, switch=True )
                 elif isinstance( order, OrderBuildMissile ):
-                    self.flagship.buildMissile( order.type, switch=True )
+                    self.flagship.buildMissile( game, order.type, switch=True )
                 elif isinstance( order, OrderLaunchMissile ):
                     self.flagship.launchMissile( order.type, (order.x,order.y) )
                 elif isinstance( order, OrderActivateTurret ):
@@ -68,6 +67,8 @@ class Human( Player ):
                     self.flagship.repairing = bool(order.activate)
                 elif isinstance( order, OrderSetRelation ):
                     game.setRelationBetween( self, game.getPlayer( order.other ), (order.level)*2-100 ) # on the player side it is 0-100
+                elif isinstance( order, OrderSelfDestruct ):
+                    self.flagship.selfDestruct( game )
         self.inputs.orders = []
 
     def connect(self):
@@ -87,33 +88,33 @@ class Computer( Player ):
        #     elif not self.flagship.ai.goingTo:
 
     def manageFagship( self, ship, game ):
-            if not game.tick%50:
-                ## activated turrets
-                for turret in ship.turrets:
-                    turret.activated = True
-            
-                ## launch harvesters
-                for k in ship.ai.launching:
-                    if isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
-                        ship.ai.launching[ k ] = True
+        if not game.tick%50:
+            ## activated turrets
+            for turret in ship.turrets:
+                turret.activated = True
+        
+            ## launch harvesters
+            for k in ship.ai.launching:
+                if isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
+                    ship.ai.launching[ k ] = True
 
-            if ship.ai.attacking:
-                ## launch fighters
-                for k in ship.ai.launching:
-                    if not isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
-                        ship.ai.launching[ k ] = True
+        if ship.ai.attacking:
+            ## launch fighters
+            for k in ship.ai.launching:
+                if not isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
+                    ship.ai.launching[ k ] = True
 
-                dist = (ship.stats.maxRadius + ship.ai.attacking.stats.maxRadius)*1.5
-                angle = utils.angleBetweenObjects( ship.ai.attacking, ship )+pi/8
-             #   angle = 2*pi*random()
-                ## evasion maneuver
-                ship.ai.goTo( ship, (ship.ai.attacking.xp+cos(angle)*dist, ship.ai.attacking.yp+sin(angle)*dist) )
+            dist = (ship.stats.maxRadius + ship.ai.attacking.stats.maxRadius)*1.5
+            angle = utils.angleBetweenObjects( ship.ai.attacking, ship )+pi/8
+         #   angle = 2*pi*random()
+            ## evasion maneuver
+            ship.ai.goTo( ship, (ship.ai.attacking.xp+cos(angle)*dist, ship.ai.attacking.yp+sin(angle)*dist) )
 
-            ## recall fighters when not in combat
-            elif not game.tick%(config.fps*10):
-                for k in ship.ai.launching:
-                    if not isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
-                        ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
+        ## recall fighters when not in combat
+        elif not game.tick%(config.fps*10):
+            for k in ship.ai.launching:
+                if not isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
+                    ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
                 
                 
 class Faction( Computer ):
@@ -130,6 +131,12 @@ class Faction( Computer ):
             self.flagships.remove( ship)
           else:
             self.manageFagship( ship, game )
+            if ship.ai.idle and self.territories:
+                territory = choice( self.territories )
+                dist = randint( 0, territory.radius )
+                angle = 2*pi*random()
+                dest = (territory.x+cos(angle)*dist, territory.y+sin(angle)*dist)
+                ship.ai.goTo( ship, dest )
 
         for ship in self.bases:
           if not ship.alive:
@@ -161,8 +168,8 @@ class Faction( Computer ):
       #          ship.ai.goTo( ship, dest )
 
 
-def GetComputerPlayer():
-    return Computer( stats.R_HUMAN, choice(['Bob','Fred']) )
+def GetComputerPlayer( game ):
+    return Computer( game.stats.R_HUMAN, choice(['Bob','Fred']) )
 
 def KillComputerPlayer():
     pass

@@ -5,13 +5,16 @@ from md5 import md5
 
 from network import Network
 from game import Game
-from players import Player
+from players import Player, Human
 from common import comms
 
 from common import config
 
+from converters.remote import RemoteConverter
+from converters.local import LocalConverter
+
 class Server:
-    def __init__( self, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network ):
+    def __init__( self, Scenario=None, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network, game=None ):
         # TODO implement private, port
         
         self.updatingPlayer = {}
@@ -28,20 +31,30 @@ class Server:
 
         self.shutdown = False
         self.network = None
-      #  try:
-        exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
-      #  except ImportError:
-      #      print ""
+        
+        if not Scenario:
+            exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
             
-        self.game = Game( Scenario )
+        if game:
+            self.game = game
+        #    if Scenario:
+                
+        else:
+            self.game = Game( Scenario )
+            
         self.path = config.defaultSavePath
+        
+        self.converter = None
+        
+        
+        global ty, tx, tz
+        ty = tx = tz = 0
  
     def run(self):
       optimalFrame = 1.0/config.fps
 
-    #  self.game.generateWorld()
-
       self.network = self.networkType( self.game, self.addresses, config.port, comms.version, self.adminPassword )
+      self.converter = self.network.converterType() # load according to network type
 
       if not self.network.listening and not self.force:
           print "Failed to open any sockets, shutdown"
@@ -81,18 +94,13 @@ class Server:
               tc = time()
 
              ### update remote players
-              ty = tx = tz = 0
+           #   ty = tx = tz = 0
               for player in self.game.players:
                #   if isinstance( player, Player ) and self.network.isConnected( player ):
                #       print self.updatingPlayer.has_key( player ), player
-                  if isinstance( player, Player ) and self.network.isConnected( player ) and self.updatingPlayer.has_key( player ) and not self.updatingPlayer[ player ]:
+                  if isinstance( player, Human ) and self.network.isConnected( player ) and not self.updatingPlayer[ player ]:
                       thread = Thread( name="update %s"%player.username, target=self.fUpdatePlayer, args=(player,) )
                       thread.start()
-                      #tx = time()
-                      #cobj, stats, gfxs = self.game.getUpdates( player )
-                      #ty = time()
-                      #self.network.updatePlayer
-                      #tz = time()
 
 
              ### sleep and performance calculation
@@ -100,16 +108,16 @@ class Server:
               t = (t1-t0)
 
               if __debug__:
-                ts.insert(0, [t,ta-t0, tb-ta, tc-tb, ty-tx, tz-ty])
+                ts.insert(0, [t,ta-t0, tb-ta, tc-tb, t1-tc, ty-tx, tz-ty])
                 if len( ts ) > config.fps*3:
                  ts.pop()
                  if not self.game.tick % config.fps*3:
-                     s = [0,]*6
+                     s = [0,]*7
                      for v in ts:
                         for k, va in zip( xrange(len(v)), v):
                             s[k] += va
                      print "%.1ffps" % (float(len( ts ))/s[0])
-                    # print "%.1ffps: ins:%i%% codes:%i%% self.game:%i%% ...ups [ get%i%%, up:%i%% ]"%(float(len( ts ))/s[0], s[1]*100/s[0], s[2]*100/s[0], s[3]*100/s[0],s[4]*100/s[0],s[5]*100/s[0])
+                   #  print "%.1ffps: ins:%i%% codes:%i%% self.game:%i%% up t:%i%%...ups [ get%i%%, up:%i%% ]"%(float(len( ts ))/s[0], s[1]*100/s[0], s[2]*100/s[0], s[3]*100/s[0],s[4]*100/s[0],s[5]*100/s[0], s[6]*100/s[0])
 
               tts = optimalFrame - t
               if t < optimalFrame:
@@ -126,17 +134,25 @@ class Server:
       print "shutting down self.network" # shutdown order received, closing connections"
       self.network.shutdown()
 
-     # print "saving self.game to %s" % path
-     # self.game.saveToDisk( path )
-
     def fUpdatePlayer( self, player ):
             self.updatingPlayer[ player ] = True
   #       try:
-            cobj, stats, gfxs, players, astres, possibles = self.game.getUpdates( player )
-         #   ty = time()
-         #   print len(players)
+            global tx
+            tx = time()
+            
+            cobj, stats, gfxs, players, astres, possibles = self.converter.convert( self.game, player )
+            
+            for msg in self.game.scenario.msgs:
+                self.network.sendSysmsg( msg )
+            self.game.scenario.msgs = []
+            
+            global ty
+            ty = time()
             self.network.updatePlayer( player, cobj, gfxs, stats, players, astres, possibles )
             self.updatingPlayer[ player ] = False
+            
+            global tz
+            tz = time()
    #      except Exception, ex:
     #        self.updatingPlayer[ player ] = False
      #       raise ex

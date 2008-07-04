@@ -19,7 +19,7 @@ class ControlFrame:
         self.controls.append( control )
         
         if control.selectable:
-            if not self.selected: # same as not self.selectables
+            if not self.selectables: # same as not self.selected
                 self.selected = control
                 self.tabOrder[ control ] = control
                 self.tabOrderReverse[ control ] = control
@@ -43,6 +43,7 @@ class ControlFrame:
             self.addControl( control )
 
     def keyInput( self, key, letter=None ):
+        used = False
         if letter == "\r":
             if not self.selected or not self.selected.eEnter:
                 if self.eEnter:
@@ -56,9 +57,9 @@ class ControlFrame:
                 while prevSlected != self.selected and not self.selected.enabled:
                     self.selected = self.tabOrder[ self.selected ]
             else:
-                self.selected.keyInput( key, letter )
+                used = self.selected.keyInput( key, letter )
              
-        else:
+        if not used:
             for control in self.controls:
                 if isinstance( control, KeyCatcher ):
                     control.keyInput( key, letter )
@@ -94,7 +95,7 @@ class ControlFrame:
         for control in self.controls:
             control.draw( display, 
                 focused=(control==self.selected), 
-                over=(control.fIn and control.fIn( self.inputs.mousePos )) 
+                over=(control.fIn and control.fIn( control, self.inputs.mousePos )) 
                 )
         display.finalizeDraw()
         # TODO be careful here as it might be used twice in some menus
@@ -112,7 +113,7 @@ class ControlBase:
         pass
 
     def keyInput( self, key, letter=None ):
-        pass
+        return False
 
 class Control( ControlBase ):
     def __init__( self, img, topLeft, fIn, fUpEvent=None, fDownEvent=None, fOverEvent=None, uid=None ):
@@ -128,15 +129,18 @@ class Control( ControlBase ):
         self.visible = True
         self.eEnter = None
         self.selectable = True
+        
+  #  def fIn( self, (x,y) ):
+  #      return False
 
     def hits( self, up=None, down=None ):
         hit = False
         if self.enabled and self.fIn:
-            if up and self.fIn( up ):
+            if up and self.fIn( self, up ):
                 hit = True
                 if self.fUpEvent:
                     self.fUpEvent( self, up )
-            if down and self.fIn( down ):
+            if down and self.fIn( self, down ):
                 hit = True
                 if self.fDownEvent:
                     self.fDownEvent( self, down )
@@ -155,26 +159,29 @@ class Control( ControlBase ):
 
     def keyInput( self, key, letter=None ):
    # def keyHits( self, key, letter=None ):
-        pass
+        return False
 
 class RoundControl( Control ):
     def __init__( self, img, center, radius, fUpEvent, fDownEvent=None, uid=None ):
-        def fIn( (x, y) ):
-            dist = hypot( y-center[1], x-center[0] )
-            return dist <= radius
+        def fIn( self, (x, y) ):
+            dist = hypot( y-self.center[1], x-self.center[0] )
+            return dist <= self.radius
+        
+        self.center = center
         self.radius = radius
         Control.__init__( self, img, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent, uid=uid )
 
 class RectControl( Control ):
      def __init__( self, img, (rx,ry), (rw,rh), fUpEvent, fDownEvent=None, uid=None ):
-        def fIn( (x, y) ):
-       #     print "%i, %i, %i, %i" % (rx, rw, x, y )
-            return x >= rx \
-               and y >= ry \
-               and x <= rx + rw \
-               and y <= ry + rh
+        def fIn( self, (x, y) ):
+            return x >= self.rx \
+               and y >= self.ry \
+               and x <= self.rx + self.rw \
+               and y <= self.ry + self.rh
         self.rw = rw
         self.rh = rh
+        self.rx = rx
+        self.ry = ry
 
         Control.__init__( self,img, (rx,ry), fIn, fUpEvent, fDownEvent, uid=uid )
 
@@ -202,10 +209,12 @@ class RoundSwitch( RoundControl ):
 
 class RoundControlInvisible( Control ):
     def __init__( self, center, radius, fUpEvent, fDownEvent=None ):
-        def fIn( (x, y) ):
-            dist = hypot( y-center[1], x-center[0] )
+        def fIn( self, (x, y) ):
+            dist = hypot( y-self.center[1], x-self.center[0] )
             return dist <= radius
 
+        self.center = center
+        self.radius = radius
         Control.__init__( self, None, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent )
 
     def draw( self, display, focused=False, over=False ):
@@ -237,25 +246,29 @@ class TextBox( RectControl ):
       if key == 8:
         if len( self.text ) > 0:
           self.text = self.text[:-1]
+        return True
       elif letter and letter != "\r": #len(: #key >= ord(" ") and  key < ord("z"):
     #    letter = chr(key)
         if not self.numeric or ( letter <= "9" and letter >= "0" ) and letter not in self.forbidden:
             self.text = self.text + letter
+        return True
       else:
         print "unhandled  key:", key
+      return False
 
 class Label( Control ):
-    def __init__( self, topLeft, text ):
+    def __init__( self, topLeft, text, textSize=15 ):
         Control.__init__( self, None, topLeft, None, None, None, uid=None )
         self.text = text
         self.selectable = False
+        self.textSize = textSize
 
     def hits( self, up=None, down=None ):
         pass
 
     def draw( self, display, focused=False, over=False ):
       if self.visible:
-        display.drawText( self.text, self.topLeft )
+        display.drawText( self.text, self.topLeft, size=self.textSize )
 
 class LabelButton( RectControl ):
      def __init__( self, (rx,ry), (rw,rh), fUpEvent, text, fDownEvent=None, uid=None ):
@@ -298,11 +311,13 @@ class KeyCatcher( ControlBase ):
         self.fIn = None
 
     def keyInput( self, key, letter=None ):
-        if self.fUpEvent and (key and key == self.key) or (letter and letter == self.letter) :
+        if self.fUpEvent and (key and key == self.key) or (letter and letter == self.letter):
             self.fUpEvent( self, (0,0) )
+            return True
+        return False
 
-class Panel( ControlBase ):
-    def __init__( self, img, (x,y) ):
+class Panel( RectControl ):
+    def __init__( self, (x,y) ):
         self.selectable = False
 
 class ImageHolder( Control ):

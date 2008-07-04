@@ -8,6 +8,8 @@ from common.comms import * # COInput, COObject, LoadCOInput, COObjects
 
 from common import config
 
+from converters.remote import RemoteConverter
+
 class PlayerConnection:
     def __init__( self, player, connection ):
         self.player = player
@@ -56,6 +58,9 @@ class Network:
         self.codes = []
         self.newPlayers = []
         self.shipChoices = []
+        
+        
+        self.converterType = RemoteConverter
 
       #  self.tWork = Thread( name="network", target=self.fWork )
      #   self.tWork.start()

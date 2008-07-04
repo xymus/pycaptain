@@ -87,6 +87,14 @@ class Texts( Rc ):
         self[ ids.T_OMNI_LASER_2 ]	        = "Omnidirectional laser v3"
         self[ ids.T_SUBSPACE_WAVE_0 ]	        = "Subspace percuter"
         self[ ids.T_SUBSPACE_WAVE_1 ]	        = "Subspace percuter v2"
+        self[ ids.T_DARK_EXTRACTOR_0 ]	        = "Dark-matter extractor"
+        self[ ids.T_DARK_EXTRACTOR_1 ]	        = "Dark-matter extractor v2"
+        self[ ids.T_DARK_ENGINE_0 ]	        = "Dark-matter engine"
+        
+        self[ ids.T_EVOLVED_MISSILE_0 ]     = "Missile launcher"
+        self[ ids.T_EVOLVED_MISSILE_1 ]     = "Double missile launcher"
+        self[ ids.T_EVOLVED_PULSE ]         = "Pulse sphere launcher"
+        self[ ids.T_EVOLVED_COUNTER ]       = "Counter sphere launcher"
 
         self[ ids.T_DISCHARGER_0 ]	        = "Discharger"
         self[ ids.T_DISCHARGER_1 ]	        = "Heavy discharger"

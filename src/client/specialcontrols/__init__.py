@@ -1,4 +1,4 @@
-__all__ = [ "OptionButton", "TurretButton", "SelfDestructButton", "LightControlRight", "LightControlLeft", "RotatingImageHolder" ] 
+__all__ = [ "OptionButton", "TurretButton", "SelfDestructButton", "LightControlRight", "LightControlLeft", "LightControlDown", "LightControlUp", "RotatingImageHolder" ] 
 
 from math import sin, cos, hypot, atan2, pi
 
@@ -53,8 +53,7 @@ class SelfDestructButton( RoundControl ):
         pass
 
 class LightControl( RectControl ):
-    def __init__( self, (rx,ry), fUpEvent, text, img, imgSelected, imgOver, imgDisabled, fDownEvent=None, uid=None ):
-        (rw,rh) = ( 395,107 )
+    def __init__( self, (rx,ry), (rw,rh), fUpEvent, text, img, imgSelected, imgOver, imgDisabled, fDownEvent=None, uid=None ):
         
         RectControl.__init__( self, None, (rx,ry), (rw,rh), fUpEvent, fDownEvent, uid=uid )
         self.img = img
@@ -63,7 +62,7 @@ class LightControl( RectControl ):
         self.imgDisabled = imgDisabled
         
         self.text = text
-        self.color = (255,255,255)
+        self.color = (0,0,0) #(255,255,255)
         self.eEnter = fUpEvent
 
     def draw( self, display, focused=False, over=False ):
@@ -82,14 +81,32 @@ class LightControl( RectControl ):
             
 class LightControlRight( LightControl ):
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
-        LightControl.__init__( self, (rx,ry), fUpEvent, text, imgs.ctrlLightRight, imgs.ctrlLightRightSelected, imgs.ctrlLightRightOver, imgs.ctrlLightRightDisabled, fDownEvent=None, uid=None )
+        ry += 23
+        (rw,rh) = ( 395,70 )
+        LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightRight, imgs.ctrlLightRightSelected, imgs.ctrlLightRightOver, imgs.ctrlLightRightDisabled, fDownEvent=None, uid=uid )
         self.tx = self.topLeft[0]+self.rw/3
         self.ty = self.topLeft[1]+self.rh/2-8
     
 class LightControlLeft( LightControl ):
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
-        LightControl.__init__( self, (rx,ry), fUpEvent, text, imgs.ctrlLightLeft, imgs.ctrlLightLeftSelected, imgs.ctrlLightLeftOver, imgs.ctrlLightLeftDisabled, fDownEvent=None, uid=None )
+        ry += 23
+        (rw,rh) = ( 395,70 )
+        LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightLeft, imgs.ctrlLightLeftSelected, imgs.ctrlLightLeftOver, imgs.ctrlLightLeftDisabled, fDownEvent=None, uid=uid )
         self.tx = self.topLeft[0]+2*self.rw/5
+        self.ty = self.topLeft[1]+self.rh/2-8
+        
+class LightControlDown( LightControl ):
+    def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
+        (rw,rh) = ( 241,60 )
+        LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightDown, imgs.ctrlLightDownSelected, imgs.ctrlLightDownOver, imgs.ctrlLightDownDisabled, fDownEvent=None, uid=uid )
+        self.tx = self.topLeft[0]+self.rw/3
+        self.ty = self.topLeft[1]+self.rh/2-8
+        
+class LightControlUp( LightControl ):
+    def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
+        (rw,rh) = ( 241,60 )
+        LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightUp, imgs.ctrlLightUpSelected, imgs.ctrlLightUpOver, imgs.ctrlLightUpDisabled, fDownEvent=None, uid=uid )
+        self.tx = self.topLeft[0]+self.rw/3
         self.ty = self.topLeft[1]+self.rh/2-8
       
 class RotatingImageHolder( ImageHolder ):
@@ -107,4 +124,30 @@ class RotatingImageHolder( ImageHolder ):
             display.drawRo( self.img, self.center, self.r )
             self.r += self.ri
             
-              
+class ListControl( RectControl ):
+    def __init__( self, (rx,ry), uid=None ):
+        self.controls
+        
+    def hits( self, up=None, down=None ):
+        hit = False
+        if self.enabled and self.fIn:
+            if up and self.fIn( self, up ):
+                hit = True
+                if self.fUpEvent:
+                    self.fUpEvent( self, up )
+            if down and self.fIn( self, down ):
+                hit = True
+                if self.fDownEvent:
+                    self.fDownEvent( self, down )
+        return hit
+        
+    def draw( self, display, focused=False, over=False ):
+      if self.visible and self.img:
+        rect = (0,0,display.getWidth(self.img)/3,display.getHeight(self.img))
+
+        if not self.enabled:
+            rect = (rect[2]*2, rect[1], rect[2]*3, rect[3] )
+        elif self.over:
+            rect = (rect[2], rect[1], rect[2]*2, rect[3] )
+
+        display.drawClipped( self.img, self.topLeft, rect )    

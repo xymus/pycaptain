@@ -5,6 +5,7 @@ from time import time
 from client.mixer import Mixer
 from client.controls import *
 from client.specialcontrols import *
+from client.specialcontrols.gui import SelfDestructControl
 #from client.inputs import DisplayInput
 from common.utils import *
 from common import utils
@@ -21,8 +22,9 @@ def ihypot( h, c ):
     else:
         return 0
 
-class Gui:
-    def __init__( self, display, mixer, imgs, snds, texts, prefs, stats=None ):
+class Gui( ControlFrame ):
+    def __init__( self, display, mixer, imgs, snds, texts, prefs, stats=None, eQuit=None, eSave=None, eScreenshot=None ):
+        ControlFrame.__init__( self )
         self.display = display
         self.mixer = mixer
 
@@ -31,6 +33,8 @@ class Gui:
         self.texts = texts
         self.prefs = prefs
         self.stats = stats
+        
+        self.eQuit = eQuit
 
 
         self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2+100,30), 30, self.eJump)
@@ -47,6 +51,8 @@ class Gui:
         self.butMsguser = RectControl( None, (0, self.display.resolution[1]-40), (58,22), self.eSendMsguser  )
 
         self.tbChatBox = TextBox( (0,0), (200,24) )
+        
+        self.ctrlSelfDestruct = SelfDestructControl( self.imgs, (0, self.display.resolution[1]/3), self.eSelfDetruct )
 
         self.butsMenu = []
         self.butsShipLaunch = []
@@ -71,10 +77,11 @@ class Gui:
                           self.ctrlRelation,
                           self.butMsgall,
                           self.butMsguser,
-                          self.tbChatBox ]
-        self.controlsMenu = []
-
-        self.inMenu = False
+                          self.tbChatBox,
+                          self.ctrlSelfDestruct,
+                          KeyCatcher( eSave, letter="s" ),
+                          KeyCatcher( eQuit, letter="q" ),
+                          KeyCatcher( eScreenshot, letter="p" ) ]
         self.controls = self.controlsMain
 
         self.msgsTTL = 10
@@ -172,6 +179,15 @@ class Gui:
 			ids.T_OMNI_LASER_2 	: 2,
 			ids.T_SUBSPACE_WAVE_0 	: 2,
 			ids.T_SUBSPACE_WAVE_1 	: 2,
+			
+			ids.T_DARK_EXTRACTOR_0 		: 0,
+			ids.T_DARK_EXTRACTOR_1 		: 0,
+			ids.T_DARK_ENGINE_0 		: 0,
+			
+            ids.T_EVOLVED_MISSILE_0 	: 2,
+            ids.T_EVOLVED_MISSILE_1 	: 2,
+            ids.T_EVOLVED_PULSE 	    : 1,
+            ids.T_EVOLVED_COUNTER    	: 1,
 
 			ids.T_DISCHARGER_0 	: 2,
 			ids.T_DISCHARGER_1 	: 2,
@@ -206,16 +222,19 @@ class Gui:
 
         self.laserColors = { ids.R_HUMAN: (255,0,0,0),
                              ids.R_AI: (0,255,0,0),
+                     
                              ids.R_NOMAD: (255,255,255,0),
                              ids.R_EXTRA: (127,127,0,0),
                              ids.R_EVOLVED: (0,255,0,0) }
                              
         self.informAbout = None
+        
+    def reset( self ):
+        self.ctrlSelfDestruct.rotation = 0
+        self.ctrlSelfDestruct.open = False
+        self.fullscreenRadar = False
 
     def getViewportPos( self, (x,y), z=0 ):
-    #    if z ==0:
-     #       return ( x-self.camera[0], self.display.resolution[1]-(y-self.camera[1]) )
-     #   else:
             (x,y) = ( x-self.camera[0], self.display.resolution[1]-(y-self.camera[1]) )
             dx = x - self.display.resolution[0]/2
             dy = y - self.display.resolution[1]/2
@@ -226,8 +245,6 @@ class Gui:
     def getVirtualPos( self, (x,y) ):
       if self.fullscreenRadar:
         dx = dy = max( float(config.universeWidth)*2/self.display.resolution[0], float(config.universeHeight)*2/ self.display.resolution[1] )
-       # cx = self.display.resolution[0]/2
-      #  cy = self.display.resolution[1]/2
         return ( (x-self.display.resolution[0]/2)*dx, (-1*y+self.display.resolution[1]/2)*dy )
       else:
         return ( x+self.camera[0], -1*y+self.display.resolution[1]+self.camera[1] )
@@ -237,11 +254,6 @@ class Gui:
             ori = 0
         else:
             ori = obj.ori
-
-   #     if isinstance( obj, GfxExhaust ):
-   #         alpha = obj.alpha
-      #      print obj.alpha
-    #    else:
         alpha = 1
 
         self.display.drawRoIfIn( self.imgs[ obj.type ], self.getViewportPos( (obj.xp, obj.yp ), obj.zp ), ori, self.display.resolution, alpha )
@@ -290,31 +302,35 @@ class Gui:
         elif isinstance( gfx, GfxFragment ):
             self.drawObject( gfx )
 
-    def draw(self,objects,astres,gfxs,stats,players, lag):
-        if stats:
-            stats.xr = stats.radars[0].xr
-            stats.yr = stats.radars[0].yr
-            stats.maxRadar = stats.radars[0].range
-            self.lastStats = stats
+    def draw(self, display ): # self.objects,self.astres,self.gfxs,self.playerStats,self.players, self.lag):
+        if self.playerStats:
+            self.playerStats.xr = self.playerStats.radars[0].xr
+            self.playerStats.yr = self.playerStats.radars[0].yr
+            self.playerStats.maxRadar = self.playerStats.radars[0].range
+            self.lastStats = self.playerStats
             self.butsMenu = []
-        elif lag > 1: # network troubles
-            stats = self.lastStats
+        elif self.lag > 1: # network troubles
+            self.playerStats = self.lastStats
             if self.butsMenu:
-                self.butsMenu[0].text = "Timeout %.2fs"%lag
+                self.butsMenu[0].text = "Timeout %.2fs"%self.lag
             else:
-                self.butsMenu = [ Label( (200,200), "Timeout %.2fs"%lag ),
+                self.butsMenu = [ Label( (200,200), "Timeout %.2fs"%self.lag ),
                                   LabelButton( (200,224), (80,20), self.eQuit, "Quit" ) ]
 
-        if not stats:
+        if not self.playerStats:
             return None
 
         self.ctrlsBuildGauge = []
         if self.centeredOnShip:
-            self.camera = ( stats.xr-self.display.resolution[0]/2,
-                            stats.yr-self.display.resolution[1]/2 )
+            self.camera = ( self.playerStats.xr-self.display.resolution[0]/2,
+                            self.playerStats.yr-self.display.resolution[1]/2 )
         self.display.beginDraw()
 
+        self.butJump.enabled = self.playerStats.canJump
+        self.butJumpNow.enabled = self.playerStats.canJump
         if not self.fullscreenRadar:
+        
+            ### background
             bgw = self.display.getWidth(self.imgs.background)
             bgh = self.display.getHeight(self.imgs.background)
             bgx = (-1*(self.camera[0]/self.backgroundDiv)) % bgw
@@ -323,22 +339,20 @@ class Gui:
                for y in range( bgy - bgh, bgy+self.display.resolution[ 1 ], bgh ):
                    self.display.draw( self.imgs.background, (x,y) )
 
+            ### 
             ogfx = []
-            for gfx in gfxs:
+            for gfx in self.gfxs:
                 if isinstance( gfx, GfxFragment ):
                     ogfx.append( gfx )
 
+            ### astral objects
             astresInView = []
-            for astre in astres:
+            for astre in self.astres:
                 pos = self.getViewportPos((astre.xp,astre.yp), astre.zp)
                 if pos[0] > -1*astre.selectRadius and pos[0] < self.display.resolution[ 0 ]+astre.selectRadius \
                  and pos[1] > -1*astre.selectRadius and pos[1] < self.display.resolution[ 1 ]+astre.selectRadius:
-              #  dx = astre.xp-self.camera[0]
-              #  if dx > -1*astre.selectRadius and dx < self.display.resolution[ 0 ]+astre.selectRadius: # *dx.zp*4/100
-                 #   dy = self.camera[1]-astre.yp
-                 #   if dy > -1*astre.selectRadius and dy < self.display.resolution[ 1 ]+astre.selectRadius: 
                         astresInView.append( astre )
-            ogfx = ogfx+objects+astresInView
+            ogfx = ogfx+self.objects+astresInView
 
             zOrder = -100
             oneHigher = True
@@ -347,41 +361,26 @@ class Gui:
                 oneHigher = False
                 for obj in ogfx:
                     if obj.zp == zOrder:
-                        if isinstance( obj, COObject ):
-                            self.drawObject( obj )
-                        else:
+                        if isinstance( obj, Gfx ):
                             self.drawGfx( obj )
-           #         objects.remove( obj )
+                        else:
+                            self.drawObject( obj )
                     elif obj.zp > zOrder and obj.zp < nextZOrder:
                         oneHigher = True
                         nextZOrder = obj.zp
                 zOrder = nextZOrder
         
-            for gfx in gfxs:
+            for gfx in self.gfxs:
                 self.drawGfx( gfx )
 
-    #    self.display.drawGui(stats)
-            for msg in self.msgs:
-                if time()-msg[0] > self.msgsTTL:
-                    self.msgs.remove( msg )
-                else: break
-
-            o = 0
-            for p in range( len(self.msgs)-1,-1,-1 ):
-                self.display.drawText(  self.msgs[p][1], (8, (o+1)*(20)+150 ) )
-                o = o + 1
+    #    self.display.drawGui(self.playerStats)
           
-            self.butJump.enabled = stats.canJump
-            self.butJumpNow.enabled = stats.canJump
 
         # turrets
-            if isinstance(self.build, int ): #for turret in []: # stats.turrets[ 4:5 ]:
-                turret = stats.turrets[ self.build ]
+            if isinstance(self.build, int ):
+                turret = self.playerStats.turrets[ self.build ]
                 minRange = 10
-            #    radius = 50
                 o = self.getViewportPos( (turret.xp, turret.yp) )
-              #  minAngle = min(turret.minAngle, turret.maxAngle)
-              #  maxAngle = max(turret.minAngle, turret.maxAngle)
                 if turret.maxAngle < turret.minAngle:
                     minAngle = turret.minAngle
                     maxAngle = turret.maxAngle+2*pi
@@ -405,67 +404,71 @@ class Gui:
     ### fullscreen radar
             self.display.clear()
             dx = dy = max( float(config.universeWidth)*2/self.display.resolution[0], float(config.universeHeight)*2/ self.display.resolution[1] )
-          #  sPos = (self.rx/dx+cx, self.rx/dx+cx
-            self.display.drawCircle( (255,255,255,255), (self.display.resolution[0]/2+stats.xr/dx,self.display.resolution[1]/2-stats.yr/dy), stats.maxRadar/dx, 1 )
-            for obj in utils.mY(astres,objects):
+            self.display.drawCircle( (255,255,255,255), (self.display.resolution[0]/2+self.playerStats.xr/dx,self.display.resolution[1]/2-self.playerStats.yr/dy), self.playerStats.maxRadar/dx, 1 )
+            for obj in utils.mY(self.astres,self.objects):
                 if self.radarColors.has_key( obj.relation ):
                     pos = (int(self.display.resolution[0]/2+(obj.xp)/dx),
                     int(self.display.resolution[1]/2-(obj.yp)/dx))
-          #      print pos, self.radarColors[ obj.relation ]
-                   # if obj.selectRadius < 100:
-                  #      self.display.drawPoint( pos, self.radarColors[ obj.relation ] )
-                  #  else:
                     self.display.drawCircle( self.radarColors[ obj.relation ], pos, obj.selectRadius/dx )
                 
+                
+        ### messages section
+        for msg in self.msgs:
+            if time()-msg[0] > self.msgsTTL:
+                self.msgs.remove( msg )
+            else: break
+
+        o = 0
+        for p in range( 0, len(self.msgs) ): #len(self.msgs)-1,-1,-1 ):
+            self.display.drawText(  self.msgs[p][1], (7, (o+1)*(20)+149 ), color=(0,0,0) )
+            self.display.drawText(  self.msgs[p][1], (9, (o+1)*(20)+151 ), color=(0,0,0) )
+            self.display.drawText(  self.msgs[p][1], (8, (o+1)*(20)+150 ) )
+            o = o + 1
 
 
-    ### draw gui
-          
-   #     self.display.draw( self.imgs.uiDigitalBack, (self.display.resolution[0]-234,8) )
-    #    self.display.draw( self.imgs.uiDigitalBack, (self.display.resolution[0]-292,607) )
 
     ### energy and shield
-        if stats.maxEnergy:
-            self.display.drawRoNCutQbl( self.imgs.uiEnergyFill, (self.display.resolution[0]-72, 22), (1-float(stats.energy)/stats.maxEnergy)*pi/2 )
-        self.display.drawRoNCutQbl( self.imgs.uiShieldFill, (self.display.resolution[0]-72, 22), (1-stats.shieldIntegrity)*pi/2 )
+        if self.playerStats.maxEnergy:
+            self.display.drawRoNCutQbl( self.imgs.uiEnergyFill, (self.display.resolution[0]-72, 22), (1-float(self.playerStats.energy)/self.playerStats.maxEnergy)*pi/2 )
+        self.display.drawRoNCutQbl( self.imgs.uiShieldFill, (self.display.resolution[0]-72, 22), (1-self.playerStats.shieldIntegrity)*pi/2 )
 
-        if stats.maxEnergy and 1.0*stats.energy/stats.maxEnergy < 0.2:
+        if self.playerStats.maxEnergy and 1.0*self.playerStats.energy/self.playerStats.maxEnergy < 0.2:
             self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, 22-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
 
-        if stats.shieldIntegrity < 0.25:
+        if self.playerStats.shieldIntegrity < 0.25:
             self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-72-self.display.getWidth( self.imgs.uiAlertRed )/2, 22-self.display.getHeight( self.imgs.uiAlertRed )/2) )
 
-        if stats.maxOre and 1.0*stats.ore/stats.maxOre < 0.2:
+        if self.playerStats.maxOre and 1.0*self.playerStats.ore/self.playerStats.maxOre < 0.2:
             self.display.draw( self.imgs.uiAlertYellowLarge, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertYellowLarge )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertYellowLarge )/2) )
 
-  #      print stats.hullIntegrity
-        if stats.hullIntegrity < 0.5:
+  #      print self.playerStats.hullIntegrity
+        if self.playerStats.hullIntegrity < 0.5:
             self.display.draw( self.imgs.uiAlertRed, (self.display.resolution[0]-74-self.display.getWidth( self.imgs.uiAlertRed )/2, self.display.resolution[1]-24-self.display.getHeight( self.imgs.uiAlertRed )/2) )
 
-        if stats.maxOre:
-            self.display.drawRoNCutQtl( self.imgs.uiOreFill, (self.display.resolution[0]-74, self.display.resolution[1]-24), (1-float(stats.ore)/stats.maxOre)*pi/2 )
-   #     print float(stats.ore)/stats.maxOre
-        if stats.hullIntegrity >= 0.5:
+        if self.playerStats.maxOre:
+            self.display.drawRoNCutQtl( self.imgs.uiOreFill, (self.display.resolution[0]-74, self.display.resolution[1]-24), (1-float(self.playerStats.ore)/self.playerStats.maxOre)*pi/2 )
+   #     print float(self.playerStats.ore)/self.playerStats.maxOre
+        if self.playerStats.hullIntegrity >= 0.5:
             hullImg = self.imgs.uiHullFill0
-        elif stats.hullIntegrity >= 0.25:
+        elif self.playerStats.hullIntegrity >= 0.25:
             hullImg = self.imgs.uiHullFill1
         else:
             hullImg = self.imgs.uiHullFill2
-        self.display.drawRoNCutQtl( hullImg, (self.display.resolution[0]-74, self.display.resolution[1]-24), -1*(1-stats.hullIntegrity)*pi/2 )
+        self.display.drawRoNCutQtl( hullImg, (self.display.resolution[0]-74, self.display.resolution[1]-24), -1*(1-self.playerStats.hullIntegrity)*pi/2 )
 
         self.display.draw( self.imgs.uiTopRight0, (self.display.resolution[0]-self.display.getWidth(self.imgs.uiTopRight0),0) )
         self.display.draw( self.imgs.uiBottomRight0, (self.display.resolution[0]-self.display.getWidth(self.imgs.uiBottomRight0),self.display.resolution[1]-self.display.getHeight(self.imgs.uiBottomRight0)) )
 
 
       # relation
-        if players:
+        if self.players:
             if self.sPlayerPos == None:
                 self.sPlayerPos = 0
-            elif self.sPlayerPos >= len( players ):
-                self.sPlayerPos = len( players )-1
-            self.sPlayer = players[ self.sPlayerPos ]
+            elif self.sPlayerPos >= len( self.players ):
+                self.sPlayerPos = len( self.players )-1
+            self.sPlayer = self.players[ self.sPlayerPos ]
 
-            self.sPlayerLength = len(players)
+            self.sPlayerLength = len(self.players)
             relIn = self.sPlayer.relIn
             relOut = self.sPlayer.relOut
 
@@ -484,7 +487,7 @@ class Gui:
 
      ## tube fill
         oreToMissiles = False
-        for missile in stats.missiles:
+        for missile in self.playerStats.missiles:
             if missile.buildPerc >= 0:
                 oreToMissiles = True
                 break
@@ -493,7 +496,7 @@ class Gui:
             self.display.drawLine( (0,0,255,255), (self.display.resolution[0]/2,y), (self.display.resolution[0],y), 6 )
 
         oreToShips = False
-        for ship in stats.ships:
+        for ship in self.playerStats.ships:
             if ship.buildPerc >= 0:
                 oreToShips = True
                 break
@@ -503,20 +506,20 @@ class Gui:
 
         oreUpTo = 1000
         energyDownTo = -1
-        for k,turret in zip( range(len(stats.turrets)),stats.turrets):
+        for k,turret in zip( range(len(self.playerStats.turrets)),self.playerStats.turrets):
             if (turret.buildPerc >= 0 or turret.useOre) and k < oreUpTo:
                 oreUpTo = k
             if turret.useEnergy and k > energyDownTo:
                 energyDownTo = k
 
-        if stats.charging:
+        if self.playerStats.charging:
            self.display.draw( self.imgs.uiChargeFill0, (self.display.resolution[0]-23,55) )
-           if stats.shieldIntegrity < 1:
+           if self.playerStats.shieldIntegrity < 1:
                self.display.draw( self.imgs.uiChargeFill1, (self.display.resolution[0]-72,105) )
 
-        if stats.repairing:
+        if self.playerStats.repairing:
            self.display.draw( self.imgs.uiRepairFill0, (self.display.resolution[0]-23,self.display.resolution[1]-100) )
-           if stats.hullIntegrity < 1:
+           if self.playerStats.hullIntegrity < 1:
                self.display.draw( self.imgs.uiRepairFill1, (self.display.resolution[0]-74,self.display.resolution[1]-112) )
 
      ## msg box
@@ -543,7 +546,7 @@ class Gui:
         for i in range( 241, self.display.resolution[0]/2+100 ): # top-left
             self.display.draw( self.imgs.uiTubeTop1, (i,0) )
         
-        if stats.jumpCharge:
+        if self.playerStats.jumpCharge:
             self.display.drawLine( (0,255,0,255), (self.display.resolution[0]/2+100,14), (self.display.resolution[0]-80,14), 6 )
 
         for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]-165 ): # top-right
@@ -552,22 +555,22 @@ class Gui:
 
      ## jump charge
         jumpCenter = (self.display.resolution[0]/2+100, 30)
-        if stats.jumpRecover:
+        if self.playerStats.jumpRecover:
             self.display.draw( self.imgs.uiAlertYellow, (self.display.resolution[0]/2+100-self.display.getHeight( self.imgs.uiAlertYellow )/2, 30-self.display.getHeight( self.imgs.uiAlertYellow )/2) )
             # draw green fill self.imgs.uiJumpRecover
-            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillRecover, jumpCenter, (100-stats.jumpRecover)*2*pi/3/100, part=1 )
-         #   print stats.jumpRecover
+            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillRecover, jumpCenter, (100-self.playerStats.jumpRecover)*2*pi/3/100, part=1 )
+         #   print self.playerStats.jumpRecover
     
-        elif stats.jumpCharge:
+        elif self.playerStats.jumpCharge:
             # draw green fill self.imgs.uiJumpCharging
-            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillCharging, jumpCenter, (100-stats.jumpCharge)*2*pi/3/100, part=1 )
+            self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillCharging, jumpCenter, (100-self.playerStats.jumpCharge)*2*pi/3/100, part=1 )
             
         # draw jump glass
         self.display.drawRo( self.imgs.uiJumpGlass, jumpCenter, 0 )
 
         ennemyInRange = False
         deadlyInRange = False
-        for obj in objects:
+        for obj in self.objects:
             if obj.relation == ids.U_ENNEMY:
                 ennemyInRange = True
             if obj.relation == ids.U_DEADLY:
@@ -602,19 +605,19 @@ class Gui:
     #        self.display.draw( self.imgs.uiTubeBottom1, (i, self.display.resolution[1]-10) )
 
      # missiles
-        if len(self.butsMissileLaunch) != len( stats.missiles ):
+        if len(self.butsMissileLaunch) != len( self.playerStats.missiles ):
             self.butsMissileLaunch = []
-            p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( stats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
-            for s in stats.missiles:
+            p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
+            for s in self.playerStats.missiles:
                 if s.usable:
                     self.butsMissileLaunch.append( RoundControl( self.imgs.uiButAim, (p+12,self.display.resolution[1]-45), 12, self.eLaunchMissile, uid=s.type) )
                 p = p + self.display.getWidth( self.imgs.uiHangarSlot )
 
         self.butsMissileBuild = []
-        p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( stats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
+        p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
         self.display.draw( self.imgs.uiHangarLeft, (p-self.display.getWidth( self.imgs.uiHangarLeft ),self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarLeft )) )
         k1 = 0
-        for k, s in zip( range( 0, len(stats.missiles)), stats.missiles): #i in range( 0, 2 ):
+        for k, s in zip( range( 0, len(self.playerStats.missiles)), self.playerStats.missiles): #i in range( 0, 2 ):
             self.display.draw( self.imgs.uiHangarSlot, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarSlot )) )
             if s.show or s.buildPerc != -1: # s.canBuild or s.nbr > 0:
                 self.display.drawRo( self.imgs.missilesIcons[ s.type ], (p+12,self.display.resolution[1]-39+16), 0 )
@@ -638,15 +641,15 @@ class Gui:
      #   self.a = 5
         self.display.draw( self.imgs.uiHangarCenter, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarCenter)) )
    #     self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (self.a,100-self.a) ) 
-        if stats.hangarSpace:
-            self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (100*stats.missilesSpace/stats.hangarSpace,100*stats.shipsSpace/stats.hangarSpace) ) 
+        if self.playerStats.hangarSpace:
+            self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (100*self.playerStats.missilesSpace/self.playerStats.hangarSpace,100*self.playerStats.shipsSpace/self.playerStats.hangarSpace) ) 
         self.display.draw( self.imgs.uiHangarOver, (self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarOver)/2,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarOver)) )
 
      ## ships
-        if len(self.butsShipLaunch) != len( stats.ships ):
+        if len(self.butsShipLaunch) != len( self.playerStats.ships ):
             self.butsShipLaunch = []
             p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
-            for s in stats.ships:
+            for s in self.playerStats.ships:
                 self.butsShipLaunch.append( RoundSwitch( [self.imgs.uiButRecall,self.imgs.uiButLaunch], (p+12,self.display.resolution[1]-45), 12, self.eLaunchShips, uid=s.type) )
                 p = p + self.display.getWidth( self.imgs.uiHangarSlot)
         #    self.controls = self.controls + self.butsShipLaunch
@@ -654,7 +657,7 @@ class Gui:
         self.butsShipBuild = []
         p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
     #    self.display.draw( self.imgs.uiHangarLeft, (p-64,self.display.resolution[1]-39) )
-        for k, s in zip( range( 0, len(stats.ships)), stats.ships): #i in range( 0, 2 ):
+        for k, s in zip( range( 0, len(self.playerStats.ships)), self.playerStats.ships): #i in range( 0, 2 ):
             self.display.draw( self.imgs.uiHangarSlot, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarSlot )) )
             if s.show:
                 self.display.drawRo( self.imgs.shipsIcons[ s.type ], (p+12,self.display.resolution[1]-39+16), 0 )
@@ -672,10 +675,10 @@ class Gui:
      ## turrets
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
 
-        if len(self.butsBuildTurret) != len( stats.turrets ):
+        if len(self.butsBuildTurret) != len( self.playerStats.turrets ):
           self.butsBuildTurret = []
           self.butsActivate = []
-          for k, turret in zip( range( 0, len( stats.turrets ) ), stats.turrets ):
+          for k, turret in zip( range( 0, len( self.playerStats.turrets ) ), self.playerStats.turrets ):
             if turret.type:
                 img =  self.imgs[turret.type]
             else:
@@ -683,11 +686,11 @@ class Gui:
             self.butsBuildTurret.append( TurretButton( self.imgs.uiTurret, (self.display.resolution[0]-59+16,p+16), 16, self.eBuildTurret, img, uid=k ) )
             self.butsActivate.append( RectControl( None, (self.display.resolution[0]-47+22,p+5), (177-22,33+10), self.eActivate, uid=k ) )
             p = p+33+8
-      #    for k, turret in zip( range( 0, tc ), stats.turrets ):
+      #    for k, turret in zip( range( 0, tc ), self.playerStats.turrets ):
       #      self.display.draw( self.imgs.uiTurret, (self.display.resolution[0]-59, p) )
 
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
-        for k, turret in zip( range( 0, len( stats.turrets ) ), stats.turrets ):
+        for k, turret in zip( range( 0, len( self.playerStats.turrets ) ), self.playerStats.turrets ):
           if turret.type:
               turretImg =  self.imgs[turret.type]
           else:
@@ -710,16 +713,16 @@ class Gui:
 
 
      ## build options
-        if self.build and len(self.lastOptions) == len(stats.turrets[ self.build ].buildables):
+        if self.build and len(self.lastOptions) == len(self.playerStats.turrets[ self.build ].buildables):
             for k, v in zip( xrange(len(self.lastOptions)), self.lastOptions ):
-                if v.type != stats.turrets[ self.build ].buildables[ k ].type:
+                if v.type != self.playerStats.turrets[ self.build ].buildables[ k ].type:
                     self.createBuildOptions()
                     # readding build options
                     break
 
         for b in self.butsBuildOption:
             if b.uid > 0:
-                for o in stats.turrets[ self.build ].buildables:
+                for o in self.playerStats.turrets[ self.build ].buildables:
                     if o.type == b.uid:
                         b.enabled = o.canBuild
                         break
@@ -730,19 +733,19 @@ class Gui:
       #  self.display.draw( self.imgs.uiRadar, (0,0) )
         self.display.draw( self.imgs.uiTopLeft1, (0,0) )
 
-        self.display.drawText( "ore %i" % stats.ore, (self.display.resolution[0]-80,self.display.resolution[1]-29), (50,50,255,255) )
-        self.display.drawText( "e %i" % stats.energy, (self.display.resolution[0]-80,20), (0,255,0,255) )
+        self.display.drawText( "ore %i" % self.playerStats.ore, (self.display.resolution[0]-80,self.display.resolution[1]-29), (50,50,255,255) )
+        self.display.drawText( "e %i" % self.playerStats.energy, (self.display.resolution[0]-80,20), (0,255,0,255) )
 
        ## ore process
-        if stats.oreInProcess:
-          maxOo = max( stats.oreInProcess )
+        if self.playerStats.oreInProcess:
+          maxOo = max( self.playerStats.oreInProcess )
 
           self.oreMaxs.insert( 0, maxOo )
           if len(self.oreMaxs) > config.fps*3:
             self.oreMaxs.pop()
           maxO = max( self.oreMaxs )
           if maxO > 0:
-            for (p,o) in zip( range(len(stats.oreInProcess)), stats.oreInProcess ):
+            for (p,o) in zip( range(len(self.playerStats.oreInProcess)), self.playerStats.oreInProcess ):
                 if o: 
                     h = int(30*o/maxO)
                     self.display.drawRect( 
@@ -756,8 +759,8 @@ class Gui:
             self.display.draw( self.imgs.uiTubeRightB, (self.display.resolution[0]-12,i) )
         p = p+self.display.getHeight( self.imgs.uiTurret )+8
 
-        for k in range( 0, len( stats.turrets ) ):
-           if k < len( stats.turrets )-1:
+        for k in range( 0, len( self.playerStats.turrets ) ):
+           if k < len( self.playerStats.turrets )-1:
               if energyDownTo > k:
                   self.display.drawLine( (0,255,0,255), (self.display.resolution[0]-9,p-8-5), (self.display.resolution[0]-9,p+3), 6 )
               if oreUpTo <= k:
@@ -766,7 +769,7 @@ class Gui:
                 self.display.draw( self.imgs.uiTubeRight2, (self.display.resolution[0]-23,i) )
               p = p+self.display.getHeight( self.imgs.uiTurret )+8
 
-        if oreUpTo <= len( stats.turrets ):
+        if oreUpTo <= len( self.playerStats.turrets ):
             self.display.drawLine( (0,0,255,255), (self.display.resolution[0]-19,p-8-5), (self.display.resolution[0]-19,self.display.resolution[1]-150), 6 )
             self.display.draw( self.imgs.uiTubeRightCurveFill, (self.display.resolution[0]-21,self.display.resolution[1]-150) )
 
@@ -781,28 +784,23 @@ class Gui:
             self.display.drawRo( self.imgs.uiBuildGlass, g[0], 0 )
 
     # draw radar
-        for obj in objects:
+        for obj in self.objects:
             if self.radarColors.has_key( obj.relation ):
-                dist = hypot( obj.yp-stats.yr, obj.xp-stats.xr )
-                if dist <= stats.maxRadar:
-                    pos = (int(self.radarCenter[0]+float(self.radarRadius)*(obj.xp-stats.xr)/stats.maxRadar),
-                        int(self.radarCenter[1]-float(self.radarRadius)*(obj.yp-stats.yr)/stats.maxRadar))
+                dist = hypot( obj.yp-self.playerStats.yr, obj.xp-self.playerStats.xr )
+                if dist <= self.playerStats.maxRadar:
+                    pos = (int(self.radarCenter[0]+float(self.radarRadius)*(obj.xp-self.playerStats.xr)/self.playerStats.maxRadar),
+                        int(self.radarCenter[1]-float(self.radarRadius)*(obj.yp-self.playerStats.yr)/self.playerStats.maxRadar))
                     self.display.drawPoint( pos, self.radarColors[ obj.relation ] )
 
-        viewRect = (self.radarCenter[0]+float(self.radarRadius)*(self.camera[0]-stats.xr)/stats.maxRadar,
-                    self.radarCenter[1]-float(self.radarRadius)*(self.camera[1]+self.display.resolution[1]-stats.yr)/stats.maxRadar,
-                    self.display.resolution[0]*float(self.radarRadius)/stats.maxRadar,
-                    self.display.resolution[1]*float(self.radarRadius)/stats.maxRadar)
+        viewRect = (self.radarCenter[0]+float(self.radarRadius)*(self.camera[0]-self.playerStats.xr)/self.playerStats.maxRadar,
+                    self.radarCenter[1]-float(self.radarRadius)*(self.camera[1]+self.display.resolution[1]-self.playerStats.yr)/self.playerStats.maxRadar,
+                    self.display.resolution[0]*float(self.radarRadius)/self.playerStats.maxRadar,
+                    self.display.resolution[1]*float(self.radarRadius)/self.playerStats.maxRadar)
 
-        left = self.radarCenter[0]+float(self.radarRadius)*(self.camera[0]-stats.xr)/stats.maxRadar
-        top = self.radarCenter[1]-float(self.radarRadius)*(self.camera[1]+self.display.resolution[1]-stats.yr)/stats.maxRadar
-        right = left+self.display.resolution[0]*float(self.radarRadius)/stats.maxRadar
-        bottom = top+self.display.resolution[1]*float(self.radarRadius)/stats.maxRadar
-   #     self.display.drawRect( viewRect, self.radarViewColor, 1 )
-
-  #      self.display.drawLine( self.radarViewColor, 
-  #          ( max(viewRect[0], self.radarCenter[0]-sqrt(self.radarRadius*self.radarRadius-viewRect[1]*viewRect[1]), viewRect[1] ), 
-  #          ( min(viewRect[0]+viewRect[3], self.radarCenter[0]+sqrt(self.radarRadius*self.radarRadius-viewRect[1]*viewRect[1]), viewRect[1] ) ) # top
+        left = self.radarCenter[0]+float(self.radarRadius)*(self.camera[0]-self.playerStats.xr)/self.playerStats.maxRadar
+        top = self.radarCenter[1]-float(self.radarRadius)*(self.camera[1]+self.display.resolution[1]-self.playerStats.yr)/self.playerStats.maxRadar
+        right = left+self.display.resolution[0]*float(self.radarRadius)/self.playerStats.maxRadar
+        bottom = top+self.display.resolution[1]*float(self.radarRadius)/self.playerStats.maxRadar
 
         self.display.drawLine( self.radarViewColor, # top
              ( max( left, self.radarCenter[0]-ihypot(self.radarRadius, top-self.radarCenter[1])), top ),
@@ -818,8 +816,8 @@ class Gui:
              ( right, min( bottom, self.radarCenter[1]+ihypot(self.radarRadius, self.radarCenter[0]-right)) ) )
 
  
-        self.display.drawText( str( stats.maxRadar ), (142,55), size=13 )
-        self.display.drawText( "%0.1f - %0.1f"% ( stats.xr/1000, stats.yr/1000 ), (139,83), size=13 )
+        self.display.drawText( str( self.playerStats.maxRadar ), (142,55), size=13 )
+        self.display.drawText( "%0.1f  %0.1f"% ( self.playerStats.xr/1000, self.playerStats.yr/1000 ), (139,83), size=13 )
 
         if self.informAbout:
             self.displayStats( self.informAbout )
@@ -827,31 +825,25 @@ class Gui:
     # finalize!
         self.display.finalizeDraw()
 
-    def getInputs(self, inputs, objects):
-        (quit,inputs) = self.display.getInputs( inputs )
+#    def getInputs(self, inputs ):
+    def manageInputs( self, display ):
+        ControlFrame.manageInputs( self, display )
+        inputs = self.inputs
+        
+     #   self.display = display
+     #   (quit,inputs) = self.display.getInputs( inputs )
 
         quit = self.quit
-        for key in inputs.keys:
-          if key[0] == ord("q"):
-            quit = True
-          if key[0] == ord("s"):
-            self.display.takeScreenshot()
+    #    for key in inputs.keys:
+    #      if key[0] == ord("q"):
+    #        self.eQuit( self, (0,0) )
+            #quit = True
+    #      if key[0] == ord("s"):
+    #        self.display.takeScreenshot()
 
         self.orders = []
         hit = False
         
-        if False: # inputs.mouseDowned and self.aim:
-      #      inputs.mouseDownAtV = self.getVirtualPos( inputs.mouseDownAt )
-            if self.aim == "jump":
-                order = OrderJump( inputs.mouseDownAtV )
-                self.orders.append( order )
-            else: # missile
-                order = OrderLaunchMissile( self.aim, inputs.mouseDownAtV )
-                self.orders.append( order )
-            self.aim = None
-            self.display.setCursor()
-            hit = True
-
         if inputs.mouseRightUpped:
             self.aim = None
             self.display.setCursor()
@@ -885,7 +877,7 @@ class Gui:
                   hit = True
 
                 if not hit:
-                  for o in objects:
+                  for o in self.objects:
                     if distBetween( inputs.mouseUpAtV, ( o.xp, o.yp ) ) <= o.selectRadius:
                	#         print "hit o:%i, relation:%i" % (o.uid, o.relation)
                         order = None
@@ -944,15 +936,15 @@ class Gui:
         self.informAbout = None
         if self.build != None:
             for but in self.butsBuildOption:
-                if but.fIn( inputs.mousePos ):
+                if but.fIn( but, inputs.mousePos ):
                     self.informAbout = but.uid
                     
         for but in self.butsShipBuild:
-            if but.fIn( inputs.mousePos ):
+            if but.fIn( but, inputs.mousePos ):
                 self.informAbout = but.uid
                     
         for but in self.butsMissileBuild:
-            if but.fIn( inputs.mousePos ):
+            if but.fIn( but, inputs.mousePos ):
                 self.informAbout = but.uid
                 
                 
@@ -961,7 +953,7 @@ class Gui:
           #  hits = button.hits()
           
        
-### stats display logic ####   
+### self.stats display logic ####   
     def displayStats( self, k ):
         if self.stats and self.stats.has_key( k ):
             rect = (100,self.display.resolution[1]-200, 160, 80)
@@ -1057,10 +1049,9 @@ class Gui:
             self.orders.append( order )
 
     def eRadarActivate( self, sender, (x,y)):
-        pass
+        self.fullscreenRadar = not self.fullscreenRadar
 
     def eRadarFullscreen( self, sender, (x,y)):
-    #    if self.fullscreenRadar:
         self.fullscreenRadar = not self.fullscreenRadar
 
     def eRepairActivate( self, sender, (x,y)):
@@ -1114,22 +1105,9 @@ class Gui:
             if self.tbChatBox.text:
                 self.msgalls.append( self.tbChatBox.text )
                 self.tbChatBox.text = ""
-
-
-    def eQuit(self, sender, (x,y)):
-        self.quit = True
-
-    def menuControl(self,sender, (x,y)):
-        if self.inMenu:
-            self.closeMenu()
-
-    def closeMenu(self):
-        self.inMenu = False
-        self.setControls(self.controlsMain )
-
-    def openMenu(self):
-        self.inMenu = True
-        self.setControls(self.controlsMenu )
+                
+    def eSelfDetruct( self, sender, (x,y) ):
+        self.orders.append( OrderSelfDestruct() )
 
     def close(self):
         self.display.close()

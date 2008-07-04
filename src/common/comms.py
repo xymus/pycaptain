@@ -19,9 +19,6 @@ class COInput:
         self.yc = yc
         self.wc = wc
         self.hc = hc
-    #    self.thrustLevel = 0 # 0-10
-    #    self.gouvernail = 0.0
-       # self.stance = 5 # 0-10
         self.orders = []
 
         self.mouseDownAt = (0,0)
@@ -88,15 +85,12 @@ def LoadCOInput( text ):
       for e in es[4:]: #range(int(es[4])):
         os = e.split(":")
         if int(os[0]) == ids.O_MOVE:
-     #       print "ordered to move"
             order = OrderMove( int(os[1]), int(os[2]), float(os[3]) )
         elif int(os[0]) == ids.O_STOP_MOVE:
             order = OrderStopMove( float(os[1]) )
         elif int(os[0]) == ids.O_RECALL_SHIPS:
-     #       print "ordered to recall fighters"
             order = OrderRecallShips( int(os[1]) )
         elif int(os[0]) == ids.O_LAUNCH_SHIPS:
-     #       print "ordered to launch fighters"
             order = OrderLaunchShips( int(os[1]) )
         elif int(os[0]) == ids.O_JUMP_NOW:
             order = OrderJumpNow()
@@ -105,7 +99,6 @@ def LoadCOInput( text ):
         elif int(os[0]) == ids.O_LAUNCH_MISSILE:
             order = OrderLaunchMissile( int(os[1]), (int(os[2]), int(os[3])) )
         elif int(os[0]) == ids.O_ATTACK:
-     #       print "attack %i" % int(os[1])
             order = OrderAttack( int(os[1]) )
         elif int(os[0]) == ids.O_ORBIT:
             order = OrderOrbit( int(os[1]) )
@@ -145,7 +138,6 @@ class COObject:
         self.relation = relation
 
     def dump(self):
-      #  print ( self.type, self.xp, self.yp, self.zp, self.ori, self.uid, self.selectRadius, self.relation )
         dump = "%i;%i;%i;%i;%.2f;%i;%i;%i" % ( self.type, self.xp, self.yp, self.zp, self.ori, self.uid, self.selectRadius, self.relation )
         return dump
 def LoadCOObject( text ):
@@ -190,14 +182,10 @@ class COPlayerStats:
          self.canJump = canJump
          self.jumpCharge = jumpCharge
          self.jumpRecover = jumpRecover
-    #     self.xr = xr
-    #     self.yr = yr
-    #     self.maxRadar = maxRadar
          self.turrets = turrets
          self.missiles = missiles
          self.ships = ships
          self.radars = radars
-      #   self.buildableTurrets = buildableTurrets
 
          self.repairing = repairing
          self.charging = charging
@@ -249,20 +237,17 @@ def LoadCOPlayerStats( text ):
         radars.append( CORadar( (int(i[0]), int(i[1])), int(i[2]) ) )
     stats = COPlayerStats( int(es[0]), True, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,0, 0, oreInProcess, turrets, missiles, ships, radars )
   else:
-   # print text
-    for o in es[ 15 ].split(":"): # range(co):
+    for o in es[ 15 ].split(":"):
       if len( o ) > 0:
-        oreInProcess.append( int(o) ) #  int(es[16+o]) )
+        oreInProcess.append( int(o) )
 
     for o in es[ 16 ].split("|"):
       if len( o ) > 0:
         i = o.split(":")
         buildables = []
-     #   print i
         for b in i[ 13 ].split("/"):
            if len( b ) > 0:
               bi = b.split("_")
-      #        print bi
               buildables.append( COBuildable( int(bi[0]), int(bi[1]) ) )
         turrets.append( COTurret( int(i[0]), int(i[1]), int(i[2]), float(i[3]), float(i[4]), int(i[5]), int(i[6]), int(i[7]), int(i[8]), int(i[9]), int(i[10]), int(i[11]), int(i[12]), buildables ) )
 
@@ -442,3 +427,19 @@ def LoadCOGfxs( text ): # TODO
         gfxs.append( gfx )
     return gfxs
 
+
+
+class COScore:
+    def __init__( self, playerName, score, deaths ):
+        pass
+        
+class COEnd:
+    def __init__( self, scores,  ):
+        pass
+    
+class COBegin:
+    pass
+    
+class COTutorialMsg:
+    pass
+    

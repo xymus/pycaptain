@@ -5,7 +5,8 @@ from client.prefs import Prefs
 from client.mixer import Mixer
 
 class LoadingScreen:
-    def __init__( self, display ):
+    """This screen loads imgs, snds, texts and prefs and displays the progress."""
+    def __init__( self, display, eDone=None ):
         self.display = display
         
     def loadAll( self ):

@@ -3,7 +3,6 @@ from random import randint, random
 
 from common.comms import COObject
 from common.utils import * # distBetweenObjects, angleBetweenObjects, angleDiff
-import stats
 from common import ids
 from common import config
 
@@ -29,6 +28,8 @@ class Object:
 
         self.cobject = None
       #  self.cobject = None
+      
+    pos = property( fget=lambda self: (self.xp, self.yp) )
 
     def doTurn(self, game):
         if self.orbiting:
@@ -62,9 +63,12 @@ class Object:
             self.ori = (self.ori + self.ri) % self.maxOri
 
       # inertia applied to position
+     #   oldPos = (self.xp,self.yp)
         self.xp = self.xp + self.xi
         self.yp = self.yp + self.yi
         self.zp = self.zp + self.zi
+     #   if not isinstance( self, Planet ):
+     #       game.objects.update( self, oldPos, (self.xp,self.yp) )
 
         return ([],[],[])
 
@@ -90,27 +94,27 @@ class Object:
         return [self.cobject]
 
 class Asteroid( Object ):
-    def __init__( self, x, y, radius ):
+    def __init__( self, game, x, y, radius ):
         self.maxI = 0
         self.maxRI = 0.01
         self.maxDist = radius
         self.cx = x
         self.cy = y
-        self.randomInit()
+        self.randomInit( game )
 
  #   def doTurn(self, game):
  #       if distBetweenObjects( self, self.player.flagship ) > self.maxDist:
  #           self.randomInit()
  #       return Object.doTurn(self, game)
 
-    def randomInit( self ):
+    def randomInit( self, game ):
         dist = randint( 0, self.maxDist )
         angle = random()*2*pi
 
         x = int(self.cx + cos( angle )*dist)
         y = int(self.cy + sin( angle )*dist)
 
-        s = stats.ASTEROIDS[ randint(0,len(stats.ASTEROIDS)-1) ] #stats.ASTEROIDS[randint(0,2)][randint(1,2)]
+        s = game.stats.ASTEROIDS[ randint(0,len(game.stats.ASTEROIDS)-1) ] #stats.ASTEROIDS[randint(0,2)][randint(1,2)]
         Object.__init__( self, s, x, y, -10, random()*2*pi, (2*random()-1)*self.maxI, (2*random()-1)*self.maxI, 0, (2*random()-1)*self.maxRI )
 
 class Planet( Object ):
@@ -127,17 +131,11 @@ class Sun( Planet ):
        (ao, ro, ag) = ([],[],[])
        if game.tick%(config.fps/2)==8:
          self.damaged = []
-         for obj in game.objects:
+         for obj in game.objects.getWithinArea( self, self.stats.damageRadius ): # objects:
            if obj.alive and obj.hull:
                dist = distLowerThanObjectsReturn( self, obj, self.stats.damageRadius )
                if dist: 
-             #  if distLowerThanObjects( self, obj, self.stats.damageRadius ):
-            #   dist = distBetweenObjects( self, obj )
-            #   if dist < self.stats.damageRadius:
                    self.damaged.append( (obj,dist) )
-               #    angle = angleBetweenObjects( obj, self )
-               #    (ao1, ro1, ag1) = obj.hit( game, angle, None, energy=self.stats.maxDamage*(self.stats.damageRadius-dist)/self.stats.damageRadius )
-               #    (ao, ro, ag) = (ao+ao1, ro+ro1, ag+ag1)
        for obj, dist in self.damaged:
            if obj.alive:
                angle = angleBetweenObjects( obj, self )
@@ -180,7 +178,7 @@ class BlackHole( Object ):
       (ao, ro, ag) = ([],[],[])
       if game.tick%(config.fps/3)==4:
         self.damaged = []
-        for obj in game.objects:
+        for obj in game.objects.getWithinArea( self, self.stats.gravitationalRadius ):
             dist = distLowerThanObjectsReturn( self, obj, self.stats.gravitationalRadius )
             if dist:
                 angle = angleBetweenObjects( obj, self )
@@ -194,7 +192,4 @@ class BlackHole( Object ):
                 obj.xi = (obj.xi+pull*cos( angle ))*dist/self.stats.gravitationalRadius #  * dist/self.stats.gravitationalRadius
                 obj.yi = (obj.yi+pull*sin( angle ))*dist/self.stats.gravitationalRadius #  * dist/self.stats.gravitationalRadius
       return (ao, ro, ag)
-
-
-
 

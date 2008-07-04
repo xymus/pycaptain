@@ -8,6 +8,21 @@ from objects import Object
 from ships import Ship
 from common.gfxs import *
 
+def explode( self, game, explosionRange, energyDamage=0, massDamage=0, pulseLength=0, sender=None, deadlyToSelf=True, sound=ids.S_EX_PULSE ):
+    (ao,ro,ag) = ([],[],[])
+    for obj in game.objects.getWithinRadius( self, explosionRange ):
+        if obj.alive and obj.player:
+             (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self ), sender, energyDamage, massDamage, pulse=pulseLength )
+             (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
+    
+    if deadlyToSelf:
+        self.alive = False
+        ro.append( self )
+        
+    ag.append( GfxExplosion( self.pos, explosionRange, sound=sound ) )
+    
+    return (ao, ro+ro0, ag+ag0)
+
 class Weapon:
     def __init__( self, stats ):
         self.stats = stats
@@ -18,10 +33,6 @@ class Weapon:
 
     def fire( self, ship, game ):
         self.lastFireAt = game.tick
-    #    gfxs = []
-    #    if self.stats.gfxAtFire:
-    #        for self.getPoss( ship, game ):
-    #            gfxs.append(  )
         return ([],[],[])
 
     def getPoss( self, ship, game ):
@@ -169,7 +180,7 @@ class OmniLaserWeaponTurret( LaserWeaponTurret ):
 class BombWeapon( Weapon ):
     def fire( self, ship, game, target ):
         (ao,ro,ag) = ([],[],[])
-        for obj in game.objects:
+        for obj in game.objects.objects:
             if obj.alive and obj.player and utils.distLowerThanObjects( self, obj, self.stats.explosionRange + obj.stats.maxRadius ):
                  if ship.ai.player:
                      sender = ship.ai.player
@@ -206,9 +217,8 @@ class Missile( Ship ):
             self.launcher = None
 
         # detect hit
-        for obj in game.objects:
-             if obj.alive and obj.player and (not self.launcher or obj.player != self.launcher.player) \
-               and utils.distLowerThanObjects( self, obj, self.stats.maxRadius + obj.stats.maxRadius ):
+        for obj in game.objects.getWithinRadius( self, self.stats.maxRadius ):
+             if obj.alive and obj.player and (not self.launcher or obj.player != self.launcher.player):
                  if self.launcher:
                      sender = self.launcher.player
                  else:
@@ -279,7 +289,7 @@ class NukeMissile( Missile ):
 
     def explode( self, game ):
         (ao,ro,ag) = ([],[],[])
-        for obj in game.objects:
+        for obj in game.objects.objects:
             if obj.alive and obj.player and utils.distLowerThanObjects( self, obj, self.explosionRange + obj.stats.maxRadius ):
                  if self.launcher:
                      sender = self.launcher.player
@@ -304,7 +314,7 @@ class PulseMissile( NukeMissile ):
 
     def explode( self, game ):
         (ao,ro,ag) = ([],[],[])
-        for obj in game.objects:
+        for obj in game.objects.objects:
             if obj.alive and obj.player and utils.distLowerThanObjects( self, obj, self.explosionRange + obj.stats.maxRadius ):
                  if self.launcher:
                      sender = self.launcher.player
@@ -345,8 +355,8 @@ class CounterMissile( Missile ):
     def doTurn( self, game ):
         (ao,ro,ag) = Missile.doTurn(self, game)
         if self.t%(config.fps)/2 == 0: # fin missiles
-            for obj in game.objects:
-                if obj != self and isinstance( obj, Missile ) and utils.distLowerThanObjects( self, obj, self.effectRange ):
+            for obj in game.objects.getWithinRadius( self, self.effectRange ):
+                if obj != self and isinstance( obj, Missile ):
                      obj.target = self
         self.t += 1
         return (ao,ro,ag)
@@ -359,26 +369,49 @@ class Bullet( Object ):
         self.target = target
         self.launcher = launcher
         self.weapon = weapon
-        self.ttl = 30 #*3
+        self.ttl = weapon.stats.projectileTtl #*3
 
     def doTurn( self, game ):
         (ao,ro,ag) = Object.doTurn(self, game)
 
         # detect hit
-        for obj in game.objects:
-             if obj.alive and obj.player != None and obj.player != self.launcher.player \
-               and utils.distLowerThanObjects( self, obj, self.stats.maxRadius + obj.stats.maxRadius ): # TODO better
+        for obj in game.objects.getWithinRadius( self, self.stats.maxRadius ):
+             if obj.alive and obj.player != None and obj.player != self.launcher.player: # TODO better
                  (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self), self.launcher.player, energy=self.weapon.stats.energyDamage, mass=self.weapon.stats.massDamage )
-               #  print self.weapon.stats.img, self.weapon.stats.energyDamage, self.weapon.stats.massDamage
                  (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
                  self.alive = False
                  ro.append( self )
-     #            ag.append( GfxExplosion( (self.xp,self.yp), self.stats.maxRadius ) )
                  break
 
         if self.alive and self.ttl == 0:
             self.alive = False
             ro.append( self )
+        else:
+            self.ttl = self.ttl - 1
+
+        return (ao,ro,ag)
+
+class ExplodingBullet( Object ):
+    def __init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon ):
+        Object.__init__( self, weapon.stats.projectile, xp, yp, zp, ori, xi, yi, 0, 0 )
+        self.target = target
+        self.launcher = launcher
+        self.weapon = weapon
+        self.ttl = weapon.stats.projectileTtl #*3
+        self.explosionRange = 100
+
+    def doTurn( self, game ):
+        (ao,ro,ag) = Object.doTurn(self, game)
+
+        # detect hit
+        for obj in game.objects.getWithinRadius( self, self.explosionRange ):
+            if obj.alive and obj.player != None and obj.player != self.launcher.player:
+                (ao0, ro0, ag0) = explode( self, game, self.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
+                (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
+
+        if self.alive and self.ttl == 0:
+            (ao0, ro0, ag0) = explode( self, game, self.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
+            (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
         else:
             self.ttl = self.ttl - 1
 
@@ -397,8 +430,8 @@ class Mine( Object ):
 
         ## detect hit
         if not game.tick%20:
-            for obj in game.objects:
-                if obj.alive and obj.player and not isinstance( obj, Mine ) and utils.distLowerThanObjects( self, obj, self.detectionRange+obj.stats.maxRadius ):
+            for obj in game.objects.getWithinRadius( self, self.detectionRange ):
+                if obj.alive and obj.player and not isinstance( obj, Mine ):
                     (ao0,ro0,ag0) = self.explode( game )
                     (ao,ro,ag) = (ao+ao0,ro+ro0,ag+ag0)
                     break
@@ -413,17 +446,7 @@ class Mine( Object ):
         return (ao,ro,ag)
 
     def explode( self, game ):
-        self.alive = False
-
-        ao = []
-        ro = [ self ]
-        ag = [ GfxExplosion( (self.xp,self.yp), self.stats.maxRadius*3, sound=ids.S_EX_FIRE ) ]
-
-        for obj in game.objects:
-            if obj.alive and obj.player and utils.distLowerThanObjects( self, obj, self.explosionRange + obj.stats.maxRadius ):
-                 (ao0, ro0, ag0) = obj.hit( game, utils.angleBetweenObjects( obj, self ), None, self.weapon.stats.energyDamage, self.weapon.stats.massDamage )
-                 (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
-
+        (ao, ro, ag) = explode( self, game, self.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=None, sound=ids.S_EX_FIRE )
         return (ao,ro,ag)
 
 

@@ -135,7 +135,8 @@ class Tests:
         if self.testServer:
             yield self.verbose( "Server", 0 )
             yield self.verbose( "Server stats", level=1 )
-            from server import stats
+            from server.stats import Stats
+            stats = Stats()
 
             yield self.verbose( "Game from Scenarios", level=1 )
             from server.game import Game
@@ -180,7 +181,7 @@ class Tests:
             from server.objects import Asteroid
             asteroids = []
             while len( asteroids ) < 100:
-                asteroids.append( Asteroid( 0, 0, 100 ) )
+                asteroids.append( Asteroid( games[0], 0, 0, 100 ) )
 
             yield self.verbose( "Planet", level=2 )
             from server.objects import Planet

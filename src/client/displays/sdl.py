@@ -7,7 +7,7 @@ import pygame
 from common.comms import COObject, COInput
 from client.imgs import Animation
 
-from __display import Display
+from . import Display
 
 class Sdl( Display ):
     def __init__(self, resolution=( 640, 640 ), fullscreen=False):
@@ -77,6 +77,8 @@ class Sdl( Display ):
         self.screen.blit( img, pos, src )
 
     def _drawFont( self, text, font, color, pos ):
+        if os.name == "nt":
+            pos = (pos[0],pos[1]-6)
         s = font.render( text, True, color )
         self._draw( s, pos )
     
@@ -130,10 +132,10 @@ class Sdl( Display ):
 
         inputs.keys = []
 
-       # inputs.up = pygame.key.get_pressed()[ pygame.K_UP ]
-       # inputs.down = pygame.key.get_pressed()[ pygame.K_DOWN ]
-       # inputs.left = pygame.key.get_pressed()[ pygame.K_LEFT ]
-       # inputs.right = pygame.key.get_pressed()[ pygame.K_RIGHT ]
+        inputs.up = pygame.key.get_pressed()[ pygame.K_UP ]
+        inputs.down = pygame.key.get_pressed()[ pygame.K_DOWN ]
+        inputs.left = pygame.key.get_pressed()[ pygame.K_LEFT ]
+        inputs.right = pygame.key.get_pressed()[ pygame.K_RIGHT ]
         inputs.mousePos = pygame.mouse.get_pos()
 
         inputs.mouseDowned = False

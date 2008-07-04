@@ -129,7 +129,7 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
                     ship.zp = self.dockingTo.zp-2
                     self.goTo( ship, self.dockingTo )
 
-        if self.idle:
+        if self.idle and ship.inertiaControl:
             if fabs( ship.ri ) >= 0.0005:
                 if ship.ri > 0:
                     ship.rg = -0.1*ship.stats.maxRg
@@ -159,6 +159,7 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
         self.goTo( ship, dest )
 
     def dock( self, ship, motherShip, game ):
+        self.goingTo = None
         self.idle = True
         self.dockedTo = False
         self.attacking = False
@@ -209,15 +210,8 @@ class AiPilotFaction( AiPilot ):
         AiPilot.hitted( self, ship, game, angle, sender, energy, mass, pulse )
         self.hittedAt = game.tick
         if sender and not self.attacking and game.getRelationBetween( ship.player, sender )<0:
-#            print "looking"
-            bestDist = 10000
-            for obj in game.objects:
-                if isinstance( obj, Ship ):
-                    dist = utils.distLowerThanObjectsReturn( obj, ship, 1000 )
-                    if dist and dist < bestDist:
-                        bestDist = dist
-                        self.attacking = obj
-#                        print "now attacking"
+            self.attacking = game.objects.getClosestAccording( ship, 2000, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.player and obj.player == sender )
                     
 
     def needsHelp( self, game ):
@@ -238,14 +232,8 @@ class AiPilotDefense( AiPilotFaction ):
         ( ao, ro, ag ) = AiPilot.doTurn( self, ship, game )
 
         if not self.attacking and self.idle and not self.dockingTo and game.tick%(0.5*config.fps)==2:
-            bestDist = 1000
-            for obj in game.objects:
-                if isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0:
-                  dist = utils.distLowerThanObjectsReturn( ship, obj, bestDist) # obj.ai and obj.ai.attacking == ship:
-                  if dist:
-                    self.attacking = obj
-                    bestDist = dist # utils.distBetweenObjects( ship, obj )
-                    break 
+            self.attacking = game.objects.getClosestAccording( ship, 1000, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
 
         if not self.dockingTo and not self.attacking and (self.idle or self.lastDestSetAt<game.tick-config.fps*5 ):
             self.goTo( ship, self.setNewDest( ship, game) )
@@ -283,9 +271,12 @@ class AiPilotPolice( AiPilotDefense ):
         self.policingRange = 500
 
     def doTurn( self, ship, game):
-        if not self.attacking and game.tick%(config.fps/2) == 7:
-            for obj in game.objects:
-                if obj.player and obj.player != ship.player and isinstance( obj.player, Human ) and obj.player.online and obj.ai and obj.ai.attacking and distLowerThanObjects( ship, obj, self.policingRange ) and distLowerThanObjects( ship, obj.ai.attacking, self.policingRange ):
+        if not self.attacking and game.tick%(config.fps/2) == 7:         
+            self.attacking = game.objects.getClosestAccording( ship, 1000, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
+
+            for obj in game.objects.getWithin( ship, self.policingRange ): # game.objects.objects:
+                if obj.player and obj.player != ship.player and isinstance( obj.player, Human ) and obj.player.online and obj.ai and obj.ai.attacking and distLowerThanObjects( ship, obj.ai.attacking, self.policingRange ):
                     self.attack( ship, obj )
                     break
 
@@ -309,15 +300,9 @@ class AiPilotFighter( AiPilot ):
         ( ao, ro, ag ) = AiPilot.doTurn( self, ship, game )
 
 
-        if not self.attacking and self.idle and not self.dockingTo and self.flagship.ai.attacking: #  and game.tick%(0.5*config.fps)==2:
-            bestDist = 1000
-            for obj in game.objects:
-                if isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0: 
-                  dist = utils.distLowerThanObjectsReturn( ship, obj, bestDist) # obj.ai and obj.ai.attacking == ship:
-                  if dist:
-                    self.attacking = obj
-                    bestDist = dist # utils.distBetweenObjects( ship, obj )
-                    break 
+        if not self.attacking and self.idle and not self.dockingTo and self.flagship.ai.attacking:
+            self.attacking = game.objects.getClosestAccording( ship, 1000, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
 
         if not self.dockingTo and self.idle and not self.attacking:
             self.goTo( ship, self.getRandomGuardPosition(ship, self.flagship, 1.5) )
@@ -358,8 +343,6 @@ class AiCaptain( AiPilot ):
         self.launching = {}
         for s in player.race.ships:
             self.launching[ s.img ] = False
-   #     self.launchingFighters = False
-   #    self.launchingHarvesters = False
 
     def doTurn( self, ship, game):
         if self.attacking and not self.attacking.alive:
@@ -394,14 +377,9 @@ class AiCaptain( AiPilot ):
         if self.attacking:
             pass
         elif game.tick%(config.fps/2)==9: # no target
-            bestObj = None
-            bestDist = ship.stats.radarRange
-            for obj in game.objects:
-                if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and game.getRelationBetween( ship.player, obj.player ) < 0: #and obj.ai and obj., ai.attacking and obj.ai.attacking.player == ship.player:
-                     dist=distLowerThanObjectsReturn( ship, obj, bestDist )
-                     if dist: #distLowerThanObjects( ship, obj, bestDist ):#dist < bestDist:
-                         bestObj = obj
-                         bestDist = dist
+            
+            bestObj = game.objects.getClosestAccording( ship, ship.stats.radarRange, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
 
             if bestObj:
                 self.attack( ship, bestObj )#attacking = bestObj
@@ -561,7 +539,11 @@ class AiWeaponTurret( AiTurret ):
             bestAngle = 2*pi
             pos = ship.getTurretPos( turret )
             foundSomethingClose = False
-            for obj in game.objects:
+
+          #  bestObj = game.harvestables.getClosestAccording( ship, ship.stats.radarRange, 
+	# func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
+
+            for obj in game.objects.objects:
                 if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and obj.ai and obj.ai.attacking and obj.ai.attacking.player and game.getRelationBetween( obj.ai.attacking.player, ship.player ) < 0 and self.objectInRange( ship, turret, pos, obj ):
                    att = self.getAngleToTarget( ship, turret, pos, obj )
                    foundSomethingClose = True
@@ -694,13 +676,8 @@ class AiPilotHarvester( AiPilot ):
             self.flagship = None
             bestDist = 5000
             
-            ## try to find another flagship
-            for obj in game.objects:
-              if isinstance( obj, Ship ) and obj.shipyards and obj.player and obj.player.race.defaultHarvester == ship.stats:
-              #  dist = distBetweenObjects( ship, obj )
-                if distLowerThanObjects( ship, obj, bestDist ): #dist < bestDist:
-                    dist = bestDist
-                    self.flagship = obj
+            self.flagship = game.objects.getClosestAccording( ship, 5000, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.shipyards and obj.player and obj.player.race.defaultHarvester == ship.stats )
 
             if self.flagship: 
                 self.flagship.shipyards[ ship.stats.img ].away.append( ship )
@@ -712,11 +689,14 @@ class AiPilotHarvester( AiPilot ):
         if not self.dockingTo and not self.harvesting and self.flagship and self.flagship.noOreCloseAt < game.tick-3*config.fps:
             ## try to find more ore
             distFound = ship.stats.maxRange+1
-            for obj in game.harvestables:
-                dist = distLowerThanObjectsReturn( ship, obj, distFound )
-                if dist: 
-                    distFound = dist
-                    self.harvesting = obj
+            
+            self.harvesting = game.harvestables.getClosestAccording( ship, ship.stats.maxRange )
+            
+          #  for obj in game.harvestables:
+          #      dist = distLowerThanObjectsReturn( ship, obj, distFound )
+          #      if dist: 
+          #          distFound = dist
+          #          self.harvesting = obj
             if not self.harvesting:
                 self.flagship.noOreCloseAt = game.tick
 
@@ -750,6 +730,7 @@ class AiPilotHarvester( AiPilot ):
 
     def dock( self, ship, target, game ):
         self.harvesting = False
+        self.goingTo = None
         AiPilot.dock( self, ship, target, game )
 
     def died( self, ship, game ):
@@ -771,23 +752,18 @@ class AiCivilian( AiPilot ):
             self.follows = None
 
         if not self.follows and game.tick%20 == 0:
-            fs = None
-            fsDist = ship.stats.influenceRadius + 1
-            for obj in game.objects:
-                if isinstance( obj, Ship ) and obj.shipyards:
-                   # dist = distBetweenObjects( ship, obj )
-                    dist = utils.distLowerThanObjectsReturn( ship, obj, fsDist )
-                    if dist : # distLowerThanObjects( ship, obj, fsDist ): # fsDist:
-                        fs = obj
-                        fsDist = dist
-            if fsDist <= ship.stats.influenceRadius:
+
+            fs = game.objects.getClosestAccording( ship, ship.stats.influenceRadius, 
+	func=lambda obj: isinstance( obj, Ship ) and obj.shipyards )
+
+            if fs:
                 self.follows = fs
                 self.follows.civilianShips.append( ship )
         
         if self.follows:
             if game.tick%120 == 0:
               valueFollowed = self.evalShip( self.follows )
-              for obj in game.objects:
+              for obj in game.objects.getWithin( ship, ship.stats.influenceRadius ): #objects:
                 if isinstance( obj, Ship ) and obj.shipyards and distLowerThanObjects( ship, obj, ship.stats.influenceRadius ):
                     valueOther = self.evalShip( obj )
                     if float(valueOther)/valueFollowed > float(len( obj.civilianShips )+1) / (len( self.follows.civilianShips)+1):

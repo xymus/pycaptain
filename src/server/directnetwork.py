@@ -9,6 +9,8 @@ from common import config
 
 from network import Network, PlayerConnection
 
+from converters.local import LocalConverter
+
 class DirectNetwork( Network ):
     def __init__( self, game, addresses, port, versionString, adminPassword ):
         self.game = game
@@ -23,10 +25,15 @@ class DirectNetwork( Network ):
         self.codes = []
         self.newPlayers = []
         self.shipChoices = []
+        
+        self.msgusers = []
+        self.msgalls = []
+        self.sysmsgs = []
 
         self.listening = True
       #  self.tWork = Thread( name="network", target=self.fWork )
      #   self.tWork.start()
+        self.converterType = LocalConverter
      
     def connect( self, client ):
         self.clients.append( client )
@@ -38,14 +45,18 @@ class DirectNetwork( Network ):
         player = self.game.getPlayer( username )
         
         if not player:
-           player = self.game.addRemotePlayer( username, "")
+            print "player not found"
+            player = self.game.addRemotePlayer( username, "")
             
         self.players[ client ] = player
         self.newPlayers.append( player )
         print "logged in %s for %s" % ( username, client )
     
     def disconnect( self, client ):
-        self.clients.remove( client )
+        print self.clients, client, self.clients.count( client )
+        
+        if self.clients.count( client ):
+            self.clients.remove( client )
         if not len( self.clients ):
             self.shutdown()
     
@@ -74,13 +85,13 @@ class DirectNetwork( Network ):
         return self.shutdownOrder
 
     def sendSysmsg( self, text ):
-        pass
+        self.sysmsgs.append( text )
 
     def sendMsgall( self, text, senderName ):
-        pass
+        self.msgalls.append( "%s: %s"%(senderName, text) )
 
     def sendMsg( self, text, senderName, playerCon ):
-        pass
+        self.msgalls.append( "%s: %s"%(senderName, text) ) # TODO reimplement if multiple players can connect to directnetwork
         
         
     def getClientFromPlayer( self, player ):
@@ -98,7 +109,13 @@ class DirectNetwork( Network ):
 
     def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[] ):
         client = self.getClientFromPlayer( player )  
-        client.updatePlayer( objects, gfxs, stats, players, astres, possibles )
+        if self.sysmsgs:
+            print self.sysmsgs
+        client.updatePlayer( objects, gfxs, stats, players, astres, possibles, self.msgalls, self.msgusers, self.sysmsgs )
+        self.msgalls = []
+        self.msgusers = []
+        self.sysmsgs = []
+        
          
   #  def briefPlayer( self, pCon, astres ):
  #       client = self.getClientFromPlayer( player )  

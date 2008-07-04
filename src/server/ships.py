@@ -5,7 +5,6 @@ from common.comms import COObject
 from common.utils import *
 from common.gfxs import *
 from common import config
-import stats
 
 
 class OreBatch:
@@ -76,7 +75,7 @@ class Ship( Object ):
         #    zDiff = -2 + 4*randint( 0, 1 )
             nz = randint( -5, 5 )
             can = True
-            for obj in game.objects:
+            for obj in game.objects.getWithinArea( self, self.stats.maxRadius+500 ):
             #    print "s ", obj.zp <= max( self.zp, nz ), obj.zp >= min( self.zp, nz ), areOver( self, obj )
                 if obj != self and obj.zp <= max( self.zp, nz ) and obj.zp >= min( self.zp, nz ) and areOver( self, obj ):
                     can = False
@@ -180,16 +179,17 @@ from turrets import *
 class ShipWithTurrets( Ship ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         Ship.__init__( self, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
+        self.player = player
         self.turrets = []
         self.turretPoss = {} # [None]*len(stats.turrets)
         for turret in stats.turrets:
-            self.turrets.append( Turret( turret ) ) # , None, AiWeaponTurret() ) )
+            self.turrets.append( Turret( turret, self ) ) # , None, AiWeaponTurret() ) )
 
     def getCommObjects(self):
-	objects = []
+        objects = []
         for turret in self.turrets:
           if not turret.stats.overShip:
-            if isinstance( turret, TurretBuildable ) and turret.building:
+            if isinstance( turret, BuildableTurret ) and turret.building:
                 t = ids.T_BUILDING
             elif turret.install:
                 t = turret.install.stats.type
@@ -203,7 +203,7 @@ class ShipWithTurrets( Ship ):
 
         for turret in self.turrets:
           if turret.stats.overShip:
-            if isinstance( turret, TurretBuildable ) and turret.building:
+            if isinstance( turret, BuildableTurret ) and turret.building:
                 t = ids.T_BUILDING
             elif turret.install:
                 t = turret.install.stats.type
@@ -256,13 +256,13 @@ class Builder:
         self.goal = 0
         self.buildAt = 0
 
-class TurretBuildable( Turret ): # unused? TODO if so, remove
-    def __init__( self, stats ): # the stats duplicates the stats from ship
-        Turret.__init__( self, stats )
-        self.building = None
-	self.buildCost = 0
-	self.build = 0
-        self.activated = True
+#class TurretBuildable( Turret ): # unused? TODO if so, remove
+#    def __init__( self, stats ): # the stats duplicates the stats from ship
+#        Turret.__init__( self, stats )
+#        self.building = None
+#	self.buildCost = 0
+#	self.build = 0
+#        self.activated = True
 
 class Shipyard:
     def __init__( self ):
@@ -286,14 +286,14 @@ class MissileReserve:
         
 class FlagShip( ShipWithTurrets ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
-        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         self.player = player
+        
 
         # resources
         self.processLength = 60*30
         self.oreProcess = [] # list of OreBatch # (amount,position<chainLength)
         self.ore = 0
-        self.energy = self.stats.maxEnergy #0
+        self.energy = 0 # self.stats.maxEnergy #0
 
         self.repairing = True
         self.charging = True
@@ -306,18 +306,21 @@ class FlagShip( ShipWithTurrets ):
         self.lastLaunchAt = 0
         self.jumping = None
 
+        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         self.turrets = []
         for turret in stats.turrets:
-            self.turrets.append( TurretBuildable( turret ) ) #, None, AiWeaponTurret() ) )
+            self.turrets.append( BuildableTurret( turret, self ) ) #, None, AiWeaponTurret() ) )
 
         self.shipyards = {}
-        for s in player.race.ships:
-            self.shipyards[ s.img ] = Shipyard()
+        if player:
+            for s in player.race.ships:
+                self.shipyards[ s.img ] = Shipyard()
   #      for b in ['ships', 'missiles']:
 
         self.missiles = {}
-        for m in player.race.missiles:
-            self.missiles[ m ] = MissileReserve()
+        if player:
+            for m in player.race.missiles:
+                self.missiles[ m ] = MissileReserve()
 
 
         self.noOreCloseAt = -1000
@@ -325,36 +328,50 @@ class FlagShip( ShipWithTurrets ):
         self.jumpCharge = 0
         self.jumpRecover = 0
         
+        self.selfDestructCommand = False
+        
     def doTurn( self, game ):
         self.inertiaMod = 1
-        thrustBoost = 0
+        
+        solarSailEfficiency = 0
+        darkExtractorEfficiency = 0
+        darkEngineEfficiency = 0
+        
         nebulaOreSum = 0
+        
+        oldOre = self.ore
+        oldEnergy = self.energy
+        
        ## build
         # turrets
-        for b in self.turrets:
-          if b.building:
-            b.build = b.build+self.getBuildRate()
-            if b.build >= b.buildCost:
-                b.buildInstall( b.building )
+        for turret in self.turrets:
+          if turret.building:
+            turret.build += self.getBuildRate()
+            if turret.build >= turret.buildCost:
+                turret.buildInstall( turret.building )
 
-          if b.install and b.activated:
-              if b.install.stats.orePerFrame <= self.ore \
-                and b.install.stats.energyPerFrame <= self.energy:
-                  self.energy = self.energy-b.install.stats.energyPerFrame
-                  self.ore = self.ore-b.install.stats.orePerFrame
+          if turret.install and turret.activated:
+              if turret.install.stats.orePerFrame <= self.ore \
+                and turret.install.stats.energyPerFrame <= self.energy:
+                  self.energy = self.energy-turret.install.stats.energyPerFrame
+                  self.ore = self.ore-turret.install.stats.orePerFrame
               else:
-                  b.activated = False
-              if b.activated:
-                  if b.install.stats.special == ids.S_SUCKER and self.inNebula and game.tick%(config.fps/3)==6: # sucker creates ore when in nebula
-                      nebulaOreSum += b.install.stats.specialValue
-                  elif b.install.stats.special == ids.S_INERTIA:
-                      self.inertiaMod = b.install.stats.specialValue # self.inertiaMod*
-                  elif b.install.stats.special == ids.S_SAIL:
-                      thrustBoost += b.install.stats.specialValue # self.inertiaMod*
-                  elif b.install.stats.special == ids.S_JAMMER and game.tick%(config.fps/2) == 5:
-                       for obj in game.objects:
-                           if isinstance( obj, Missile ) and distLowerThanObjects( self, obj, b.install.stats.specialValue+obj.stats.maxRadius ):
+                  turret.activated = False
+              if turret.activated:
+                  if turret.install.stats.special == ids.S_SUCKER and self.inNebula and game.tick%(config.fps/3)==6: # sucker creates ore when in nebula
+                      nebulaOreSum += turret.install.stats.specialValue
+                  elif turret.install.stats.special == ids.S_INERTIA:
+                      self.inertiaMod = turret.install.stats.specialValue
+                  elif turret.install.stats.special == ids.S_SAIL:
+                      solarSailEfficiency += turret.install.stats.specialValue
+                  elif turret.install.stats.special == ids.S_JAMMER and game.tick%(config.fps/2) == 5:
+                       for obj in game.objects.getWithin( self, turret.install.stats.specialValue ):
+                           if isinstance( obj, Missile ):
                                obj.loseTarget( game )
+                  if turret.install.stats.darkExtractor:
+                      darkExtractorEfficiency += turret.install.stats.darkExtractor
+                  if turret.install.stats.darkEngine:
+                      darkEngineEfficiency += turret.install.stats.darkEngine
                              
         if nebulaOreSum:
             self.addOreToProcess( nebulaOreSum )  
@@ -363,39 +380,32 @@ class FlagShip( ShipWithTurrets ):
 
         # ships
         hangarSpace = self.getHangarSpace()
-        count = self.getHangarUse()
-      #  for k1 in self.shipyards:
-      #      b1 = self.shipyards[ k1 ]
-      #      count = count + len(b1.away) + len(b1.docked)
+        count = self.getHangarUse( game )
 
         for k,b in self.shipyards.iteritems():
-     #    print count, hangarSpace
-       # b = self.shipyards[ k ]
-         if b.building and count+stats.statsDict[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxShips():
+         if b.building and count+game.stats[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxShips():
             b.build = b.build+self.getBuildRate()
             if b.build >= b.buildCost:
-         #       b.amount = b.amount+1
-                if isinstance( stats.statsDict[ k ], stats.HarvesterShipStats ):
-                    b.docked.append( HarvesterShip(self.player, stats.statsDict[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
+                if isinstance( game.stats[ k ], stats.HarvesterShipStats ):
+                    b.docked.append( HarvesterShip(self.player, game.stats[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
                 else:
-                    b.docked.append( ShipSingleWeapon(self.player, stats.statsDict[ k ], AiPilotFighter(self),0,0,0, 4, 0.0,0.0,0.0, 0)  )
-                count = count + stats.statsDict[ k ].hangarSpaceNeed
-                if self.canBuild( k ):
-                   self.buildShip( k )
+                    b.docked.append( ShipSingleWeapon(self.player, game.stats[ k ], AiPilotFighter(self),0,0,0, 4, 0.0,0.0,0.0, 0)  )
+                count = count + game.stats[ k ].hangarSpaceNeed
+                if self.canBuild( game, k ):
+                   self.buildShip( game, k )
                 else:
                    b.building = False
 
         # missiles
-
         for k in self.missiles:
           b = self.missiles[ k ]
-          if b.building and count+stats.statsDict[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxMissiles():
+          if b.building and count+game.stats[ k ].hangarSpaceNeed<= hangarSpace: #count < self.getMaxMissiles():
             b.build = b.build+self.getBuildRate()
             if b.build >= b.buildCost:
                 b.amount = b.amount+1
-                count = count + stats.statsDict[ k ].hangarSpaceNeed
-                if self.canBuild( k ):
-                   self.buildMissile( k )
+                count = count + game.stats[ k ].hangarSpaceNeed
+                if self.canBuild( game, k ):
+                   self.buildMissile( game, k )
                 else:
                    b.building = False
 
@@ -407,25 +417,33 @@ class FlagShip( ShipWithTurrets ):
                 self.ore = min(self.ore + r.amount,self.stats.maxOre)
 
         # energy
-        basicGain = 0
+        solarEnergyPotential = 0
         absorbtion = 0
-    #    energyGain = 0
-        if not self.inNebula: # RULE sun blocked out in the nebula
-          absorbtion = self.getEnergyAbsorbtion()
-        #  basicGain = 0
-          for obj in game.astres:
+        distFromSun = 1000000
+        
+        absorbtion = self.getEnergyAbsorbtion()
+        for obj in game.astres:
             if isinstance( obj, Sun ):
                 dist = distBetweenObjects( self, obj )
                 if dist < obj.stats.energyRadius:
-                    basicGain = basicGain+(obj.stats.energyRadius-dist)/obj.stats.energyRadius*obj.stats.maxEnergy
-        self.energy = min(self.energy + absorbtion * basicGain,self.stats.maxEnergy)
-
-        if thrustBoost: #  and self.thrust == self.stats.maxThrust:
-            self.thrustBoost = thrustBoost * basicGain
-       #     print basicGain
-        else:
-            self.thrustBoost = 0
-
+                    solarEnergyPotential = solarEnergyPotential+(obj.stats.energyRadius-dist)/obj.stats.energyRadius*obj.stats.maxEnergy
+                if dist < distFromSun:
+                    distFromSun = dist
+        if not self.inNebula: # RULE sun blocked out in the nebula
+            self.energy = min(self.energy + absorbtion * solarEnergyPotential,self.stats.maxEnergy)
+        
+        darkEnergyPotential = max( 0, sqrt( (distFromSun-12000)/150000) )
+        if darkEnergyPotential:
+        #    print distFromSun, darkEnergyPotential
+            self.energy = min(self.energy + darkEnergyPotential*darkExtractorEfficiency, self.stats.maxEnergy)
+                
+        
+        # thrust
+        ## solar sails and dark engines
+        if darkEngineEfficiency:
+            print darkEngineEfficiency, darkEnergyPotential
+        self.thrustBoost = solarSailEfficiency*solarEnergyPotential + darkEnergyPotential*darkEngineEfficiency
+        
         # repairs
         if self.repairing and self.ore >= self.getHullRepairRate(): #self.lastRepairsAt+self.repairDelay <= game.tick and self.ore > 0:
             if self.hull < self.stats.maxHull:
@@ -481,6 +499,33 @@ class FlagShip( ShipWithTurrets ):
             self.civilianValue = 1
           else:
             self.civilianValue = value
+            
+        if self.player and (int(self.ore) != int(oldOre) or int(self.energy) != int(oldEnergy)):
+            if isinstance( self.player, Human ) or not game.tick%config.fps: # Performance optimization, in favor of human players
+                for turret in self.turrets:
+                    turret.updateBuildingOptionsPossibles()
+                    
+        if self.selfDestructCommand:
+            # get explosion radius
+            radius = self.stats.maxRadius
+            for turret in self.turrets:
+                if turret.install and turret.install.stats.special == ids.T_GENERATOR:
+                    radius += turret.install.stats.specialValue
+
+            # die and explode
+            (ao1, ro1, fxs1 ) =  self.die( game )
+            (ao,ro,ag) = (ao+ao1, ro+ro1, ag+fxs1 )
+            ag.append( GfxExplosion( (self.xp,self.yp), radius, sound=ids.S_EX_NUKE ) )
+
+            # hit ships in explosion range
+            maxDamage = 1000
+            for obj in game.objects.getWithinArea( self, radius+1000 ): # objects:
+                if obj.alive:
+                    dist = distLowerThanObjectsReturn( self, obj, radius+obj.stats.maxRadius )
+                    if dist:
+                        angle = angleBetweenObjects( obj, self )
+                        (ao1, ro1, fxs1 ) = obj.hit( game, angle, self.player, mass=maxDamage*dist/radius )
+                        (ao,ro,ag) = (ao+ao1, ro+ro1, ag+fxs1 )
                 
         return (ao,ro,ag)
     
@@ -522,7 +567,7 @@ class FlagShip( ShipWithTurrets ):
             #    if isinstance( obj, Nebula ) and distLowerThanObjects( self, obj, self.stats.maxRadius+obj.stats.maxRadius):
            #         can = False
            #         break
-            for obj in game.objects:
+            for obj in game.objects.getWithinArea( self, self.stats.maxRadius+1000 ): # objects:
                 if isinstance( obj, FlagShip ): # and distLowerThanObjects( self, obj, self.stats.marRadius+obj.stats.maxRadius):
                     for turret in obj.turrets:
                         if turret.install and turret.activated and turret.install.stats.special == ids.S_INTERDICTOR and distLowerThanObjects( self, obj, self.stats.maxRadius+turret.install.stats.specialValue):
@@ -544,8 +589,8 @@ class FlagShip( ShipWithTurrets ):
     def getEnergyAbsorbtion( self ):
         absorbtion = 1
         for turret in self.turrets:
-            if turret.install and turret.activated and turret.install.stats.special == ids.S_SOLAR:
-                absorbtion = absorbtion+turret.install.stats.specialValue
+            if turret.install and turret.activated and turret.install.stats.solar:
+                absorbtion = absorbtion+turret.install.stats.solar
         return absorbtion
 
     def getShieldRegenerationRate( self ):
@@ -561,13 +606,13 @@ class FlagShip( ShipWithTurrets ):
                 space = space+turret.install.stats.specialValue
         return space
 
-    def getHangarUse( self ):
+    def getHangarUse( self, game ):
         space = 0
         for missile in self.missiles:
-            space = space+self.missiles[missile].amount*stats.statsDict[ missile ].hangarSpaceNeed
+            space = space+self.missiles[missile].amount*game.stats[ missile ].hangarSpaceNeed
 
         for ship in self.shipyards:
-            space = space+self.shipyards[ship].getCount()*stats.statsDict[ ship ].hangarSpaceNeed
+            space = space+self.shipyards[ship].getCount()*game.stats[ ship ].hangarSpaceNeed
 
         return space
 
@@ -642,37 +687,39 @@ class FlagShip( ShipWithTurrets ):
 
             turret.buildCost = toBuild.timeToBuild # oreCostToBuild
             turret.build = 0
+            
+        turret.updateBuildingOptions()
 
     def destroyTurret( self, turret ):
         turret.weapon = None
 
-    def buildShip( self, toBuild, switch=False ):
+    def buildShip( self, game, toBuild, switch=False ):
         if switch and self.shipyards[ toBuild ].building:
             self.shipyards[ toBuild ].building = False
-            self.energy = self.energy+stats.statsDict[ toBuild ].energyCostToBuild
-            self.ore = self.ore+stats.statsDict[ toBuild ].oreCostToBuild
+            self.energy = self.energy+game.stats[ toBuild ].energyCostToBuild
+            self.ore = self.ore+game.stats[ toBuild ].oreCostToBuild
         else:
             self.shipyards[ toBuild ].building = True
             self.shipyards[ toBuild ].build = 0
-            self.shipyards[ toBuild ].buildCost = stats.statsDict[ toBuild ].timeToBuild
-            self.energy = self.energy-stats.statsDict[ toBuild ].energyCostToBuild
-            self.ore = self.ore-stats.statsDict[ toBuild ].oreCostToBuild
+            self.shipyards[ toBuild ].buildCost = game.stats[ toBuild ].timeToBuild
+            self.energy = self.energy-game.stats[ toBuild ].energyCostToBuild
+            self.ore = self.ore-game.stats[ toBuild ].oreCostToBuild
 
-    def buildMissile( self, toBuild, switch=False ):
+    def buildMissile( self, game, toBuild, switch=False ):
         if switch and self.missiles[ toBuild ].building:
             self.missiles[ toBuild ].building = False
-            self.energy = self.energy+stats.statsDict[ toBuild ].energyCostToBuild
-            self.ore = self.ore+stats.statsDict[ toBuild ].oreCostToBuild
+            self.energy = self.energy+game.stats[ toBuild ].energyCostToBuild
+            self.ore = self.ore+game.stats[ toBuild ].oreCostToBuild
         else:
             self.missiles[ toBuild ].building = True
             self.missiles[ toBuild ].build = 0
-            self.missiles[ toBuild ].buildCost = stats.statsDict[ toBuild ].timeToBuild
-            self.energy = self.energy-stats.statsDict[ toBuild ].energyCostToBuild
-            self.ore = self.ore-stats.statsDict[ toBuild ].oreCostToBuild
+            self.missiles[ toBuild ].buildCost = game.stats[ toBuild ].timeToBuild
+            self.energy = self.energy-game.stats[ toBuild ].energyCostToBuild
+            self.ore = self.ore-game.stats[ toBuild ].oreCostToBuild
 
-    def canBuild( self, toBuild ):
-        return self.energy >= stats.statsDict[ toBuild ].energyCostToBuild \
-          and self.ore >= stats.statsDict[ toBuild ].oreCostToBuild
+    def canBuild( self, game, toBuild ):
+        return self.energy >= game.stats[ toBuild ].energyCostToBuild \
+          and self.ore >= game.stats[ toBuild ].oreCostToBuild
 
     def launchMissile( self, type, (x,y) ):
         self.missiles[ type ].target = (x,y)
@@ -690,29 +737,7 @@ class FlagShip( ShipWithTurrets ):
         return ShipWithTurrets.hit( self, game, angle, sender, energy, mass, pulse )
 
     def selfDestruct( self, game ):
-      if self.alive:
-        # get explosion radius
-        radius = self.stats.maxRadius
-        for turret in self.turrets:
-            if turret.install and turret.insta.stats.special == ids.T_GENERATOR:
-                radius += turret.install.stats.specialValue
-
-        # die and explode
-        (ao,ro,fxs) = self.die( game)
-        fxs.append( GfxExplosion( (self.xp,self.yp), radius, sound=ids.S_EX_NUKE ) )
-        
-        # hit ships in explosion range
-        maxDamage = 1000
-        for obj in game.objects:
-            if obj.alive:
-                dist = distLowerThanObjectsReturn( self, obj, radius+obj.stats.maxRadius )
-                if dist:
-                    angle = angleBetweenObjects( obj, self )
-                    (ao1, ro1, fxs1 ) = obj.hit( game, angle, self.player, mass=maxDamage*dist/radius )
-
-        return (ao,ro,fxs)
-      else:
-        return ([],[],[])
+        self.selfDestructCommand = True
 
 class OrbitalBase( FlagShip ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
