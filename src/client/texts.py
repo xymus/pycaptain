@@ -13,6 +13,8 @@ class Texts( Rc ):
         self.loadingSounds = "Loading sounds"
         self.loadingTexts = "Loading texts"
         self.loadingPreferences = "Loading preferences"
+        self.loadingScreens = "Loading screens"
+        self.loadingDone = "Done"
 
     def loadAll( self ): # useless with the current system
         yield 0

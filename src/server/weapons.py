@@ -21,27 +21,30 @@ def explode( self, game, explosionRange, energyDamage=0, massDamage=0, pulseLeng
         
     ag.append( GfxExplosion( self.pos, explosionRange, sound=sound ) )
     
-    return (ao, ro+ro0, ag+ag0)
+    return (ao, ro, ag)
 
 class Weapon:
     def __init__( self, stats ):
         self.stats = stats
         self.lastFireAt = 0
+	self.weaponSet = 0
 
     def canFire( self, ship, game ):
-        return self.lastFireAt + self.stats.freqOfFire < game.tick
+        return self.lastFireAt + self.stats.freqOfFire/len( ship.stats.weaponPositions ) < game.tick
 
     def fire( self, ship, game ):
         self.lastFireAt = game.tick
         return ([],[],[])
 
     def getPoss( self, ship, game ):
-         for pos in ship.stats.weaponPositions:
-            yield (ship.xp + pos.dist*cos(pos.angle+ship.ori), ship.yp + pos.dist*sin(pos.angle+ship.ori) )
- 
+        for pos in ship.stats.weaponPositions[ self.weaponSet ]:
+           yield (ship.xp + pos.dist*cos(pos.angle+ship.ori), ship.yp + pos.dist*sin(pos.angle+ship.ori) )
+ 	self.weaponSet = (self.weaponSet+1)%len( ship.stats.weaponPositions )
+
 class WeaponTurret( Weapon ):
     def canFire( self, ship, turret, game ):
-        return Weapon.canFire( self, ship, game ) \
+    #    return Weapon.canFire( self, ship, game ) \
+        return self.lastFireAt + self.stats.freqOfFire/len( turret.install.stats.weaponPositions ) < game.tick \
            and ship.energy >= turret.install.stats.energyPerUse \
            and ship.ore >= turret.install.stats.orePerUse
 
@@ -53,8 +56,9 @@ class WeaponTurret( Weapon ):
 
     def getPoss( self, ship, turret, game ):
         turretPos = ship.getTurretPos( turret )
-        for pos in turret.install.stats.weaponPositions:
+        for pos in turret.install.stats.weaponPositions[ self.weaponSet ]:
             yield (turretPos[0] + pos.dist*cos(pos.angle+turret.rr+ship.ori), turretPos[1] + pos.dist*sin(pos.angle+turret.rr+ship.ori) )
+ 	    self.weaponSet = (self.weaponSet+1)%len( turret.install.stats.weaponPositions )
 
 class LaserWeapon( Weapon ):
     def fire( self, ship, game, target ):
@@ -241,7 +245,7 @@ class Missile( Ship ):
             angle = utils.angleDiff( destAngle, self.ori )
 
             absAngle = fabs( angle )
-            if absAngle > self.stats.maxRg: # *(config.fps/10): #*5:
+            if absAngle > self.stats.maxRg*2: # *(config.fps/10): #*5:
                 if angle > 0:
                     self.rg = self.stats.maxRg
                 else:
@@ -252,7 +256,7 @@ class Missile( Ship ):
  	    self.thrust = self.stats.maxThrust
         
 
-            if utils.distLowerThan( (self.xp,self.yp), target, self.stats.maxRadius*2 ):
+            if utils.distLowerThan( (self.xp,self.yp), target, self.stats.maxRadius*4 ):
                  (ao1, ro1, ag1) = self.explode( game )
                  (ao, ro, ag) = (ao+ao1, ro+ro1, ag+ag1)
              #    self.alive = False
@@ -339,7 +343,7 @@ class MinerMissile( NukeMissile ):
         for i in range( self.nbrMines ):
             dist = random()*self.explosionRange
             angle = random()*2*pi
-            ao.append( Mine( (self.xp+cos(angle)*dist,self.yp+sin(angle)*dist), self.zp, (0,0), self.weapon, self.minesRange, self.minesRange/2 ) )
+            ao.append( Mine( game.stats.MINE, (self.xp+cos(angle)*dist,self.yp+sin(angle)*dist), self.zp, (0,0), self.weapon, self.minesRange, self.minesRange/2 ) )
 
         self.alive = False
         ro0 = [ self ]
@@ -418,8 +422,8 @@ class ExplodingBullet( Object ):
         return (ao,ro,ag)
 
 class Mine( Object ):
-    def __init__( self, (xp,yp), zp, (xi,yi), weapon, explosionRange, detectionRange ):
-        Object.__init__( self, stats.MINE, xp, yp, zp, random()*2*pi, xi, yi, 0, 0 ) # random()*0.01 )
+    def __init__( self, stats, (xp,yp), zp, (xi,yi), weapon, explosionRange, detectionRange ):
+        Object.__init__( self, stats, xp, yp, zp, random()*2*pi, xi, yi, 0, 0 ) # random()*0.01 )
         self.weapon = weapon
         self.ttl = 30*360 #weapon.stats.projectileTtl
         self.detectionRange = detectionRange

@@ -4,7 +4,7 @@ from objects import Object
 class ObjectManager:
     def __init__( self ):
         self.areas = {}
-        self.areaSize = 500
+        self.areaSize = 1000
         self.objects = []
         self.defaultMaxDist = 100000
         
@@ -19,9 +19,9 @@ class ObjectManager:
         if isinstance( pos, Object ):
             pos = pos.pos
             
-        for x in xrange( int(pos[0]-dist), int(pos[0]+dist), self.areaSize):
+        for x in xrange( int(pos[0]-dist), int(pos[0]+dist)+self.areaSize, self.areaSize):
             x = int(x)//self.areaSize
-            for y in xrange( int(pos[1]-dist), int(pos[1]+dist), self.areaSize):
+            for y in xrange( int(pos[1]-dist), int(pos[1]+dist)+self.areaSize, self.areaSize):
                 y = int(y)//self.areaSize
                 area = self.getArea( (x, y) )
                 if area:
@@ -34,9 +34,9 @@ class ObjectManager:
         if isinstance( pos, Object ):
             pos = pos.pos
             
-        for x in xrange( int(pos[0]-dist), int(pos[0]+dist), self.areaSize):
+        for x in xrange( int(pos[0]-dist), int(pos[0]+dist)+self.areaSize, self.areaSize):
             x = int(x)//self.areaSize
-            for y in xrange( int(pos[1]-dist), int(pos[1]+dist), self.areaSize):
+            for y in xrange( int(pos[1]-dist), int(pos[1]+dist)+self.areaSize, self.areaSize):
                 y = int(y)//self.areaSize
                 area = self.getArea( (x, y) )
                 if area:
@@ -49,16 +49,15 @@ class ObjectManager:
         if isinstance( pos, Object ):
             pos = pos.pos
             
-        for x in xrange( int(pos[0]-dist), int(pos[0]+dist), self.areaSize):
+        for x in xrange( int(pos[0]-dist), int(pos[0]+dist)+self.areaSize, self.areaSize):
             x = int(x)//self.areaSize
-            for y in xrange( int(pos[1]-dist), int(pos[1]+dist), self.areaSize):
+            for y in xrange( int(pos[1]-dist), int(pos[1]+dist)+self.areaSize, self.areaSize):
                 y = int(y)//self.areaSize
                 area = self.getArea( (x, y) )
                 if area:
                     for obj in area:
                         yield obj
-                 
-        
+                
     def getAccording( self, pos, dist=None, func=None ):
         """Useless? same as a filter"""
         for obj in self.getWithin( pos, dist ):
@@ -74,9 +73,10 @@ class ObjectManager:
         else:
             dist = maxDist
             
-        for x in xrange( pos[0]-dist, pos[0]+dist, self.areaSize):
+        closestObj = None
+        for x in xrange( pos[0]-dist, pos[0]+dist+self.areaSize, self.areaSize):
             x = int(x)//self.areaSize
-            for y in xrange( pos[1]-dist, pos[1]+dist, self.areaSize):
+            for y in xrange( pos[1]-dist, pos[1]+dist+self.areaSize, self.areaSize):
                 y = int(y)//self.areaSize
                 area = self.getArea( (x, y) )
                 if area:
@@ -84,8 +84,9 @@ class ObjectManager:
                         rdist = distLowerThanReturn( pos, obj.pos, dist )
                         if rdist and (not func or func( obj )):
                             dist = rdist
-                            return obj
-        return None
+                            closestObj = obj
+                        #    return obj
+        return closestObj
         
     def update( self, obj, oldPos, newPos ):
         oldAreaPos = (int(oldPos[0])//self.areaSize, int(oldPos[1])//self.areaSize)
@@ -147,5 +148,8 @@ class ObjectManager:
             else:
                 area.remove( obj )
             
-        self.objects.remove( obj )
+        if not obj in self.objects:
+            print "Error, obj not in manager", obj
+        else:
+            self.objects.remove( obj )
         

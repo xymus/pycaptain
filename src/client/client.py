@@ -9,12 +9,19 @@ from md5 import md5
 
 from screens.gui import Gui
 from screens.join import JoinMenu
+from screens.host import HostMenu
 from screens.ship import MenuShips 
 from screens.loading import LoadingScreen
 from screens.main import MainMenu
 from screens.scenario import ScenarioMenu
 from screens.waiting import WaitingScreen
 from screens.load import LoadMenu
+
+from imgs import Imgs
+from texts import Texts
+from snds import Snds
+from prefs import Prefs
+from mixer import Mixer
 
 from network import Network
 from directnetwork import DirectNetwork
@@ -57,30 +64,34 @@ class Client:
             resolution = None
         else:
             fullscreen = False
-            resolution = (960,680)
+            resolution = (960,680) # (2000,2000) # 
 
         exec( "from displays.%s import %s as Display"%( self.displayName.lower(), self.displayName.capitalize() ) )
-        self.display = Display( resolution, fullscreen )
+        self.display = Display( resolution, fullscreen, title="PyCaptain" )
         
-        splash = LoadingScreen( self.display )
-        mixer, imgs, snds, texts, self.prefs = splash.loadAll()
+     #   splash = LoadingScreen( self.display )
+     #   mixer, imgs, snds, texts, self.prefs = splash.loadAll()
         
-        from server.stats import Stats # TODO REMOVE, for testing purpose only
         
-        self.stats = Stats().statsDict #stats.statsDict
-        self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs, self.stats, 
-            eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot  )
+        self.loadResources()
+  #      mixer, imgs, snds, texts = self.mixer, self.imgs, self.snds, self.texts
+        
+      #  self.stats = Stats().statsDict #stats.statsDict
+      #  self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs, self.stats, 
+      #      eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot, eFullscreen=self.eFullscreen  )
 
-        self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
-            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eLoad=self.eLoad
-            )
-        self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
-            eOk=self.eJoinConnect, eBack=self.eJoinBack 
-            )
-        self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts, eQuit=self.eQuitGame, eOk=self.eShipOk )
-        self.scenarioMenu = ScenarioMenu( self.gui.display, self.gui.imgs, eBack=self.eJoinBack, ePlay=self.ePlay )
-        self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
-        self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eJoinBack, eLoad=self.eLoadGame )
+      #  self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
+      #      eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eLoad=self.eLoad, eHost=self.eHost
+       #     )
+      #  self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
+      #      eOk=self.eJoinConnect, eBack=self.eBackToMainMenu 
+      #      )
+      #  self.hostMenu = HostMenu( self.gui.display, self.gui.imgs, eOk=self.eHostLaunch, eBack=self.eBackToMainMenu 
+      #      )
+      #  self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts, eQuit=self.eQuitGame, eOk=self.eShipOk )
+      #  self.scenarioMenu = ScenarioMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, ePlay=self.ePlay )
+      #  self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
+      #  self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, eLoad=self.eLoadGame )
        
         self.inputs = COInput()
         self.lastInputs = None
@@ -94,10 +105,13 @@ class Client:
         while self.run:
             t0 = time()
 
+            # TODO to be replaced by controler system, first need to standardize GUI according to other screens
             if self.at == "mainmenu":
                 self.mainmenuLoop()
             elif self.at == "join":
                 self.joinLoop()
+            elif self.at == "host":
+                self.hostLoop()
             elif self.at == "game":
                 self.gameLoop()
             elif self.at == "ship":
@@ -204,11 +218,10 @@ class Client:
 
                 self.universe.doTurn()
                 
-                
     def eScreenshot( self, sender, (x,y) ):
-        self.display.takeScreenshot()        
-
-
+        path = self.display.takeScreenshot()
+        self.gui.addMsg( "screenshot saved to %s" % path )
+        
 ### main menu loop ###
     def mainmenuLoop( self ):
         self.mainmenu.draw( self.display )
@@ -224,9 +237,15 @@ class Client:
             
     def eJoin(self, sender, (x,y)):
         self.at = "join"
+            
+    def eHost(self, sender, (x,y)):
+        self.at = "host"
         
     def eScenario( self, sender, (x,y) ):
         self.at = "scenario"
+        
+    def eFullscreen( self, sender, (x,y) ):
+        self.display.toggleFullscreen()
         
 ### load menu loop ###
     def loadLoop( self ):
@@ -316,7 +335,7 @@ class Client:
                 self.joinMenu.ctrlOk.enabled = True
                 self.joinMenu.setError( msg )
             
-    def eJoinBack(self, sender, (x,y)):
+    def eBackToMainMenu(self, sender, (x,y)):
         self.at = "mainmenu"
     
     def eJoinConnect(self, sender, (x,y)):
@@ -334,7 +353,40 @@ class Client:
         
     def eToggleFullscreen(self, sender, (x,y)):
         self.gui.display.toggleFullscreen()
+        
+### host menu loop ###
+    def hostLoop( self ):
+        self.hostMenu.draw( self.display )
+        self.hostMenu.manageInputs( self.display )
+    
+    def eHostLaunch(self, sender, (x,y)):
+        addresses = filter( lambda x: x, self.hostMenu.cServerAdresses.text.split() )
+        username = self.hostMenu.cUser.text
+        adminPassword = self.hostMenu.cAdminPassword.text
+        port = self.hostMenu.cPort.text or config.port
+    
+        from server.server import Server
+        from server.directnetwork import DirectNetwork as DirectNetworkServer
+        self.server = Server( addresses=["localhost"], networkType=DirectNetworkServer, force=True, Scenario=scenario, game=game )
 
+        self.serverThread = Thread( name="server", target=self.server.run )
+        self.serverThread.start()
+
+        sleep( 0.1 )
+        if self.server.network:
+            self.runningServer = True
+            
+            if os.name == "posix":
+                user = os.getlogin()
+            else:
+                user = "echec"
+                
+            self.network = DirectNetwork( self.server.network )
+            self.network.connect( user ) 
+            
+        self.at = "waiting"
+        
+        
 ### ship loop ###
     def shipLoop( self ):
         self.menuShips.draw( self.display )
@@ -394,25 +446,74 @@ class Client:
                 self.gui.addMsg( "saved as %s-%i.pyfl"%(self.server.game.scenario.name, self.server.game.tick) )
             else:
                 self.gui.addMsg( "saving failed" )
+                
+                
+    def loadResources( self ):
+        self.texts = Texts()
+        self.loadingScreen = LoadingScreen( self.display, self.texts )
+        self.imgs = Imgs( self.display )
+        self.loadingScreen.imgs = self.imgs
+        
+        self.loadingScreen.drawStaticSplash( 0, "Loading resources managers" )
+        
+        self.mixer = Mixer()
+        self.snds = Snds( self.mixer )
+        self.prefs = Prefs()
+        
+       # self.loadingScreen.loadMore()
+        
+        self.loadingScreen.drawStaticSplash( 5, self.texts.loadingImages )
+        for i in self.imgs.loadAll( self.display ):
+            self.loadingScreen.drawProgress( 5+i*0.7 )
+            
+            
+            
+        self.loadingScreen.drawStaticSplash( 75, self.texts.loadingSounds )
+        for i in self.snds.loadAll( self.mixer ):
+            self.loadingScreen.drawProgress( 75+i*0.1 )
+
+        self.loadingScreen.drawStaticSplash( 85 , self.texts.loadingTexts )
+        for i in self.texts.loadAll():
+            self.loadingScreen.drawProgress( 85+i*0.05 )
+
+        self.loadingScreen.drawStaticSplash( 90, self.texts.loadingPreferences )
+        for i in self.prefs.loadAll():
+            self.loadingScreen.drawProgress( 90+i*0.05 )
+            
+            
+                    
+        self.loadingScreen.drawStaticSplash( 95, self.texts.loadingScreens )
+        
+        from server.stats import Stats # TODO REMOVE, for testing purpose only
+        self.stats = Stats().statsDict #stats.statsDict
+        
+        self.gui = Gui( self.display, self.mixer, self.imgs, self.snds, self.texts, self.prefs, self.stats, 
+            eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot, eFullscreen=self.eFullscreen  )
+
+        self.loadingScreen.drawProgress( 96 )
+        self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
+            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eLoad=self.eLoad, eHost=self.eHost
+            )
+        self.loadingScreen.drawProgress( 97 )
+        self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
+            eOk=self.eJoinConnect, eBack=self.eBackToMainMenu 
+            )
+        self.hostMenu = HostMenu( self.gui.display, self.gui.imgs, eOk=self.eHostLaunch, eBack=self.eBackToMainMenu 
+            )
+        self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts, eQuit=self.eQuitGame, eOk=self.eShipOk )
+        
+        self.loadingScreen.drawProgress( 98 )
+            
+        self.scenarioMenu = ScenarioMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, ePlay=self.ePlay )
+        self.loadingScreen.drawProgress( 99 )
+        self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
+        self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, eLoad=self.eLoadGame )
+        
+        self.loadingScreen.drawStaticSplash( 100, self.texts.loadingDone )
 
 try:
     import psyco
     psyco.full()
 except ImportError, ex:
     print "Failed to import psyco. Under debian/linux apt-get python-psyco to speed up the game."
-
-#client = Client()
-#
-#try:
-#  if "-s" in argv:
-#    try:
-#        client.run()
-#    except Exception, ex:
-#        print ex
-#  else:
-#    client.run()
-#except KeyboardInterrupt:
-#  print "KeyboardInterrupt"
-#  if client.run:
-#      client.run = False
 

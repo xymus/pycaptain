@@ -23,7 +23,7 @@ def ihypot( h, c ):
         return 0
 
 class Gui( ControlFrame ):
-    def __init__( self, display, mixer, imgs, snds, texts, prefs, stats=None, eQuit=None, eSave=None, eScreenshot=None ):
+    def __init__( self, display, mixer, imgs, snds, texts, prefs, stats=None, eQuit=None, eSave=None, eScreenshot=None, eFullscreen=None ):
         ControlFrame.__init__( self )
         self.display = display
         self.mixer = mixer
@@ -38,13 +38,17 @@ class Gui( ControlFrame ):
 
 
         self.butJump = RoundControl(self.imgs.uiButJump, (self.display.resolution[0]/2+100,30), 30, self.eJump)
+        
         self.butJumpNow = RoundControl(None, (64,30), 30, self.eJumpNow)
         self.ctrlRadar = RoundControlInvisible( (73,70), 77, self.eRadar)
         self.butRadarFullscreen = RectControl( self.imgs.uiButFullscreen, (80,1), (106,22), self.eRadarFullscreen)
         self.butRadar = RectControl( self.imgs.uiButRadar, (80,26), (106,22), self.eRadarFullscreen)
 
         self.butCharge = RectControl( self.imgs.uiButCharge, (self.display.resolution[0]-58,96), (59,22), self.eChargeActivate)
+        self.butCharge.stickLeft = False
         self.butRepair = RectControl( self.imgs.uiButRepair, (self.display.resolution[0]-59,self.display.resolution[1]-99-22), (58,22), self.eRepairActivate)
+        self.butRepair.stickLeft = False
+        self.butRepair.stickTop = False
         self.ctrlRelation = RoundControl(None, (34, self.display.resolution[1]-108), 68, self.eSetRelation)
 
         self.butMsgall = RectControl( None, (0, self.display.resolution[1]-70), (58,22), self.eSendMsgall )
@@ -81,7 +85,8 @@ class Gui( ControlFrame ):
                           self.ctrlSelfDestruct,
                           KeyCatcher( eSave, letter="s" ),
                           KeyCatcher( eQuit, letter="q" ),
-                          KeyCatcher( eScreenshot, letter="p" ) ]
+                          KeyCatcher( eScreenshot, letter="p" ),
+                          KeyCatcher( eFullscreen, letter="f" ) ]
         self.controls = self.controlsMain
 
         self.msgsTTL = 10
@@ -229,6 +234,8 @@ class Gui( ControlFrame ):
                              
         self.informAbout = None
         
+        self.anchorBottom = display.resolution[0]/2
+        
     def reset( self ):
         self.ctrlSelfDestruct.rotation = 0
         self.ctrlSelfDestruct.open = False
@@ -280,6 +287,12 @@ class Gui( ControlFrame ):
             self.display.drawCircle( (255,255,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius )
             if gfx.sound:
                 self.mixer.play( self.snds[ gfx.sound ] )
+                
+        elif isinstance( gfx, GfxJump ):
+          if gfx.delai == 0:
+            self.display.drawCircle( (255,255,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius ) 
+            self.display.drawLine( (255,255,255,255), self.getViewportPos((gfx.xp,gfx.yp)), self.getViewportPos((gfx.xp+2*gfx.radius*cos(gfx.angle),gfx.yp+2*gfx.radius*sin(gfx.angle))), 4 )
+            self.mixer.play( self.snds[ ids.S_EX_JUMP ] )
 
         elif isinstance( gfx, GfxLightning ):
             if gfx.delai == 0:
@@ -324,7 +337,6 @@ class Gui( ControlFrame ):
         if self.centeredOnShip:
             self.camera = ( self.playerStats.xr-self.display.resolution[0]/2,
                             self.playerStats.yr-self.display.resolution[1]/2 )
-        self.display.beginDraw()
 
         self.butJump.enabled = self.playerStats.canJump
         self.butJumpNow.enabled = self.playerStats.canJump
@@ -543,20 +555,20 @@ class Gui( ControlFrame ):
 
 
      ## tubes
-        for i in range( 241, self.display.resolution[0]/2+100 ): # top-left
+        for i in range( 241, self.butJump.center[0] ): # top-left
             self.display.draw( self.imgs.uiTubeTop1, (i,0) )
         
         if self.playerStats.jumpCharge:
-            self.display.drawLine( (0,255,0,255), (self.display.resolution[0]/2+100,14), (self.display.resolution[0]-80,14), 6 )
+            self.display.drawLine( (0,255,0,255), (self.butJump.center[0],14), (self.display.resolution[0]-80,14), 6 )
 
-        for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]-165 ): # top-right
+        for i in range( self.butJump.center[0], self.display.resolution[0]-165 ): # top-right
             self.display.draw( self.imgs.uiTubeTop2, (i,0) )
 
 
      ## jump charge
-        jumpCenter = (self.display.resolution[0]/2+100, 30)
+        jumpCenter = self.butJump.center # (self.display.resolution[0]/2+100, 30)
         if self.playerStats.jumpRecover:
-            self.display.draw( self.imgs.uiAlertYellow, (self.display.resolution[0]/2+100-self.display.getHeight( self.imgs.uiAlertYellow )/2, 30-self.display.getHeight( self.imgs.uiAlertYellow )/2) )
+            self.display.draw( self.imgs.uiAlertYellow, (self.butJump.center[0]-self.display.getHeight( self.imgs.uiAlertYellow )/2, 30-self.display.getHeight( self.imgs.uiAlertYellow )/2) )
             # draw green fill self.imgs.uiJumpRecover
             self.display.drawRoNCutHalfVert( self.imgs.uiJumpFillRecover, jumpCenter, (100-self.playerStats.jumpRecover)*2*pi/3/100, part=1 )
          #   print self.playerStats.jumpRecover
@@ -599,7 +611,7 @@ class Gui( ControlFrame ):
 
 
     ## hangars
-        for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 ) ): # bottom-right
+        for i in range( self.anchorBottom+100, self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 ) ): # bottom-right
             self.display.draw( self.imgs.uiTubeBottom2, (i, self.display.resolution[1]-20) )
     #    for i in range( self.display.resolution[0]/2+100, self.display.resolution[0]*2/3 ): # bottom-right
     #        self.display.draw( self.imgs.uiTubeBottom1, (i, self.display.resolution[1]-10) )
@@ -607,14 +619,14 @@ class Gui( ControlFrame ):
      # missiles
         if len(self.butsMissileLaunch) != len( self.playerStats.missiles ):
             self.butsMissileLaunch = []
-            p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
+            p = self.anchorBottom-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
             for s in self.playerStats.missiles:
                 if s.usable:
                     self.butsMissileLaunch.append( RoundControl( self.imgs.uiButAim, (p+12,self.display.resolution[1]-45), 12, self.eLaunchMissile, uid=s.type) )
                 p = p + self.display.getWidth( self.imgs.uiHangarSlot )
 
         self.butsMissileBuild = []
-        p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
+        p = self.anchorBottom-self.display.getWidth( self.imgs.uiHangarCenter)/2-len( self.playerStats.missiles )*self.display.getWidth( self.imgs.uiHangarSlot)
         self.display.draw( self.imgs.uiHangarLeft, (p-self.display.getWidth( self.imgs.uiHangarLeft ),self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarLeft )) )
         k1 = 0
         for k, s in zip( range( 0, len(self.playerStats.missiles)), self.playerStats.missiles): #i in range( 0, 2 ):
@@ -642,20 +654,25 @@ class Gui( ControlFrame ):
         self.display.draw( self.imgs.uiHangarCenter, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarCenter)) )
    #     self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (self.a,100-self.a) ) 
         if self.playerStats.hangarSpace:
-            self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.display.resolution[0]/2, self.display.resolution[1] - 23), (100*self.playerStats.missilesSpace/self.playerStats.hangarSpace,100*self.playerStats.shipsSpace/self.playerStats.hangarSpace) ) 
-        self.display.draw( self.imgs.uiHangarOver, (self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarOver)/2,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarOver)) )
+            self.display.drawDoubleIncompletePie( (self.imgs.uiHangarMissilesFill, self.imgs.uiHangarShipsFill), (self.anchorBottom, self.display.resolution[1] - 23), (100*self.playerStats.missilesSpace/self.playerStats.hangarSpace,100*self.playerStats.shipsSpace/self.playerStats.hangarSpace) ) 
+        self.display.draw( self.imgs.uiHangarOver, (self.anchorBottom-self.display.getWidth( self.imgs.uiHangarOver)/2,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarOver)) )
 
      ## ships
         if len(self.butsShipLaunch) != len( self.playerStats.ships ):
+            for control in self.butsShipLaunch:
+                self.removeControl( control )
             self.butsShipLaunch = []
-            p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
+            
+            p = self.anchorBottom-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
             for s in self.playerStats.ships:
-                self.butsShipLaunch.append( RoundSwitch( [self.imgs.uiButRecall,self.imgs.uiButLaunch], (p+12,self.display.resolution[1]-45), 12, self.eLaunchShips, uid=s.type) )
+                control = RoundSwitch( [self.imgs.uiButRecall,self.imgs.uiButLaunch], (p+12,self.display.resolution[1]-45), 12, self.eLaunchShips, uid=s.type)
+                control.stickTop = False
+                self.butsShipLaunch.append( control )
+                self.addControl( control )
                 p = p + self.display.getWidth( self.imgs.uiHangarSlot)
-        #    self.controls = self.controls + self.butsShipLaunch
 
         self.butsShipBuild = []
-        p = self.display.resolution[0]/2-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
+        p = self.anchorBottom-self.display.getWidth( self.imgs.uiHangarCenter)/2+self.display.getWidth( self.imgs.uiHangarCenter)
     #    self.display.draw( self.imgs.uiHangarLeft, (p-64,self.display.resolution[1]-39) )
         for k, s in zip( range( 0, len(self.playerStats.ships)), self.playerStats.ships): #i in range( 0, 2 ):
             self.display.draw( self.imgs.uiHangarSlot, (p,self.display.resolution[1]-self.display.getHeight( self.imgs.uiHangarSlot )) )
@@ -676,15 +693,28 @@ class Gui( ControlFrame ):
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
 
         if len(self.butsBuildTurret) != len( self.playerStats.turrets ):
+          for control in self.butsBuildTurret:
+            self.removeControl( control )
           self.butsBuildTurret = []
+          
+          for control in self.butsActivate:
+            self.removeControl( control )
           self.butsActivate = []
+          
           for k, turret in zip( range( 0, len( self.playerStats.turrets ) ), self.playerStats.turrets ):
             if turret.type:
                 img =  self.imgs[turret.type]
             else:
                 img = None
-            self.butsBuildTurret.append( TurretButton( self.imgs.uiTurret, (self.display.resolution[0]-59+16,p+16), 16, self.eBuildTurret, img, uid=k ) )
-            self.butsActivate.append( RectControl( None, (self.display.resolution[0]-47+22,p+5), (177-22,33+10), self.eActivate, uid=k ) )
+            butTurret = TurretButton( self.imgs.uiTurret, (self.display.resolution[0]-59+16,p+16), 16, self.eBuildTurret, img, uid=k )
+            butTurret.stickLeft = False
+            self.butsBuildTurret.append( butTurret )
+            self.addControl( butTurret )
+            
+            butActivate = RectControl( None, (self.display.resolution[0]-47+22,p+5), (177-22,33+10), self.eActivate, uid=k )
+            butActivate.stickLeft = False
+            self.butsActivate.append( butActivate )
+            self.addControl( butActivate )
             p = p+33+8
       #    for k, turret in zip( range( 0, tc ), self.playerStats.turrets ):
       #      self.display.draw( self.imgs.uiTurret, (self.display.resolution[0]-59, p) )
@@ -728,9 +758,10 @@ class Gui( ControlFrame ):
                         break
 
      ## buttons
-        for button in self.controls+self.butsShipLaunch+self.butsBuildTurret+self.butsBuildOption+self.butsMenu+self.butsActivate+self.butsMissileLaunch:
+        ControlFrame.draw( self, display, skipFinalize=True )
+        for button in self.butsBuildOption+self.butsMenu+self.butsActivate+self.butsMissileLaunch: # +self.butsBuildTurret self.controls+self.butsShipLaunch+
             button.draw( self.display )
-      #  self.display.draw( self.imgs.uiRadar, (0,0) )
+            
         self.display.draw( self.imgs.uiTopLeft1, (0,0) )
 
         self.display.drawText( "ore %i" % self.playerStats.ore, (self.display.resolution[0]-80,self.display.resolution[1]-29), (50,50,255,255) )
@@ -830,16 +861,7 @@ class Gui( ControlFrame ):
         ControlFrame.manageInputs( self, display )
         inputs = self.inputs
         
-     #   self.display = display
-     #   (quit,inputs) = self.display.getInputs( inputs )
-
         quit = self.quit
-    #    for key in inputs.keys:
-    #      if key[0] == ord("q"):
-    #        self.eQuit( self, (0,0) )
-            #quit = True
-    #      if key[0] == ord("s"):
-    #        self.display.takeScreenshot()
 
         self.orders = []
         hit = False
@@ -853,7 +875,7 @@ class Gui( ControlFrame ):
         if inputs.mouseUpped:
             inputs.mouseUpped = False
         #    for button in self.controls:
-            controls = self.controls+self.butsShipBuild+self.butsMissileBuild+self.butsShipLaunch+self.butsBuildTurret+self.butsBuildOption+self.butsMenu+self.butsActivate+self.butsMissileLaunch
+            controls = self.controls+self.butsShipBuild+self.butsMissileBuild+self.butsBuildOption+self.butsMenu+self.butsActivate+self.butsMissileLaunch # +self.butsBuildTurretself.butsShipLaunch+
 
             for i in range(len(controls)-1,-1,-1):
                 if controls[ i ].hits( inputs.mouseUpAt ):

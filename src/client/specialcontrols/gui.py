@@ -23,7 +23,7 @@ class GuiBackFullscreenRadar( RectControl ):
              ids.U_ENNEMY: (255,0,0,255),
              ids.U_ORBITABLE: (127,127,127,255) }
         
-    def draw( self, display ):
+    def draw( self, display, focused=False, over=False ):
         if self.visible:
             display.clear()
             if self.playerStats:
@@ -52,11 +52,8 @@ class GuiBackFullscreenRadar( RectControl ):
 class UiPanel( Control ):
     pass
     
-class SelfDestructButton( Control ):
-    pass
-    
 class Radar( Control ):
-    def draw( self, display ):
+    def draw( self, display, focused=False, over=False ):
     
         for obj in self.objects:
             if self.radarColors.has_key( obj.relation ):
@@ -104,6 +101,9 @@ class SelfDestructControl( Control ):
         
         self.img = imgs.ctrlSelfDestructBack
         
+       # self.alert = imgs.uiAlertYellow
+        self.alert = imgs.uiAlertYellowLarge
+        
         self.ctrlOpen = RoundControl( imgs.ctrlSelfDestructOpen, (0,0), 20, fUpEvent=self.eOpen )
         self.ctrlOpen.distFromMain = 25
         self.ctrlOpen.angleFromMain = 0
@@ -121,7 +121,7 @@ class SelfDestructControl( Control ):
             self.ctrlClose,
             self.ctrlExplode ]
         
-    def draw( self, display ):
+    def draw( self, display, focused=False, over=False ):
         if self.open:
             if self.rotation != pi:
                 if self.rotation + self.rotationSpeed > pi:
@@ -132,7 +132,12 @@ class SelfDestructControl( Control ):
             if self.rotation != 0:
                 self.rotation = min( 2*pi, self.rotation+self.rotationSpeed ) % (2*pi)
            
+        if self.rotation != 0:
+       #     display.draw( self.alert, (self.ctrlExplode.center[0]-display.getWidth(self.alert)/2, self.ctrlExplode.center[1]-display.getHeight(self.alert)/2) )
+            display.draw( self.alert, (self.center[0]-display.getWidth(self.alert)/2, self.center[1]-display.getHeight(self.alert)/2) )
+        
         display.drawRo( self.img, self.center, self.rotation )
+        
         
         for control in self.controls: 
             angle = control.angleFromMain-self.rotation

@@ -14,14 +14,18 @@ class ScenarioMenu( ControlFrame ):
         
         self.ctrlPlay =     LightControlLeft( (260,550), ePlay, "Play", imgs )
         self.ctrlBack =     LightControlRight( (600,550), eBack, "Back to menu", imgs )
-        self.ctrlPrev =     LightControlLeft( (260,400), self.ePrev, "Previous scenario", imgs )
-        self.ctrlNext =     LightControlRight( (600,400), self.eNext, "Next scenario", imgs )
+        self.ctrlPrev =     LightControlLeft( (260,450), self.ePrev, "Previous scenario", imgs )
+        self.ctrlNext =     LightControlRight( (600,450), self.eNext, "Next scenario", imgs )
         
         self.lblTitle =     Label( (80,76), "", textSize=20 )
         self.lblYear =     Label( (96,100), "" )
-        self.lblDescription =      Label( (88,120), "" )
+        self.lblDescription =      Label( (88,120), "", maxWidth=460, maxHeight=300 )
         
-        controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
+      #  self.imgScreen = ImageHolder( None, (620,60) )
+        self.imgBack = ImageHolder( imgs.splashBack, (0,0) )
+        
+        controls =   [  self.imgBack,
+      #                  self.imgScreen,
                        #ImageHolder( imgs.gameTitle, (40,40) ),
                         self.ctrlPlay,
                         self.ctrlBack,
@@ -31,14 +35,15 @@ class ScenarioMenu( ControlFrame ):
                         self.lblDescription,
                         self.lblYear,
                         RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ),
-                        RotatingImageHolder( imgs[ ids.S_AI_FS_0 ], (620,453), ri=0.003 ),
+                        RotatingImageHolder( imgs[ ids.S_AI_FS_0 ], (620,503), ri=0.003 ),
                         #RotatingImageHolder( imgs[ ids.S_HUMAN_FS_1 ], (445,330), r=pi*3/8 ),
-                        KeyCatcher( eBack, letter="q" )
+                        KeyCatcher( eBack, letter="q" ),
                         ]
 
         self.addControls( controls )
         
         self.scenarios = []
+        self.scenarioImgs = []
         for name in scenarios.scenarioNames:
             imported = False
             try:
@@ -49,9 +54,20 @@ class ScenarioMenu( ControlFrame ):
                 
             if imported:
                 self.scenarios.append( Scenario )
-               # print Scenario.title
+                img = None
+                
+                try:
+                    img = imgs.loadImageWithDisplay( "scenarios/%s.jpg" % name )
+                except Exception, ex:
+                    print ex, "scenarios/%s.png" % name
+                    
+                if not img:
+                    img = imgs.splashBack
+                self.scenarioImgs.append( img ) # [ Scenario ]
+                    
+                    
               
-        self.scenarios.sort( cmp=self.cmpScenarios )
+    #    self.scenarios.sort( cmp=self.cmpScenarios )
                
         self.updateInfo( 0 )
     def cmpScenarios( self, x, y ):
@@ -69,6 +85,7 @@ class ScenarioMenu( ControlFrame ):
         self.lblTitle.text = self.scenarios[ self.kScenario ].title
         self.lblDescription.text = self.scenarios[ self.kScenario ].description
         self.lblYear.text = "year %i" % self.scenarios[ self.kScenario ].year
+        self.imgBack.img = self.scenarioImgs[ self.kScenario ]
        
     def ePrev( self, sender, (x,y) ):
         self.updateInfo( (self.kScenario-1)%len( self.scenarios ) )

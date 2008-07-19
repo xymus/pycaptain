@@ -117,3 +117,20 @@ class GfxLightning( Gfx ):
         Gfx.doTurn( self )
         return [ self ]
 
+class GfxJump( Gfx ):
+    def __init__( self, (xp,yp), radius, angle=0, delai=0 ):
+        self.xp = xp
+        self.yp = yp
+        self.radius = radius
+        self.angle = angle
+        self.delai = delai
+        self.maxRadius = radius
+
+    def doTurn( self ):
+        if self.delai == 0:
+            return [ self ] + Gfx.doTurn( self )
+        else:
+            self.delai = self.delai - 1
+            return Gfx.doTurn( self )
+        
+    

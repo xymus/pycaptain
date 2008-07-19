@@ -133,7 +133,8 @@ class Imgs( Rc ):
         self[ ids.S_EXTRA_HARVESTER] = self.loadImage( "ships/extra-harvester.png" )
 
         yield 41
-        self[ ids.A_NEBULA ] = self.loadImage( "nebula.png" ) 
+        self[ ids.A_NEBULA_OVER ] = self.loadImage( "nebula/over.png" ) 
+        self[ ids.A_NEBULA_UNDER ] = self.loadImage( "nebula/under.png" ) 
         self[ ids.A_BLACK_HOLE ] = self.loadImage( "planets/black-hole.png" )
 
        # self[ 9 ] = self.loadImage( "ship.png" ) 
@@ -280,7 +281,8 @@ class Imgs( Rc ):
         self[ ids.B_AI_0 ] = self.loadImage( "projectiles/ai.png" )  
         self[ ids.B_ESPHERE ] = self.loadImage( "projectiles/esphere.png" )  
         self[ ids.B_WAVE_0 ] = self.loadImage( "projectiles/wave-0.png" )  
-        self[ ids.B_WAVE_1 ] = self.loadImage( "projectiles/wave-1.png" )  
+        self[ ids.B_WAVE_1 ] = self.loadImage( "projectiles/wave-1.png" ) 
+        self[ ids.B_EGG_0 ] = self.loadImage( "projectiles/egg.png" )
 
         yield 57
         self.background =  self.loadImageWithDisplay( "background0.jpg" ) 
@@ -427,6 +429,9 @@ class Imgs( Rc ):
         self.uiAlertYellowLarge = self.loadAnimation( "ui/alerts/light-yellow-large.png", 20 )
 
         self.option = self.loadImageWithDisplay( "ui/option.png" )
+        
+        self.boxBack = self.loadImageWithDisplay( "controls/box/back.png" )
+  #      self.scenario = self.loadImageWithDisplay( "scenarios/Dragons.png" )
 
         yield 93
         self.shipsIcons = { ids.S_HUMAN_FIGHTER: self.loadImageWithDisplay( "icons/ships/fighter.png" ),

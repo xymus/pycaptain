@@ -12,7 +12,7 @@ class Display:
     """Abstract Display class. Contains a few common functions.
        Inspire yourself from displays.sdl to implement another display engine."""
        
-    def __init__(self, resolution=( 640, 640 ), fullscreen=False):
+    def __init__(self, resolution=( 640, 640 ), fullscreen=False, title="Game"):
         self.fonts = {}
         
         self.cursorArrow = None
@@ -49,14 +49,14 @@ class Display:
     def _loadFont( self, size, path=None ):
         raise Exception( "Abstract function, should not be used" )
 
-    def drawText( self, text, (x,y), color=(255,255,255,255), size=15 ):
+    def drawText( self, text, (x,y), color=(255,255,255,255), size=15, maxWidth=None, maxHeight=None ):
         if not self.fonts.has_key( size ):
             try:
                 self.fonts[ size ] = self._loadFont( size, os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ) )
             except:
                 self.fonts[ size ] = self._loadFont( size ) # pygame.font.get_default_font()
 
-        self._drawFont( text, self.fonts[ size ], color, (x,y) )
+        self._drawFont( text, self.fonts[ size ], color, (x,y), maxWidth, maxHeight )
 
     def drawRect( self, rect, color, width=0 ):
         raise Exception( "Abstract function, should not be used" )

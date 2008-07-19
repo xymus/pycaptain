@@ -10,7 +10,7 @@ from client.imgs import Animation
 from . import Display
 
 class Sdl( Display ):
-    def __init__(self, resolution=( 640, 640 ), fullscreen=False):
+    def __init__(self, resolution=( 640, 640 ), fullscreen=False, title="Game"):
         Display.__init__(self)
         self.nfsResolution = resolution
         self.resolution = resolution
@@ -22,6 +22,7 @@ class Sdl( Display ):
         self.toggleFullscreen( fullscreen )
 
         self.screen = pygame.display.get_surface()
+        pygame.display.set_caption( title )
 
         self.fonts = {}
 
@@ -45,11 +46,12 @@ class Sdl( Display ):
 
         if fullscreen:
             self.resolution = pygame.display.list_modes()[0]
-            pygame.display.set_mode( self.resolution )
+            pygame.display.set_mode( self.resolution, pygame.HWSURFACE|pygame.HWACCEL )
             self.fullscreen = pygame.display.toggle_fullscreen()
         else:
+            self.resolution = self.nfsResolution
             self.fullscreen = fullscreen
-            pygame.display.set_mode( self.nfsResolution )
+            pygame.display.set_mode( self.nfsResolution, pygame.HWSURFACE|pygame.HWACCEL )
 
     def getSubsurface( self, image, rect ):
         return image.subsurface( rect )
@@ -76,11 +78,31 @@ class Sdl( Display ):
     def drawClipped( self, img, pos, src ):
         self.screen.blit( img, pos, src )
 
-    def _drawFont( self, text, font, color, pos ):
+    def _drawFont( self, text, font, color, pos, maxWidth=None, maxHeight=None ):
         if os.name == "nt":
             pos = (pos[0],pos[1]-6)
-        s = font.render( text, True, color )
-        self._draw( s, pos )
+            
+        if not maxWidth and not maxHeight:
+            s = font.render( text, True, color )
+            self._draw( s, pos )
+        else:
+            lines = text.split( "\n" )
+            lineNbr = 0
+            for line in lines:
+                words = line.split()
+                while words and (not maxHeight or maxHeight > (lineNbr+1)*font.get_linesize() ):
+                    wordsOnLine = 1
+                    while wordsOnLine <= len(words) and font.size( " ".join( words[ :wordsOnLine ] ) )[0] < maxWidth:
+                        wordsOnLine += 1
+                    wordsOnLine -= 1
+                    
+                    lineText = " ".join( words[ :wordsOnLine ] )
+                    words = words[ wordsOnLine: ]
+                    
+                    s = font.render( lineText, True, color )
+                    self._draw( s, (pos[0],pos[1]+lineNbr*font.get_linesize()) )
+                    lineNbr += 1
+            
     
     def _loadFont( self, size, path=None ):
         return pygame.font.Font( os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ), size )
@@ -180,8 +202,8 @@ class Sdl( Display ):
     def takeScreenshot( self, path=None ):
         if not path:
             path = os.path.join( sys.path[0], "screen-%i.bmp"%time() )
-        print "screenshot saved to %s" % path
         pygame.image.save( self.screen, path )
+        return path
 
 
 

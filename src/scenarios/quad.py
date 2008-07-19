@@ -108,7 +108,7 @@ class Quad ( Scenario ):
             asteroid = Asteroid( game, self.gamma[0].xp+dist*cos(angle), self.gamma[0].yp+dist*sin(angle), area[1] )
             game.harvestables.append( asteroid )
 
-        nebula2 = Nebula( game.stats.A_NEBULA_2, 8000, -16000 )
+        nebula2 = Nebula( game.stats.A_NEBULA, 8000, -16000 )
 
         blackHole0 = BlackHole( game.stats.BH_0, -30000, -20000 )
 

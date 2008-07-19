@@ -14,6 +14,8 @@ class ControlFrame:
         self.inputs = None
         self.lastControlAdded = None
         self.inputs = COInput()
+        
+        self.lastResolution = None
 
     def addControl( self, control ):
         self.controls.append( control )
@@ -33,6 +35,20 @@ class ControlFrame:
     def addControls( self, controls ):
         for control in controls:
             self.addControl( control )
+            
+    def removeControl( self, control ):
+        self.controls.remove( control )
+        for k,v in self.tabOrder.iteritems():
+            if v == control:
+                self.tabOrder[ k ] = self.tabOrder[control]
+                del self.tabOrder[ control ]
+                break
+        for k,v in self.tabOrderReverse.iteritems():
+            if v == control:
+                self.tabOrderReverse[ k ] = self.tabOrderReverse[control]
+                del self.tabOrderReverse[ control ]
+                break
+        
 
     def setControls( self, controls ):
         self.controls = []
@@ -90,14 +106,30 @@ class ControlFrame:
 
         return quit
         
-    def draw( self, display ):
+    def draw( self, display, skipFinalize=False ):
+        if not self.lastResolution:
+            self.lastResolution = display.resolution
+        elif self.lastResolution != display.resolution:
+        #    print "moving controls"
+            diffWidth = display.resolution[0]-self.lastResolution[0]
+            diffHeight = display.resolution[1]-self.lastResolution[1]
+            print diffWidth, diffHeight, self.lastResolution, display.resolution
+            for control in self.controls:
+                if isinstance( control, Control ):
+                    if not control.stickLeft: # sticks to the right of the screen
+                        control.topLeft = ( control.topLeft[0]+diffWidth, control.topLeft[1] )
+                    if not control.stickTop: # sticks to the bottom of the screen
+                        control.topLeft = ( control.topLeft[0], control.topLeft[1]+diffHeight )
+            self.lastResolution = display.resolution
+                
         display.beginDraw()
         for control in self.controls:
             control.draw( display, 
                 focused=(control==self.selected), 
                 over=(control.fIn and control.fIn( control, self.inputs.mousePos )) 
                 )
-        display.finalizeDraw()
+        if not skipFinalize:
+            display.finalizeDraw()
         # TODO be careful here as it might be used twice in some menus
 
 class ControlBase:
@@ -129,6 +161,9 @@ class Control( ControlBase ):
         self.visible = True
         self.eEnter = None
         self.selectable = True
+        
+        self.stickLeft = True
+        self.stickTop = True
         
   #  def fIn( self, (x,y) ):
   #      return False
@@ -167,9 +202,10 @@ class RoundControl( Control ):
             dist = hypot( y-self.center[1], x-self.center[0] )
             return dist <= self.radius
         
-        self.center = center
+     #   self.center = center
         self.radius = radius
         Control.__init__( self, img, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent, uid=uid )
+    center = property( fget=lambda self: (self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
 
 class RectControl( Control ):
      def __init__( self, img, (rx,ry), (rw,rh), fUpEvent, fDownEvent=None, uid=None ):
@@ -202,7 +238,7 @@ class RoundSwitch( RoundControl ):
         self.imgs = imgs
         self.state = 0
 
-    def draw( self, display ):
+    def draw( self, display, focused=False, over=False ):
       if self.visible:
         self.img = self.imgs[ self.state ]
         RoundControl.draw( self, display )
@@ -213,9 +249,10 @@ class RoundControlInvisible( Control ):
             dist = hypot( y-self.center[1], x-self.center[0] )
             return dist <= radius
 
-        self.center = center
+    #    self.center = center
         self.radius = radius
         Control.__init__( self, None, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent )
+    center = property( fget=lambda self: (self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
 
     def draw( self, display, focused=False, over=False ):
         pass
@@ -257,18 +294,20 @@ class TextBox( RectControl ):
       return False
 
 class Label( Control ):
-    def __init__( self, topLeft, text, textSize=15 ):
+    def __init__( self, topLeft, text, textSize=15, maxWidth=None, maxHeight=None ):
         Control.__init__( self, None, topLeft, None, None, None, uid=None )
         self.text = text
         self.selectable = False
         self.textSize = textSize
+        self.maxWidth = maxWidth
+        self.maxHeight = maxHeight
 
     def hits( self, up=None, down=None ):
         pass
 
     def draw( self, display, focused=False, over=False ):
-      if self.visible:
-        display.drawText( self.text, self.topLeft, size=self.textSize )
+        if self.visible:
+            display.drawText( self.text, self.topLeft, size=self.textSize, maxWidth=self.maxWidth, maxHeight=self.maxHeight )
 
 class LabelButton( RectControl ):
      def __init__( self, (rx,ry), (rw,rh), fUpEvent, text, fDownEvent=None, uid=None ):
@@ -276,20 +315,15 @@ class LabelButton( RectControl ):
         self.text = text
 
      def draw( self, display, focused=False, over=False ):
-      if self.visible:
-        if self.enabled:
-            color = (255,255,255,255)
-        else:
-            color = (128,128,128,255)
-        display.drawText( self.text, (self.topLeft[0]+self.rw/3,self.topLeft[1]+4 ), color=color )
-        display.drawRect( (self.topLeft[0], self.topLeft[1], self.rw, self.rh), color=color, width=1 )
-        if focused:
-            display.drawRect( (self.topLeft[0]+1, self.topLeft[1]+1, self.rw-2, self.rh-2), color=color, width=1 )
-        #display.drawLine( (255,255,255,255), self.topLeft, (self.topLeft[0]+self.rw,self.topLeft[1]) )
-        #display.drawLine( (255,255,255,255), self.topLeft, (self.topLeft[0],self.topLeft[1]+self.rh) )
-
-        #display.drawLine( (255,255,255,255), (self.topLeft[0]+self.rw,self.topLeft[1]), (self.topLeft[0]+self.rw,self.topLeft[1]+self.rh) )
-        #display.drawLine( (255,255,255,255), (self.topLeft[0],self.topLeft[1]+self.rh), (self.topLeft[0]+self.rw,self.topLeft[1]+self.rh) )
+        if self.visible:
+            if self.enabled:
+                color = (255,255,255,255)
+            else:
+                color = (128,128,128,255)
+            display.drawText( self.text, (self.topLeft[0]+self.rw/3,self.topLeft[1]+4 ), color=color )
+            display.drawRect( (self.topLeft[0], self.topLeft[1], self.rw, self.rh), color=color, width=1 )
+            if focused:
+                display.drawRect( (self.topLeft[0]+1, self.topLeft[1]+1, self.rw-2, self.rh-2), color=color, width=1 )
 
 class ProgressBar( RectControl ):
      def __init__( self, (rx,ry), (rw,rh), uid=None ):
@@ -317,12 +351,28 @@ class KeyCatcher( ControlBase ):
         return False
 
 class Panel( RectControl ):
-    def __init__( self, (x,y) ):
+    def __init__( self, (x,y), (rw,rh) ):
         self.selectable = False
+        self.controls = []
+        
+    def draw( self, display, focused=False, over=False ):
+        for control in self.controls: 
+            print control
+            control.draw( display )
 
-class ImageHolder( Control ):
-    def __init__( self, img, topLeft ):
-        Control.__init__( self, img, topLeft, None )
+    def hits( self, up=None, down=None ):
+        for control in self.controls: 
+            if control.hits( up=up, down=down ):
+                return True
+        return False
+        
+
+class ImageHolder( RectControl ):
+    def __init__( self, img, topLeft, size=(0,0) ):
+        if not topLeft:
+            topLeft=(0,0)
+      #  print topLeft, size
+        RectControl.__init__( self, img, topLeft, size, None )
         self.enabled = False
         self.selectable = False
 

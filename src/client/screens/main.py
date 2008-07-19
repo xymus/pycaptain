@@ -19,10 +19,9 @@ class MainMenu( Screen ):
         self.ctrlOptions =  LightControlLeft( (260,550), eOptions, "Options", imgs )
         self.ctrlQuit =     LightControlRight( (600,550), eQuit, "Quit", imgs )
         
-  #      self.ctrlLoad.enabled = False
         self.ctrlCampaign.enabled = False
-        self.ctrlHost.enabled = False
         self.ctrlOptions.enabled = False
+        self.ctrlHost.enabled = False
         
         controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
                         ImageHolder( imgs.gameTitle, (40,40) ),

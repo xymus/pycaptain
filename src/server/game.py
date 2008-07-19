@@ -52,24 +52,31 @@ class Game:
         for player in self.players:
             player.doTurn( self )
 
-       ### move objects
+       ### do turn objects
         ts = {}
-        for o0 in utils.mY( self.objects.objects, self.astres ):
+        for o0 in self.objects.objects:
           if o0.alive:
             t0 = time()
             
             oldPos = o0.pos
             ( addedObjectsLocal, removedObjectsLocal, addedGfxsLocal ) =  o0.doTurn( self )
             self.objects.update( o0, oldPos, o0.pos )
-
-            if addedObjectsLocal:
-                addedObjects = addedObjects + addedObjectsLocal
-            if removedObjectsLocal:
-                removedObjects = removedObjects + removedObjectsLocal 
-            if addedGfxsLocal:
-                addedGfxs = addedGfxs+addedGfxsLocal 
+            ( addedObjects, removedObjects, addedGfxs ) = ( addedObjects+addedObjectsLocal, removedObjects+removedObjectsLocal, addedGfxs+addedGfxsLocal )
+            
             t1 = time()
             ts[ o0 ] = t1-t0
+            
+       ### do turn astres
+        for o0 in self.astres:
+          if o0.alive:
+            t0 = time()
+            
+            ( addedObjectsLocal, removedObjectsLocal, addedGfxsLocal ) =  o0.doTurn( self )
+            ( addedObjects, removedObjects, addedGfxs ) = ( addedObjects+addedObjectsLocal, removedObjects+removedObjectsLocal, addedGfxs+addedGfxsLocal )
+            
+            t1 = time()
+            ts[ o0 ] = t1-t0
+            
         # tests delai for each objects
         ho = None
         bt = 0

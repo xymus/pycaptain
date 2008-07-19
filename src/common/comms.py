@@ -401,6 +401,8 @@ class COGfxs:
                 dump = dump + ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i:%i" % (ids.G_FRAGMENT, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type,gfx.ttl)
             elif isinstance( gfx, GfxLightning ):
                 dump = dump + ";%i:%i:%i:%i:%i:%i:%i" % (ids.G_LIGHTNING, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
+            elif isinstance( gfx, GfxJump ):
+                dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_JUMP, gfx.xp,gfx.yp,gfx.radius,gfx.angle,gfx.delai)
         return dump
 
 def LoadCOGfxs( text ): # TODO
@@ -422,6 +424,8 @@ def LoadCOGfxs( text ): # TODO
             gfx = GfxExhaust( (int(ss[1]),int(ss[2])), int(ss[3]), float(ss[4]), float(ss[5]), float(ss[6]), float(ss[7]) )
         elif int(ss[ 0 ]) == ids.G_LIGHTNING:
             gfx = GfxLightning( (int(ss[1]),int(ss[2])), int(ss[3]), (int(ss[4]),int(ss[5])), int(ss[6]) )
+        elif int(ss[ 0 ]) == ids.G_JUMP:
+            gfx = GfxExplosion( (int(ss[1]),int(ss[2])), int(ss[3]), int(ss[4]), int(ss[5]) )
 
         else: print int(ss[ 0 ])
         gfxs.append( gfx )

@@ -641,7 +641,9 @@ class FlagShip( ShipWithTurrets ):
 
     def jump( self, (xd, yd), game  ):
         if self.canJump( game ):
-          gfxs = [GfxExplosion((self.xp,self.yp),self.stats.maxRadius, sound=ids.S_EX_JUMP)]
+          angleToDest = utils.angleBetween( self.pos, (xd,yd) )
+          gfxs = [GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest )]
+         # gfxs = [GfxExplosion((self.xp,self.yp),self.stats.maxRadius, sound=ids.S_EX_JUMP)]
           if distBetween( (self.xp, self.yp), (xd, yd) ) > self.getRadarRange():
             for k in self.shipyards:
               for s in self.shipyards[k].away: # self.awayFighters + self.awayHarvesters:
@@ -649,7 +651,7 @@ class FlagShip( ShipWithTurrets ):
                 s .flaghsip = None
           self.xp, self.yp = xd, yd
           self.ai.goingTo = None
-          gfxs.append( GfxExplosion((self.xp,self.yp),self.stats.maxRadius, sound=ids.S_EX_JUMP) )
+          gfxs.append( GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest+pi) )
           self.jumping = False
           self.turretPoss = {}
           return ([],[],gfxs)

@@ -37,7 +37,8 @@ class TurretButton( RoundControl ):
         self.ry = self.topLeft[1]
         self.r = 0
         self.ri = 0.02
-        self.turretCenter = (self.rx+self.radius,self.ry+self.radius)
+        
+    turretCenter = property( fget=lambda self: ( self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
          
     def draw( self, display, focused=False, over=False ):
         if self.visible:
@@ -80,6 +81,8 @@ class LightControl( RectControl ):
             display.drawText( self.text, (self.tx,self.ty ), color=self.color )
             
 class LightControlRight( LightControl ):
+    width = 395
+    height = 70
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         ry += 23
         (rw,rh) = ( 395,70 )
@@ -88,6 +91,8 @@ class LightControlRight( LightControl ):
         self.ty = self.topLeft[1]+self.rh/2-8
     
 class LightControlLeft( LightControl ):
+    width = 395
+    height = 70
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         ry += 23
         (rw,rh) = ( 395,70 )
@@ -96,6 +101,8 @@ class LightControlLeft( LightControl ):
         self.ty = self.topLeft[1]+self.rh/2-8
         
 class LightControlDown( LightControl ):
+    width = 241
+    height = 60
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         (rw,rh) = ( 241,60 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightDown, imgs.ctrlLightDownSelected, imgs.ctrlLightDownOver, imgs.ctrlLightDownDisabled, fDownEvent=None, uid=uid )
@@ -103,6 +110,8 @@ class LightControlDown( LightControl ):
         self.ty = self.topLeft[1]+self.rh/2-8
         
 class LightControlUp( LightControl ):
+    width = 241
+    height = 60
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         (rw,rh) = ( 241,60 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightUp, imgs.ctrlLightUpSelected, imgs.ctrlLightUpOver, imgs.ctrlLightUpDisabled, fDownEvent=None, uid=uid )

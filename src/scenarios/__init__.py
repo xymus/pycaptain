@@ -7,6 +7,7 @@ scenarioFiles = filter(
     lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
     os.listdir( os.path.join( sys.path[0], "scenarios" ) ) )
 scenarioNames = [ n[:-3] for n in scenarioFiles]
+scenarioNames.sort()
 
 __all__ = [ "Scenario", "Step" ]
 
@@ -38,7 +39,7 @@ class Scenario:
         self.steps = steps
         
         if self.steps:
-            self.stepsIter = iter(steps)#listIter( steps )
+            self.stepsIter = iter(steps)
             
         self.failed = False
         self.over = False

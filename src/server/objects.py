@@ -149,17 +149,18 @@ class Nebula( Object ):
       #  radius = stats.radius
         self.maxRi = 0.04
         self.cloudRadius = 62
-        self.clouds = []
-        for i in range( 30 ):
-            angle = 2*pi*random()
-            dist = random()*stats.radius
-            if randint(0,1):
-                z = randint(10,50)
-            else:
-                z = randint(-50,-10)
-            cloud = COObject( ids.A_NEBULA, self.xp+dist*cos(angle), self.yp+dist*sin(angle), z, 2*pi*random(), None, self.cloudRadius )
-            cloud.ri = self.maxRi*(-1+2*random())
-            self.clouds.append( cloud )  #(randint(x-radius)) )
+      #  for i in range( 30 ):
+      #      angle = 2*pi*random()
+     #       dist = random()*stats.radius
+      #      if randint(0,1):
+      #          z = randint(10,50)
+      #      else:
+      #          z = randint(-50,-10)
+      #      cloud = COObject( ids.A_NEBULA, self.xp+dist*cos(angle), self.yp+dist*sin(angle), z, 2*pi*random(), None, self.cloudRadius )
+      #      cloud.ri = self.maxRi*(-1+2*random())
+      #      self.clouds.append( cloud )  #(randint(x-radius)) )
+        self.clouds = [ COObject( ids.A_NEBULA_OVER, self.xp, self.yp, 50, 2*pi*random(), None, self.stats.maxRadius ),
+			 COObject( ids.A_NEBULA_UNDER, self.xp, self.yp, -50, 2*pi*random(), None, self.stats.maxRadius ) ]
         
     def getCommObjects(self):
         return self.clouds 
