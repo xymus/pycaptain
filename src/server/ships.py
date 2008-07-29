@@ -6,7 +6,6 @@ from common.utils import *
 from common.gfxs import *
 from common import config
 
-
 class OreBatch:
     def __init__(self, amount, pos=0):
         self.amount = int(amount)
@@ -256,14 +255,6 @@ class Builder:
         self.goal = 0
         self.buildAt = 0
 
-#class TurretBuildable( Turret ): # unused? TODO if so, remove
-#    def __init__( self, stats ): # the stats duplicates the stats from ship
-#        Turret.__init__( self, stats )
-#        self.building = None
-#	self.buildCost = 0
-#	self.build = 0
-#        self.activated = True
-
 class Shipyard:
     def __init__( self ):
         self.building = None
@@ -284,6 +275,7 @@ class MissileReserve:
 	self.target = None
 
         
+from weapons import explode
 class FlagShip( ShipWithTurrets ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         self.player = player
@@ -476,6 +468,7 @@ class FlagShip( ShipWithTurrets ):
             if self.jumpCharge == self.getJumpChargeDelay():
                 (ao0,ro0,ag0) = self.jump( self.jumping, game )
                 (ao,ro,ag) = (ao+ao0,ro+ro0,ag+ag0) 
+                self.ai.goTo( self, self.pos )
                 self.jumping = False
                 self.jumpRecover = self.getJumpRecoverDelay() #config.fps*10 # TODO set variable value in stats?
                 self.jumpCharge = 0
@@ -519,13 +512,7 @@ class FlagShip( ShipWithTurrets ):
 
             # hit ships in explosion range
             maxDamage = 1000
-            for obj in game.objects.getWithinArea( self, radius+1000 ): # objects:
-                if obj.alive:
-                    dist = distLowerThanObjectsReturn( self, obj, radius+obj.stats.maxRadius )
-                    if dist:
-                        angle = angleBetweenObjects( obj, self )
-                        (ao1, ro1, fxs1 ) = obj.hit( game, angle, self.player, mass=maxDamage*dist/radius )
-                        (ao,ro,ag) = (ao+ao1, ro+ro1, ag+fxs1 )
+            explode( self, game, radius+1000, energyDamage=0, massDamage=maxDamage, pulseLength=0, sender=self.player, deadlyToSelf=False, sound=ids.S_EX_PULSE )
                 
         return (ao,ro,ag)
     
@@ -542,12 +529,7 @@ class FlagShip( ShipWithTurrets ):
         else:
           print "warning: addToHangar: ship not in away"
         self.shipyards[ ship.stats.img ].docked.append( ship )
-      #  if isinstance( ship.ai, AiPilotFighter ):
-     #      self.awayFighters.remove( ship )
-      #      self.dockedFighters.append( ship )
         if isinstance( ship.ai, AiPilotHarvester ):
-    #        self.awayHarvesters.remove( ship )
-     #       self.dockedHarvesters.append( ship )
             if ship.ore > 0:
                 self.addOreToProcess( ship.ore )
                 ship.ore = 0
@@ -576,13 +558,16 @@ class FlagShip( ShipWithTurrets ):
         return can
 
     def getRadarRange( self ):
-        radarRange = self.stats.radarRange
-        for turret in self.turrets:
-            if turret.install and turret.activated and turret.install.stats.special == ids.S_RADAR:
-                radarRange = radarRange+turret.install.stats.specialValue
+        if self.energy < 10:
+            radarRange = 100
+        else:
+            radarRange = self.stats.radarRange
+            for turret in self.turrets:
+                if turret.install and turret.activated and turret.install.stats.special == ids.S_RADAR:
+                    radarRange = radarRange+turret.install.stats.specialValue
 
-        if self.inNebula: # RULE nebula reduces radar range 
-            radarRange = radarRange/4
+            if self.inNebula: # RULE nebula reduces radar range 
+                radarRange = radarRange/4
 
         return radarRange
 
@@ -629,6 +614,11 @@ class FlagShip( ShipWithTurrets ):
 
     def die( self, game ):
         (ao,ro,ag) = Ship.die(self, game)
+        
+        for k,shipyard in self.shipyards.iteritems():
+            for docked in shipyard.docked:
+                docked.alive = False
+                   
         return (ao,ro,ag)
 
     def removeShip( self, ship ):
@@ -740,6 +730,14 @@ class FlagShip( ShipWithTurrets ):
 
     def selfDestruct( self, game ):
         self.selfDestructCommand = True
+        
+    def getCryptionStrength( self ):
+        cryption = 0
+        for turret in self.turrets:
+            if turret.install and turret.activated:
+                cryption += turret.install.stats.cryption
+        return cryption
+    cryptionStrength = property( fget=getCryptionStrength )
 
 class OrbitalBase( FlagShip ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):

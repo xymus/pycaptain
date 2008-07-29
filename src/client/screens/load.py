@@ -7,6 +7,7 @@ import cPickle as pickle
 from . import Screen
 from client.controls import *
 from client.specialcontrols import *
+from client.specialcontrols.boxes import Box
 from common import ids
 from common import config
 
@@ -53,16 +54,17 @@ class LoadMenu( Screen ):
         self.ctrlListUp = LightControlDown( (50, 40), self.eListUp, "", imgs )
         self.ctrlListDown = LightControlUp( (50, display.resolution[1]-140), self.eListDown, "", imgs )
         
-        self.lblTitle =     Label( (380,76), "", textSize=20 )
-        self.lblYear =      Label( (396,100), "" )
-        self.lblUsername =      Label( (396,120), "" )
-        self.lblTimePlayer =    Label( (396,140), "" )
-        self.lblDescription =   Label( (388,160), "" )
+        self.lblTitle =     Label( (400,76), "", textSize=20 )
+        self.lblYear =      Label( (416,100), "" )
+        self.lblUsername =      Label( (416,120), "" )
+        self.lblTimePlayer =    Label( (416,140), "" )
+        self.lblDescription =   Label( (408,160), "", maxWidth=500, maxHeight=100 )
         
-        self.imgShip = RotatingImageHolder( None, (display.resolution[0]*3/4, display.resolution[1]/2), ri=0.005 )
+        self.imgShip = RotatingImageHolder( None, (655, display.resolution[1]/2), ri=0.005 )
         self.imgs = imgs
         
         controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
+                        Box( imgs, (390,66), (530,200) ),
                    #     ImageHolder( imgs.gameTitle, (40,40) ),
                         self.crtlLoad,
                         self.ctrlQuit,
@@ -106,7 +108,6 @@ class LoadMenu( Screen ):
        
     def fGetInformation( self, save, f ):
         save.getInformation( f )
-        print save, self.selectedSave
         if save == self.selectedSave:
             self.changeSelected( save )
        
@@ -114,8 +115,6 @@ class LoadMenu( Screen ):
         if not selected:
             selected = self.selectedSave
         self.selectedSave = selected
-            
-        print "selected=", selected
             
         if selected:
             if selected.loaded:
@@ -134,9 +133,9 @@ class LoadMenu( Screen ):
                     if selected.timePlayed < 60:
                         self.lblTimePlayer.text = "%i sec"%selected.timePlayed
                     elif selected.timePlayed < 60*60:
-                        self.lblTimePlayer.text = "%.1f min"%selected.timePlayed/60.0
+                        self.lblTimePlayer.text = "%.1f min"%(selected.timePlayed/60.0)
                     else:
-                        self.lblTimePlayer.text = "%.1f hours"%selected.timePlayed/60.0/60
+                        self.lblTimePlayer.text = "%.1f hours"%(selected.timePlayed/60.0/60)
                         
                         
                         
@@ -158,7 +157,6 @@ class LoadMenu( Screen ):
                 self.lblTimePlayer.text = ""
                 self.imgShip.img = None
                 if not selected.loading:
-                    print "loading", selected 
                     selected.loading = True
                     f = open( selected.filepath, "r" )
                 #    self.fGetInformation( selected, f )
@@ -176,6 +174,7 @@ class LoadMenu( Screen ):
             self.crtlLoad.enabled = False
         
     def reset( self, display, imgs ):
+        ControlFrame.reset(self)
       #  selectCtrls = []
         
       #  y = 80

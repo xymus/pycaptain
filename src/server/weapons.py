@@ -72,7 +72,11 @@ class LaserWeapon( Weapon ):
         """Logic: compares the angle to target with the weapon orientation to atan( target.radius / dist between weapon and target )"""
         angle = utils.angleBetween( (xo,yo), (target.xp,target.yp) )
         dist = utils.distBetween( (xo,yo), (target.xp,target.yp) )
-        angleSec = atan( float(target.stats.radius)/dist )
+        if dist:
+            angleSec = atan( float(target.stats.radius)/dist )
+        else:
+            angleSec = 0
+        
         diff = (ori-angle)%(2*pi)
 
         if diff < angleSec or 2*pi-diff < angleSec: ## hit!

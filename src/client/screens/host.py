@@ -41,7 +41,7 @@ class HostMenu( ControlFrame ):
                         self.cError,
                         KeyCatcher( eBack, letter="q" ),
                         
-                        MessageBox( display, imgs, "Server adresses seperated by spaces Server adresses seperated by spaces Server adresses seperated by spaces Server adresses seperated by spaces", buttons=[("ok", None),("cancel", None)] )
+                       # MessageBox( display, imgs, "Server adresses seperated by spaces Server adresses seperated by spaces Server adresses seperated by spaces Server adresses seperated by spaces", buttons=[("ok", None),("cancel", None)] )
                         ]
 
         self.addControls( controls )

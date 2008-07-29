@@ -78,6 +78,11 @@ class Texts( Rc ):
         self[ ids.T_AI_MISSILE_2 ] = "Missile launcher x3"
         self[ ids.T_AI_MISSILE_3 ] = "Missile launcher x4"
         
+        self[ ids.T_AI_CRYPT_0 ] = "Crypt module"
+        self[ ids.T_AI_CRYPT_1 ] = "Crypt module x2"
+        self[ ids.T_AI_CRYPT_2 ] = "Crypt module x3"
+        self[ ids.T_AI_CRYPT_3 ] = "Crypt module x4"
+        
         self[ ids.T_ESPHERE_0 ]	        = "E-Sphere launcher"
         self[ ids.T_ESPHERE_1 ]	        = "E-Sphere launcher v2"
         self[ ids.T_ESPHERE_2 ]	        = "E-Sphere launcher v3"

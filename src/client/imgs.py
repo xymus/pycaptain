@@ -215,9 +215,9 @@ class Imgs( Rc ):
 
         yield 53
         self[ ids.T_ROCK_THROWER_0 ] = self.loadImage( "turrets/rock-thrower-0.png" ) 
-        self[ ids.T_ROCK_THROWER_1 ] = self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
-        self[ ids.T_LARVA_0 ] = self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
-        self[ ids.T_DRAGON_0 ] = self.loadImage( "turrets/dragon-0.png" ) # TODO
+        self[ ids.T_ROCK_THROWER_1 ] = self[ ids.T_ROCK_THROWER_0 ] # self.loadImage( "turrets/rock-thrower-0.png" ) # TODO
+        self[ ids.T_LARVA_0 ] = self.loadImage( "turrets/rock-thrower-0.png" )
+        self[ ids.T_DRAGON_0 ] = self.loadImage( "turrets/dragon-0.png" )
 
         self[ ids.T_AI_FLAK_0 ] = self.loadImage( "turrets/ai-flak-0.png" ) 
         self[ ids.T_AI_FLAK_1 ] = self.loadImage( "turrets/ai-flak-1.png" ) 
@@ -229,6 +229,11 @@ class Imgs( Rc ):
         self[ ids.T_AI_MISSILE_1 ] = self.loadImage( "turrets/ai-missile-1.png" ) 
         self[ ids.T_AI_MISSILE_2 ] = self.loadImage( "turrets/ai-missile-2.png" ) 
         self[ ids.T_AI_MISSILE_3 ] = self.loadImage( "turrets/ai-missile-3.png" ) 
+        
+        self[ ids.T_AI_CRYPT_0 ] = self.loadAnimation( "turrets/ai-crypt-0.png", count=3, tickPerFrame=5 )  #self.loadImage( "turrets/ai-crypt-0.png" ) 
+        self[ ids.T_AI_CRYPT_1 ] = self.loadAnimation( "turrets/ai-crypt-1.png", count=3, tickPerFrame=5 )
+        self[ ids.T_AI_CRYPT_2 ] = self.loadAnimation( "turrets/ai-crypt-2.png", count=3, tickPerFrame=5 )
+        self[ ids.T_AI_CRYPT_3 ] = self.loadAnimation( "turrets/ai-crypt-3.png", count=3, tickPerFrame=5 )
 
 
         self[ ids.T_ESPHERE_0 ] = self.loadImage( "turrets/esphere-0.png" ) 
@@ -302,6 +307,8 @@ class Imgs( Rc ):
 
         self[ ids.F_AI_0 ] = self.loadImage( "fragments/ai-0.png" )
         
+        self[ ids.F_BLOOD_0 ] = self.loadImage( "gfxs/blood-0.png" )
+        
         self[ ids.G_LIGHTNING ] = self.loadImage( "gfxs/lightning-0.png" )
 
         yield 67
@@ -332,10 +339,73 @@ class Imgs( Rc ):
         self.ctrlLightUpDisabled =  self.loadImageWithDisplay( "controls/light-up/light-disabled.png" )
         self.ctrlLightUpOver =  self.loadImageWithDisplay( "controls/light-up/light-over.png" )
         
+        yield 70
         self.ctrlSelfDestructOpen = self.loadImageWithDisplay( "controls/self-destruct/open.png" )
         self.ctrlSelfDestructClose = self.loadImageWithDisplay( "controls/self-destruct/close.png" )
         self.ctrlSelfDestructExplode = self.loadImageWithDisplay( "controls/self-destruct/explode.png" )
         self.ctrlSelfDestructBack = self.loadImageWithDisplay( "controls/self-destruct/back.png" )
+   #     self.ctrlSelfDestructOver = self.loadImageWithDisplay( "controls/self-destruct/over.png" )
+       # self.ctrlSelfDestructBackOpen = self.loadImageWithDisplay( "controls/self-destruct/back-open.png" )
+       # self.ctrlSelfDestructBackClose = self.loadImageWithDisplay( "controls/self-destruct/back-close.png" )
+        
+        self.ctrlMenuOpen = self.loadImageWithDisplay( "controls/game-menu/open.png" )
+        self.ctrlMenuFade = self.loadImageWithDisplay( "controls/game-menu/fade.png" )
+        
+        self.ctrlRadarBack = self.loadImageWithDisplay( "controls/radar/back.png" )
+        self.ctrlRadarOver = self.loadImageWithDisplay( "controls/radar/over.png" )
+        self.ctrlRadarOpen = self.loadImageWithDisplay( "controls/radar/open-fullscreen.png" )
+        self.ctrlRadarClose = self.loadImageWithDisplay( "controls/radar/close-fullscreen.png" )
+        self.ctrlRadarScan = self.loadImageWithDisplay( "controls/radar/scan.png" )
+        self.ctrlRadarSelection = self.loadImageWithDisplay( "controls/radar/selection.png" )
+        
+        self.ctrlJumpRegular = self.loadImageWithDisplay( "controls/jump/jump.png" )
+        self.ctrlJumpReturn = self.loadImageWithDisplay( "controls/jump/return.png" )
+        
+        self.ctrlChatOpen = self.loadImageWithDisplay( "controls/chat/open.png" )
+        self.ctrlChatClose = self.loadImageWithDisplay( "controls/chat/close.png" )
+        self.ctrlChatReturn = self.loadImageWithDisplay( "controls/chat/return.png" )
+        self.ctrlChatBroadcast = self.loadImageWithDisplay( "controls/chat/broadcast.png" )
+        self.ctrlChatDirectedCast = self.loadImageWithDisplay( "controls/chat/directedcast.png" )
+        self.ctrlChatBackLeft = self.loadImageWithDisplay( "controls/chat/back-left.png" )
+        self.ctrlChatBackCenter = self.loadImageWithDisplay( "controls/chat/back-center.png" )
+        self.ctrlChatBackRight = self.loadImageWithDisplay( "controls/chat/back-right.png" )
+        self.ctrlChatSupport = self.loadImageWithDisplay( "controls/chat/support.png" )
+        self.ctrlChatOpenLog = self.loadImageWithDisplay( "controls/chat/log.png" )
+        
+        self.ctrlAimCenter = self.loadImageWithDisplay( "controls/aim/center.png" )
+        self.ctrlAimArm = self.loadImageWithDisplay( "controls/aim/arm.png" )
+        
+        self.ctrlBoxTopLeft = self.loadImageWithDisplay( "controls/box/back-tl.png" )
+        self.ctrlBoxTopRight = self.loadImageWithDisplay( "controls/box/back-tr.png" )
+        self.ctrlBoxBottomLeft = self.loadImageWithDisplay( "controls/box/back-bl.png" )
+        self.ctrlBoxBottomRight = self.loadImageWithDisplay( "controls/box/back-br.png" )
+        self.ctrlBoxTop = self.loadImageWithDisplay( "controls/box/back-t.png" )
+        self.ctrlBoxBottom = self.loadImageWithDisplay( "controls/box/back-b.png" )
+        self.ctrlBoxRight = self.loadImageWithDisplay( "controls/box/back-r.png" )
+        self.ctrlBoxLeft = self.loadImageWithDisplay( "controls/box/back-l.png" )
+        self.ctrlBoxCenter = self.loadImageWithDisplay( "controls/box/back-c.png" )
+        
+        self.ctrlSliderLeft = self.loadImageWithDisplay( "controls/slider/left.png" )
+        self.ctrlSliderRight = self.ctrlSliderLeft # self.loadImageWithDisplay( "controls/slider/right.png" )
+        self.ctrlSliderCenter = self.loadImageWithDisplay( "controls/slider/center.png" )
+        self.ctrlSliderSelect = self.loadImageWithDisplay( "controls/slider/select.png" )
+        
+        self.ctrlLabelX = self.loadImageWithDisplay( "controls/labels/x.png" )
+        self.ctrlLabelY = self.loadImageWithDisplay( "controls/labels/y.png" )
+        self.ctrlLabelRange = self.loadImageWithDisplay( "controls/labels/range.png" )
+        
+        self.ctrlHangarLeft = self.loadImageWithDisplay( "controls/hangar/left.png" ) # 64 39
+        self.ctrlHangarCenter = self.loadImageWithDisplay( "controls/hangar/center.png" ) # 25 39
+        self.ctrlHangarSlot = self.loadImageWithDisplay( "controls/hangar/slot.png" ) # 25 39
+        self.ctrlHangarRight = self.loadImageWithDisplay( "controls/hangar/right.png" )
+        self.ctrlHangarOver = self.loadImageWithDisplay( "controls/hangar/over.png" )
+        self.ctrlHangarShipsFill = self.loadImageWithDisplay( "controls/hangar/ships-fill.png" )
+        self.ctrlHangarMissilesFill = self.loadImageWithDisplay( "controls/hangar/missiles-fill.png" )
+        
+        self.ctrlHangarLaunch = self.loadImageWithDisplay( "controls/hangar/launch.png" )
+        self.ctrlHangarRecall = self.loadImageWithDisplay( "controls/hangar/recall.png" )
+        self.ctrlHangarAim = self.loadImageWithDisplay( "controls/hangar/aim.png" )
+        self.ctrlHangarReturn = self.loadImageWithDisplay( "controls/hangar/return.png" )
 
         yield 73
         # ui
@@ -351,6 +421,9 @@ class Imgs( Rc ):
         self.uiJumpGlass = self.loadImageWithDisplay( "ui/top-glass.png" )
         self.uiJumpFillCharging = self.loadImageWithDisplay( "ui/top-fill-green.png" )
         self.uiJumpFillRecover = self.loadImageWithDisplay( "ui/top-fill-red.png" )
+        
+        self.uiTubeTopLeft = self.loadImageWithDisplay( "ui/top-left-tube.png" )
+        self.uiTubeTopLeftFill = self.loadImageWithDisplay( "ui/top-left-tube-fill.png" )
         yield 76
         # tubes
         self.uiTubeTop2 =  self.loadImageWithDisplay( "ui/top-2-tubes.png" ) 
@@ -430,7 +503,7 @@ class Imgs( Rc ):
 
         self.option = self.loadImageWithDisplay( "ui/option.png" )
         
-        self.boxBack = self.loadImageWithDisplay( "controls/box/back.png" )
+   #     self.boxBack = None #self.loadImageWithDisplay( "controls/box/back.png" )
   #      self.scenario = self.loadImageWithDisplay( "scenarios/Dragons.png" )
 
         yield 93

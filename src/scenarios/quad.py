@@ -194,7 +194,7 @@ class Quad ( Scenario ):
             game.objects.append( fighter )
             self.earthDefense.ships.append( fighter )
 
-        self.earthDefense.bases.append( obase )
+       # self.earthDefense.bases.append( obase )
         game.addPlayer( self.earthDefense )
 
        ## ai forces

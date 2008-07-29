@@ -78,13 +78,19 @@ class Sdl( Display ):
     def drawClipped( self, img, pos, src ):
         self.screen.blit( img, pos, src )
 
-    def _drawFont( self, text, font, color, pos, maxWidth=None, maxHeight=None ):
+    def _drawFont( self, text, font, color, pos, maxWidth=None, maxHeight=None, align="left" ):
         if os.name == "nt":
             pos = (pos[0],pos[1]-6)
             
         if not maxWidth and not maxHeight:
             s = font.render( text, True, color )
-            self._draw( s, pos )
+          #  self._draw( s, pos )
+            if align == "left":
+                self._draw( s, pos )
+            elif align == "right":
+                self._draw( s, (pos[0]-self.getWidth( s ),pos[1]) )
+            else: # align == "center":
+                self._draw( s, (pos[0]-self.getWidth( s )/2,pos[1]) )
         else:
             lines = text.split( "\n" )
             lineNbr = 0
@@ -100,7 +106,13 @@ class Sdl( Display ):
                     words = words[ wordsOnLine: ]
                     
                     s = font.render( lineText, True, color )
-                    self._draw( s, (pos[0],pos[1]+lineNbr*font.get_linesize()) )
+                    if align == "left":
+                        self._draw( s, (pos[0],pos[1]+lineNbr*font.get_linesize()) )
+                    elif align == "right":
+                        self._draw( s, (pos[0]-self.getWidth( s ),pos[1]+lineNbr*font.get_linesize()) )
+                    else: # align == "center":
+                        self._draw( s, (pos[0]-self.getWidth( s )/2,pos[1]+lineNbr*font.get_linesize()) )
+                    
                     lineNbr += 1
             
     
@@ -196,6 +208,9 @@ class Sdl( Display ):
 
     def _setCursor( self, cursor ):
         pygame.mouse.set_cursor( cursor[0], cursor[1], cursor[2], cursor[3] )
+        
+    def showCursor( self, show ):
+        pygame.mouse.set_visible( show )
 
    ### def setCursor( self, cursor=None ):
 

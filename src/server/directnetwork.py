@@ -27,7 +27,6 @@ class DirectNetwork( Network ):
         self.shipChoices = []
         
         self.msgusers = []
-        self.msgalls = []
         self.sysmsgs = []
 
         self.listening = True
@@ -87,11 +86,8 @@ class DirectNetwork( Network ):
     def sendSysmsg( self, text ):
         self.sysmsgs.append( text )
 
-    def sendMsgall( self, text, senderName ):
-        self.msgalls.append( "%s: %s"%(senderName, text) )
-
-    def sendMsg( self, text, senderName, playerCon ):
-        self.msgalls.append( "%s: %s"%(senderName, text) ) # TODO reimplement if multiple players can connect to directnetwork
+    def sendMsg( self, text, senderName, player ):
+        self.msgusers.append( "%s: %s"%(senderName, text) ) # TODO reimplement if multiple players can connect to directnetwork
         
         
     def getClientFromPlayer( self, player ):
@@ -107,12 +103,11 @@ class DirectNetwork( Network ):
             
         return client
 
-    def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[] ):
+    def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[], msgs=[], sysMsg=[] ):
         client = self.getClientFromPlayer( player )  
         if self.sysmsgs:
             print self.sysmsgs
-        client.updatePlayer( objects, gfxs, stats, players, astres, possibles, self.msgalls, self.msgusers, self.sysmsgs )
-        self.msgalls = []
+        client.updatePlayer( objects, gfxs, stats, players, astres, possibles, msgs, self.sysmsgs+sysMsg )
         self.msgusers = []
         self.sysmsgs = []
         

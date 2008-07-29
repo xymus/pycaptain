@@ -223,10 +223,9 @@ class AiPilotDefense( AiPilotFaction ):
         self.defended = defended
         self.radius = int(radius)
         self.lastDestSetAt = -1000
-    #    self.setNewDest()
 
     def doTurn( self, ship, game):
-        if self.attacking and not self.attacking.alive:
+        if self.attacking and (not self.attacking.alive or self.attacking.dockedTo):
             self.attacking = None
 
         ( ao, ro, ag ) = AiPilot.doTurn( self, ship, game )
@@ -543,8 +542,8 @@ class AiWeaponTurret( AiTurret ):
           #  bestObj = game.harvestables.getClosestAccording( ship, ship.stats.radarRange, 
 	# func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
 
-            for obj in game.objects.objects:
-                if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and obj.ai and obj.ai.attacking and obj.ai.attacking.player and game.getRelationBetween( obj.ai.attacking.player, ship.player ) < 0 and self.objectInRange( ship, turret, pos, obj ):
+            for obj in game.objects.getWithinArea( ship.getTurretPos( turret ), turret.weapon.stats.maxRange ): # TODO check target radius
+                if isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and obj.ai and obj.ai.attacking and obj.ai.attacking.player and game.getRelationBetween( ship.player, obj.player ) < 0: # and self.objectInRange( ship, turret, pos, obj ): # game.getRelationBetween( obj.ai.attacking.player, ship.player )
                    att = self.getAngleToTarget( ship, turret, pos, obj )
                    foundSomethingClose = True
                    if self.angleInRange(  ship, turret, att ) and fabs( angleDiff( turret.rr, att )) < bestAngle:

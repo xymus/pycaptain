@@ -1,5 +1,5 @@
 from math import pi, sin, cos, ceil
-from random import randint, random
+from random import random
 
 from scenarios import Scenario, Step
 from server.objects import Asteroid, Planet, Sun
@@ -88,7 +88,7 @@ class Dragons( Scenario ):
             self.ennemyShips.append( fighter )
         
     def spawn( self, game, player, shipId=None ):
-        Scenario.spawn( self, game, player, shipId )
+        print "spawning"
         
         player.race = game.stats.R_HUMAN
         shipStats = game.stats.HUMAN_FS_0
@@ -100,12 +100,12 @@ class Dragons( Scenario ):
         flagship.energy = 1000
         flagship.ori = 7/8*pi+pi/2
         
-        for turret in flagship.turrets[:3]:
+        for turret in flagship.turrets[2:4]:
             turret.buildInstall( game.stats.T_MASS_SR_1 )
 
         player.flagship = flagship        
         game.objects.append( flagship )
 
-        player.needToUpdateRelations = True
-        self.player = player
+     #   self.player = player
+        Scenario.spawn( self, game, player, shipId )
         

@@ -43,20 +43,20 @@ class Display:
     def drawRo( self, img, pos, rotation ):
         raise Exception( "Abstract function, should not be used" )
         
-    def _drawFont( self, font, color ):
+    def _drawFont( self, font, color, align="left" ):
         raise Exception( "Abstract function, should not be used" )
     
     def _loadFont( self, size, path=None ):
         raise Exception( "Abstract function, should not be used" )
 
-    def drawText( self, text, (x,y), color=(255,255,255,255), size=15, maxWidth=None, maxHeight=None ):
+    def drawText( self, text, (x,y), color=(255,255,255,255), size=15, maxWidth=None, maxHeight=None, align="left" ):
         if not self.fonts.has_key( size ):
             try:
                 self.fonts[ size ] = self._loadFont( size, os.path.join( sys.path[0], "client/fonts/FreeSans.ttf" ) )
             except:
                 self.fonts[ size ] = self._loadFont( size ) # pygame.font.get_default_font()
 
-        self._drawFont( text, self.fonts[ size ], color, (x,y), maxWidth, maxHeight )
+        self._drawFont( text, self.fonts[ size ], color, (x,y), maxWidth=maxWidth, maxHeight=maxHeight, align=align )
 
     def drawRect( self, rect, color, width=0 ):
         raise Exception( "Abstract function, should not be used" )
@@ -106,6 +106,9 @@ class Display:
         if not cursor:
             cursor = self.cursorArrow
         self._setCursor( cursor )
+        
+    def showCursor( self, show ):
+        raise Exception( "Abstract function, should not be used" )
 
     def takeScreenshot( self, path=None ):
         raise Exception( "Abstract function, should not be used" )

@@ -3,7 +3,7 @@ from socket import SocketType
 import socket
 from time import sleep, time
 
-from common.comms import * # COObject, COInput, LoadCOObject, LoadCOObjects, LoadCOPlayerStats, LoadCOGfxs
+from common.comms import * # COObject, COInput, LoadCOObject, LoadCOObjects, LoadCOPlayerStatus, LoadCOGfxs
 
 class Network:
     def __init__(self, server, port, username, hashedPassword, version ):
@@ -18,7 +18,6 @@ class Network:
 
         self.shutdown = False
         self.bump = False
-        self.msgalls = []
         self.msgusers = []
         self.sysmsgs = []
         self.objects =  []
@@ -140,12 +139,10 @@ class Network:
                 elif word == "sysmsg":
                     words = msg.split()
                     self.sysmsgs.append( msg[len(word)+1:] )
-                elif word == "msgall":
+                elif word == "msg":
                     words = msg.split()
-                    self.msgalls.append( ( words[1], " ".join(words[2:]) ) )
-                elif word == "msguser":
-                    words = msg.split()
-                    self.msgusers.append( ( words[1], " ".join(words[2:]) ) )
+                    print self, words
+                    self.msgusers.append( ( words[1], int(words[2]), int(words[3]), " ".join(words[4:]) ) )
                 elif word == "down":
                     try:
                         self.objects = LoadCOObjects( msg[len(word)+1:] ).coobjects
@@ -153,7 +150,7 @@ class Network:
                         print "loading object failed, string:", msg[5:]
                 elif word == "stats":
                   #  try:
-                        self.stats = LoadCOPlayerStats( msg[len(word)+1:] )
+                        self.stats = LoadCOPlayerStatus( msg[len(word)+1:] )
                  #   except Exception, ex:
                   #     print "loading stats failed, string:", msg[6:], ex
                 elif word == "players":
@@ -192,7 +189,6 @@ class Network:
     def getUpdates(self): 
         shutdown = self.shutdown
         bump = self.bump
-        msgalls = self.msgalls
         msgusers = self.msgusers
         sysmsgs = self.sysmsgs
         objects =  self.objects
@@ -203,7 +199,6 @@ class Network:
         possibles = self.possibles
 
        # self.bump = False
-        self.msgalls = []
         self.msgusers = []
         self.sysmsgs = []
         self.objects =  []
@@ -213,7 +208,7 @@ class Network:
       #  self.stats = None
       #  self.possibles = []
 
-        return ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles )
+        return ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles )
     
     def pubQuit(self):
         try:
@@ -221,13 +216,6 @@ class Network:
             sleep( 0.2 )
         except Exception, ex:
             print "failed pubQuit:", ex
-
-
-    def sendMsgall( self, text ):
-        try:
-            self.socket.send( "msgall %s\n" % text )
-        except Exception, ex:
-            print "failed sendSysmsg", ex
 
     def sendMsguser( self, text, destName ):
         try:

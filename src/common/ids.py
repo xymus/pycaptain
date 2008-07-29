@@ -207,6 +207,11 @@ T_AI_FLAK_3	    = 377
 T_AI_OMNI_LASER_0	= 378
 T_AI_OMNI_LASER_1	= 379
 
+T_AI_CRYPT_0    = 450
+T_AI_CRYPT_1    = 451
+T_AI_CRYPT_2    = 452
+T_AI_CRYPT_3    = 453
+
 # extra's Ts
 T_ROCK_THROWER_0	= 380
 T_ROCK_THROWER_1	= 383
@@ -293,6 +298,9 @@ O_TURRET_ACTIVATE	= 522
 O_RELATION		= 523
 O_SELF_DESTRUCT		= 524
 
+O_BROADCAST		= 525
+O_DIRECTED_CAST		= 526
+
 
 ### Relations type with objects sent on the network
 U_FLAGSHIP 	= 600
@@ -341,13 +349,13 @@ P_BETA_2	= 731
 P_GAIA		= 740
 
 ### Gfxs
-# TODO: should be changed to Fxs. worth it?
 G_LASER_SMALL	= 800
 G_EXPLOSION	= 801
 G_SHIELD	= 802
 G_FRAGMENT	= 803
 G_EXHAUST	= 804
 G_LIGHTNING     = 805
+G_JUMP     = 806
 
 R_NEUTRAL	= 1000
 R_HOSTILE	= 1001
@@ -365,6 +373,8 @@ F_FIGHTER_1	= 2006
 F_FIGHTER_2	= 2007
 
 F_AI_0		= 2008
+
+F_BLOOD_0	= 2009
 
 ### Exhauts / trails
 # temporary deactivated/uselesss

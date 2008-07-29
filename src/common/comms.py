@@ -2,7 +2,7 @@ from orders import *
 from gfxs import *
 import ids
 
-version = "v0.4.5"
+version = "v0.5.3"
 
 if __debug__:
     print "Comms %s" % version
@@ -72,6 +72,10 @@ class COInput:
                 dump = dump + ";%i:%s:%i" % ( ids.O_RELATION, order.other, order.level )
             elif isinstance( order, OrderSelfDestruct ):
                 dump = dump + ";%i" % ( ids.O_SELF_DESTRUCT )
+            elif isinstance( order, OrderBroadcast ):
+                dump = dump + ";%i:%s" % ( ids.O_BROADCAST, order.text )
+            elif isinstance( order, OrderDirectedCast ):
+                dump = dump + ";%i:%s:%i:%i" % ( ids.O_DIRECTED_CAST, order.text, order.x, order.y )
 
         return dump
 
@@ -118,6 +122,10 @@ def LoadCOInput( text ):
             order = OrderSetRelation( os[1], int(os[2]) )
         elif int(os[0]) == ids.O_SELF_DESTRUCT:
             order = OrderSelfDestruct()
+        elif int(os[0]) == ids.O_BROADCAST:
+            order = OrderBroadcast( os[1] )
+        elif int(os[0]) == ids.O_DIRECTED_CAST:
+            order = OrderDirectedCast( os[1], (int(os[2]), int(os[3])) )
 
     #    order = OrderMove( int(es[5+3*i]), int(es[6+3*i]), float(es[7+3*i]) )
         inputs.orders.append( order )
@@ -165,8 +173,9 @@ def LoadCOObjects( text ):
 
 
 # stats -> client
-class COPlayerStats:
-    def __init__(self, gameTick, dead, ore, maxOre, energy, maxEnergy, shieldIntegrity, hullIntegrity, canJump, repairing, charging, hangarSpace, shipsSpace, missilesSpace, jumpCharge, jumpRecover, oreInProcess, turrets, missiles, ships, radars ): # , buildableTurrets
+class COPlayerStatus:
+    def __init__(self, gameTick, dead, ore, maxOre, energy, maxEnergy, shieldIntegrity, hullIntegrity, canJump, repairing, charging, hangarSpace, shipsSpace, missilesSpace, jumpCharge, jumpRecover, oreInProcess, turrets, missiles, ships, radars,
+        ennemyInRadar=False, dangerInRadar=False ): # , buildableTurrets
          self.gameTick = gameTick
          self.dead = dead
          self.ore = ore
@@ -189,12 +198,15 @@ class COPlayerStats:
 
          self.repairing = repairing
          self.charging = charging
+         
+         self.ennemyInRadar = ennemyInRadar
+         self.dangerInRadar = dangerInRadar
 
     def dump(self):
       if self.dead:
         dump = "%i" % ( self.gameTick )
       else:
-        dump = "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpRecover )
+        dump = "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpRecover, self.ennemyInRadar, self.dangerInRadar )
 
         dump = dump + ";"
         for oip in self.oreInProcess:
@@ -221,7 +233,7 @@ class COPlayerStats:
 
       return dump
     
-def LoadCOPlayerStats( text ):
+def LoadCOPlayerStatus( text ):
   es = text.split(";")
   oreInProcess = []
   turrets = []
@@ -235,13 +247,13 @@ def LoadCOPlayerStats( text ):
       if len( o ) > 0:
         i = o.split(":")
         radars.append( CORadar( (int(i[0]), int(i[1])), int(i[2]) ) )
-    stats = COPlayerStats( int(es[0]), True, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,0, 0, oreInProcess, turrets, missiles, ships, radars )
+    stats = COPlayerStatus( int(es[0]), True, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,0, 0, oreInProcess, turrets, missiles, ships, radars )
   else:
-    for o in es[ 15 ].split(":"):
+    for o in es[ 17 ].split(":"):
       if len( o ) > 0:
         oreInProcess.append( int(o) )
 
-    for o in es[ 16 ].split("|"):
+    for o in es[ 18 ].split("|"):
       if len( o ) > 0:
         i = o.split(":")
         buildables = []
@@ -251,22 +263,22 @@ def LoadCOPlayerStats( text ):
               buildables.append( COBuildable( int(bi[0]), int(bi[1]) ) )
         turrets.append( COTurret( int(i[0]), int(i[1]), int(i[2]), float(i[3]), float(i[4]), int(i[5]), int(i[6]), int(i[7]), int(i[8]), int(i[9]), int(i[10]), int(i[11]), int(i[12]), buildables ) )
 
-    for o in es[ 17 ].split("|"):
+    for o in es[ 19 ].split("|"):
       if len( o ) > 0:
         i = o.split(":")
         missiles.append( COShips( int(i[0]), int(i[1]), int(i[2]), int(i[3]), int(i[4]), int(i[5]), int(i[6]) ) )
 
-    for o in es[ 18 ].split("|"):
+    for o in es[ 20 ].split("|"):
       if len( o ) > 0:
         i = o.split(":")
         ships.append( COShips( int(i[0]), int(i[1]), int(i[2]), int(i[3]), int(i[4]), int(i[5]), int(i[6]) ) )
 
-    for o in es[ 19 ].split("|"):
+    for o in es[ 21 ].split("|"):
       if len( o ) > 0:
         i = o.split(":")
         radars.append( CORadar( (int(i[0]), int(i[1])), int(i[2]) ) )
 
-    stats = COPlayerStats( int(es[0]), False, int(es[1]), int(es[2]), int(es[3]), int(es[4]), float(es[5]), float(es[6]), int(es[7]), int(es[8]), int(es[9]), int(es[10]), int(es[11]), int(es[12]), int(es[13]), int(es[14]), oreInProcess, turrets, missiles, ships, radars )
+    stats = COPlayerStatus( int(es[0]), False, int(es[1]), int(es[2]), int(es[3]), int(es[4]), float(es[5]), float(es[6]), int(es[7]), int(es[8]), int(es[9]), int(es[10]), int(es[11]), int(es[12]), int(es[13]), int(es[14]), oreInProcess, turrets, missiles, ships, radars, int(es[15]), int(es[16]) )
 
   return stats
 
@@ -402,10 +414,10 @@ class COGfxs:
             elif isinstance( gfx, GfxLightning ):
                 dump = dump + ";%i:%i:%i:%i:%i:%i:%i" % (ids.G_LIGHTNING, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
             elif isinstance( gfx, GfxJump ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_JUMP, gfx.xp,gfx.yp,gfx.radius,gfx.angle,gfx.delai)
+                dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_JUMP, gfx.xp,gfx.yp,gfx.radius,gfx.angle*100,gfx.delai)
         return dump
 
-def LoadCOGfxs( text ): # TODO
+def LoadCOGfxs( text ):
     gfxs = []
     es = text.split(";")
     n = int(es[0])
@@ -425,7 +437,7 @@ def LoadCOGfxs( text ): # TODO
         elif int(ss[ 0 ]) == ids.G_LIGHTNING:
             gfx = GfxLightning( (int(ss[1]),int(ss[2])), int(ss[3]), (int(ss[4]),int(ss[5])), int(ss[6]) )
         elif int(ss[ 0 ]) == ids.G_JUMP:
-            gfx = GfxExplosion( (int(ss[1]),int(ss[2])), int(ss[3]), int(ss[4]), int(ss[5]) )
+            gfx = GfxExplosion( (int(ss[1]),int(ss[2])), int(ss[3]), int(ss[4]), float(ss[5])/100, int(ss[5]) )
 
         else: print int(ss[ 0 ])
         gfxs.append( gfx )

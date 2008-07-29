@@ -22,9 +22,10 @@ class ControlFrame:
         
         if control.selectable:
             if not self.selectables: # same as not self.selected
-                self.selected = control
                 self.tabOrder[ control ] = control
                 self.tabOrderReverse[ control ] = control
+                if not self.selected:
+                    self.selected = control
             else:
                 self.tabOrder[ self.selectables[ -1 ] ] = control
                 self.tabOrder[ control ] = self.selectables[ 0 ]
@@ -69,13 +70,17 @@ class ControlFrame:
         if self.selected:
             if letter == "\t":
                 prevSlected = self.selected
-                self.selected = self.tabOrder[ self.selected ]
-                while prevSlected != self.selected and not self.selected.enabled:
+                if self.tabOrder.has_key( self.selected ):
                     self.selected = self.tabOrder[ self.selected ]
+                    while prevSlected != self.selected and not self.selected.enabled:
+                        self.selected = self.tabOrder[ self.selected ]
             else:
+               # print self.selected, key, letter
                 used = self.selected.keyInput( key, letter )
+               # print "kaey a", used
              
         if not used:
+           # print "kaey c"
             for control in self.controls:
                 if isinstance( control, KeyCatcher ):
                     control.keyInput( key, letter )
@@ -93,11 +98,19 @@ class ControlFrame:
         else:
             down = None
             
+        #print up, down
+           
+        self.hit = False # TODO hack, remove when back of gui impklemented as control
         if self.inputs.mouseUpped or self.inputs.mouseDowned:
-            for control in self.controls:
-                if control.hits( up=up, down=down ):
+            for control in [ self.controls[ k ] for k in xrange( len(self.controls)-1, -1, -1 ) ]:
+          #  for control in self.controls:
+                select = control.hits( up=up, down=down )
+                if select: # control.hits( up=up, down=down ):
+                    self.hit = True
                 #    print self.inputs.mouseUpped, self.inputs.mouseDowned, self.inputs.mouseUpAt, self.inputs.mouseDownAt
-                    self.selected = control
+                    if select.selectable:
+                        self.selected = select
+                   # print select, select.selectable
                     break
 
         if self.inputs.keys:
@@ -107,13 +120,14 @@ class ControlFrame:
         return quit
         
     def draw( self, display, skipFinalize=False ):
+        display.cursorDrawn = False
         if not self.lastResolution:
             self.lastResolution = display.resolution
         elif self.lastResolution != display.resolution:
         #    print "moving controls"
             diffWidth = display.resolution[0]-self.lastResolution[0]
             diffHeight = display.resolution[1]-self.lastResolution[1]
-            print diffWidth, diffHeight, self.lastResolution, display.resolution
+         #   print diffWidth, diffHeight, self.lastResolution, display.resolution
             for control in self.controls:
                 if isinstance( control, Control ):
                     if not control.stickLeft: # sticks to the right of the screen
@@ -126,11 +140,18 @@ class ControlFrame:
         for control in self.controls:
             control.draw( display, 
                 focused=(control==self.selected), 
-                over=(control.fIn and control.fIn( control, self.inputs.mousePos )) 
+                over=(control.fIn and control.fIn( control, self.inputs.mousePos )),
+                mouse=self.inputs.mousePos
                 )
+                
+        display.showCursor( not display.cursorDrawn )
+        
         if not skipFinalize:
             display.finalizeDraw()
-        # TODO be careful here as it might be used twice in some menus
+        
+    def reset( self ):
+        for control in self.controls:
+            control.reset()
 
 class ControlBase:
     def __init__( self, fUpEvent=None, fDownEvent=None, uid=None ):
@@ -141,11 +162,14 @@ class ControlBase:
     def hits( self, up=None, down=None ):
         return False
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         pass
 
     def keyInput( self, key, letter=None ):
         return False
+        
+    def reset( self ):
+        pass
 
 class Control( ControlBase ):
     def __init__( self, img, topLeft, fIn, fUpEvent=None, fDownEvent=None, fOverEvent=None, uid=None ):
@@ -170,18 +194,20 @@ class Control( ControlBase ):
 
     def hits( self, up=None, down=None ):
         hit = False
-        if self.enabled and self.fIn:
+        if self.fIn:
             if up and self.fIn( self, up ):
-                hit = True
-                if self.fUpEvent:
+                hit = self
+                if self.enabled and self.fUpEvent:
                     self.fUpEvent( self, up )
+                  #  print "up!!!!", up, down, self.fUpEvent
             if down and self.fIn( self, down ):
-                hit = True
-                if self.fDownEvent:
+                hit = self
+                if self.enabled and self.fDownEvent:
                     self.fDownEvent( self, down )
+                 #   print "down!!!!", up, down, self.fDownEvent
         return hit
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible and self.img:
         rect = (0,0,display.getWidth(self.img)/3,display.getHeight(self.img))
 
@@ -210,15 +236,14 @@ class RoundControl( Control ):
 class RectControl( Control ):
      def __init__( self, img, (rx,ry), (rw,rh), fUpEvent, fDownEvent=None, uid=None ):
         def fIn( self, (x, y) ):
-            return x >= self.rx \
-               and y >= self.ry \
-               and x <= self.rx + self.rw \
-               and y <= self.ry + self.rh
+            return x >= self.topLeft[0] \
+               and y >= self.topLeft[1] \
+               and x <= self.topLeft[0] + self.rw \
+               and y <= self.topLeft[1] + self.rh
         self.rw = rw
         self.rh = rh
         self.rx = rx
         self.ry = ry
-
         Control.__init__( self,img, (rx,ry), fIn, fUpEvent, fDownEvent, uid=uid )
 
 class RectSwitch( RectControl ):
@@ -227,10 +252,10 @@ class RectSwitch( RectControl ):
         self.imgs = imgs
         self.state = 0
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible:
         self.img = self.imgs[ self.state ]
-        RectControl.draw( self, display )
+        RectControl.draw( self, display, focused, over, mouse )
 
 class RoundSwitch( RoundControl ):
     def __init__( self, imgs, center, radius, fUpEvent, fDownEvent=None, uid=None ):
@@ -238,10 +263,10 @@ class RoundSwitch( RoundControl ):
         self.imgs = imgs
         self.state = 0
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible:
         self.img = self.imgs[ self.state ]
-        RoundControl.draw( self, display )
+        RoundControl.draw( self, display, focused, over, mouse )
 
 class RoundControlInvisible( Control ):
     def __init__( self, center, radius, fUpEvent, fDownEvent=None ):
@@ -254,19 +279,23 @@ class RoundControlInvisible( Control ):
         Control.__init__( self, None, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent )
     center = property( fget=lambda self: (self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         pass
 
 class TextBox( RectControl ):
-    def __init__( self, (rx,ry), (rw,rh), defaultText="", password=False, numeric=False, forbidden=[] ):
+    def __init__( self, (rx,ry), (rw,rh), defaultText="", password=False, numeric=False, forbidden=[], eTextChanged=None, eEnter=None ):
         RectControl.__init__( self, None, (rx,ry), (rw,rh), None, None )
+        self.defaultText = defaultText
         self.text = defaultText
         self.selection = 0
         self.password = password
         self.numeric = numeric
         self.forbidden = forbidden
         
-    def draw( self, display, focused=False, over=False ):
+        self.eTextChanged = eTextChanged
+        self.eEnter = eEnter
+        
+    def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible:
         display.drawLine( (255,255,255,255), (self.topLeft[0],self.topLeft[1]+self.rh), (self.topLeft[0]+self.rw,self.topLeft[1]+self.rh), 1 )
         
@@ -280,18 +309,33 @@ class TextBox( RectControl ):
     #    print "drawn"
         
     def keyInput( self, key, letter=None ):
-      if key == 8:
-        if len( self.text ) > 0:
-          self.text = self.text[:-1]
-        return True
-      elif letter and letter != "\r": #len(: #key >= ord(" ") and  key < ord("z"):
-    #    letter = chr(key)
-        if not self.numeric or ( letter <= "9" and letter >= "0" ) and letter not in self.forbidden:
-            self.text = self.text + letter
-        return True
-      else:
-        print "unhandled  key:", key
-      return False
+        used = False
+        if key == 8:
+            if len( self.text ) > 0:
+                self.text = self.text[:-1]
+                used = True
+        elif letter:
+            if letter == "\r":
+                if self.eEnter:
+                    self.eEnter( self, (0,0 ) )
+                    used = True
+            else: #len(: #key >= ord(" ") and  key < ord("z"):
+        #    letter = chr(key)
+                if not self.numeric or ( letter <= "9" and letter >= "0" ) and letter not in self.forbidden:
+                    self.text = self.text + letter
+                    used = True
+        if used:
+            if self.eTextChanged:
+                self.eTextChanged( self, (0,0 ) )
+        else:
+            print "unhandled  key:", key
+        return used
+      
+    def reset( self ):
+        self.text = self.defaultText
+        if self.eTextChanged:
+            self.eTextChanged( self, (0,0 ) )
+        
 
 class Label( Control ):
     def __init__( self, topLeft, text, textSize=15, maxWidth=None, maxHeight=None ):
@@ -303,9 +347,9 @@ class Label( Control ):
         self.maxHeight = maxHeight
 
     def hits( self, up=None, down=None ):
-        pass
+        return False
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible:
             display.drawText( self.text, self.topLeft, size=self.textSize, maxWidth=self.maxWidth, maxHeight=self.maxHeight )
 
@@ -314,7 +358,7 @@ class LabelButton( RectControl ):
         RectControl.__init__( self, None, (rx,ry), (rw,rh), fUpEvent, fDownEvent, uid=uid )
         self.text = text
 
-     def draw( self, display, focused=False, over=False ):
+     def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible:
             if self.enabled:
                 color = (255,255,255,255)
@@ -331,7 +375,7 @@ class ProgressBar( RectControl ):
         self.progress = 0
         self.selectable = False
 
-     def draw( self, display, focused=False, over=False ):
+     def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible:
         display.drawRect( (self.topLeft[0], self.topLeft[1], self.rw, self.rh), (255,255,255), 1 )
         display.drawRect( (self.topLeft[0]+2, self.topLeft[1]+2, (self.rw-4)*self.progress, self.rh-4), (255,255,255) )
@@ -350,20 +394,64 @@ class KeyCatcher( ControlBase ):
             return True
         return False
 
-class Panel( RectControl ):
-    def __init__( self, (x,y), (rw,rh) ):
+#class Panel( RectControl ):
+#    def __init__( self, (x,y), (rw,rh) ):
+#        self.selectable = False
+#        self.controls = []
+        
+#    def draw( self, display, focused=False, over=False, mouse=None ):
+#        for control in self.controls: 
+     #       print control
+#            control.draw( display, focused, over, mouse )
+
+#    def hits( self, up=None, down=None ):
+#        for control in self.controls: 
+#            if control.hits( up=up, down=down ):
+#                return True
+#        return False
+
+class Container( Control ):
+    def __init__( self ):
+        Control.__init__( self, None, (0,0), None )
         self.selectable = False
         self.controls = []
+        self.fIn = None
         
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=(0,0) ):
         for control in self.controls: 
-            print control
-            control.draw( display )
+            control.draw( display, over=(control.fIn and control.fIn( control, mouse )), mouse=mouse )
 
     def hits( self, up=None, down=None ):
-        for control in self.controls: 
-            if control.hits( up=up, down=down ):
-                return True
+        for control in [ self.controls[ k ] for k in xrange( len(self.controls)-1, -1, -1 ) ]:
+            select = control.hits( up=up, down=down )
+            if select:
+                return select
+        return False
+        
+    def keyInput( self, key, letter=None ):
+        #used = False
+      #  if letter == "\r":
+      #      if not self.selected or not self.selected.eEnter:
+      #          if self.eEnter:
+      #              self.eEnter( self, (0,0) )
+      #      elif self.selected and self.selected.eEnter:
+      #          self.selected.eEnter( self, (0,0) )
+      #  if self.selected:
+      #      if letter == "\t":
+      #          prevSlected = self.selected
+      #          self.selected = self.tabOrder[ self.selected ]
+      #          while prevSlected != self.selected and not self.selected.enabled:
+      #              self.selected = self.tabOrder[ self.selected ]
+      #      else:
+      #  used = self.selected.keyInput( key, letter )
+       # print "kaaaaaey a", used
+             
+      #  if not used:
+      #  print "kaaaaaey c"
+      #  for control in self.controls:
+      #      if isinstance( control, KeyCatcher ):
+      #          control.keyInput( key, letter )
+      #          return True
         return False
         
 
@@ -376,7 +464,50 @@ class ImageHolder( RectControl ):
         self.enabled = False
         self.selectable = False
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible and self.img:
             display.draw( self.img, self.topLeft )
             
+class Slider( RectControl ):
+    def __init__( self, imgs, topLeft, width, values, defaultValue=None, eChangedValue=None, rounded=False ):
+        RectControl.__init__( self, None, topLeft, (width,20), self.eClick )
+       # self.width = width
+        self.imgs = imgs
+        self.values = values # min, max
+        self.rounded = rounded
+        self.eChangedValue = eChangedValue
+        if defaultValue == None:
+            self.value = self.values[0]
+        else:
+            self.value = defaultValue
+        
+    def eClick( self, sender, (x,y) ):
+        oldValue = self.value
+        self.value = self.values[0]+ 1.0*(self.values[1]-self.values[0])*(x-self.rx)/self.rw
+        if self.rounded:
+            self.value = round( self.value )
+            
+        if self.eChangedValue and self.value != oldValue:
+            self.eChangedValue( self, (x,y) )
+        
+    def draw( self, display, focused=False, over=False, mouse=None ):
+        if self.rw%display.getWidth(self.imgs.ctrlSliderCenter):
+            self.rw = (self.rw//display.getWidth(self.imgs.ctrlSliderCenter)) *display.getWidth(self.imgs.ctrlSliderCenter)
+            
+        for x in xrange( 0, self.rw, display.getWidth(self.imgs.ctrlSliderCenter) ):
+            display.draw( self.imgs.ctrlSliderCenter, 
+                (self.rx+x,
+                 self.ry+self.rh/2-display.getHeight(self.imgs.ctrlSliderCenter)/2) )
+             
+        display.draw( self.imgs.ctrlSliderLeft, 
+            (self.rx-display.getWidth(self.imgs.ctrlSliderLeft)/2,
+             self.ry+self.rh/2-display.getHeight(self.imgs.ctrlSliderLeft)/2) )
+        display.draw( self.imgs.ctrlSliderRight, 
+            (self.rx+self.rw-display.getWidth(self.imgs.ctrlSliderRight)/2,
+             self.ry+self.rh/2-display.getHeight(self.imgs.ctrlSliderRight)/2) )
+             
+        sx = self.rw*(self.value-self.values[0])/(self.values[1]-self.values[0])
+        display.draw( self.imgs.ctrlSliderSelect, 
+            (self.rx+sx-display.getWidth(self.imgs.ctrlSliderSelect)/2,
+             self.ry+self.rh/2-display.getHeight(self.imgs.ctrlSliderSelect)/2) )
+

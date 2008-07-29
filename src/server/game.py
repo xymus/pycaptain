@@ -15,6 +15,7 @@ from common.gfxs import * # temp
 from common import ids
 from common import config
 from objectmanager import ObjectManager
+from communications import CommunicationManager
 
 
 
@@ -26,6 +27,7 @@ class Game:
         self.objects = ObjectManager()
         self.harvestables = ObjectManager()
         self.astres = []
+        self.communicationManager = CommunicationManager()
 
         self.newGfxs = []
         self.relations = {}
@@ -47,6 +49,9 @@ class Game:
        ### manage inputs
         for (player,inputs) in playerInputs:
             player.inputs = inputs
+            
+       ### comms / chat
+        self.communicationManager.doTurn( self )
                  
        ### players play
         for player in self.players:
@@ -97,6 +102,10 @@ class Game:
                #     print "definately human"
                     o1.player.flagship = None
                     o1.player.needToUpdatePossibles = True
+                    
+                    if not self.stats.PlayableShips: #  No playable ships, it means that scenario will take care of it
+                        self.scenario.spawn( self, o1.player, None )
+                    
                 elif not isinstance( o1.player, Faction ):
                     print "not human"
                     self.removePlayer( o1.player )
@@ -215,7 +224,8 @@ class Game:
                 steps = self.scenario.steps
                 step = self.scenario.step
                 stepsIter = self.scenario.stepsIter
-                self.scenario.step = self.scenario.steps.index( self.scenario.step )
+                if self.scenario.step:
+                    self.scenario.step = self.scenario.steps.index( self.scenario.step )
                 self.scenario.steps = None
                 self.scenario.stepsIter = None
             else:
@@ -276,8 +286,11 @@ def LoadGame( path ):
                 dummyGame = Game( Scenario )
                 if dummyGame.scenario.steps:
                     game.scenario.steps = dummyGame.scenario.steps
-                    game.scenario.stepsIter = iter( game.scenario.steps[ game.scenario.step: ] )
-                    game.scenario.step = game.scenario.stepsIter.next()
+                    if game.scenario.step:
+                        game.scenario.stepsIter = iter( game.scenario.steps[ game.scenario.step: ] )
+                        game.scenario.step = game.scenario.stepsIter.next()
+                    else:
+                        game.scenario.stepsIter = None
                     
         except Exception, ex:
             print "failed to load game:", ex

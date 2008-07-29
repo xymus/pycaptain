@@ -14,10 +14,11 @@ class Tests:
             os.listdir( os.path.join( sys.path[0], "scenarios" ) ) )
         self.scenarioNames = [ n[:-3] for n in self.scenarioNames]
         
-        self.displayNames = filter( 
-            lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
-            os.listdir( os.path.join( sys.path[0], "client", "displays" ) ) )
-        self.displayNames = [ n[:-3] for n in self.displayNames]
+       # self.displayNames = filter( 
+       #     lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
+       #     os.listdir( os.path.join( sys.path[0], "client", "displays" ) ) )
+       # self.displayNames = [ n[:-3] for n in self.displayNames]
+        self.displayNames = ["sdl"]
         
         self.testImgPath = os.path.join( sys.path[0], "client", "imgs", "ships", "human-base.png" )
 

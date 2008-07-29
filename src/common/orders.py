@@ -86,7 +86,7 @@ class OrderActivateShield( Order ):
 
 class OrderActivateRepair( Order ):
     def __init__( self,  activate ):
-        self.activate = activate
+        self.activate = activate    
 
 class OrderSetRelation( Order ):
     def __init__( self,  other, level ):
@@ -96,6 +96,16 @@ class OrderSetRelation( Order ):
 class OrderSelfDestruct( Order ):
     def __init__( self ):
         pass
+
+class OrderBroadcast( Order ):
+    def __init__( self, text ):
+        self.text = text
+
+class OrderDirectedCast( Order ):
+    def __init__( self, text, (x,y) ):
+        self.text = text
+        self.x = x
+        self.y = y
 
 #class OrderReadyEJump( Order ):
 #    def __init__( self,  activate ):

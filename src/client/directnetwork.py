@@ -14,7 +14,6 @@ class DirectNetwork( Network ):
 
         self.shutdown = False
         self.bump = False
-        self.msgalls = []
         self.msgusers = []
         self.sysmsgs = []
         self.objects =  []
@@ -47,12 +46,11 @@ class DirectNetwork( Network ):
     def sendShipChoice(self, s):
         self.server.choice( self, s )
 
-    def updatePlayer( self, objects, gfxs, stats, players, astres, possibles, msgalls, msgusers, sysmsgs ):
+    def updatePlayer( self, objects, gfxs, stats, players, astres, possibles, msgusers, sysmsgs ):
         self.objects =  objects
         self.gfxs += gfxs.gfxs
         self.stats = stats
         self.players = players
-        self.msgalls += msgalls
         self.msgusers += msgusers
         self.sysmsgs += sysmsgs
         if astres:
@@ -64,7 +62,6 @@ class DirectNetwork( Network ):
     def getUpdates(self): 
         shutdown = self.shutdown
         bump = self.bump
-        msgalls = self.msgalls
         msgusers = self.msgusers
         sysmsgs = self.sysmsgs
         objects =  self.objects
@@ -73,8 +70,6 @@ class DirectNetwork( Network ):
         players = self.players
         stats = self.stats
         possibles = self.possibles
-
-        self.msgalls = []
         self.msgusers = []
         self.sysmsgs = []
         self.objects =  []
@@ -83,14 +78,10 @@ class DirectNetwork( Network ):
         
         self.updated = False
         
-        return ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles )
+        return ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles )
     
     def pubQuit(self):
         self.server.disconnect( self )
-
-
-    def sendMsgall( self, text ):
-        pass
 
     def sendMsguser( self, text, destName ):
         pass

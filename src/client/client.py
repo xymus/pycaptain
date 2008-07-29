@@ -69,29 +69,8 @@ class Client:
         exec( "from displays.%s import %s as Display"%( self.displayName.lower(), self.displayName.capitalize() ) )
         self.display = Display( resolution, fullscreen, title="PyCaptain" )
         
-     #   splash = LoadingScreen( self.display )
-     #   mixer, imgs, snds, texts, self.prefs = splash.loadAll()
-        
-        
+        # this does most of the loading work
         self.loadResources()
-  #      mixer, imgs, snds, texts = self.mixer, self.imgs, self.snds, self.texts
-        
-      #  self.stats = Stats().statsDict #stats.statsDict
-      #  self.gui = Gui( self.display, mixer, imgs, snds, texts, self.prefs, self.stats, 
-      #      eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot, eFullscreen=self.eFullscreen  )
-
-      #  self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
-      #      eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eLoad=self.eLoad, eHost=self.eHost
-       #     )
-      #  self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
-      #      eOk=self.eJoinConnect, eBack=self.eBackToMainMenu 
-      #      )
-      #  self.hostMenu = HostMenu( self.gui.display, self.gui.imgs, eOk=self.eHostLaunch, eBack=self.eBackToMainMenu 
-      #      )
-      #  self.menuShips = MenuShips( self.gui.display, self.gui.imgs, self.gui.texts, eQuit=self.eQuitGame, eOk=self.eShipOk )
-      #  self.scenarioMenu = ScenarioMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, ePlay=self.ePlay )
-      #  self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
-      #  self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, eLoad=self.eLoadGame )
        
         self.inputs = COInput()
         self.lastInputs = None
@@ -145,13 +124,10 @@ class Client:
            ## get inputs
         #    self.inputs.orders = []
             self.gui.objects = self.objects
-            (quit, inputs, msgalls, msgusers, goToShipSelection) = self.gui.manageInputs( self.display )
+            (quit, inputs, goToShipSelection) = self.gui.manageInputs( self.display )
 
-            for msguser in msgusers:
-                self.network.sendMsguser( msguser[0], msguser[1] )
-
-            for msgall in msgalls:
-                self.network.sendMsguser( msgall )
+           # for msguser in msgusers:
+           #     self.network.sendMsguser( msguser[0], msguser[1] )
 
             if goToShipSelection:
                 self.at = "ship"
@@ -161,15 +137,16 @@ class Client:
                 while isinstance( self.network, DirectNetwork ) and not self.network.updated:  # TODO remove when gameplays implemented
                     sleep( 0.001 )
                     
-                ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, playerStats, players, possibles ) = self.network.getUpdates()
+                ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, playerStatus, players, possibles ) = self.network.getUpdates()
                 if objects:
                     self.objects = objects
 
-                for msg in msgalls:
-                    self.gui.addMsg( "%s says to all: %s" % msg )
-
                 for msg in msgusers:
-                    self.gui.addMsg( "%s says to you: %s" % msg )
+                    if msg[1]==msg[2]:
+                        self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+                    else:
+                        self.gui.addMsg( "%s@%i-%i: %s" % msg )
+                 #   self.gui.addMsg( "%s says to you: %s" % msg )
 
                 for msg in sysmsgs:
                     self.gui.addMsg( "system: %s" % msg )
@@ -188,14 +165,14 @@ class Client:
                 if gfxs:
                     self.universe.gfxs =  self.universe.gfxs + gfxs
 
-                if playerStats.dead:
+                if playerStatus.dead and possibles:
                     self.at = "ship"
 
                ## draw view
                 self.gui.objects = self.objects
                 self.gui.astres = self.universe.astres
                 self.gui.gfxs = self.universe.gfxs
-                self.gui.playerStats = playerStats
+                self.gui.playerStatus = playerStatus
                 self.gui.stats = self.stats
                 self.gui.players = self.universe.players
                 self.gui.lag = self.network.lag
@@ -267,13 +244,13 @@ class Client:
         self.waitingScreen.manageInputs( self.display )
         
         if self.network:
-            ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
+            ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
             
-            for msg in msgalls:
-                self.gui.addMsg( "%s says to all: %s" % msg )
-
             for msg in msgusers:
-                self.gui.addMsg( "%s says to you: %s" % msg )
+                    if msg[1]==msg[2]:
+                        self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+                    else:
+                        self.gui.addMsg( "%s@%i-%i: %s" % msg )
 
             for msg in sysmsgs:
                 self.gui.addMsg( "system: %s" % msg )
@@ -391,13 +368,13 @@ class Client:
     def shipLoop( self ):
         self.menuShips.draw( self.display )
 
-        ( shutdown, bump, msgalls, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
-        
-        for msg in msgalls:
-            self.gui.addMsg( "%s says to all: %s" % msg )
+        ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
 
         for msg in msgusers:
-            self.gui.addMsg( "%s says to you: %s" % msg )
+            if msg[1]==msg[2]:
+                self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+            else:
+                self.gui.addMsg( "%s@%i-%i: %s" % msg )
 
         for msg in sysmsgs:
             self.gui.addMsg( "system: %s" % msg )
@@ -437,8 +414,6 @@ class Client:
         self.loadMenu.reset( self.display, self.gui.imgs )
         self.at = "load"
         
-        
-        
     def eSave( self, sender, (x,y) ):
         if self.runningServer:
             saveGameRoot = os.path.join( sys.path[0], "client", "saves" )
@@ -446,7 +421,6 @@ class Client:
                 self.gui.addMsg( "saved as %s-%i.pyfl"%(self.server.game.scenario.name, self.server.game.tick) )
             else:
                 self.gui.addMsg( "saving failed" )
-                
                 
     def loadResources( self ):
         self.texts = Texts()
@@ -460,13 +434,9 @@ class Client:
         self.snds = Snds( self.mixer )
         self.prefs = Prefs()
         
-       # self.loadingScreen.loadMore()
-        
         self.loadingScreen.drawStaticSplash( 5, self.texts.loadingImages )
         for i in self.imgs.loadAll( self.display ):
             self.loadingScreen.drawProgress( 5+i*0.7 )
-            
-            
             
         self.loadingScreen.drawStaticSplash( 75, self.texts.loadingSounds )
         for i in self.snds.loadAll( self.mixer ):
@@ -484,8 +454,8 @@ class Client:
                     
         self.loadingScreen.drawStaticSplash( 95, self.texts.loadingScreens )
         
-        from server.stats import Stats # TODO REMOVE, for testing purpose only
-        self.stats = Stats().statsDict #stats.statsDict
+        from server.stats import Stats # TODO remove when passed in comms, for testing purpose only
+        self.stats = Stats().statsDict
         
         self.gui = Gui( self.display, self.mixer, self.imgs, self.snds, self.texts, self.prefs, self.stats, 
             eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot, eFullscreen=self.eFullscreen  )

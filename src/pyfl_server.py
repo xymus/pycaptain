@@ -8,10 +8,11 @@ from common import config
 # usage text
 usage = """Usage: %s [-h|--help] [-a addresse] [-p port] [-s scenario] [-private] [-w password]
 \taddresse\tNetwork addreses to open ports on. Can use multiples -a.
-\tport\tPort to be used. (Yet to be implemented)
+\tport\t\tPort to be used. (Yet to be implemented)
 \tscenario\tScenario name to load.
-\tprivate\tOnly players already registered by admin are accepted. (Yet to be implemented)
-\tw pw\tSet password for administrator interface. (Yet to be implemented)
+\tprivate\t\tOnly players already registered by admin are accepted. 
+\t\t\t\t(Yet to be implemented)
+\tw pw\t\tSet password for administrator interface.
 default is: %s""" % (argv[0], "%s -a localhost -p %s -s Sol"%(argv[0], config.port) )
 
 # help!

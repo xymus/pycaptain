@@ -12,6 +12,8 @@ class Player:
         self.name = name
         self.race = race
         self.points = 0
+        
+        self.msgs = [] 
 
     def doTurn( self, game ):
         pass
@@ -69,6 +71,14 @@ class Human( Player ):
                     game.setRelationBetween( self, game.getPlayer( order.other ), (order.level)*2-100 ) # on the player side it is 0-100
                 elif isinstance( order, OrderSelfDestruct ):
                     self.flagship.selfDestruct( game )
+                elif isinstance( order, OrderBroadcast ):
+                #    print order.text
+                    game.communicationManager.addWideBroadcast( game, self, order.text, ship=self.flagship )
+                #    self.flagship.selfDestruct( game )
+                elif isinstance( order, OrderDirectedCast ):
+                 #   print order.text
+                    game.communicationManager.addDirectedBroadcast( game, self, order.text, (order.x,order.y), ship=self.flagship )
+                 #   self.flagship.selfDestruct( game )
         self.inputs.orders = []
 
     def connect(self):
@@ -81,6 +91,7 @@ class Computer( Player ):
     def __init__( self, race, name, territories=[] ):
         Player.__init__( self, race, name ) 
         self.territories = territories
+        self.flagship = None
 
     def doTurn( self, game ):
         if self.flagship:
@@ -98,23 +109,78 @@ class Computer( Player ):
                 if isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
                     ship.ai.launching[ k ] = True
 
-        if ship.ai.attacking:
+        if ship.ai.attacking: # in combat
             ## launch fighters
             for k in ship.ai.launching:
                 if not isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
                     ship.ai.launching[ k ] = True
 
+            ## maneuver
             dist = (ship.stats.maxRadius + ship.ai.attacking.stats.maxRadius)*1.5
             angle = utils.angleBetweenObjects( ship.ai.attacking, ship )+pi/8
-         #   angle = 2*pi*random()
-            ## evasion maneuver
             ship.ai.goTo( ship, (ship.ai.attacking.xp+cos(angle)*dist, ship.ai.attacking.yp+sin(angle)*dist) )
 
-        ## recall fighters when not in combat
-        elif not game.tick%(config.fps*10):
-            for k in ship.ai.launching:
-                if not isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
-                    ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
+        else: # not in combat
+            if not game.tick%(config.fps*10):
+                needToFindOre = False
+                needToFindEnergy = False
+                
+                ## recall fighters when not in combat
+                for k in ship.ai.launching:
+                    if not isinstance( game.stats[ k ], game.stats.HarvesterShipStats ):
+                        ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
+            
+                ## move closer to resources
+                closestAsteroid = game.harvestables.getClosestAccording( ship.pos, ship.getRadarRange() )
+                if closestAsteroid and not utils.distLowerThanObjects( ship, closestAsteroid, ship.stats.maxRadius*2 ):
+                    dist=ship.stats.maxRadius*1.5
+                    angle=random()*2*pi
+                    ship.ai.goTo( ship, (closestAsteroid.xp+dist*cos(angle),closestAsteroid.yp+dist*sin(angle)) )
+                else: # nothing in range
+                    if ship.ore < ship.stats.maxOre/10: # low on ore
+                        needToFindOre = True
+                        
+              #  if ship.energy < ship.stats.maxEnergy/5 and # low on energy
+              #      :
+              
+              #  if ship.ore > ship.stats.maxOre/3 \
+              #     and len( filter( lambda turret: turret.building, ship.turrets ) < len(ship.turrets)/3: 
+                   # if has ore
+                   # if less than 1/3 of turrets are in construction
+                    
+                
+               
+            
+                     
+                    
+                    
+    def getStrongSide( self ):
+        self.anglesMass = [0]*30
+        self.anglesEnergy = [0]*30
+        self.minRange = [0]*30
+        self.maxRange = [10000]*30
+        
+        if self.flagship:
+            for turret in self.flagship.turrents:
+                if turret.install and turret.install.weapon:
+                    if turret.install.stats.maxAngle < turret.install.stats.minAngle:
+                        temprange = range( turret.install.stats.maxAngle, turret.install.stats.minAngle+2*pi )
+                        frange = [ (a%2*pi)//(2*pi/len(self.angles)) for a in temprange ]
+                    else:
+                        frange = xrange( (turret.install.stats.minAngle)//(2*pi/len(self.angles)), turret.install.stats.maxAngle )
+                        
+                    for a in frange:
+                        self.anglesMass[ a ] += turret.install.stats.massDamageValue
+                        self.anglesEnergy[ a ] += turret.install.stats.energyDamageValue
+                    self.minRange = max( self.minRange, turret.install.stats.weapon.minRange )
+                    self.maxRange = min( self.maxRange, turret.install.stats.weapon.maxRange ) # Use a dist*value system to improve results
+          #  bestAngle = 0
+          #  for k in xrange( len(self.anglesMass) ):
+          #      if 
+                    
+        else:
+            self.strongAngle = None
+            self.strongDist = None
                 
                 
 class Faction( Computer ):
@@ -124,6 +190,8 @@ class Faction( Computer ):
         self.ships = [] # these ships must have an Ai inheriting AiPilotFaction
         self.flagships = []
         self.protectsTheInnocent = False
+        
+   # flagship = property( fget=lambda self: self.flagships[0] )
 
     def doTurn( self, game ):
         for ship in self.flagships:

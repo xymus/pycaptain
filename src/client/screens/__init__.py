@@ -1,8 +1,9 @@
 from client.controls import *
 
 class Screen( ControlFrame ):
-    def reset( self ):
-        pass
+    pass
+#    def reset( self ):
+#        pass
         
 #    def manageInputs( self, display ):
 #        pass

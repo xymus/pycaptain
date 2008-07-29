@@ -12,7 +12,7 @@ from server.stats import Stats
 from common import utils
 
 class Tutorial1( Scenario ):
-    title = "Tutorial 1 - manoeuvering, energy and jumping"
+    title = "Tutorial 1 - manoeuvering and energy"
     description = "Your mission is to investigate a strange sighting near Mars"
     year = 2275
     name = "Tutorial1"

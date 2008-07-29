@@ -269,14 +269,18 @@ class Network:
           except Exception, ex:
             print "failed sendSysmsg", ex
 
-    def sendMsg( self, text, senderName, playerCon ):
-        print( "msgall %s" % text )
-        #pCon = getPlayerConFromPlayer( player )
-        if playerCon: # for pCon in self.playerCons:
+   # def sendMsg( self, sendAt, receivedAt, senderName, text, player ):
+   #  #   print( "msgall %s" % text )
+   #     pCon = getPlayerConFromPlayer( player )
+   #     self.sendMsgPcon( text, senderName, pCon )
+        
+    def sendMsg( self, senderName, sendAt, receivedAt, text, pCon ):
+        print( "sendMsg msg %s %i %i %s\n" % (senderName,sendAt,receivedAt,text) )
+        if pCon: # for pCon in self.playerCons:
           try:
-            playerCon.connection[0].send( "msg %s %s\n" % (senderName,text) )
+            pCon.connection[0].send( "msg %s %i %i %s\n" % (senderName,sendAt,receivedAt,text) )
           except Exception, ex:
-            print "failed sendSysmsg", ex
+            print "failed sendMsg", ex
 
 
    # def updatePlayer( self, player, objects, gfxs, stats, players ):
@@ -284,7 +288,7 @@ class Network:
    #         self.updating[ player ] = True
    #         thread = Thread( name="update %s"%player.username, target=self.updatePlayerFThread, args=(player, objects, gfxs, stats, players) )
    #         thread.start()
-    def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[] ):
+    def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[], msgs=[], sysMsgs=[] ):
         pCon = self.getPlayerConFromPlayer( player )
         if pCon:
           try:
@@ -307,13 +311,18 @@ class Network:
             if possibles:
                 copossibles = COPossibles( possibles )
                 string += "possibles %s\n"%copossibles.dump()
+                
+            for msg in msgs:
+                self.sendMsg( msg[0], msg[1], msg[2], msg[3], pCon )
 
             string += "downdone\n"
 
             pCon.connection[0].send( string )
 
           except socket.error, ex:
-            if pCon.errors > config.fps*5:
+            # broken pipe
+            if ex[1] == 32 \
+             or pCon.errors > config.fps*5:
                pCon.connection[0].close()
                self.playerCons.remove( pCon )
                self.sendSysmsg( "%s timedout" % pCon.player.username )

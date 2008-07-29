@@ -1,7 +1,12 @@
+from math import pi, sin, cos, ceil
+from random import random
 import sys, os
+
 from common import utils # TODO remove
 from common import config
 from server.stats import Stats
+from server.communications import MessageArchived
+from server.objects import Asteroid, Planet, Sun
 
 scenarioFiles = filter( 
     lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
@@ -10,6 +15,7 @@ scenarioNames = [ n[:-3] for n in scenarioFiles]
 scenarioNames.sort()
 
 __all__ = [ "Scenario", "Step" ]
+
 
 class Step:
     def __init__( self, goal=None, failure=None, onBegin=None, text=None, texts=None ):
@@ -39,6 +45,7 @@ class Scenario:
         self.steps = steps
         
         if self.steps:
+            self.step = None
             self.stepsIter = iter(steps)
             
         self.failed = False
@@ -63,11 +70,11 @@ class Scenario:
             if self.step and self.step.goal and self.step.goal( self, game ):
                 self.nextStep( game )
                 if self.over:
-                    self.msgs.append( "Scenario completed" )
+                    self.msgs.append( MessageArchived( "Scenario", "Scenario completed", game.tick, game.tick ) )
                     
             ## test failure
             if self.step and self.step.failure and self.step.failure( self, game ):
-                self.msgs.append( "Scenario failed" )
+                self.msgs.append( MessageArchived( "Scenario", "Scenario failed", game.tick, game.tick ) )
                 self.failed = True
                 self.over = True
                 self.step = None
@@ -77,14 +84,13 @@ class Scenario:
                 for t, text in self.step.texts:
                     if game.tick == self.lastStepAt+t:
                         for line in text.split("\n"):
-                            self.msgs.append( line )
+                            self.msgs.append( MessageArchived( "Scenario", line, game.tick, game.tick ) )
                     
-                    
-                        
 
     def spawn( self, game, player, shipId=None ):
         self.player = player
-        if self.steps:
+        player.needToUpdateRelations = True
+        if self.steps and not self.step:
             self.nextStep( game )
 
     def nextStep( self, game ):
@@ -98,5 +104,15 @@ class Scenario:
         if self.step:
             if self.step.onBegin:
                 self.step.onBegin( self, game ) 
+                
+    def getOrbitingPlanet( self, orbiterStats, orbitted, dist, angle=None ):
+        if angle == None:
+            angle = 2*pi*random()
+            
+        if not orbitted is tuple:
+            orbitted = orbitted.pos
+            
+        planet = Planet( orbiterStats, orbitted[0]+dist*cos(angle), orbitted[1]+dist*sin(angle) )
+        return planet
     
     

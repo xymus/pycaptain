@@ -144,14 +144,28 @@ class RemoteConverter( Converter ):
             else:
                 shieldStrength = 0
                 
-            pstats = COPlayerStats( game.tick, False, player.flagship.ore, player.flagship.stats.maxOre, player.flagship.energy, player.flagship.stats.maxEnergy, 
+            # detect dangers in radar
+            ennemyInRadar = False
+            dangerInRadar = False
+            for obj in game.objects.getWithinRadius( player.flagship.pos, player.flagship.getRadarRange() ):
+                if obj.player and (game.getRelationBetween( obj.player, player ) < 0 or game.getRelationBetween( player, obj.player ) < 0 ):
+                    ennemyInRadar = True
+                    if dangerInRadar:
+                        break
+                elif isinstance( obj, NukeMissile ) or isinstance( obj, Mine ):
+                    dangerInRadar = True
+                    if ennemyInRadar:
+                        break
+                
+                
+            pstats = COPlayerStatus( game.tick, False, player.flagship.ore, player.flagship.stats.maxOre, player.flagship.energy, player.flagship.stats.maxEnergy, 
 shieldStrength, player.flagship.hull/player.flagship.stats.maxHull,  player.flagship.canJump( game ),
-player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), shipsSpace, missilesSpace, 100*player.flagship.jumpCharge/player.flagship.jumpChargeDelay, 100*player.flagship.jumpRecover/player.flagship.jumpRecoverDelay, oreProcess, turrets, missiles, ships, radars )
+player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), shipsSpace, missilesSpace, 100*player.flagship.jumpCharge/player.flagship.jumpChargeDelay, 100*player.flagship.jumpRecover/player.flagship.jumpRecoverDelay, oreProcess, turrets, missiles, ships, radars, ennemyInRadar, dangerInRadar )
             t7 = time()
 
         else:
            ## stats if flagship dead
-            pstats = COPlayerStats( game.tick, True, 0, 0, 0, 0, 
+            pstats = COPlayerStatus( game.tick, True, 0, 0, 0, 0, 
                 0, 0,  0,
                 0, 0, 0, 0, 0, 0, 0,
                 [], [], [], [], [ CORadar( (0, 0), 1000 ) ] )
@@ -201,7 +215,19 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
 
         t12 = time()
         t = t12 - t0
+        
+        
+       ### messages
+        msgs = []
+        for msg in player.msgs+game.scenario.msgs:
+            msgs.append( (msg.sender, msg.sentAt, msg.receivedAt, msg.text) )
+        player.msgs = []
+        
+       # for msg in self.game.scenario.msgs:
+       #     msgs.append( (msg[0], game.tick, game.tick, msg[1]))
+        game.scenario.msgs = [] # assumes only one player
+        
      #   if player.flagship:
      #       print "dt=%.3f getObjects=%i%% uids=%i%% ore=%i%% turrets=%i%% smallships=%i%% missiles=%i%% stats=%i%% fxs=%i%% possibles=%i%% players=%i%% astres=%i%% fin=%i%%" % (t, (t1-t0)*100/t, (t2-t1)*100/t, (t3-t2)*100/t, (t4-t3)*100/t, (t5-t4)*100/t, (t6-t5)*100/t, (t7-t6)*100/t, (t8-t7)*100/t, (t9-t8)*100/t, (t10-t9)*100/t, (t11-t10)*100/t, (t12-t11)*100/t)
             
-        return (cobjs1, pstats, COGfxs( fxs ), players, astres, possibles )
+        return (cobjs1, pstats, COGfxs( fxs ), players, astres, possibles, msgs )

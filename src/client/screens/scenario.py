@@ -2,6 +2,8 @@ from math import pi
 
 from client.controls import *
 from client.specialcontrols import *
+from client.specialcontrols.boxes import Box
+
 from common.comms import COInput
 from common import ids
 from client import imgs
@@ -17,14 +19,15 @@ class ScenarioMenu( ControlFrame ):
         self.ctrlPrev =     LightControlLeft( (260,450), self.ePrev, "Previous scenario", imgs )
         self.ctrlNext =     LightControlRight( (600,450), self.eNext, "Next scenario", imgs )
         
-        self.lblTitle =     Label( (80,76), "", textSize=20 )
-        self.lblYear =     Label( (96,100), "" )
-        self.lblDescription =      Label( (88,120), "", maxWidth=460, maxHeight=300 )
+        self.lblTitle =     Label( (50,56), "", textSize=20 )
+        self.lblYear =     Label( (66,80), "" )
+        self.lblDescription =      Label( (58,100), "", maxWidth=380, maxHeight=300 )
         
       #  self.imgScreen = ImageHolder( None, (620,60) )
         self.imgBack = ImageHolder( imgs.splashBack, (0,0) )
         
         controls =   [  self.imgBack,
+                        Box( imgs, (40,40), (425,320) ),
       #                  self.imgScreen,
                        #ImageHolder( imgs.gameTitle, (40,40) ),
                         self.ctrlPlay,
@@ -38,6 +41,7 @@ class ScenarioMenu( ControlFrame ):
                         RotatingImageHolder( imgs[ ids.S_AI_FS_0 ], (620,503), ri=0.003 ),
                         #RotatingImageHolder( imgs[ ids.S_HUMAN_FS_1 ], (445,330), r=pi*3/8 ),
                         KeyCatcher( eBack, letter="q" ),
+                       # Slider( imgs, (20,500), 200, (0,6), defaultValue=1, eChangedValue=None, rounded=True )
                         ]
 
         self.addControls( controls )
@@ -82,10 +86,12 @@ class ScenarioMenu( ControlFrame ):
         if kScenario != None:
             self.kScenario = kScenario
             
-        self.lblTitle.text = self.scenarios[ self.kScenario ].title
-        self.lblDescription.text = self.scenarios[ self.kScenario ].description
-        self.lblYear.text = "year %i" % self.scenarios[ self.kScenario ].year
-        self.imgBack.img = self.scenarioImgs[ self.kScenario ]
+       # print kScenario, self.scenarios
+        if self.scenarios:
+            self.lblTitle.text = self.scenarios[ self.kScenario ].title
+            self.lblDescription.text = self.scenarios[ self.kScenario ].description
+            self.lblYear.text = "year %i" % self.scenarios[ self.kScenario ].year
+            self.imgBack.img = self.scenarioImgs[ self.kScenario ]
        
     def ePrev( self, sender, (x,y) ):
         self.updateInfo( (self.kScenario-1)%len( self.scenarios ) )

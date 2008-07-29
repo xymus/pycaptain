@@ -87,7 +87,8 @@ class MenuShips( ControlFrame ):
     selectedOption = property( fget=lambda self: self.options[ self.pOption ].ship )
 
     def eNext( self, sender, (x,y) ):
-        self.pOption = (self.pOption+1)%len(self.options)
+        if self.options:
+            self.pOption = (self.pOption+1)%len(self.options)
         self.changeSelected()
 
     def ePrev( self, sender, (x,y) ):

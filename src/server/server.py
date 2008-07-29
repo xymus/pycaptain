@@ -14,7 +14,7 @@ from converters.remote import RemoteConverter
 from converters.local import LocalConverter
 
 class Server:
-    def __init__( self, Scenario=None, scenarioName="Sol", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network, game=None ):
+    def __init__( self, Scenario=None, scenarioName="Dragons", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network, game=None ):
         # TODO implement private, port
         
         self.updatingPlayer = {}
@@ -98,7 +98,7 @@ class Server:
               for player in self.game.players:
                #   if isinstance( player, Player ) and self.network.isConnected( player ):
                #       print self.updatingPlayer.has_key( player ), player
-                  if isinstance( player, Human ) and self.network.isConnected( player ) and not self.updatingPlayer[ player ]:
+                  if isinstance( player, Human ) and self.network.isConnected( player ) and self.updatingPlayer.has_key( player ) and not self.updatingPlayer[ player ]:
                       thread = Thread( name="update %s"%player.username, target=self.fUpdatePlayer, args=(player,) )
                       thread.start()
 
@@ -140,15 +140,19 @@ class Server:
             global tx
             tx = time()
             
-            cobj, stats, gfxs, players, astres, possibles = self.converter.convert( self.game, player )
+            cobj, stats, gfxs, players, astres, possibles, msgs = self.converter.convert( self.game, player )
             
-            for msg in self.game.scenario.msgs:
-                self.network.sendSysmsg( msg )
-            self.game.scenario.msgs = []
+           # for msg in player.msgs:
+           #     self.network.sendSysmsg( "%s@%s..%s: %s" % (msg.sender.username, msg.sentAt, msg.receivedAt, msg.text) )
+           # player.msgs = []
+                
+           # for msg in self.game.scenario.msgs:
+           #     self.network.sendSysmsg( msg )
+           # self.game.scenario.msgs = []
             
             global ty
             ty = time()
-            self.network.updatePlayer( player, cobj, gfxs, stats, players, astres, possibles )
+            self.network.updatePlayer( player, cobj, gfxs, stats, players, astres, possibles, msgs=msgs )
             self.updatingPlayer[ player ] = False
             
             global tz

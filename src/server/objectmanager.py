@@ -15,7 +15,7 @@ class ObjectManager:
         self.objects.append( obj )
         
     def getWithinRadius( self, pos, dist ):
-        """Does not sort by proximity, there's no garantee the results order will be constant."""
+        """Does not sort by proximity, there's no garantee the results order will be constant.""" # TODO currently does not care about objects overlaping area borders from radius
         if isinstance( pos, Object ):
             pos = pos.pos
             

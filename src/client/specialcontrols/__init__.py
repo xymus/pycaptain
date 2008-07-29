@@ -13,7 +13,7 @@ class OptionButton( RectControl ):
         self.ri = 0.02
         self.turretCenter = (rx+rw-rh/2,ry+rh/2)
          
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
       #  RectControl.draw( self, display, focused )
         if self.visible:
             rect = (0,0,display.getWidth(self.img),display.getHeight(self.img))
@@ -40,7 +40,7 @@ class TurretButton( RoundControl ):
         
     turretCenter = property( fget=lambda self: ( self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
          
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible:
           rect = (0,0,display.getWidth(self.img)/3,display.getHeight(self.img))
 
@@ -66,7 +66,7 @@ class LightControl( RectControl ):
         self.color = (0,0,0) #(255,255,255)
         self.eEnter = fUpEvent
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible:
             if focused:
                 display.draw( self.imgSelected, self.topLeft )
@@ -87,8 +87,8 @@ class LightControlRight( LightControl ):
         ry += 23
         (rw,rh) = ( 395,70 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightRight, imgs.ctrlLightRightSelected, imgs.ctrlLightRightOver, imgs.ctrlLightRightDisabled, fDownEvent=None, uid=uid )
-        self.tx = self.topLeft[0]+self.rw/3
-        self.ty = self.topLeft[1]+self.rh/2-8
+    tx = property( fget=lambda self: self.topLeft[0]+self.rw/3 )
+    ty = property( fget=lambda self: self.topLeft[1]+self.rh/2-8 )
     
 class LightControlLeft( LightControl ):
     width = 395
@@ -97,8 +97,8 @@ class LightControlLeft( LightControl ):
         ry += 23
         (rw,rh) = ( 395,70 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightLeft, imgs.ctrlLightLeftSelected, imgs.ctrlLightLeftOver, imgs.ctrlLightLeftDisabled, fDownEvent=None, uid=uid )
-        self.tx = self.topLeft[0]+2*self.rw/5
-        self.ty = self.topLeft[1]+self.rh/2-8
+    tx = property( fget=lambda self: self.topLeft[0]+2*self.rw/5 )
+    ty = property( fget=lambda self: self.topLeft[1]+self.rh/2-8 )
         
 class LightControlDown( LightControl ):
     width = 241
@@ -106,8 +106,8 @@ class LightControlDown( LightControl ):
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         (rw,rh) = ( 241,60 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightDown, imgs.ctrlLightDownSelected, imgs.ctrlLightDownOver, imgs.ctrlLightDownDisabled, fDownEvent=None, uid=uid )
-        self.tx = self.topLeft[0]+self.rw/3
-        self.ty = self.topLeft[1]+self.rh/2-8
+    tx = property( fget=lambda self: self.topLeft[0]+self.rw/3 )
+    ty = property( fget=lambda self: self.topLeft[1]+self.rh/2-8 )
         
 class LightControlUp( LightControl ):
     width = 241
@@ -115,11 +115,11 @@ class LightControlUp( LightControl ):
     def __init__( self, (rx,ry), fUpEvent, text, imgs, fDownEvent=None, uid=None ):
         (rw,rh) = ( 241,60 )
         LightControl.__init__( self, (rx,ry), (rw,rh), fUpEvent, text, imgs.ctrlLightUp, imgs.ctrlLightUpSelected, imgs.ctrlLightUpOver, imgs.ctrlLightUpDisabled, fDownEvent=None, uid=uid )
-        self.tx = self.topLeft[0]+self.rw/3
-        self.ty = self.topLeft[1]+self.rh/2-8
+    tx = property( fget=lambda self: self.topLeft[0]+self.rw/3 )
+    ty = property( fget=lambda self: self.topLeft[1]+self.rh/2-8 )
       
 class RotatingImageHolder( ImageHolder ):
-    def __init__( self, img, center, ri=0, r=None ):
+    def __init__( self, img, center, ri=0.0, r=0.0 ):
         ImageHolder.__init__( self, img, None )
         self.center = center
         self.ri = ri
@@ -128,7 +128,7 @@ class RotatingImageHolder( ImageHolder ):
         else:
             self.r = r
 
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
         if self.visible and self.img:
             display.drawRo( self.img, self.center, self.r )
             self.r += self.ri
@@ -150,7 +150,7 @@ class ListControl( RectControl ):
                     self.fDownEvent( self, down )
         return hit
         
-    def draw( self, display, focused=False, over=False ):
+    def draw( self, display, focused=False, over=False, mouse=None ):
       if self.visible and self.img:
         rect = (0,0,display.getWidth(self.img)/3,display.getHeight(self.img))
 
