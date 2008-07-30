@@ -142,15 +142,13 @@ class Client:
                     self.objects = objects
 
                 for msg in msgusers:
-                    if msg[1]==msg[2]:
-                        self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
-                    else:
-                        self.gui.addMsg( "%s@%i-%i: %s" % msg )
-                 #   self.gui.addMsg( "%s says to you: %s" % msg )
+                  #  if msg[1]==msg[2]:
+                  #      self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+                  #  else:
+                    self.gui.addDelayedMsg( msg[3], msg[0], msg[1], msg[2], ) # addMsg( "%s@%i-%i: %s" % msg )
 
                 for msg in sysmsgs:
                     self.gui.addMsg( "system: %s" % msg )
-               #     print "system: %s" % msg
 
                 if shutdown:
                     self.useServer = False
@@ -213,6 +211,7 @@ class Client:
             self.at = "waiting"
             
     def eJoin(self, sender, (x,y)):
+        self.joinMenu.reset()
         self.at = "join"
             
     def eHost(self, sender, (x,y)):
@@ -247,10 +246,10 @@ class Client:
             ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
             
             for msg in msgusers:
-                    if msg[1]==msg[2]:
-                        self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
-                    else:
-                        self.gui.addMsg( "%s@%i-%i: %s" % msg )
+                  #  if msg[1]==msg[2]:
+                  #      self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+                  #  else:
+                    self.gui.addDelayedMsg( msg[3], msg[0], msg[1], msg[2], ) # addMsg( "%s@%i-%i: %s" % msg )
 
             for msg in sysmsgs:
                 self.gui.addMsg( "system: %s" % msg )
@@ -371,10 +370,10 @@ class Client:
         ( shutdown, bump, msgusers, sysmsgs, objects, astres, gfxs, stats, players, possibles ) = self.network.getUpdates( )
 
         for msg in msgusers:
-            if msg[1]==msg[2]:
-                self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
-            else:
-                self.gui.addMsg( "%s@%i-%i: %s" % msg )
+                  #  if msg[1]==msg[2]:
+                  #      self.gui.addMsg( "%s: %s" % (msg[0],msg[3]) )
+                  #  else:
+                    self.gui.addDelayedMsg( msg[3], msg[0], msg[1], msg[2], ) # addMsg( "%s@%i-%i: %s" % msg )
 
         for msg in sysmsgs:
             self.gui.addMsg( "system: %s" % msg )

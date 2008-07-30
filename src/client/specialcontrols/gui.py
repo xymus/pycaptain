@@ -122,7 +122,7 @@ class RadarControl( Container ):
         Container.draw( self, display, focused, over, mouse )
         
        ### self.display.drawText( str( self.status.maxRadar ), (142,55), size=13 )
-       ### self.display.drawText( "%0.1f  %0.1f"% ( self.status.xr/1000, self.status.yr/1000 ), (139,83), size=13 )
+       ### self.display.drawText( "%0.1f  %0.1f"% ( self.status.xr/1000.0, self.status.yr/1000.0 ), (139,83), size=13 )
     
     def update( self, objects, status, camera ):
         self.objects = objects
@@ -132,9 +132,9 @@ class RadarControl( Container ):
         self.maxRadarRange = self.status.maxRadar
         self.radarRange = self.maxRadarRange
         
-        self.lblX.text = "%.2f"%(self.status.xr/1000)
-        self.lblY.text = "%.2f"%(self.status.yr/1000)
-        self.lblRange.text = "%.1f"%(self.radarRange/1000)
+        self.lblX.text = "%.2f"%(self.status.xr/1000.0)
+        self.lblY.text = "%.2f"%(self.status.yr/1000.0)
+        self.lblRange.text = "%.1f"%(self.radarRange/1000.0)
 
     def hits( self, up=None, down=None ):
      #   print self
@@ -553,8 +553,8 @@ class TargettingScreen( Container ):
             if self.width and self.height:
                 x = self.left+1.0*self.width*mouse[0]/display.resolution[0]
                 y = self.top+self.height*(1-1.0*mouse[1]/display.resolution[1])
-                self.lblX.text = "%.2f"%(x/1000)
-                self.lblY.text = "%.2f"%(y/1000)
+                self.lblX.text = "%.2f"%(x/1000.0)
+                self.lblY.text = "%.2f"%(y/1000.0)
             
                 Container.draw( self, display, focused=focused, over=over, mouse=mouse )
             display.cursorDrawn = True

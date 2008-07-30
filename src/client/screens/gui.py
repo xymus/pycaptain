@@ -955,3 +955,14 @@ class Gui( ControlFrame ):
     def addMsg( self, msg ):
         self.msgs.append( (time(),msg) )
 
+    def addDelayedMsg( self, msg, sender, sentAt, receivedAt ):
+        if sentAt == receivedAt:
+            self.msgs.append( (time(),"%s: %s"%(sender,msg)) )
+        else:
+            secsDiff = float(receivedAt-sentAt)/config.fps
+            if secsDiff < 60:
+                timeStr = "%.0fs"%secsDiff
+            else: # if secsDiff < 60*60:
+                timeStr = "%.1fm"%(secsDiff/60)
+            self.msgs.append( (time(),"%s, %s ago: %s"%(sender,timeStr,msg)) )
+

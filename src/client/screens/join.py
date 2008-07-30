@@ -44,6 +44,10 @@ class JoinMenu( ControlFrame ):
 
         self.initialPassword = password
 
+    def reset( self ):
+        self.cError.text = ""
+        self.ctrlOk.enabled = True
+        ControlFrame.reset( self )
 
     def setError( self, text ):
         self.cError.text = text
