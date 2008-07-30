@@ -93,6 +93,9 @@ class Object:
             self.cobject.ori = self.ori
         return [self.cobject]
 
+    def hit( self, game, angle, sender, energy=0, mass=0, pulse=False ):
+        return ([],[],[])
+
 class Asteroid( Object ):
     def __init__( self, game, x, y, radius ):
         self.maxI = 0
