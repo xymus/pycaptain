@@ -8,7 +8,7 @@ class Mixer:
             pygame.mixer.init()
             pygame.mixer.set_num_channels( 16 )
             self.inited = True
-        except pygame.error, ex:
+        except Exception, ex:
             print "Failed to initialize sound device:", ex,"\nTry to install package libsdl1.2-debian-all"
             self.inited = False
         self.setVolume()
