@@ -47,7 +47,8 @@ class WeaponStats:
 
 ## ships
 class ShipStats( ObjectStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0 ):
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
+            shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3 ):
         ObjectStats.__init__(self,id,radius)
         self.maxThrust = maxThrust#*0.3
         self.maxReverseThrust = maxReverseThrust
@@ -64,10 +65,16 @@ class ShipStats( ObjectStats ):
         self.oreCostToBuild = oreCostToBuild
         self.timeToBuild = timeToBuild
         self.hangarSpaceNeed = hangarSpaceNeed
+        self.shieldVsMass = shieldVsMass 
+        self.shieldVsEnergy = shieldVsEnergy 
+        self.hullVsMass = hullVsMass 
+        self.hullVsEnergy = hullVsEnergy 
 
 class SingleWeaponShipStats( ShipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,weapon,unavoidableFragments, fragments, engines, weaponPositions=None,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
-        ShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed )
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,weapon,unavoidableFragments, fragments, engines, weaponPositions=None,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
+            shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3 ):
+        ShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, \
+            shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
         """weaponPositions format = [ set1=[pos0,pos1], set2=... ] allows to alternate between different weapon sets"""
         self.weapon = weapon
     #    rx, ry = 10, 0
@@ -78,13 +85,19 @@ class SingleWeaponShipStats( ShipStats ):
      #  self.weaponPosAngle = atan2( rx, ry )
 
 class MultipleWeaponsShipStats( ShipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
-        ShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed )
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
+            shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3 ):
+
+        ShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, \
+            shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
         self.turrets = turrets
 
 class Flagship( MultipleWeaponsShipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, hangars=None, civilianBonus=1000, pulseResistant=False, jumpChargeDelay=3*config.fps, jumpRecoverDelay=20*config.fps, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
-        MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed )
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, hangars=None, civilianBonus=1000, pulseResistant=False, jumpChargeDelay=3*config.fps, jumpRecoverDelay=20*config.fps, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
+            shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3 ):
+        MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, \
+            shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
+                
         self.maxEnergy = maxEnergy
         self.maxOre = maxOre
         self.hangarSpace = hangarSpace
@@ -152,8 +165,16 @@ class TurretStats:
         self.civilianEffect = 0 # TODO to replace ids.S_CIVILIAN and nuclear reactor effect
 
 class TurretInstallStats:
-    def __init__( self, type,energyCostToBuild,oreCostToBuild,timeToBuild, energyPerFrame,orePerFrame, energyPerUse,orePerUse, freqOfFire,turretSpeed, ai, category=None, weapon=None,weaponPositions=None, special=None, specialValue=None, upgradeFrom=None, civilian=False, solar=0, darkExtractor=0, darkEngine=0, cryption=0 ):
-        """weaponPositions format = [ set1=[pos0,pos1], set2=... ] allows to alternate between different weapon sets"""
+    def __init__( self, type,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0, energyPerFrame=0,orePerFrame=0, energyPerUse=0,orePerUse=0, freqOfFire=0,turretSpeed=0, ai=None, category=None, weapon=None,weaponPositions=None, special=None, specialValue=None, upgradeFrom=None, civilian=False, solar=0, darkExtractor=0, darkEngine=0, cryption=0, hullBonusVsEnergy=0, shieldBonusVsMass=0 ):
+        """
+weaponPositions format = [ set1=[pos0,pos1], set2=... ] allows to alternate between different weapon sets
+...
+solar=0 : 
+darkExtractor=0 : 
+darkEngine=0 : 
+cryption=0 : Encryption and decryption strength.
+hullBonus=0: Bonus applied to hull, relative to max hull.
+shieldBonus=0: Bonus applied to shield, relative to max shield."""
         self.type = type
         self.energyCostToBuild = energyCostToBuild
         self.oreCostToBuild = oreCostToBuild
@@ -205,6 +226,8 @@ class TurretInstallStats:
         self.darkExtractor = darkExtractor
         self.darkEngine = darkEngine
         self.cryption = cryption
+        self.hullBonusVsEnergy = hullBonusVsEnergy
+        self.shieldBonusVsMass = shieldBonusVsMass
         
 
         ### upgrades
@@ -663,6 +686,10 @@ class Stats:
         self.T_AI_CRYPT_1 = TurretInstallStats( ids.T_AI_CRYPT_1, 0,250,30*config.fps, 0.02,0, 0,0, 0.5*config.fps,0, None, cryption=2, upgradeFrom=self.T_AI_CRYPT_0 )
         self.T_AI_CRYPT_2 = TurretInstallStats( ids.T_AI_CRYPT_2, 0,600,60*config.fps, 0.03,0, 0,0, 0.5*config.fps,0, None, cryption=3, upgradeFrom=self.T_AI_CRYPT_1 )
         self.T_AI_CRYPT_3 = TurretInstallStats( ids.T_AI_CRYPT_3, 0,1000,120*config.fps, 0.04,0, 0,0, 0.5*config.fps,0, None, cryption=4, upgradeFrom=self.T_AI_CRYPT_2 )
+        
+        self.T_AI_ACTIVE_DEFENSE_0 = TurretInstallStats( ids.T_AI_ACTIVE_DEFENSE_0, \
+            oreCostToBuild=500, energyPerFrame=12/config.fps, timeToBuild=15*config.fps, \
+            turretSpeed=0.002, shieldBonusVsMass=0.3 )
 
         # self.EVOLVED's
         self.T_ESPHERE_0 =       TurretInstallStats( ids.T_ESPHERE_0, 0,100,10*config.fps, 0,0, 2,0, 0.5*config.fps, 0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_ESPHERE_0,weaponPositions=[[RPos(0,0)]] )
@@ -686,6 +713,11 @@ class Stats:
         self.T_EVOLVED_PULSE = TurretInstallStats( ids.T_EVOLVED_PULSE, 0,250,30*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_EVOLVED_PULSE,weaponPositions=[[RPos(0,0)]], special=ids.S_PULSE, specialValue=200 ) # range
         self.T_EVOLVED_COUNTER = TurretInstallStats( ids.T_EVOLVED_COUNTER, 0,150,30*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_EVOLVED_COUNTER,weaponPositions=[[RPos(0,0)]], special=ids.S_COUNTER, specialValue=200 ) # effect range
         
+        
+        self.T_EVOLVED_PARTICLE_SHIELD_0 = TurretInstallStats( ids.T_EVOLVED_PARTICLE_SHIELD_0, \
+            oreCostToBuild=300, energyPerFrame=12/config.fps, timeToBuild=10*config.fps, \
+            shieldBonusVsMass=0.2 )
+            
         # Nomad's
         self.T_DISCHARGER_0 = 	TurretInstallStats( ids.T_DISCHARGER_0, 0,250,10*config.fps, 0,0, 0.5,0, 1*config.fps,0.01, ids.TA_COMBAT_ROTATING, weapon=self.W_DISCHARGER_0,weaponPositions=[[RPos(0,33)]] )
         self.T_DISCHARGER_1 = 	TurretInstallStats( ids.T_DISCHARGER_1, 0,250,10*config.fps, 0,0, 0.5,0, 1 *config.fps,0.015, ids.TA_COMBAT_ROTATING, weapon=self.W_DISCHARGER_1,weaponPositions=[[RPos(0,33)]],upgradeFrom=self.T_DISCHARGER_0 )
@@ -702,6 +734,10 @@ class Stats:
         self.T_NOMAD_MISSILE_0 = 	TurretInstallStats( ids.T_NOMAD_MISSILE_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=self.W_MISSILE,weaponPositions=[[RPos(0,10)]] )
         self.T_NOMAD_MISSILE_1 = 	TurretInstallStats( ids.T_NOMAD_MISSILE_1, 0,350,60*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=self.W_MISSILE,weaponPositions=[[RPos(0.5,10),RPos(-0.5,10)]], upgradeFrom=self.T_NOMAD_MISSILE_0 )
         
+        self.T_NOMAD_HULL_ELECTRIFIER_0 = TurretInstallStats( ids.T_NOMAD_HULL_ELECTRIFIER_0, \
+            oreCostToBuild=300, energyPerFrame=12/config.fps, timeToBuild=10*config.fps, \
+            hullBonusVsEnergy=0.2 )
+            
         self.setDefaults()
 
 
@@ -728,7 +764,8 @@ class Stats:
         self.T_AI_OMNI_LASER_1, self.T_AI_OMNI_LASER_0,
         self.T_AI_MISSILE_3, self.T_AI_MISSILE_2, self.T_AI_MISSILE_1, self.T_AI_MISSILE_0,
         self.T_NUKE, self.T_MINER,
-        self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_3, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0 ],
+        self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_3, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
+        self.T_AI_ACTIVE_DEFENSE_0 ],
         self.AI_HARVESTER )
 
         self.R_NOMAD = 	RaceStats( ids.R_NOMAD, 
@@ -740,7 +777,8 @@ class Stats:
         self.T_NOMAD_MISSILE_1, self.T_NOMAD_MISSILE_0,
         self.T_NUKE, self.T_PULSE,
         self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
-        self.T_DISCHARGER_1, self.T_DISCHARGER_0 ],
+        self.T_DISCHARGER_1, self.T_DISCHARGER_0,
+        self.T_NOMAD_HULL_ELECTRIFIER_0 ],
         self.NOMAD_HARVESTER  )
 
         self.R_EXTRA = 	RaceStats( ids.R_EXTRA, 
@@ -762,7 +800,8 @@ class Stats:
         self.T_SUBSPACE_WAVE_0, self.T_SUBSPACE_WAVE_1,
         self.T_EVOLVED_MISSILE_1, self.T_EVOLVED_MISSILE_0, 
         self.T_DARK_EXTRACTOR_0, self.T_DARK_EXTRACTOR_1, self.T_DARK_ENGINE_0,
-        self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0 ],
+        self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
+        self.T_EVOLVED_PARTICLE_SHIELD_0 ],
         self.EVOLVED_HARVESTER )
         
         self.Relations = { 

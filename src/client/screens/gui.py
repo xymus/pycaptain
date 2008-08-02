@@ -139,6 +139,8 @@ class Gui( ControlFrame ):
 			ids.T_AI_CRYPT_1	: 0,
 			ids.T_AI_CRYPT_2	: 0,
 			ids.T_AI_CRYPT_3	: 0,
+			
+            ids.T_AI_ACTIVE_DEFENSE_0    	: 0,
 			           
 			ids.T_ESPHERE_0 	: 2,
 			ids.T_ESPHERE_1 	: 2,
@@ -160,6 +162,7 @@ class Gui( ControlFrame ):
             ids.T_EVOLVED_MISSILE_1 	: 2,
             ids.T_EVOLVED_PULSE 	    : 1,
             ids.T_EVOLVED_COUNTER    	: 1,
+            ids.T_EVOLVED_PARTICLE_SHIELD_0    	: 0,
 
 			ids.T_DISCHARGER_0 	: 2,
 			ids.T_DISCHARGER_1 	: 2,
@@ -175,6 +178,8 @@ class Gui( ControlFrame ):
 			ids.T_NOMAD_SUCKER_0 	: 0,
 			ids.T_NOMAD_SUCKER_1 	: 0,
 			ids.T_NOMAD_SUCKER_2 	: 0,
+			
+            ids.T_NOMAD_HULL_ELECTRIFIER_0    	: 0,
 
 			0	: 0,
 			-1	: 0}
@@ -271,10 +276,15 @@ class Gui( ControlFrame ):
                 self.mixer.play( self.snds[ gfx.sound ] )
 
         elif isinstance( gfx, GfxShield ):
-        #    self.display.drawCircle( (0,0,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius, 1 )
-            arca = gfx.hit*self.shieldAngle
-        #    print gfx.angle - arca, gfx.angle + arca
-            self.display.drawArc( (65,65,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius, gfx.angle - arca, gfx.angle + arca, 2 )
+           # arca = gfx.hit*self.shieldAngle
+           # self.display.drawArc( (65,65,255,255),  self.getViewportPos((gfx.xp,gfx.yp)), gfx.radius, gfx.angle - arca, gfx.angle + arca, 2 )
+            pos = self.getViewportPos((gfx.xp,gfx.yp))
+            pos = (pos[0]+gfx.radius*cos(gfx.angle),pos[1]-gfx.radius*sin(gfx.angle))
+            if gfx.radius > 20:
+                self.display.drawRo( self.imgs.shieldHitMedium, pos, gfx.angle )
+            else:
+                self.display.drawRo( self.imgs.shieldHitSmall, pos, gfx.angle )
+                
 
         elif isinstance( gfx, GfxExhaust ):
             pass

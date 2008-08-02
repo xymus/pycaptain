@@ -83,6 +83,8 @@ class Texts( Rc ):
         self[ ids.T_AI_CRYPT_2 ] = "Crypt module x3"
         self[ ids.T_AI_CRYPT_3 ] = "Crypt module x4"
         
+        self[ ids.T_AI_ACTIVE_DEFENSE_0 ]   = "Active defense"
+        
         self[ ids.T_ESPHERE_0 ]	        = "E-Sphere launcher"
         self[ ids.T_ESPHERE_1 ]	        = "E-Sphere launcher v2"
         self[ ids.T_ESPHERE_2 ]	        = "E-Sphere launcher v3"
@@ -102,6 +104,7 @@ class Texts( Rc ):
         self[ ids.T_EVOLVED_MISSILE_1 ]     = "Double missile launcher"
         self[ ids.T_EVOLVED_PULSE ]         = "Pulse sphere launcher"
         self[ ids.T_EVOLVED_COUNTER ]       = "Counter sphere launcher"
+        self[ ids.T_EVOLVED_PARTICLE_SHIELD_0 ] = "Particle shield"
 
         self[ ids.T_DISCHARGER_0 ]	        = "Discharger"
         self[ ids.T_DISCHARGER_1 ]	        = "Heavy discharger"
@@ -117,6 +120,8 @@ class Texts( Rc ):
         self[ ids.T_NOMAD_SUCKER_0 ]	    = "Nebula harvester"
         self[ ids.T_NOMAD_SUCKER_1 ]	    = "Nebula harvester 2x"
         self[ ids.T_NOMAD_SUCKER_2 ]	    = "Nebula harvester 3x"
+
+        self[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = "Hull electrifier"
 
         self[ids.C_WEAPON] 		= "Weapons"
         self[ids.C_MISSILE]		= "Missiles"

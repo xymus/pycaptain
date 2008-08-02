@@ -235,7 +235,8 @@ class Imgs( Rc ):
         self[ ids.T_AI_CRYPT_2 ] = self.loadAnimation( "turrets/ai-crypt-2.png", count=3, tickPerFrame=5 )
         self[ ids.T_AI_CRYPT_3 ] = self.loadAnimation( "turrets/ai-crypt-3.png", count=3, tickPerFrame=5 )
 
-
+        self[ ids.T_AI_ACTIVE_DEFENSE_0 ] = self.loadImage( "turrets/ai-active-defense-0.png" )
+        
         self[ ids.T_ESPHERE_0 ] = self.loadImage( "turrets/esphere-0.png" ) 
         self[ ids.T_ESPHERE_1 ] = self.loadImage( "turrets/esphere-1.png" ) 
         self[ ids.T_ESPHERE_2 ] = self.loadImage( "turrets/esphere-2.png" ) 
@@ -256,6 +257,8 @@ class Imgs( Rc ):
         self[ ids.T_EVOLVED_MISSILE_1 ] = self.loadImage( "turrets/evolved-missile-1.png" ) 
         self[ ids.T_EVOLVED_PULSE ] = self.loadImage( "turrets/evolved-pulse.png" ) 
         self[ ids.T_EVOLVED_COUNTER ] = self.loadImage( "turrets/evolved-counter.png" ) 
+        self[ ids.T_EVOLVED_PARTICLE_SHIELD_0 ] = self.loadImage( "turrets/evolved-particle-shield-0.png" )
+
 
         yield 55
         self[ ids.T_DISCHARGER_0 ] = self.loadImage( "turrets/discharger-0.png" ) 
@@ -275,7 +278,7 @@ class Imgs( Rc ):
         self[ ids.T_NOMAD_SUCKER_1 ] = self.loadImage( "turrets/nomad-sucker-1.png" ) 
         self[ ids.T_NOMAD_SUCKER_2 ] = self.loadImage( "turrets/nomad-sucker-2.png" ) 
 
-
+        self[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = self.loadImage( "turrets/nomad-hull-electrifier-0.png" )
 
       #  self[ ids.MISSILE_0 ] = self.loadImage( "missiles/missile.png" ) 
         self[ ids.B_BULLET_0 ] = self.loadImage( "projectiles/bullet.png" )  
@@ -316,6 +319,8 @@ class Imgs( Rc ):
      #   self[ ids.E_1 ] = self.loadImage( "exhaust/particle1.png", True )
      #   self[ ids.E_2 ] = self.loadImage( "exhaust/particle2.png", True )
         self.exhausts = [  ids.E_0, ids.E_1, ids.E_2 ]
+        self.shieldHitSmall = self.loadImageWithDisplay( "gfxs/shield-hit-small.png" )
+        self.shieldHitMedium = self.loadImageWithDisplay( "gfxs/shield-hit.png" )
         
         
         # ctrls

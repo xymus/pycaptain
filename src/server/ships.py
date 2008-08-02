@@ -21,8 +21,10 @@ class Ship( Object ):
         self.thrust = thrust
         self.rg = 0
 
-  #      self.dest = (200, 100)
-  #      self.weapons = []
+        self.shieldVsMass = self.stats.shieldVsMass
+        self.shieldVsEnergy = self.stats.shieldVsEnergy
+        self.hullVsMass = self.stats.hullVsMass 
+        self.hullVsEnergy = self.stats.hullVsEnergy
 
         self.ai = ai
         self.dockedTo = False
@@ -32,10 +34,10 @@ class Ship( Object ):
         self.shield = stats.maxShield
         self.inertiaControl = True
 
-        self.headed = True
+        self.headed = True # differentiate bases from ships
 
         self.pulsedUntil = -1000
-        self.inNebula = False
+        self.inNebula = False # variable state
         self.inertiaMod = 1
         self.thrustBoost = 0
 
@@ -120,7 +122,7 @@ class Ship( Object ):
             self.ai.hitted( self, game, angle, sender, energy, mass, pulse )
         gfxs = []
 
-        damageToShield = min( self.shield, energy + mass/3)
+        damageToShield = min( self.shield, energy*self.shieldVsEnergy + mass*self.shieldVsMass )
 
         if damageToShield > 0:
             gfxs.append( GfxShield( (self.xp, self.yp), self.stats.maxRadius, self.shield/self.stats.maxShield, angle, damageToShield ) )
@@ -129,7 +131,7 @@ class Ship( Object ):
         rMass = max( 0, mass-max( 0, self.shield-energy)*5)
         self.shield = self.shield - damageToShield # max( 0, self.shield - energy - mass/3) 
 
-        damageToHull = min( self.hull, rEnergy/3 + rMass)
+        damageToHull = min( self.hull, rEnergy*self.hullVsEnergy + rMass*self.hullVsMass)
         self.hull = self.hull - damageToHull #- rMass - rEnergy/3
 
         if self.hull == 0: # dead
@@ -334,6 +336,11 @@ class FlagShip( ShipWithTurrets ):
         oldOre = self.ore
         oldEnergy = self.energy
         
+        self.shieldVsMass = self.stats.shieldVsMass
+        self.shieldVsEnergy = self.stats.shieldVsEnergy
+        self.hullVsMass = self.stats.hullVsMass 
+        self.hullVsEnergy = self.stats.hullVsEnergy
+
        ## build
         # turrets
         for turret in self.turrets:
@@ -364,6 +371,10 @@ class FlagShip( ShipWithTurrets ):
                       darkExtractorEfficiency += turret.install.stats.darkExtractor
                   if turret.install.stats.darkEngine:
                       darkEngineEfficiency += turret.install.stats.darkEngine
+                  if turret.install.stats.hullBonusVsEnergy:
+                      self.hullVsEnergy += turret.install.stats.hullBonusVsEnergy
+                  if turret.install.stats.shieldBonusVsMass:
+                      self.shieldVsMass += turret.install.stats.shieldBonusVsMass
                              
         if nebulaOreSum:
             self.addOreToProcess( nebulaOreSum )  

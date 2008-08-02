@@ -212,6 +212,8 @@ T_AI_CRYPT_1    = 451
 T_AI_CRYPT_2    = 452
 T_AI_CRYPT_3    = 453
 
+T_AI_ACTIVE_DEFENSE_0 = 454
+
 # extra's Ts
 T_ROCK_THROWER_0	= 380
 T_ROCK_THROWER_1	= 383
@@ -240,6 +242,7 @@ T_EVOLVED_COUNTER 	= 405
 T_EVOLVED_MISSILE_0 	= 406
 T_EVOLVED_MISSILE_1 	= 407
 
+T_EVOLVED_PARTICLE_SHIELD_0 = 408
 
 # Nomad's
 T_DISCHARGER_0          = 410
@@ -256,6 +259,7 @@ T_NOMAD_MISSILE_1          = 420
 T_NOMAD_SUCKER_0          = 421
 T_NOMAD_SUCKER_1          = 422
 T_NOMAD_SUCKER_2          = 423
+T_NOMAD_HULL_ELECTRIFIER_0 = 424
 
 ### Turret AI type
 # ?why isn't it the class passed directly as argument of the stats? ...there must be a reason...
