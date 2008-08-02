@@ -35,7 +35,8 @@ if len( argv ) > 1:
         if last == "-a":
             addresses.append( v )
         elif last == "-p":
-            ports.append( v )
+            port = int( v )
+            #ports.append( v )
         elif last == "-s":
             scenario = v
         elif last == "-w":
