@@ -816,17 +816,21 @@ class Gui( ControlFrame ):
 ### self.stats display logic ####   
     def displayStats( self, k ):
         if self.stats and self.stats.has_key( k ):
-            rect = (100,self.display.resolution[1]-200, 160, 80)
+            rect = (100,self.display.resolution[1]-200, 240, 160)
             self.display.drawRect( rect, (30,30,30,128) )
             self.display.drawRect( rect, (50,50,50,200), width=1 )
             
             ore = self.stats[ k ].oreCostToBuild
             energy = self.stats[ k ].energyCostToBuild
             time = self.stats[ k ].timeToBuild/config.fps
+            if k in self.texts.descriptions:
+                description = self.texts.descriptions[ k ]
+            else:
+                description = ""
             text = self.texts.infoBuild%locals()
             vpos = rect[1]+8
             for line in text.split("\n"):
-                self.display.drawText( line, (rect[0]+8,vpos), size=13 )
+                self.display.drawText( line, (rect[0]+8,vpos), size=13, maxWidth=224 )
                 vpos += 16
     
 #### button commands ####

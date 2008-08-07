@@ -15,6 +15,8 @@ class Texts( Rc ):
         self.loadingPreferences = "Loading preferences"
         self.loadingScreens = "Loading screens"
         self.loadingDone = "Done"
+        
+        self.descriptions = {}
 
     def loadAll( self ): # useless with the current system
         yield 0
@@ -27,9 +29,13 @@ class Texts( Rc ):
         self[-1] 	= "Cancel"
 
         self[ids.T_LASER_SR_0] 	= "Laser defense"
+        self.descriptions[ids.T_LASER_SR_0] = "Short range laser canon."
         self[ids.T_LASER_SR_1] 	= "Laser defense x2"
+        self.descriptions[ids.T_LASER_SR_1] = "Short range double laser canon."
         self[ids.T_LASER_MR_0] 	= "Medium laser"
+        self.descriptions[ids.T_LASER_MR_0] = "Medium range laser canon."
         self[ids.T_LASER_MR_1] 	= "Heavy laser"
+        self.descriptions[ids.T_LASER_MR_1] = "Medium range powerful laser canon."
 
         self[ids.T_MASS_SR_0] 	= "Machine gun"
         self[ids.T_MASS_SR_1] 	= "Machine gun x2"
@@ -45,26 +51,44 @@ class Texts( Rc ):
 
         self[ids.T_HARVESTER] 	= "?"
         self[ids.T_INTERDICTOR] 	= "Jump interdictor"
+        self.descriptions[ids.T_INTERDICTOR] = "When activated, prevents ships within its range to jump away."
         self[ids.T_NUKE]	 	= "Nuclear launcher"
+        self.descriptions[ids.T_INTERDICTOR] = "Allows the building and luanch of nuclear missiles."
         self[ids.T_PULSE] 		= "Pulse launcher"
+        self.descriptions[ids.T_INTERDICTOR] = "Allows the building and launch of nuclear missiles."
         self[ids.T_RADAR] 		= "Radar"
+        self.descriptions[ids.T_RADAR] = "When activated, add to the ship's radar range."
         self[ids.T_HANGAR] 		= "Hangar"
-        self[ids.T_SOLAR_0] 		= "Solar array"
-        self[ids.T_SOLAR_1] 		= "Large solar array"
-        self[ ids.T_SOLAR_2 ] 		= "Huge solar array"
+        self.descriptions[ids.T_HANGAR] = "Adds hangar space to the ship. Allowing it to carry more fighters and missiles."
+        self[ids.T_SOLAR_0] 		= "Solar panel"
+        self.descriptions[ids.T_SOLAR_0] = "When activated, will harvest more energy from nearby suns but will consume a little to operate."
+        self[ids.T_SOLAR_1] 		= "Large solar panel"
+        self.descriptions[ids.T_SOLAR_1] = self.descriptions[ids.T_SOLAR_0]
+        self[ ids.T_SOLAR_2 ] 		= "Huge solar panel"
+        self.descriptions[ids.T_SOLAR_2] = self.descriptions[ids.T_SOLAR_0]
         self[ids.T_GENERATOR] 		= "Nuclear reactor"
+        self.descriptions[ids.T_GENERATOR] = "When activated, will convert ore to energy."
         self[ids.T_MINER] 		= "Mine layer"
+        self.descriptions[ids.T_MINER] = "Allows the building and luanch of mine layer missiles."
         self[ids.T_COUNTER] 		= "Counter defense"
+        self.descriptions[ids.T_COUNTER] = "Allows the building and luanch of counter defense missiles."
         self[ids.T_BIOSPHERE] 		= "Bioshpere"
+        self.descriptions[ids.T_BIOSPHERE] = "Increase your reputation with civilian ships. Helps counter the effects of nuclear weapons and bad racial tendencies."
         self[ ids.T_BIOSPHERE_1 ] 	= "Advanced Bioshpere"
+        self.descriptions[ids.T_BIOSPHERE_1] = self.descriptions[ids.T_BIOSPHERE]
         yield 66
 
         self[ ids.T_SUCKER ] 		= "Nebula harvester"
+        self.descriptions[ids.T_SUCKER] = "When activated and in a nebula, will harvest raw ore direcly from the clouds."
         self[ ids.T_EJUMP ] 		= "Jump battery"
         self[ ids.T_INERTIA ] 		= "Mass reducer"
+        self.descriptions[ids.T_INERTIA] = "When activated, will reduce the mass of the ship and allow faster manoeuvering."
         self[ ids.T_SAIL_0 ] 		= "Solar sail"
+        self.descriptions[ids.T_SAIL_0] = "When activated, will boost the ship's speed depending on the proximity of a sun."
         self[ ids.T_SAIL_1 ] 		= "Solar sail x2"
+        self.descriptions[ids.T_SAIL_1] = "When activated, will boost the ship's speed depending on the proximity of a sun."
         self[ ids.T_SAIL_2 ] 		= "Solar sail x3"
+        self.descriptions[ids.T_SAIL_2] = "When activated, will boost the ship's speed depending on the proximity of a sun."
         self[ ids.T_JAMMER ] 		= "Missile jammer"
 
         self[ ids.T_AI_FLAK_0 ] = "Flak cannon"
@@ -79,11 +103,16 @@ class Texts( Rc ):
         self[ ids.T_AI_MISSILE_3 ] = "Missile launcher x4"
         
         self[ ids.T_AI_CRYPT_0 ] = "Crypt module"
+        self.descriptions[ids.T_AI_CRYPT_0] = "When activated, will encrpyt all communications sent from this ship. Other ships will need crypt modules themselves to decrypt your messages."
         self[ ids.T_AI_CRYPT_1 ] = "Crypt module x2"
+        self.descriptions[ids.T_AI_CRYPT_1] = self.descriptions[ids.T_AI_CRYPT_0]
         self[ ids.T_AI_CRYPT_2 ] = "Crypt module x3"
+        self.descriptions[ids.T_AI_CRYPT_2] = self.descriptions[ids.T_AI_CRYPT_0]
         self[ ids.T_AI_CRYPT_3 ] = "Crypt module x4"
+        self.descriptions[ids.T_AI_CRYPT_3] = self.descriptions[ids.T_AI_CRYPT_0]
         
         self[ ids.T_AI_ACTIVE_DEFENSE_0 ]   = "Active defense"
+        self.descriptions[ids.T_AI_ACTIVE_DEFENSE_0] = "When activated, will automaticly fire counter defenses at incoming projectiles to enhance the shield resistance to mass attack."
         
         self[ ids.T_ESPHERE_0 ]	        = "E-Sphere launcher"
         self[ ids.T_ESPHERE_1 ]	        = "E-Sphere launcher v2"
@@ -97,14 +126,18 @@ class Texts( Rc ):
         self[ ids.T_SUBSPACE_WAVE_0 ]	        = "Subspace percuter"
         self[ ids.T_SUBSPACE_WAVE_1 ]	        = "Subspace percuter v2"
         self[ ids.T_DARK_EXTRACTOR_0 ]	        = "Dark-matter extractor"
+        self.descriptions[ids.T_DARK_EXTRACTOR_0] = "When activated, will extract energy from surrounding dark matter. Dark matter is stronger when in deep space, away from stars"
         self[ ids.T_DARK_EXTRACTOR_1 ]	        = "Dark-matter extractor v2"
+        self.descriptions[ids.T_DARK_EXTRACTOR_1] = self.descriptions[ids.T_DARK_EXTRACTOR_0]
         self[ ids.T_DARK_ENGINE_0 ]	        = "Dark-matter engine"
+        self.descriptions[ids.T_DARK_EXTRACTOR_0] = "When activated, will drain surrounding dark matter to provide a speed boost. Dark matter is stronger when in deep space, away from stars."
         
         self[ ids.T_EVOLVED_MISSILE_0 ]     = "Missile launcher"
         self[ ids.T_EVOLVED_MISSILE_1 ]     = "Double missile launcher"
         self[ ids.T_EVOLVED_PULSE ]         = "Pulse sphere launcher"
         self[ ids.T_EVOLVED_COUNTER ]       = "Counter sphere launcher"
         self[ ids.T_EVOLVED_PARTICLE_SHIELD_0 ] = "Particle shield"
+        self.descriptions[ids.T_EVOLVED_PARTICLE_SHIELD_0] = "When activated, will enhance the shield resistance against mass projectiles."
 
         self[ ids.T_DISCHARGER_0 ]	        = "Discharger"
         self[ ids.T_DISCHARGER_1 ]	        = "Heavy discharger"
@@ -118,10 +151,14 @@ class Texts( Rc ):
         self[ ids.T_NOMAD_MISSILE_0 ]	    = "Missile launcher"
         self[ ids.T_NOMAD_MISSILE_1 ]	    = "Missile launcher 2x"
         self[ ids.T_NOMAD_SUCKER_0 ]	    = "Nebula harvester"
+        self.descriptions[ids.T_NOMAD_SUCKER_0] = self.descriptions[ids.T_SUCKER]
         self[ ids.T_NOMAD_SUCKER_1 ]	    = "Nebula harvester 2x"
+        self.descriptions[ids.T_NOMAD_SUCKER_1] = self.descriptions[ids.T_SUCKER]
         self[ ids.T_NOMAD_SUCKER_2 ]	    = "Nebula harvester 3x"
+        self.descriptions[ids.T_NOMAD_SUCKER_2] = self.descriptions[ids.T_SUCKER]
 
         self[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = "Hull electrifier"
+        self.descriptions[ids.T_NOMAD_HULL_ELECTRIFIER_0] = "When activated, electrifies the ship's hull to better absorb energy attacks."
 
         self[ids.C_WEAPON] 		= "Weapons"
         self[ids.C_MISSILE]		= "Missiles"
@@ -162,7 +199,8 @@ class Texts( Rc ):
         self.uiCivilian		= "Civilian appreciation"
         self.uiSpeed		= "Speed"
         
-        self.infoBuild = "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs"
+        self.infoBuild = "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs\n\n%(description)s"
+        
 
         yield 100
 
