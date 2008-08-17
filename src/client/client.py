@@ -195,7 +195,7 @@ class Client:
                 
     def eScreenshot( self, sender, (x,y) ):
         path = self.display.takeScreenshot()
-        self.gui.addMsg( "screenshot saved to %s" % path )
+       # self.gui.addMsg( "screenshot saved to %s" % path )
         
 ### main menu loop ###
     def mainmenuLoop( self ):
@@ -304,7 +304,10 @@ class Client:
                 self.at = "ship"
                 
                 if not self.runningServer and (self.server != self.prefs.server or self.user != self.prefs.user or self.password != self.prefs.password):
-                    self.prefs.save( self.user, self.password, self.server )
+                    self.prefs.user = self.user
+                    self.prefs.password = self.password
+                    self.prefs.server = self.server
+                    self.prefs.save()
             elif success == None: # still trying 
                 self.joinMenu.setError( msg )
             else: # failed

@@ -1,63 +1,56 @@
+# Automaticaly saves every variable from __dict__ to file.
+# Save and laod everything as a string.
+
 import sys
 import os
 
-from common import ids
+# default values
+defaultDict = {
+    "user": "",
+    "password": "",
+    "server": "localhost",
+    
+    "language": "en",
+    "display": "sdl",
+}
 
-server = "localhost"
-username = ""
-hashedPassword = "0"
+path = os.path.join( sys.path[0], "prefs.cfg" )
 
 class Prefs:
-    def __init__( self ):
-        self.__dict__ = {}
-        self.wd = sys.path[0]
-        self.user = None
-        self.password = None
-        self.user = None
-
-        self.path = os.path.join( self.wd, "prefs.cfg" )
-
-
-    def __getitem__(self, i):
-        return self.__dict__[ i ]
-
-    def __setitem__(self, i, v):
-        self.__dict__[ i ] = v
+    def __init__( self ):       
+        # copy defaultDict to __dict__
+        for key, value in defaultDict.items():
+            self.__dict__[ key ] = value
 
     def loadAll( self ):
         yield 0
-        try:
-            f = open( self.path, "r" )
-        except Exception, ex:
-            print "failed prefs.load:", ex
-            f = None
-
-        yield 33
-        if f:
+        
+        if os.path.exists( path ):
+        
+            # read pref file
+            f = open( path, "r" )
             lines = f.readlines()
             f.close()
-            if len( lines ) >= 3:
-                words = [ line.strip().split() for line in lines ]
-                self.user = " ".join( words[0][2:])
-                self.password = " ".join(words[1][2:])
-                self.server = words[2][2]
-
-        yield 66
-        if not self.user:
-            self.user = ""
-            self.password = ""
-            self.server = "localhost"
+            
+            yield 33
+            
+            # convert values
+            for line in lines: # line = "key = value\n"
+                key = line.split()[0]
+                value = line[ line.find("=")+2:-1] # passed the "= " and before "\n"
+                self.__dict__[ key ] = value
+        else:
+            f = None
+        
         yield 100
 
-    def save( self, user, password, server ):        
-      try:
-        f = open( self.path, "w+" )
-        f.write( "user = %s\n" % user )
-        f.write( "password = %s\n" % password )
-        f.write( "server = %s\n" % server )
-        f.close()
-      except Exception, ex:
-          print "failed prefs.save:", ex
-
-
-
+    def save( self ):        
+        try:
+            f = open( path, "w+" )
+            for key, value in self.__dict__.items():
+                f.write( "%s = %s\n" % (key,value) )
+            f.close()
+            
+        except Exception, ex:
+            print "failed prefs.save:", ex
+            
