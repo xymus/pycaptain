@@ -13,7 +13,6 @@ campaignFolders = filter(
     os.listdir( os.path.join( sys.path[0], "campaigns" ) ) )
 campaignNames = campaignFolders
 campaignNames.sort()
-print os.listdir( os.path.join( sys.path[0], "campaigns" ) ), campaignFolders
 
 class Campaign:
     title = None
@@ -92,10 +91,8 @@ def LoadCampaignFull( path ):
                 game = Load( f, prefixScenarioPath="campaigns.%s" % campaign.name )
                 if game:
                     campaign.games[ k ] = game
-                print k, game
                     
             campaign.fullyLoaded = True
-            print "campaign.fullyLoaded", campaign.fullyLoaded
                     
         except Exception, ex:
             print "failed to load campaign full:", ex

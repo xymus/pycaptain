@@ -80,11 +80,9 @@ class CampaignMenu( Screen ):
         
         ## list current campaigns
         for campaignName in campaigns.campaignNames:
-            print "from campaigns.%s import %s as CampaignClass" % (campaignName,campaignName.capitalize())
             exec( "from campaigns.%s import %s as CampaignClass" % (campaignName,campaignName.capitalize()) ) 
             if not CampaignClass.uid in [ campaign.uid for campaign in self.campaigns ]:
                 self.campaigns.append( CampaignClass() )
-                print "appending campaign %s" % CampaignClass.name
             
         if self.campaigns:
             self.campaign = self.campaigns[0]

@@ -26,7 +26,6 @@ class Timeline( RectControl ):
         else:
             self.min = 0
             self.max = 1
-        print "min max", self.min, self.max
        
     def draw( self, display, focused=False, over=False, mouse=None ):
         for x in xrange( 0, self.rw, display.getWidth(self.imgs.ctrlTimelineBack) ):
