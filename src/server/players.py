@@ -131,14 +131,16 @@ class Computer( Player ):
                         ship.ai.recallShips( ship, game, k )  #ship.ai.launching[ k ] = False
             
                 ## move closer to resources
-                closestAsteroid = game.harvestables.getClosestAccording( ship.pos, ship.getRadarRange() )
-                if closestAsteroid and not utils.distLowerThanObjects( ship, closestAsteroid, ship.stats.maxRadius*2 ):
-                    dist=ship.stats.maxRadius*1.5
-                    angle=random()*2*pi
-                    ship.ai.goTo( ship, (closestAsteroid.xp+dist*cos(angle),closestAsteroid.yp+dist*sin(angle)) )
-                else: # nothing in range
-                    if ship.ore < ship.stats.maxOre/10: # low on ore
-                        needToFindOre = True
+                if sum( [ len(ship.shipyards[ shipyard ].docked)+len(ship.shipyards[ shipyard ].away) for shipyard in \
+                  filter( lambda ship: isinstance( game.stats[ k ], game.stats.HarvesterShipStats ), ship.shipyards ) ] ): # if has any harvesters
+                    closestAsteroid = game.harvestables.getClosestAccording( ship.pos, ship.getRadarRange() )
+                    if closestAsteroid and not utils.distLowerThanObjects( ship, closestAsteroid, ship.stats.maxRadius*2 ):
+                        dist=ship.stats.maxRadius*1.5
+                        angle=random()*2*pi
+                        ship.ai.goTo( ship, (closestAsteroid.xp+dist*cos(angle),closestAsteroid.yp+dist*sin(angle)) )
+                    else: # nothing in range
+                        if ship.ore < ship.stats.maxOre/10: # low on ore
+                            needToFindOre = True
                         
               #  if ship.energy < ship.stats.maxEnergy/5 and # low on energy
               #      :
