@@ -2,10 +2,15 @@ from orders import *
 from gfxs import *
 import ids
 
-version = "v0.5.6r%s"%"$Revision$"
+version = "v0.5.6" # major version
+revision = "$Revision$" # updated by subversion
+
+revisionSplitted = revision.split()
+if len(revisionSplitted) > 2:
+    version = version+"r%s"% revisionSplitted[1]
 
 if __debug__:
-    print "Comms %s" % version
+    print "PyCaptain %s" % version
 
 class AttackOrder:
     def __init__(self):
