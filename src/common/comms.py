@@ -2,7 +2,7 @@ from orders import *
 from gfxs import *
 import ids
 
-version = "v0.5.6"
+version = "v0.5.6r%s"%"$Revision$"
 
 if __debug__:
     print "Comms %s" % version
