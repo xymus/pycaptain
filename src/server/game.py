@@ -1,6 +1,7 @@
 from time import time
 from random import randint
 import pickle # using pickle instead of cPickle for saving/loading since cpickle raised undescriptive errors
+from gzip import open
 
 from players import *
 from ships import * # Ship, FlagShip, Turret
@@ -16,6 +17,7 @@ from common import ids
 from common import config
 from objectmanager import ObjectManager
 from communications import CommunicationManager
+
 
 
 
@@ -215,86 +217,84 @@ class Game:
         eval( code )
         
     def save( self, path ):
-    #    import cPickle as pickle
-        
-        f = open( path, "w" )
+        f = open( path, "w:bz2" )
+        success = False
         if f:
-            if self.scenario.steps:
-                hadSteps = True
-                steps = self.scenario.steps
-                step = self.scenario.step
-                stepsIter = self.scenario.stepsIter
-                if self.scenario.step:
-                    self.scenario.step = self.scenario.steps.index( self.scenario.step )
-                self.scenario.steps = None
-                self.scenario.stepsIter = None
-            else:
-                hadSteps = False
-                
-            try:
-            
-                title = self.scenario.title
-                year = self.scenario.year
-                timePlayed = self.tick/config.fps
-                description = self.scenario.description
-                player = filter( lambda player: isinstance( player, Human ), self.players )[0]
-                username = player.username
-                if player.flagship:
-                    ship = player.flagship.stats.img
-                else:
-                    ship = 0
-            
-                pickle.dump( title, f )
-                pickle.dump( year, f )
-                pickle.dump( timePlayed, f )
-                pickle.dump( description, f )
-                pickle.dump( username, f )
-                pickle.dump( ship, f )
-                
-                pickle.dump( self, f )
-                success = True
-            except Exception, ex:
-                print "failed to save game:", ex
-                success = False
-            f.close()
+            success = self.dump( f )
         
-            if hadSteps:
-                self.scenario.steps = steps
-                self.scenario.step = step
-                self.scenario.stepsIter = stepsIter
+        return success
+
+    def dump( self, f ):
+        if self.scenario.steps:
+            hadSteps = True
+            steps = self.scenario.steps
+            step = self.scenario.step
+            stepsIter = self.scenario.stepsIter
+            if self.scenario.step:
+                self.scenario.step = self.scenario.steps.index( self.scenario.step )
+            self.scenario.steps = None
+            self.scenario.stepsIter = None
         else:
-            success = False
+            hadSteps = False
+            
+        try:
         
+            title = self.scenario.title
+            year = self.scenario.year
+            timePlayed = self.tick/config.fps
+            description = self.scenario.description
+            player = filter( lambda player: isinstance( player, Human ), self.players )[0]
+            username = player.username
+            if player.flagship:
+                ship = player.flagship.stats.img
+            else:
+                ship = 0
+        
+            infoDict = {
+                "title": title,
+                "year": year,
+                "timePlayed": timePlayed,
+                "description": description,
+                "username": username,
+                "ship": ship, }
+            pickle.dump( infoDict, f )
+            
+            pickle.dump( self, f )
+            success = True
+        except Exception, ex:
+            print "failed to save game:", ex
+            success = False
+
         return success
         
         
+def Load( f, prefixScenarioPath="scenarios" ):
+    try:
+        infoDict = pickle.load( f )
+        
+        game = pickle.load( f )
+        if game.scenario.name:
+            exec( "from %s.%s import %s as Scenario" % (prefixScenarioPath, game.scenario.name.lower(), game.scenario.name) )
+            dummyGame = Game( Scenario )
+            if dummyGame.scenario.steps:
+                game.scenario.steps = dummyGame.scenario.steps
+                if game.scenario.step:
+                    game.scenario.stepsIter = iter( game.scenario.steps[ game.scenario.step: ] )
+                    game.scenario.step = game.scenario.stepsIter.next()
+                else:
+                    game.scenario.stepsIter = None
+                
+    except Exception, ex:
+        print "failed to load game:", ex
+        game = None
+        
+    return game
+
 def LoadGame( path ):
     import cPickle as pickle
     f = open( path, "r" )
     if f:
-        try:
-            title = pickle.load( f )
-            year = pickle.load( f )
-            timePlayed = pickle.load( f )
-            description = pickle.load( f )
-            username = pickle.load( f )
-            ship = pickle.load( f )
-            
-            game = pickle.load( f )
-            if game.scenario.name:
-                exec( "from scenarios.%s import %s as Scenario" % (game.scenario.name.lower(), game.scenario.name) )
-                dummyGame = Game( Scenario )
-                if dummyGame.scenario.steps:
-                    game.scenario.steps = dummyGame.scenario.steps
-                    if game.scenario.step:
-                        game.scenario.stepsIter = iter( game.scenario.steps[ game.scenario.step: ] )
-                        game.scenario.step = game.scenario.stepsIter.next()
-                    else:
-                        game.scenario.stepsIter = None
-                    
-        except Exception, ex:
-            print "failed to load game:", ex
-            game = None
-        f.close()
+        game = Load( f )
         
     return game
+

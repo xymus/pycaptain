@@ -11,15 +11,15 @@ class MainMenu( Screen ):
         
         self.ctrlQuickPlay = LightControlLeft( (100,200), eQuickPlay, "Quick play", imgs )
         self.ctrlLoad =     LightControlRight( (460,200), eLoad, "Load a game", imgs )
-        self.ctrlScenario = LightControlLeft( (60,300), eScenario, "Select a scenario", imgs )
-        self.ctrlJoin =     LightControlRight( (420,300), eJoin, "Join a game", imgs )
+        self.ctrlScenario = LightControlLeft( (80,275), eScenario, "Select a scenario", imgs )
+        self.ctrlJoin =     LightControlRight( (430,275), eJoin, "Join a game", imgs )
         self.ctrlCampaign = LightControlLeft( (40,350), eCampaign, "Select a campaign", imgs )
         self.ctrlHost =     LightControlRight( (400,350), eHost, "Host a game", imgs )
         
         self.ctrlOptions =  LightControlLeft( (260,550), eOptions, "Options", imgs )
         self.ctrlQuit =     LightControlRight( (600,550), eQuit, "Quit", imgs )
         
-        self.ctrlCampaign.enabled = False
+       # self.ctrlCampaign.enabled = False
         self.ctrlOptions.enabled = False
         self.ctrlHost.enabled = False
         

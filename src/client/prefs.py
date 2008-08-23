@@ -12,6 +12,9 @@ defaultDict = {
     
     "language": "en",
     "display": "sdl",
+    
+    "lastGame": "",
+    "lastCampaign": "",
 }
 
 path = os.path.join( sys.path[0], "prefs.cfg" )

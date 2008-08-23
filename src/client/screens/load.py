@@ -3,6 +3,7 @@ import os
 import sys
 from threading import Thread
 import cPickle as pickle
+from gzip import open
 
 from . import Screen
 from client.controls import *
@@ -28,12 +29,14 @@ class Save:
     #    f = open( self.filepath, "r" )
         if f:
             try:
-                self.title = pickle.load( f )
-                self.year = "year %i" % pickle.load( f )
-                self.timePlayed = pickle.load( f )
-                self.description = pickle.load( f )
-                self.username = pickle.load( f )
-                self.ship = pickle.load( f )
+                infoDict = pickle.load( f )
+                
+                self.title = infoDict.get( "title", "" ) # pickle.load( f )
+                self.year = "year %s" % infoDict.get( "year", "" ) # pickle.load( f )
+                self.timePlayed = infoDict.get( "timePlayed", "" ) # pickle.load( f )
+                self.description = infoDict.get( "description", "" ) # pickle.load( f )
+                self.username = infoDict.get( "username", "" ) # pickle.load( f )
+                self.ship = infoDict.get( "ship", "" ) # pickle.load( f )
                 
                 self.valid = True
             except Exception, ex:
@@ -178,7 +181,7 @@ class LoadMenu( Screen ):
       #  selectCtrls = []
         
       #  y = 80
-        filenames = filter( lambda name: len( name ) >= 5 and name[-5:] == ".pyfl", os.listdir(self.saveGameRoot) )
+        filenames = filter( lambda name: len( name ) >= 5 and name[-5:] == ".game.pyfl", os.listdir(self.saveGameRoot) )
         filenames.sort()
         self.saves = [ Save( filename, os.path.join( self.saveGameRoot, filename ) ) for filename in filenames ]
      #   for filename in filenames:

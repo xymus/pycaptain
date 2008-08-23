@@ -32,7 +32,7 @@ class Sol( Scenario ):
         self.mercury = Planet( game.stats.P_MERCURY, -4100, 1400 ) # 4332
         self.venus = Planet( game.stats.P_VENUS, 5000, 2200 ) # 5462
         self.earth = Planet( game.stats.P_EARTH, -3100, 6700 ) # 7382
-        self.mars = Planet( game.stats.P_MARS, -7800, -2200 ) # 8104
+        self.mars = Planet( game.stats.P_MARS_1, -7800, -2200 ) # 8104
         self.moon = Planet( game.stats.P_MOON, -3900, 6400 )
         self.jupiter = Planet( game.stats.P_JUPITER, -12000, -4800 ) # 12924
         self.saturn = Planet( game.stats.P_SATURN, 13000, 2500 ) # 13238

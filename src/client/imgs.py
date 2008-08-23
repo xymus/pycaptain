@@ -411,6 +411,12 @@ class Imgs( Rc ):
         self.ctrlHangarRecall = self.loadImageWithDisplay( "controls/hangar/recall.png" )
         self.ctrlHangarAim = self.loadImageWithDisplay( "controls/hangar/aim.png" )
         self.ctrlHangarReturn = self.loadImageWithDisplay( "controls/hangar/return.png" )
+        
+        self.ctrlTimelineBack =  self.loadImageWithDisplay( "controls/timeline/back.png" )
+        self.ctrlTimelineSelected =  self.loadImageWithDisplay( "controls/timeline/selected.png" )
+        self.ctrlTimelineAvailable =  self.loadImageWithDisplay( "controls/timeline/available.png" )
+        self.ctrlTimelineUnavailable =  self.loadImageWithDisplay( "controls/timeline/unavailable.png" )
+        self.ctrlTimelineNext =  self.loadImageWithDisplay( "controls/timeline/next.png" )
 
         yield 73
         # ui

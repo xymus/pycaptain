@@ -16,6 +16,7 @@ from screens.main import MainMenu
 from screens.scenario import ScenarioMenu
 from screens.waiting import WaitingScreen
 from screens.load import LoadMenu
+from screens.campaign import CampaignMenu
 
 from imgs import Imgs
 from texts import Texts
@@ -55,6 +56,9 @@ class Client:
         self.universe = Universe()
 
         self.at = "mainmenu"
+        self.atCampaign = None
+        self.atScenario = None
+        
         self.runningServer = False
 
     def run(self):
@@ -101,6 +105,8 @@ class Client:
                 self.waitingLoop()
             elif self.at == "load":
                 self.loadLoop()
+            elif self.at == "campaign":
+                self.campaignLoop()
 
             t1 = time()
             tts = self.optimalFrame - (t1-t0)
@@ -178,6 +184,24 @@ class Client:
 
                ## update animations frame
                 self.gui.imgs.updateAnimations()
+                
+               ## scenario completed
+                if self.runningServer \
+                  and self.server.game.scenario.over:
+                  
+                    if self.atCampaign:
+                       self.atCampaign.scenarioEnded( self.atScenario, 
+                                                      self.server.game, 
+                                                      not self.server.game.scenario.failed )
+                       self.atCampaign.save()
+                       print "self.atCampaign", self.atCampaign
+                        
+                    self.eQuitGame( self, (0,0) )
+                    self.useServer = False
+                    
+                    if self.atCampaign:
+                        self.at = "campaign"
+                        self.campaignMenu.updateCampaign( campaign=self.atCampaign )
 
                ## send inputs to server
                 if self.useServer:
@@ -187,9 +211,6 @@ class Client:
                         self.lastInputs = CopyCOInput( inputs )
                         self.network.sendInputs( inputs )
 
-                if quit:
-                    self.run = False
-                    self.useServer = False
 
                 self.universe.doTurn()
                 
@@ -219,6 +240,9 @@ class Client:
         
     def eScenario( self, sender, (x,y) ):
         self.at = "scenario"
+
+    def eCampaign( self, sender, (x,y) ):
+        self.at = "campaign"
         
     def eFullscreen( self, sender, (x,y) ):
         self.display.toggleFullscreen()
@@ -256,6 +280,7 @@ class Client:
                 
             if stats and not stats.dead:
                 self.gui.reset()
+                self.useServer = True
                 self.at = "game"
             elif possibles:
                 self.menuShips.changeSelected( options=possibles )
@@ -283,6 +308,18 @@ class Client:
         if self.runningServer:
             self.server.shutdown = True
             self.runningServer = False
+            
+### campaign menu loop ###
+    def campaignLoop( self ):
+        self.campaignMenu.draw( self.display )
+        self.campaignMenu.manageInputs( self.display )
+        
+    def ePlayCampaignScenario( self, sender, (x,y) ):
+        self.launchLocalServer( self.campaignMenu.scenario )
+        if self.network:
+            self.at = "waiting"
+            self.atScenario = self.campaignMenu.scenario
+            self.atCampaign = self.campaignMenu.campaign
         
         
 ### join menu loop ###
@@ -387,6 +424,15 @@ class Client:
 
         if possibles:
             self.menuShips.options = possibles
+                
+        if shutdown:
+            self.useServer = False
+           # if self.next:
+           #     self.at = self.next
+           #     self.next = None
+           # else:
+           #     self.at = "mainmenu"
+
         self.menuShips.manageInputs( self.display )
             
     def eShipOk(self, sender, (x,y)):
@@ -419,8 +465,8 @@ class Client:
     def eSave( self, sender, (x,y) ):
         if self.runningServer:
             saveGameRoot = os.path.join( sys.path[0], "client", "saves" )
-            if self.server.game.save( os.path.join( saveGameRoot, "%s-%i.pyfl"%(self.server.game.scenario.name, self.server.game.tick) ) ):
-                self.gui.addMsg( "saved as %s-%i.pyfl"%(self.server.game.scenario.name, self.server.game.tick) )
+            if self.server.game.save( os.path.join( saveGameRoot, "%s-%i.game.pyfl"%(self.server.game.scenario.name, self.server.game.tick) ) ):
+                self.gui.addMsg( "saved as %s-%i.game.pyfl"%(self.server.game.scenario.name, self.server.game.tick) )
             else:
                 self.gui.addMsg( "saving failed" )
                 
@@ -464,7 +510,7 @@ class Client:
 
         self.loadingScreen.drawProgress( 96 )
         self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
-            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eLoad=self.eLoad, eHost=self.eHost
+            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eCampaign=self.eCampaign, eLoad=self.eLoad, eHost=self.eHost
             )
         self.loadingScreen.drawProgress( 97 )
         self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
@@ -477,6 +523,7 @@ class Client:
         self.loadingScreen.drawProgress( 98 )
             
         self.scenarioMenu = ScenarioMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, ePlay=self.ePlay )
+        self.campaignMenu = CampaignMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, ePlay=self.ePlayCampaignScenario )
         self.loadingScreen.drawProgress( 99 )
         self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
         self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, eLoad=self.eLoadGame )

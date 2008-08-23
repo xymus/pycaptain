@@ -1,6 +1,3 @@
-#!/usr/bin/python
-
-#from os import getcwdu
 import sys
 from os import path
 
