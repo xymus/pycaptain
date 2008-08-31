@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 from client.imgs import Imgs
 from client.texts import Texts
 from client.snds import Snds
@@ -9,54 +11,11 @@ class LoadingScreen:
     def __init__( self, display, texts, eDone=None ):
         self.display = display
         
-        self.txtAuthor = texts.createdBy % "Alexis Laferriere"
+        self.txtAuthor = texts.get( "Created by %s" ) % u"Alexis Laferrière"
         self.txtWebsite = "http://xymus.net/pyfl/"
-        self.txtThanksNasa = texts.courtesyNasa
+        self.txtThanksNasa = texts.get( "Some pictures courtesy NASA" )
         
         self.loadingTextPos = (self.display.resolution[0]/8, self.display.resolution[1]/2-30)
-        
-    def loadMore( self ):
-        self.txtAuthor = self.texts.createdBy % "Alexis Laferriere"
-        self.txtWebsite = "http://xymus.net/pyfl/"
-        self.txtThanksNasa = self.texts.courtesyNasa
-        
-    def loadAll( self ):
-       
-        self.imgs = Imgs( self.display )
-        
-        self.mixer = Mixer()
-        self.snds = Snds( self.mixer )
-        
-        self.texts = Texts()
-        self.prefs = Prefs()
-
-        self.txtAuthor = self.texts.createdBy % "Alexis Laferriere"
-        self.txtWebsite = "http://xymus.net/pyfl/"
-        self.txtThanksNasa = self.texts.courtesyNasa
-
-
-        self.drawStaticSplash()
-        self.display.drawText( self.texts.loadingImages, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.imgs.loadAll( self.display ):
-            self.drawProgress( i*0.8 )
-
-        self.drawStaticSplash( 80 )
-        self.display.drawText( self.texts.loadingSounds, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.snds.loadAll( self.mixer ):
-            self.drawProgress( 80+i*0.1 )
-
-        self.drawStaticSplash( 90 )
-        self.display.drawText( self.texts.loadingTexts, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.texts.loadAll():
-            self.drawProgress( 90+i*0.05 )
-
-        self.drawStaticSplash( 95 )
-        self.display.drawText( self.texts.loadingPreferences, loadingTextPos, color=(255,255,255), size=16 )
-        for i in self.prefs.loadAll():
-            self.drawProgress( 95+i*0.05 )
-            
-        return self.mixer, self.imgs, self.snds, self.texts, self.prefs
-            
             
     def drawStaticSplash( self, defPerc=0, text=None ):
         self.display.beginDraw()

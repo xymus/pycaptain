@@ -51,8 +51,8 @@ class LoadMenu( Screen ):
     def __init__(self, display, imgs, eLoad=None, eBack=None ):
         ControlFrame.__init__( self )
         
-        self.crtlLoad =  LightControlLeft( (260,550), eLoad, "Load", imgs )
-        self.ctrlQuit =     LightControlRight( (600,550), eBack, "Back to main menu", imgs )
+        self.crtlLoad =  LightControlLeft( (260,550), eLoad, _("Load"), imgs )
+        self.ctrlQuit =     LightControlRight( (600,550), eBack, _("Back to main menu"), imgs )
         
         self.ctrlListUp = LightControlDown( (50, 40), self.eListUp, "", imgs )
         self.ctrlListDown = LightControlUp( (50, display.resolution[1]-140), self.eListDown, "", imgs )
@@ -134,17 +134,17 @@ class LoadMenu( Screen ):
                         self.imgShip.img = None
                     
                     if selected.timePlayed < 60:
-                        self.lblTimePlayer.text = "%i sec"%selected.timePlayed
+                        self.lblTimePlayer.text = _("%i sec")%selected.timePlayed
                     elif selected.timePlayed < 60*60:
-                        self.lblTimePlayer.text = "%.1f min"%(selected.timePlayed/60.0)
+                        self.lblTimePlayer.text = _("%.1f min")%(selected.timePlayed/60.0)
                     else:
-                        self.lblTimePlayer.text = "%.1f hours"%(selected.timePlayed/60.0/60)
+                        self.lblTimePlayer.text = _("%.1f hours")%(selected.timePlayed/60.0/60)
                         
                         
                         
                     self.crtlLoad.enabled = True
                 else:
-                    self.lblTitle.text = "Invalid file"
+                    self.lblTitle.text = _("Invalid file")
                     self.lblDescription.text = ""
                     self.lblYear.text = ""
                     self.lblUsername.text = ""
@@ -153,7 +153,7 @@ class LoadMenu( Screen ):
                     self.crtlLoad.enabled = False
             else:
                 self.crtlLoad.enabled = False
-                self.lblTitle.text = "Loading..."
+                self.lblTitle.text = _("Loading...")
                 self.lblDescription.text = ""
                 self.lblYear.text = ""
                 self.lblUsername.text = ""

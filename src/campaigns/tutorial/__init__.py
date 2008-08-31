@@ -6,13 +6,13 @@ from tutorial3 import Tutorial3
 
 class Tutorial( Campaign ):
     # strings displayed on screen
-    title = "Tutorial"
-    player = "Recruit"
-    race = "Human"
-    description = "Learn fundamentals of PyCaptain through a few missions"
+    title = _("Tutorial")
+    player = _("Recruit")
+    race = _("Human")
+    description = _("Learn fundamentals of PyCaptain through a few missions")
     
     name = "tutorial" # must be the same as containing folder and class title will be .name.capitalize()
-    uid = title + "0" # must be unique through versions, will validate saved games against
+    uid = name + "0" # must be unique through versions, will validate saved games against
     
     # import scenario above and list them here
     scenarios = [ Tutorial1,

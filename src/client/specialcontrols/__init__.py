@@ -5,13 +5,14 @@ from math import sin, cos, hypot, atan2, pi
 from client.controls import *
 
 class OptionButton( RectControl ):
-    def __init__( self, img, (rx,ry), (rw,rh), fUpEvent, turretImg, text, fDownEvent=None, uid=None ):
+    def __init__( self, img, (rx,ry), fUpEvent, turretImg, text, fDownEvent=None, uid=None ):
+        (rw,rh) = ( 187, 59 )
         RectControl.__init__( self, img, (rx,ry), (rw,rh), fUpEvent, fDownEvent, uid=uid )
         self.turretImg = turretImg
         self.text = text
         self.r = 0
         self.ri = 0.02
-        self.turretCenter = (rx+rw-rh/2,ry+rh/2)
+        self.turretCenter = (rx+rw-18,ry+rh/2)
          
     def draw( self, display, focused=False, over=False, mouse=None ):
       #  RectControl.draw( self, display, focused )
@@ -22,9 +23,9 @@ class OptionButton( RectControl ):
             if self.enabled:
                 textColor = (255,255,255,255)
             else:
-                textColor = (128,128,128,255)
+                textColor = (0,0,0,255)
 
-            display.drawText( self.text, (self.topLeft[0]+16,self.topLeft[1]+8), textColor )
+            display.drawText( self.text, (self.topLeft[0]+self.rw-40,self.topLeft[1]+22), textColor, align="right" )
             if self.turretImg:
               display.drawRo( self.turretImg, self.turretCenter, self.r )
         self.r = (self.r + self.ri)%(2*pi)

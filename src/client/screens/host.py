@@ -21,8 +21,8 @@ class HostMenu( ControlFrame ):
 
         self.cError = Label( (40,400+(diff+height)*5), " " )
         
-        self.ctrlOk =   LightControlLeft( (260,550), eOk, "Connect", imgs )
-        self.ctrlBack = LightControlRight( (600,550), eBack, "Back to menu", imgs )
+        self.ctrlOk =   LightControlLeft( (260,550), eOk, _("Connect"), imgs )
+        self.ctrlBack = LightControlRight( (600,550), eBack, _("Back to main menu"), imgs )
 
             
         controls = [    ImageHolder( imgs.splashBack, (0,0) ),
@@ -31,10 +31,10 @@ class HostMenu( ControlFrame ):
                         self.cAdminPassword,
                         self.cServerAdresses,
                         self.cPort,
-                        Label( (120,300), "Your name" ),
-                        Label( (120,300+(diff+height)), "Admin password" ),
-                        Label( (120,300+(diff+height)*2), "Server adresses seperated by spaces" ),
-                        Label( (120,300+(diff+height)*3), "Port" ),
+                        Label( (120,300), _("Your name") ),
+                        Label( (120,300+(diff+height)), _("Admin password") ),
+                        Label( (120,300+(diff+height)*2), _("Server adresses seperated by spaces") ),
+                        Label( (120,300+(diff+height)*3), _("Server port") ),
                         self.ctrlOk,
                         self.ctrlBack,
                         RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ),

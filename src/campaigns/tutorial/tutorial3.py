@@ -12,8 +12,8 @@ from server.stats import Stats
 from common import utils
 
 class Tutorial3( Scenario ):
-    title = "Tutorial 3 - advanced combat"
-    description = "As the commander of the only orbital base around Earth, your mission is to defend yourself from the incoming pirate ships."
+    title = _("Tutorial 3 - advanced combat")
+    description = _("As the commander of the only orbital base around Earth, your mission is to defend yourself from the incoming pirate ships.")
     year = 2275.8
     name = "Tutorial3"
         

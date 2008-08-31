@@ -11,8 +11,8 @@ class WaitingScreen( ControlFrame ):
     def __init__(self, display, imgs, eCancel=None ):
         ControlFrame.__init__( self )
 
-        self.ctrlCancel =  LightControlLeft( (600,550), eCancel, "Cancel", imgs )
-        self.lblMsg = Label( (display.resolution[0]/2,display.resolution[1]-100), "waiting for server..." )
+        self.ctrlCancel =  LightControlLeft( (600,550), eCancel, _("Cancel"), imgs )
+        self.lblMsg = Label( (display.resolution[0]/2,display.resolution[1]-100), _("waiting for server...") )
         
         controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
                         ImageHolder( imgs.gameTitle, (40,40) ),

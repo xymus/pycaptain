@@ -9,18 +9,18 @@ class MainMenu( Screen ):
     def __init__(self, display, imgs, eQuickPlay=None, eLoad=None, eScenario=None, eJoin=None, eCampaign=None, eHost=None, eOptions=None, eQuit=None ):
         ControlFrame.__init__( self )
         
-        self.ctrlQuickPlay = LightControlLeft( (100,200), eQuickPlay, "Quick play", imgs )
-        self.ctrlLoad =     LightControlRight( (460,200), eLoad, "Load a game", imgs )
-        self.ctrlScenario = LightControlLeft( (80,275), eScenario, "Select a scenario", imgs )
-        self.ctrlJoin =     LightControlRight( (430,275), eJoin, "Join a game", imgs )
-        self.ctrlCampaign = LightControlLeft( (40,350), eCampaign, "Select a campaign", imgs )
-        self.ctrlHost =     LightControlRight( (400,350), eHost, "Host a game", imgs )
+        self.ctrlQuickPlay = LightControlLeft( (100,200), eQuickPlay, _("Quick play"), imgs )
+        self.ctrlLoad =     LightControlRight( (460,200), eLoad, _("Load a game"), imgs )
+        self.ctrlScenario = LightControlLeft( (80,275), eScenario, _("Select a scenario"), imgs )
+        self.ctrlJoin =     LightControlRight( (430,275), eJoin, _("Join a game"), imgs )
+        self.ctrlCampaign = LightControlLeft( (40,350), eCampaign, _("Select a campaign"), imgs )
+        self.ctrlHost =     LightControlRight( (400,350), eHost, _("Host a game"), imgs )
         
-        self.ctrlOptions =  LightControlLeft( (260,550), eOptions, "Options", imgs )
-        self.ctrlQuit =     LightControlRight( (600,550), eQuit, "Quit", imgs )
+        self.ctrlOptions =  LightControlLeft( (260,550), eOptions, _("Options"), imgs )
+        self.ctrlQuit =     LightControlRight( (600,550), eQuit, _("Quit"), imgs )
         
        # self.ctrlCampaign.enabled = False
-        self.ctrlOptions.enabled = False
+       # self.ctrlOptions.enabled = False
         self.ctrlHost.enabled = False
         
         controls =   [  ImageHolder( imgs.splashBack, (0,0) ),

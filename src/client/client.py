@@ -17,9 +17,10 @@ from screens.scenario import ScenarioMenu
 from screens.waiting import WaitingScreen
 from screens.load import LoadMenu
 from screens.campaign import CampaignMenu
+from screens.option import OptionMenu
 
 from imgs import Imgs
-from texts import Texts
+#from texts import Texts
 from snds import Snds
 from prefs import Prefs
 from mixer import Mixer
@@ -28,6 +29,8 @@ from network import Network
 from directnetwork import DirectNetwork
 from common.comms import COObject, COInput, CopyCOInput, version
 from universe import Universe
+
+from languages import Language
 
 from common import config
 from sys import argv
@@ -70,8 +73,13 @@ class Client:
             fullscreen = False
             resolution = (960,680) # (2000,2000) # 
 
+      #  self.prefs = Prefs()
+        
         exec( "from displays.%s import %s as Display"%( self.displayName.lower(), self.displayName.capitalize() ) )
         self.display = Display( resolution, fullscreen, title="PyCaptain" )
+        
+       # exec( "from languages.%s import %s as Language"%( "en".lower(), "en".capitalize() ) )
+      #  self.texts = Language()
         
         # this does most of the loading work
         self.loadResources()
@@ -107,6 +115,8 @@ class Client:
                 self.loadLoop()
             elif self.at == "campaign":
                 self.campaignLoop()
+            elif self.at == "option":
+                self.optionLoop()
 
             t1 = time()
             tts = self.optimalFrame - (t1-t0)
@@ -225,6 +235,7 @@ class Client:
             
     def eQuit(self, sender, (x,y)):
         self.run = False
+        self.prefs.save()
             
     def eQuickPlay(self, sender, (x,y)):
         self.launchLocalServer()
@@ -246,6 +257,10 @@ class Client:
         
     def eFullscreen( self, sender, (x,y) ):
         self.display.toggleFullscreen()
+
+    def eOption( self, sender, (x,y) ):
+        self.optionMenu.reset( self.prefs )
+        self.at = "option"
         
 ### load menu loop ###
     def loadLoop( self ):
@@ -320,7 +335,27 @@ class Client:
             self.at = "waiting"
             self.atScenario = self.campaignMenu.scenario
             self.atCampaign = self.campaignMenu.campaign
+            
+            
+### option menu ###
+    def optionLoop( self ):
+        self.optionMenu.draw( self.display )
+        self.optionMenu.manageInputs( self.display )
         
+    def eOptionSave( self, sender, mousePos ):
+        self.prefs = self.optionMenu.prefs
+        self.prefs.save()
+        
+        # install new language
+        if self.prefs.language != self.texts.name:
+            exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
+            self.texts = Language()
+            self.texts.install()
+        
+        self.at = "mainmenu"
+        
+    def eOptionCancel( self, sender, mousePos ):
+        self.at = "mainmenu"
         
 ### join menu loop ###
     def joinLoop( self ):
@@ -471,7 +506,17 @@ class Client:
                 self.gui.addMsg( "saving failed" )
                 
     def loadResources( self ):
-        self.texts = Texts()
+      #  self.texts = Texts()
+        
+        self.prefs = Prefs()
+        for i in self.prefs.loadAll():
+            pass
+       # self.prefs.loadAll()
+        
+        exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
+        self.texts = Language()
+        self.texts.install()
+       
         self.loadingScreen = LoadingScreen( self.display, self.texts )
         self.imgs = Imgs( self.display )
         self.loadingScreen.imgs = self.imgs
@@ -479,28 +524,41 @@ class Client:
         self.loadingScreen.drawStaticSplash( 0, "Loading resources managers" )
         
         self.mixer = Mixer()
-        self.snds = Snds( self.mixer )
-        self.prefs = Prefs()
         
-        self.loadingScreen.drawStaticSplash( 5, self.texts.loadingImages )
+        self.snds = Snds( self.mixer )
+        
+      #  self.prefs = Prefs()
+        
+      #  self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading preferences" ) )
+      #  for i in self.prefs.loadAll():
+      #      self.loadingScreen.drawProgress( 5+i*0.7 )
+        
+       # if self.prefs.language != self.texts.name:
+       #     self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading language" ) )
+       #     exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
+       #     print "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() )
+       #     self.texts = Language()
+       # self.texts.install()
+        
+        self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading images" ) )
         for i in self.imgs.loadAll( self.display ):
             self.loadingScreen.drawProgress( 5+i*0.7 )
             
-        self.loadingScreen.drawStaticSplash( 75, self.texts.loadingSounds )
+        self.loadingScreen.drawStaticSplash( 75, self.texts.get( "Loading sounds" ) )
         for i in self.snds.loadAll( self.mixer ):
             self.loadingScreen.drawProgress( 75+i*0.1 )
 
-        self.loadingScreen.drawStaticSplash( 85 , self.texts.loadingTexts )
-        for i in self.texts.loadAll():
-            self.loadingScreen.drawProgress( 85+i*0.05 )
+        #self.loadingScreen.drawStaticSplash( 85 , self.texts.get( "Loading images" ) )
+       # for i in self.texts.loadAll():
+        #    self.loadingScreen.drawProgress( 85+i*0.05 )
 
-        self.loadingScreen.drawStaticSplash( 90, self.texts.loadingPreferences )
-        for i in self.prefs.loadAll():
-            self.loadingScreen.drawProgress( 90+i*0.05 )
+     #  self.loadingScreen.drawStaticSplash( 90, self.texts.get( "Loading images" ) )
+     #   for i in self.prefs.loadAll():
+     #       self.loadingScreen.drawProgress( 90+i*0.05 )
             
             
                     
-        self.loadingScreen.drawStaticSplash( 95, self.texts.loadingScreens )
+        self.loadingScreen.drawStaticSplash( 95, self.texts.get( "Loading screens" ) )
         
         from server.stats import Stats # TODO remove when passed in comms, for testing purpose only
         self.stats = Stats().statsDict
@@ -510,7 +568,7 @@ class Client:
 
         self.loadingScreen.drawProgress( 96 )
         self.mainmenu = MainMenu( self.gui.display, self.gui.imgs, 
-            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eCampaign=self.eCampaign, eLoad=self.eLoad, eHost=self.eHost
+            eQuit=self.eQuit, eQuickPlay=self.eQuickPlay, eJoin=self.eJoin, eScenario=self.eScenario, eCampaign=self.eCampaign, eLoad=self.eLoad, eHost=self.eHost, eOptions=self.eOption
             )
         self.loadingScreen.drawProgress( 97 )
         self.joinMenu = JoinMenu( self.gui.display, self.gui.imgs, self.prefs.user, self.prefs.password, self.prefs.server, config.port, 
@@ -527,8 +585,9 @@ class Client:
         self.loadingScreen.drawProgress( 99 )
         self.waitingScreen = WaitingScreen( self.gui.display, self.gui.imgs, eCancel=self.eQuitGame )
         self.loadMenu = LoadMenu( self.gui.display, self.gui.imgs, eBack=self.eBackToMainMenu, eLoad=self.eLoadGame )
+        self.optionMenu = OptionMenu( self.gui.display, self.gui.imgs, self.prefs, eSave=self.eOptionSave, eCancel=self.eOptionCancel )
         
-        self.loadingScreen.drawStaticSplash( 100, self.texts.loadingDone )
+        self.loadingScreen.drawStaticSplash( 100, self.texts.get( "Done" ) )
 
 try:
     import psyco

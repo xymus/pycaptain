@@ -31,8 +31,8 @@ class CampaignMenu( Screen ):
         self.lblScenarioYear =      Label( (66,330), "lblScenarioYear" )
         self.lblScenarioDescription =     Label( (58,350), "lblScenarioDescription", maxWidth=240, maxHeight=300 )
 
-        self.ctrlPlay =     LightControlLeft( (260,550), self.ePlay, "Play", imgs )
-        self.ctrlBack =     LightControlRight( (600,550), eBack, "Back to menu", imgs )
+        self.ctrlPlay =     LightControlLeft( (260,550), self.ePlay, _("Play"), imgs )
+        self.ctrlBack =     LightControlRight( (600,550), eBack, _("Back to main menu"), imgs )
         
         self.ctrlCampaignUp =     LightControlDown( (-10,40), self.eCampaignUp, "", imgs )
         self.ctrlCampaignDown =   LightControlUp( (-10,90), self.eCampaignDown, "", imgs )

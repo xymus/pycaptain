@@ -665,8 +665,8 @@ class Gui( ControlFrame ):
      ## buttons
         ControlFrame.draw( self, display, skipFinalize=True )
 
-        self.display.drawText( "ore %i" % self.playerStatus.ore, (self.display.resolution[0]-80,self.display.resolution[1]-29), (50,50,255,255) )
-        self.display.drawText( "e %i" % self.playerStatus.energy, (self.display.resolution[0]-80,20), (0,255,0,255) )
+        self.display.drawText( _("ore %i") % self.playerStatus.ore, (self.display.resolution[0]-80,self.display.resolution[1]-29), (50,50,255,255) )
+        self.display.drawText( _("e %i") % self.playerStatus.energy, (self.display.resolution[0]-80,20), (0,255,0,255) )
 
        ## ore process
         if self.playerStatus.oreInProcess:
@@ -823,11 +823,10 @@ class Gui( ControlFrame ):
             ore = self.stats[ k ].oreCostToBuild
             energy = self.stats[ k ].energyCostToBuild
             time = self.stats[ k ].timeToBuild/config.fps
-            if k in self.texts.descriptions:
-                description = self.texts.descriptions[ k ]
-            else:
-                description = ""
-            text = self.texts.infoBuild%locals()
+
+            description = self.texts.getDescription( k )
+
+            text = self.texts.get( "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs\n\n%(description)s" ) %locals()
             vpos = rect[1]+8
             for line in text.split("\n"):
                 self.display.drawText( line, (rect[0]+8,vpos), size=13, maxWidth=224 )
@@ -874,7 +873,6 @@ class Gui( ControlFrame ):
         ps = [0,]*3
         self.butsBuildOption = []
         for option in self.lastStats.turrets[ self.build ].buildables+[-1,]:
-         #   print option, type(option), 
             if isinstance(option, int ):
                 c = self.categories[ option ]
             else:
@@ -885,11 +883,11 @@ class Gui( ControlFrame ):
             ps[c] += 1
 
             if option == -1:
-                self.butsBuildOption.append( OptionButton( self.imgs.option, (x,y), (166,32), self.eBuildOptions, None, self.texts[option], uid=option ) )
+                self.butsBuildOption.append( OptionButton( self.imgs.ctrlTurretBack, (x,y), self.eBuildOptions, None, _("Cancel"), uid=option ) )
             elif option.type == 0:
-                self.butsBuildOption.append( OptionButton( self.imgs.option, (x,y), (166,32), self.eBuildOptions, None, self.texts[option.type], uid=option.type ) )
+                self.butsBuildOption.append( OptionButton( self.imgs.ctrlTurretBack, (x,y), self.eBuildOptions, None, _("Destroy"), uid=option.type ) )
             else:
-                self.butsBuildOption.append( OptionButton( self.imgs.option, (x,y), (166,32), self.eBuildOptions, self.imgs[option.type], self.texts[option.type], uid=option.type ) )
+                self.butsBuildOption.append( OptionButton( self.imgs.ctrlTurretBack, (x,y), self.eBuildOptions, self.imgs[option.type], self.texts.getName(option.type), uid=option.type ) )
             
 
     def eBuildOptions( self, sender, (x,y) ):
@@ -978,5 +976,5 @@ class Gui( ControlFrame ):
                 timeStr = "%.0fs"%secsDiff
             else: # if secsDiff < 60*60:
                 timeStr = "%.1fm"%(secsDiff/60)
-            self.msgs.append( (time(),"%s, %s ago: %s"%(sender,timeStr,msg)) )
+            self.msgs.append( (time(),_("%(sender)s, %(time)s ago: %(msg)s")%{"sender":sender, "time":timeStr, "msg":msg}) )
 

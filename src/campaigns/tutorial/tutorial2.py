@@ -12,8 +12,8 @@ from server.stats import Stats
 from common import utils
 
 class Tutorial2( Scenario ):
-    title = "Tutorial 2 - ore and basic combat"
-    description = "Your mission is to collect 300 material from the asteroid close to the moon."
+    title = _("Tutorial 2 - ore and basic combat")
+    description = _("Your mission is to collect 300 material from the asteroid close to the moon.")
     year = 2275.2
     name = "Tutorial2"
         

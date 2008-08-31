@@ -417,6 +417,8 @@ class Imgs( Rc ):
         self.ctrlTimelineAvailable =  self.loadImageWithDisplay( "controls/timeline/available.png" )
         self.ctrlTimelineUnavailable =  self.loadImageWithDisplay( "controls/timeline/unavailable.png" )
         self.ctrlTimelineNext =  self.loadImageWithDisplay( "controls/timeline/next.png" )
+        
+        self.ctrlTurretBack = self.loadImageWithDisplay( "controls/turret/back.png" )
 
         yield 73
         # ui
@@ -512,7 +514,6 @@ class Imgs( Rc ):
         self.uiAlertYellow = self.loadAnimation( "ui/alerts/light-yellow.png", 20 )
         self.uiAlertYellowLarge = self.loadAnimation( "ui/alerts/light-yellow-large.png", 20 )
 
-        self.option = self.loadImageWithDisplay( "ui/option.png" )
         
    #     self.boxBack = None #self.loadImageWithDisplay( "controls/box/back.png" )
   #      self.scenario = self.loadImageWithDisplay( "scenarios/Dragons.png" )

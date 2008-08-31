@@ -46,6 +46,9 @@ class Prefs:
             f = None
         
         yield 100
+        
+    def set( self, key, value ):
+        self.__dict__[ key ] = value
 
     def save( self ):        
         try:
@@ -56,4 +59,11 @@ class Prefs:
             
         except Exception, ex:
             print "failed prefs.save:", ex
+            
+    def shallowCopy( self ):
+        newPref = Prefs()
+        for key, value in self.__dict__.items():
+            newPref.set( key, value )
+        return newPref
+        
             

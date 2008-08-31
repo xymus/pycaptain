@@ -14,10 +14,10 @@ class ScenarioMenu( ControlFrame ):
     def __init__(self, display, imgs, ePlay=None, eBack=None ):
         ControlFrame.__init__( self )
         
-        self.ctrlPlay =     LightControlLeft( (260,550), ePlay, "Play", imgs )
-        self.ctrlBack =     LightControlRight( (600,550), eBack, "Back to menu", imgs )
-        self.ctrlPrev =     LightControlLeft( (260,450), self.ePrev, "Previous scenario", imgs )
-        self.ctrlNext =     LightControlRight( (600,450), self.eNext, "Next scenario", imgs )
+        self.ctrlPlay =     LightControlLeft( (260,550), ePlay, _("Play"), imgs )
+        self.ctrlBack =     LightControlRight( (600,550), eBack, _("Back to main menu"), imgs )
+        self.ctrlPrev =     LightControlLeft( (260,450), self.ePrev, _("Previous scenario"), imgs )
+        self.ctrlNext =     LightControlRight( (600,450), self.eNext, _("Next scenario"), imgs )
         
         self.lblTitle =     Label( (50,56), "", textSize=20 )
         self.lblYear =     Label( (66,80), "" )

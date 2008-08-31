@@ -18,10 +18,10 @@ class MenuShips( ControlFrame ):
        self.options = []
        self.pOption = 0 
 
-       self.ctrlOk =    LightControlLeft( (260,550), eOk, texts.uiOk, imgs )
-       self.ctrlQuit =  LightControlRight( (600,550), eQuit, "Main menu", imgs )
-       self.ctrlPrev =  LightControlRight( (-30,100), self.ePrev, texts.uiPrev, imgs )
-       self.ctrlNext =  LightControlRight( (-30,500), self.eNext, texts.uiNext, imgs )
+       self.ctrlOk =    LightControlLeft( (260,550), eOk, _( "Ok" ), imgs )
+       self.ctrlQuit =  LightControlRight( (600,550), eQuit, _( "Main menu" ), imgs )
+       self.ctrlPrev =  LightControlRight( (-30,100), self.ePrev, _( "Prev" ), imgs )
+       self.ctrlNext =  LightControlRight( (-30,500), self.eNext, _( "Next" ), imgs )
        
        self.ctrlShip = RotatingImageHolder( None, (display.resolution[0]/4,display.resolution[1]/2), ri=0.01 )
        
@@ -41,27 +41,27 @@ class MenuShips( ControlFrame ):
        x = (display.resolution[0]+border)/2
 
        y = border
-       controls.append( Label( (x,y), texts.uiHangarSize ) )
+       controls.append( Label( (x,y), _( "Hangar size" ) ) )
        self.pbHangar = ProgressBar( (x,y+18), pbsSize )
        controls.append( self.pbHangar )
 
        y += border
-       controls.append( Label( (x,y), texts.uiMaxShield ) )
+       controls.append( Label( (x,y), _( "Shield" ) ) )
        self.pbShield = ProgressBar( (x,y+18), pbsSize )
        controls.append( self.pbShield )
 
        y += border
-       controls.append( Label( (x,y), texts.uiMaxHull ) )
+       controls.append( Label( (x,y), _( "Hull" ) ) )
        self.pbHull = ProgressBar( (x,y+18), pbsSize )
        controls.append( self.pbHull )
 
        y += border
-       controls.append( Label( (x,y), texts.uiCivilian ) )
+       controls.append( Label( (x,y), _( "Civilian appreciation" ) ) )
        self.pbCivilian = ProgressBar( (x,y+18), pbsSize )
        controls.append( self.pbCivilian )
 
        y += border
-       controls.append( Label( (x,y), texts.uiSpeed ) )
+       controls.append( Label( (x,y), _( "Speed" ) ) )
        self.pbSpeed = ProgressBar( (x,y+18), pbsSize )
        controls.append( self.pbSpeed )
 
@@ -112,11 +112,11 @@ class MenuShips( ControlFrame ):
             self.pbCivilian.progress = option.civilians/100.0
             self.pbSpeed.progress = option.speed/100.0
 
-            self.lblRace.text = self.texts.uiRaceS%self.texts[ option.race ]
-            self.lblShip.text = self.texts.uiShipS%self.texts[ option.ship ]
-            self.lblTurrets.text = self.texts.uiTurretsI%option.nbrTurrets
+            self.lblRace.text = _( "Race: %s" ) % self.texts[ option.race ]
+            self.lblShip.text = _( "Ship class: %s" ) % self.texts[ option.ship ]
+            self.lblTurrets.text = _( "%i turrets" ) % option.nbrTurrets
             if option.canJump:
-                self.lblCanJump.text = self.texts.uiCanJump
+                self.lblCanJump.text = _( "Equipped for faster than light jump" )
             else:
                 self.lblCanJump.text = ""
                 
