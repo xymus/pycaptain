@@ -20,7 +20,6 @@ from screens.campaign import CampaignMenu
 from screens.option import OptionMenu
 
 from imgs import Imgs
-#from texts import Texts
 from snds import Snds
 from prefs import Prefs
 from mixer import Mixer
@@ -506,7 +505,6 @@ class Client:
                 self.gui.addMsg( "saving failed" )
                 
     def loadResources( self ):
-      #  self.texts = Texts()
         
         self.prefs = Prefs()
         for i in self.prefs.loadAll():

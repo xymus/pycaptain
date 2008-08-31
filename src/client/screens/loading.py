@@ -1,7 +1,6 @@
 # coding=UTF-8
 
 from client.imgs import Imgs
-from client.texts import Texts
 from client.snds import Snds
 from client.prefs import Prefs
 from client.mixer import Mixer
