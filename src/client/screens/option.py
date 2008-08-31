@@ -10,6 +10,8 @@ from common import ids
 from common import config
 import languages
 
+from client import displays
+
 class OptionMenu( Screen ):
     def __init__(self, display, imgs, prefs, eSave=None, eCancel=None ):
         ControlFrame.__init__( self )
@@ -39,6 +41,7 @@ class OptionMenu( Screen ):
     def eSave( self, sender, mousePos ):
         if self.eSaveOut:
             self.prefs.language = self.ctrlLanguages.selected
+            self.prefs.display = self.ctrlDisplay.selected
             self.eSaveOut( sender, mousePos )
       
     def reset( self, prefs ):
@@ -47,15 +50,25 @@ class OptionMenu( Screen ):
         self.prefs = prefs.shallowCopy()
         
         self.ctrlLanguages.items = []
-        
         for language in languages.languagesNames:
             try:
                 exec( "from languages.%s import %s as Language" % (language.lower(),language.capitalize()) )
                 self.ctrlLanguages.items.append( (language, Language.title) )
             except:
                 pass
+                
+        self.ctrlDisplay.items = []
+        for display in displays.displayNames:
+            try:
+                exec( "from client.displays.%s import %s as Display" % (display.lower(),display.capitalize()) )
+                self.ctrlDisplay.items.append( (display, Display.title) )
+            except:
+                pass
+                
+                
         
         self.ctrlLanguages.setDefault( self.prefs.language )
+        self.ctrlDisplay.setDefault( self.prefs.display )
        # try:
        #     languageKey = 0
        #     for item in self.ctrlLanguages.items:

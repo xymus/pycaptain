@@ -10,6 +10,9 @@ from client.imgs import Animation
 from . import Display
 
 class Sdl( Display ):
+    name = "sdl"
+    title = "pygame - SDL"
+    
     def __init__(self, resolution=( 640, 640 ), fullscreen=False, title="Game"):
         Display.__init__(self)
         self.nfsResolution = resolution

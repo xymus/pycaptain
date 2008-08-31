@@ -4,7 +4,6 @@ from sys import argv
 
 from client.client import Client
 
-
 client = Client()
 
 try:
@@ -19,5 +18,4 @@ except KeyboardInterrupt:
   print "KeyboardInterrupt"
   if client.run:
       client.run = False
-
 

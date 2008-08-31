@@ -43,8 +43,7 @@ if "--help" in argv or "-h" in argv:
     exit()
 
 class Client:
-    def __init__( self, displayName="Sdl" ):
-        self.displayName = displayName
+    def __init__( self ):
         self.network = None
         self.prefs = None
 
@@ -63,23 +62,7 @@ class Client:
         
         self.runningServer = False
 
-    def run(self):
-
-        if "-f" in argv:
-            fullscreen = True
-            resolution = None
-        else:
-            fullscreen = False
-            resolution = (960,680) # (2000,2000) # 
-
-      #  self.prefs = Prefs()
-        
-        exec( "from displays.%s import %s as Display"%( self.displayName.lower(), self.displayName.capitalize() ) )
-        self.display = Display( resolution, fullscreen, title="PyCaptain" )
-        
-       # exec( "from languages.%s import %s as Language"%( "en".lower(), "en".capitalize() ) )
-      #  self.texts = Language()
-        
+    def run(self):        
         # this does most of the loading work
         self.loadResources()
        
@@ -505,12 +488,30 @@ class Client:
                 self.gui.addMsg( "saving failed" )
                 
     def loadResources( self ):
+    
         
+        if "-f" in argv:
+            fullscreen = True
+            resolution = None
+        else:
+            fullscreen = False
+            resolution = (960,680)
+        
+        # preferences
         self.prefs = Prefs()
         for i in self.prefs.loadAll():
             pass
-       # self.prefs.loadAll()
+            
+        # displays
+        try:
+            exec( "from displays.%s import %s as Display"%( self.prefs.display.lower(), self.prefs.display.capitalize() ) )
+            self.display = Display( resolution, fullscreen, title="PyCaptain" )
+        except ImportError, ex:
+            print "failed to import display %s:"%self.prefs.display, ex 
+            exec( "from displays.%s import %s as Display"%( "sdl".lower(), "sdl".capitalize() ) )
+            self.display = Display( resolution, fullscreen, title="PyCaptain" )
         
+        # languagge
         exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
         self.texts = Language()
         self.texts.install()
@@ -525,19 +526,6 @@ class Client:
         
         self.snds = Snds( self.mixer )
         
-      #  self.prefs = Prefs()
-        
-      #  self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading preferences" ) )
-      #  for i in self.prefs.loadAll():
-      #      self.loadingScreen.drawProgress( 5+i*0.7 )
-        
-       # if self.prefs.language != self.texts.name:
-       #     self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading language" ) )
-       #     exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
-       #     print "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() )
-       #     self.texts = Language()
-       # self.texts.install()
-        
         self.loadingScreen.drawStaticSplash( 5, self.texts.get( "Loading images" ) )
         for i in self.imgs.loadAll( self.display ):
             self.loadingScreen.drawProgress( 5+i*0.7 )
@@ -545,22 +533,13 @@ class Client:
         self.loadingScreen.drawStaticSplash( 75, self.texts.get( "Loading sounds" ) )
         for i in self.snds.loadAll( self.mixer ):
             self.loadingScreen.drawProgress( 75+i*0.1 )
-
-        #self.loadingScreen.drawStaticSplash( 85 , self.texts.get( "Loading images" ) )
-       # for i in self.texts.loadAll():
-        #    self.loadingScreen.drawProgress( 85+i*0.05 )
-
-     #  self.loadingScreen.drawStaticSplash( 90, self.texts.get( "Loading images" ) )
-     #   for i in self.prefs.loadAll():
-     #       self.loadingScreen.drawProgress( 90+i*0.05 )
-            
-            
                     
         self.loadingScreen.drawStaticSplash( 95, self.texts.get( "Loading screens" ) )
         
         from server.stats import Stats # TODO remove when passed in comms, for testing purpose only
         self.stats = Stats().statsDict
         
+        # screens
         self.gui = Gui( self.display, self.mixer, self.imgs, self.snds, self.texts, self.prefs, self.stats, 
             eQuit=self.eQuitGame, eSave=self.eSave, eScreenshot=self.eScreenshot, eFullscreen=self.eFullscreen  )
 

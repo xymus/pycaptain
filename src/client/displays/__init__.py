@@ -1,14 +1,21 @@
-__all__ = ["sdl"]
+__all__ = ["sdl","opengl"]
 
 import os
 import sys
 from math import degrees, pi, hypot, cos, sin, radians, fabs
 from time import time
 
+displayFiles = filter( 
+    lambda f: len( f )>3 and f[-3:]==".py" and f[0]!="_", 
+    os.listdir( os.path.join( sys.path[0], "client", "displays" ) ) )
+displayNames = [ n[:-3] for n in displayFiles]
+displayNames.sort()
+
 from common.comms import COObject, COInput
 from client.imgs import Animation
 
 class Display:
+    n
     """Abstract Display class. Contains a few common functions.
        Inspire yourself from displays.sdl to implement another display engine."""
        
