@@ -408,14 +408,9 @@ class Client:
         sleep( 0.1 )
         if self.server.network:
             self.runningServer = True
-            
-            if os.name == "posix":
-                user = os.getlogin()
-            else:
-                user = "echec"
                 
             self.network = DirectNetwork( self.server.network )
-            self.network.connect( user ) 
+            self.network.connect() 
             
         self.at = "waiting"
         
@@ -466,14 +461,9 @@ class Client:
         sleep( 0.1 )
         if self.server.network:
             self.runningServer = True
-            
-            if os.name == "posix":
-                user = os.getlogin()
-            else:
-                user = "echec"
                 
             self.network = DirectNetwork( self.server.network )
-            self.network.connect( user ) 
+            self.network.connect() 
             
     def eLoad( self, sender, (x,y) ):
         self.loadMenu.reset( self.display, self.gui.imgs )

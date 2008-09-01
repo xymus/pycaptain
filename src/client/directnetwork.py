@@ -29,7 +29,7 @@ class DirectNetwork( Network ):
         self.server = serverNetwork
         self.updated = False
         
-    def connect(self, username):
+    def connect(self, username="player"):
     #    try:
             self.server.connect( self )
             self.server.login( self, username )
