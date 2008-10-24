@@ -435,7 +435,7 @@ class FlagShip( ShipWithTurrets ):
         if not self.inNebula: # RULE sun blocked out in the nebula
             self.energy = min(self.energy + absorbtion * solarEnergyPotential,self.stats.maxEnergy)
         
-        darkEnergyPotential = max( 0, sqrt( (distFromSun-12000)/150000) )
+        darkEnergyPotential = sqrt( max( 0, (distFromSun-12000)/150000) )
         if darkEnergyPotential:
         #    print distFromSun, darkEnergyPotential
             self.energy = min(self.energy + darkEnergyPotential*darkExtractorEfficiency, self.stats.maxEnergy)
