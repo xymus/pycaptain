@@ -8,10 +8,16 @@ class Turret:
         self.stats = stats
         self.ship = ship
         
+        # install is an instance of TurretInstall which contains the stats, if sometihng is installed
         self.install = None
+
+        # weapon contains the weapon according to the install, if any
         self.weapon = None
+
+        # contains the ai if any
         self.ai = None
         
+        # activated/deactivated by player
         self.activated = True
         
         self.rr = (self.stats.maxAngle+self.stats.minAngle)/2   
