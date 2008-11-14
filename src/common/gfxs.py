@@ -37,7 +37,7 @@ class GfxExplosion( Gfx ):
         self.maxRadius = radius
 
     def doTurn( self ):
-        if self.delai == 0:
+        if self.delai <= 0:
             return [ self ] + Gfx.doTurn( self )
         else:
             self.delai = self.delai - 1
@@ -58,7 +58,7 @@ class GfxFragment( Gfx ):
         self.maxRadius = 100
 
     def doTurn( self ):
-      if self.ttl == 0:
+      if self.ttl <= 0:
         return [ self ] + Gfx.doTurn( self )
       else:
         self.xp = self.xp + self.xi
@@ -83,7 +83,7 @@ class GfxShield( Gfx ):
 
     def doTurn( self ):
         self.ttl = self.ttl - 1
-        if self.ttl == 0:
+        if self.ttl <= 0:
             return [ self ] + Gfx.doTurn( self )
         else:
             return Gfx.doTurn( self )
@@ -127,7 +127,7 @@ class GfxJump( Gfx ):
         self.maxRadius = radius
 
     def doTurn( self ):
-        if self.delai == 0:
+        if self.delai <= 0:
             return [ self ] + Gfx.doTurn( self )
         else:
             self.delai = self.delai - 1
