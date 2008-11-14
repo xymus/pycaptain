@@ -500,30 +500,28 @@ class Stats:
         self.NOMAD_FIGHTER =	SingleWeaponShipStats( ids.S_NOMAD_FIGHTER, 15, 0.6, 0, 0.012, 20, 20, self.W_MASS_SR_FIGHTER, [ids.S_NOMAD_FIGHTER], None, [(15,pi)], energyCostToBuild=0,oreCostToBuild=120,timeToBuild=15*config.fps,hangarSpaceNeed=14 )
 
         self.NOMAD_FS_0 =	Flagship( ids.S_NOMAD_FS_0, 80, 0.09, 0.05, 0.001, 350, 500,
-                        [TurretStats(102, 20, 5*pi/3,pi, True),
-                         TurretStats(102,-26, 13*pi/13,pi/3, True),
-                         TurretStats(-100,20, 0,4*pi/3, True),
-                         TurretStats(-100,-20, 2*pi/3,2*pi, True),
+                        [TurretStats(-34,49, 11*pi/6,pi, True),
+                         TurretStats(-58,49, 0,4*pi/3, True),
+                         TurretStats(22,-41, pi,pi/6, True),
+                         TurretStats(-54,-43, 2*pi/3,2*pi, True),
                          ],
                          3000, 3000, 800, 500, 1*config.fps, 2500, [ids.S_NOMAD_FS_0], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)], civilianBonus=1500 ) 
         self.NOMAD_FS_1 =	Flagship( ids.S_NOMAD_FS_1, 100, 0.08, 0.05, 0.002, 300, 500, 
-                         [TurretStats(40.5,11.5,pi/4,3*pi/4, True), # up
-                         TurretStats(19,11.5,pi/4,3*pi/4, True),
-                         TurretStats(0.5,11.5,pi/4,3*pi/4, True),
-                         TurretStats(-22.5,11.5,pi/4,3*pi/4, True),
-                         TurretStats(40.5,-11.5,5*pi/4,7*pi/4, True), # down
-                         TurretStats(19,-11.5,5*pi/4,7*pi/4, True),
-                         TurretStats(0.5,-11.5,5*pi/4,7*pi/4, True),
-                         TurretStats(-22.5,-11.5,5*pi/4,7*pi/4, True),
-                         TurretStats(-45.5,41.5, 0,4*pi/3, True), # wings
-                         TurretStats(-45.5,-41.5, 2*pi/3,2*pi, True) ],
+                         [TurretStats(104,22, 7*pi/6,5*pi/6, True), # up
+                         TurretStats(36,42, 15*pi/8,7*pi/8, True),
+                         TurretStats(-26,50, 15*pi/8,pi, True),
+                         TurretStats(-72,50, 0,3*pi/2, True), 
+                         TurretStats(-34,-38, pi,pi/8, True), # down
+                         TurretStats(-76,-38, pi/2,0, True), ],
                         3000, 3000, 300, 500, 0.8*config.fps, 2500, [ids.S_NOMAD_FS_1], [ids.F_LARGE_0, ids.F_LARGE_1], [(80,pi)],
                         hangars=[(RPos(0, 0 ), pi/2), (RPos(0, 0 ), 3*pi/2)], civilianBonus=2000 )
         self.NOMAD_FS_2 =	Flagship( ids.S_NOMAD_FS_2, 70, 0.08, 0.05, 0.002, 400, 500, 
-                        [TurretStats(8,21,0,pi, True),
-                         TurretStats(8,-21,pi,2*pi, True),
-                         TurretStats(-43,22,pi/3,4*pi/3, True),
-                         TurretStats(-43,-22,2*pi/3,5*pi/3, True)], 
+                        [TurretStats(52,33, 5*pi/3,pi, True),
+                         TurretStats(-16,33, 0,pi, True),
+                         TurretStats(-84,33, 0,4*pi/3, True),
+                         TurretStats(64,-33, pi,pi/3, True),
+                         TurretStats(-6,-33, pi,0, True),
+                         TurretStats(-76,-33, 2*pi/3,0, True)], 
                         3000, 3000, 1000, 500, 0.6*config.fps, 2500, [ids.S_NOMAD_FS_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)], civilianBonus=2000 )
         self.NOMAD_BASE =	Flagship( ids.S_NOMAD_BASE, 45, 0, 0, 0.002, 800, 1000,
                         [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
@@ -824,8 +822,8 @@ class Stats:
                       ids.S_AI_FS_2: ShipChoice( self.AI_FS_2, self.R_AI, 650 ),
 
                       ids.S_NOMAD_FS_0: ShipChoice( self.NOMAD_FS_0, self.R_NOMAD, 0 ),
-                      ids.S_NOMAD_FS_1: ShipChoice( self.NOMAD_FS_1, self.R_NOMAD, 200 ),
-                      ids.S_NOMAD_FS_2: ShipChoice( self.NOMAD_FS_2, self.R_NOMAD, 500 ) }
+                      ids.S_NOMAD_FS_1: ShipChoice( self.NOMAD_FS_1, self.R_NOMAD, 300 ),
+                      ids.S_NOMAD_FS_2: ShipChoice( self.NOMAD_FS_2, self.R_NOMAD, 450 ) }
         
         # Contains every interesting item indexed self.By their id
         self.statsDict = {}
