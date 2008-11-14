@@ -84,9 +84,9 @@ class LaserWeapon( Weapon ):
             hullBefore = target.hull
             (ao, ro, gfxs) = target.hit( game, pi+ori, ship.player, weapon.stats.energyDamage, weapon.stats.massDamage )  
             if hullBefore != target.hull: # went throught the shield
-                d = ( target.xp+target.stats.maxRadius/4*cos(a), target.yp+target.stats.maxRadius/4*sin(a))
+                d = ( xo + cos(ori)*dist, yo + sin(ori)*dist )
             else:
-                d = ( target.xp+target.stats.maxRadius*cos(a), target.yp+target.stats.maxRadius*sin(a))
+                d = ( xo + cos(ori)*(dist-target.stats.maxRadius/2), yo + sin(ori)*(dist-target.stats.maxRadius/2) )
         else:
             (ao, ro, gfxs) = ([],[],[])
             d = ( xo + cos(ori)*weapon.stats.maxRange, yo + sin(ori)*weapon.stats.maxRange )
