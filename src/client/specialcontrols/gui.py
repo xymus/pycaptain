@@ -64,7 +64,8 @@ class RadarControl( Container ):
              ids.U_OWN: (0,255,0,255),
              ids.U_FRIENDLY: (0,0,255,255),
              ids.U_ENNEMY: (255,0,0,255),
-             ids.U_ORBITABLE: (127,127,127,255) }
+             ids.U_ORBITABLE: (127,127,127,255),
+             None: (0,0,0,0) }
         self.viewColor = (64,64,64,255)
         
         self.reset()
