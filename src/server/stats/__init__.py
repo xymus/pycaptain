@@ -45,6 +45,12 @@ class WeaponStats:
 #    self.explosionRange = explosionRange
 #    self.pulseLength = pulseLength
 
+class ProjectileStats( ObjectStats ):
+    def __init__( self, id, radius, explosionRange=0, explosionTriggerRange=0 ):
+        ObjectStats.__init__( self, id, radius )
+        self.explosionRange = explosionRange
+        self.explosionTriggerRange = explosionTriggerRange
+
 ## ships
 class ShipStats( ObjectStats ):
     def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
@@ -340,16 +346,16 @@ class Stats:
         self.MISSILE_EVOLVED_COUNTER = ShipStats( ids.M_EVOLVED_COUNTER, 3, 0.8, 0, 0.005, 5, 0, None, None, [(2,pi)], energyCostToBuild=40,oreCostToBuild=10,timeToBuild=10*config.fps,hangarSpaceNeed=5 ) 
         self.MISSILE_EVOLVED_PULSE = ShipStats( ids.M_EVOLVED_PULSE, 3, 0.6, 0, 0.007, 5, 0, None, None, [(2,pi)], energyCostToBuild=100,oreCostToBuild=50,timeToBuild=30*config.fps,hangarSpaceNeed=10 ) 
 
-        self.BULLET_0 =  	ObjectStats( ids.B_BULLET_0, 3 )
-        self.BOMB_0 =  	ObjectStats( ids.B_BOMB_0, 3 )
-        self.B_ROCK_0 =  	ObjectStats( ids.B_ROCK_0, 4 )
-        self.B_ROCK_1 =  	ObjectStats( ids.B_ROCK_1, 7 )
-        self.B_AI_0 =  	ObjectStats( ids.B_AI_0, 4 )
-        self.B_FIRE_0 =  	ObjectStats( ids.B_FIRE_0, 5 )
-        self.B_ESPHERE =     ObjectStats( ids.B_ESPHERE, 7 )
-        self.B_WAVE_0 =      ObjectStats( ids.B_WAVE_0, 7 )
-        self.B_WAVE_1 =      ObjectStats( ids.B_WAVE_1, 10 )
-        self.B_EGG_0 =      ObjectStats( ids.B_EGG_0, 6 )
+        self.BULLET_0 =  	ProjectileStats( ids.B_BULLET_0, 3 )
+        self.BOMB_0 =  	ProjectileStats( ids.B_BOMB_0, 3 )
+        self.B_ROCK_0 =  	ProjectileStats( ids.B_ROCK_0, 4 )
+        self.B_ROCK_1 =  	ProjectileStats( ids.B_ROCK_1, 7 )
+        self.B_AI_0 =       ProjectileStats( ids.B_AI_0, 4, explosionRange=15, explosionTriggerRange=10 )
+        self.B_FIRE_0 =  	ProjectileStats( ids.B_FIRE_0, 5 )
+        self.B_ESPHERE =     ProjectileStats( ids.B_ESPHERE, 7 )
+        self.B_WAVE_0 =      ProjectileStats( ids.B_WAVE_0, 7 )
+        self.B_WAVE_1 =      ProjectileStats( ids.B_WAVE_1, 10 )
+        self.B_EGG_0 =      ProjectileStats( ids.B_EGG_0, 6 )
 
         # id,minRange,maxRange,certainty, energyDamage,massDamage,freqOfFire,speed,weaponType,projectile=None
         self.W_LASER_SR =  	WeaponStats( ids.W_LASER_SR, 30,250,20, 1,0, 1,0, ids.WT_LASER, gfxAtFire = gfxs.GfxLaser, laserWidth=1) #, laserColor=ids.RED)
@@ -383,6 +389,7 @@ class Stats:
 
         # self.AIs'
         self.W_AI_MISSILE = 		WeaponStats( ids.W_AI_MISSILE, 70, 600, 0, 10,5, 1*config.fps,10, ids.WT_MISSILE, projectile=self.MISSILE_AI, projectileTtl=10*config.fps)
+        self.W_AI_MASS_EX =     WeaponStats( ids.W_AI_MASS_EX, 20, 400, 20, 0,4, 0.3*config.fps,15, ids.WT_MASS, projectile=self.B_AI_0)
 
         # self.EVOLVED's
         self.W_ESPHERE_0 = 	WeaponStats( ids.W_ESPHERE_0, 50, 500, 50, 10,5, 1*config.fps,10, ids.WT_MASS, projectile=self.B_ESPHERE)
@@ -667,10 +674,10 @@ class Stats:
         self.T_LARVA_0 = 	TurretInstallStats( ids.T_LARVA_0, 0,100,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_COMBAT_STABLE, weapon=self.W_LARVA_0,weaponPositions=[[RPos(0,0)]] )
 
         # self.AIs'
-        self.T_AI_FLAK_0 = 	TurretInstallStats( ids.T_AI_FLAK_0, 0,50,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_MASS_SR_0, weaponPositions=[[RPos(0.2,18)]] )
-        self.T_AI_FLAK_1 = 	TurretInstallStats( ids.T_AI_FLAK_1, 0,150,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_MASS_SR_0, weaponPositions=[[RPos(-0.2,18)],[RPos(0.2,18)]], upgradeFrom=self.T_AI_FLAK_0 )
-        self.T_AI_FLAK_2 = 	TurretInstallStats( ids.T_AI_FLAK_2, 0,500,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_MASS_SR_0, weaponPositions=[[RPos(0.2,18)],[RPos(-0.2,18),RPos(0.52,21)]], upgradeFrom=self.T_AI_FLAK_1 )
-        self.T_AI_FLAK_3 = 	TurretInstallStats( ids.T_AI_FLAK_3, 0,1000,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_MASS_SR_0, weaponPositions=[[RPos(0.2,18),RPos(-0.52,21)],[RPos(-0.2,18),RPos(0.52,21)]], upgradeFrom=self.T_AI_FLAK_2 )
+        self.T_AI_FLAK_0 = 	TurretInstallStats( ids.T_AI_FLAK_0, 0,50,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_AI_MASS_EX, weaponPositions=[[RPos(0.2,18)]] )
+        self.T_AI_FLAK_1 = 	TurretInstallStats( ids.T_AI_FLAK_1, 0,150,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_AI_MASS_EX, weaponPositions=[[RPos(-0.2,18)],[RPos(0.2,18)]], upgradeFrom=self.T_AI_FLAK_0 )
+        self.T_AI_FLAK_2 = 	TurretInstallStats( ids.T_AI_FLAK_2, 0,500,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_AI_MASS_EX, weaponPositions=[[RPos(0.2,18)],[RPos(-0.2,18),RPos(0.52,21)]], upgradeFrom=self.T_AI_FLAK_1 )
+        self.T_AI_FLAK_3 = 	TurretInstallStats( ids.T_AI_FLAK_3, 0,1000,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_AI_MASS_EX, weaponPositions=[[RPos(0.2,18),RPos(-0.52,21)],[RPos(-0.2,18),RPos(0.52,21)]], upgradeFrom=self.T_AI_FLAK_2 )
 
         self.T_AI_OMNI_LASER_0 =       TurretInstallStats( ids.T_AI_OMNI_LASER_0, 0,200,10*config.fps, 0,0, 2,0, 1, 0, ids.TA_COMBAT_STABLE, weapon=self.W_OMNI_LASER_0,weaponPositions=[[RPos(0,0)]] )
         self.T_AI_OMNI_LASER_1 =       TurretInstallStats( ids.T_AI_OMNI_LASER_1, 0,500,10*config.fps, 0,0, 2,0, 1, 0, ids.TA_COMBAT_STABLE, weapon=self.W_OMNI_LASER_0,weaponPositions=[[RPos(pi/2,7),RPos(3*pi/2,7)]],upgradeFrom=self.T_AI_OMNI_LASER_0 )

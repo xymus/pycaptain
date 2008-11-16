@@ -100,6 +100,7 @@ W_HARVESTER_T 	= 140
 
 # ai's
 W_AI_MISSILE	= 150
+W_AI_MASS_EX    = 151
 
 # extra's
 W_ROCK_THROWER_0	= 160

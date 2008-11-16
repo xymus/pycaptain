@@ -145,10 +145,15 @@ class MassWeapon( Weapon ):
         angle = ship.ori
         speed = ship.weapon.stats.speed
         for o in self.getPoss( ship, game ):
-     #   o = self.getPos( ship, game )
-          i = ( ship.xi + speed*cos(angle), ship.yi + speed*sin(angle) )
-          ao.append( Bullet( o, ship.zp, angle, i, target, ship, ship.weapon ) )
-          gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
+            i = ( ship.xi + speed*cos(angle), ship.yi + speed*sin(angle) )
+
+            if ship.weapon.stats.projectile.explosionRange:
+                bullet = ExplodingBullet( o, ship.zp, angle, i, target, ship, ship.weapon )
+            else:
+                bullet = Bullet( o, ship.zp, angle, i, target, ship, ship.weapon )
+                
+            ao.append( bullet )
+            gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
         return (ao,ro,gfxs)
 
 class MassWeaponTurret( WeaponTurret ):
@@ -156,13 +161,16 @@ class MassWeaponTurret( WeaponTurret ):
         (ao,ro,gfxs) = WeaponTurret.fire( self, ship, turret, game )
         angle = (ship.ori+turret.rr)%(2*pi)
         speed = turret.weapon.stats.speed
-    #    o = self.getPos( ship, game )
         for o in self.getPoss( ship, turret, game ):
-          i = ( ship.xi+speed*cos(angle), ship.yi+speed*sin(angle) )
-     #     print angle, i
-          ao.append( Bullet( o, ship.zp, angle, i, target, ship, turret.weapon ) )
-     #   print "bullet!"
-          gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
+            i = ( ship.xi+speed*cos(angle), ship.yi+speed*sin(angle) )
+
+            if turret.weapon.stats.projectile.explosionRange:
+                bullet = ExplodingBullet( o, ship.zp, angle, i, target, ship, turret.weapon )
+            else:
+                bullet = Bullet( o, ship.zp, angle, i, target, ship, turret.weapon )
+                
+            ao.append( bullet )
+            gfxs.append( GfxExplosion( o, 3, sound=ids.S_EX_FIRE ) )
         return (ao,ro,gfxs)
 
 #class OmniLaserWeapon( Weapon ):
@@ -405,20 +413,20 @@ class ExplodingBullet( Object ):
         self.target = target
         self.launcher = launcher
         self.weapon = weapon
-        self.ttl = weapon.stats.projectileTtl #*3
-        self.explosionRange = 100
+        self.ttl = weapon.stats.projectileTtl
 
     def doTurn( self, game ):
         (ao,ro,ag) = Object.doTurn(self, game)
 
         # detect hit
-        for obj in game.objects.getWithinRadius( self, self.explosionRange ):
+        for obj in game.objects.getWithinRadius( self, self.weapon.stats.projectile.explosionTriggerRange ):
             if obj.alive and obj.player != None and obj.player != self.launcher.player:
-                (ao0, ro0, ag0) = explode( self, game, self.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
+                (ao0, ro0, ag0) = explode( self, game, self.weapon.stats.projectile.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
                 (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
+                print "exploding!"
 
         if self.alive and self.ttl == 0:
-            (ao0, ro0, ag0) = explode( self, game, self.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
+            (ao0, ro0, ag0) = explode( self, game, self.weapon.stats.projectile.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
             (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
         else:
             self.ttl = self.ttl - 1
