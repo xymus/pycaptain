@@ -2,7 +2,7 @@ from orders import *
 from gfxs import *
 import ids
 
-version = "v0.5.6" # major version
+version = "v0.5.7" # major version
 revision = "$Revision$" # updated by subversion
 
 revisionSplitted = revision.split()
