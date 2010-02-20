@@ -41,10 +41,10 @@ class Human( Player ):
                 elif isinstance( order, OrderLaunchShips ):
                     self.flagship.ai.launchShips( self.flagship, game, order.type )
                 elif isinstance( order, OrderAttack ):
-                    if game.uidsSent[ self ].has_key( order.obj ):
+                    if len ( game.uidsSent[ self ] ) > order.obj:
                         self.flagship.ai.attack( self.flagship, game.uidsSent[ self ][ order.obj ] )
                     else:
-                        print "client - warning: dropped attack order due to unfound target id"
+                        print "client - warning: dropped attack order due to impossible target id"
         #        elif isinstance( order, OrderStopAttack ):
         #            pass
                 elif isinstance( order, OrderJumpNow ):
