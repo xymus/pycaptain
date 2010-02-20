@@ -101,7 +101,8 @@ class RadarControl( Container ):
                     if dist <= self.radarRange:
                         pos = (int(self.center[0]+float(self.radius)*(obj.xp-self.status.xr)/self.radarRange),
                             int(self.center[1]-float(self.radius)*(obj.yp-self.status.yr)/self.radarRange))
-                        display.drawPoint( pos, self.colors[ obj.relation ] )
+                        if self.colors.has_key( obj.relation ):
+                           display.drawPoint( pos, self.colors[ obj.relation ] )
 
             # draw viewed area
             left = float(self.radius)*(self.camera[0]-self.status.xr)/self.radarRange
