@@ -38,8 +38,10 @@ class Imgs( Rc ):
         item = self.__dict__[ i ]
         if isinstance( item, Animation ):
             return item.getImage()
-        else:
+        elif isinstance( item, Image ): # TODO remove hack, solve real problem
             return item.image
+        else:
+            return item
 
     def loadImageWithDisplay( self, path ):
         return self.display.load( os.path.join( self.wd, "imgs", path ) )
