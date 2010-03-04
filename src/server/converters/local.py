@@ -153,7 +153,7 @@ class LocalConverter( Converter ):
                 else:
                     buildPerc = -1
 
-                missiles.append( COShips( missile,  missile != ids.M_NORMAL and hasTurret, player.flagship.missiles[missile].amount>0, player.flagship.missiles[missile].amount, buildPerc, hasTurret and player.flagship.canBuild( game, missile ), hasTurret ) )
+                missiles.append( COShips( missile,  missile != ids.M_NORMAL and missile != ids.M_AI and missile != ids.M_LARVA and missile != ids.M_EVOLVED and hasTurret, player.flagship.missiles[missile].amount>0, player.flagship.missiles[missile].amount, buildPerc, hasTurret and player.flagship.canBuild( game, missile ), hasTurret ) ) # TODO Remove hack to identify "usable missile"
                 missilesSpace = missilesSpace + player.flagship.missiles[missile].amount*game.stats[ missile ].hangarSpaceNeed
 
             t6 = time()
