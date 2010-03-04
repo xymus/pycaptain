@@ -3,7 +3,7 @@
 # Description: First scenario with 4 solar systems, sol at the center.
 # 
 
-from scenarios import Scenario
+from scenarios import Scenario, Step
 from random import randint
 
 from server.players import *
@@ -26,12 +26,42 @@ class Extras ( Scenario ):
     name = "Extras"
     
     def __init__( self, game ):
-        Scenario.__init__(self, game )
+        self.player = None
 
         self.harvestersAtSpawn = 4
-        self.wantedBadGuys = 10
+        self.wantedBadGuys = 9
+
+        steps = [
+            Step( 
+                goal=lambda self, game: not filter( lambda ship: ship.alive, self.ennemyShips ),
+                onBegin=lambda self, game: self.addExtrasInFields( game, count=self.wantedBadGuys ),
+                failure=lambda self, game: False,
+                texts = [ (config.fps*10,"You are at the Human outpost over Gamma 1."),
+                          (config.fps*20,"There is hostile life forms in the system."),
+                          (config.fps*30,"Clear the asteroids fields above the star Gamma.") ] ),
+            Step( 
+                goal=lambda self, game: not filter( lambda ship: ship.alive, self.ennemyShips ),
+                onBegin=lambda self, game: self.addAttackingExtras( game, count=self.wantedBadGuys ),
+                failure=lambda self, game: False,
+                texts = [ (0,"The human outpost above Gamma 1 is under attack!"),
+                          (config.fps*10,"Jump to their help in 10s..."),
+                          (config.fps*17,"3s"),
+                          (config.fps*18,"2s"),
+                          (config.fps*19,"1s"),
+                          (config.fps*20,"Jump!") ] ),
+            Step( 
+                goal=lambda self, game: game.tick - 20*config.fps >= self.lastStepAt,
+                onBegin=lambda self, game: pass,
+                failure=lambda self, game: False,
+                texts = [ (0,"The alien's attack has been succesfully repelled!"),
+                          (config.fps*10,"Congratulations ;)") ] )
+                 ]
 
 
+        
+        Scenario.__init__(self, game, steps=steps )
+
+        self.ennemyShips = []
 
         self.gamma = [Sun( game.stats.S_SOL, 1000, 4000 ),
                  Planet( game.stats.P_MERCURY_1, 0, -2200 ),
@@ -64,7 +94,7 @@ class Extras ( Scenario ):
 
 
        # for i in range( 5 ):
-       #     self.addRandomNpc( game )
+       #     self.addExtrasInFields( game )
 
         spots = []
         for o in game.astres:
@@ -120,12 +150,13 @@ class Extras ( Scenario ):
         self.extraRock0 = Faction( game.stats.R_EXTRA, "Rocks" )
         game.addPlayer( self.extraRock0 )
 
-        for i in xrange( self.wantedBadGuys ):
-          self.addRandomNpc( game )
+       # self.addExtrasInFields( game, self.wantedBadGuys )
+       # for i in xrange( self.wantedBadGuys ):
+       #   self.addExtrasInFields( game )
 
 
 
-    def addRandomNpc( self, game, pos=None, i=None, count=1 ):
+    def addExtrasInFields( self, game, pos=None, count=1 ):
 
         player = self.extraRock0 # Faction( game.stats.R_EXTRA, "Rocks" )
 
@@ -143,7 +174,7 @@ class Extras ( Scenario ):
 
          # angle = 2*pi*random()
          # dist = 750
-          (x,y) = area[4]-dist*cos(angle),area[5]+dist*sin(angle)
+          (x,y) = area[4]+dist*cos(angle),area[5]+dist*sin(angle)
 
           if t%4<2: # rock throwing asteroid # mixed
               flagship = FlagShip( player, game.stats.EXTRA_BASE, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
@@ -178,24 +209,71 @@ class Extras ( Scenario ):
              flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
           flagship.ore = flagship.stats.maxOre
+          flagship.missiles[ ids.M_LARVA ].amount = 100
+            
+          self.ennemyShips.append( flagship )
 
           game.objects.append( flagship )
           player.flagships.append( flagship )
-          flagship.missiles[ ids.M_LARVA ].amount = 100
           print "ennemy at %s %s" % (flagship.xp, flagship.yp)
        # game.addPlayer( player )
         
 
-    def doTurn( self, game ):
-        if not game.tick%(config.fps*5):
-           ## manage npcs numbers
-            npcCount = 0
-            for o0 in game.objects.objects:
-                if o0.player and isinstance( o0, FlagShip ) and isinstance( o0.player, Computer ):
-                    npcCount = npcCount + 1
+    def addAttackingExtras( self, game, pos=None, count=1 ):
 
-            for i in range( npcCount, self.wantedBadGuys ):
-                    self.addRandomNpc( game )
+        player = self.extraRock0
+
+        for k in xrange( count ):
+
+            dist = randint( 2000, 2500 )
+            angle = ( 5*pi/8 + pi/4*random())
+            (x,y) = self.gamma[1].xp+dist*cos(angle), self.gamma[1].yp+dist*sin(angle)
+
+            t = randint( 0, 2 )
+
+            if t%2==1: # 3 headed dragon
+                flagship = FlagShip( player, game.stats.EXTRA_FS_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+                for k,t in enumerate(flagship.turrets):
+                  t.install = TurretInstall( game.stats.T_DRAGON_0 )
+                  t.weapon = MassWeaponTurret( game.stats.W_DRAGON_0 )
+                  t.ai = AiWeaponTurret()
+            else: # abandoned flagship
+                flagship = FlagShip( player, game.stats.EXTRA_FS_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+                for i in xrange( 8 ):
+                  fighter = ShipSingleWeapon(player, game.stats.EXTRA_FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
+                  flagship.shipyards[ fighter.stats.img ].docked.append( fighter )
+
+
+            flagship.ore = flagship.stats.maxOre
+            flagship.missiles[ ids.M_LARVA ].amount = 100
+            
+            self.ennemyShips.append( flagship )
+
+            game.objects.append( flagship )
+
+            player.flagships.append( flagship )
+
+            aliveTarget = filter( lambda ship: ship.alive, self.humanDefense.bases )
+            if aliveTarget:
+                flagship.ai.attack( flagship, choice( aliveTarget ) )
+            else:
+                dist = randint( 10, 500 )
+                angle = 2*pi*random()
+                (x,y) = self.gamma[1].xp+dist*cos(angle), self.gamma[1].yp+dist*sin(angle)
+
+                flagship.ai.goTo( flagship, (x.y) )
+
+
+   # def doTurn( self, game ):
+   #     if not game.tick%(config.fps*5):
+   #        ## manage npcs numbers
+   #         npcCount = 0
+   #         for o0 in game.objects.objects:
+   #             if o0.player and isinstance( o0, FlagShip ) and isinstance( o0.player, Computer ):
+   #                 npcCount = npcCount + 1
+
+           # for i in range( npcCount, self.wantedBadGuys ):
+           #         self.addExtrasInFields( game )
 
 
     def spawn( self, game, player, shipId ):
@@ -239,6 +317,10 @@ class Extras ( Scenario ):
            harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
-        player.needToUpdateRelations = True
+        Scenario.spawn( self, game, player, shipId=shipId )
+        #player.needToUpdateRelations = True
+
+        #if not self.player:
+       #self.player = player
 
 
