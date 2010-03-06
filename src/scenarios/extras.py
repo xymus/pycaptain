@@ -51,7 +51,7 @@ class Extras ( Scenario ):
                           (config.fps*20,"Jump!") ] ),
             Step( 
                 goal=lambda self, game: game.tick - 20*config.fps >= self.lastStepAt,
-                onBegin=lambda self, game: pass,
+                onBegin=lambda self, game: False,
                 failure=lambda self, game: False,
                 texts = [ (0,"The alien's attack has been succesfully repelled!"),
                           (config.fps*10,"Congratulations ;)") ] )
