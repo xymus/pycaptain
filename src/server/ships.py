@@ -672,7 +672,7 @@ class FlagShip( ShipWithTurrets ):
         self.energy = self.energy - self.getJumpCost()
         self.jumping = ((1-2*random())*config.universeWidth, (1-2*random())*config.universeHeight)
 
-    def canBuildTurret( self, toBuild ):
+    def canBuildTurret( self, turret, toBuild ):
         if toBuild:
             oreFlow = -1*toBuild.oreCostToBuild
             energyFlow = -1*toBuild.energyCostToBuild
@@ -687,7 +687,7 @@ class FlagShip( ShipWithTurrets ):
 
     def buildTurret( self, turret, toBuild ):
 
-        if self.canBuildTurret( toBuild ):
+        if self.canBuildTurret( turret, toBuild ):
             if turret.building: # already building something
                 self.ore = self.ore+turret.building.oreCostToBuild
                 self.energy = self.energy+turret.building.energyCostToBuild
