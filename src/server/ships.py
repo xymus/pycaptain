@@ -672,26 +672,41 @@ class FlagShip( ShipWithTurrets ):
         self.energy = self.energy - self.getJumpCost()
         self.jumping = ((1-2*random())*config.universeWidth, (1-2*random())*config.universeHeight)
 
-    def buildTurret( self, turret, toBuild ):
-        if turret.building:
-            self.ore = self.ore+turret.building.oreCostToBuild
-            self.energy = self.energy+turret.building.energyCostToBuild
-
-        turret.ai = None
-        turret.weapon = None
-        turret.install = None
-
-        turret.building = toBuild
-        turret.rr = turret.stats.defaultAngle
-
+    def canBuildTurret( self, toBuild ):
         if toBuild:
-            self.ore = self.ore-toBuild.oreCostToBuild
-            self.energy = self.energy-toBuild.energyCostToBuild
+            oreFlow = -1*toBuild.oreCostToBuild
+            energyFlow = -1*toBuild.energyCostToBuild
 
-            turret.buildCost = toBuild.timeToBuild # oreCostToBuild
-            turret.build = 0
-            
-        turret.updateBuildingOptions()
+            if turret.building:
+                oreFlow += turret.building.oreCostToBuild
+                energyFlow += turret.building.energyCostToBuild
+
+            return self.ore + oreFlow > 0 and self.energy + energyFlow > 0
+        else: # destroy turret
+            return True
+
+    def buildTurret( self, turret, toBuild ):
+
+        if self.canBuildTurret( toBuild ):
+            if turret.building: # already building something
+                self.ore = self.ore+turret.building.oreCostToBuild
+                self.energy = self.energy+turret.building.energyCostToBuild
+
+            turret.ai = None
+            turret.weapon = None
+            turret.install = None
+
+            turret.building = toBuild
+            turret.rr = turret.stats.defaultAngle
+
+            if toBuild:
+                self.ore = self.ore-toBuild.oreCostToBuild
+                self.energy = self.energy-toBuild.energyCostToBuild
+
+                turret.buildCost = toBuild.timeToBuild # oreCostToBuild
+                turret.build = 0
+                
+            turret.updateBuildingOptions()
 
     def destroyTurret( self, turret ):
         turret.weapon = None
@@ -701,7 +716,7 @@ class FlagShip( ShipWithTurrets ):
             self.shipyards[ toBuild ].building = False
             self.energy = self.energy+game.stats[ toBuild ].energyCostToBuild
             self.ore = self.ore+game.stats[ toBuild ].oreCostToBuild
-        else:
+        elif self.canBuild( game, toBuild ):
             self.shipyards[ toBuild ].building = True
             self.shipyards[ toBuild ].build = 0
             self.shipyards[ toBuild ].buildCost = game.stats[ toBuild ].timeToBuild
@@ -713,7 +728,7 @@ class FlagShip( ShipWithTurrets ):
             self.missiles[ toBuild ].building = False
             self.energy = self.energy+game.stats[ toBuild ].energyCostToBuild
             self.ore = self.ore+game.stats[ toBuild ].oreCostToBuild
-        else:
+        elif self.canBuild( game, toBuild ):
             self.missiles[ toBuild ].building = True
             self.missiles[ toBuild ].build = 0
             self.missiles[ toBuild ].buildCost = game.stats[ toBuild ].timeToBuild
@@ -721,6 +736,7 @@ class FlagShip( ShipWithTurrets ):
             self.ore = self.ore-game.stats[ toBuild ].oreCostToBuild
 
     def canBuild( self, game, toBuild ):
+        # TODO standardize with canBuildTurret
         return self.energy >= game.stats[ toBuild ].energyCostToBuild \
           and self.ore >= game.stats[ toBuild ].oreCostToBuild
 

@@ -75,13 +75,9 @@ class Human( Player ):
                 elif isinstance( order, OrderSelfDestruct ):
                     self.flagship.selfDestruct( game )
                 elif isinstance( order, OrderBroadcast ):
-                #    print order.text
                     game.communicationManager.addWideBroadcast( game, self, order.text, ship=self.flagship )
-                #    self.flagship.selfDestruct( game )
                 elif isinstance( order, OrderDirectedCast ):
-                 #   print order.text
                     game.communicationManager.addDirectedBroadcast( game, self, order.text, (order.x,order.y), ship=self.flagship )
-                 #   self.flagship.selfDestruct( game )
         self.inputs.orders = []
 
     def connect(self):
