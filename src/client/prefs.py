@@ -12,6 +12,8 @@ defaultDict = {
     
     "language": "en",
     "display": "sdl",
+    "resolution": "800x600",
+    "fullscreen": "False",
     
     "lastGame": "",
     "lastCampaign": "",

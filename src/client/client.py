@@ -479,18 +479,17 @@ class Client:
                 
     def loadResources( self ):
     
-        
-        if "-f" in argv:
-            fullscreen = True
-            resolution = None
-        else:
-            fullscreen = False
-            resolution = (960,680)
-        
         # preferences
         self.prefs = Prefs()
         for i in self.prefs.loadAll():
             pass
+            
+        if "-f" in argv:
+            fullscreen = True
+            resolution = None
+        else:
+            fullscreen = self.prefs.fullscreen == "True"
+            resolution = map( int, self.prefs.resolution.split("x") ) # (960,680)
             
         # displays
         try:

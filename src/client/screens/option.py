@@ -21,7 +21,9 @@ class OptionMenu( Screen ):
         self.ctrlCancel =     LightControlRight( (600,550), eCancel, _("Cancel"), imgs )
         
         self.ctrlLanguages = Selector( (80, 80), display, imgs, _("Language"), [], eSelectedChanged=None )
-        self.ctrlDisplay = Selector( (480, 80), display, imgs, _("Graphics"), [("sdl","pygame - SDL"),], eSelectedChanged=None ) # TODO add variable display list
+        self.ctrlDisplay = Selector( (400, 80), display, imgs, _("Graphics"), [], eSelectedChanged=None )
+        self.ctrlResolution = Selector( (400, 320), display, imgs, _("Resolution"), [("800x600","800x600"),("1024x768","1024x768"),("1280x800","1280x800"),], eSelectedChanged=None )
+        self.ctrlFullscreen = Selector( (80, 320), display, imgs, _("Window mode"), [("True","Fullscreen"),("False","Windowed"),], eSelectedChanged=None )
         
         controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
         
@@ -30,6 +32,8 @@ class OptionMenu( Screen ):
                         
                         self.ctrlLanguages,
                         self.ctrlDisplay,
+                        self.ctrlResolution,
+                        self.ctrlFullscreen,
                         
                         RotatingImageHolder( imgs[ ids.S_HUMAN_BASE ], (620,600), ri=0.015 ),
                         KeyCatcher( eCancel, letter="q" )
@@ -42,6 +46,8 @@ class OptionMenu( Screen ):
         if self.eSaveOut:
             self.prefs.language = self.ctrlLanguages.selected
             self.prefs.display = self.ctrlDisplay.selected
+            self.prefs.resolution = self.ctrlResolution.selected
+            self.prefs.fullscreen = self.ctrlFullscreen.selected
             self.eSaveOut( sender, mousePos )
       
     def reset( self, prefs ):
@@ -54,21 +60,23 @@ class OptionMenu( Screen ):
             try:
                 exec( "from languages.%s import %s as Language" % (language.lower(),language.capitalize()) )
                 self.ctrlLanguages.items.append( (language, Language.title) )
-            except:
-                pass
+            except Exception as e:
+                print "failed to load language %s: %s" % (language,e)
                 
         self.ctrlDisplay.items = []
         for display in displays.displayNames:
             try:
                 exec( "from client.displays.%s import %s as Display" % (display.lower(),display.capitalize()) )
                 self.ctrlDisplay.items.append( (display, Display.title) )
-            except:
-                pass
+            except Exception as e:
+                print "failed to load display %s: %s" % (display,e)
                 
                 
         
         self.ctrlLanguages.setDefault( self.prefs.language )
         self.ctrlDisplay.setDefault( self.prefs.display )
+        self.ctrlResolution.setDefault( self.prefs.resolution )
+        self.ctrlFullscreen.setDefault( self.prefs.fullscreen )
        # try:
        #     languageKey = 0
        #     for item in self.ctrlLanguages.items:
