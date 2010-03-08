@@ -318,6 +318,12 @@ class Extras ( Scenario ):
            flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
 
         Scenario.spawn( self, game, player, shipId=shipId )
+
+        for i in xrange( 0, 3 ):
+            frigate = Frigate( player, player.race.defaultFrigate, 
+                               AiEscortFrigate( player ), x+100, y+100 )
+            game.objects.append( frigate )
+
         #player.needToUpdateRelations = True
 
         #if not self.player:
