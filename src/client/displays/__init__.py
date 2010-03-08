@@ -1,4 +1,4 @@
-__all__ = ["sdl","opengl"]
+__all__ = ["sdl","opengl","openglo","pyglet"]
 
 import os
 import sys
@@ -147,4 +147,8 @@ class Display:
 
     def drawRoRe( self, img, pos, resize ):
         raise Exception( "Abstract function, should not be used" )
+        
+    def drawRepeated( self, img, pos, repeatx=1, repeaty=1 ):
+        raise Exception( "Abstract function, should not be used" )
+    	
 

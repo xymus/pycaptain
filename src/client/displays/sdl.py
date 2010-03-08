@@ -2,7 +2,12 @@ import os
 import sys
 from math import degrees, pi, hypot, cos, sin, radians, fabs
 from time import time
-import pygame
+
+try:
+    import pygame
+except:
+    print "Install pygame to use the SDL display"
+    raise
 
 from common.comms import COObject, COInput
 from client.imgs import Animation
@@ -11,7 +16,7 @@ from . import Display
 
 class Sdl( Display ):
     name = "sdl"
-    title = "pygame - SDL"
+    title = "SDL via PyGame"
     
     def __init__(self, resolution=( 640, 640 ), fullscreen=False, title="Game"):
         Display.__init__(self)
@@ -31,7 +36,6 @@ class Sdl( Display ):
 
         self.cursorArrow = pygame.cursors.arrow
         self.cursorAim = pygame.cursors.broken_x
-          
 
     def load( self, imgPath, usePink=False ):
         img = pygame.image.load( imgPath )
@@ -353,7 +357,15 @@ class Sdl( Display ):
             self.screen.blit( tempSurface, corrPosition )
 
     def drawRoRe( self, img, pos, resize ):
+        # TODO broken
         tempSurface = pygame.transform.rotozoom( img, degrees(rotation), resize )
         corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 ) # correct to top left
         self.screen.blit( tempSurface, corrPosition )
 
+    def drawRepeated( self, img, pos, repeatx=1, repeaty=1 ):
+        for x in xrange( 0, repeatx ):
+            xp = pos[0]+self.getWidth(img)*x
+            for y in xrange( 0, repeaty ):
+                yp = pos[1]+self.getHeight(img)*y
+                self.screen.blit( img, (xp,yp) )
+        
