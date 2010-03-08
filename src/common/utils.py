@@ -47,6 +47,20 @@ def distLowerThan( (x0,y0), (x1,y1), val ):
         return False
     else:
         return distBetween( (x0,y0), (x1,y1) ) < val
+
+def distGreaterThanObjects( obj0, obj1, val ):
+    return distGreaterThan( (obj0.xp, obj0.yp), (obj1.xp, obj1.yp), val )
+
+def distGreaterThan( (x0,y0), (x1,y1), val ):
+    global i
+    i = i+1
+  #  print i
+    if fabs(x1 - x0) > val:
+        return True
+    elif fabs(y1 - y0) > val:
+        return True
+    else:
+        return distBetween( (x0,y0), (x1,y1) ) > val
     
 def distLowerThanObjects( obj0, obj1, val ):
     return distLowerThan( (obj0.xp, obj0.yp), (obj1.xp, obj1.yp), val )
