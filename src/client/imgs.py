@@ -111,6 +111,7 @@ class Imgs( Rc ):
         self[ ids.S_AI_FS_1] = self.loadImage( "ships/ai-fs-1.png" )
         self[ ids.S_AI_FS_2] = self.loadImage( "ships/ai-fs-2.png" )
         self[ ids.S_AI_HARVESTER] = self.loadImage( "ships/ai-harvester.png" )
+        self[ ids.S_AI_FRIGATE_0 ] = self.loadImage( "ships/ai-frigate-0.png" )
 
         self[ ids.S_NOMAD_FS_0 ] 	= self.loadImage( "ships/nomad-fs-0.png" )
         self[ ids.S_NOMAD_FIGHTER ] = self.loadImage( "ships/nomad-fighter.png" )
@@ -119,6 +120,7 @@ class Imgs( Rc ):
         self[ ids.S_NOMAD_FS_2 ] 	= self.loadImage( "ships/nomad-fs-2.png" )
         self[ ids.S_NOMAD_HARVESTER] = self.loadImage( "ships/nomad-harvester-0.png" )
         self[ ids.S_NOMAD_HARVESTER_1] = self.loadImage( "ships/nomad-harvester-1.png" )
+        self[ ids.S_NOMAD_FRIGATE_0 ] = self.loadImage( "ships/nomad-frigate-0.png" )
 
         self[ ids.S_EVOLVED_FIGHTER ] = self.loadImage( "ships/evolved-fighter.png" )
         self[ ids.S_EVOLVED_BOMBER ] = self.loadImage( "ships/evolved-bomber.png" )
@@ -126,6 +128,7 @@ class Imgs( Rc ):
         self[ ids.S_EVOLVED_FS_1 ] 	= self.loadImage( "ships/evolved-fs-1.png" )
         self[ ids.S_EVOLVED_FS_2 ] 	= self.loadImage( "ships/evolved-fs-2.png" )
         self[ ids.S_EVOLVED_HARVESTER] = self.loadImage( "ships/evolved-harvester.png" )
+        self[ ids.S_EVOLVED_FRIGATE_0 ] = self.loadImage( "ships/evolved-frigate-0.png" )
 
         self[ ids.S_EXTRA_BASE ] 	= self.loadImage( "ships/extra-fs-0.png" )
         self[ ids.S_EXTRA_FS_1 ] 	= self.loadImage( "ships/extra-fs-1.png" )
@@ -151,6 +154,7 @@ class Imgs( Rc ):
         self[ ids.S_CIVILIAN_0 ] = self.loadImage( "ships/civilian.png" )
         self[ ids.S_HUMAN_BASE ] = self.loadImage( "ships/human-base.png" )
         self[ ids.S_HUMAN_BASE_MINING ] = self.loadImage( "ships/human-base-mining.png" )
+        self[ ids.S_HUMAN_FRIGATE_0 ] = self.loadImage( "ships/human-frigate-0.png" )
 
         self[ ids.S_MINE ] = self.loadImage( "mine.png" ) 
 

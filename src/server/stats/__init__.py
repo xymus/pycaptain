@@ -98,6 +98,11 @@ class MultipleWeaponsShipStats( ShipStats ):
             shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
         self.turrets = turrets
 
+class Frigate( MultipleWeaponsShipStats ):
+    def __init__(self, id, radius, maxThrust, maxReverseThrust, maxRg, maxHull, maxShield, turrets, unavoidableFragments, fragments, engines, energyCostToBuild=0, oreCostToBuild=0, timeToBuild=0, hangarSpaceNeed=0, shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3, turretsType=None ):
+        MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
+        self.turretsType = turretsType
+
 class Flagship( MultipleWeaponsShipStats ):
     def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, hangars=None, civilianBonus=1000, pulseResistant=False, jumpChargeDelay=3*config.fps, jumpRecoverDelay=20*config.fps, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
             shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3 ):
@@ -279,13 +284,14 @@ class RPos:
         self.dist = dist 
 
 class RaceStats:
-    def __init__( self, type, flagships, missiles, ships, turrets, defaultHarvester, immuneToPulse=False ):
+    def __init__( self, type, flagships, missiles, ships, turrets, defaultHarvester, defaultFrigate=None, immuneToPulse=False ):
         self.type = type
         self.flagships = flagships
         self.missiles = missiles
         self.ships = ships
         self.turrets = turrets
         self.defaultHarvester = defaultHarvester
+        self.defaultFrigate = defaultFrigate
         self.immuneToPulse = immuneToPulse
 
 class Cost:
@@ -756,6 +762,64 @@ class Stats:
         self.T_NOMAD_HULL_ELECTRIFIER_0 = TurretInstallStats( ids.T_NOMAD_HULL_ELECTRIFIER_0, \
             oreCostToBuild=300, energyPerFrame=12/config.fps, timeToBuild=10*config.fps, \
             hullBonusVsEnergy=0.2 )
+
+
+        ### Frigates
+        self.HUMAN_FRIGATE_0 =	Frigate( ids.S_HUMAN_FRIGATE_0, 
+                                radius=30, 
+                                maxThrust=0.15, 
+                                maxReverseThrust=0.05, 
+                                maxRg=0.003, 
+                                maxHull=100, 
+                                maxShield=200,
+                                turrets=[   TurretStats(16, 0, -3*pi/4,3*pi/4),
+                                            TurretStats( -4, 0, -3*pi/4,3*pi/4), ], 
+                                unavoidableFragments=[ids.F_LARGE_0, ids.F_LARGE_1], 
+                                fragments=[],
+                                engines=[],
+                                turretsType=[ self.T_MASS_SR_1, self.T_MASS_MR_0 ] ) 
+
+        self.EVOLVED_FRIGATE_0= Frigate( ids.S_EVOLVED_FRIGATE_0, 
+                                radius=43, 
+                                maxThrust=0.15, 
+                                maxReverseThrust=0.05, 
+                                maxRg=0.003, 
+                                maxHull=75, 
+                                maxShield=300,
+                                turrets=[   TurretStats(40, -6, -3*pi/4,3*pi/4),
+                                            TurretStats( 7,  2, -3*pi/4,3*pi/4), ], 
+                                unavoidableFragments=[ids.F_LARGE_0, ids.F_LARGE_1], 
+                                fragments=[],
+                                engines=[],
+                                turretsType=[ self.T_ESPHERE_0, self.T_ESPHERE_0 ] ) 
+
+        self.NOMAD_FRIGATE_0=   Frigate( ids.S_NOMAD_FRIGATE_0, 
+                                radius=36, 
+                                maxThrust=0.15, 
+                                maxReverseThrust=0.05, 
+                                maxRg=0.003, 
+                                maxHull=200, 
+                                maxShield=100,
+                                turrets=[   TurretStats( 17, -8, -3*pi/4,3*pi/4),
+                                            TurretStats(-12, 10, -3*pi/4,3*pi/4), ], 
+                                unavoidableFragments=[ids.F_LARGE_0, ids.F_LARGE_1], 
+                                fragments=[],
+                                engines=[],
+                                turretsType=[ self.T_REPEATER_1, self.T_NOMAD_CANNON_0 ] ) 
+
+        self.AI_FRIGATE_0 =     Frigate( ids.S_AI_FRIGATE_0, 
+                                radius=18, 
+                                maxThrust=0.15, 
+                                maxReverseThrust=0.05, 
+                                maxRg=0.003, 
+                                maxHull=120, 
+                                maxShield=180,
+                                turrets=[ TurretStats( 0,  0, -3*pi/4,3*pi/4), ], 
+                                unavoidableFragments=[ids.F_LARGE_0, ids.F_LARGE_1], 
+                                fragments=[],
+                                engines=[],
+                                turretsType=[ self.T_AI_OMNI_LASER_0 ] ) 
+
             
         self.setDefaults()
 
@@ -763,15 +827,20 @@ class Stats:
     def setDefaults( self ):
         print "setting defaults"
         self.R_HUMAN = 	RaceStats( ids.R_HUMAN,
-        [self.HUMAN_FS_0, self.HUMAN_FS_1, self.HUMAN_FS_2 ], 
-        [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
-        [self.HARVESTER, self.HUMAN_FIGHTER, self.HUMAN_BOMBER ], 
-        [self.T_LASER_SR_1, self.T_LASER_SR_0, self.T_LASER_MR_1, self.T_LASER_MR_0,
-        self.T_MASS_SR_2, self.T_MASS_SR_1, self.T_MASS_SR_0, self.T_MASS_LR, self.T_MASS_MR_1, self.T_MASS_MR_0,
-        self.T_MISSILE_2, self.T_MISSILE_1, self.T_MISSILE_0, 
-        self.T_NUKE, self.T_PULSE, self.T_MINER,
-        self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0 ],
-        self.HARVESTER ) # WARNING turret upgrades must self.Be self.Before their parent, see game.py:updatePlayer turrets section
+        flagships=[self.HUMAN_FS_0, self.HUMAN_FS_1, self.HUMAN_FS_2 ], 
+        missiles=[ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, ids.M_COUNTER ], 
+        ships=[self.HARVESTER, self.HUMAN_FIGHTER, self.HUMAN_BOMBER ], 
+        turrets=[self.T_LASER_SR_1, self.T_LASER_SR_0, self.T_LASER_MR_1, self.T_LASER_MR_0,
+            self.T_MASS_SR_2, self.T_MASS_SR_1, self.T_MASS_SR_0, self.T_MASS_LR,
+            self.T_MASS_MR_1, self.T_MASS_MR_0, self.T_MISSILE_2, self.T_MISSILE_1,
+            self.T_MISSILE_0, self.T_NUKE, self.T_PULSE, self.T_MINER, self.T_COUNTER, 
+            self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2,     
+            self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, 
+            self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, 
+            self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, 
+            self.T_AI_CRYPT_0 ],
+        defaultHarvester=self.HARVESTER,
+        defaultFrigate=self.HUMAN_FRIGATE_0 ) # WARNING turret upgrades must self.Be self.Before their parent, see game.py:updatePlayer turrets section
 
         self.R_AI = 		RaceStats( ids.R_AI, 
         [], 
@@ -785,7 +854,8 @@ class Stats:
         self.T_NUKE, self.T_MINER,
         self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_3, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
         self.T_AI_ACTIVE_DEFENSE_0 ],
-        self.AI_HARVESTER )
+        self.AI_HARVESTER,
+        defaultFrigate=self.AI_FRIGATE_0 )
 
         self.R_NOMAD = 	RaceStats( ids.R_NOMAD, 
         [self.HUMAN_FS_0, self.HUMAN_FS_1, self.HUMAN_FS_2 ], 
@@ -798,7 +868,8 @@ class Stats:
         self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
         self.T_DISCHARGER_1, self.T_DISCHARGER_0,
         self.T_NOMAD_HULL_ELECTRIFIER_0 ],
-        self.NOMAD_HARVESTER  )
+        self.NOMAD_HARVESTER,
+        defaultFrigate=self.NOMAD_FRIGATE_0  )
 
         self.R_EXTRA = 	RaceStats( ids.R_EXTRA, 
         [], 
@@ -821,7 +892,8 @@ class Stats:
         self.T_DARK_EXTRACTOR_0, self.T_DARK_EXTRACTOR_1, self.T_DARK_ENGINE_0,
         self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
         self.T_EVOLVED_PARTICLE_SHIELD_0 ],
-        self.EVOLVED_HARVESTER )
+        self.EVOLVED_HARVESTER,
+        defaultFrigate=self.EVOLVED_FRIGATE_0 )
         
         self.Relations = { 
     self.R_HUMAN: 	{ self.R_HUMAN: 100, self.R_AI: 30, self.R_NOMAD: 30, self.R_EXTRA: -50, self.R_EVOLVED: 10 },

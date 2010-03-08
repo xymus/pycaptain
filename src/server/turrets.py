@@ -20,17 +20,8 @@ class Turret:
         # activated/deactivated by player
         self.activated = True
         
-        self.rr = (self.stats.maxAngle+self.stats.minAngle)/2   
-        
-class BuildableTurret( Turret ):
-    def __init__( self, stats, ship ): # the stats duplicates the turret stats from the ship stats, the turret install's stats are in install.stats
-        Turret.__init__( self, stats, ship )
-        
-        self.building = None
-        self.buildCost = 0
-        
-        self.updateBuildingOptions() # calls self.updateBuildingOptionsPossibles()
-                                                          
+        self.rr = (self.stats.maxAngle+self.stats.minAngle)/2 
+                
     def buildInstall( self, turretStats ): 
         self.weapon = None
         if turretStats.weapon:
@@ -64,6 +55,19 @@ class BuildableTurret( Turret ):
         
         if turretStats.darkEngine: # TODO better than that
             self.rr = pi
+          
+        
+class BuildableTurret( Turret ):
+    def __init__( self, stats, ship ): # the stats duplicates the turret stats from the ship stats, the turret install's stats are in install.stats
+        Turret.__init__( self, stats, ship )
+        
+        self.building = None
+        self.buildCost = 0
+        
+        self.updateBuildingOptions() # calls self.updateBuildingOptionsPossibles()
+                                                          
+    def buildInstall( self, turretStats ): 
+        Turret.buildInstall( self, turretStats )
         
         self.updateBuildingOptions()
 

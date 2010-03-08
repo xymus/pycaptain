@@ -187,11 +187,16 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
     def died( self, ship, game ):
         pass
 
-
     def getRandomGuardPosition(self, ship, target, closeness ):
-   #     print "getting new dest"
         dist = target.stats.maxRadius*closeness
-        return (randint(int(target.xp-dist),int(target.xp+dist)), randint(int(target.yp-dist),int(target.yp+dist)) )
+        diff = 6 * config.fps * target.stats.maxThrust / ship.stats.maxThrust
+        return self.getRandomPosition( ship, (target.xp+diff*target.xi, target.yp+diff*target.yi), dist )
+
+    def getRandomPosition(self, ship, destination, radius ):
+        x = destination[0]
+        y = destination[1]
+        return ( randint(int(x-radius),int(x+radius)), 
+                 randint(int(y-radius),int(y+radius)) )
 
     def hitted( self, ship, game, angle, sender, energy, mass, pulse ):
         pass
@@ -335,13 +340,11 @@ class AiPilotFighter( AiPilot ):
             self.flagship.removeShip( ship )
 
 
-class AiCaptain( AiPilot ):
+class AiShipWithTurrets( AiPilot ):
     """AI for ships with turrets"""
     def __init__(self,player):
+        self.player = player # TODO remove? useless as of now
         AiPilot.__init__(self)
-        self.launching = {}
-        for s in player.race.ships:
-            self.launching[ s.img ] = False
 
     def doTurn( self, ship, game):
         if self.attacking and not self.attacking.alive:
@@ -351,33 +354,11 @@ class AiCaptain( AiPilot ):
         removedObjects0 = []
         addedGfxs0 = []
 
-        for k in self.launching:
-            if self.launching[ k ] and len( ship.shipyards[ k ].docked ) > 0 and ship.lastLaunchAt + ship.stats.launchDelay < game.tick:
-                for s in ship.shipyards[ k ].docked:
-                    if s.dockedAt + ship.stats.launchDelay*3 < game.tick:
-                        hangar, hangarAngle = choice(ship.stats.hangars)
-
-                        (s.xp,s.yp) = (ship.xp+hangar.dist*cos( hangar.angle ), ship.yp+hangar.dist*sin( hangar.angle ))
-                        angle = ship.ori+hangarAngle
-                        (s.xi,s.yi) = (5*cos(angle),5*sin(angle))
-                        s.ori = angle
-
-                        s.ai.evade( s, ship, ship.stats.maxRadius*1.5 )
-                        addedObjects0.append( s )
-                        s.zp = ship.zp-2
-                        ship.shipyards[ k ].away.append( s )
-                        ship.shipyards[ k ].docked.remove( s )
-                        ship.lastLaunchAt = game.tick
-                        break
-            elif not self.launching[ k ]:
-              for s in ship.shipyards[ k ].away:
-                s.ai.dock( s, ship, game )
-
         if self.attacking:
             pass
         elif game.tick%(config.fps/2)==9: # no target
             
-            bestObj = game.objects.getClosestAccording( ship, ship.stats.radarRange, 
+            bestObj = game.objects.getClosestAccording( ship, 500, # TODO, make dynamic as before with ship.stats.radarRange, 
 	func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and obj.player != ship.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
 
             if bestObj:
@@ -394,6 +375,86 @@ class AiCaptain( AiPilot ):
         (addedObjects1, removedObjects1, addedGfxs1) = AiPilot.doTurn( self, ship, game )
         return (addedObjects0+addedObjects1, removedObjects0+removedObjects1, addedGfxs0+addedGfxs1)
 
+    def stop(self, ship):
+        AiPilot.stop( self, ship )
+        for t in ship.turrets:
+          if t.ai:
+            t.ai.target = None
+
+    def attack( self, ship, target ):
+        self.idle = True
+        self.goingTo = False
+        self.attacking = target
+
+class AiEscortFrigate( AiShipWithTurrets ):
+    def __init__(self,player):
+        AiShipWithTurrets.__init__(self,player)
+        self.maxDistWithEscorted = 1000
+        self.lastDestSetAt = 0
+
+    def doTurn( self, ship, game ):
+        (addedObjects, removedObjects, addedGfxs) = AiShipWithTurrets.doTurn( self, ship, game )
+        
+        # follow flagship
+        if ship.player and ship.player.flagship and ship.player.flagship.alive:
+            if ship.canJump and not ship.jumping:
+                if ship.player.flagship.jumping:
+                   if utils.distGreaterThan( (ship.xp,ship.yp), self.player.flagship.jumping, self.maxDistWithEscorted*1.2 ):
+                    # jump
+                        ship.delayedJump( self.getRandomPosition( ship, self.player.flagship.jumping, self.player.flagship.stats.maxRadius*3 ), config.fps*(1+3*random()) )
+                elif utils.distGreaterThanObjects( ship, ship.player.flagship, self.maxDistWithEscorted ):
+                    # jump
+                    ship.delayedJump( self.getRandomGuardPosition( ship, self.player.flagship, 2 ), config.fps*(1+3*random()) )
+
+            # fight
+            # must have a target guide to force turrets to find targets
+            if not self.attacking and game.tick%(0.5*config.fps)==4:
+                self.attacking = game.objects.getClosestAccording( ship, 1000, 
+	    func=lambda obj: isinstance( obj, Ship ) and obj.alive and obj.player and game.getRelationBetween( ship.player, obj.player ) < 0 )
+
+            # set guard position
+            ## not self.attacking and 
+            if self.idle or self.lastDestSetAt<game.tick-config.fps*10:
+                self.goTo( ship, self.getRandomGuardPosition( ship, self.player.flagship, 3 ) )
+                self.lastDestSetAt = game.tick
+
+        return  (addedObjects, removedObjects, addedGfxs)
+
+class AiCaptain( AiShipWithTurrets ):
+    """AI for ships with turrets and shipyards"""
+    def __init__(self,player):
+        AiShipWithTurrets.__init__(self,player)
+        self.launching = {}
+        for s in player.race.ships:
+            self.launching[ s.img ] = False
+
+    def doTurn( self, ship, game):
+        (addedObjects, removedObjects, addedGfxs) = AiShipWithTurrets.doTurn( self, ship, game )
+
+        for k in self.launching:
+            if self.launching[ k ] and len( ship.shipyards[ k ].docked ) > 0 and ship.lastLaunchAt + ship.stats.launchDelay < game.tick:
+                for s in ship.shipyards[ k ].docked:
+                    if s.dockedAt + ship.stats.launchDelay*3 < game.tick:
+                        hangar, hangarAngle = choice(ship.stats.hangars)
+
+                        (s.xp,s.yp) = (ship.xp+hangar.dist*cos( hangar.angle ), ship.yp+hangar.dist*sin( hangar.angle ))
+                        angle = ship.ori+hangarAngle
+                        (s.xi,s.yi) = (5*cos(angle),5*sin(angle))
+                        s.ori = angle
+
+                        s.ai.evade( s, ship, ship.stats.maxRadius*1.5 )
+                        addedObjects.append( s )
+                        s.zp = ship.zp-2
+                        ship.shipyards[ k ].away.append( s )
+                        ship.shipyards[ k ].docked.remove( s )
+                        ship.lastLaunchAt = game.tick
+                        break
+            elif not self.launching[ k ]:
+              for s in ship.shipyards[ k ].away:
+                s.ai.dock( s, ship, game )
+
+        return (addedObjects, removedObjects, addedGfxs)
+
     def launchShips(self, ship, game, type ): # Fighters(self, ship ):
         self.launching[ type ] = True #Fighters = True
         
@@ -403,19 +464,14 @@ class AiCaptain( AiPilot ):
             s.ai.dock( s, ship, game )
 
     def stop(self, ship):
-        AiPilot.stop( self, ship )
+        AiShipWithTurrets.stop( self, ship )
         for k in ship.shipyards:
           if k != ids.S_HARVESTER:
             for s in ship.shipyards[ k ].away:
               s.ai.stop( s )
-        for t in ship.turrets:
-          if t.ai:
-            t.ai.target = None
 
     def attack( self, ship, target ):
-        self.idle = True
-        self.goingTo = False
-        self.attacking = target
+        AiShipWithTurrets.attack( self, ship, target )
         for k in ship.shipyards:
             if k != ids.S_HARVESTER:
                 for s in ship.shipyards[ k ].away:
@@ -439,7 +495,7 @@ class AiTurret:
         pos = ship.getTurretPos( turret )
         
         ## test if main target is in range
-        if ship.ai.attacking and ship.ai.attacking.alive and ship.ai.attacking != self.target and self.objectInRange( ship, turret, pos, ship.ai.attacking ): 
+        if game.tick%(config.fps/6)==1 and ship.ai.attacking and ship.ai.attacking.alive and ship.ai.attacking != self.target and self.objectInRange( ship, turret, pos, ship.ai.attacking ): 
             att = self.getAngleToTarget( ship, turret, pos, ship.ai.attacking )
             if self.angleInRange( ship, turret, att ):
                 self.target = ship.ai.attacking
@@ -792,14 +848,6 @@ class AiCivilian( AiPilot ):
 
     def evalShip( self, ship ): # TODO
         return ship.civilianValue
-
-    def getRandomGuardPosition(self, ship, target, closeness ):
-        dist = target.stats.maxRadius*closeness
-     #   (x,y) = (randint(int(target.xp-dist),int(target.xp+dist)), randint(int(target.yp-dist),int(target.yp+dist)) )
-        diff = 6 * config.fps * target.stats.maxThrust / ship.stats.maxThrust
-    #    (x,y) = ( x+cos(),  )
-        return ( randint(int(target.xp-dist),int(target.xp+dist)) + diff*target.xi, 
-                 randint(int(target.yp-dist),int(target.yp+dist)) + diff*target.yi )
 
     def died( self, ship, game ):
         if self.follows:

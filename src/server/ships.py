@@ -276,9 +276,76 @@ class MissileReserve:
 	self.amount = 0
 	self.target = None
 
-        
 from weapons import explode
-class FlagShip( ShipWithTurrets ):
+class JumperShip:
+    def __init__( self ):
+        self.jumping = None
+
+        self.jumpCharge = 0
+        self.jumpRecover = 0
+
+        self.jumpChargeDelay = config.fps*3
+        self.jumpRecoverDelay = config.fps*10
+
+    def doTurn( self, game ):
+        (ao,ro,ag) = ([],[],[]) 
+
+        ## Jumps
+        if self.jumping:
+            self.jumpCharge += 1 
+            if self.jumpCharge >= self.jumpChargeDelay:
+                (ao0,ro0,ag0) = self.jump( self.jumping, game )
+                (ao,ro,ag) = (ao+ao0,ro+ro0,ag+ag0) 
+                self.ai.goTo( self, self.pos )
+                self.jumping = False
+                self.jumpRecover = self.jumpRecoverDelay #config.fps*10 # TODO set variable value in stats?
+                self.jumpCharge = 0
+        elif self.jumpRecover:
+            self.jumpRecover -= 1
+
+        return (ao,ro,ag)
+
+    def canJump( self, game ):
+        if not self.inNebula:
+         #  and self.jumping:
+            for obj in game.objects.getWithinArea( self, self.stats.maxRadius+1000 ):
+                if isinstance( obj, FlagShip ):
+                    for turret in obj.turrets:
+                        if turret.install and turret.activated and turret.install.stats.special == ids.S_INTERDICTOR and distLowerThanObjects( self, obj, self.stats.maxRadius+turret.install.stats.specialValue):
+                            return False
+            return True
+        else:
+            return False
+
+
+    def jump( self, (xd, yd), game  ):
+        if self.canJump( game ):
+          angleToDest = utils.angleBetween( self.pos, (xd,yd) )
+          gfxs = [GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest )]
+
+          self.xp, self.yp = xd, yd
+          self.ai.goingTo = None
+          gfxs.append( GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest+pi) )
+          self.jumping = False
+          self.turretPoss = {}
+          return ([],[],gfxs)
+        else:
+          return ([],[],[])
+
+    def delayedJump( self, (xd,yd), delay=None ):
+        if self.jumping:
+            charge = self.jumpCharge
+        else:
+            charge = 0
+
+        if delay:
+            self.jumpChargeDelay = int(delay)
+
+        self.jumping = (xd, yd)
+        self.jumpCharge = charge
+
+        
+class FlagShip( ShipWithTurrets, JumperShip ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         self.player = player
         
@@ -298,9 +365,10 @@ class FlagShip( ShipWithTurrets ):
         self.civilianValue = 1
 
         self.lastLaunchAt = 0
-        self.jumping = None
 
         ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
+        JumperShip.__init__( self )
+
         self.turrets = []
         for turret in stats.turrets:
             self.turrets.append( BuildableTurret( turret, self ) ) #, None, AiWeaponTurret() ) )
@@ -319,8 +387,6 @@ class FlagShip( ShipWithTurrets ):
 
         self.noOreCloseAt = -1000
 
-        self.jumpCharge = 0
-        self.jumpRecover = 0
         
         self.selfDestructCommand = False
         
@@ -471,20 +537,9 @@ class FlagShip( ShipWithTurrets ):
          # self
          # fighters
 
-        (ao,ro,ag) = ShipWithTurrets.doTurn( self, game )
-
-        ## Jumps
-        if self.jumping:
-            self.jumpCharge += 1 
-            if self.jumpCharge == self.getJumpChargeDelay():
-                (ao0,ro0,ag0) = self.jump( self.jumping, game )
-                (ao,ro,ag) = (ao+ao0,ro+ro0,ag+ag0) 
-                self.ai.goTo( self, self.pos )
-                self.jumping = False
-                self.jumpRecover = self.getJumpRecoverDelay() #config.fps*10 # TODO set variable value in stats?
-                self.jumpCharge = 0
-        elif self.jumpRecover:
-            self.jumpRecover -= 1
+        (ao, ro, ag) = ShipWithTurrets.doTurn( self, game )
+        (ao1, ro1, ag1) = JumperShip.doTurn( self, game )
+        (ao, ro, ag) = (ao+ao1, ro+ro1, ag+ag1)
 
         ## update value tu civilians
         if game.tick%config.fps==3:
@@ -526,6 +581,50 @@ class FlagShip( ShipWithTurrets ):
             explode( self, game, radius+1000, energyDamage=0, massDamage=maxDamage, pulseLength=0, sender=self.player, deadlyToSelf=False, sound=ids.S_EX_PULSE )
                 
         return (ao,ro,ag)
+
+    # override Jumper default
+    def getJumpChargeDelay( self ):
+        return self.stats.jumpChargeDelay
+    jumpChargeDelay = property( fget=getJumpChargeDelay )
+
+    # override Jumper default
+    def getJumpRecoverDelay( self ):
+        return self.stats.jumpRecoverDelay
+    jumpRecoverDelay = property( fget=getJumpRecoverDelay )
+
+    # override Jumper default
+    def getJumpCost( self ):
+        return self.stats.jumpEnergyCost
+
+    def canJump( self, game ):
+        can = JumperShip.canJump( self, game )
+        
+        return can \
+               and (self.jumping \
+                    or ( not self.jumpRecover \
+                         and self.energy >= self.stats.jumpEnergyCost ) )
+
+    def jump( self, (xd, yd), game  ):
+        if self.canJump( game ):
+          if distBetween( (self.xp, self.yp), (xd, yd) ) > self.getRadarRange():
+            for k in self.shipyards:
+              for s in self.shipyards[k].away: # self.awayFighters + self.awayHarvesters:
+                self.removeShip( s )
+                s.flaghsip = None
+
+        return JumperShip.jump( self, (xd, yd), game )
+
+    def delayedJump( self, (xd,yd) ):
+        wasJumping = self.jumping
+
+        JumperShip.delayedJump( self, (xd, yd) )
+
+        if not wasJumping and self.jumping:
+            self.energy = self.energy - self.getJumpCost()
+
+    def emergencyJump( self ):
+        self.energy = self.energy - self.getJumpCost()
+        self.jumping = ((1-2*random())*config.universeWidth, (1-2*random())*config.universeHeight)
     
     def addOreToProcess( self, amount ):
       #  self.oreProcess[ 0 ] += 
@@ -546,27 +645,6 @@ class FlagShip( ShipWithTurrets ):
                 ship.ore = 0
 
      #   print "docked"
-
-    def canJump( self, game ):
-        if self.inNebula:
-            return False
-
-        if self.jumping:
-            can = True
-        else:
-            can = not self.jumpRecover and self.energy >= self.stats.jumpEnergyCost
-        if can:
-            #for obj in game.astres:
-            #    if isinstance( obj, Nebula ) and distLowerThanObjects( self, obj, self.stats.maxRadius+obj.stats.maxRadius):
-           #         can = False
-           #         break
-            for obj in game.objects.getWithinArea( self, self.stats.maxRadius+1000 ): # objects:
-                if isinstance( obj, FlagShip ): # and distLowerThanObjects( self, obj, self.stats.marRadius+obj.stats.maxRadius):
-                    for turret in obj.turrets:
-                        if turret.install and turret.activated and turret.install.stats.special == ids.S_INTERDICTOR and distLowerThanObjects( self, obj, self.stats.maxRadius+turret.install.stats.specialValue):
-                            can = False
-                            break
-        return can
 
     def getRadarRange( self ):
         if self.energy < 10:
@@ -612,16 +690,7 @@ class FlagShip( ShipWithTurrets ):
 
         return space
 
-    def getJumpChargeDelay( self ):
-        return self.stats.jumpChargeDelay
-    jumpChargeDelay = property( fget=getJumpChargeDelay )
 
-    def getJumpRecoverDelay( self ):
-        return self.stats.jumpRecoverDelay
-    jumpRecoverDelay = property( fget=getJumpRecoverDelay )
-
-    def getJumpCost( self ):
-        return self.stats.jumpEnergyCost
 
     def die( self, game ):
         (ao,ro,ag) = Ship.die(self, game)
@@ -640,37 +709,6 @@ class FlagShip( ShipWithTurrets ):
             if ship in self.shipyards[k].docked:
                 self.shipyards[k].docked.remove( ship )
 
-    def jump( self, (xd, yd), game  ):
-        if self.canJump( game ):
-          angleToDest = utils.angleBetween( self.pos, (xd,yd) )
-          gfxs = [GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest )]
-         # gfxs = [GfxExplosion((self.xp,self.yp),self.stats.maxRadius, sound=ids.S_EX_JUMP)]
-          if distBetween( (self.xp, self.yp), (xd, yd) ) > self.getRadarRange():
-            for k in self.shipyards:
-              for s in self.shipyards[k].away: # self.awayFighters + self.awayHarvesters:
-                self.removeShip( s )
-                s .flaghsip = None
-          self.xp, self.yp = xd, yd
-          self.ai.goingTo = None
-          gfxs.append( GfxJump((self.xp,self.yp),self.stats.maxRadius, angle=angleToDest+pi) )
-          self.jumping = False
-          self.turretPoss = {}
-          return ([],[],gfxs)
-        else:
-          return ([],[],[])
-
-    def delayedJump( self, (xd,yd) ):
-        if self.jumping:
-            charge = self.jumpCharge
-        else:
-            self.energy = self.energy - self.getJumpCost()
-            charge = 0
-        self.jumping = (xd, yd)
-        self.jumpCharge = charge
-
-    def emergencyJump( self ):
-        self.energy = self.energy - self.getJumpCost()
-        self.jumping = ((1-2*random())*config.universeWidth, (1-2*random())*config.universeHeight)
 
     def canBuildTurret( self, turret, toBuild ):
         if toBuild:
@@ -773,9 +811,9 @@ class OrbitalBase( FlagShip ):
         self.inertiaControl = False
 
 class HarvesterShip( ShipWithTurrets ):
-    def __init__( self, player, sta, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
+    def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         self.player = player
-        ShipWithTurrets.__init__( self, player, sta, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
+        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         self.ore = 0
         for turret in self.turrets:
             turret.ai = AiTargeterTurret()
@@ -790,4 +828,27 @@ class HarvesterShip( ShipWithTurrets ):
         return ShipWithTurrets.doTurn( self, game )
 
 
+class Frigate( ShipWithTurrets, JumperShip ):
+    """ai -> AiFrigateCaptain
+       stats -> FrigateStats"""
+    def __init__( self, player, stats, ai, xp=0, yp=0, zp=-2, ori=0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
+        self.player = player
+        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
+        JumperShip.__init__( self )
+
+        # install standard turrets
+        for turret,turretStat in zip(self.turrets,stats.turretsType):
+            if turretStat:
+                turret.buildInstall( turretStat )
+
+    # This is a hack to allow use of turrets TODO 
+    ore = property( fget=lambda self: 1000 )
+    energy = property( fget=lambda self: 1000 )
+
+    def doTurn( self, game ):
+        (addedObjects0, removedObjects0, addedGfxs0) = ShipWithTurrets.doTurn( self, game )
+        (addedObjects1, removedObjects1, addedGfxs1) = JumperShip.doTurn( self, game )
+        return (addedObjects0+addedObjects1, 
+                removedObjects0+removedObjects1, 
+                addedGfxs0+addedGfxs1)
 
