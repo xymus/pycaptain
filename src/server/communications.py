@@ -52,7 +52,7 @@ class MessageActive:
     speed = 1000/config.fps
     overlap = 0.5
     angleCover = pi/20 # half
-    pDegradation = 0.02
+    pDegradation = 0.03
     
     pCryptSwitch = 0.3
     
@@ -76,7 +76,7 @@ class MessageActive:
             self.origin = origin
             
         if not radius:
-            self.maxRadius = config.universeWidth/3
+            self.maxRadius = 10000 #config.universeWidth/3
         else:
             self.maxRadius = radius
             
@@ -110,11 +110,11 @@ class MessageActive:
                         if inAngle:
                             player.msgs.append( self.getMessageArchived( game, player ) )
                             
-        if self.radius > self.maxRadius*2:
+        if self.radius > self.maxRadius*5:
             self.alive = False
         elif self.radius > self.maxRadius:
             # degrade message quality
-            if random() < self.pDegradation*len(self.text): # probability
+            if random() < self.pDegradation: # *len(self.text): # probability
                 if len( self.text ) == 1:
                     self.alive = False
                 else:
