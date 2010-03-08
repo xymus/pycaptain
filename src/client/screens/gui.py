@@ -329,9 +329,15 @@ class Gui( ControlFrame ):
             bgh = self.display.getHeight(self.imgs.background)
             bgx = (-1*(self.camera[0]/self.backgroundDiv)) % bgw
             bgy = (self.camera[1]/self.backgroundDiv) % bgh
-            for x in range( bgx - bgw, bgx+self.display.resolution[ 0 ], bgw ):
-               for y in range( bgy - bgh, bgy+self.display.resolution[ 1 ], bgh ):
-                   self.display.draw( self.imgs.background, (x,y) )
+           # for x in range( bgx - bgw, bgx+self.display.resolution[ 0 ], bgw ):
+           #    for y in range( bgy - bgh, bgy+self.display.resolution[ 1 ], bgh ):
+           #        self.display.draw( self.imgs.background, (x,y) )
+           # print (self.display.resolution[ 0 ]+bgw)/bgw
+            self.display.drawRepeated( self.imgs.background, 
+                            ( bgx - bgw, bgy - bgh ),
+                            repeatx=self.display.resolution[ 0 ]/bgw +2,
+                            repeaty=self.display.resolution[ 1 ]/bgh +2 )
+           
 
             ### 
             ogfx = []
@@ -528,15 +534,17 @@ class Gui( ControlFrame ):
             self.display.drawLine( (0,255,0,255), (l+self.display.getWidth( self.imgs.uiTubeTopLeft ),5), (self.display.resolution[0]-80,5), 5 )
             
         self.display.draw( self.imgs.uiTubeTopLeft, (l,0) )
-        for i in range( l+self.display.getWidth( self.imgs.uiTubeTopLeft ), self.ctrlJump.center[0] ): # top-left
-            self.display.draw( self.imgs.uiTubeTop1, (i,0) )
+        self.display.drawRepeated( self.imgs.uiTubeTop1, 
+        				(l+self.display.getWidth( self.imgs.uiTubeTopLeft ), 0),
+        				repeatx=self.ctrlJump.center[0]-(l+self.display.getWidth( self.imgs.uiTubeTopLeft )) )
         
         # jump charge
         if self.playerStatus.jumpCharge:
             self.display.drawLine( (0,255,0,255), (self.ctrlJump.center[0],14), (self.display.resolution[0]-80,14), 6 )
-        for i in range( self.ctrlJump.center[0], self.display.resolution[0]-165 ): # top-right
-            self.display.draw( self.imgs.uiTubeTop2, (i,0) )
 
+        self.display.drawRepeated( self.imgs.uiTubeTop2, 
+                        ( self.ctrlJump.center[0], 0 ),
+                        repeatx=self.display.resolution[0]-165-self.ctrlJump.center[0] )
 
      ## jump charge
         jumpCenter = self.ctrlJump.center # (self.display.resolution[0]/2+100, 30)
@@ -583,8 +591,10 @@ class Gui( ControlFrame ):
 
 
     ## hangars
-        for i in range( self.anchorBottom+100, self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 ) ): # bottom-right
-            self.display.draw( self.imgs.uiTubeBottom2, (i, self.display.resolution[1]-20) )
+
+        self.display.drawRepeated( self.imgs.uiTubeBottom2, 
+                        ( self.anchorBottom+100, self.display.resolution[1]-20),
+                        repeatx=self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 )-(self.anchorBottom+100) )
             
      ## turrets
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
@@ -687,8 +697,9 @@ class Gui( ControlFrame ):
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
         if energyDownTo != -1:
             self.display.drawLine( (0,255,0,255), (self.display.resolution[0]-9,62), (self.display.resolution[0]-9,p+3), 6 )
-        for i in range( 62, p+4 ):
-            self.display.draw( self.imgs.uiTubeRightB, (self.display.resolution[0]-12,i) )
+        self.display.drawRepeated( self.imgs.uiTubeRightB, 
+                        ( self.display.resolution[0]-12, 62 ),
+                        repeaty=p+4-62 )
         p = p+self.display.getHeight( self.imgs.uiTurret )+8
 
         for k in range( 0, len( self.playerStatus.turrets ) ):
@@ -697,16 +708,18 @@ class Gui( ControlFrame ):
                   self.display.drawLine( (0,255,0,255), (self.display.resolution[0]-9,p-8-5), (self.display.resolution[0]-9,p+3), 6 )
               if oreUpTo <= k:
                   self.display.drawLine( (0,0,255,255), (self.display.resolution[0]-19,p-8-5), (self.display.resolution[0]-19,p+3), 6 )
-              for i in range( p-8-5, p+4 ):
-                self.display.draw( self.imgs.uiTubeRight2, (self.display.resolution[0]-23,i) )
+              self.display.drawRepeated( self.imgs.uiTubeRight2, 
+                    ( self.display.resolution[0]-23, p-8-5 ),
+                    repeaty=8+5+4 )
               p = p+self.display.getHeight( self.imgs.uiTurret )+8
 
         if oreUpTo <= len( self.playerStatus.turrets ):
             self.display.drawLine( (0,0,255,255), (self.display.resolution[0]-19,p-8-5), (self.display.resolution[0]-19,self.display.resolution[1]-150), 6 )
             self.display.draw( self.imgs.uiTubeRightCurveFill, (self.display.resolution[0]-21,self.display.resolution[1]-150) )
 
-        for i in range( p-8-5, self.display.resolution[1]-150 ):
-            self.display.draw( self.imgs.uiTubeRightA, (self.display.resolution[0]-23,i) )
+        self.display.drawRepeated( self.imgs.uiTubeRightA, 
+            ( self.display.resolution[0]-23, p-8-5 ),
+            repeaty=self.display.resolution[1]-150 - (p-8-5) )
         self.display.draw( self.imgs.uiTubeRightCurve, (self.display.resolution[0]-21,self.display.resolution[1]-150) )
 
     ## build gauges

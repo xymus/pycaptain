@@ -497,8 +497,13 @@ class ChatBox( Container ):
         
     def draw( self, display, focused=False, over=False, mouse=(0,0) ):
         display.draw( self.imgs.ctrlChatBackLeft, self.topLeft )
-        for i in xrange( 0, self.width-display.getWidth( self.imgs.ctrlChatBackLeft )-display.getWidth( self.imgs.ctrlChatBackRight ) ):
-            display.draw( self.imgs.ctrlChatBackCenter, (self.topLeft[0]+display.getWidth( self.imgs.ctrlChatBackLeft )+i,self.topLeft[1]) )
+       # for i in xrange( 0,  ):
+       #     display.draw( self.imgs., ()+i,) )
+
+        display.drawRepeated( self.imgs.ctrlChatBackCenter, 
+                    ( self.topLeft[0]+display.getWidth( self.imgs.ctrlChatBackLeft ), self.topLeft[1] ),
+                    repeatx=self.width-display.getWidth( self.imgs.ctrlChatBackLeft )-display.getWidth( self.imgs.ctrlChatBackRight ) )
+                        
         display.draw( self.imgs.ctrlChatBackRight, (self.topLeft[0]+self.width-display.getWidth( self.imgs.ctrlChatBackRight ), self.topLeft[1] ) )
         
         for control, xd, yd in self.relativeControls:
