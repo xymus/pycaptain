@@ -126,6 +126,7 @@ class Language:
         self.names[ ids.T_SAIL_2 ] 		= "Solar sail x3"
         self.descriptions[ids.T_SAIL_2] = "When activated, will boost the ship's speed depending on the proximity of a sun."
         self.names[ ids.T_JAMMER ] 		= "Missile jammer"
+        self.names[ ids.T_FRIGATE_BUILDER ] 		= "Frigate builder"
 
         self.names[ ids.T_AI_FLAK_0 ] = "Flak cannon"
         self.names[ ids.T_AI_FLAK_1 ] = "Flak cannon x2"

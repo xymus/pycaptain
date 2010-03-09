@@ -33,8 +33,8 @@ class Turret:
                 self.weapon = LaserWeaponTurret( turretStats.weapon )
             elif turretStats.weapon.weaponType == ids.WT_MISSILE:
                 self.weapon = MissileWeaponTurret( turretStats.weapon )
-            elif turretStats.weapon.weaponType == ids.WT_MISSILE_SPECIAL:
-                self.weapon = SpecialMissileWeaponTurret( turretStats.weapon )
+            elif turretStats.weapon.weaponType == ids.WT_MISSILE_SPECIAL: # TODO never used?
+                self.weapon = SpecialMissileWeaponTurret( turretStats.weapon ) # broken reference
 
         self.ai = None
         if turretStats.ai:

@@ -12,7 +12,7 @@ class OreBatch:
         self.pos = pos
 
 class Ship( Object ):
-    def __init__( self, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ): #, fradius(ang)=(1)
+    def __init__( self, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         Object.__init__( self, stats, xp, yp, zp, ori, xi, yi, zi, ri )
 
         self.alive = True
@@ -87,13 +87,13 @@ class Ship( Object ):
                     
  
         ( addedObjects1, removedObjects1, addedGfxs1 ) = Object.doTurn( self, game )
-        if self.thrust > 0 and self.stats.engines:
-            if randint( 0, 4 ) == 0:
-                engine = choice( self.stats.engines )
-                (x,y) = (self.xp+engine[0]*cos(self.ori+engine[1]), self.yp+engine[0]*sin(self.ori+engine[1]) )
-                addedGfxs1.append( GfxExhaust( (x,y), self.zp, 0, -0.2*self.xi+(0.5-random())*0.4, -0.2*self.yi+(0.5-random())*0.4, random()*pi ) )
+#        if self.thrust > 0 and self.stats.engines:
+#            if randint( 0, 4 ) == 0:
+#                engine = choice( self.stats.engines )
+#                (x,y) = (self.xp+engine[0]*cos(self.ori+engine[1]), self.yp+engine[0]*sin(self.ori+engine[1]) )
+#                addedGfxs1.append( GfxExhaust( (x,y), self.zp, 0, -0.2*self.xi+(0.5-random())*0.4, -0.2*self.yi+(0.5-random())*0.4, random()*pi ) )
 
-        if game.tick%(config.fps)==4:
+        if game.tick%(config.fps)==11:
             self.inNebula = False
             for obj in game.astres:
                 if isinstance( obj, Nebula ) and distLowerThanObjects( self, obj, self.stats.maxRadius+obj.stats.maxRadius):
@@ -719,7 +719,7 @@ class FlagShip( ShipWithTurrets, JumperShip ):
                 oreFlow += turret.building.oreCostToBuild
                 energyFlow += turret.building.energyCostToBuild
 
-            return self.ore + oreFlow > 0 and self.energy + energyFlow > 0
+            return self.ore + oreFlow >= 0 and self.energy + energyFlow >= 0
         else: # destroy turret
             return True
 
@@ -827,6 +827,23 @@ class HarvesterShip( ShipWithTurrets ):
 
         return ShipWithTurrets.doTurn( self, game )
 
+class BuilderShip( ShipWithTurrets ):
+    def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
+        self.player = player
+        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
+        self.ore = 0
+        for turret in self.turrets:
+            turret.ai = AiTargeterTurret()
+            turret.install = TurretInstall( self.stats.turretType )
+
+    def doTurn( self, game ):
+        if self.ai.building and self.orbiting: # TODO ai
+            amount = 0.2
+            self.ore = max(self.ore - amount, 0 ) # TODO builder stats
+            self.ai.building.work( amount )
+
+        return ShipWithTurrets.doTurn( self, game )
+
 
 class Frigate( ShipWithTurrets, JumperShip ):
     """ai -> AiFrigateCaptain
@@ -851,4 +868,46 @@ class Frigate( ShipWithTurrets, JumperShip ):
         return (addedObjects0+addedObjects1, 
                 removedObjects0+removedObjects1, 
                 addedGfxs0+addedGfxs1)
+
+class Scaffolding( Ship ):
+    def __init__( self, stats, xp, yp, player, build ):
+        ori = 2*pi*random()
+        zp = -3
+        Ship.__init__( self, stats, None, xp, yp, zp, ori )
+
+        self.player = player
+        
+        self.building=build
+        self.buildEffort = 0
+
+    #    print "Scaffolding created"
+
+    def doTurn( self, game ):    
+        ( ao, ro, ag ) = Ship.doTurn( self, game )
+
+        # TODO remove when builders are available
+        self.buildEffort += 0.1
+
+        # act on build effort
+        # assumes self.building and self.player
+        if self.buildEffort >= self.building.oreCostToBuild:
+            ao.append( buildShip( self.player, self.building, self.xp, self.yp )  ) # build target
+
+            self.alive = False
+            ro.append( self )
+
+            explosionRange = max( self.stats.maxRadius, self.building.maxRadius )
+            ag.append( GfxExplosion( (self.xp,self.yp), explosionRange, sound=ids.S_EX_FIRE ) )
+
+        return ( ao, ro, ag )
+
+    def work( self, contribution ):
+        self.buildEffort += contribution
+
+from stats import *
+def buildShip( player, stats, xp, yp ):
+    if isinstance( stats, FrigateStats ):
+        return Frigate( player, stats, AiEscortFrigate( player ), xp, yp )
+    else:
+        raise Warning( "Unknown ship in ships.buildShip for stats and id:", stats, stats.id )
 

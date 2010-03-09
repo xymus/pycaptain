@@ -112,6 +112,7 @@ class Imgs( Rc ):
         self[ ids.S_AI_FS_2] = self.loadImage( "ships/ai-fs-2.png" )
         self[ ids.S_AI_HARVESTER] = self.loadImage( "ships/ai-harvester.png" )
         self[ ids.S_AI_FRIGATE_0 ] = self.loadImage( "ships/ai-frigate-0.png" )
+        self[ ids.S_AI_SCAFFOLDING ] = self.loadImage( "ships/ai-scaffolding.png" )
 
         self[ ids.S_NOMAD_FS_0 ] 	= self.loadImage( "ships/nomad-fs-0.png" )
         self[ ids.S_NOMAD_FIGHTER ] = self.loadImage( "ships/nomad-fighter.png" )
@@ -121,6 +122,7 @@ class Imgs( Rc ):
         self[ ids.S_NOMAD_HARVESTER] = self.loadImage( "ships/nomad-harvester-0.png" )
         self[ ids.S_NOMAD_HARVESTER_1] = self.loadImage( "ships/nomad-harvester-1.png" )
         self[ ids.S_NOMAD_FRIGATE_0 ] = self.loadImage( "ships/nomad-frigate-0.png" )
+        self[ ids.S_NOMAD_SCAFFOLDING ] = self.loadImage( "ships/nomad-scaffolding.png" )
 
         self[ ids.S_EVOLVED_FIGHTER ] = self.loadImage( "ships/evolved-fighter.png" )
         self[ ids.S_EVOLVED_BOMBER ] = self.loadImage( "ships/evolved-bomber.png" )
@@ -129,6 +131,7 @@ class Imgs( Rc ):
         self[ ids.S_EVOLVED_FS_2 ] 	= self.loadImage( "ships/evolved-fs-2.png" )
         self[ ids.S_EVOLVED_HARVESTER] = self.loadImage( "ships/evolved-harvester.png" )
         self[ ids.S_EVOLVED_FRIGATE_0 ] = self.loadImage( "ships/evolved-frigate-0.png" )
+        self[ ids.S_EVOLVED_SCAFFOLDING ] = self.loadImage( "ships/evolved-scaffolding.png" )
 
         self[ ids.S_EXTRA_BASE ] 	= self.loadImage( "ships/extra-fs-0.png" )
         self[ ids.S_EXTRA_FS_1 ] 	= self.loadImage( "ships/extra-fs-1.png" )
@@ -155,6 +158,7 @@ class Imgs( Rc ):
         self[ ids.S_HUMAN_BASE ] = self.loadImage( "ships/human-base.png" )
         self[ ids.S_HUMAN_BASE_MINING ] = self.loadImage( "ships/human-base-mining.png" )
         self[ ids.S_HUMAN_FRIGATE_0 ] = self.loadImage( "ships/human-frigate-0.png" )
+        self[ ids.S_HUMAN_SCAFFOLDING ] = self.loadImage( "ships/human-scaffolding.png" )
 
         self[ ids.S_MINE ] = self.loadImage( "mine.png" ) 
 
@@ -189,6 +193,7 @@ class Imgs( Rc ):
         self[ ids.M_EVOLVED ] = self.loadImage( "missiles/evolved-missile.png" )
         self[ ids.M_EVOLVED_PULSE ] = self.loadImage( "missiles/evolved-pulse.png" )
         self[ ids.M_EVOLVED_COUNTER ] = self.loadImage( "missiles/evolved-counter.png" )
+        self[ ids.M_FRIGATE_BUILDER ] = self.loadImage( "missiles/missile-frigate-builder.png" )
         yield 48
 
         self[ ids.T_INTERDICTOR ] = self.loadImage( "turrets/interdictor.png" ) 
@@ -285,6 +290,8 @@ class Imgs( Rc ):
         self[ ids.T_NOMAD_SUCKER_2 ] = self.loadImage( "turrets/nomad-sucker-2.png" ) 
 
         self[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = self.loadImage( "turrets/nomad-hull-electrifier-0.png" )
+
+        self[ ids.T_FRIGATE_BUILDER ] = self.loadImage( "turrets/frigate-builder.png" )
 
       #  self[ ids.MISSILE_0 ] = self.loadImage( "missiles/missile.png" ) 
         self[ ids.B_BULLET_0 ] = self.loadImage( "projectiles/bullet.png" )  
@@ -553,6 +560,7 @@ class Imgs( Rc ):
         	                ids.M_EVOLVED: self.loadImageWithDisplay( "icons/missiles/evolved-missile.png" ),
         	                ids.M_EVOLVED_PULSE: self.loadImageWithDisplay( "icons/missiles/evolved-pulse.png" ),
         	                ids.M_EVOLVED_COUNTER: self.loadImageWithDisplay( "icons/missiles/evolved-counter.png" ),
+        	                ids.M_FRIGATE_BUILDER: self.loadImageWithDisplay( "icons/missiles/missile-frigate-builder.png" ),
                             }
 
         self.notToRotate = [ ids.P_MARS, ids.P_MOON, ids.S_SOL, ids.B_ESPHERE, 

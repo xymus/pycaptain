@@ -93,6 +93,7 @@ W_PULSE 	= 122
 W_MINER 	= 123
 W_PROBE 	= 124
 W_COUNTER	= 125
+W_FRIGATE_BUILDER = 126
 
 W_BOMB_0 	= 131
 
@@ -262,6 +263,9 @@ T_NOMAD_SUCKER_1          = 422
 T_NOMAD_SUCKER_2          = 423
 T_NOMAD_HULL_ELECTRIFIER_0 = 424
 
+# Frigates related
+T_FRIGATE_BUILDER = 425
+
 ### Turret AI type
 # ?why isn't it the class passed directly as argument of the stats? ...there must be a reason...
 TA_COMBAT_STABLE 	= 450
@@ -369,6 +373,13 @@ S_AI_FRIGATE_0      = 910
 S_EVOLVED_FRIGATE_0 = 920
 S_NOMAD_FRIGATE_0   = 930
 
+## Scaffolding
+# TODO reintegrade
+S_HUMAN_SCAFFOLDING   = 901
+S_AI_SCAFFOLDING      = 911
+S_EVOLVED_SCAFFOLDING = 921
+S_NOMAD_SCAFFOLDING   = 931
+
 # race relations
 R_NEUTRAL	= 1000
 R_HOSTILE	= 1001
@@ -407,6 +418,7 @@ M_LARVA		    = 2207
 M_EVOLVED	    = 2208
 M_EVOLVED_PULSE		= 2209
 M_EVOLVED_COUNTER	= 2210
+M_FRIGATE_BUILDER	= 2211
 
 ### Special ability of turrets
 S_INTERDICTOR	= 3000
@@ -425,6 +437,7 @@ S_INERTIA	= 3012
 S_SAIL		= 3013
 S_JAMMER	= 3014
 S_SCANNER	= 3015
+S_BUILDER		= 3016
 # S_TRACTOR_AGR   = 3016
 
 ### Sound fxs

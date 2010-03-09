@@ -128,6 +128,8 @@ class MissileWeaponTurret( WeaponTurret ):
               ao.append( MinerMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue[0], turret.install.stats.specialValue[1], turret.install.stats.specialValue[2] ) )
           elif turret.install.stats.special == ids.S_COUNTER:
               ao.append( CounterMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue ) )
+          elif turret.install.stats.special == ids.S_BUILDER:
+              ao.append( BuilderMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue ) )
           else:
               ao.append( Missile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), target, ship, turret.weapon ) )
         #  ao.append( Missile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), target, ship, turret.weapon ) )
@@ -377,7 +379,28 @@ class CounterMissile( Missile ):
         self.t += 1
         return (ao,ro,ag)
 
- #   def explode( self, game ):
+
+
+class BuilderMissile( Missile ):
+    def __init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon, build ):
+        Missile.__init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon )
+        self.build = build
+
+    def explode( self, game ):
+        from ships import Scaffolding
+        self.alive = False
+        
+    
+        if self.launcher.alive and self.launcher.player:
+            ao = [ Scaffolding( self.launcher.player.race.defaultScaffolding, self.xp, self.yp, self.launcher.player, self.launcher.player.race.defaultFrigate ) ]
+             # TODO make more general, now limited to frigates
+            explosionRange = self.launcher.player.race.defaultScaffolding.maxRadius
+        else:
+            ao = []
+            explosionRange = 100
+        ro = [ self ]
+        ag = [ GfxExplosion( (self.xp,self.yp), explosionRange, sound=ids.S_EX_FIRE ) ]
+        return (ao, ro, ag)
 
 class Bullet( Object ):
     def __init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon ):

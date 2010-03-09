@@ -414,7 +414,8 @@ class AiEscortFrigate( AiShipWithTurrets ):
 
             # set guard position
             ## not self.attacking and 
-            if self.idle or self.lastDestSetAt<game.tick-config.fps*10:
+            if (self.idle or self.lastDestSetAt<game.tick-config.fps*10) and \
+               not ship.player.flagship.jumping: # 
                 self.goTo( ship, self.getRandomGuardPosition( ship, self.player.flagship, 3 ) )
                 self.lastDestSetAt = game.tick
 

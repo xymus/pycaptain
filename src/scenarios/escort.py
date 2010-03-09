@@ -31,6 +31,7 @@ class Escort( Sol ):
 
         for i in xrange( 0, 5 ):
             frigate = Frigate( player, player.race.defaultFrigate, 
-                               AiEscortFrigate( player ), player.flagship.xp+100, player.flagship.yp+100 )
+                               AiEscortFrigate( player ), 
+                               player.flagship.xp+100, player.flagship.yp+100 )
             game.objects.append( frigate )
 

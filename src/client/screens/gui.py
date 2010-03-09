@@ -104,6 +104,7 @@ class Gui( ControlFrame ):
 			ids.T_PULSE 		: 1,
 			ids.T_MINER 		: 1,
 			ids.T_COUNTER 		: 1,
+            ids.T_FRIGATE_BUILDER:1,
 
 			ids.T_INTERDICTOR 	: 0,
 			ids.T_RADAR 		: 0,
@@ -249,7 +250,10 @@ class Gui( ControlFrame ):
             ori = obj.ori
         alpha = 1
 
+       # if len( self.imgs ) < obj.type:
         self.display.drawRoIfIn( self.imgs[ obj.type ], self.getViewportPos( (obj.xp, obj.yp ), obj.zp ), ori, self.display.resolution, alpha )
+       # else:
+       #     print "Warning: self.imgs does not have key: " + obj.type
 
     def drawGfx( self, gfx ):
 
