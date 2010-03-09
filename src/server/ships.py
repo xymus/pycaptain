@@ -598,11 +598,13 @@ class FlagShip( ShipWithTurrets, JumperShip ):
 
     def canJump( self, game ):
         can = JumperShip.canJump( self, game )
-        
-        return can \
-               and (self.jumping \
+
+        if can and (self.jumping \
                     or ( not self.jumpRecover \
-                         and self.energy >= self.stats.jumpEnergyCost ) )
+                         and self.energy >= self.stats.jumpEnergyCost ) ):
+            return True
+        else:
+            return False
 
     def jump( self, (xd, yd), game  ):
         if self.canJump( game ):
