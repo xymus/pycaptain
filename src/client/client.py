@@ -333,6 +333,8 @@ class Client:
             exec( "from languages.%s import %s as Language"%( self.prefs.language.lower(), self.prefs.language.capitalize() ) )
             self.texts = Language()
             self.texts.install()
+
+        self.mixer.setVolume( int( self.prefs.volume ) )
         
         self.at = "mainmenu"
         
@@ -512,6 +514,7 @@ class Client:
         self.loadingScreen.drawStaticSplash( 0, "Loading resources managers" )
         
         self.mixer = Mixer()
+        self.mixer.setVolume( int( self.prefs.volume ) )
         
         self.snds = Snds( self.mixer )
         
