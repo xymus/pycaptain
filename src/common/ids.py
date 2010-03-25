@@ -263,8 +263,9 @@ T_NOMAD_SUCKER_1          = 422
 T_NOMAD_SUCKER_2          = 423
 T_NOMAD_HULL_ELECTRIFIER_0 = 424
 
-# Frigates related
+# Build related
 T_FRIGATE_BUILDER = 425
+T_ALL_BUILDER = 426
 
 ### Turret AI type
 # ?why isn't it the class passed directly as argument of the stats? ...there must be a reason...
@@ -419,6 +420,8 @@ M_EVOLVED	    = 2208
 M_EVOLVED_PULSE		= 2209
 M_EVOLVED_COUNTER	= 2210
 M_FRIGATE_BUILDER	= 2211
+M_BUILDER_BASE_CARGO	= 2212
+M_BUILDER_BASE_MILITARY	= 2213
 
 ### Special ability of turrets
 S_INTERDICTOR	= 3000
@@ -460,4 +463,12 @@ R_AI		= 3301
 R_NOMAD		= 3302
 R_EXTRA		= 3303
 R_EVOLVED	= 3304
+
+### build type
+B_FRIGATE       = 1
+B_FRIGATE_SR    = 2
+B_FRIGATE_MR    = 3
+B_FRIGATE_ENERGY= 4
+B_BASE_CARGO    = 11
+B_BASE_MILITARY = 12
 

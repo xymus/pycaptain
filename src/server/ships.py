@@ -186,6 +186,11 @@ class ShipWithTurrets( Ship ):
         for turret in stats.turrets:
             self.turrets.append( Turret( turret, self ) ) # , None, AiWeaponTurret() ) )
 
+        # install standard turrets
+        for turret,turretStat in zip(self.turrets,stats.defaultTurrets):
+            if turretStat:
+                turret.buildInstall( turretStat )
+
     def getCommObjects(self):
         objects = []
         for turret in self.turrets:
@@ -353,8 +358,8 @@ class FlagShip( ShipWithTurrets, JumperShip ):
         # resources
         self.processLength = 60*30
         self.oreProcess = [] # list of OreBatch # (amount,position<chainLength)
-        self.ore = 0
-        self.energy = 0 # self.stats.maxEnergy #0
+        self.ore = stats.maxOre/2
+        self.energy = stats.maxEnergy/2
 
         self.repairing = True
         self.charging = True
@@ -371,7 +376,11 @@ class FlagShip( ShipWithTurrets, JumperShip ):
 
         self.turrets = []
         for turret in stats.turrets:
-            self.turrets.append( BuildableTurret( turret, self ) ) #, None, AiWeaponTurret() ) )
+            self.turrets.append( BuildableTurret( turret, self ) )
+
+        for turret,turretStat in zip(self.turrets,stats.defaultTurrets):
+            if turretStat:
+                turret.buildInstall( turretStat )
 
         self.shipyards = {}
         if player:
@@ -855,11 +864,6 @@ class Frigate( ShipWithTurrets, JumperShip ):
         ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         JumperShip.__init__( self )
 
-        # install standard turrets
-        for turret,turretStat in zip(self.turrets,stats.turretsType):
-            if turretStat:
-                turret.buildInstall( turretStat )
-
     # This is a hack to allow use of turrets TODO 
     ore = property( fget=lambda self: 1000 )
     energy = property( fget=lambda self: 1000 )
@@ -893,7 +897,8 @@ class Scaffolding( Ship ):
         # act on build effort
         # assumes self.building and self.player
         if self.buildEffort >= self.building.oreCostToBuild:
-            ao.append( buildShip( self.player, self.building, self.xp, self.yp )  ) # build target
+            ori = 2*pi*random()
+            ao.append( buildShip( self.player, self.building, self.xp, self.yp, ori=ori )  ) # build target
 
             self.alive = False
             ro.append( self )
@@ -906,10 +911,13 @@ class Scaffolding( Ship ):
     def work( self, contribution ):
         self.buildEffort += contribution
 
-from stats import *
-def buildShip( player, stats, xp, yp ):
-    if isinstance( stats, FrigateStats ):
-        return Frigate( player, stats, AiEscortFrigate( player ), xp, yp )
+#from stats import *
+def buildShip( player, stats, xp, yp, ori=0 ):
+    print "building ", stats
+    if stats.buildAsHint == "frigate":
+        return Frigate( player, stats, AiEscortFrigate( player ), xp, yp, ori=ori )
+    if stats.buildAsHint == "base":
+        return OrbitalBase( player, stats, AiGovernor( player ), xp, yp, ori=ori, ri=choice([0.008,-0.008]) )
     else:
         raise Warning( "Unknown ship in ships.buildShip for stats and id:", stats, stats.id )
 

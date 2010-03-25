@@ -658,6 +658,28 @@ class AiSpecialMissileTurret( AiTurret ):
             ship.missiles[ turret.weapon.stats.projectile.img ].target = None
         return  ( ao0, ro0, ag0 )
 
+from stats import BuilderMissileStats
+class AiBuilderMissileTurret( AiTurret ):
+    def doTurn( self, ship, turret, game, attack):
+        ( ao0, ro0, ag0 ) = AiTurret.doTurn( self, ship, turret, game, attack)
+
+        for missileId, reserve in ship.missiles.items():
+            if isinstance( game.stats[ missileId ], BuilderMissileStats ) and reserve.target:
+                for m1 in turret.install.stats.specialValue:
+                    if game.stats[ missileId ].buildType == m1:
+                        ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, ship.missiles[ missileId ].target, missileId=missileId, buildType=m1 )
+                        ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
+                        ship.missiles[ missileId ].target = None
+                        print "y ", game.stats[ missileId ].buildType, m1
+                    else:
+                        print "x ", game.stats[ missileId ].buildType, m1
+                        
+            
+       # for missileId in turret.install.stats.specialValue:
+       #     if ship.missiles[ missileId ].target \
+       #       and turret.weapon.canFire( ship, turret, game ):
+        return  ( ao0, ro0, ag0 )
+
 class AiRotatingTurret( AiTurret ):
     def doTurn( self, ship, turret, game, attack):
         turret.rr = turret.rr+turret.install.stats.turretSpeed

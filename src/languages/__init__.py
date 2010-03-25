@@ -64,8 +64,18 @@ class Language:
         import __builtin__
         __builtin__.__dict__['_'] = self.get
 
+    def add( self, id, name, description ):
+        self.names[ id ] 	    = name
+        self.descriptions[ id ] = description
+
+
     def loadAll( self ):
         # default (english) texts, simplify use from interface
+
+        #
+        ## turrets
+        #
+
         self.names[ids.T_LASER_SR_0] 	= "Laser defense"
         self.descriptions[ids.T_LASER_SR_0] = "Short range laser canon."
         self.names[ids.T_LASER_SR_1] 	= "Laser defense x2"
@@ -127,6 +137,7 @@ class Language:
         self.descriptions[ids.T_SAIL_2] = "When activated, will boost the ship's speed depending on the proximity of a sun."
         self.names[ ids.T_JAMMER ] 		= "Missile jammer"
         self.names[ ids.T_FRIGATE_BUILDER ] 		= "Frigate builder"
+        self.names[ ids.T_ALL_BUILDER ] 		= "All builder"
 
         self.names[ ids.T_AI_FLAK_0 ] = "Flak cannon"
         self.names[ ids.T_AI_FLAK_1 ] = "Flak cannon x2"
@@ -197,10 +208,59 @@ class Language:
         self.names[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = "Hull electrifier"
         self.descriptions[ids.T_NOMAD_HULL_ELECTRIFIER_0] = "When activated, electrifies the ship's hull to better absorb energy attacks."
 
+        #
+        ## missiles
+        #
+        self.add( ids.M_NORMAL, "Missile", "Yields energy damage when exploding." )
+        self.add( ids.M_NUKE, "Nuclear missile", "On impact yields massive energy damage within a large area." )
+        self.add( ids.M_PULSE, "Pulse missile", "On impact disables the engines and half the shield of ships within its medium explosion range." )
+        self.add( ids.M_MINER, "Miner missile", "On deployement, lays a field of proximity mines." )
+       # self.add( ids.M_PROBE, "", "" )
+        self.add( ids.M_COUNTER, "Counter-defense missile", "Attracks every missiles in close proximity." )
+
+        self.add( ids.M_AI, self.names[ids.M_NORMAL], self.descriptions[ids.M_NORMAL] )
+
+        self.add( ids.M_LARVA, self.names[ids.M_NORMAL], self.descriptions[ids.M_NORMAL] )
+
+        self.add( ids.M_EVOLVED, self.names[ids.M_NORMAL], self.descriptions[ids.M_NORMAL] )
+        self.add( ids.M_EVOLVED_PULSE, self.names[ids.M_PULSE], self.descriptions[ids.M_PULSE] )
+        self.add( ids.M_EVOLVED_COUNTER, self.names[ids.M_COUNTER], self.descriptions[ids.M_COUNTER] )
+
+        self.add( ids.M_FRIGATE_BUILDER, "Frigate builder", "On impact creates scaffolding yielding a frigate class ship that will escort your flagship." )
+        self.add( ids.M_BUILDER_BASE_CARGO, "Cargo base builder", "On impact creates scaffolding yielding a stationary base." )
+        self.add( ids.M_BUILDER_BASE_MILITARY, "Military base builder", "On impact creates scaffolding yielding a military stationary base." )
+
+        #
+        ## small ships
+        #
+
+        self.add( ids.S_HUMAN_FIGHTER, "Fighter", "Basic human fighter equipped with mass weaponery." )
+        self.add( ids.S_HUMAN_BOMBER, "Bomber", "Human bomber... equipped with bombs." )
+        self.add( ids.S_HARVESTER, "Harvester", "When deployed, harvests raw ore from nearby asteroids." )
+
+        self.add( ids.S_AI_FIGHTER, "Laser fighter", "Small and light fighter equipped with a single light laser weapon." )
+        self.add( ids.S_AI_BOMBER, "Missile fighter", "Heavy fighter equipped with powerful missiles." )
+        self.add( ids.S_AI_HARVESTER, self.names[ids.S_HARVESTER], self.descriptions[ids.S_HARVESTER] )
+
+        self.add( ids.S_NOMAD_FIGHTER, "Fighter", "Basic fighter equipped with mass weaponery." )
+        self.add( ids.S_NOMAD_HARVESTER, "Normal harvester", self.descriptions[ids.S_HARVESTER] )
+        self.add( ids.S_NOMAD_HARVESTER_1, "Heavy harvester", "Holds more raw ore than normal harvesters." )
+
+        self.add( ids.S_EVOLVED_FIGHTER, "Light fighter", "Light fighter equipped with 2 laser weapons." )
+        self.add( ids.S_EVOLVED_BOMBER, "Heavy fighter", "Heavy fighter equipped with a powerful energy sphere canon." )
+        self.add( ids.S_EVOLVED_HARVESTER, self.names[ids.S_HARVESTER], self.descriptions[ids.S_HARVESTER] )
+
+        #
+        ## categories
+        #
+
         self.names[ids.C_WEAPON] 		= "Weapons"
         self.names[ids.C_MISSILE]		= "Missiles"
         self.names[ids.C_OTHER] 		= "Others"
 
+        #
+        ## ships
+        #
 
         self.names[ids.S_HUMAN_FS_0] 		= "Frigate"
         self.names[ids.S_HUMAN_FS_1] 		= "Battleship"
@@ -223,6 +283,10 @@ class Language:
         self.names[ids.R_NOMAD] 		= "Nomad groups"
         self.names[ids.R_EXTRA] 		= "Hostile extra-terrestrials"
         self.names[ids.R_EVOLVED] 		= "Evolved humans"
+
+        #
+        ## ship description templates
+        #
 
         self.uiRaceS		= "Race: %s"
         self.uiShipS		= "Ship class: %s"

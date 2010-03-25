@@ -2,7 +2,6 @@
 common.ids - automate assignations - not now
 client.gui - add aim and attack order 
 server.stats - balance!
-server.stats - complete remaining flagships' turrets
 ships.flagship - standardize missile and small ships building behavior
 common.comms - reduce bandwidth use - maybe by changing exchange protocols to event driven
 client.network/client - make sure that all orders are sent
@@ -14,4 +13,5 @@ inputs management should be taken out of display and set up as an implementable 
 sound engine should be set up as an implementable engine
 
 # bugs:
-
+- allow cancel building of missiles, small ship, etc when  ore is low
+- 

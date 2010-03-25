@@ -7,6 +7,7 @@ from server.ships import FlagShip, ShipWithTurrets
 from server.weapons import *
 from server.objects import Nebula
 from common import utils
+from server.stats import BuilderMissileStats
 
 class LocalConverter( Converter ):
 
@@ -141,12 +142,19 @@ class LocalConverter( Converter ):
            ## missiles
             missiles = []
             missilesSpace = 0
+
+           # hasBuilderTurret = filter( lambda x: t.install and t.install.stats.special == ids.S_BUILDER, player.flagship.turrets )
+
             for missile in player.race.missiles:
                 hasTurret = False
+                builder = isinstance( game.stats[ missile ], BuilderMissileStats )
+
                 for t in player.flagship.turrets:
-                    if t.install and t.install.stats.weapon and t.install.stats.weapon.projectile and t.install.stats.weapon.projectile.img == missile:
-                        hasTurret = True
-                        break
+                    if t.install and t.install.stats.weapon and \
+                        ( ( not builder and t.install.stats.weapon.projectile and t.install.stats.weapon.projectile.img == missile ) \
+                        or ( builder and t.install.stats.special == ids.S_BUILDER and game.stats[ missile ].buildType in t.install.stats.specialValue ) ):
+                            hasTurret = True
+                            break
 
                 if player.flagship.missiles[missile].building:
                     buildPerc = 100*player.flagship.missiles[missile].build/player.flagship.missiles[missile].buildCost

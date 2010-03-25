@@ -115,11 +115,17 @@ class MissileWeapon( Weapon ):
         return (ao,ro,gfxs)
 
 class MissileWeaponTurret( WeaponTurret ):
-    def fire( self, ship, turret, game, target ):
+    def fire( self, ship, turret, game, target, missileId=None, buildType=None ):
         (ao,ro,gfxs) = WeaponTurret.fire( self, ship, turret, game )
+
+        if missileId == None:
+            missileReserve = ship.missiles[ turret.weapon.stats.projectile.img ]
+        else:
+            missileReserve = ship.missiles[ missileId ]
+
         for o in self.getPoss( ship, turret, game ):
-         if ship.missiles[ turret.weapon.stats.projectile.img ].amount:
-          ship.missiles[ turret.weapon.stats.projectile.img ].amount = ship.missiles[ turret.weapon.stats.projectile.img].amount-1
+         if missileReserve.amount:
+          missileReserve.amount = missileReserve.amount-1
           if turret.install.stats.special == ids.S_NUKE:
               ao.append( NukeMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue ) )
           elif turret.install.stats.special == ids.S_PULSE:
@@ -129,17 +135,17 @@ class MissileWeaponTurret( WeaponTurret ):
           elif turret.install.stats.special == ids.S_COUNTER:
               ao.append( CounterMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue ) )
           elif turret.install.stats.special == ids.S_BUILDER:
-              ao.append( BuilderMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), ship.missiles[ turret.weapon.stats.projectile.img].target, ship, turret.weapon, turret.install.stats.specialValue ) )
+              print "to build  ", buildType
+              ao.append( BuilderMissile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), target, ship, turret.weapon, buildType ) )
           else:
               ao.append( Missile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), target, ship, turret.weapon ) )
-        #  ao.append( Missile( o, ship.zp, ship.ori+turret.rr, (ship.xi,ship.yi), target, ship, turret.weapon ) )
+
           gfxs.append( GfxExplosion( o, 10, sound=ids.S_EX_FIRE ) )
         return (ao,ro,gfxs)
 
     def canFire(self, ship, turret, game ):
         return WeaponTurret.canFire( self, ship, turret, game ) \
-          and ship.missiles[ turret.weapon.stats.projectile.img].amount > 0 #  \
-         # and ship.missiles[ turret.weapon.stats.projectile.img].target
+          and ship.missiles[ turret.weapon.stats.projectile.img].amount > 0
 
 class MassWeapon( Weapon ):
     def fire( self, ship, game, target ):
@@ -380,20 +386,21 @@ class CounterMissile( Missile ):
         return (ao,ro,ag)
 
 
-
 class BuilderMissile( Missile ):
     def __init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon, build ):
         Missile.__init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon )
-        self.build = build
+        self.buildType = build
 
     def explode( self, game ):
         from ships import Scaffolding
         self.alive = False
-        
     
-        if self.launcher.alive and self.launcher.player:
-            ao = [ Scaffolding( self.launcher.player.race.defaultScaffolding, self.xp, self.yp, self.launcher.player, self.launcher.player.race.defaultFrigate ) ]
-             # TODO make more general, now limited to frigates
+        print self.launcher.player.race.defaults
+        print self.buildType
+
+        if self.launcher.alive and self.launcher.player \
+           and self.launcher.player.race.defaults.has_key( self.buildType ):
+            ao = [ Scaffolding( self.launcher.player.race.defaultScaffolding, self.xp, self.yp, self.launcher.player, self.launcher.player.race.defaults[ self.buildType ] ) ]
             explosionRange = self.launcher.player.race.defaultScaffolding.maxRadius
         else:
             ao = []
@@ -401,6 +408,7 @@ class BuilderMissile( Missile ):
         ro = [ self ]
         ag = [ GfxExplosion( (self.xp,self.yp), explosionRange, sound=ids.S_EX_FIRE ) ]
         return (ao, ro, ag)
+
 
 class Bullet( Object ):
     def __init__( self, (xp,yp), zp, ori, (xi,yi), target, launcher, weapon ):

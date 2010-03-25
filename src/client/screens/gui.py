@@ -105,6 +105,7 @@ class Gui( ControlFrame ):
 			ids.T_MINER 		: 1,
 			ids.T_COUNTER 		: 1,
             ids.T_FRIGATE_BUILDER:1,
+            ids.T_ALL_BUILDER:1,
 
 			ids.T_INTERDICTOR 	: 0,
 			ids.T_RADAR 		: 0,
@@ -818,13 +819,17 @@ class Gui( ControlFrame ):
                 if but.fIn( but, inputs.mousePos ):
                     self.informAbout = but.uid
                     
-        for but in self.butsShipBuild:
-            if but.fIn( but, inputs.mousePos ):
-                self.informAbout = but.uid
+       #for but in self.butsShipBuild:
+       #     if but.fIn( but, inputs.mousePos ):
+       #         print "on ship"
+       #         self.informAbout = but.uid
                     
-        for but in self.butsMissileBuild:
-            if but.fIn( but, inputs.mousePos ):
-                self.informAbout = but.uid
+       # for but in self.butsMissileBuild:
+       #     if but.fIn( but, inputs.mousePos ):
+       #         self.informAbout = but.uid
+        hovered = self.ctrlHangar.getHovered( inputs.mousePos )
+        if hovered:
+            self.informAbout = hovered.uid
                 
         return (quit,inputs, False)
           #  hits = button.hits()
@@ -841,9 +846,10 @@ class Gui( ControlFrame ):
             energy = self.stats[ k ].energyCostToBuild
             time = self.stats[ k ].timeToBuild/config.fps
 
+            name = self.texts.getName( k )
             description = self.texts.getDescription( k )
 
-            text = self.texts.get( "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs\n\n%(description)s" ) %locals()
+            text = self.texts.get( "ore cost: %(ore)i\nenergy cost: %(energy)i\ntime to build: %(time).1fs\n\n%(name)s\n%(description)s" ) %locals()
             vpos = rect[1]+8
             for line in text.split("\n"):
                 self.display.drawText( line, (rect[0]+8,vpos), size=13, maxWidth=224 )

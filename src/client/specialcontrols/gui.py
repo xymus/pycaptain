@@ -729,6 +729,10 @@ class HangarControl( Container ):
         self.reset()
         
         self.topLeft = self.center
+
+        self.builderMissilesId = [ ids.M_FRIGATE_BUILDER,
+                                   ids.M_BUILDER_BASE_CARGO,
+                                   ids.M_BUILDER_BASE_MILITARY ]
         
     def reset( self ):
        # self.missiles = []
@@ -759,6 +763,8 @@ class HangarControl( Container ):
             self.butsMissileBuild = []
             
             for missile,slot in zip( self.playerStatus.missiles, self.missileSlots ):
+                builder = self.missileIsBuilder( missile )
+
                 butLaunch = RoundControl( self.imgs.uiButAim, (slot[0]+slot[2]/2,slot[1]-6), 12, self.eLaunchMissile, uid=missile.type)
                 butBuild = SlotButton( self.imgs, slot, eBuild=self.eBuildMissile, uid=missile.type )
                 self.butsMissileLaunch.append( butLaunch )
@@ -838,19 +844,32 @@ class HangarControl( Container ):
                      display.getHeight(self.imgs.ctrlHangarCenter))
         
         display.draw( self.imgs.ctrlHangarLeft, 
-            (self.center[0]-display.getWidth(self.imgs.ctrlHangarLeft)-display.getWidth(self.imgs.ctrlHangarCenter)/2-len(self.playerStatus.missiles)*display.getWidth(self.imgs.ctrlHangarSlot),
+            (self.center[0]-display.getWidth(self.imgs.ctrlHangarLeft)-display.getWidth(self.imgs.ctrlHangarCenter)/2-(len(self.playerStatus.missiles)+1)*display.getWidth(self.imgs.ctrlHangarSlot),
              self.center[1]-display.getHeight(self.imgs.ctrlHangarLeft)) )
         
-        for k,missile in enumerate( self.playerStatus.missiles ):
+        # missiles
+        builderCount = 0
+        builderTotal = len( filter( self.missileIsBuilder, self.playerStatus.missiles ) )
+        combatCount = 0
+        combatTotal = len( self.playerStatus.missiles ) - builderTotal
+
+        for missile in self.playerStatus.missiles:
+            if self.missileIsBuilder( missile ): # builder missile 
+                slotLeft = self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(builderTotal-builderCount+1+combatTotal)*display.getWidth(self.imgs.ctrlHangarSlot)
+                builderCount += 1
+            else: # conbat missile
+                slotLeft = self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(combatTotal-combatCount)*display.getWidth(self.imgs.ctrlHangarSlot)
+                combatCount += 1
+            
             self.missileSlots.append( (
-                self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(len(self.playerStatus.missiles)-k)*display.getWidth(self.imgs.ctrlHangarSlot),
+                slotLeft,
                 self.center[1]-display.getHeight(self.imgs.ctrlHangarSlot),
                 display.getWidth(self.imgs.ctrlHangarSlot),
                 display.getHeight(self.imgs.ctrlHangarSlot)) )
                 
-           # display.draw( self.imgs.ctrlHangarSlot, 
-           #     (self.center[0]-display.getWidth(self.imgs.ctrlHangarSlot)-display.getWidth(self.imgs.ctrlHangarCenter)/2-(len(self.playerStatus.missiles)-k)*display.getWidth(self.imgs.ctrlHangarSlot),
-           #      self.center[1]-display.getHeight(self.imgs.ctrlHangarSlot)) )
+        display.draw( self.imgs.uiHangarMissilesSeparator, 
+            (self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(combatTotal+1)*display.getWidth(self.imgs.ctrlHangarSlot),
+             self.center[1]-display.getHeight(self.imgs.ctrlHangarCenter)) )
         
         display.draw( self.imgs.ctrlHangarCenter, 
             (self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2,
@@ -926,4 +945,14 @@ class HangarControl( Container ):
                 and down[1]>self.center[1]-self.size[1] and down[1]<self.center[1])):
             hit = self
         return hit
+
+    def getHovered( self, mouse ):
+        for control in [ self.controls[ k ] for k in xrange( len(self.controls)-1, -1, -1 ) ]:
+            if control.fIn and control.fIn( control, mouse ):
+                return control
+
+        return None
+    
+    def missileIsBuilder( self, missile ):
+        return missile.type in self.builderMissilesId
         

@@ -38,7 +38,9 @@ class Turret:
 
         self.ai = None
         if turretStats.ai:
-            if turretStats.ai == ids.TA_COMBAT_STABLE:
+            if turretStats.special == ids.S_BUILDER:
+                self.ai = AiBuilderMissileTurret()
+            elif turretStats.ai == ids.TA_COMBAT_STABLE:
                 self.ai = AiWeaponTurretStable()
             elif turretStats.ai == ids.TA_COMBAT_ROTATING:
                 self.ai = AiWeaponTurret()

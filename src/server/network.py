@@ -193,7 +193,7 @@ class Network:
                  elif word == "adminmsg":
                      self.sendMsgall( msg[ len(word)+1:-1 ], "admin" )
                  elif word == "code":
-                     code = msg[ len(word)+1:-1 ]
+                     code = msg[ len(word)+1:0 ]
                      if code:
                          self.codes.append( code )
                msgs = ""
@@ -322,9 +322,9 @@ class Network:
           except socket.error, ex:
             # broken pipe
             if ex[1] == 32 \
-             or pCon.errors > config.fps*5:
-               pCon.connection[0].close()
+             or pCon.errors > config.fps*2:
                self.playerCons.remove( pCon )
+               pCon.connection[0].close()
                self.sendSysmsg( "%s timedout" % pCon.player.username )
             pCon.errors += 1
             print "error in updatePlayer", ex

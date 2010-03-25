@@ -10,11 +10,13 @@ class JoinMenu( ControlFrame ):
 
         diff = 8
         height = 24
+
+        secondColumn = 320
         
-        self.cUser = TextBox( (200,300), (160,height), user, forbidden=[":",";","|"] )
-        self.cPassword = TextBox( (200,300+(diff+height)), (160,height), password, password=True )
-        self.cServer = TextBox( (200,300+(diff+height)*2), (160,height), server )
-        self.cPort = TextBox( (200,300+(diff+height)*3), (160,height), str(port), numeric=True )
+        self.cUser = TextBox( (secondColumn,300), (160,height), user, forbidden=[":",";","|"] )
+        self.cPassword = TextBox( (secondColumn,300+(diff+height)), (160,height), password, password=True )
+        self.cServer = TextBox( (secondColumn,300+(diff+height)*2), (160,height), server )
+        self.cPort = TextBox( (secondColumn,300+(diff+height)*3), (160,height), str(port), numeric=True )
 
         self.cError = Label( (40,400+(diff+height)*5), " " )
         

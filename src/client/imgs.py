@@ -194,6 +194,8 @@ class Imgs( Rc ):
         self[ ids.M_EVOLVED_PULSE ] = self.loadImage( "missiles/evolved-pulse.png" )
         self[ ids.M_EVOLVED_COUNTER ] = self.loadImage( "missiles/evolved-counter.png" )
         self[ ids.M_FRIGATE_BUILDER ] = self.loadImage( "missiles/missile-frigate-builder.png" )
+        self[ ids.M_BUILDER_BASE_CARGO ] = self.loadImage( "missiles/missile-frigate-builder.png" )
+        self[ ids.M_BUILDER_BASE_MILITARY ] = self.loadImage( "missiles/missile-frigate-builder.png" )
         yield 48
 
         self[ ids.T_INTERDICTOR ] = self.loadImage( "turrets/interdictor.png" ) 
@@ -292,6 +294,7 @@ class Imgs( Rc ):
         self[ ids.T_NOMAD_HULL_ELECTRIFIER_0 ] = self.loadImage( "turrets/nomad-hull-electrifier-0.png" )
 
         self[ ids.T_FRIGATE_BUILDER ] = self.loadImage( "turrets/frigate-builder.png" )
+        self[ ids.T_ALL_BUILDER ] = self.loadImage( "turrets/frigate-builder.png" )
 
       #  self[ ids.MISSILE_0 ] = self.loadImage( "missiles/missile.png" ) 
         self[ ids.B_BULLET_0 ] = self.loadImage( "projectiles/bullet.png" )  
@@ -508,6 +511,7 @@ class Imgs( Rc ):
         self.uiHangarOver = self.loadImageWithDisplay( "ui/hangar/hangar-over.png" )
         self.uiHangarShipsFill = self.loadImageWithDisplay( "ui/hangar/ships-fill.png" )
         self.uiHangarMissilesFill = self.loadImageWithDisplay( "ui/hangar/missiles-fill.png" )
+        self.uiHangarMissilesSeparator = self.loadImageWithDisplay( "ui/hangar/missiles-separator.png" )
 
         self.uiTurret = self.loadImageWithDisplay( "ui/turret.png" ) # 48 39
         self.uiTurretOn = self.loadImageWithDisplay( "ui/turret-on.png" )
@@ -561,6 +565,8 @@ class Imgs( Rc ):
         	                ids.M_EVOLVED_PULSE: self.loadImageWithDisplay( "icons/missiles/evolved-pulse.png" ),
         	                ids.M_EVOLVED_COUNTER: self.loadImageWithDisplay( "icons/missiles/evolved-counter.png" ),
         	                ids.M_FRIGATE_BUILDER: self.loadImageWithDisplay( "icons/missiles/missile-frigate-builder.png" ),
+        	                ids.M_BUILDER_BASE_CARGO: self.loadImageWithDisplay( "icons/missiles/missile-frigate-builder.png" ),
+        	                ids.M_BUILDER_BASE_MILITARY: self.loadImageWithDisplay( "icons/missiles/missile-frigate-builder.png" ),
                             }
 
         self.notToRotate = [ ids.P_MARS, ids.P_MOON, ids.S_SOL, ids.B_ESPHERE, 
