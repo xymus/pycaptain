@@ -705,7 +705,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_MASS_SR_1, self.T_MASS_MR_0 ],
-                                oreCostToBuild=1000 ) 
+                                oreCostToBuild=200 ) 
 
          ## Nomad
         self.NOMAD_FIGHTER =	SingleWeaponShipStats( ids.S_NOMAD_FIGHTER, 15, 0.6, 0, 0.012, 20, 20, self.W_MASS_SR_FIGHTER, [ids.S_NOMAD_FIGHTER], None, [(15,pi)], energyCostToBuild=0,oreCostToBuild=120,timeToBuild=15*config.fps,hangarSpaceNeed=14 )
@@ -849,7 +849,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_ESPHERE_0, self.T_ESPHERE_0 ],
-                                oreCostToBuild=1000 ) 
+                                oreCostToBuild=200 ) 
 
         self.NOMAD_FRIGATE_0=   FrigateStats( ids.S_NOMAD_FRIGATE_0, 
                                 radius=36, 
@@ -864,7 +864,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_REPEATER_1, self.T_NOMAD_CANNON_0 ],
-                                oreCostToBuild=1300 ) 
+                                oreCostToBuild=250 ) 
 
         self.AI_FRIGATE_0 =     FrigateStats( ids.S_AI_FRIGATE_0, 
                                 radius=18, 
@@ -878,7 +878,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_AI_OMNI_LASER_0 ],
-                                oreCostToBuild=750 ) 
+                                oreCostToBuild=150 ) 
 
         ### Scafoldings
         self.S_HUMAN_SCAFFOLDING =    ShipStats( ids.S_HUMAN_SCAFFOLDING, radius=37, maxThrust=0, maxReverseThrust=0, maxRg=0, maxHull=100, maxShield=10 )
@@ -935,6 +935,7 @@ class Stats:
             self.T_AI_CRYPT_0, self.T_AI_ACTIVE_DEFENSE_0, self.T_FRIGATE_BUILDER ],
         self.AI_HARVESTER,
         defaultFrigate=self.AI_FRIGATE_0,
+        defaults={ ids.B_FRIGATE: self.AI_FRIGATE_0, },
         defaultScaffolding=self.S_AI_SCAFFOLDING )
 
         self.R_NOMAD = 	RaceStats( ids.R_NOMAD, 
@@ -951,6 +952,7 @@ class Stats:
         self.T_NOMAD_HULL_ELECTRIFIER_0, self.T_FRIGATE_BUILDER ],
         self.NOMAD_HARVESTER,
         defaultFrigate=self.NOMAD_FRIGATE_0 ,
+        defaults={ ids.B_FRIGATE: self.NOMAD_FRIGATE_0, },
         defaultScaffolding=self.S_NOMAD_SCAFFOLDING )
 
         self.R_EXTRA = 	RaceStats( ids.R_EXTRA, 
@@ -977,6 +979,7 @@ class Stats:
         self.T_EVOLVED_PARTICLE_SHIELD_0, self.T_FRIGATE_BUILDER ],
         self.EVOLVED_HARVESTER,
         defaultFrigate=self.EVOLVED_FRIGATE_0,
+        defaults={ ids.B_FRIGATE: self.EVOLVED_FRIGATE_0, },
         defaultScaffolding=self.S_EVOLVED_SCAFFOLDING )
         
         self.Relations = { 
