@@ -65,10 +65,37 @@ class Gui( ControlFrame ):
                           self.ctrlRadar,
                           self.ctrlHangar,
                           self.ctrlGameMenu,
+
+                          ### keyboard shortcuts
+                          # program logic
                           KeyCatcher( eSave, letter="s" ),
-                          KeyCatcher( eQuit, letter="q" ),
+                         #  KeyCatcher( eQuit, letter="q" ),
                           KeyCatcher( eScreenshot, letter="p" ),
-                          KeyCatcher( eFullscreen, letter="f" ) ]
+                        #  KeyCatcher( eFullscreen, letter="f" ),
+
+                          # gameplay
+                          KeyCatcher( self.eStop, letter=" " ),
+                          KeyCatcher( self.ctrlJump.eSwitch, letter="j" ),
+
+                          # missiles
+                          KeyCatcher( self.eLaunchNuke, letter="n" ), 
+                          KeyCatcher( self.eLaunchPulse, letter="p" ), 
+                          KeyCatcher( self.eLaunchMiner, letter="m" ), 
+                          KeyCatcher( self.eLaunchCounter, letter="c" ),
+
+                          # turrets categories
+                          KeyCatcher( self.eSwitchMassTurrets, letter="r" ),
+                          KeyCatcher( self.eSwitchEnergyTurrets, letter="e" ),
+
+                          # small ships
+                          KeyCatcher( self.eLaunchFighters, letter="f" ),
+                          KeyCatcher( self.eLaunchHeavyFighters, letter="g" ),
+                          KeyCatcher( self.eLaunchHarvesters, letter="h" ),
+
+                          # activate turrets
+                          # 1-10
+                            ]
+
         self.controls = self.controlsMain
 
         self.msgsTTL = 15
@@ -85,7 +112,10 @@ class Gui( ControlFrame ):
 
         self.oreMaxs = []
 
-        self.categories = {
+        # 2 combat
+        # 1 special missiles
+        # 0 civilian
+        self.turretCategories = {
 			ids.T_LASER_SR_0	: 2,
 			ids.T_LASER_SR_1	: 2,
 			ids.T_LASER_MR_0 	: 2,
@@ -185,9 +215,97 @@ class Gui( ControlFrame ):
 
 			0	: 0,
 			-1	: 0}
-    #    self.ctr = ( 78, 26 )
 
-    #    self.notToBeRotated = [ ids. ]
+        self.pulseMissiles = [
+            ids.M_PULSE,
+            ids.M_EVOLVED_PULSE,
+        ]
+        self.nukeMissiles = [
+            ids.M_NUKE,
+        ]
+        self.counterMissiles = [
+            ids.M_COUNTER,
+            ids.M_EVOLVED_COUNTER,
+        ]
+        self.minerMissiles = [
+            ids.M_MINER,
+        ]
+
+        # check turrets damage
+        self.massTurrets = [
+			ids.T_MASS_MR_0,
+			ids.T_MASS_MR_1,
+			ids.T_MASS_SR_0,
+			ids.T_MASS_SR_1,
+			ids.T_MASS_SR_2,
+			ids.T_MASS_LR,
+			ids.T_MISSILES_0,
+			ids.T_MISSILES_1,
+			ids.T_MISSILES_2,
+
+			ids.T_AI_FLAK_0,
+			ids.T_AI_FLAK_1,
+			ids.T_AI_FLAK_2,
+			ids.T_AI_FLAK_3,
+			ids.T_AI_MISSILE_0,
+			ids.T_AI_MISSILE_1,
+			ids.T_AI_MISSILE_2,
+			ids.T_AI_MISSILE_3,
+			           
+			ids.T_SUBSPACE_WAVE_0,
+			ids.T_SUBSPACE_WAVE_1,
+
+			ids.T_REPEATER_0,
+			ids.T_REPEATER_1,
+			ids.T_REPEATER_2,
+			ids.T_REPEATER_3,
+			ids.T_NOMAD_CANNON_0,
+			ids.T_NOMAD_CANNON_1,
+			ids.T_NOMAD_CANNON_2,
+			ids.T_NOMAD_MISSILE_0,
+			ids.T_NOMAD_MISSILE_1,
+            ]
+        self.energyTurrets = [
+			ids.T_LASER_SR_0,
+			ids.T_LASER_SR_1,
+			ids.T_LASER_MR_0,
+			ids.T_LASER_MR_1,
+
+			ids.T_AI_OMNI_LASER_0,
+			ids.T_AI_OMNI_LASER_1,
+
+			ids.T_ESPHERE_0,
+			ids.T_ESPHERE_1,
+			ids.T_ESPHERE_2,
+			ids.T_BURST_LASER_0,
+			ids.T_BURST_LASER_1,
+			ids.T_BURST_LASER_2,
+			ids.T_OMNI_LASER_0,
+			ids.T_OMNI_LASER_1,
+			ids.T_OMNI_LASER_2,
+
+			ids.T_DISCHARGER_0,
+			ids.T_DISCHARGER_1,
+            ]
+
+        self.fighterTypes = [
+            ids.S_HUMAN_FIGHTER,
+            ids.S_AI_FIGHTER,
+            ids.S_NOMAD_FIGHTER,
+            ids.S_EVOLVED_FIGHTER,
+            ]
+        self.heavyFighterTypes = [
+            ids.S_HUMAN_BOMBER,
+            ids.S_AI_BOMBER,
+            ids.S_EVOLVED_BOMBER,
+            ]
+        self.harvesterTypes = [
+            ids.S_HARVESTER,
+            ids.S_AI_HARVESTER,
+            ids.S_NOMAD_HARVESTER,
+            ids.S_NOMAD_HARVESTER_1,
+            ids.S_EVOLVED_HARVESTER,
+            ]
 
         self.sPlayerPos = None
         self.sPlayer = None
@@ -861,12 +979,14 @@ class Gui( ControlFrame ):
    #     self.orders.append( order )
 
     def launchShips(self, type ):
-        order = OrderLaunchShips( type )
-        self.orders.append( order )
+        if type in [s.type for s in self.playerStatus.ships]:
+            order = OrderLaunchShips( type )
+            self.orders.append( order )
         
     def recallShips(self, type ):
-        order = OrderRecallShips( type )
-        self.orders.append( order )
+        if type in [s.type for s in self.playerStatus.ships]:
+            order = OrderRecallShips( type )
+            self.orders.append( order )
 
    # def eLaunchMissile( self, type ): #sender, (x,y)):
    #     self.aim = sender.uid
@@ -897,9 +1017,9 @@ class Gui( ControlFrame ):
         self.butsBuildOption = []
         for option in self.lastStats.turrets[ self.build ].buildables+[-1,]:
             if isinstance(option, int ):
-                c = self.categories[ option ]
+                c = self.turretCategories[ option ]
             else:
-                c = self.categories[ option.type ]
+                c = self.turretCategories[ option.type ]
 
             x = self.display.resolution[0]-260-(c)*180
             y = 120+ps[c]*40
@@ -926,6 +1046,85 @@ class Gui( ControlFrame ):
             order = OrderActivateTurret( sender.uid, not self.lastStats.turrets[sender.uid].on )
             self.orders.append( order )
 
+    def eStop( self, sender, (x,y) ):
+        order = OrderStopMove( 0 )
+        self.orders.append( order )
+
+    ### turret switchers shortcuts
+    def switchTurretsOfType( self, typeList ):
+        nOn = 0
+        nOff = 0
+
+        for i,turret in enumerate( self.lastStats.turrets ):
+            if turret.type in typeList:
+                if turret.on:
+                    nOn += 1
+                else:
+                    nOff += 1
+
+        turnOn = nOff >= nOn
+
+        for i,turret in enumerate( self.lastStats.turrets ):
+            if turret.type in typeList:
+                order = OrderActivateTurret( i, turnOn )
+                self.orders.append( order )
+
+    def eSwitchMassTurrets( self, sender, (x,y) ):
+        self.switchTurretsOfType( self.massTurrets )
+
+    def eSwitchEnergyTurrets( self, sender, (x,y) ):
+        self.switchTurretsOfType( self.energyTurrets )
+
+    ### missiles launcher shortcuts
+    def launchMissilesOfType( self, typeList ):
+        for missile in self.playerStatus.missiles:
+            if missile.type in typeList and missile.usable and missile.canLaunch:
+                self.ctrlHangar.switchLaunchMissile( missile.type )
+                break
+
+    def eLaunchNuke( self, sender, (x,y) ):
+        self.launchMissilesOfType( self.nukeMissiles )
+
+    def eLaunchPulse( self, sender, (x,y) ):
+        self.launchMissilesOfType( self.pulseMissiles )
+
+    def eLaunchCounter( self, sender, (x,y) ):
+        self.launchMissilesOfType( self.counterMissiles )
+
+    def eLaunchMiner( self, sender, (x,y) ):
+        self.launchMissilesOfType( self.minerMissiles )
+
+
+    ### ship launch
+    def launchShipsOfType( self, typeList ):
+        nOut = 0
+        nIn = 0
+
+        for ship in self.playerStatus.ships:
+            if ship.type in typeList:
+                if ship.canLaunch:
+                    nIn += ship.nbr
+                else:
+                    nOut += ship.nbr
+
+        print "in out", nIn, nOut
+        if nIn > nOut:
+            for type in typeList:
+                self.launchShips( type )
+        else:
+            for type in typeList:
+                self.recallShips( type )
+
+    def eLaunchFighters( self, sender, (x,y) ):
+        self.launchShipsOfType( self.fighterTypes )
+
+    def eLaunchHeavyFighters( self, sender, (x,y) ):
+        self.launchShipsOfType( self.heavyFighterTypes )
+
+    def eLaunchHarvesters( self, sender, (x,y) ):
+        self.launchShipsOfType( self.harvesterTypes )
+
+    ### 
     def eRadarActivate( self, sender, (x,y)):
         self.fullscreenRadar = not self.fullscreenRadar
 
@@ -934,11 +1133,9 @@ class Gui( ControlFrame ):
 
     def eRepairActivate( self, sender, (x,y)):
         self.orders.append( OrderActivateRepair( not self.lastStats.repairing ) )
-     #   print "repairing,", not self.lastStats.repairing
 
     def eChargeActivate( self, sender, (x,y)):
         self.orders.append( OrderActivateShield( not self.lastStats.charging ) )
-     #   print "charging,", not self.lastStats.charging
 
     def eSetRelation( self, sender, (x,y)):
       if self.sPlayer:

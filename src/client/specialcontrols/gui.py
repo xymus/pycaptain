@@ -451,6 +451,12 @@ class JumpControl( Container ):
         if self.fJump:
             self.fJump( (x,y) )
         self.eClose( sender, (x,y) )
+
+    def eSwitch( self, sender, (x,y) ):
+        if self.open:
+            self.eClose( sender, (x,y) )
+        else: # close
+            self.eOpen( sender, (x,y) )
        
 class ChatBox( Container ):
     def __init__( self, imgs, topLeft, width=540, eBroadcast=None, eDirectedCast=None, eReturn=None ):
@@ -765,7 +771,7 @@ class HangarControl( Container ):
             for missile,slot in zip( self.playerStatus.missiles, self.missileSlots ):
                 builder = self.missileIsBuilder( missile )
 
-                butLaunch = RoundControl( self.imgs.uiButAim, (slot[0]+slot[2]/2,slot[1]-6), 12, self.eLaunchMissile, uid=missile.type)
+                butLaunch = RoundControl( self.imgs.uiButAim, (slot[0]+slot[2]/2,slot[1]-6), 12, self.eSwitchLaunchMissile, uid=missile.type)
                 butBuild = SlotButton( self.imgs, slot, eBuild=self.eBuildMissile, uid=missile.type )
                 self.butsMissileLaunch.append( butLaunch )
                 self.butsMissileBuild.append( butBuild )
@@ -907,11 +913,15 @@ class HangarControl( Container ):
    #         self.controls = [
    #         ]
    #     self.controls+=self.butsShipBuild+self.butsShipLaunch+self.butsMissileBuild+self.butsMissileLaunch
-        
-    def eLaunchMissile( self, sender, (x,y) ):
-        print "launch m", sender.uid
-        #self.setTargetting( sender.uid )
-        self.targetting = sender.uid
+
+    def eSwitchLaunchMissile( self, sender, (x,y) ):
+        self.switchLaunchMissile( sender.uid )
+
+    def switchLaunchMissile( self, type ):
+        if self.targetting == type:
+            self.targetting = None
+        else:
+            self.targetting = type
         
     def eTargetMissile( self, sender, (x,y) ):
         if self.eOutLaunchMissile:
