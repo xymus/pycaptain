@@ -1004,6 +1004,24 @@ class Stats:
                       ids.S_NOMAD_FS_0: ShipChoice( self.NOMAD_FS_0, self.R_NOMAD, 0 ),
                       ids.S_NOMAD_FS_1: ShipChoice( self.NOMAD_FS_1, self.R_NOMAD, 200 ),
                       ids.S_NOMAD_FS_2: ShipChoice( self.NOMAD_FS_2, self.R_NOMAD, 400 ) }
+
+        self.planets = [ 
+                self.P_MERCURY, 
+                self.P_MARS, 
+                self.P_EARTH, 
+                self.P_VENUS, 
+                self.P_JUPITER, 
+                self.P_SATURN, 
+                self.P_NEPTUNE, 
+                self.P_MOON, 
+                self.P_MARS_1, 
+                self.P_MARS_2, 
+                self.P_JUPITER_1, 
+                self.P_MERCURY_1, 
+                self.P_X, 
+                self.P_X_1, 
+                self.P_SATURN_1, 
+                self.P_GAIA ]
         
         # Contains every interesting item indexed self.By their id
         self.statsDict = {}
