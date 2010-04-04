@@ -53,7 +53,7 @@ class Server:
     def run(self):
       optimalFrame = 1.0/config.fps
 
-      self.network = self.networkType( self.game, self.addresses, config.port, comms.version, self.adminPassword )
+      self.network = self.networkType( self.game, self.addresses, self.port, comms.version, self.adminPassword )
       self.converter = self.network.converterType() # load according to network type
 
       if not self.network.listening and not self.force:
