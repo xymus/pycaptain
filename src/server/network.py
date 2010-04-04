@@ -1,6 +1,7 @@
 from threading import Thread
-from socket import SocketType, gethostname, gethostbyname
+from socket import SocketType, gethostname, gethostbyname, SHUT_RDWR
 import socket
+import errno
 from time import sleep
 
 import players
@@ -16,11 +17,20 @@ class PlayerConnection:
         self.connection = connection
         self.errors = 0
         self.authentified = False
+        self.loseConnection = False
 
     def auth( self, password ):
         if self.player.password == password:
             self.authentified = True
         return self.authentified
+
+    def close( self ):
+        self.loseConnection = True
+        try:
+        #    self.connection[0].shutdown( SHUT_RDWR )
+            self.connection[0].close()
+        except Exception, ex:
+            print "Exception when closing connection with %s:"%self.player.name, ex
 
 class Network:
     def __init__( self, game, addresses, port, versionString, adminPassword ):
@@ -29,7 +39,7 @@ class Network:
         self.shutdownOrder = False
         self.adminPassword = adminPassword
 
-        self.connections = []
+        self.rawConnections = []
         self.playerCons = []
 
         self.sockets = []
@@ -37,6 +47,8 @@ class Network:
 
         self.socketsOpened = [] 
         self.listening = False
+
+        ### open listener sockets
         for address in addresses:
           try:
             socket = SocketType()
@@ -49,7 +61,7 @@ class Network:
             self.socketsOpened.append( address )
             self.listening = True
 
-            tSocket = Thread( name="socket on %s:%i"%(address,port), target=self.fManageSocket, args=(socket,) )
+            tSocket = Thread( name="socket on %s:%i"%(address,port), target=self.threadListener, args=(socket,) )
             tSocket.start()
           except Exception, ex:
             print "failed to open socket on %s:"%address, ex[1]
@@ -65,20 +77,22 @@ class Network:
       #  self.tWork = Thread( name="network", target=self.fWork )
      #   self.tWork.start()
 
-    def fManageSocket( self, socket ):
+    ### Listens to initail connection sockets
+    def threadListener( self, socket ):
         while not self.shutdownOrder:
             try:
                 nCon = socket.accept()
 
                 print "connected with %s:%i" % nCon[1]
                 nCon[ 0 ].setblocking(1)
-                self.connections.append( nCon )
+                self.rawConnections.append( nCon )
                 nCon[0].send( "%s\n"%self.versionString )
 
-                tConnection = Thread( name="connection with %s:%i"%nCon[1], target=self.fManageConnection, args=(nCon,) )
+                tConnection = Thread( name="connection with %s:%i"%nCon[1],
+                                      target=self.threadManageRawConnection,
+                                      args=(nCon,) )
                 tConnection.start()
             except Exception, ex:
-            #    print "Exception in socket.accept()", ex
                pass
             sleep( 0.1 )
 
@@ -87,23 +101,25 @@ class Network:
         except Exception, ex:
             print "failed closing socket", ex
 
-    def fManageConnection( self, con ):
+    def threadManageRawConnection( self, con ):
         closing = False
         msgs = ""
         while not self.shutdownOrder and not closing:
-           # msgs = ''
             tmpMsg = "a"
-            while len(tmpMsg)==0 or tmpMsg[-1] != "\n": #len(tmpMsg) !=  0 and tmpMsg:
+            while len(tmpMsg)==0 or tmpMsg[-1] != "\n":
                 try:
                     tmpMsg = con[ 0 ].recv( 1024 )
                     msgs = msgs + tmpMsg
+                except IOError, ex:
+                    if ex.errno == errno.EPIPE:
+                        closing = True
+                     
+                    tmpMsg = ""
                 except:
                     tmpMsg = ""
-             #   print "|"+msgs+"|"
             
             if len(msgs) > 0:
                for msg in msgs.splitlines():
-         #        print "\"%s\"" % msg
                  words = msg.split()
                  if len( words ) > 0:
                     word = words[0]
@@ -121,7 +137,7 @@ class Network:
                          pCon.tempUsername = username
 
                      self.playerCons.append( pCon )
-                     print "user %s" % username
+                    # print "user %s" % username
 
                  elif word == "pass":
                      password = msg[ 5: ] 
@@ -135,54 +151,24 @@ class Network:
                          if not pCon.player: # create player
                              pCon.player = self.game.addRemotePlayer( pCon.tempUsername, password)
 
-                         if pCon.auth( password ):
-                             self.newPlayers.append( pCon.player )
-                             print "%s logged in!" % pCon.player.username
-                             pCon.connection[0].send( "auth succ\n" )
-                             self.sendSysmsg( "%s logged in!" % pCon.player.username )
-                             pCon.player.justLoggedIn = True
-                         #    self.briefPlayer( pCon )
-                         else:
+                         if not pCon.auth( password ):
                              print "auth failed for %s" % pCon.player.username
                              self.playerCons.remove( pCon )
-                             pCon.connection[0].send( "auth fail\n" )
-
-             ### input uploads
-                 elif word == "up":
-              #       print "up %s" % msg[3:]
-                     pCon = self.getPlayerConFromCon( con )
-                     if pCon:
-                         coInput = LoadCOInput( msg[3:] )
-                         self.inputs.append( (pCon.player,coInput) )
-                         pCon.errors = 0
-                 elif word == "disconnecting":
-                     pCon = self.getPlayerConFromCon( con )
-                     if pCon:
-                         pCon.connection[0].close()
-                         self.playerCons.remove( pCon )
-                         self.sendSysmsg( "%s disconnected" % pCon.player.username )
-                         closing = True
-                 elif word == "choice":
-                     pCon = self.getPlayerConFromCon( con )
-                     if pCon:
-                         print "server: choice=", msg[len(word)+1:]
-                         s = int(msg[len(word)+1:])
-                         self.shipChoices.append( (pCon.player, s) )
-
-
-             ### messaging
-                 elif word == "msgall":
-                     pCon = self.getPlayerConFromCon( con )
-                     if pCon:
-                         self.sendMsgall( msg[ len(word)+1: ], pCon.player.username )
-               #     for pCon in self.playerCons:
-               #         if pCon.connection == connection:
-                 elif word == "msguser":
-                     senderCon = self.getPlayerConFromCon( con )
-                     pCon = self.getPlayerConFromUsername( words[1] )
-                     if pCon:
-                         self.sendMsgall( " ".join(words[2:]), senderCon.player.username, pCon )
-                     
+                             pCon.connection[0].send( "auth fail\n" )  
+                         else:     
+                             self.newPlayers.append( pCon.player )
+                             pCon.connection[0].send( "auth succ\n" )
+                             print "%s logged in!" % pCon.player.username
+                             self.sendSysmsg( "%s logged in!" % pCon.player.username )
+                             pCon.player.justLoggedIn = True
+                                        
+                             ### relay to managePlayerConnection
+                             print "launching managePlayerConnection" 
+                             self.managePlayerConnection( pCon )
+                             print "managePlayerConnection done"
+                             
+                             ### high level ended, kill low level
+                             closing = True
 
              ### admin functions
                 # elif self.adminPassword and self.adminPassword == word[-1]:
@@ -212,6 +198,66 @@ class Network:
             con[0].close()
         except Exception, ex:
             print "failed closing socket", ex
+
+
+    ### takes the relay of manage raw connection
+    ### receives input from clients when connected
+    ###   up -> gameplay input
+    ###   disconnection notify
+    ###   choise -> shipSelection
+    def managePlayerConnection( self, playerCon ):
+        closing = False
+        msgs = ""
+        while not self.shutdownOrder and not closing \
+         and not playerCon.loseConnection:
+        #    print "a"
+            tmpMsg = "a"
+            while len(tmpMsg)==0 or tmpMsg[-1] != "\n":
+            #    print "b"
+                try:
+                    tmpMsg = playerCon.connection[ 0 ].recv( 1024 )
+                    msgs = msgs + tmpMsg
+
+                except IOError, ex:
+                    if ex.errno == errno.EPIPE:
+                        self.playerCons.remove( playerCon )
+                        playerCon.close()
+                        self.sendSysmsg( "%s timedout" % playerCon.player.username )
+                    else:
+                    #    playerCon.errors += 1
+                        tmpMsg = ""
+                except:
+                    tmpMsg = ""
+            
+            if len(msgs) > 0:
+               for msg in msgs.splitlines():
+                 words = msg.split()
+                 if len( words ) > 0:
+                    word = words[0]
+                 else:
+                    continue
+
+                ### debugging code displaying all inputs
+                # print "xxxx", words
+
+
+             ### input uploads
+                 if word == "up":
+                     coInput = LoadCOInput( msg[3:] )
+                     self.inputs.append( (playerCon.player,coInput) )
+                     playerCon.errors = 0
+                 elif word == "disconnecting":
+                     playerCon.connection[0].close()
+                     self.playerCons.remove( playerCon )
+                     self.sendSysmsg( "%s disconnected" % playerCon.player.username )
+                     closing = True
+                 elif word == "choice":
+                     print "server: choice=", msg[len(word)+1:]
+                     s = int(msg[len(word)+1:])
+                     self.shipChoices.append( (playerCon.player, s) )
+
+               msgs = ""
+            sleep( 0.005 )
 
 
     def shutdown( self ):
@@ -290,6 +336,10 @@ class Network:
    #         thread.start()
     def updatePlayer( self, player, objects, gfxs, stats, players, astres=[], possibles=[], msgs=[], sysMsgs=[] ):
         pCon = self.getPlayerConFromPlayer( player )
+
+        if pCon and pCon.loseConnection:
+            print "WARNING pCon.loseConnection" 
+
         if pCon:
           try:
             string = ""
@@ -317,17 +367,24 @@ class Network:
 
             string += "downdone\n"
 
+          ### debugging code displaying all outputs
+          #  print "vvv", string
+
             pCon.connection[0].send( string )
 
-          except socket.error, ex:
+          except IOError, ex:
+            if ex.errno == errno.EPIPE:
+         # except socket.error, ex:
             # broken pipe
-            if ex[1] == 32 \
-             or pCon.errors > config.fps*2:
-               self.playerCons.remove( pCon )
-               pCon.connection[0].close()
-               self.sendSysmsg( "%s timedout" % pCon.player.username )
-            pCon.errors += 1
-            print "error in updatePlayer", ex
+          #  if ex[1] == 32 \
+          #  or pCon.errors > config.fps*2:
+                self.playerCons.remove( pCon )
+                pCon.close()
+                self.sendSysmsg( "%s timedout" % pCon.player.username )
+                print "error in updatePlayer identified", ex
+            else:
+                pCon.errors += 1
+                print "error in updatePlayer", ex
      #   self.updating[ player ] = False
 
     def briefPlayer( self, pCon, astres ):
