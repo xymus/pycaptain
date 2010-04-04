@@ -342,35 +342,35 @@ class Network:
 
         if pCon:
           try:
-            string = ""
+            strings = []
 
             if objects:
                 coobjects = COObjects( objects )
-                string += "down %s\n"%coobjects.dump()
+                strings.append( "down %s\n"%coobjects.dump() )
 
-            string += "gfx %s\n"%gfxs.dump()
-            string += "stats %s\n"%stats.dump()
+            strings.append( "gfx %s\n"%gfxs.dump() )
+            strings.append( "stats %s\n"%stats.dump() )
 
             if players:
                 coplayers = COPlayers( players )
-                string += "players %s\n"%coplayers.dump()
+                strings.append( "players %s\n"%coplayers.dump() )
             if astres:
                 print len( astres )
                 coastres = COObjects( astres )
-                string += "astres %s\n"%coastres.dump()
+                strings.append( "astres %s\n"%coastres.dump() )
             if possibles:
                 copossibles = COPossibles( possibles )
-                string += "possibles %s\n"%copossibles.dump()
+                strings.append( "possibles %s\n"%copossibles.dump() )
                 
             for msg in msgs:
                 self.sendMsg( msg[0], msg[1], msg[2], msg[3], pCon )
 
-            string += "downdone\n"
+            strings.append( "downdone\n" )
 
           ### debugging code displaying all outputs
           #  print "vvv", string
 
-            pCon.connection[0].send( string )
+            pCon.connection[0].send( "".join( strings ) )
 
           except IOError, ex:
             if ex.errno == errno.EPIPE:

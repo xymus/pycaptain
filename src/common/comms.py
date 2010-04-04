@@ -41,48 +41,48 @@ class COInput:
 
 
     def dump(self):
-        dump = "%i;%i;%i;%i" % ( self.xc, self.yc, self.wc, self.hc )
-	for order in self.orders:
+        strings = ["%i;%i;%i;%i" % ( self.xc, self.yc, self.wc, self.hc )]
+        for order in self.orders:
             if isinstance( order, OrderMove ):
-                dump = dump + ";%i:%i:%i:%7f" % ( ids.O_MOVE, order.x, order.y, order.ori )
+                strings.append( ";%i:%i:%i:%7f" % ( ids.O_MOVE, order.x, order.y, order.ori ) )
             if isinstance( order, OrderStopMove ):
-                dump = dump + ";%i:%.2f" % ( ids.O_STOP_MOVE, order.ori )
+                strings.append( ";%i:%.2f" % ( ids.O_STOP_MOVE, order.ori ) )
             elif isinstance( order, OrderRecallShips ):
-                dump = dump + ";%i:%i" % ( ids.O_RECALL_SHIPS, order.type )
+                strings.append( ";%i:%i" % ( ids.O_RECALL_SHIPS, order.type ) )
             elif isinstance( order, OrderLaunchShips ):
-                dump = dump + ";%i:%i" % ( ids.O_LAUNCH_SHIPS, order.type )
+                strings.append( ";%i:%i" % ( ids.O_LAUNCH_SHIPS, order.type ) )
             elif isinstance( order, OrderJumpNow ):
-                dump = dump + ";%i" % ( ids.O_JUMP_NOW )
+                strings.append( ";%i" % ( ids.O_JUMP_NOW ) )
             elif isinstance( order, OrderJump ):
-                dump = dump + ";%i:%i:%i" % ( ids.O_JUMP, order.x, order.y )
+                strings.append( ";%i:%i:%i" % ( ids.O_JUMP, order.x, order.y ) )
             elif isinstance( order, OrderLaunchMissile ):
-                dump = dump + ";%i:%i:%i:%i" % ( ids.O_LAUNCH_MISSILE, order.type, order.x, order.y )
+                strings.append( ";%i:%i:%i:%i" % ( ids.O_LAUNCH_MISSILE, order.type, order.x, order.y ) )
             elif isinstance( order, OrderAttack ):
-                dump = dump + ";%i:%i" % ( ids.O_ATTACK, order.obj )
+                strings.append( ";%i:%i" % ( ids.O_ATTACK, order.obj ) )
             elif isinstance( order, OrderOrbit ):
-                dump = dump + ";%i:%i" % ( ids.O_ORBIT, order.obj )
+                strings.append( ";%i:%i" % ( ids.O_ORBIT, order.obj ) )
             elif isinstance( order, OrderBuildTurret ):
-                dump = dump + ";%i:%i:%i" % ( ids.O_BUILD_TURRET, order.tp, order.type )
+                strings.append( ";%i:%i:%i" % ( ids.O_BUILD_TURRET, order.tp, order.type ) )
             elif isinstance( order, OrderBuildShip ):
-                dump = dump + ";%i:%i:%i" % ( ids.O_BUILD_SHIP, order.type, order.rate )
+                strings.append( ";%i:%i:%i" % ( ids.O_BUILD_SHIP, order.type, order.rate ) )
             elif isinstance( order, OrderBuildMissile ):
-                dump = dump + ";%i:%i:%i" % ( ids.O_BUILD_MISSILE, order.type, order.rate )
+                strings.append( ";%i:%i:%i" % ( ids.O_BUILD_MISSILE, order.type, order.rate ) )
             elif isinstance( order, OrderActivateTurret ):
-                dump = dump + ";%i:%i:%i" % ( ids.O_TURRET_ACTIVATE, order.turret, order.activate )
+                strings.append( ";%i:%i:%i" % ( ids.O_TURRET_ACTIVATE, order.turret, order.activate ) )
             elif isinstance( order, OrderActivateShield ):
-                dump = dump + ";%i:%i" % ( ids.O_CHARGE, order.activate )
+                strings.append( ";%i:%i" % ( ids.O_CHARGE, order.activate ) )
             elif isinstance( order, OrderActivateRepair ):
-                dump = dump + ";%i:%i" % ( ids.O_REPAIR, order.activate )
+                strings.append( ";%i:%i" % ( ids.O_REPAIR, order.activate ) )
             elif isinstance( order, OrderSetRelation ):
-                dump = dump + ";%i:%s:%i" % ( ids.O_RELATION, order.other, order.level )
+                strings.append( ";%i:%s:%i" % ( ids.O_RELATION, order.other, order.level ) )
             elif isinstance( order, OrderSelfDestruct ):
-                dump = dump + ";%i" % ( ids.O_SELF_DESTRUCT )
+                strings.append( ";%i" % ( ids.O_SELF_DESTRUCT ) )
             elif isinstance( order, OrderBroadcast ):
-                dump = dump + ";%i:%s" % ( ids.O_BROADCAST, order.text )
+                strings.append( ";%i:%s" % ( ids.O_BROADCAST, order.text ) )
             elif isinstance( order, OrderDirectedCast ):
-                dump = dump + ";%i:%s:%i:%i" % ( ids.O_DIRECTED_CAST, order.text, order.x, order.y )
+                strings.append( ";%i:%s:%i:%i" % ( ids.O_DIRECTED_CAST, order.text, order.x, order.y ) )
 
-        return dump
+        return "".join(strings)
 
 def CopyCOInput( input ):
     return COInput( input.xc, input.yc, input.wc, input.hc )
@@ -209,34 +209,34 @@ class COPlayerStatus:
 
     def dump(self):
       if self.dead:
-        dump = "%i" % ( self.gameTick )
+        strings = [ "%i" % ( self.gameTick ) ]
       else:
-        dump = "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpRecover, self.ennemyInRadar, self.dangerInRadar )
+        strings = [ "%i;%i;%i;%i;%i;%.2f;%.2f;%i;%i;%i;%i;%i;%i;%i;%i;%i;%i" % ( self.gameTick, self.ore, self.maxOre, self.energy, self.maxEnergy, self.shieldIntegrity, self.hullIntegrity, self.canJump, self.repairing, self.charging, self.hangarSpace, self.shipsSpace, self.missilesSpace, self.jumpCharge, self.jumpRecover, self.ennemyInRadar, self.dangerInRadar ) ]
 
-        dump = dump + ";"
+        strings.append( ";" )
         for oip in self.oreInProcess:
-            dump = dump + "%i:"% oip
+            strings.append( "%i:"% oip )
 
-        dump = dump + ";"
+        strings.append( ";" )
         for turret in self.turrets:
-            dump = dump + "%i:%i:%i:%.2f:%.2f:%i:%i:%i:%i:%i:%i:%i:%i:" % ( turret.type, turret.xp, turret.yp, turret.minAngle, turret.maxAngle, turret.buildPerc,turret.range,turret.on,turret.activable,turret.useEnergy,turret.useOre,turret.energyRebate, turret.oreRebate )
+            strings.append( "%i:%i:%i:%.2f:%.2f:%i:%i:%i:%i:%i:%i:%i:%i:" % ( turret.type, turret.xp, turret.yp, turret.minAngle, turret.maxAngle, turret.buildPerc,turret.range,turret.on,turret.activable,turret.useEnergy,turret.useOre,turret.energyRebate, turret.oreRebate ) )
             for bt in turret.buildables:
-                dump = dump + "%i_%i/" % ( bt.type, bt.canBuild ) # , bt.energyCost, bt.oreCost, bt.category )
-            dump = dump + "|"
+                strings.append( "%i_%i/" % ( bt.type, bt.canBuild ) ) # , bt.energyCost, bt.oreCost, bt.category )
+            strings.append( "|" )
 
-        dump = dump + ";"
+        strings.append( ";" )
         for ship in self.missiles:
-            dump = dump + "%i:%i:%i:%i:%i:%i:%i|" % ( ship.type, ship.usable, ship.canLaunch, ship.nbr, ship.buildPerc, ship.canBuild, ship.show )
+            strings.append( "%i:%i:%i:%i:%i:%i:%i|" % ( ship.type, ship.usable, ship.canLaunch, ship.nbr, ship.buildPerc, ship.canBuild, ship.show ) )
 
-        dump = dump + ";"
+        strings.append( ";" )
         for ship in self.ships:
-            dump = dump + "%i:%i:%i:%i:%i:%i:%i|" % ( ship.type, ship.usable, ship.canLaunch, ship.nbr, ship.buildPerc, ship.canBuild, ship.show )
+            strings.append( "%i:%i:%i:%i:%i:%i:%i|" % ( ship.type, ship.usable, ship.canLaunch, ship.nbr, ship.buildPerc, ship.canBuild, ship.show ) )
 
-      dump = dump + ";"
+      strings.append( ";" )
       for radar in self.radars:
-          dump = dump + "%i:%i:%i|" % ( radar.xr, radar.yr, radar.range )
+          strings.append( "%i:%i:%i|" % ( radar.xr, radar.yr, radar.range ) )
 
-      return dump
+      return "".join( strings )
     
 def LoadCOPlayerStatus( text ):
   es = text.split(";")
@@ -333,11 +333,9 @@ def LoadCOPlayers( text ):
     players = []
     for s in ss:
       if len( s ) > 0:
-    #    print s
         es = s.split(";")
         players.append( COPlayer( es[0], int(es[1]), int(es[2]), int(es[3]), int(es[4]) ) )
-  #  print "loaded", players
-    return COPlayers( players ) # COPlayers( [ es = s.split(";"); COPlayer( es[0], int(es[1]), int(es[2]), int(es[3]), int(es[4]) ) for s in ss ] )
+    return COPlayers( players )
 
 
 class COTurret:
@@ -404,23 +402,23 @@ class COGfxs:
          self.gfxs = gfxs
 
     def dump(self):
-        dump = "%i" % ( len(self.gfxs) )
+        strings = [ "%i" % ( len(self.gfxs) ) ]
         for gfx in self.gfxs:
             if isinstance( gfx, GfxLaser ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i:%i:%i" % (ids.G_LASER_SMALL, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.width, gfx.color)
+                strings.append( ";%i:%i:%i:%i:%i:%i:%i:%i" % (ids.G_LASER_SMALL, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.width, gfx.color) )
             elif isinstance( gfx, GfxExplosion ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_EXPLOSION, gfx.xp,gfx.yp,gfx.radius,gfx.sound,gfx.delai)
+                strings.append( ";%i:%i:%i:%i:%i:%i" % (ids.G_EXPLOSION, gfx.xp,gfx.yp,gfx.radius,gfx.sound,gfx.delai) )
             elif isinstance( gfx, GfxShield ):
-                dump = dump + ";%i:%i:%i:%i:%i:%.3f:%.3f" % (ids.G_SHIELD, gfx.xp,gfx.yp,gfx.radius,gfx.strength,gfx.angle,gfx.hit)
+                strings.append( ";%i:%i:%i:%i:%i:%.3f:%.3f" % (ids.G_SHIELD, gfx.xp,gfx.yp,gfx.radius,gfx.strength,gfx.angle,gfx.hit) )
             elif isinstance( gfx, GfxExhaust ): # careful, GfxExhaust inherits of GfxFragment
                 pass # TODO, removed because not used on client side
             elif isinstance( gfx, GfxFragment ):
-                dump = dump + ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i:%i" % (ids.G_FRAGMENT, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type,gfx.ttl)
+                strings.append( ";%i:%i:%i:%i:%.2f:%.2f:%.2f:%.2f:%i:%i" % (ids.G_FRAGMENT, gfx.xp,gfx.yp,gfx.zp,gfx.ori,gfx.xi,gfx.yi,gfx.ri,gfx.type,gfx.ttl) )
             elif isinstance( gfx, GfxLightning ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i:%i" % (ids.G_LIGHTNING, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength )
+                strings.append( ";%i:%i:%i:%i:%i:%i:%i" % (ids.G_LIGHTNING, gfx.xp,gfx.yp,gfx.z,gfx.xd,gfx.yd, gfx.strength ) )
             elif isinstance( gfx, GfxJump ):
-                dump = dump + ";%i:%i:%i:%i:%i:%i" % (ids.G_JUMP, gfx.xp,gfx.yp,gfx.radius,gfx.angle*100,gfx.delai)
-        return dump
+                strings.append( ";%i:%i:%i:%i:%i:%i" % (ids.G_JUMP, gfx.xp,gfx.yp,gfx.radius,gfx.angle*100,gfx.delai) )
+        return "".join( strings )
 
 def LoadCOGfxs( text ):
     gfxs = []
