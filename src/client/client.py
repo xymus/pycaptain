@@ -68,6 +68,7 @@ class Client:
        
         self.inputs = COInput()
         self.lastInputs = None
+        self.toleratedCameraMovement = 20
 
         self.objects = []
 
@@ -198,7 +199,8 @@ class Client:
                ## send inputs to server
                 if self.useServer:
                     if not self.lastInputs or len(inputs.orders) \
-                      or inputs.xc != self.lastInputs.xc or inputs.yc != self.lastInputs.yc \
+                      or abs( inputs.xc-self.lastInputs.xc)>self.toleratedCameraMovement \
+                      or abs( inputs.yc-self.lastInputs.yc)>self.toleratedCameraMovement \
                       or inputs.wc != self.lastInputs.wc or inputs.hc != self.lastInputs.hc:
                         self.lastInputs = CopyCOInput( inputs )
                         self.network.sendInputs( inputs )
