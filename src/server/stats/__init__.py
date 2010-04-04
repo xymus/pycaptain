@@ -13,6 +13,8 @@ class ObjectStats:
         self.maxRadius = self.radius
         self.orbitable = False
 
+        self.buildAsHint = None
+
 class OrbitableStats( ObjectStats ):
     def __init__(self,id,radius):
         ObjectStats.__init__(self,id,radius)
@@ -154,8 +156,8 @@ bestHangar = 0
 bestCivilian = 0
 
 class BaseStats( FlagshipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets, maxEnergy, maxOre, \
-                 hangarSpace, jumpEnergyCost, launchDelay,radarRange,unavoidableFragments, fragments, engines, \
+    def __init__(self,id,radius,maxThrust,maxReverseThrust, maxRg, maxHull, maxShield, turrets, maxEnergy, maxOre, \
+                 hangarSpace=0, jumpEnergyCost=0, launchDelay=0.2, radarRange=1000, unavoidableFragments=[], fragments=[], engines=[], \
                  hangars=None, civilianBonus=1000, pulseResistant=False, jumpChargeDelay=3*config.fps, \
                  jumpRecoverDelay=20*config.fps, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
                  shieldVsMass=0.3, shieldVsEnergy=1, hullVsMass=1, hullVsEnergy=0.3, \
@@ -320,14 +322,13 @@ class RPos:
         self.dist = dist 
 
 class RaceStats:
-    def __init__( self, type, flagships, missiles, ships, turrets, defaultHarvester, defaultFrigate=None, defaultScaffolding=None, immuneToPulse=False, defaults={} ):
+    def __init__( self, type, flagships, missiles, ships, turrets, defaultHarvester, defaultScaffolding=None, immuneToPulse=False, defaults={} ):
         self.type = type
         self.flagships = flagships
         self.missiles = missiles
         self.ships = ships
         self.turrets = turrets
         self.defaultHarvester = defaultHarvester
-        self.defaultFrigate = defaultFrigate
         self.defaultScaffolding = defaultScaffolding
         self.immuneToPulse = immuneToPulse
         self.defaults = defaults
@@ -680,7 +681,7 @@ class Stats:
 
 
         self.HUMAN_BASE =	BaseStats( ids.S_HUMAN_BASE, 
-                            45, 0, 0, 0.002, 800, 1000,
+                            45, 0, 0, 0.002, 400, 500,
                             [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
                             1000, 1000, 500, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
                             oreCostToBuild=50,
@@ -734,20 +735,20 @@ class Stats:
                          TurretStats(-6,-33, pi,0, True),
                          TurretStats(-76,-33, 2*pi/3,0, True)], 
                         3000, 3000, 1000, 500, 0.6*config.fps, 2500, [ids.S_NOMAD_FS_2], [ids.F_LARGE_0, ids.F_LARGE_1], [(70,pi)], civilianBonus=2000 )
-        self.NOMAD_BASE =	BaseStats( ids.S_NOMAD_BASE, 45, 0, 0, 0.002, 800, 1000,
-                        [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
-                        1000, 1000, 1000, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [] )
+        #self.NOMAD_BASE =	BaseStats( ids.S_NOMAD_BASE, 45, 0, 0, 0.002, 800, 1000,
+        #                [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
+        #                1000, 1000, 1000, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [] )
 
 
          ## self.AIs
         self.AI_FIGHTER =	SingleWeaponShipStats( ids.S_AI_FIGHTER, 8, 0.6, 0, 0.012, 20, 20, self.W_LASER_SR, [ids.S_AI_FIGHTER], None, [(8,pi)], weaponPositions=[[RPos(8,0)]], energyCostToBuild=0,oreCostToBuild=70,timeToBuild=10*config.fps,hangarSpaceNeed=3 )
         self.AI_BOMBER =	SingleWeaponShipStats( ids.S_AI_BOMBER, 8, 0.6, 0, 0.012, 20, 20, self.W_AI_MISSILE, [ids.S_AI_BOMBER], None, [(8,pi)], energyCostToBuild=0,oreCostToBuild=200,timeToBuild=20*config.fps,hangarSpaceNeed=10 )
 
-        self.AI_BASE =	BaseStats( ids.S_AI_BASE, 100, 0, 0, 0.002, 400, 1500,
-                        [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
-                        [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
-                        1000, 1000, 1000, 100000, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
-                        [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
+       # self.AI_BASE =	BaseStats( ids.S_AI_BASE, 100, 0, 0, 0.002, 400, 1500,
+       #                 [ TurretStats(75,(i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
+       #                 [ TurretStats(15,(i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
+       #                 1000, 1000, 1000, 100000, 0.5*config.fps, 1000, None, [ids.F_AI_0], [],
+       #                 [ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ] )
         self.AI_FS_0 =	FlagshipStats( ids.S_AI_FS_0, 100, 0, 0, 0.002, 300, 800,
                         [ TurretStats(75, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
                         [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
@@ -824,9 +825,6 @@ class Stats:
                         [TurretStats(30,i*pi*2/4, i*pi*2/4-pi*3/4,i*pi*2/4+pi*3/4, True, asAngle=True) for i in xrange( 4 )], 
                         3000, 3000, 200, 500, 0.5*config.fps, 750, [ ids.S_EXTRA_FS_2 ], None, [(70,pi)] ) # TODO
 
-        self.EXTRA_BASE =  BaseStats( ids.S_EXTRA_BASE, 70, 0.08, 0.02, 0.002, 1000, 0,  # self.Asteroid
-                        [TurretStats(12,i*pi*2/3, i*pi*2/3-pi*3/4,i*pi*2/3+pi*3/4, True, asAngle=True) for i in xrange( 3 )], 
-                        3000, 3000, 400, 500, 0.7*config.fps, 500, [ ids.S_EXTRA_BASE ], None, [(70,pi)] ) # TODO
         self.EXTRA_FIGHTER =	SingleWeaponShipStats( ids.S_EXTRA_FIGHTER, 10, 0.6, 0, 0.012, 35, 0, self.W_EXTRA_FIGHTER, [ids.F_BLOOD_0], [ids.F_BLOOD_0], [(8,pi)], weaponPositions=[[RPos(0,12)]], energyCostToBuild=0,oreCostToBuild=70,timeToBuild=10*config.fps,hangarSpaceNeed=3 ) # TODO
         self.EXTRA_BOMBER =	SingleWeaponShipStats( ids.S_EXTRA_BOMBER, 8, 0.6, 0, 0.012, 30, 0, self.W_EXTRA_BOMBER, [ids.F_BLOOD_0], [ids.F_BLOOD_0], [(8,pi)], weaponPositions=[[RPos(0,0)]], energyCostToBuild=0,oreCostToBuild=200,timeToBuild=20*config.fps,hangarSpaceNeed=12 ) # TODO
 
@@ -886,6 +884,58 @@ class Stats:
         self.S_EVOLVED_SCAFFOLDING =  ShipStats( ids.S_EVOLVED_SCAFFOLDING, radius=35, maxThrust=0, maxReverseThrust=0, maxRg=0, maxHull=100, maxShield=10 )
         self.S_AI_SCAFFOLDING =       ShipStats( ids.S_AI_SCAFFOLDING, radius=21, maxThrust=0, maxReverseThrust=0, maxRg=0, maxHull=100, maxShield=10 )
 
+
+        ### bases military
+
+        self.EVOLVED_BASE_MILITARY =        BaseStats( ids.S_EVOLVED_BASE_MILITARY, 
+                                            radius=60, 
+                                            maxThrust=0, 
+                                            maxReverseThrust=0, 
+                                            maxRg=0.003, 
+                                            maxHull=350, 
+                                            maxShield=700,
+                                            oreCostToBuild=200,
+                                            maxEnergy = 1000,
+                                            maxOre = 1000,
+                                           # turrets=[ TurretStats(48,i*pi*2/6+pi/6, i*pi*2/6+pi/6-pi/3,i*pi*2/6+pi/6+pi/3, True, asAngle=True) 
+                                           #           for i in xrange( 6 ) ],
+                                            turrets = [ TurretStats( 44, -15,  -5*pi/6, pi/2, True, asAngle=False),
+
+                                                        TurretStats( -6, -44,  5*pi/6, 13*pi/6, True, asAngle=False),
+                                                        TurretStats( -35, -28, pi/2, 10*pi/6, True, asAngle=False),
+
+                                                        TurretStats( -36, 31, pi/6, 3*pi/2, True, asAngle=False),
+                                                        TurretStats( -7, 48,  -pi/6, 7*pi/6, True, asAngle=False),
+
+                                                        TurretStats( 45, 19,   -pi/2, 2*pi/3, True, asAngle=False) ],
+                                            defaultTurrets=[ self.T_ESPHERE_0 for x in xrange( 6 ) ] )
+                                           # defaultTurrets=[ self.T_ESPHERE_0, self.T_ESPHERE_1, self.T_ESPHERE_2, self.T_BURST_LASER_0, self.T_BURST_LASER_1, self.T_BURST_LASER_2 ] )
+        self.AI_BASE_MILITARY =        BaseStats( ids.S_AI_BASE_MILITARY, 
+                                            radius=40, 
+                                            maxThrust=0, 
+                                            maxReverseThrust=0, 
+                                            maxRg=0.003, 
+                                            maxHull=250, 
+                                            maxShield=800,
+                                            oreCostToBuild=200,
+                                            maxEnergy = 1000,
+                                            maxOre = 1000,
+                                            turrets=[ TurretStats(35,i*pi*2/3, i*pi*2/3-2*pi/3,i*pi*2/3+2*pi/3, True, asAngle=True) 
+                                                      for i in xrange( 3 ) ],
+                                            defaultTurrets=[ self.T_AI_FLAK_1 for x in xrange( 3 ) ] )
+        self.NOMAD_BASE_MILITARY =        BaseStats( ids.S_NOMAD_BASE_MILITARY, 
+                                            radius=30, 
+                                            maxThrust=0, 
+                                            maxReverseThrust=0, 
+                                            maxRg=0.003, 
+                                            maxHull=500, 
+                                            maxShield=250,
+                                            oreCostToBuild=200,
+                                            maxEnergy = 1000,
+                                            maxOre = 1000,
+                                            turrets=[ TurretStats(24,i*pi/2, i*pi/2-3*pi/4, i*pi/2+3*pi/4, True, asAngle=True) 
+                                                      for i in xrange( 4 ) ],
+                                            defaultTurrets=[ self.T_REPEATER_1 for x in xrange( 4 ) ] )
             
         self.setDefaults()
 
@@ -910,7 +960,6 @@ class Stats:
             self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, 
             self.T_AI_CRYPT_0, self.T_ALL_BUILDER, self.T_FRIGATE_BUILDER ],
         defaultHarvester=self.HARVESTER,
-        defaultFrigate=self.HUMAN_FRIGATE_0,
         defaultScaffolding=self.S_HUMAN_SCAFFOLDING,
         defaults={ ids.B_FRIGATE: self.HUMAN_FRIGATE_0,
                  #  ids.B_FRIGATE_SR: self.HUMAN_FRIGATE_0,
@@ -921,7 +970,7 @@ class Stats:
 
         self.R_AI = 		RaceStats( ids.R_AI, 
         [], 
-        [ids.M_NUKE, ids.M_MINER, ids.M_COUNTER, ids.M_AI, ids.M_FRIGATE_BUILDER], 
+        [ids.M_NUKE, ids.M_MINER, ids.M_COUNTER, ids.M_AI, ids.M_FRIGATE_BUILDER, ids.M_BUILDER_BASE_MILITARY], 
         [self.AI_HARVESTER, self.AI_FIGHTER, self.AI_BOMBER],
         [self.T_AI_FLAK_0, self.T_AI_FLAK_1, self.T_AI_FLAK_2, self.T_AI_FLAK_3, 
             self.T_AI_OMNI_LASER_1, self.T_AI_OMNI_LASER_0, self.T_AI_MISSILE_3,
@@ -932,16 +981,17 @@ class Stats:
             self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, 
             self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, 
             self.T_AI_CRYPT_3, self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, 
-            self.T_AI_CRYPT_0, self.T_AI_ACTIVE_DEFENSE_0, self.T_FRIGATE_BUILDER ],
+            self.T_AI_CRYPT_0, self.T_AI_ACTIVE_DEFENSE_0, self.T_ALL_BUILDER, self.T_FRIGATE_BUILDER ],
         self.AI_HARVESTER,
-        defaultFrigate=self.AI_FRIGATE_0,
-        defaults={ ids.B_FRIGATE: self.AI_FRIGATE_0, },
+        defaults={ ids.B_FRIGATE: self.AI_FRIGATE_0,
+                  # ids.B_BASE_CARGO: self.AI_BASE_MINING,
+                   ids.B_BASE_MILITARY: self.AI_BASE_MILITARY, },
         defaultScaffolding=self.S_AI_SCAFFOLDING )
 
         self.R_NOMAD = 	RaceStats( ids.R_NOMAD, 
         [self.HUMAN_FS_0, self.HUMAN_FS_1, self.HUMAN_FS_2 ], 
         [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, 
-         ids.M_COUNTER, ids.M_FRIGATE_BUILDER ], 
+         ids.M_COUNTER, ids.M_FRIGATE_BUILDER, ids.M_BUILDER_BASE_MILITARY ], 
         [self.NOMAD_HARVESTER, self.NOMAD_HARVESTER_1, self.NOMAD_FIGHTER ], 
         [self.T_REPEATER_3, self.T_REPEATER_2, self.T_REPEATER_1, self.T_REPEATER_0, 
         self.T_NOMAD_CANNON_2, self.T_NOMAD_CANNON_1, self.T_NOMAD_CANNON_0,
@@ -949,10 +999,11 @@ class Stats:
         self.T_NUKE, self.T_PULSE,
         self.T_COUNTER, self.T_INTERDICTOR, self.T_RADAR, self.T_GENERATOR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SUCKER, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
         self.T_DISCHARGER_1, self.T_DISCHARGER_0,
-        self.T_NOMAD_HULL_ELECTRIFIER_0, self.T_FRIGATE_BUILDER ],
+        self.T_NOMAD_HULL_ELECTRIFIER_0, self.T_ALL_BUILDER, self.T_FRIGATE_BUILDER ],
         self.NOMAD_HARVESTER,
-        defaultFrigate=self.NOMAD_FRIGATE_0 ,
-        defaults={ ids.B_FRIGATE: self.NOMAD_FRIGATE_0, },
+        defaults={ ids.B_FRIGATE: self.NOMAD_FRIGATE_0,
+                  # ids.B_BASE_CARGO: self.NOMAD_BASE_MINING,
+                   ids.B_BASE_MILITARY: self.NOMAD_BASE_MILITARY, },
         defaultScaffolding=self.S_NOMAD_SCAFFOLDING )
 
         self.R_EXTRA = 	RaceStats( ids.R_EXTRA, 
@@ -965,7 +1016,7 @@ class Stats:
         self.R_EVOLVED = 	RaceStats( ids.R_EVOLVED, 
         [], 
         [ids.M_EVOLVED, ids.M_EVOLVED_PULSE, ids.M_MINER, 
-         ids.M_EVOLVED_COUNTER, ids.M_FRIGATE_BUILDER ], 
+         ids.M_EVOLVED_COUNTER, ids.M_FRIGATE_BUILDER, ids.M_BUILDER_BASE_MILITARY ], 
         [self.EVOLVED_HARVESTER, self.EVOLVED_FIGHTER, self.EVOLVED_BOMBER],
         [self.T_EVOLVED_PULSE, self.T_MINER, self.T_EVOLVED_COUNTER, 
         self.T_INTERDICTOR, self.T_RADAR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER,
@@ -976,10 +1027,11 @@ class Stats:
         self.T_EVOLVED_MISSILE_1, self.T_EVOLVED_MISSILE_0, 
         self.T_DARK_EXTRACTOR_0, self.T_DARK_EXTRACTOR_1, self.T_DARK_ENGINE_0,
         self.T_AI_CRYPT_2, self.T_AI_CRYPT_1, self.T_AI_CRYPT_0,
-        self.T_EVOLVED_PARTICLE_SHIELD_0, self.T_FRIGATE_BUILDER ],
+        self.T_EVOLVED_PARTICLE_SHIELD_0, self.T_ALL_BUILDER, self.T_FRIGATE_BUILDER ],
         self.EVOLVED_HARVESTER,
-        defaultFrigate=self.EVOLVED_FRIGATE_0,
-        defaults={ ids.B_FRIGATE: self.EVOLVED_FRIGATE_0, },
+        defaults={ ids.B_FRIGATE: self.EVOLVED_FRIGATE_0,
+                  # ids.B_BASE_CARGO: self.EVOLVED_BASE_MINING,
+                   ids.B_BASE_MILITARY: self.EVOLVED_BASE_MILITARY, },
         defaultScaffolding=self.S_EVOLVED_SCAFFOLDING )
         
         self.Relations = { 
@@ -1013,15 +1065,13 @@ class Stats:
                 self.P_JUPITER, 
                 self.P_SATURN, 
                 self.P_NEPTUNE, 
-                self.P_MOON, 
                 self.P_MARS_1, 
                 self.P_MARS_2, 
                 self.P_JUPITER_1, 
                 self.P_MERCURY_1, 
                 self.P_X, 
                 self.P_X_1, 
-                self.P_SATURN_1, 
-                self.P_GAIA ]
+                self.P_SATURN_1 ]
         
         # Contains every interesting item indexed self.By their id
         self.statsDict = {}

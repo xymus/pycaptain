@@ -10,20 +10,22 @@ class CommunicationManager:
         
     def addCommunication( self, game, communication ):
         self.communications.append( communication )
-        if communication.sender:
-            communication.sender.msgs.append( communication.getMessageArchived( game, communication.sender ) )
+       # if communication.sender:
+       #     communication.sender.msgs.append( communication.getMessageArchived( game, communication.sender ) )
         
-    def addWideBroadcast( self, game, player, text, ship=None ):
+    def addWideBroadcast( self, game, player, text, ship=None, encryption=None ):
         if not ship:
             ship = player.flagship
-        encryption = ship.cryptionStrength
+        if encryption == None:
+            encryption = ship.cryptionStrength
         origin = ship.pos
         self.addCommunication( game, MessageActive( game, player, text, encryption=encryption, origin=origin ) )
      
-    def addDirectedBroadcast( self, game, player, text, (x,y), ship=None ):
+    def addDirectedBroadcast( self, game, player, text, (x,y), ship=None, encryption=None ):
         if not ship:
             ship = player.flagship
-        encryption = ship.cryptionStrength
+        if encryption == None:
+            encryption = ship.cryptionStrength
         origin = ship.pos
         angle = utils.angleBetween( origin, (x,y) )
         dist = utils.distBetween( origin, (x,y) )
@@ -98,11 +100,8 @@ class MessageActive:
                and player.flagship and player.flagship.alive: # ship listening
                     dist = utils.distBetween( self.origin, player.flagship.pos )
                     if dist < self.radius and dist >= oldRadius-self.overlap: # ship in area covered this turn
-                        if self.angle:
+                        if self.angle and oldRadius > 0.1:
                             angle = utils.angleBetween( self.origin, player.flagship.pos )
-                            if player.name == "xymus":
-                                print "Angle", angle > self.angle-self.angleCover, angle < self.angle+self.angleCover
-                                print "Angles", self.angle-self.angleCover, angle, self.angle+self.angleCover
                             inAngle = angle > self.angle-self.angleCover and angle < self.angle+self.angleCover
                         else:
                             inAngle = True
@@ -132,11 +131,15 @@ class MessageActive:
             receivedAt=game.tick )
                         
     def getHeardText( self, game, listener, decryption=0 ):
-        if game.getRelationBetween( self.sender, listener ) <= 0: # TODO update to allies only, maybe
+        relation = game.getRelationBetween( self.sender, listener )
+        if self.sender == listener or relation > 50:
+            # boost decryption for same player or allies
+            decryption = decryption+1
+        elif relation <= 0:
             # keys hidden from ennemies, handicap
             decryption = max( 0, decryption-1 )
             
-        print "crypt", self.encryption, decryption
+        #print "crypt", self.encryption, decryption
         if decryption >= self.encryption:
             return self.text
         else:

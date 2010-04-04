@@ -98,10 +98,8 @@ class Game:
 
       ### remove dead objects
         for o1 in removedObjects:
-            if isinstance( o1, FlagShip ):
-             #   print o1.player
+            if o1.stats.buildAsHint == "flagship":
                 if isinstance( o1.player, Human ):
-               #     print "definately human"
                     o1.player.flagship = None
                     o1.player.needToUpdatePossibles = True
                     

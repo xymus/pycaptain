@@ -481,6 +481,50 @@ class AiCaptain( AiShipWithTurrets ):
 
 
 class AiGovernor( AiCaptain ):
+    def __init__(self,player):
+        AiCaptain.__init__(self,player)
+
+        self.ennemyInSight = []
+       # self.ennemyAttacking = []
+
+        self.reportEnnemyContact = True
+
+    def doTurn( self, ship, game):
+        (ao, ro, ag) = AiCaptain.doTurn( self, ship, game )
+
+        if game.tick%config.fps==12 \
+           and self.reportEnnemyContact:
+
+            seenThisTurn = []
+
+            ### detect ennemy in sight
+            for obj in game.objects.getWithinRadius( ship.pos, ship.stats.radarRange ):
+                if obj.alive and obj.player and obj.stats.buildAsHint == "flagship" \
+                and game.getRelationBetween( ship.player, obj.player ) < 0:
+
+                    seenThisTurn.append( obj )
+
+                    if not obj in self.ennemyInSight:
+
+                        self.ennemyInSight.append( obj )
+
+                        msg = "@uto; enemy in sight from %.2f, %.2f" % (ship.xp/1000.0, ship.yp/1000.0)
+                        game.communicationManager.addWideBroadcast( game, ship.player, msg, ship=ship, encryption=1 )
+
+            ### clear unseen enemy from memory
+            ennemyToForget = []
+            for ship in self.ennemyInSight:
+                if not ship in seenThisTurn:
+                    ennemyToForget.append( ship )
+
+            for ship in ennemyToForget:
+                self.ennemyInSight.remove( ship )
+
+        return (ao, ro, ag)
+
+   # def hitted( self, ship, game, angle, sender, energy, mass, pulse ):
+   #     pass
+
     def goTo(self, ship, dest, destOri=0, orbitAltitude=2):
         pass
 
