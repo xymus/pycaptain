@@ -738,7 +738,9 @@ class HangarControl( Container ):
 
         self.builderMissilesId = [ ids.M_FRIGATE_BUILDER,
                                    ids.M_BUILDER_BASE_CARGO,
-                                   ids.M_BUILDER_BASE_MILITARY ]
+                                   ids.M_BUILDER_BASE_MILITARY,
+                                   ids.M_BUILDER_BASE_HEAVY_MILITARY,
+                                   ids.M_BUILDER_BASE_CARRIER ]
         
     def reset( self ):
        # self.missiles = []

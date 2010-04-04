@@ -135,7 +135,8 @@ class Gui( ControlFrame ):
 			ids.T_MINER 		: 1,
 			ids.T_COUNTER 		: 1,
             ids.T_FRIGATE_BUILDER:1,
-            ids.T_ALL_BUILDER:1,
+            ids.T_CIVILIAN_BUILDER:  1,
+            ids.T_MILITARY_BUILDER:  1,
 
 			ids.T_INTERDICTOR 	: 0,
 			ids.T_RADAR 		: 0,

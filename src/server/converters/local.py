@@ -132,7 +132,10 @@ class LocalConverter( Converter ):
                 k = k.img
                 sy = player.flagship.shipyards[ k ]
                 if sy.building:
-                    buildPerc = sy.build*100/sy.buildCost
+                    if sy.buildCost:
+                        buildPerc = sy.build*100/sy.buildCost
+                    else:
+                        buildPerc = 100
                 else:
                     buildPerc = -1
                 ships.append( COShips( k, len(sy.docked)>0 or len(sy.away)>0, not player.flagship.ai.launching[ k ],  len(sy.docked) + len(sy.away), buildPerc, player.flagship.canBuild( game, k ), True ) )
