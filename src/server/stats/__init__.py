@@ -410,11 +410,11 @@ class Stats:
         self.MISSILE_EVOLVED = ShipStats( ids.M_EVOLVED, 3, 0.6, 0, 0.008, 5, 0, None, None, [(2,pi)], energyCostToBuild=10,oreCostToBuild=1,timeToBuild=1*config.fps,hangarSpaceNeed=1 ) 
         self.MISSILE_EVOLVED_COUNTER = ShipStats( ids.M_EVOLVED_COUNTER, 3, 0.8, 0, 0.005, 5, 0, None, None, [(2,pi)], energyCostToBuild=40,oreCostToBuild=10,timeToBuild=10*config.fps,hangarSpaceNeed=5 ) 
         self.MISSILE_EVOLVED_PULSE = ShipStats( ids.M_EVOLVED_PULSE, 3, 0.6, 0, 0.007, 5, 0, None, None, [(2,pi)], energyCostToBuild=100,oreCostToBuild=50,timeToBuild=30*config.fps,hangarSpaceNeed=10 ) 
-        self.MISSILE_BUILDER = BuilderMissileStats( ids.M_FRIGATE_BUILDER, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=5,timeToBuild=5*config.fps,hangarSpaceNeed=100, buildType=ids.B_FRIGATE ) 
-        self.MISSILE_BUILDER_BASE_CARGO = BuilderMissileStats( ids.M_BUILDER_BASE_CARGO, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=50,timeToBuild=5*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_CARGO ) 
-        self.MISSILE_BUILDER_BASE_MILIARY = BuilderMissileStats( ids.M_BUILDER_BASE_MILITARY, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=50,timeToBuild=5*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_MILITARY ) 
-        self.MISSILE_BUILDER_BASE_CARRIER = BuilderMissileStats( ids.M_BUILDER_BASE_CARRIER, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=50,timeToBuild=5*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_CARRIER ) 
-        self.MISSILE_BUILDER_BASE_HEAVY_MILIARY = BuilderMissileStats( ids.M_BUILDER_BASE_HEAVY_MILITARY, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=50,timeToBuild=5*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_HEAVY_MILITARY ) 
+        self.MISSILE_BUILDER = BuilderMissileStats( ids.M_FRIGATE_BUILDER, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=100,timeToBuild=30*config.fps,hangarSpaceNeed=100, buildType=ids.B_FRIGATE ) 
+        self.MISSILE_BUILDER_BASE_CARGO = BuilderMissileStats( ids.M_BUILDER_BASE_CARGO, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=200,timeToBuild=30*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_CARGO ) 
+        self.MISSILE_BUILDER_BASE_MILIARY = BuilderMissileStats( ids.M_BUILDER_BASE_MILITARY, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=100,timeToBuild=30*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_MILITARY ) 
+        self.MISSILE_BUILDER_BASE_CARRIER = BuilderMissileStats( ids.M_BUILDER_BASE_CARRIER, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=100,timeToBuild=30*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_CARRIER ) 
+        self.MISSILE_BUILDER_BASE_HEAVY_MILIARY = BuilderMissileStats( ids.M_BUILDER_BASE_HEAVY_MILITARY, 3, 0.6, 0, 0.02, 5, 0, energyCostToBuild=0,oreCostToBuild=100,timeToBuild=30*config.fps,hangarSpaceNeed=100, buildType=ids.B_BASE_HEAVY_MILITARY ) 
    # def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
    #     buildType=None ):
 
@@ -552,9 +552,9 @@ class Stats:
         self.T_SAIL_2 = TurretInstallStats( ids.T_SAIL_2, 0,1000,20*config.fps, 0,0, 0,0, 0.5*config.fps,0.01,  ids.TA_SOLAR, upgradeFrom=self.T_SAIL_1, special=ids.S_SAIL, specialValue=3 ) # specialValue= + thrust self.Boost
         self.T_JAMMER = TurretInstallStats( ids.T_JAMMER, 0,300,40*config.fps, 0.3,0, 0,0, 0.5*config.fps,0.2,  None, special=ids.S_JAMMER, specialValue=300 ) # specialValue= range
         self.T_SCANNER = TurretInstallStats( ids.T_SCANNER, 0,300,40*config.fps, 0.3,0, 0,0, 0.5*config.fps,0.2,  ids.TA_TARGET, special=ids.S_SCANNER, specialValue=1000 ) # specialValue= range
-        self.T_FRIGATE_BUILDER = TurretInstallStats( ids.T_FRIGATE_BUILDER, 0,250,5*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER,weaponPositions=[[RPos(0,10)]], special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY ] ) # constructed type
-        self.T_CIVILIAN_BUILDER = TurretInstallStats( ids.T_CIVILIAN_BUILDER, 0,250,5*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER, weaponPositions=[[RPos(0,10)]], upgradeFrom=self.T_FRIGATE_BUILDER, special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY, ids.B_BASE_CARGO ] ) # constructed type
-        self.T_MILITARY_BUILDER = TurretInstallStats( ids.T_MILITARY_BUILDER, 0,250,5*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER, weaponPositions=[[RPos(0,10)]], upgradeFrom=self.T_CIVILIAN_BUILDER, special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY, ids.B_BASE_CARGO, ids.B_BASE_MILITARY, ids.B_BASE_CARRIER, ids.B_BASE_HEAVY_MILITARY ] ) # constructed type
+        self.T_FRIGATE_BUILDER = TurretInstallStats( ids.T_FRIGATE_BUILDER, 0,250,15*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER,weaponPositions=[[RPos(0,10)]], special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY ] ) # constructed type
+        self.T_CIVILIAN_BUILDER = TurretInstallStats( ids.T_CIVILIAN_BUILDER, 0,250,30*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER, weaponPositions=[[RPos(0,10)]], upgradeFrom=self.T_FRIGATE_BUILDER, special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY, ids.B_BASE_CARGO ] ) # constructed type
+        self.T_MILITARY_BUILDER = TurretInstallStats( ids.T_MILITARY_BUILDER, 0,250,45*config.fps, 0,0, 0,0, 0.5*config.fps,0, ids.TA_MISSILE_SPECIAL, weapon=self.W_MISSILE_FRIGATE_BUILDER, weaponPositions=[[RPos(0,10)]], upgradeFrom=self.T_CIVILIAN_BUILDER, special=ids.S_BUILDER, specialValue=[ ids.B_FRIGATE, ids.B_FRIGATE_SR, ids.B_FRIGATE_MR, ids.B_FRIGATE_ENERGY, ids.B_BASE_CARGO, ids.B_BASE_MILITARY, ids.B_BASE_CARRIER, ids.B_BASE_HEAVY_MILITARY ] ) # constructed type
 
         self.T_HARVESTER = 	TurretInstallStats( ids.T_HARVESTER, 0, 70, 3*config.fps, 1,0, 0,0, 0.5*config.fps,0.05, ids.TA_HARVESTER, special=ids.S_MINE )
         self.T_SPOTLIGHT = 	TurretInstallStats( ids.T_SPOTLIGHT, 0, 70, 3*config.fps, 1,0, 0,0, 0.5*config.fps,0.08, ids.TA_HARVESTER, special=ids.S_MINE )
@@ -736,20 +736,20 @@ class Stats:
                             45, 0, 0, 0.002, 400, 500,
                             [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
                             1000, 1000, 500, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
-                            oreCostToBuild=50,
-                            defaultTurrets=[ self.T_MASS_SR_0 for x in xrange( 6 ) ] )
+                            oreCostToBuild=500,
+                            defaultTurrets=[ self.T_MASS_MR_0 for x in xrange( 6 ) ] )
         self.HUMAN_BASE_MINING =	BaseStats( ids.S_HUMAN_BASE_MINING, 70, 0, 0, 0.002, 800, 1000,
                         [ TurretStats(48,i*pi/2, i*pi/2-2*pi/3,i*pi/2+2*pi/3, True, asAngle=True) for i in xrange( 4 ) ],
                         2000, 5000, 1000, 100000, 0.4*config.fps, 5000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
                         hangars=[ (RPos( i*pi/2, 20 ), i*pi/2 ) for i in xrange( 4 ) ], 
                         defaultTurrets=[ self.T_MASS_SR_0 for x in xrange( 4 ) ],
                         defaultShips=[(self.HARVESTER,5),(self.HUMAN_BUILDER,3),(self.HUMAN_FIGHTER,4)],
-                        oreCostToBuild=50 )
+                        oreCostToBuild=750 )
         self.HUMAN_BASE_CARRIER =	BaseStats( ids.S_HUMAN_BASE_CARRIER, 
                             45, 0, 0, 0.002, 400, 500,
                             [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
                             1000, 1000, 500, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
-                            oreCostToBuild=50,
+                            oreCostToBuild=1000,
                             defaultTurrets=[ self.T_MASS_SR_0 for x in xrange( 6 ) ],
                             defaultShips=[(self.HUMAN_FIGHTER,8),(self.HUMAN_BOMBER,4)] )
 
@@ -766,7 +766,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_MASS_SR_1, self.T_MASS_MR_0 ],
-                                oreCostToBuild=800 ) 
+                                oreCostToBuild=600 ) 
 
          ## Nomad
         self.NOMAD_FIGHTER =	SingleWeaponShipStats( ids.S_NOMAD_FIGHTER, 15, 0.6, 0, 0.012, 20, 20, self.W_MASS_SR_FIGHTER, [ids.S_NOMAD_FIGHTER], None, [(15,pi)], energyCostToBuild=0,oreCostToBuild=120,timeToBuild=15*config.fps,hangarSpaceNeed=14 )
@@ -907,7 +907,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_ESPHERE_0, self.T_ESPHERE_0 ],
-                                oreCostToBuild=200 ) 
+                                oreCostToBuild=600 ) 
 
         self.NOMAD_FRIGATE_0=   FrigateStats( ids.S_NOMAD_FRIGATE_0, 
                                 radius=36, 
@@ -922,7 +922,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_REPEATER_1, self.T_NOMAD_CANNON_0 ],
-                                oreCostToBuild=250 ) 
+                                oreCostToBuild=500 ) 
 
         self.AI_FRIGATE_0 =     FrigateStats( ids.S_AI_FRIGATE_0, 
                                 radius=18, 
@@ -936,7 +936,7 @@ class Stats:
                                 fragments=[],
                                 engines=[],
                                 defaultTurrets=[ self.T_AI_OMNI_LASER_0 ],
-                                oreCostToBuild=150 ) 
+                                oreCostToBuild=500 ) 
 
         ### Scafoldings
         self.S_HUMAN_SCAFFOLDING =    ScaffoldingStats( ids.S_HUMAN_SCAFFOLDING, radius=37, maxThrust=0, maxReverseThrust=0, maxRg=0, maxHull=100, maxShield=10 )
@@ -954,7 +954,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=350, 
                                             maxShield=700,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=400,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets=[ TurretStats(36,i*pi*2/3+pi/6+0.1, i*pi*2/3+pi/6-2*pi/3+0.1,i*pi*2/3+pi/6+2*pi/3+0.1, True, asAngle=True) 
@@ -968,7 +968,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=350, 
                                             maxShield=700,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=700,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets = [ TurretStats( 44, -15,  -5*pi/6, pi/2, True, asAngle=False),
@@ -990,7 +990,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=350, 
                                             maxShield=700,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=750,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets = [ TurretStats( 44, -15,  -5*pi/6, pi/2, True, asAngle=False),
@@ -1014,7 +1014,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=250, 
                                             maxShield=800,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=40,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets=[ TurretStats(35,i*pi*2/3, i*pi*2/3-2*pi/3,i*pi*2/3+2*pi/3, True, asAngle=True) 
@@ -1027,7 +1027,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=250, 
                                             maxShield=800,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=700,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets=[ TurretStats(55, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
@@ -1044,7 +1044,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=500, 
                                             maxShield=250,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=500,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets=[ TurretStats(24,i*pi/2, i*pi/2-3*pi/4, i*pi/2+3*pi/4, True, asAngle=True) 
@@ -1057,7 +1057,7 @@ class Stats:
                                             maxRg=0.003, 
                                             maxHull=500, 
                                             maxShield=250,
-                                            oreCostToBuild=200,
+                                            oreCostToBuild=800,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
                                             turrets=[ TurretStats( 57, 1, -pi/2,pi/2, True),
@@ -1179,8 +1179,8 @@ class Stats:
     self.R_EVOLVED: { self.R_HUMAN: 25, self.R_AI: -20, self.R_NOMAD: 75, self.R_EXTRA: -50 , self.R_EVOLVED: 100 } }
 
         self.PlayableShips = { ids.S_HUMAN_FS_0: ShipChoice( self.HUMAN_FS_0, self.R_HUMAN, 0 ), 
-                      ids.S_HUMAN_FS_1: ShipChoice( self.HUMAN_FS_1, self.R_HUMAN, 0 ), 
-                      ids.S_HUMAN_FS_2: ShipChoice( self.HUMAN_FS_2, self.R_HUMAN, 0 ),
+                      ids.S_HUMAN_FS_1: ShipChoice( self.HUMAN_FS_1, self.R_HUMAN, 200 ), 
+                      ids.S_HUMAN_FS_2: ShipChoice( self.HUMAN_FS_2, self.R_HUMAN, 400 ),
 
                       ids.S_EVOLVED_FS_0: ShipChoice( self.EVOLVED_FS_0, self.R_EVOLVED, 0 ),
                       ids.S_EVOLVED_FS_1: ShipChoice( self.EVOLVED_FS_1, self.R_EVOLVED, 200 ),
