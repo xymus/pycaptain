@@ -25,13 +25,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.66306817"
-     inkscape:cx="756.73896"
-     inkscape:cy="1536.772"
+     inkscape:zoom="0.46886"
+     inkscape:cx="1653.1421"
+     inkscape:cy="1521.5828"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
-     inkscape:window-height="1120"
+     inkscape:window-height="1126"
      inkscape:window-x="0"
      inkscape:window-y="25"
      showguides="true"
@@ -1800,7 +1800,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient3543"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.2033606,-0.02731046,0.1039016,0.7736772,709.72316,-146.49816)"
+       gradientTransform="matrix(0.2033606,-0.02731046,0.1039016,0.7736772,596.61262,-327.47503)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -26108,37 +26108,6 @@
        fx="1545.3793"
        fy="850.25452"
        r="20.984898" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3668-52"
-       id="radialGradient7984"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.11531419,-0.54007056,-1.0569317,-0.2795024,1710.1624,1123.1645)"
-       cx="704.54218"
-       cy="804.875"
-       fx="704.54218"
-       fy="804.875"
-       r="37.541969" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3668-00"
-       id="radialGradient7986"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.951324,0,0,0.2503484,88.734034,632.98302)"
-       cx="1128"
-       cy="858.76221"
-       fx="1128"
-       fy="858.76221"
-       r="76" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient6373-4"
-       id="linearGradient7988"
-       gradientUnits="userSpaceOnUse"
-       x1="1184.8181"
-       y1="820.81299"
-       x2="1184.8181"
-       y2="859.90619" />
     <inkscape:perspective
        id="perspective7998"
        inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
@@ -28092,6 +28061,741 @@
        id="radialGradient9143-9"
        xlink:href="#linearGradient3527-4-7"
        inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7421"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,151.90305,-797.08678)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7424"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-47.425658,-885.37302)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7426"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-543.21447,-729.46629)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7428"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,151.75518,-825.99848)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7430"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,286.96047,-677.03477)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7432"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-535.652,-705.41726)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7434"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185524,0.6095143,345.09016,85.759876)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7437"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,-309.27982,291.53433)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7439"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151558,0.0818552,0.6095142,234.8737,218.1561)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7441"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,-676.71576,-266.55236)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7444"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,-301.71735,315.58337)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7446"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690263,0.0643054,0.4788341,-697.91451,-175.29084)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7448"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690263,0.06430542,0.4788342,225.33118,319.46603)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7451"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,-692.19351,-59.877952)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7453"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185524,0.6095143,457.96543,-421.55945)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7455"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151558,0.0818552,0.6095142,-710.94992,-231.93841)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7458"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,160.61061,362.77456)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7460"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185524,0.6095143,465.52791,-397.51038)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7462"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690263,0.06430541,0.4788341,192.18027,-727.46684)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7464"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185524,0.6095143,352.65271,109.80892)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7466"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,-684.63097,-35.828915)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7468"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-39.863109,-861.32398)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7511"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,151.75518,-809.97449)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7513"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,-697.09033,-173.18408)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7677"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.47883421,160.61061,362.77456)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7679"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-535.65201,-705.41727)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7681"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,152.28839,-811.84072)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7683"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,148.5705,-796.95348)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7812"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,168.89204,-811.89564)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7828"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,148.5705,-796.95348)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7830"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,168.89204,-811.89564)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7832"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,286.96047,-677.03477)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7834"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-535.65201,-705.41727)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7836"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,-697.09033,-173.18408)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7838"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-39.863109,-861.32398)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7854"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,148.5705,-796.95348)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7856"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,168.89204,-811.89564)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7858"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,286.96047,-677.03477)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7860"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-535.65201,-705.41727)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7862"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,-697.09033,-173.18408)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7864"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-39.863109,-861.32398)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7868"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,349.48173,104.39203)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7872"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,221.11157,317.83741)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7875"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-302.21735,309.32659)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7878"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,-670.64548,-268.14888)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7881"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,250.61063,226.14045)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7884"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,230.28909,241.08261)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7887"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,148.5705,-796.95348)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7889"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,286.96047,-677.03477)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7892"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-535.65201,-705.41727)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7894"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,-697.09033,-173.18408)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7896"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.6095143,-39.863109,-861.32398)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7899"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-39.86311,-861.32399)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7904"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,-697.09033,-173.18408)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7907"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-535.65201,-705.41727)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7910"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,286.96047,-677.03478)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7913"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,168.89204,-811.89564)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7917"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,148.5705,-796.95348)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7920"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,-681.52531,-41.283442)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7923"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12586129,-0.01690263,0.0643054,0.47883407,187.24772,-722.85951)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7926"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185522,0.60951431,459.85929,-400.20568)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7929"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1258613,-0.01690264,0.06430546,0.4788342,162.26306,356.71928)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7933"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.13743451,-0.02152048,0.07021844,0.60965272,-689.21429,-222.10721)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7937"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1602105,-0.02151559,0.08185521,0.6095143,-709.53583,-207.16505)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3668-52"
+       id="radialGradient7965"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.11531419,-0.54007056,-1.0569317,-0.2795024,1710.1624,1123.1645)"
+       cx="704.54218"
+       cy="804.875"
+       fx="704.54218"
+       fy="804.875"
+       r="37.541969" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3668-00"
+       id="radialGradient7967"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.951324,0,0,0.2503484,88.734034,632.98302)"
+       cx="1128"
+       cy="858.76221"
+       fx="1128"
+       fy="858.76221"
+       r="76" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6373-4"
+       id="linearGradient7969"
+       gradientUnits="userSpaceOnUse"
+       x1="1184.8181"
+       y1="820.81299"
+       x2="1184.8181"
+       y2="859.90619" />
   </defs>
   <metadata
      id="metadata7">
@@ -29093,12 +29797,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/../../exports/ships/fighter.png"
        xlink:href="../../exports/ships/fighter.png"
-       width="20"
-       height="20"
-       id="image2375"
-       x="404.0899"
+       transform="matrix(0,1,-1,0,0,0)"
        y="-307.32541"
-       transform="matrix(0,1,-1,0,0,0)" />
+       x="404.0899"
+       id="image2375"
+       height="20"
+       width="20" />
     <rect
        style="fill:#3c3c4a;fill-opacity:1;stroke:#000000;stroke-width:0.85052395;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect6249"
@@ -29271,8 +29975,8 @@
        x="331.93073"
        y="564.23346" />
     <rect
-       y="130.04428"
-       x="840.16772"
+       y="-50.932587"
+       x="727.05719"
        height="60.638252"
        width="14.185763"
        id="rect3541"
@@ -29409,11 +30113,11 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       width="250"
-       height="250"
-       id="image3718"
+       y="-281.8085"
        x="971.87134"
-       y="-281.8085" />
+       id="image3718"
+       height="250"
+       width="250" />
     <path
        id="path3781"
        d="m 1119.375,437.1875 c -5.769,3e-5 -10.4375,4.68505 -10.4375,10.4375 0,0.32253 0,0.65367 0.031,0.96875 l 0,17.71875 -0.031,0 0,168.90625 0,24.5625 0.031,0 0,16.65625 c -0.029,0.31712 -0.031,0.64414 -0.031,0.96875 0,5.75245 4.6685,10.40623 10.4375,10.40625 0.013,3e-5 0.049,4e-5 0.062,0 l 0,-0.125 c 22.8516,0 41.4063,-18.52345 41.4063,-41.375 0,-1.28964 -0.072,-2.5841 -0.1876,-3.84375 l 0,-159.90625 c 0.1141,-1.25164 0.1876,-2.53128 0.1876,-3.8125 0,-22.85156 -18.5548,-41.40624 -41.4063,-41.40625 l 0,-0.15625 c -0.013,-3e-5 -0.049,3e-5 -0.062,0 z"
@@ -29580,15 +30284,15 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/../../exports/1.png"
        xlink:href="../../exports/1.png"
-       inkscape:export-ydpi="92"
-       inkscape:export-xdpi="92"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/extra-fs-1.png"
-       transform="matrix(-0.77819939,0.62801729,-0.62801729,-0.77819939,0,0)"
-       width="92"
-       height="92"
-       id="image4497"
+       y="-687.10693"
        x="-164.70187"
-       y="-687.10693" />
+       id="image4497"
+       height="92"
+       width="92"
+       transform="matrix(-0.77819939,0.62801729,-0.62801729,-0.77819939,0,0)"
+       inkscape:export-filename="/media/pros/pyfl/art/ships/extra-fs-1.png"
+       inkscape:export-xdpi="92"
+       inkscape:export-ydpi="92" />
     <g
        id="g4500"
        transform="matrix(0.7878147,0,0,0.7878147,-49.448242,-44.359914)"
@@ -30016,12 +30720,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
-       y="-716.71179"
-       x="-1118.4069"
-       id="image4053"
+       width="159.08798"
        height="159.08798"
-       width="159.08798" />
+       id="image4053"
+       x="-1118.4069"
+       y="-716.71179"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
     <path
        sodipodi:type="arc"
        style="fill:url(#radialGradient4343);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -30539,29 +31243,29 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         width="244.45108"
-         height="128.5571"
-         id="image3894"
-         x="-288.89871"
-         y="-1349.4313"
-         transform="matrix(0.5301872,0.05823698,0.246286,-0.4532941,1005.665,294.85476)"
-         clip-path="url(#clipPath3900)"
-         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         inkscape:export-ydpi="92"
          inkscape:export-xdpi="92"
-         inkscape:export-ydpi="92" />
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         clip-path="url(#clipPath3900)"
+         transform="matrix(0.5301872,0.05823698,0.246286,-0.4532941,1005.665,294.85476)"
+         y="-1349.4313"
+         x="-288.89871"
+         id="image3894"
+         height="128.5571"
+         width="244.45108" />
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         clip-path="url(#clipPath3810)"
-         transform="matrix(-0.3988876,0.3394408,-0.5283162,-0.07216022,1005.665,539.85269)"
-         y="-154.57726"
-         x="996.46283"
-         id="image3820"
-         height="234.41803"
-         width="124.3883"
-         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         inkscape:export-ydpi="92"
          inkscape:export-xdpi="92"
-         inkscape:export-ydpi="92" />
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         width="124.3883"
+         height="234.41803"
+         id="image3820"
+         x="996.46283"
+         y="-154.57726"
+         transform="matrix(-0.3988876,0.3394408,-0.5283162,-0.07216022,1005.665,539.85269)"
+         clip-path="url(#clipPath3810)" />
       <path
          inkscape:export-ydpi="92"
          inkscape:export-xdpi="92"
@@ -31720,13 +32424,13 @@
         <image
            sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
            xlink:href="bio.png"
-           transform="translate(140,140)"
-           clip-path="url(#clipPath5383)"
-           y="613.19147"
-           x="809.87134"
-           id="image5359"
+           width="124"
            height="84"
-           width="124" />
+           id="image5359"
+           x="809.87134"
+           y="613.19147"
+           clip-path="url(#clipPath5383)"
+           transform="translate(140,140)" />
         <path
            style="fill:url(#radialGradient6367);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2173394px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 977.625,761.78125 c -0.22988,0.002 -0.42931,0.0528 -0.65625,0.0625 -0.26798,0.004 -0.54347,-0.005 -0.8125,0 l 0,0.0625 c -15.86937,1.27877 -24.34381,20.11365 -24.34375,34 l 0,2.75 c -2e-5,13.88652 8.47403,32.78417 24.34375,34.0625 l 0,0.0625 c 0.49671,0.009 0.97556,-0.006 1.46875,0 0.55482,0.007 1.10588,-0.004 1.65625,0 62.88505,0.43432 96.53125,-19.59081 96.53125,-34.125 l 0,-2.75 c 0,-14.58597 -33.8999,-34.64518 -97.21875,-34.0625 -0.32764,-0.011 -0.64682,-0.066 -0.96875,-0.0625 z m 10.5625,0.9375 c 0.26808,-0.003 0.53964,0.0518 0.8125,0.0625 52.7267,-0.56727 80.9375,18.95606 80.9375,33.15625 l 0,2.6875 c 0,14.14976 -28.0095,33.6416 -80.375,33.21875 -0.45831,-0.004 -0.91295,0.007 -1.375,0 -0.41069,-0.006 -0.80511,0.008 -1.21875,0 l 0,-0.0625 c -13.215,-1.24451 -20.28122,-19.63699 -20.28125,-33.15625 l 0,-2.6875 c -4e-5,-13.51905 7.06657,-31.84884 20.28125,-33.09375 l 0,-0.0625 c 0.22403,-0.005 0.4331,0.004 0.65625,0 0.18899,-0.009 0.37113,-0.0601 0.5625,-0.0625 z"
@@ -32771,13 +33475,13 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         transform="translate(140,140)"
-         clip-path="url(#clipPath5383)"
-         y="613.19147"
-         x="809.87134"
-         id="image6859"
+         width="124"
          height="84"
-         width="124" />
+         id="image6859"
+         x="809.87134"
+         y="613.19147"
+         clip-path="url(#clipPath5383)"
+         transform="translate(140,140)" />
       <path
          style="fill:url(#radialGradient7269);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2173394px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 977.625,761.78125 c -0.22988,0.002 -0.42931,0.0528 -0.65625,0.0625 -0.26798,0.004 -0.54347,-0.005 -0.8125,0 l 0,0.0625 c -15.86937,1.27877 -24.34381,20.11365 -24.34375,34 l 0,2.75 c -2e-5,13.88652 8.47403,32.78417 24.34375,34.0625 l 0,0.0625 c 0.49671,0.009 0.97556,-0.006 1.46875,0 0.55482,0.007 1.10588,-0.004 1.65625,0 62.88505,0.43432 96.53125,-19.59081 96.53125,-34.125 l 0,-2.75 c 0,-14.58597 -33.8999,-34.64518 -97.21875,-34.0625 -0.32764,-0.011 -0.64682,-0.066 -0.96875,-0.0625 z m 10.5625,0.9375 c 0.26808,-0.003 0.53964,0.0518 0.8125,0.0625 52.7267,-0.56727 80.9375,18.95606 80.9375,33.15625 l 0,2.6875 c 0,14.14976 -28.0095,33.6416 -80.375,33.21875 -0.45831,-0.004 -0.91295,0.007 -1.375,0 -0.41069,-0.006 -0.80511,0.008 -1.21875,0 l 0,-0.0625 c -13.215,-1.24451 -20.28122,-19.63699 -20.28125,-33.15625 l 0,-2.6875 c -4e-5,-13.51905 7.06657,-31.84884 20.28125,-33.09375 l 0,-0.0625 c 0.22403,-0.005 0.4331,0.004 0.65625,0 0.18899,-0.009 0.37113,-0.0601 0.5625,-0.0625 z"
@@ -32797,12 +33501,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       width="92.05336"
-       height="92.05336"
-       id="image8455"
-       x="-1477.0024"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
        y="59.163239"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
+       x="-1477.0024"
+       id="image8455"
+       height="92.05336"
+       width="92.05336" />
     <path
        transform="matrix(0.544411,0,0,0.544411,654.02206,444.73943)"
        d="m 520,1248.3622 c 0,46.3919 -37.60808,84 -84,84 -46.39192,0 -84,-37.6081 -84,-84 0,-46.3919 37.60808,-84 84,-84 46.39192,0 84,37.6081 84,84 z"
@@ -32816,12 +33520,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
-       y="-48.991165"
-       x="-1403.4927"
-       id="image8503"
+       width="92.05336"
        height="92.05336"
-       width="92.05336" />
+       id="image8503"
+       x="-1403.4927"
+       y="-48.991165"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
     <path
        sodipodi:type="arc"
        style="fill:url(#radialGradient8507);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -36003,12 +36707,12 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         transform="matrix(-0.5621253,-0.8270521,0.8270521,-0.5621253,0,0)"
-         y="-146.16608"
-         x="-1724.3616"
-         id="image12102"
+         width="92.05336"
          height="92.05336"
-         width="92.05336" />
+         id="image12102"
+         x="-1724.3616"
+         y="-146.16608"
+         transform="matrix(-0.5621253,-0.8270521,0.8270521,-0.5621253,0,0)" />
       <path
          sodipodi:type="arc"
          style="fill:url(#radialGradient13736);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -36047,12 +36751,12 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         width="84.730576"
-         height="75.273056"
-         id="image13869"
-         x="-1902.1309"
+         transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
          y="1.8538502"
-         transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+         x="-1902.1309"
+         id="image13869"
+         height="75.273056"
+         width="84.730576" />
       <path
          id="path13871"
          d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36079,7 +36783,7 @@
          inkscape:transform-center-y="-0.002410214"
          inkscape:transform-center-x="-1.7395344"
          transform="matrix(0.8028119,-0.4635036,0.4635036,0.8028119,-791.43762,326.71559)"
-         d="m 1042,2071.9402 a 27,27 0 1 1 -54,0 27,27 0 1 1 54,0 z"
+         d="m 1042,2071.9402 c 0,14.9117 -12.0883,27 -27,27 -14.9117,0 -27,-12.0883 -27,-27 0,-14.9117 12.0883,-27 27,-27 14.9117,0 27,12.0883 27,27 z"
          sodipodi:ry="27"
          sodipodi:rx="27"
          sodipodi:cy="2071.9402"
@@ -36115,12 +36819,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             width="84.730576"
-             height="75.273056"
-             id="image15368"
-             x="-1902.1309"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
              y="1.8538502"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+             x="-1902.1309"
+             id="image15368"
+             height="75.273056"
+             width="84.730576" />
           <path
              id="path15370"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36163,12 +36867,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-             y="1.8538502"
-             x="-1902.1309"
-             id="image15384"
+             width="84.730576"
              height="75.273056"
-             width="84.730576" />
+             id="image15384"
+             x="-1902.1309"
+             y="1.8538502"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
           <path
              style="fill:url(#radialGradient151252);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36211,12 +36915,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-             y="1.8538502"
-             x="-1902.1309"
-             id="image15400"
+             width="84.730576"
              height="75.273056"
-             width="84.730576" />
+             id="image15400"
+             x="-1902.1309"
+             y="1.8538502"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
           <path
              style="fill:url(#radialGradient151260);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36585,12 +37289,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13914"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13914"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient13958);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36633,12 +37337,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13930"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13930"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path13932"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36681,12 +37385,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13946"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13946"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path13948"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36747,12 +37451,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13992"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13992"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path13994"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36795,12 +37499,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image14008"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image14008"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient14044);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36843,12 +37547,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image14024"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image14024"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient14052);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36909,12 +37613,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13557"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13557"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path13559"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -36957,12 +37661,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13573"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13573"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient14306);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -37005,12 +37709,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13589"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13589"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient14314);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -37069,12 +37773,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image14070"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image14070"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                style="fill:url(#radialGradient14324);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -37117,12 +37821,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image14086"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image14086"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path14088"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -37165,12 +37869,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image14102"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image14102"
+               height="75.273056"
+               width="84.730576" />
             <path
                id="path14104"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -41993,7 +42697,7 @@
     </g>
     <g
        id="evolved-base-military"
-       transform="translate(11.730581,15.996247)"
+       transform="matrix(0.84724867,0,0,0.84724867,149.12006,97.435209)"
        inkscape:label="#g7893">
       <g
          id="g8084"
@@ -42085,7 +42789,7 @@
         <path
            id="path6506-9"
            d="m 882.86989,526.00729 21.63838,1.84894 c 19.2285,-42.1886 48.7001,-38.66535 51.12267,12.30933 l 3.31683,-27.23789 c -19.46342,-32.2193 -54.04278,-15.41835 -76.07788,13.07962 z"
-           style="fill:url(#radialGradient7984);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.37870178px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="fill:url(#radialGradient7965);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.37870178px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            sodipodi:nodetypes="ccccc" />
         <g
            transform="matrix(0,0.45652152,-0.45652152,0,1341.8117,-4.3883847)"
@@ -42097,9 +42801,9 @@
              height="38.052959"
              width="144.60124"
              id="rect6414-5"
-             style="fill:url(#radialGradient7986);fill-opacity:1;stroke:#000000;stroke-width:1.0350405;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+             style="fill:url(#radialGradient7967);fill-opacity:1;stroke:#000000;stroke-width:1.0350405;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
           <rect
-             style="fill:url(#linearGradient7988);fill-opacity:1;stroke:#000000;stroke-width:1.0350405;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             style="fill:url(#linearGradient7969);fill-opacity:1;stroke:#000000;stroke-width:1.0350405;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
              id="rect6416-3"
              width="144.60124"
              height="38.052959"
@@ -42213,7 +42917,8 @@
     </g>
     <g
        id="ai-base-cargo"
-       inkscape:label="#g9434">
+       inkscape:label="#g9434"
+       transform="translate(0,-8.5313313)">
       <g
          inkscape:transform-center-x="-40.25722"
          id="g8865"
@@ -42405,7 +43110,7 @@
          sodipodi:cy="260.36218"
          sodipodi:rx="94"
          sodipodi:ry="94"
-         d="m 511,260.36218 a 94,94 0 1 1 -188,0 94,94 0 1 1 188,0 z"
+         d="m 511,260.36218 c 0,51.91477 -42.08523,94 -94,94 -51.91477,0 -94,-42.08523 -94,-94 0,-51.91476 42.08523,-94 94,-94 51.91477,0 94,42.08524 94,94 z"
          inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/ai-fs-0.png"
          inkscape:export-xdpi="92"
          inkscape:export-ydpi="92" />
@@ -42507,6 +43212,261 @@
            id="rect13738-8"
            style="fill:url(#radialGradient8818-7);fill-opacity:1;stroke:#000000;stroke-width:0.08532777;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
            transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+      </g>
+    </g>
+    <g
+       id="ai-base-military"
+       inkscape:label="#g7485">
+      <g
+         id="g7375"
+         transform="translate(353.95031,-99.498886)">
+        <g
+           id="g7939">
+          <rect
+             inkscape:transform-center-y="-2.9377944"
+             inkscape:transform-center-x="-7.9296433"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(0,1,-1,0,0,0)"
+             y="-579.08923"
+             x="251.33665"
+             height="47.771706"
+             width="11.175753"
+             id="rect7377"
+             style="fill:url(#radialGradient7917);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             inkscape:transform-center-y="0.66921726"
+             inkscape:transform-center-x="-22.822161"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(0,1,-1,0,0,0)"
+             style="fill:url(#radialGradient7913);fill-opacity:1;stroke:#000000;stroke-width:0.13633616;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7383"
+             width="9.5869751"
+             height="47.782555"
+             x="257.04868"
+             y="-593.98199" />
+          <rect
+             inkscape:transform-center-y="-0.7877961"
+             inkscape:transform-center-x="-8.2516517"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             style="fill:url(#radialGradient7910);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7385"
+             width="8.7796688"
+             height="37.529438"
+             x="367.69363"
+             y="-505.88068"
+             transform="matrix(0.88601619,-0.4636543,-0.4636543,-0.88601619,0,0)" />
+          <rect
+             inkscape:transform-center-y="0.81162357"
+             inkscape:transform-center-x="-6.6517057"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(-0.91611805,-0.40090862,-0.40090862,0.91611805,0,0)"
+             y="-2.0300751"
+             x="-616.35736"
+             height="37.5294"
+             width="8.7796659"
+             id="rect7399"
+             style="fill:url(#radialGradient7904);fill-opacity:1;stroke:#000000;stroke-width:0.1156273;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             style="fill:url(#radialGradient7884);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7816"
+             width="11.175753"
+             height="47.771706"
+             x="333.05524"
+             y="458.94684"
+             transform="matrix(0.8660254,-0.5,0.5,0.8660254,0,0)"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-7.9296433"
+             inkscape:transform-center-y="-2.9377944" />
+          <rect
+             y="444.05408"
+             x="338.76727"
+             height="47.782555"
+             width="9.5869751"
+             id="rect7818"
+             style="fill:url(#radialGradient7881);fill-opacity:1;stroke:#000000;stroke-width:0.13633616;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             transform="matrix(0.8660254,-0.5,0.5,0.8660254,0,0)"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-22.822161"
+             inkscape:transform-center-y="0.66921726" />
+          <rect
+             transform="matrix(-0.8445445,-0.53548538,-0.53548538,0.8445445,0,0)"
+             y="-96.994781"
+             x="-589.91229"
+             height="37.529438"
+             width="8.7796688"
+             id="rect7820"
+             style="fill:url(#radialGradient7878);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-8.2516517"
+             inkscape:transform-center-y="-0.7877961" />
+          <rect
+             style="fill:url(#radialGradient7872);fill-opacity:1;stroke:#000000;stroke-width:0.1156273;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7824"
+             width="8.7796659"
+             height="37.5294"
+             x="301.84454"
+             y="488.99142"
+             transform="matrix(0.11086198,0.99383581,0.99383581,-0.11086198,0,0)"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-6.6517057"
+             inkscape:transform-center-y="0.81162357" />
+          <rect
+             inkscape:transform-center-y="-2.9377944"
+             inkscape:transform-center-x="-7.9296433"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(-0.8660254,-0.5,0.5,-0.8660254,0,0)"
+             y="10.6992"
+             x="-606.76965"
+             height="47.771706"
+             width="11.175753"
+             id="rect7842"
+             style="fill:url(#radialGradient7937);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             inkscape:transform-center-y="0.66921726"
+             inkscape:transform-center-x="-22.822161"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(-0.8660254,-0.5,0.5,-0.8660254,0,0)"
+             style="fill:url(#radialGradient7933);fill-opacity:1;stroke:#000000;stroke-width:0.13633616;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7844"
+             width="9.5869751"
+             height="47.782555"
+             x="-601.05768"
+             y="-4.193562" />
+          <rect
+             inkscape:transform-center-y="-0.7877961"
+             inkscape:transform-center-x="-8.2516517"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             style="fill:url(#radialGradient7929);fill-opacity:1;stroke:#000000;stroke-width:0.11562739;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7846"
+             width="8.7796688"
+             height="37.529438"
+             x="242.99622"
+             y="527.87335"
+             transform="matrix(-0.0414717,0.99913968,0.99913968,0.0414717,0,0)" />
+          <rect
+             inkscape:transform-center-y="0.81162357"
+             inkscape:transform-center-x="-6.6517057"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(0.80525607,-0.59292719,-0.59292719,-0.80525607,0,0)"
+             y="-551.70551"
+             x="267.98068"
+             height="37.5294"
+             width="8.7796659"
+             id="rect7850"
+             style="fill:url(#radialGradient7923);fill-opacity:1;stroke:#000000;stroke-width:0.1156273;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             inkscape:transform-center-y="8.6660356"
+             inkscape:transform-center-x="-23.220018"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(-0.2999797,-0.95394559,-0.95394559,0.2999797,0,0)"
+             y="-487.5528"
+             x="-432.88586"
+             height="47.771709"
+             width="11.175754"
+             id="rect7387"
+             style="fill:url(#radialGradient7907);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             inkscape:transform-center-y="-8.6660355"
+             inkscape:transform-center-x="-23.220042"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             style="fill:url(#radialGradient7899);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7419"
+             width="11.175754"
+             height="47.771709"
+             x="62.903164"
+             y="-643.45966"
+             transform="matrix(-0.2999797,0.95394559,-0.95394559,-0.2999797,0,0)" />
+          <rect
+             style="fill:url(#radialGradient7875);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7822"
+             width="11.175754"
+             height="47.771709"
+             x="-199.4512"
+             y="527.19104"
+             transform="matrix(-0.67615126,0.73676283,0.73676283,0.67615126,0,0)"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-23.220018"
+             inkscape:transform-center-y="8.6660356" />
+          <rect
+             transform="matrix(0.97613096,-0.21718276,0.21718276,0.97613096,0,0)"
+             y="322.25635"
+             x="452.24802"
+             height="47.771709"
+             width="11.175754"
+             id="rect7826"
+             style="fill:url(#radialGradient7868);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             inkscape:export-xdpi="92"
+             inkscape:export-ydpi="92"
+             inkscape:transform-center-x="-23.220042"
+             inkscape:transform-center-y="-8.6660355" />
+          <rect
+             inkscape:transform-center-y="8.6660356"
+             inkscape:transform-center-x="-23.220018"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             transform="matrix(0.97613096,0.21718276,0.21718276,-0.97613096,0,0)"
+             y="-182.3412"
+             x="562.62543"
+             height="47.771709"
+             width="11.175754"
+             id="rect7848"
+             style="fill:url(#radialGradient7926);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+          <rect
+             inkscape:transform-center-y="-8.6660355"
+             inkscape:transform-center-x="-23.220042"
+             inkscape:export-ydpi="92"
+             inkscape:export-xdpi="92"
+             inkscape:export-filename="/media/pros/pyfl/art/ships/ai-base.png"
+             style="fill:url(#radialGradient7920);fill-opacity:1;stroke:#000000;stroke-width:0.14718358;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect7852"
+             width="11.175754"
+             height="47.771709"
+             x="-578.75903"
+             y="176.58089"
+             transform="matrix(-0.67615126,-0.73676283,0.73676283,-0.67615126,0,0)" />
+        </g>
+        <path
+           sodipodi:type="arc"
+           style="opacity:0;fill:#ffffff;fill-opacity:1;stroke:none"
+           id="path7963"
+           sodipodi:cx="1550.7455"
+           sodipodi:cy="488.52765"
+           sodipodi:rx="54.670094"
+           sodipodi:ry="54.670094"
+           d="m 1605.4156,488.52765 a 54.670094,54.670094 0 1 1 -109.3402,0 54.670094,54.670094 0 1 1 109.3402,0 z"
+           transform="translate(-1008.1946,-229.6363)" />
       </g>
     </g>
   </g>

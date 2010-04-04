@@ -1,5 +1,7 @@
 from scenarios.randommultiple import Randommultiple
 
+from server.ships import buildShip
+
 class Randomsingle( Randommultiple ):
     title = "Random Single System"
     description = "A randomly generated scenario."

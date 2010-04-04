@@ -104,7 +104,6 @@ class Imgs( Rc ):
         self[ ids.P_MARS_2 ] = self.loadImage( "planets/mars.2.png" )  
         yield 39
 
-        self[ ids.S_AI_BASE ] 	= self.loadImage( "ships/ai-base.png" )
         self[ ids.S_AI_FIGHTER] = self.loadImage( "ships/ai-fighter.png" )
         self[ ids.S_AI_BOMBER] = self.loadImage( "ships/ai-bomber.png" )
         self[ ids.S_AI_FS_0] = self.loadImage( "ships/ai-fs-0.png" )
@@ -113,6 +112,8 @@ class Imgs( Rc ):
         self[ ids.S_AI_HARVESTER] = self.loadImage( "ships/ai-harvester.png" )
         self[ ids.S_AI_FRIGATE_0 ] = self.loadImage( "ships/ai-frigate-0.png" )
         self[ ids.S_AI_SCAFFOLDING ] = self.loadImage( "ships/ai-scaffolding.png" )
+        self[ ids.S_AI_BASE_MILITARY ] 	= self.loadImage( "ships/ai-base-military.png" )
+       # self[ ids.S_AI_BASE_CARGO ] 	= self.loadImage( "ships/ai-base-cargo.png" )
 
         self[ ids.S_NOMAD_FS_0 ] 	= self.loadImage( "ships/nomad-fs-0.png" )
         self[ ids.S_NOMAD_FIGHTER ] = self.loadImage( "ships/nomad-fighter.png" )
@@ -123,6 +124,9 @@ class Imgs( Rc ):
         self[ ids.S_NOMAD_HARVESTER_1] = self.loadImage( "ships/nomad-harvester-1.png" )
         self[ ids.S_NOMAD_FRIGATE_0 ] = self.loadImage( "ships/nomad-frigate-0.png" )
         self[ ids.S_NOMAD_SCAFFOLDING ] = self.loadImage( "ships/nomad-scaffolding.png" )
+        self[ ids.S_NOMAD_BASE_MILITARY ] 	= self.loadImage( "ships/nomad-base-military.png" )
+       # self[ ids.S_NOMAD_BASE_CARGO ] 	= self.loadImage( "ships/nomad-base-cargo.png" )
+
 
         self[ ids.S_EVOLVED_FIGHTER ] = self.loadImage( "ships/evolved-fighter.png" )
         self[ ids.S_EVOLVED_BOMBER ] = self.loadImage( "ships/evolved-bomber.png" )
@@ -132,6 +136,9 @@ class Imgs( Rc ):
         self[ ids.S_EVOLVED_HARVESTER] = self.loadImage( "ships/evolved-harvester.png" )
         self[ ids.S_EVOLVED_FRIGATE_0 ] = self.loadImage( "ships/evolved-frigate-0.png" )
         self[ ids.S_EVOLVED_SCAFFOLDING ] = self.loadImage( "ships/evolved-scaffolding.png" )
+        self[ ids.S_EVOLVED_BASE_MILITARY ] 	= self.loadImage( "ships/evolved-base-military.png" )
+       # self[ ids.S_EVOLVED_BASE_CARGO ] 	= self.loadImage( "ships/evolved-base-cargo.png" )
+
 
         self[ ids.S_EXTRA_BASE ] 	= self.loadImage( "ships/extra-fs-0.png" )
         self[ ids.S_EXTRA_FS_1 ] 	= self.loadImage( "ships/extra-fs-1.png" )

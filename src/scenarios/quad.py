@@ -372,7 +372,7 @@ class Quad ( Scenario ):
         dist = orbited.stats.maxRadius*1.5
         angle = 2*pi*random()
 
-        obase = OrbitalBase( player, game.stats.AI_BASE, AiGovernor( player ), orbited.xp+dist*cos(angle),orbited.yp+dist*sin(angle),0, 0, 0.0,0.0,0.0, 0)
+        obase = OrbitalBase( player, game.stats.AI_BASE_MILITARY, AiGovernor( player ), orbited.xp+dist*cos(angle),orbited.yp+dist*sin(angle),0, 0, 0.0,0.0,0.0, 0)
         for i,t in enumerate(obase.turrets):
           if i<len(obase.turrets)/2:
             t.install = TurretInstall( game.stats.T_LASER_MR_1 )

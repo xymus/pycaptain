@@ -189,7 +189,7 @@ class Randommultiple( Scenario ):
         Scenario.spawn( self, game, player, shipId=shipId )
 
         for i in xrange( 0, 3 ):
-            frigate = Frigate( player, player.race.defaultFrigate, 
+            frigate = Frigate( player, player.race.defaults[ ids.B_FRIGATE ], 
                                AiEscortFrigate( player ), x+100, y+100 )
             game.objects.append( frigate )
 
