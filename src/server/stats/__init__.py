@@ -88,6 +88,7 @@ class ScaffoldingStats( ShipStats ):
         ShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, \
             shieldVsMass=shieldVsMass, shieldVsEnergy=shieldVsEnergy, hullVsMass=hullVsMass, hullVsEnergy=hullVsEnergy )
         self.orbitable = True
+        self.buildAsHint = "scaffolding"
 
 class SingleWeaponShipStats( ShipStats ):
     def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,weapon,unavoidableFragments, fragments, engines, weaponPositions=None,energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0, \
@@ -186,23 +187,32 @@ class FrigateStats( MultipleWeaponsShipStats ):
 
         self.buildAsHint = "frigate"
 
-class HarvesterShipStats( MultipleWeaponsShipStats ):
-    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, turretType, maxRange, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
+class WorkerShipStats( MultipleWeaponsShipStats ):
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, turretType=None, maxRange=1000, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
         MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed )
         self.maxOre = maxOre
         self.maxRange = maxRange
         self.turretType = turretType
+
+        self.buildAsHint = "worker"
+
+class HarvesterShipStats( WorkerShipStats ):
+    def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, turretType, maxRange, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
+        WorkerShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, maxRange=maxRange, turretType=turretType )
 
         self.buildAsHint = "harvester"
 
-class BuilderShipStats( MultipleWeaponsShipStats ):
+class BuilderShipStats( WorkerShipStats ):
     def __init__(self,id,radius,maxThrust=0.2,maxReverseThrust=0.1,maxRg=0.008,maxHull=50,maxShield=40, turrets=[], maxOre=100, unavoidableFragments=[], fragments=[], engines=[], turretType=None, maxRange=1000, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
-        MultipleWeaponsShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed )
-        self.maxOre = maxOre
-        self.maxRange = maxRange
-        self.turretType = turretType
+        WorkerShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, maxRange=maxRange, turretType=turretType )
 
         self.buildAsHint = "builder"
+
+class TransporterShipStats( WorkerShipStats ):
+    def __init__(self,id,radius,maxThrust=0.2,maxReverseThrust=0.1,maxRg=0.008,maxHull=50,maxShield=40, turrets=[], maxOre=100, unavoidableFragments=[], fragments=[], engines=[], turretType=None, maxRange=1000, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
+        WorkerShipStats.__init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield,turrets,maxOre,unavoidableFragments, fragments, engines, energyCostToBuild=energyCostToBuild, oreCostToBuild=oreCostToBuild, timeToBuild=timeToBuild, hangarSpaceNeed=hangarSpaceNeed, maxRange=maxRange, turretType=turretType )
+
+        self.buildAsHint = "transporter"
 
 class CivilianShipStats( ShipStats ):
     def __init__(self,id,radius,maxThrust,maxReverseThrust,maxRg,maxHull,maxShield, influenceRadius,unavoidableFragments, fragments, engines, energyCostToBuild=0,oreCostToBuild=0,timeToBuild=0,hangarSpaceNeed=0):
@@ -587,7 +597,7 @@ class Stats:
                                     oreCostToBuild=100,
                                     timeToBuild=10*config.fps,
                                     hangarSpaceNeed=10,
-                                    turrets=[ TurretStats( 6, 0, 0, 2*pi, False ), TurretStats( -6, 0, 0, 2*pi, False ) ],
+                                    turrets=[ TurretStats( 8, 0, 0, 2*pi, False ), TurretStats( -8, 0, 0, 2*pi, False ) ],
                                     turretType=self.T_SPOTLIGHT )
         self.EVOLVED_BUILDER =    BuilderShipStats( ids.S_EVOLVED_BUILDER, 11,   
                                     energyCostToBuild=0,
@@ -596,6 +606,37 @@ class Stats:
                                     hangarSpaceNeed=10,
                                     turrets=[ TurretStats( 6, 0, 0, 2*pi, False ) ],
                                     turretType=self.T_SPOTLIGHT )
+
+        # transporters
+        self.HUMAN_TRANSPORTER =    TransporterShipStats( ids.S_HUMAN_TRANSPORTER, 14,   
+                                    energyCostToBuild=0,
+                                    oreCostToBuild=100,
+                                    timeToBuild=10*config.fps,
+                                    hangarSpaceNeed=10,
+                                    turrets=[ TurretStats( 6, 0, 0, 2*pi, False ) ],
+                                    turretType=None )
+        self.AI_TRANSPORTER =    TransporterShipStats( ids.S_AI_TRANSPORTER, 11,   
+                                    energyCostToBuild=0,
+                                    oreCostToBuild=100,
+                                    timeToBuild=10*config.fps,
+                                    hangarSpaceNeed=10,
+                                    turrets=[ TurretStats( 0, 0, 0, 2*pi, False ) ],
+                                    turretType=None )
+        self.NOMAD_TRANSPORTER =    TransporterShipStats( ids.S_NOMAD_TRANSPORTER, 11,   
+                                    energyCostToBuild=0,
+                                    oreCostToBuild=100,
+                                    timeToBuild=10*config.fps,
+                                    hangarSpaceNeed=10,
+                                    turrets=[ TurretStats( 6, 0, 0, 2*pi, False ), TurretStats( -6, 0, 0, 2*pi, False ) ],
+                                    turretType=None )
+        self.EVOLVED_TRANSPORTER =    TransporterShipStats( ids.S_EVOLVED_TRANSPORTER, 11,   
+                                    energyCostToBuild=0,
+                                    oreCostToBuild=100,
+                                    timeToBuild=10*config.fps,
+                                    hangarSpaceNeed=10,
+                                    turrets=[ TurretStats( 6, 0, 0, 2*pi, False ) ],
+                                    turretType=None )
+        
 
         # self.EXTRAs'
         self.T_ROCK_THROWER_0 = 	TurretInstallStats( ids.T_ROCK_THROWER_0, 0,100,5*config.fps, 0,0, 0,1, 0.2*config.fps,0.05, ids.TA_COMBAT_ROTATING, weapon=self.W_ROCK_THROWER_0,weaponPositions=[[RPos(0,0)]] )
@@ -735,15 +776,17 @@ class Stats:
         self.HUMAN_BASE =	BaseStats( ids.S_HUMAN_BASE, 
                             45, 0, 0, 0.002, 400, 500,
                             [ TurretStats(25,i*pi*2/6, i*pi*2/6-pi/3,i*pi*2/6+pi/3, True, asAngle=True) for i in xrange( 6 ) ],
-                            1000, 1000, 500, 100000, 0.2*config.fps, 1000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
+                            1000, 1000, 500, 100000, 0.3*config.fps, 1000, None, 
+                            [ids.F_LARGE_0, ids.F_LARGE_1], [], 
                             oreCostToBuild=500,
                             defaultTurrets=[ self.T_MASS_MR_0 for x in xrange( 6 ) ] )
         self.HUMAN_BASE_MINING =	BaseStats( ids.S_HUMAN_BASE_MINING, 70, 0, 0, 0.002, 800, 1000,
                         [ TurretStats(48,i*pi/2, i*pi/2-2*pi/3,i*pi/2+2*pi/3, True, asAngle=True) for i in xrange( 4 ) ],
-                        2000, 5000, 1000, 100000, 0.4*config.fps, 5000, None, [ids.F_LARGE_0, ids.F_LARGE_1], [], 
+                        2000, 5000, 1000, 100000, 0.4*config.fps, 5000, None, 
+                        [ids.F_LARGE_0, ids.F_LARGE_1], [], 
                         hangars=[ (RPos( i*pi/2, 20 ), i*pi/2 ) for i in xrange( 4 ) ], 
                         defaultTurrets=[ self.T_MASS_SR_0 for x in xrange( 4 ) ],
-                        defaultShips=[(self.HARVESTER,5),(self.HUMAN_BUILDER,3),(self.HUMAN_FIGHTER,4)],
+                        defaultShips=[(self.HARVESTER,5),(self.HUMAN_BUILDER,3),(self.HUMAN_FIGHTER,4),(self.HUMAN_TRANSPORTER,3)],
                         oreCostToBuild=750 )
         self.HUMAN_BASE_CARRIER =	BaseStats( ids.S_HUMAN_BASE_CARRIER, 
                             45, 0, 0, 0.002, 400, 500,
@@ -957,10 +1000,12 @@ class Stats:
                                             oreCostToBuild=400,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets=[ TurretStats(36,i*pi*2/3+pi/6+0.1, i*pi*2/3+pi/6-2*pi/3+0.1,i*pi*2/3+pi/6+2*pi/3+0.1, True, asAngle=True) 
                                                       for i in xrange( 3 ) ],
                                             defaultTurrets=[ self.T_ESPHERE_0 for x in xrange( 3 ) ],
-                                            defaultShips=[(self.EVOLVED_BOMBER,2)] )
+                                            defaultShips=[(self.EVOLVED_BOMBER,2)],
+                            launchDelay=0.5*config.fps )
         self.EVOLVED_BASE_HEAVY_MILITARY =        BaseStats( ids.S_EVOLVED_BASE_HEAVY_MILITARY, 
                                             radius=60, 
                                             maxThrust=0, 
@@ -971,6 +1016,7 @@ class Stats:
                                             oreCostToBuild=700,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets = [ TurretStats( 44, -15,  -5*pi/6, pi/2, True, asAngle=False),
 
                                                         TurretStats( -6, -44,  5*pi/6, 13*pi/6, True, asAngle=False),
@@ -981,7 +1027,8 @@ class Stats:
 
                                                         TurretStats( 45, 19,   -pi/2, 2*pi/3, True, asAngle=False) ],
                                             defaultTurrets=[ self.T_ESPHERE_0 for x in xrange( 6 ) ],
-                                            defaultShips=[(self.EVOLVED_FIGHTER,4)] )
+                                            defaultShips=[(self.EVOLVED_FIGHTER,4)],
+                            launchDelay=0.5*config.fps )
                                            # defaultTurrets=[ self.T_ESPHERE_0, self.T_ESPHERE_1, self.T_ESPHERE_2, self.T_BURST_LASER_0, self.T_BURST_LASER_1, self.T_BURST_LASER_2 ] )
         self.EVOLVED_BASE_CARGO =        BaseStats( ids.S_EVOLVED_BASE_CARGO, 
                                             radius=60, 
@@ -993,6 +1040,7 @@ class Stats:
                                             oreCostToBuild=750,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets = [ TurretStats( 44, -15,  -5*pi/6, pi/2, True, asAngle=False),
 
                                                         TurretStats( -6, -44,  5*pi/6, 13*pi/6, True, asAngle=False),
@@ -1003,7 +1051,8 @@ class Stats:
 
                                                         TurretStats( 45, 19,   -pi/2, 2*pi/3, True, asAngle=False) ],
                                             defaultTurrets=[ self.T_BURST_LASER_0 for x in xrange( 6 ) ],
-                                            defaultShips=[(self.EVOLVED_HARVESTER,5), (self.EVOLVED_BUILDER,3),(self.EVOLVED_FIGHTER,2)] )
+                                            defaultShips=[(self.EVOLVED_HARVESTER,5), (self.EVOLVED_BUILDER,3),(self.EVOLVED_FIGHTER,2),(self.EVOLVED_TRANSPORTER,3)],
+                            launchDelay=0.5*config.fps )
 
 
 
@@ -1017,9 +1066,11 @@ class Stats:
                                             oreCostToBuild=40,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets=[ TurretStats(35,i*pi*2/3, i*pi*2/3-2*pi/3,i*pi*2/3+2*pi/3, True, asAngle=True) 
                                                       for i in xrange( 3 ) ],
-                                            defaultTurrets=[ self.T_AI_FLAK_1 for x in xrange( 3 ) ] )
+                                            defaultTurrets=[ self.T_AI_FLAK_1 for x in xrange( 3 ) ],
+                            launchDelay=0.5*config.fps )
         self.AI_BASE_CARGO =        BaseStats( ids.S_AI_BASE_CARGO, 
                                             radius=40, 
                                             maxThrust=0, 
@@ -1030,11 +1081,13 @@ class Stats:
                                             oreCostToBuild=700,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets=[ TurretStats(55, (i*pi*2/3)%(2*pi), (i*pi*2/3-pi*3/4)%(2*pi), (i*pi*2/3+pi*3/4)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ] + \
                         [ TurretStats(15, (i*pi*2/3+pi/3)%(2*pi), (i*pi*2/3)%(2*pi), (i*pi*2/3+2*pi/3)%(2*pi), True, asAngle=True) for i in xrange( 3 ) ],
                                             defaultTurrets=[ self.T_AI_FLAK_1 for x in xrange( 3 ) ],
                                             hangars=[ (RPos(0, 0 ), i*2*pi/3+pi/3) for i in xrange( 3 ) ],
-                                            defaultShips=[(self.AI_HARVESTER,5), (self.AI_BUILDER,3),(self.AI_FIGHTER,2)] )
+                                            defaultShips=[(self.AI_HARVESTER,5), (self.AI_BUILDER,3),(self.AI_FIGHTER,2),(self.AI_TRANSPORTER,3)],
+                            launchDelay=0.5*config.fps )
 
 
         self.NOMAD_BASE_MILITARY =        BaseStats( ids.S_NOMAD_BASE_MILITARY, 
@@ -1047,11 +1100,13 @@ class Stats:
                                             oreCostToBuild=500,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets=[ TurretStats(24,i*pi/2, i*pi/2-3*pi/4, i*pi/2+3*pi/4, True, asAngle=True) 
                                                       for i in xrange( 4 ) ],
-                                            defaultTurrets=[ self.T_REPEATER_1 for x in xrange( 4 ) ] )
+                                            defaultTurrets=[ self.T_REPEATER_1 for x in xrange( 4 ) ],
+                            launchDelay=0.5*config.fps )
         self.NOMAD_BASE_CARGO =        BaseStats( ids.S_NOMAD_BASE_CARGO, 
-                                            radius=30, 
+                                            radius=60, 
                                             maxThrust=0, 
                                             maxReverseThrust=0, 
                                             maxRg=0.003, 
@@ -1060,6 +1115,7 @@ class Stats:
                                             oreCostToBuild=800,
                                             maxEnergy = 1000,
                                             maxOre = 1000,
+                                            radarRange=1500,
                                             turrets=[ TurretStats( 57, 1, -pi/2,pi/2, True),
                                                       TurretStats( 24, 48, -pi/3,pi, True),
                                                       TurretStats( -26, 46, 0,4*pi/3, True),
@@ -1067,7 +1123,8 @@ class Stats:
                                                       TurretStats( -41, -28, 2*pi/3,11*pi/6, True),
                                                       TurretStats( 39, -36, pi,pi/3, True), ],
                                             defaultTurrets=[ self.T_REPEATER_1 for x in xrange( 6 ) ],
-                                            defaultShips=[(self.NOMAD_HARVESTER,5), (self.NOMAD_BUILDER,3),(self.NOMAD_FIGHTER,2)] )
+                                            defaultShips=[(self.NOMAD_HARVESTER,5), (self.NOMAD_BUILDER,3),(self.NOMAD_FIGHTER,2),(self.NOMAD_TRANSPORTER,3)],
+                            launchDelay=0.5*config.fps )
             
         self.setDefaults()
 
@@ -1081,7 +1138,7 @@ class Stats:
         missiles=[ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, 
                   ids.M_MINER, ids.M_COUNTER, ids.M_FRIGATE_BUILDER, 
                   ids.M_BUILDER_BASE_CARGO, ids.M_BUILDER_BASE_MILITARY, ids.M_BUILDER_BASE_CARRIER ], 
-        ships=[self.HARVESTER, self.HUMAN_BUILDER, self.HUMAN_FIGHTER, self.HUMAN_BOMBER ], 
+        ships=[self.HARVESTER, self.HUMAN_BUILDER, self.HUMAN_TRANSPORTER, self.HUMAN_FIGHTER, self.HUMAN_BOMBER ], 
         turrets=[self.T_LASER_SR_1, self.T_LASER_SR_0, self.T_LASER_MR_1, self.T_LASER_MR_0,
             self.T_MASS_SR_2, self.T_MASS_SR_1, self.T_MASS_SR_0, self.T_MASS_LR,
             self.T_MASS_MR_1, self.T_MASS_MR_0, self.T_MISSILE_2, self.T_MISSILE_1,
@@ -1102,7 +1159,7 @@ class Stats:
         [], 
         [ids.M_NUKE, ids.M_MINER, ids.M_COUNTER, ids.M_AI, ids.M_FRIGATE_BUILDER, 
          ids.M_BUILDER_BASE_CARGO, ids.M_BUILDER_BASE_MILITARY], 
-        [self.AI_HARVESTER, self.AI_BUILDER, self.AI_FIGHTER, self.AI_BOMBER],
+        [self.AI_HARVESTER, self.AI_BUILDER, self.AI_TRANSPORTER, self.AI_FIGHTER, self.AI_BOMBER],
         [self.T_AI_FLAK_0, self.T_AI_FLAK_1, self.T_AI_FLAK_2, self.T_AI_FLAK_3, 
             self.T_AI_OMNI_LASER_1, self.T_AI_OMNI_LASER_0, self.T_AI_MISSILE_3,
             self.T_AI_MISSILE_2, self.T_AI_MISSILE_1, self.T_AI_MISSILE_0,
@@ -1125,7 +1182,7 @@ class Stats:
         [ids.M_NORMAL, ids.M_NUKE, ids.M_PULSE, ids.M_MINER, 
          ids.M_COUNTER, ids.M_FRIGATE_BUILDER, 
          ids.M_BUILDER_BASE_CARGO, ids.M_BUILDER_BASE_MILITARY ], 
-        [self.NOMAD_HARVESTER, self.NOMAD_BUILDER, self.NOMAD_FIGHTER ], # , self.NOMAD_HARVESTER_1
+        [self.NOMAD_HARVESTER, self.NOMAD_BUILDER, self.NOMAD_TRANSPORTER, self.NOMAD_FIGHTER ], # , self.NOMAD_HARVESTER_1
         [self.T_REPEATER_3, self.T_REPEATER_2, self.T_REPEATER_1, self.T_REPEATER_0, 
         self.T_NOMAD_CANNON_2, self.T_NOMAD_CANNON_1, self.T_NOMAD_CANNON_0,
         self.T_NOMAD_MISSILE_1, self.T_NOMAD_MISSILE_0,
@@ -1152,7 +1209,7 @@ class Stats:
         [ids.M_EVOLVED, ids.M_EVOLVED_PULSE, ids.M_MINER, 
          ids.M_EVOLVED_COUNTER, ids.M_FRIGATE_BUILDER,
          ids.M_BUILDER_BASE_CARGO, ids.M_BUILDER_BASE_MILITARY, ids.M_BUILDER_BASE_HEAVY_MILITARY ], 
-        [self.EVOLVED_HARVESTER, self.EVOLVED_BUILDER, self.EVOLVED_FIGHTER, self.EVOLVED_BOMBER],
+        [self.EVOLVED_HARVESTER, self.EVOLVED_BUILDER, self.EVOLVED_TRANSPORTER, self.EVOLVED_FIGHTER, self.EVOLVED_BOMBER],
         [self.T_EVOLVED_PULSE, self.T_MINER, self.T_EVOLVED_COUNTER, 
         self.T_INTERDICTOR, self.T_RADAR, self.T_SOLAR_2, self.T_SOLAR_1, self.T_SOLAR_0, self.T_HANGAR, self.T_BIOSPHERE_1, self.T_BIOSPHERE, self.T_INERTIA, self.T_SAIL_2, self.T_SAIL_1, self.T_SAIL_0, self.T_JAMMER,
         self.T_ESPHERE_2, self.T_ESPHERE_1, self.T_ESPHERE_0,

@@ -15,7 +15,7 @@ class AiPilot:
     def __init__(self):
         self.stance = 0
         self.goingTo = False
-        self.dockingTo = False
+        self.dockingTo = None
         self.dockedTo = False
         self.attacking = False
         self.idle = True
@@ -111,7 +111,6 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
             self.goTo( ship, self.goingTo )
 
         if self.dockingTo and not self.dockingTo.alive:
-            print "docking to not alive"
             self.dockingTo = None
 
         if self.idle:
@@ -126,7 +125,7 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
                     self.dockingTo = False
                     self.idle = True
                 else: # away
-                    ship.zp = self.dockingTo.zp-2
+                    ship.zp = self.dockingTo.zp-10
                     self.goTo( ship, self.dockingTo )
 
         if self.idle and ship.inertiaControl:
@@ -152,6 +151,7 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
     def evade( self, ship, target, dist ):
         self.idle = True
         self.dockedTo = False
+        self.dockingTo = False
         self.evading = True
         angle = random()*2*pi
      #   dist = self.dockingTo.stats.radiusAt( angle ) * 1.5
@@ -201,6 +201,73 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
     def hitted( self, ship, game, angle, sender, energy, mass, pulse ):
         pass
 
+    ### builders and scaffoldings
+    def hasScaffoldingInSight( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        for x in game.objects.getAccording( ship.pos, dist=dist, 
+                 func=lambda x: x.stats.buildAsHint == "scaffolding" and x.player == ship.player ):
+            return True
+
+        return False
+
+    def getClosestScaffolding( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        return game.objects.getClosestAccording( ship, dist, 
+                 func=lambda x: x.stats.buildAsHint == "scaffolding" and x.player == ship.player )
+
+    ### harvesters asteroids
+    def hasAsteroidsInSight( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        for x in game.harvestables.getWithinArea( ship, dist ):
+            return True
+
+        return False
+    
+    def getClosestAsteroid( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        return game.harvestables.getClosestAccording( ship, dist )
+
+    ### transport
+    def hasShipInNeedInSight( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        for x in game.objects.getAccording( ship.pos, dist=dist, # , "frigate"
+                           func=lambda x: x.stats.buildAsHint in ("flagship", "base" ) \
+                                          and x.player == ship.player \
+                                         # and x.ore < self.flagship.ore \
+                                          and x.ore < 4*x.stats.maxOre/5 ):
+            return True
+
+        return False
+
+    def getRandomShipInNeed( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        inNeedOfOre = [ x for x in game.objects.getAccording( ship.pos, dist=dist, # , "frigate"
+                           func=lambda x: x.stats.buildAsHint in ("flagship", "base" ) \
+                                          and x.player == ship.player \
+                                         # and x.ore < self.flagship.ore \
+                                          and x.ore + ship.ore < x.stats.maxOre ) ]
+
+        # TODO sort in order of need and/or proximity
+        #for inNeed in inNeedOfOre:
+        if len(inNeedOfOre)>0:
+            return choice(inNeedOfOre)
+        else:
+            return None
+
+    def getSearchRange( self, ship ):
+        return ship.stats.radarRange
 
 class AiPilotFaction( AiPilot ):
     def __init__(self):
@@ -445,8 +512,6 @@ class AiCaptain( AiShipWithTurrets ):
 
                         s.zp = ship.zp-2
                         ship.launch( s, game )
-                        ship.shipyards[ k ].docked.remove( s )
-                        ship.shipyards[ k ].away.append( s )
 
                         addedObjects.append( s )
                         s.ai.evade( s, ship, ship.stats.maxRadius*1.5 )
@@ -457,6 +522,31 @@ class AiCaptain( AiShipWithTurrets ):
             elif not self.launching[ k ]:
               for s in ship.shipyards[ k ].away:
                 s.ai.dock( s, ship, game )
+
+
+        if ship.lastLaunchAt + ship.stats.launchDelay < game.tick \
+         and len(ship.guestDocked) \
+         and ship.guestDocked[ 0 ].dockedAt + ship.stats.launchDelay*3 < game.tick:
+
+                s = ship.guestDocked[ 0 ]
+            # 
+            ## TODO duplicated :(
+
+                hangar, hangarAngle = choice(ship.stats.hangars)
+
+                (s.xp,s.yp) = (ship.xp+hangar.dist*cos( hangar.angle ), ship.yp+hangar.dist*sin( hangar.angle ))
+                angle = ship.ori+hangarAngle
+                (s.xi,s.yi) = (5*cos(angle),5*sin(angle))
+                s.ori = angle
+
+                s.zp = ship.zp-2
+                ship.launch( s, game )
+
+                addedObjects.append( s )
+                s.ai.evade( s, ship, ship.stats.maxRadius*1.5 )
+
+                ship.lastLaunchAt = game.tick
+            
 
         return (addedObjects, removedObjects, addedGfxs)
 
@@ -483,25 +573,45 @@ class AiCaptain( AiShipWithTurrets ):
                     if s.ai.attacking != self.attacking:
                         s.ai.attack( ship, self.attacking )
 
+    ### used by player ai
+    def manageTurretsUpgrades( self, ship ):
+        if self.isSafe( ship ) \
+         and ship.ore > 2*ship.stats.maxOre/4: # ore > 3/4
+            print "has 3/4"
+            choices = []
+            for turret in ship.turrets:
+                if not turret.building and turret.install:
+                    print "turret", turret.install
+                    for possible in ship.player.race.turrets:
+                        print "p", possible.upgradeFrom
+                        if turret.install.stats == possible.upgradeFrom \
+                         and possible.weapon \
+                         and ship.canBuildTurret( turret, possible ):
+                            choices.append( (turret, possible) )
+
+           # print "choices", choices
+            if len(choices):
+                turret,toBuild = choice( choices )
+                ship.buildTurret( turret,toBuild )
+
+    def isSafe( self, ship ):
+        return True # default :(
 
 class AiGovernor( AiCaptain ):
     def __init__(self,player):
         AiCaptain.__init__(self,player)
 
         self.ennemyInSight = []
-       # self.ennemyAttacking = []
 
-        self.reportEnnemyContact = True
+        self.scaffoldingsInSight = []
 
     def doTurn( self, ship, game):
         (ao, ro, ag) = AiCaptain.doTurn( self, ship, game )
 
-        if game.tick%config.fps==12 \
-           and self.reportEnnemyContact:
-
-            seenThisTurn = []
+        if game.tick%config.fps==24:
 
             ### detect ennemy in sight
+            seenThisTurn = []
             for obj in game.objects.getWithinRadius( ship.pos, ship.stats.radarRange ):
                 if obj.alive and obj.player and obj.stats.buildAsHint == "flagship" \
                 and game.getRelationBetween( ship.player, obj.player ) < 0:
@@ -524,22 +634,80 @@ class AiGovernor( AiCaptain ):
             for ship in ennemyToForget:
                 self.ennemyInSight.remove( ship )
 
+            launch = {}
+            recall = {}
             ### manage small ships
-            if len(self.ennemyInSight):
-                ### danger
-                launchWorkers = False
-                launchFighters = True
-            else:
+            if self.isSafe( ship ):
                 ### safe
-                launchWorkers = True
                 launchFighters = False
+                recallFighters = True
+
+                ### harvesters
+                #recallHarvesters = False
+                if ship.noOreCloseAt < game.tick - 15*config.fps: # there may be ore around
+                    oreClose = self.hasAsteroidsInSight( ship, game )
+                    if not oreClose:
+                        ship.noOreCloseAt = tick
+                else:
+                    oreClose = False
+                    
+                launchHarvesters = oreClose
+                recallHarvesters = not oreClose
+
+                ### builders
+                recallBuilders = False
+                launchBuilders = False
+                if ship.ore > 0:
+                    for s in self.scaffoldingsInSight:
+                        if s.alive:
+                            launchBuilders = True
+                            break
+
+                    if not launchBuilders: # no known scaffoldings in sight
+                        launchBuilders = self.hasScaffoldingInSight( ship, game )
+                    recallBuilders = not launchBuilders
+            else:
+                ### danger
+                launchHarvesters = False
+                launchBuilders = False
+                launchFighters = True
+
+                recallHarvesters = True
+                recallBuilders = True
+                recallFighters = False
+
+            if self.hasShipInNeedInSight( ship, game ): # there is need
+                launchTransports = ship.ore >= 3*ship.stats.maxOre/4 # is wealthy
+                recallTransports = ship.ore < 1*ship.stats.maxOre/4 # is poor
+            else:
+                launchTransports = False
+                recallTransports = True
 
             for i in self.launching:
-                if game.stats[ i ].buildAsHint == "harvester" \
-                 or game.stats[ i ].buildAsHint == "builder":
-                    self.launching[ i ] = launchWorkers
+                if game.stats[ i ].buildAsHint == "harvester":
+                    if not self.launching[ i ] and launchHarvesters:
+                        self.launching[ i ] = True
+                    elif self.launching[ i ] and recallHarvesters:
+                        self.launching[ i ] = False
+                elif game.stats[ i ].buildAsHint == "builder":
+                    if not self.launching[ i ] and launchBuilders:
+                        self.launching[ i ] = True
+                    elif self.launching[ i ] and recallBuilders:
+                        self.launching[ i ] = False
+                elif game.stats[ i ].buildAsHint == "transporter":
+                    if not self.launching[ i ] and launchTransports:
+                        self.launching[ i ] = True
+                    elif self.launching[ i ] and recallTransports:
+                        self.launching[ i ] = False
                 else: ## others/combat
-                    self.launching[ i ] = launchFighters
+                    if not self.launching[ i ] and launchFighters:
+                        self.launching[ i ] = True
+                    elif self.launching[ i ] and recallFighters:
+                        self.launching[ i ] = False
+
+            ### manage turrets
+            if self.isSafe( ship ):
+                self.manageTurretsUpgrades( ship )
 
         return (ao, ro, ag)
 
@@ -548,6 +716,9 @@ class AiGovernor( AiCaptain ):
 
     def goTo(self, ship, dest, destOri=0, orbitAltitude=2):
         pass
+
+    def isSafe( self, ship ):
+        return len(self.ennemyInSight) == 0
 
 class AiTurret:
     def __init__( self ):
@@ -735,9 +906,6 @@ class AiBuilderMissileTurret( AiTurret ):
                         ( ao1, ro1, ag1 ) = turret.weapon.fire( ship, turret, game, ship.missiles[ missileId ].target, missileId=missileId, buildType=m1 )
                         ( ao0, ro0, ag0 ) = ( ao0+ao1, ro0+ro1, ag0+ag1 )
                         ship.missiles[ missileId ].target = None
-                        print "y ", game.stats[ missileId ].buildType, m1
-                    else:
-                        print "x ", game.stats[ missileId ].buildType, m1
                         
             
        # for missileId in turret.install.stats.specialValue:
@@ -799,7 +967,8 @@ class AiTargeterTurret( AiTurret ):
         return ( [], [], [] )
             
 
-class AiPilotWorker( AiPilot ):
+# specialized by transporter, and also harvester and builders throught worker
+class AiPilotCivilian( AiPilot ):
     def __init__(self,flagship):
         AiPilot.__init__(self)
         self.flagship = flagship
@@ -831,14 +1000,36 @@ class AiPilotWorker( AiPilot ):
         if not self.dockingTo and self.flagship and not self.working: # found nothing
         
             for turret in ship.turrets:
-                turret.ai.target = None
+                if turret.ai:
+                    turret.ai.target = None
                 
             self.goTo( ship, self.getRandomGuardPosition(ship, self.flagship, 2) )
+
+        return AiPilot.doTurn( self, ship, game )
+
+    def dock( self, ship, target, game ):
+        self.goingTo = None
+        AiPilot.dock( self, ship, target, game )
+
+    def died( self, ship, game ):
+        if self.flagship:
+            self.flagship.removeShip( ship )
+
+    def getSearchRange( self, ship ):
+        return ship.stats.maxRange
+
+class AiPilotWorker( AiPilotCivilian ):
+    def __init__(self,flagship):
+        AiPilotCivilian.__init__(self, flagship)
+        self.working = False
+
+    def doTurn( self, ship, game ):
 
         if self.working:
             for turret in ship.turrets:
                 if turret.ai:
                     turret.ai.target = self.working
+
             if self.workIsDone( ship ):
                 self.idle = True
                 self.working = False
@@ -855,20 +1046,14 @@ class AiPilotWorker( AiPilot ):
         for turret in ship.turrets:
             if turret.ai:
                 turret.ai.doTurn( ship, turret, game, self.working)
-
-        return AiPilot.doTurn( self, ship, game )
+        return AiPilotCivilian.doTurn( self, ship, game )
 
     def workIsDone( self, ship ):
         return False
 
     def dock( self, ship, target, game ):
         self.working = False
-        self.goingTo = None
-        AiPilot.dock( self, ship, target, game )
-
-    def died( self, ship, game ):
-        if self.flagship:
-            self.flagship.removeShip( ship )
+        AiPilotCivilian.dock( self, ship, target, game )
 
 
 #from ships import FlagShip
@@ -886,13 +1071,8 @@ class AiPilotHarvester( AiPilotWorker ):
             ## try to find more ore
             distFound = ship.stats.maxRange+1
             
-            self.working = game.harvestables.getClosestAccording( ship, ship.stats.maxRange )
+            self.working = self.getClosestAsteroid( ship, game )
             
-          #  for obj in game.harvestables:
-          #      dist = distLowerThanObjectsReturn( ship, obj, distFound )
-          #      if dist: 
-          #          distFound = dist
-          #          self.harvesting = obj
             if not self.working:
                 self.flagship.noOreCloseAt = game.tick
 
@@ -908,14 +1088,26 @@ class AiPilotBuilder( AiPilotWorker ):
 
     def doTurn( self, ship, game ):
         from ships import Scaffolding
-
-       # print "builder ai doing turn"
         
-        if not self.dockingTo and not self.working: # and self.flagship and self.flagship.noOreCloseAt < game.tick-3*config.fps:
-            self.working = game.objects.getClosestAccording( ship.pos, maxDist=ship.stats.maxRange, 
-                       func=lambda x: isinstance( x, Scaffolding ) and x.player == ship.player )
+        if not self.dockingTo and not self.working:
+            self.working = self.getClosestScaffolding( ship, game )
 
         return AiPilotWorker.doTurn( self, ship, game )
+
+class AiPilotTransporter( AiPilotCivilian ):
+    def __init__(self,flagship):
+        AiPilotCivilian.__init__(self,flagship)
+
+    def doTurn( self, ship, game ):
+
+        if not self.dockingTo:
+            if ship.ore < 1:
+                self.dockingTo = self.flagship
+            else:
+                # find other flagship in need
+                inNeedOfOre = self.getRandomShipInNeed( ship, game )
+
+        return AiPilotCivilian.doTurn( self, ship, game )
 
 
 # from ais import AiCaptain

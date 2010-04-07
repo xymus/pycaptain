@@ -182,7 +182,7 @@ class Computer( Player ):
         else:
             self.strongAngle = None
             self.strongDist = None
-                
+
                 
 class Faction( Computer ):
     def __init__(self, race, name, territories=None ):
@@ -236,6 +236,9 @@ class Faction( Computer ):
       #      if utils.distBetween( (ship.xp,ship.yp), dest )> ship.stats.maxRadius*2:
       #          ship.ai.goTo( ship, dest )
 
+class SmartFaction( Faction ):
+    def __init__(self, race, name, territories=None ):
+        Faction.__init__( self, race, name, territories ) 
 
 def GetComputerPlayer( game ):
     return Computer( game.stats.R_HUMAN, choice(['Bob','Fred']) )

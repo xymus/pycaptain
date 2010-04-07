@@ -41,7 +41,8 @@ class Ship( Object ):
         self.inertiaMod = 1
         self.thrustBoost = 0
 
-        self.shipyards = []
+        self.shipyards = [] # list of regulard shipyards
+        self.guestDocked = [] # list of temporary docks
 
     def getRadiusAt( self, ang ): # absolute angle with another object
         return self.stats.maxRadius
@@ -472,12 +473,7 @@ class FlagShip( ShipWithTurrets, JumperShip ):
             if b.build >= b.buildCost:
                 ship = buildShip( self.player, game.stats[ k ], 0, 0, flagship=self )
                 b.docked.append( ship )
-              #  if isinstance( game.stats[ k ], stats.HarvesterShipStats ):
-              #      b.docked.append( HarvesterShip(self.player, game.stats[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
-              #  else if isinstance( game.stats[ k ], stats.HarvesterShipStats ):
-              #      b.docked.append( HarvesterShip(self.player, game.stats[ k ], AiPilotHarvester(self), 0,0,0, 4, 0.0,0.0,0.0, 0) )
-              #  else:
-              #      b.docked.append( ShipSingleWeapon(self.player, game.stats[ k ], AiPilotFighter(self),0,0,0, 4, 0.0,0.0,0.0, 0)  )
+
                 count = count + game.stats[ k ].hangarSpaceNeed
                 if self.canBuild( game, k ):
                    self.buildShip( game, k )
@@ -655,26 +651,36 @@ class FlagShip( ShipWithTurrets, JumperShip ):
     def addToHangar( self, ship, game ): # TODO add space check
         ship.enterHangar()
         ship.dockedAt = game.tick
-        if ship in self.shipyards[ ship.stats.img ].away:
-          self.shipyards[ ship.stats.img ].away.remove( ship )
+        if self.shipyards.has_key( ship.stats.img ) \
+         and ship in self.shipyards[ ship.stats.img ].away:
+            self.shipyards[ ship.stats.img ].away.remove( ship )
+            self.shipyards[ ship.stats.img ].docked.append( ship )
         else:
-          print "warning: addToHangar: ship not in away"
-        self.shipyards[ ship.stats.img ].docked.append( ship )
+            self.guestDocked.append( ship )
+       #     print "warning: addToHangar: ship not in away"
+       # self.shipyards[ ship.stats.img ].docked.append( ship )
         if ship.stats.buildAsHint == "harvester":
             if ship.ore > 0:
                 self.addOreToProcess( ship.ore )
                 ship.ore = 0
-        elif ship.stats.buildAsHint == "builder":
+        elif ship.stats.buildAsHint == "builder" or ship.stats.buildAsHint == "transporter":
             if ship.ore > 0:
                 self.ore = min( self.ore+ship.ore, self.stats.maxOre )
                 ship.ore = 0
 
     def launch( self, ship, game ):
-        if ship.stats.buildAsHint == "builder":
-            if self.ore > 0:
+        if ship.stats.buildAsHint in ( "builder", "transporter" ):
+            if self.ore > 0 \
+             and not ship in self.guestDocked:
                 amount = min( ship.stats.maxOre-ship.ore, self.ore )
                 ship.ore += amount
                 self.ore -= amount
+
+        if ship in self.guestDocked:
+            self.guestDocked.remove( ship )
+        else:
+            self.shipyards[ ship.stats.img ].docked.remove( ship )
+            self.shipyards[ ship.stats.img ].away.append( ship )
 
     def getRadarRange( self ):
         if self.energy < 10:
@@ -733,11 +739,11 @@ class FlagShip( ShipWithTurrets, JumperShip ):
 
     def removeShip( self, ship ):
         ship.ai.flagship = None
-        for k in self.shipyards:
-            if ship in self.shipyards[k].away:
-                self.shipyards[k].away.remove( ship )
-            if ship in self.shipyards[k].docked:
-                self.shipyards[k].docked.remove( ship )
+        if self.shipyards.has_key( ship.stats.img ):
+            if ship in self.shipyards[ship.stats.img].away:
+                self.shipyards[ship.stats.img].away.remove( ship )
+            if ship in self.shipyards[ship.stats.img].docked:
+                self.shipyards[ship.stats.img].docked.remove( ship )
 
 
     def canBuildTurret( self, turret, toBuild ):
@@ -840,14 +846,20 @@ class OrbitalBase( FlagShip ):
         self.headed = False
         self.inertiaControl = False
 
-class HarvesterShip( ShipWithTurrets ):
+class WorkerShip( ShipWithTurrets ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
         self.player = player
         ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
         self.ore = 0
-        for turret in self.turrets:
-            turret.ai = AiTargeterTurret()
-            turret.install = TurretInstall( self.stats.turretType )
+        
+        if self.stats.turretType:
+            for turret in self.turrets:
+                turret.ai = AiTargeterTurret()
+                turret.install = TurretInstall( self.stats.turretType )
+
+class HarvesterShip( WorkerShip ):
+    def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
+        WorkerShip.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
 
         self.harvestedInRange = False
 
@@ -855,16 +867,11 @@ class HarvesterShip( ShipWithTurrets ):
         if self.ai.working and self.orbiting:
             self.ore = min(self.ore + 0.1, self.stats.maxOre )
 
-        return ShipWithTurrets.doTurn( self, game )
+        return WorkerShip.doTurn( self, game )
 
-class BuilderShip( ShipWithTurrets ):
+class BuilderShip( WorkerShip ):
     def __init__( self, player, stats, ai, xp, yp, zp=0, ori=0.0, xi=0, yi=0, zi=0, ri=0, thrust=0 ):
-        self.player = player
-        ShipWithTurrets.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
-        self.ore = 0
-        for turret in self.turrets:
-            turret.ai = AiTargeterTurret()
-            turret.install = TurretInstall( self.stats.turretType )
+        WorkerShip.__init__( self, player, stats, ai, xp, yp, zp, ori, xi, yi, zi, ri, thrust )
 
     def doTurn( self, game ):
         if self.ai.working and self.orbiting: # TODO ai
@@ -942,6 +949,8 @@ def buildShip( player, stats, xp, yp, ori=0, flagship=None ):
         return HarvesterShip( player, stats, AiPilotHarvester(flagship), xp,yp,0, 4, 0.0,0.0,0.0, 0)
     elif stats.buildAsHint == "builder":
         return BuilderShip( player, stats, AiPilotBuilder(flagship), xp,yp,0, 4, 0.0,0.0,0.0, 0)
+    elif stats.buildAsHint == "transporter":
+        return BuilderShip( player, stats, AiPilotTransporter(flagship), xp,yp,0, 4, 0.0,0.0,0.0, 0)
     elif stats.buildAsHint == "single weapon ship":
         return ShipSingleWeapon( player, stats, AiPilotFighter(flagship), xp,yp,0, 4, 0.0,0.0,0.0, 0)
     else:
