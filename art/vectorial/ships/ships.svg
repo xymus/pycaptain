@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.93772"
-     inkscape:cx="1058.4146"
-     inkscape:cy="1286.608"
+     inkscape:zoom="5.3045454"
+     inkscape:cx="832.14273"
+     inkscape:cy="1238.0987"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
@@ -1484,7 +1484,7 @@
        x2="434.89999"
        y2="642.125"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.6047108,0,0,0.6047108,-46.240043,141.62351)" />
+       gradientTransform="matrix(0.6047108,0,0,0.6047108,-62.829589,136.72205)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient7260"
@@ -6170,7 +6170,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient7722"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.049166,-0.00660279,0.02512005,0.18705001,-294.89008,282.5268)"
+       gradientTransform="matrix(0.049166,-0.00660279,0.02512005,0.18705001,-284.00983,270.78865)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13124,7 +13124,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4373"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-308.43647,288.4435)"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-305.84744,277.49748)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13135,7 +13135,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4377"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-306.40893,294.43424)"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-303.8199,283.48822)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13146,7 +13146,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4381"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-310.40891,294.45262)"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-307.81988,283.5066)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13157,7 +13157,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4385"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916603,-0.00660279,0.02512006,0.18705001,-306.46409,282.43444)"
+       gradientTransform="matrix(0.04916603,-0.00660279,0.02512006,0.18705001,-303.87506,271.48842)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13168,7 +13168,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4389"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916604,-0.00660279,0.02512007,0.18705001,-310.46406,282.45282)"
+       gradientTransform="matrix(0.04916604,-0.00660279,0.02512007,0.18705001,-307.87503,271.5068)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -13201,7 +13201,7 @@
        xlink:href="#linearGradient3527"
        id="radialGradient4435"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.04916603,-0.00660279,0.02512006,0.18705001,-308.45488,284.4436)"
+       gradientTransform="matrix(0.04916603,-0.00660279,0.02512006,0.18705001,-305.86585,273.49758)"
        cx="447.06158"
        cy="426.05655"
        fx="447.06158"
@@ -30792,6 +30792,374 @@
        fx="550.88904"
        fy="704.13434"
        r="7.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3668"
+       id="radialGradient7953"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.06977701,-0.3035309,0,578.51719,600.34841)"
+       cx="558.32812"
+       cy="587.5625"
+       fx="558.32812"
+       fy="587.5625"
+       r="29.95952" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3668"
+       id="radialGradient7955"
+       gradientUnits="userSpaceOnUse"
+       cx="395.75"
+       cy="643.86218"
+       fx="395.75"
+       fy="643.86218"
+       r="8.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient19892"
+       id="radialGradient7957"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.1389381,-0.06141329,0,442.50263,565.7337)"
+       cx="558.32812"
+       cy="587.5625"
+       fx="558.32812"
+       fy="587.5625"
+       r="29.95952" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3668"
+       id="radialGradient7966"
+       gradientUnits="userSpaceOnUse"
+       cx="395.75"
+       cy="643.86218"
+       fx="395.75"
+       fy="643.86218"
+       r="8.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7986"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04906634,-0.00892423,0.02506913,0.25281382,-306.58832,209.00588)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7988"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916604,-0.00660279,0.02512007,0.18705001,-376.47276,147.85121)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7991"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916603,-0.00660279,0.02512006,0.18705001,-217.54008,289.18725)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7994"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04912667,-0.00748682,0.02509996,0.21209356,-306.39646,232.14665)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7997"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-216.38976,-445.02095)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient7999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-383.05828,-302.19054)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient8006"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-217.91607,-439.21832)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient8008"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-381.47878,-296.40216)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient8045"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.0948479,0,0,0.08924936,-209.1398,-378.38019)"
+       cx="455.37457"
+       cy="422.94226"
+       fx="455.37457"
+       fy="422.94226"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient19892"
+       id="radialGradient8047"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0,0.1411153,0.08227681,0,325.25784,-227.29281)"
+       cx="434.83334"
+       cy="206.06592"
+       fx="434.83334"
+       fy="206.06592"
+       r="27.000002" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient8049"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.08051608,0,0,0.01707153,-202.51133,-347.15558)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient8051"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.05480337,0,0,0.02405466,-192.07183,-347.4096)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3411"
+       id="radialGradient8084"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04619827,0,0,0.03555346,-185.52924,-312.96976)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3384"
+       id="radialGradient8086"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.09502457,0,0,0.04327483,-209.49126,-315.52854)"
+       cx="455.37457"
+       cy="422.94226"
+       fx="455.37457"
+       fy="422.94226"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5289"
+       id="radialGradient8864"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.11271476,0,0,0.17635799,-217.62542,-399.60118)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5289"
+       id="radialGradient8872"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.11271476,0,0,0.17635799,-217.62542,-381.78627)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient8883"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-214.86345,-450.82358)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3527"
+       id="radialGradient8885"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04916602,-0.00660279,0.02512006,0.18705001,-384.63778,-307.97891)"
+       cx="447.06158"
+       cy="426.05655"
+       fx="447.06158"
+       fy="426.05655"
+       r="46.5" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8911"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1030814,-5.0459026e-4,1.9448397e-4,0.03973061,227.81678,649.71185)"
+       cx="98.289146"
+       cy="1135.0156"
+       fx="98.289146"
+       fy="1135.0156"
+       r="116.64365" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6297-4"
+       id="linearGradient8913"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(196.17616,-451.19355)"
+       x1="45.28915"
+       y1="1138.3146"
+       x2="45.28915"
+       y2="1150.4084" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8915"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2677513,-0.04037584,0.00799609,0.1793314,-57.298366,948.01707)"
+       cx="260.54871"
+       cy="824.12482"
+       fx="260.54871"
+       fy="824.12482"
+       r="26.625" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114"
+       id="radialGradient8917"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6047108,0,0,0.2871686,-45.567433,520.02316)"
+       cx="514.30835"
+       cy="571.51276"
+       fx="514.30835"
+       fy="571.51276"
+       r="21.9" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient19892"
+       id="radialGradient8919"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3416303,0.2221786,-0.4075222,0.6266217,378.709,186.98173)"
+       cx="444"
+       cy="639.11218"
+       fx="444"
+       fy="639.11218"
+       r="6.9000001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8921"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1030814,-5.0459026e-4,1.9448397e-4,0.03973061,227.81678,633.71185)"
+       cx="98.289146"
+       cy="1135.0156"
+       fx="98.289146"
+       fy="1135.0156"
+       r="116.64365" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6297-4"
+       id="linearGradient8923"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(196.17616,-467.19355)"
+       x1="45.28915"
+       y1="1138.3146"
+       x2="45.28915"
+       y2="1150.4084" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8950"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2677513,-0.04037584,0.00799609,0.1793314,-57.298366,948.01707)"
+       cx="260.54871"
+       cy="824.12482"
+       fx="260.54871"
+       fy="824.12482"
+       r="26.625" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1030814,-5.0459026e-4,1.9448397e-4,0.03973061,227.81678,649.71185)"
+       cx="98.289146"
+       cy="1135.0156"
+       fx="98.289146"
+       fy="1135.0156"
+       r="116.64365" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6297-4"
+       id="linearGradient8966"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(196.17616,-451.19355)"
+       x1="45.28915"
+       y1="1138.3146"
+       x2="45.28915"
+       y2="1150.4084" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6114-1"
+       id="radialGradient8968"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1030814,-5.0459026e-4,1.9448397e-4,0.03973061,227.81678,633.71185)"
+       cx="98.289146"
+       cy="1135.0156"
+       fx="98.289146"
+       fy="1135.0156"
+       r="116.64365" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6297-4"
+       id="linearGradient8970"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(196.17616,-467.19355)"
+       x1="45.28915"
+       y1="1138.3146"
+       x2="45.28915"
+       y2="1150.4084" />
   </defs>
   <metadata
      id="metadata7">
@@ -31205,8 +31573,8 @@
        id="rect4433"
        width="3.4296565"
        height="14.660379"
-       x="-276.91772"
-       y="351.30273"
+       x="-274.3287"
+       y="340.35672"
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)" />
     <rect
        inkscape:export-ydpi="87.310692"
@@ -31216,13 +31584,13 @@
        id="rect4387"
        width="3.4296565"
        height="14.660381"
-       x="-278.92691"
-       y="349.31195"
+       x="-276.33789"
+       y="338.36594"
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)" />
     <rect
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)"
-       y="349.29358"
-       x="-274.92691"
+       y="338.34756"
+       x="-272.33789"
        height="14.660379"
        width="3.4296565"
        id="rect4383"
@@ -31520,7 +31888,7 @@
          sodipodi:nodetypes="cccccc" />
     </g>
     <g
-       transform="matrix(0,-0.6861922,0.6861922,0,-436.11082,903.1395)"
+       transform="matrix(0,-0.6861922,0.6861922,0,-460.99514,725.04796)"
        id="g6554"
        inkscape:transform-center-y="5.1219602e-05"
        inkscape:transform-center-x="-33.623392"
@@ -31826,12 +32194,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/../../exports/ships/fighter.png"
        xlink:href="../../exports/ships/fighter.png"
-       transform="matrix(0,1,-1,0,0,0)"
-       y="-307.32541"
-       x="404.0899"
-       id="image2375"
+       width="20"
        height="20"
-       width="20" />
+       id="image2375"
+       x="404.0899"
+       y="-307.32541"
+       transform="matrix(0,1,-1,0,0,0)" />
     <rect
        style="fill:#3c3c4a;fill-opacity:1;stroke:#000000;stroke-width:0.85052395;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect6249"
@@ -31869,7 +32237,7 @@
     </g>
     <g
        id="g8167"
-       transform="matrix(0.81503807,0,0,0.81503807,66.744145,126.23937)">
+       transform="matrix(0.81503807,0,0,0.81503807,58.996372,142.55256)">
       <path
          inkscape:export-ydpi="76"
          inkscape:export-xdpi="76"
@@ -31895,14 +32263,14 @@
     </g>
     <path
        style="fill:url(#linearGradient7258);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 211.36673,524.85894 c -2.65997,0 -4.85777,1.98258 -5.12115,4.53533 l -18.31139,0 0,1.05824 18.31139,0 c 0.27192,2.544 2.46752,4.53533 5.12115,4.53533 2.8373,0 5.14004,-2.26887 5.14004,-5.06445 0,-2.79557 -2.30274,-5.06445 -5.14004,-5.06445 z"
+       d="m 194.77718,519.95748 c -2.65997,0 -4.85777,1.98258 -5.12115,4.53533 l -18.31139,0 0,1.05824 18.31139,0 c 0.27192,2.544 2.46752,4.53533 5.12115,4.53533 2.8373,0 5.14004,-2.26887 5.14004,-5.06445 0,-2.79557 -2.30274,-5.06445 -5.14004,-5.06445 z"
        id="path7247"
        inkscape:export-filename="/media/pros/pyfl/art/harvester-turret.png"
        inkscape:export-xdpi="76"
        inkscape:export-ydpi="76" />
     <g
        id="g11684"
-       transform="matrix(-1,0,0,-1,546.67122,1285.0776)"
+       transform="matrix(-1,0,0,-1,521.7869,1106.9861)"
        inkscape:export-filename="/media/pros/pyfl/art/t-harvester.png"
        inkscape:export-xdpi="92"
        inkscape:export-ydpi="92">
@@ -32146,11 +32514,11 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       y="-281.8085"
-       x="971.87134"
-       id="image3718"
+       width="250"
        height="250"
-       width="250" />
+       id="image3718"
+       x="971.87134"
+       y="-281.8085" />
     <path
        id="path3781"
        d="m 1310.2635,579.02088 c -5.769,3e-5 -10.4375,4.68505 -10.4375,10.4375 0,0.32253 0,0.65367 0.031,0.96875 l 0,17.71875 -0.031,0 0,168.90625 0,24.5625 0.031,0 0,16.65625 c -0.029,0.31712 -0.031,0.64414 -0.031,0.96875 0,5.75245 4.6685,10.40623 10.4375,10.40625 0.013,3e-5 0.049,4e-5 0.062,0 l 0,-0.125 c 22.8516,0 41.4063,-18.52345 41.4063,-41.375 0,-1.28964 -0.072,-2.5841 -0.1876,-3.84375 l 0,-159.90625 c 0.1141,-1.25164 0.1876,-2.53128 0.1876,-3.8125 0,-22.85156 -18.5548,-41.40624 -41.4063,-41.40625 l 0,-0.15625 c -0.013,-3e-5 -0.049,3e-5 -0.062,0 z"
@@ -32317,15 +32685,15 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/../../exports/1.png"
        xlink:href="../../exports/1.png"
-       y="-687.10693"
-       x="-164.70187"
-       id="image4497"
-       height="92"
-       width="92"
-       transform="matrix(-0.77819939,0.62801729,-0.62801729,-0.77819939,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/art/ships/extra-fs-1.png"
+       inkscape:export-ydpi="92"
        inkscape:export-xdpi="92"
-       inkscape:export-ydpi="92" />
+       inkscape:export-filename="/media/pros/pyfl/art/ships/extra-fs-1.png"
+       transform="matrix(-0.77819939,0.62801729,-0.62801729,-0.77819939,0,0)"
+       width="92"
+       height="92"
+       id="image4497"
+       x="-164.70187"
+       y="-687.10693" />
     <g
        id="g4500"
        transform="matrix(0.7878147,0,0,0.7878147,-49.448242,-44.359914)"
@@ -32753,12 +33121,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       width="159.08798"
-       height="159.08798"
-       id="image4053"
-       x="-1118.4069"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
        y="-716.71179"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
+       x="-1118.4069"
+       id="image4053"
+       height="159.08798"
+       width="159.08798" />
     <path
        sodipodi:type="arc"
        style="fill:url(#radialGradient4343);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -33276,29 +33644,29 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         inkscape:export-ydpi="92"
-         inkscape:export-xdpi="92"
-         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
-         clip-path="url(#clipPath3900)"
-         transform="matrix(0.5301872,0.05823698,0.246286,-0.4532941,1005.665,294.85476)"
-         y="-1349.4313"
-         x="-288.89871"
-         id="image3894"
+         width="244.45108"
          height="128.5571"
-         width="244.45108" />
+         id="image3894"
+         x="-288.89871"
+         y="-1349.4313"
+         transform="matrix(0.5301872,0.05823698,0.246286,-0.4532941,1005.665,294.85476)"
+         clip-path="url(#clipPath3900)"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         inkscape:export-xdpi="92"
+         inkscape:export-ydpi="92" />
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         inkscape:export-ydpi="92"
-         inkscape:export-xdpi="92"
-         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
-         width="124.3883"
-         height="234.41803"
-         id="image3820"
-         x="996.46283"
-         y="-154.57726"
+         clip-path="url(#clipPath3810)"
          transform="matrix(-0.3988876,0.3394408,-0.5283162,-0.07216022,1005.665,539.85269)"
-         clip-path="url(#clipPath3810)" />
+         y="-154.57726"
+         x="996.46283"
+         id="image3820"
+         height="234.41803"
+         width="124.3883"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fs-0.png"
+         inkscape:export-xdpi="92"
+         inkscape:export-ydpi="92" />
       <path
          inkscape:export-ydpi="92"
          inkscape:export-xdpi="92"
@@ -34457,13 +34825,13 @@
         <image
            sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
            xlink:href="bio.png"
-           width="124"
-           height="84"
-           id="image5359"
-           x="809.87134"
-           y="613.19147"
+           transform="translate(140,140)"
            clip-path="url(#clipPath5383)"
-           transform="translate(140,140)" />
+           y="613.19147"
+           x="809.87134"
+           id="image5359"
+           height="84"
+           width="124" />
         <path
            style="fill:url(#radialGradient6367);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2173394px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 977.625,761.78125 c -0.22988,0.002 -0.42931,0.0528 -0.65625,0.0625 -0.26798,0.004 -0.54347,-0.005 -0.8125,0 l 0,0.0625 c -15.86937,1.27877 -24.34381,20.11365 -24.34375,34 l 0,2.75 c -2e-5,13.88652 8.47403,32.78417 24.34375,34.0625 l 0,0.0625 c 0.49671,0.009 0.97556,-0.006 1.46875,0 0.55482,0.007 1.10588,-0.004 1.65625,0 62.88505,0.43432 96.53125,-19.59081 96.53125,-34.125 l 0,-2.75 c 0,-14.58597 -33.8999,-34.64518 -97.21875,-34.0625 -0.32764,-0.011 -0.64682,-0.066 -0.96875,-0.0625 z m 10.5625,0.9375 c 0.26808,-0.003 0.53964,0.0518 0.8125,0.0625 52.7267,-0.56727 80.9375,18.95606 80.9375,33.15625 l 0,2.6875 c 0,14.14976 -28.0095,33.6416 -80.375,33.21875 -0.45831,-0.004 -0.91295,0.007 -1.375,0 -0.41069,-0.006 -0.80511,0.008 -1.21875,0 l 0,-0.0625 c -13.215,-1.24451 -20.28122,-19.63699 -20.28125,-33.15625 l 0,-2.6875 c -4e-5,-13.51905 7.06657,-31.84884 20.28125,-33.09375 l 0,-0.0625 c 0.22403,-0.005 0.4331,0.004 0.65625,0 0.18899,-0.009 0.37113,-0.0601 0.5625,-0.0625 z"
@@ -34765,8 +35133,8 @@
        id="rect7720"
        width="3.4296565"
        height="14.660361"
-       x="-263.35278"
-       y="349.3858"
+       x="-252.47253"
+       y="337.64764"
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)" />
     <g
        id="g7942"
@@ -35508,13 +35876,13 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         width="124"
-         height="84"
-         id="image6859"
-         x="809.87134"
-         y="613.19147"
+         transform="translate(140,140)"
          clip-path="url(#clipPath5383)"
-         transform="translate(140,140)" />
+         y="613.19147"
+         x="809.87134"
+         id="image6859"
+         height="84"
+         width="124" />
       <path
          style="fill:url(#radialGradient7269);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.2173394px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 977.625,761.78125 c -0.22988,0.002 -0.42931,0.0528 -0.65625,0.0625 -0.26798,0.004 -0.54347,-0.005 -0.8125,0 l 0,0.0625 c -15.86937,1.27877 -24.34381,20.11365 -24.34375,34 l 0,2.75 c -2e-5,13.88652 8.47403,32.78417 24.34375,34.0625 l 0,0.0625 c 0.49671,0.009 0.97556,-0.006 1.46875,0 0.55482,0.007 1.10588,-0.004 1.65625,0 62.88505,0.43432 96.53125,-19.59081 96.53125,-34.125 l 0,-2.75 c 0,-14.58597 -33.8999,-34.64518 -97.21875,-34.0625 -0.32764,-0.011 -0.64682,-0.066 -0.96875,-0.0625 z m 10.5625,0.9375 c 0.26808,-0.003 0.53964,0.0518 0.8125,0.0625 52.7267,-0.56727 80.9375,18.95606 80.9375,33.15625 l 0,2.6875 c 0,14.14976 -28.0095,33.6416 -80.375,33.21875 -0.45831,-0.004 -0.91295,0.007 -1.375,0 -0.41069,-0.006 -0.80511,0.008 -1.21875,0 l 0,-0.0625 c -13.215,-1.24451 -20.28122,-19.63699 -20.28125,-33.15625 l 0,-2.6875 c -4e-5,-13.51905 7.06657,-31.84884 20.28125,-33.09375 l 0,-0.0625 c 0.22403,-0.005 0.4331,0.004 0.65625,0 0.18899,-0.009 0.37113,-0.0601 0.5625,-0.0625 z"
@@ -35534,12 +35902,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
-       y="59.163239"
-       x="-1477.0024"
-       id="image8455"
+       width="92.05336"
        height="92.05336"
-       width="92.05336" />
+       id="image8455"
+       x="-1477.0024"
+       y="59.163239"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
     <path
        transform="matrix(0.544411,0,0,0.544411,654.02206,444.73943)"
        d="m 520,1248.3622 c 0,46.3919 -37.60808,84 -84,84 -46.39192,0 -84,-37.6081 -84,-84 0,-46.3919 37.60808,-84 84,-84 46.39192,0 84,37.6081 84,84 z"
@@ -35553,12 +35921,12 @@
     <image
        sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
        xlink:href="bio.png"
-       width="92.05336"
-       height="92.05336"
-       id="image8503"
-       x="-1403.4927"
+       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)"
        y="-48.991165"
-       transform="matrix(-0.56212529,-0.82705209,0.82705209,-0.56212529,0,0)" />
+       x="-1403.4927"
+       id="image8503"
+       height="92.05336"
+       width="92.05336" />
     <path
        sodipodi:type="arc"
        style="fill:url(#radialGradient8507);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -36999,12 +37367,12 @@
        sodipodi:cy="1026.8622"
        sodipodi:rx="53"
        sodipodi:ry="53"
-       d="m 335.5,1026.8622 a 53,53 0 1 1 -106,0 53,53 0 1 1 106,0 z"
+       d="m 335.5,1026.8622 c 0,29.2711 -23.72891,53 -53,53 -29.27109,0 -53,-23.7289 -53,-53 0,-29.27111 23.72891,-53.00002 53,-53.00002 29.27109,0 53,23.72891 53,53.00002 z"
        transform="translate(167.91236,422.05155)"
        mask="none" />
     <path
        transform="translate(140.74569,391.63488)"
-       d="m 371.5,1057.6122 a 12,22.75 0 1 1 -24,0 12,22.75 0 1 1 24,0 z"
+       d="m 371.5,1057.6122 c 0,12.5645 -5.37258,22.75 -12,22.75 -6.62742,0 -12,-10.1855 -12,-22.75 0,-12.5645 5.37258,-22.75 12,-22.75 6.62742,0 12,10.1855 12,22.75 z"
        sodipodi:ry="22.75"
        sodipodi:rx="12"
        sodipodi:cy="1057.6122"
@@ -37706,8 +38074,8 @@
        transform="matrix(0,1,-1,0,0,0)" />
     <rect
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)"
-       y="355.30258"
-       x="-276.89923"
+       y="344.35657"
+       x="-274.31021"
        height="14.660374"
        width="3.4296565"
        id="rect4370"
@@ -37723,13 +38091,13 @@
        id="rect4375"
        width="3.4296565"
        height="14.660372"
-       x="-274.8717"
-       y="361.29333"
+       x="-272.28268"
+       y="350.34732"
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)" />
     <rect
        transform="matrix(0.00458966,-0.99998947,0.99998947,0.00458966,0,0)"
-       y="361.31171"
-       x="-278.8717"
+       y="350.36569"
+       x="-276.28268"
        height="14.660374"
        width="3.4296565"
        id="rect4379"
@@ -37808,7 +38176,7 @@
     </g>
     <g
        id="g5384"
-       transform="translate(-86.403191,-32.535085)">
+       transform="translate(-31.356061,34.954205)">
       <path
          inkscape:export-ydpi="92"
          inkscape:export-xdpi="92"
@@ -38514,12 +38882,12 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         width="92.05336"
-         height="92.05336"
-         id="image12102"
-         x="-1724.3616"
+         transform="matrix(-0.5621253,-0.8270521,0.8270521,-0.5621253,0,0)"
          y="-146.16608"
-         transform="matrix(-0.5621253,-0.8270521,0.8270521,-0.5621253,0,0)" />
+         x="-1724.3616"
+         id="image12102"
+         height="92.05336"
+         width="92.05336" />
       <path
          sodipodi:type="arc"
          style="fill:url(#radialGradient13736);fill-opacity:1;stroke:#000000;stroke-width:1.08800006;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -38558,12 +38926,12 @@
       <image
          sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
          xlink:href="bio.png"
-         transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-         y="1.8538502"
-         x="-1902.1309"
-         id="image13869"
+         width="84.730576"
          height="75.273056"
-         width="84.730576" />
+         id="image13869"
+         x="-1902.1309"
+         y="1.8538502"
+         transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
       <path
          id="path13871"
          d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -38626,12 +38994,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-             y="1.8538502"
-             x="-1902.1309"
-             id="image15368"
+             width="84.730576"
              height="75.273056"
-             width="84.730576" />
+             id="image15368"
+             x="-1902.1309"
+             y="1.8538502"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
           <path
              id="path15370"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -38674,12 +39042,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             width="84.730576"
-             height="75.273056"
-             id="image15384"
-             x="-1902.1309"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
              y="1.8538502"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+             x="-1902.1309"
+             id="image15384"
+             height="75.273056"
+             width="84.730576" />
           <path
              style="fill:url(#radialGradient151252);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -38722,12 +39090,12 @@
           <image
              sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
              xlink:href="bio.png"
-             width="84.730576"
-             height="75.273056"
-             id="image15400"
-             x="-1902.1309"
+             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
              y="1.8538502"
-             transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+             x="-1902.1309"
+             id="image15400"
+             height="75.273056"
+             width="84.730576" />
           <path
              style="fill:url(#radialGradient151260);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
              d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39096,12 +39464,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13914"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13914"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient13958);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39144,12 +39512,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13930"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13930"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path13932"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39192,12 +39560,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13946"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13946"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path13948"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39258,12 +39626,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13992"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13992"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path13994"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39306,12 +39674,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image14008"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image14008"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient14044);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39354,12 +39722,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image14024"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image14024"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient14052);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39420,12 +39788,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image13557"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image13557"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path13559"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39468,12 +39836,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13573"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13573"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient14306);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39516,12 +39884,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image13589"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image13589"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient14314);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39580,12 +39948,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               width="84.730576"
-               height="75.273056"
-               id="image14070"
-               x="-1902.1309"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
                y="1.8538502"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
+               x="-1902.1309"
+               id="image14070"
+               height="75.273056"
+               width="84.730576" />
             <path
                style="fill:url(#radialGradient14324);fill-opacity:1;stroke:#000000;stroke-width:0.65649027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39628,12 +39996,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image14086"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image14086"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path14088"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -39676,12 +40044,12 @@
             <image
                sodipodi:absref="/media/arbol/pyfl/trunk/art/vectorial/ships/bio.png"
                xlink:href="bio.png"
-               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)"
-               y="1.8538502"
-               x="-1902.1309"
-               id="image14102"
+               width="84.730576"
                height="75.273056"
-               width="84.730576" />
+               id="image14102"
+               x="-1902.1309"
+               y="1.8538502"
+               transform="matrix(-0.4384037,-0.8987782,0.7260634,-0.6876277,0,0)" />
             <path
                id="path14104"
                d="m 854.61839,1695.9718 c -0.2193,0 -0.43084,0.031 -0.65102,0.031 -1.33352,0 -2.63984,-0.073 -3.93868,-0.25 -1.29885,-0.1764 -2.58335,-0.4366 -3.84103,-0.7812 -2.51535,-0.6889 -4.94714,-1.7223 -7.2589,-3.0308 -2.31176,-1.3083 -4.51907,-2.8908 -6.57532,-4.7494 -2.05625,-1.8585 -3.94761,-3.9726 -5.69645,-6.3117 -1.74883,-2.339 -3.33042,-4.9049 -4.71991,-7.6553 -1.38949,-2.7502 -2.60238,-5.6879 -3.58062,-8.7801 -0.97824,-3.0921 -1.73095,-6.353 -2.24602,-9.7175 -0.51508,-3.3643 -0.78123,-6.8376 -0.78123,-10.4049 0,-3.5672 0.26615,-7.0405 0.78123,-10.4047 0.51507,-3.3645 1.26778,-6.6255 2.24602,-9.7177 0.97824,-3.0921 2.19113,-6.0298 3.58062,-8.78 1.38949,-2.7504 2.97108,-5.3163 4.71991,-7.6554 1.74884,-2.339 3.6402,-4.4531 5.69645,-6.3117 2.05625,-1.8585 4.26356,-3.4409 6.57532,-4.7494 2.31176,-1.3083 4.74355,-2.3419 7.2589,-3.0307 1.24747,-0.3418 2.52047,-0.6047 3.80848,-0.7813 -25.26257,2.4309 -45.08327,24.5481 -45.08328,51.4621 0,28.5376 22.27593,51.7124 49.70553,51.7122 l 0,-0.094 z"
@@ -42915,108 +43283,111 @@
          x="-27.232208"
          y="-298.88965" />
     </g>
-    <rect
-       transform="matrix(0,-1,-1,0,0,0)"
-       style="fill:#555555;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect6125"
-       width="4.560514"
-       height="24.728901"
-       x="162.87018"
-       y="-341.77972"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       style="fill:url(#radialGradient6216);fill-opacity:1;stroke:#000000;stroke-width:0.05450483;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect6127"
-       width="8.8208542"
-       height="8.30019"
-       x="-169.68307"
-       y="-345.95035"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <path
-       id="path6129"
-       d="m 340.96836,-169.0383 4.1322,0.58161 0,0.46989 0,5.42834 0,0.46988 -4.1322,0.58162 0,-1.63311 0,-4.26512 0,-1.63311 z"
-       style="fill:url(#radialGradient6218);fill-opacity:1;stroke:#000000;stroke-width:0.16620407;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       transform="matrix(0,1,-1,0,0,0)"
-       y="-340.95239"
-       x="-169.01663"
-       height="1.5876518"
-       width="7.4879966"
-       id="rect6131"
-       style="fill:url(#radialGradient6220);fill-opacity:1;stroke:#000000;stroke-width:0.02196322;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       transform="matrix(0,1,-1,0,0,0)"
-       y="-338.66904"
-       x="-169.27362"
-       height="2.237082"
-       width="5.096714"
-       id="rect6133"
-       style="fill:url(#radialGradient6222);fill-opacity:1;stroke:#000000;stroke-width:0.02150907;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       inkscape:export-ydpi="76"
-       inkscape:export-xdpi="76"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       transform="matrix(0,1,-1,0,0,0)"
-       y="-319.80411"
-       x="-169.96106"
-       height="4.0245595"
-       width="8.8372831"
-       id="rect6135"
-       style="fill:url(#radialGradient6224);fill-opacity:1;stroke:#000000;stroke-width:0.03798869;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-    <path
-       style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.19379027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 316.13154,-169.63996 -5.16271,0.63288 0,0.51129 0,5.90679 0,0.5113 5.16271,0.63287 0,-1.77704 0,-4.64105 0,-1.77704 z"
-       id="path6137"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       inkscape:export-ydpi="76"
-       inkscape:export-xdpi="76"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       transform="matrix(0,1,-1,0,0,0)"
-       style="fill:url(#radialGradient6226);fill-opacity:1;stroke:#000000;stroke-width:0.05387633;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect6139"
-       width="10.620045"
-       height="6.7359452"
-       x="-170.80484"
-       y="-335.96515" />
-    <rect
-       y="-327.87231"
-       x="-170.80484"
-       height="6.7359452"
-       width="10.620045"
-       id="rect6141"
-       style="fill:url(#radialGradient6228);fill-opacity:1;stroke:#000000;stroke-width:0.05387633;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
-    <rect
-       style="fill:url(#radialGradient6230);fill-opacity:1;stroke:#000000;stroke-width:0.02400891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       id="rect6143"
-       width="4.2964387"
-       height="3.3064713"
-       x="-166.31076"
-       y="-320.05099"
-       transform="matrix(0,1,-1,0,0,0)"
-       inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
-       inkscape:export-xdpi="76"
-       inkscape:export-ydpi="76" />
+    <g
+       id="g8010">
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         y="-341.77972"
+         x="162.87018"
+         height="24.728901"
+         width="4.560514"
+         id="rect6125"
+         style="fill:#555555;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         transform="matrix(0,-1,-1,0,0,0)" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-345.95035"
+         x="-169.68307"
+         height="8.30019"
+         width="8.8208542"
+         id="rect6127"
+         style="fill:url(#radialGradient6216);fill-opacity:1;stroke:#000000;stroke-width:0.05450483;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         style="fill:url(#radialGradient6218);fill-opacity:1;stroke:#000000;stroke-width:0.16620407;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 340.96836,-169.0383 4.1322,0.58161 0,0.46989 0,5.42834 0,0.46988 -4.1322,0.58162 0,-1.63311 0,-4.26512 0,-1.63311 z"
+         id="path6129" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         style="fill:url(#radialGradient6220);fill-opacity:1;stroke:#000000;stroke-width:0.02196322;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect6131"
+         width="7.4879966"
+         height="1.5876518"
+         x="-169.01663"
+         y="-340.95239"
+         transform="matrix(0,1,-1,0,0,0)" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         style="fill:url(#radialGradient6222);fill-opacity:1;stroke:#000000;stroke-width:0.02150907;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect6133"
+         width="5.096714"
+         height="2.237082"
+         x="-169.27362"
+         y="-338.66904"
+         transform="matrix(0,1,-1,0,0,0)" />
+      <rect
+         style="fill:url(#radialGradient6224);fill-opacity:1;stroke:#000000;stroke-width:0.03798869;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect6135"
+         width="8.8372831"
+         height="4.0245595"
+         x="-169.96106"
+         y="-319.80411"
+         transform="matrix(0,1,-1,0,0,0)"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <path
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         id="path6137"
+         d="m 316.13154,-169.63996 -5.16271,0.63288 0,0.51129 0,5.90679 0,0.5113 5.16271,0.63287 0,-1.77704 0,-4.64105 0,-1.77704 z"
+         style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.19379027;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="-335.96515"
+         x="-170.80484"
+         height="6.7359452"
+         width="10.620045"
+         id="rect6139"
+         style="fill:url(#radialGradient6226);fill-opacity:1;stroke:#000000;stroke-width:0.05387633;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         transform="matrix(0,1,-1,0,0,0)"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         style="fill:url(#radialGradient6228);fill-opacity:1;stroke:#000000;stroke-width:0.05387633;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect6141"
+         width="10.620045"
+         height="6.7359452"
+         x="-170.80484"
+         y="-327.87231" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-320.05099"
+         x="-166.31076"
+         height="3.3064713"
+         width="4.2964387"
+         id="rect6143"
+         style="fill:url(#radialGradient6230);fill-opacity:1;stroke:#000000;stroke-width:0.02400891;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
     <rect
        y="135.59363"
        x="311.16483"
@@ -45311,7 +45682,7 @@
     <g
        id="human-builder"
        inkscape:label="#g9121"
-       transform="matrix(0.81503807,0,0,0.81503807,40.391615,128.3722)">
+       transform="matrix(0.81503807,0,0,0.81503807,16.125949,73.451755)">
       <g
          style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
          transform="translate(1.0368466,-3.393316)"
@@ -46714,7 +47085,7 @@
          inkscape:export-xdpi="76"
          inkscape:export-filename="/media/pros/pyfl/art/orbitalbase.png"
          transform="matrix(6.0174568,0,0,6.0174568,-3123.7828,-3441.5732)"
-         d="m 559,702.11218 a 6,6 0 1 1 -12,0 6,6 0 1 1 12,0 z"
+         d="m 559,702.11218 c 0,3.31371 -2.68629,6 -6,6 -3.31371,0 -6,-2.68629 -6,-6 0,-3.31371 2.68629,-6 6,-6 3.31371,0 6,2.68629 6,6 z"
          sodipodi:ry="6"
          sodipodi:rx="6"
          sodipodi:cy="702.11218"
@@ -46730,7 +47101,7 @@
          sodipodi:cy="702.11218"
          sodipodi:rx="6"
          sodipodi:ry="6"
-         d="m 559,702.11218 a 6,6 0 1 1 -12,0 6,6 0 1 1 12,0 z"
+         d="m 559,702.11218 c 0,3.31371 -2.68629,6 -6,6 -3.31371,0 -6,-2.68629 -6,-6 0,-3.31371 2.68629,-6 6,-6 3.31371,0 6,2.68629 6,6 z"
          transform="matrix(6.0174568,0,0,6.0174568,-3123.7317,-3441.6498)"
          inkscape:export-filename="/media/pros/pyfl/art/orbitalbase.png"
          inkscape:export-xdpi="76"
@@ -46871,7 +47242,7 @@
          sodipodi:cy="702.11218"
          sodipodi:rx="6"
          sodipodi:ry="6"
-         d="m 559,702.11218 a 6,6 0 1 1 -12,0 6,6 0 1 1 12,0 z"
+         d="m 559,702.11218 c 0,3.31371 -2.68629,6 -6,6 -3.31371,0 -6,-2.68629 -6,-6 0,-3.31371 2.68629,-6 6,-6 3.31371,0 6,2.68629 6,6 z"
          transform="matrix(3.3315534,0,0,3.3315534,-1638.4782,-1555.7677)"
          inkscape:export-filename="/media/pros/pyfl/art/orbitalbase.png"
          inkscape:export-xdpi="76"
@@ -46881,7 +47252,7 @@
          inkscape:export-xdpi="76"
          inkscape:export-filename="/media/pros/pyfl/art/orbitalbase.png"
          transform="matrix(3.3556167,0,0,3.3556167,-1651.7341,-1572.7394)"
-         d="m 559,702.11218 a 6,6 0 1 1 -12,0 6,6 0 1 1 12,0 z"
+         d="m 559,702.11218 c 0,3.31371 -2.68629,6 -6,6 -3.31371,0 -6,-2.68629 -6,-6 0,-3.31371 2.68629,-6 6,-6 3.31371,0 6,2.68629 6,6 z"
          sodipodi:ry="6"
          sodipodi:rx="6"
          sodipodi:cy="702.11218"
@@ -46889,6 +47260,445 @@
          id="path9217"
          style="fill:url(#radialGradient9257);fill-opacity:1;stroke:none"
          sodipodi:type="arc" />
+    </g>
+    <g
+       inkscape:label="#g9313"
+       id="evolved-transport"
+       transform="translate(0,42.227936)">
+      <g
+         inkscape:export-ydpi="66.98317"
+         inkscape:export-xdpi="66.98317"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-harvester.png"
+         transform="matrix(1.4942792,0,0,1.4942792,-296.25582,-378.06292)"
+         id="g7924">
+        <path
+           inkscape:export-ydpi="92"
+           inkscape:export-xdpi="92"
+           inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-bomber.png"
+           id="path7926"
+           d="m 409.15675,639.22724 c 0,-0.85521 -6.26434,-2.03917 -17.96566,-1.97338 l 0,4.10595 c 11.70132,0.0658 17.96566,-1.11816 17.96566,-1.97338 l 0,-0.15919 z"
+           style="fill:url(#radialGradient7953);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.65968627;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:export-ydpi="92"
+           inkscape:export-xdpi="92"
+           inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-bomber.png"
+           id="path7928"
+           d="m 391.03424,637.12685 -1.87139,0.3367 0,0.27202 0,3.14253 0,0.27202 1.87139,0.3367 0,-0.94541 0,-2.46914 0,-0.94542 z"
+           style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.40174693;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      </g>
+      <g
+         inkscape:export-ydpi="66.98317"
+         inkscape:export-xdpi="66.98317"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-harvester.png"
+         transform="matrix(1.4942792,0,0,1.4942792,-291.29278,-383.77344)"
+         id="g7930">
+        <path
+           transform="matrix(0.6176471,0,0,0.6176471,149.56782,245.62723)"
+           d="m 403.75,643.86218 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
+           sodipodi:ry="8"
+           sodipodi:rx="8"
+           sodipodi:cy="643.86218"
+           sodipodi:cx="395.75"
+           id="path7964"
+           style="fill:url(#radialGradient7966);fill-opacity:1;stroke:#000000;stroke-opacity:1"
+           sodipodi:type="arc" />
+        <path
+           sodipodi:type="arc"
+           style="fill:url(#radialGradient7955);fill-opacity:1;stroke:#000000;stroke-opacity:1"
+           id="path7932"
+           sodipodi:cx="395.75"
+           sodipodi:cy="643.86218"
+           sodipodi:rx="8"
+           sodipodi:ry="8"
+           d="m 403.75,643.86218 c 0,4.41828 -3.58172,8 -8,8 -4.41828,0 -8,-3.58172 -8,-8 0,-4.41828 3.58172,-8 8,-8 4.41828,0 8,3.58172 8,8 z"
+           transform="matrix(0.6176471,0,0,0.6176471,159.46332,245.62723)" />
+        <path
+           inkscape:export-ydpi="92"
+           inkscape:export-xdpi="92"
+           inkscape:export-filename="/media/pros/pyfl/art/ships/evolved-fighter.png"
+           id="path7934"
+           d="m 408.23598,643.14837 c 0,-1.70291 -1.26745,-4.06032 -3.63498,-3.92933 0,0 1.85616,1.56212 1.85616,4.22795 0,2.66542 -1.85616,3.94765 -1.85616,3.94765 2.36753,0.13101 3.63498,-2.22643 3.63498,-3.92931 l 0,-0.31696 z"
+           style="fill:url(#radialGradient7957);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="cczccc" />
+      </g>
+    </g>
+    <g
+       inkscape:label="#g9368"
+       id="ai-transport"
+       transform="translate(-55.801201,0)">
+      <rect
+         transform="matrix(-0.25438305,-0.96710354,0.96710354,-0.25438305,0,0)"
+         y="214.71028"
+         x="-344.93561"
+         height="14.660381"
+         width="3.4296565"
+         id="rect7976"
+         style="fill:url(#radialGradient7988);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-ydpi="87.310692" />
+      <rect
+         inkscape:export-ydpi="87.310692"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         style="fill:url(#radialGradient7991);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect7978"
+         width="3.4296565"
+         height="14.660379"
+         x="-186.0029"
+         y="356.04639"
+         transform="matrix(0.26324959,-0.96472776,0.96472776,0.26324959,0,0)" />
+      <rect
+         transform="matrix(0.00621594,-0.99998068,0.99999426,0.00338885,0,0)"
+         y="299.37161"
+         x="-275.11508"
+         height="19.814735"
+         width="3.4227021"
+         id="rect7974"
+         style="fill:url(#radialGradient7986);fill-opacity:1;stroke:#000000;stroke-width:0.05245829;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-ydpi="87.310692" />
+      <rect
+         inkscape:export-ydpi="87.310692"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         style="fill:url(#radialGradient7994);fill-opacity:1;stroke:#000000;stroke-width:0.04807777;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect7980"
+         width="3.4269116"
+         height="16.623205"
+         x="-274.88446"
+         y="307.95728"
+         transform="matrix(0.00520834,-0.99998644,0.99999182,0.00404447,0,0)" />
+      <rect
+         inkscape:export-ydpi="87.310692"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         style="fill:url(#radialGradient8006);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8001"
+         width="3.4296565"
+         height="14.660372"
+         x="-186.3788"
+         y="-372.35928"
+         transform="matrix(0.25438305,-0.96710354,-0.96710354,-0.25438305,0,0)" />
+      <rect
+         transform="matrix(0.25438305,-0.96710354,-0.96710354,-0.25438305,0,0)"
+         y="-378.1619"
+         x="-184.85252"
+         height="14.660372"
+         width="3.4296565"
+         id="rect7982"
+         style="fill:url(#radialGradient7997);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-ydpi="87.310692" />
+      <rect
+         transform="matrix(-0.26324959,-0.96472776,-0.96472776,0.26324959,0,0)"
+         y="-229.54305"
+         x="-349.94162"
+         height="14.660374"
+         width="3.4296565"
+         id="rect8004"
+         style="fill:url(#radialGradient8008);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-ydpi="87.310692" />
+      <rect
+         inkscape:export-ydpi="87.310692"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         style="fill:url(#radialGradient7999);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect7984"
+         width="3.4296565"
+         height="14.660374"
+         x="-351.52109"
+         y="-235.33142"
+         transform="matrix(-0.26324959,-0.96472776,-0.96472776,0.26324959,0,0)" />
+      <rect
+         inkscape:export-ydpi="87.310692"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         style="fill:url(#radialGradient8883);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8875"
+         width="3.4296565"
+         height="14.660372"
+         x="-183.3262"
+         y="-383.96451"
+         transform="matrix(0.25438305,-0.96710354,-0.96710354,-0.25438305,0,0)" />
+      <rect
+         transform="matrix(-0.26324959,-0.96472776,-0.96472776,0.26324959,0,0)"
+         y="-241.1198"
+         x="-353.10056"
+         height="14.660374"
+         width="3.4296565"
+         id="rect8877"
+         style="fill:url(#radialGradient8885);fill-opacity:1;stroke:#000000;stroke-width:0.04516825;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/art/ships/ai-harvester.png"
+         inkscape:export-xdpi="87.310692"
+         inkscape:export-ydpi="87.310692" />
+    </g>
+    <g
+       id="nomad-transport"
+       transform="translate(0,131.43582)"
+       inkscape:label="#g8022">
+      <rect
+         transform="matrix(0,-1,-1,0,0,0)"
+         style="fill:#555555;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8024"
+         width="4.2727599"
+         height="43.769943"
+         x="163.01405"
+         y="-341.63583"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         style="fill:url(#radialGradient8045);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8026"
+         width="8.8208542"
+         height="8.30019"
+         x="-169.68307"
+         y="-345.95035"
+         transform="matrix(0,1,-1,0,0,0)"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <path
+         id="path8028"
+         d="m 340.96836,-169.0383 4.1322,0.58161 0,0.46989 0,5.42834 0,0.46988 -4.1322,0.58162 0,-1.63311 0,-4.26512 0,-1.63311 z"
+         style="fill:url(#radialGradient8047);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-340.95239"
+         x="-169.01663"
+         height="1.5876518"
+         width="7.4879966"
+         id="rect8030"
+         style="fill:url(#radialGradient8049);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-338.66904"
+         x="-169.27362"
+         height="2.237082"
+         width="5.096714"
+         id="rect8033"
+         style="fill:url(#radialGradient8051);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         y="-299.80411"
+         x="-169.96106"
+         height="4.0245595"
+         width="8.8372831"
+         id="rect8035"
+         style="fill:url(#radialGradient8086);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         style="fill:#494949;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 296.13154,-169.63996 -5.16271,0.63288 0,0.51129 0,5.90679 0,0.5113 5.16271,0.63287 0,-1.77704 0,-4.64105 0,-1.77704 z"
+         id="path8037"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         transform="matrix(0,1,-1,0,0,0)"
+         style="fill:url(#radialGradient8864);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8039"
+         width="10.482475"
+         height="16.401289"
+         x="-170.73605"
+         y="-335.51932" />
+      <rect
+         style="fill:url(#radialGradient8084);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect8043"
+         width="4.2964387"
+         height="3.3064713"
+         x="-166.31076"
+         y="-300.05099"
+         transform="matrix(0,1,-1,0,0,0)"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+      <rect
+         y="-317.70441"
+         x="-170.73605"
+         height="16.401289"
+         width="10.482475"
+         id="rect8870"
+         style="fill:url(#radialGradient8872);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         transform="matrix(0,1,-1,0,0,0)"
+         inkscape:export-filename="/media/pros/pyfl/trunk/src/client/imgs/ships/nomad-harvester-0.png"
+         inkscape:export-xdpi="76"
+         inkscape:export-ydpi="76" />
+    </g>
+    <g
+       transform="matrix(0.81503807,0,0,0.81503807,16.125949,108.6435)"
+       inkscape:label="#g9121"
+       id="human-transport">
+      <g
+         id="g8889"
+         transform="translate(1.0368466,-3.393316)"
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+        <rect
+           mask="none"
+           clip-path="none"
+           rx="6.0620885"
+           y="687.12103"
+           x="227.73466"
+           height="12.093904"
+           width="27.461296"
+           id="rect8891"
+           style="fill:url(#radialGradient8911);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <rect
+           inkscape:export-ydpi="76"
+           inkscape:export-xdpi="76"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian-1.png"
+           style="fill:url(#linearGradient8913);fill-opacity:1;stroke:none"
+           id="rect8893"
+           width="27.461296"
+           height="12.093904"
+           x="227.73466"
+           y="687.12103"
+           rx="6.0620885"
+           clip-path="none"
+           mask="none" />
+      </g>
+      <path
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/art/harvester.png"
+         id="path8901"
+         d="m 275.53398,686.11057 c 0,3.33801 -5.82457,6.04711 -13.00128,6.04711 -7.17671,0 -8.46595,-2.40675 -8.46595,-5.74475 0,-3.33801 1.28924,-6.34946 8.46595,-6.34946 7.17671,0 13.00128,2.7091 13.00128,6.0471 z"
+         style="fill:url(#radialGradient8917);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:export-ydpi="76"
+         inkscape:export-xdpi="76"
+         inkscape:export-filename="/media/pros/pyfl/art/harvester.png"
+         sodipodi:nodetypes="csssc"
+         id="path8903"
+         d="m 274.28754,686.07026 c 0,2.27722 -2.90441,4.1657 -4.34712,4.1657 -1.44272,0 -0.19477,-1.84817 -0.19477,-4.12539 0,-2.27721 -1.24795,-4.12539 0.19477,-4.12539 1.44271,0 4.34712,1.80786 4.34712,4.08508 z"
+         style="fill:url(#radialGradient8919);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <g
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+         transform="translate(-24.238449,5.278492)"
+         id="g8958">
+        <rect
+           mask="none"
+           clip-path="none"
+           rx="6.0620885"
+           y="671.12103"
+           x="227.73466"
+           height="12.093904"
+           width="27.461296"
+           id="rect8960"
+           style="fill:url(#radialGradient8968);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <rect
+           style="fill:url(#linearGradient8970);fill-opacity:1;stroke:none"
+           id="rect8962"
+           width="27.461296"
+           height="12.093904"
+           x="227.73466"
+           y="671.12103"
+           rx="6.0620885"
+           clip-path="none"
+           mask="none"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian-1.png"
+           inkscape:export-xdpi="76"
+           inkscape:export-ydpi="76" />
+      </g>
+      <g
+         id="g8895"
+         transform="matrix(0.79174965,0,0,0.99801056,185.82243,-395.25225)"
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+        <rect
+           inkscape:export-ydpi="76"
+           inkscape:export-xdpi="76"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian.png"
+           transform="matrix(0,1,-1,0,0,0)"
+           y="-17.777203"
+           x="1079.4452"
+           height="8.4338264"
+           width="8.1456375"
+           id="rect8897"
+           style="fill:#3c3c4a;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           inkscape:export-ydpi="76"
+           inkscape:export-xdpi="76"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian.png"
+           sodipodi:nodetypes="cccccccccc"
+           id="path8899"
+           d="m 16.93507,1078.9819 c -1.280695,0.055 -2.015645,3.7671 -3.0848,4.4838 l -0.405712,0 c 0.110774,0 0.211877,0.01 0.300787,0.048 l 0.104925,0.064 c 1.107336,0.7424 1.760993,4.69 3.231692,4.4679 3.268041,0.1259 8.234418,-0.9911 9.366312,-4.4679 l 0,-0.1113 c -1.131894,-3.4766 -6.098271,-4.5937 -9.366312,-4.4677 -0.05071,-0.01 -0.101154,-0.018 -0.146892,-0.016 z"
+           style="fill:url(#radialGradient8950);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      </g>
+      <g
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+         transform="translate(-24.238449,-3.393316)"
+         id="g8952">
+        <rect
+           style="fill:url(#radialGradient8964);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect8954"
+           width="27.461296"
+           height="12.093904"
+           x="227.73466"
+           y="687.12103"
+           rx="6.0620885"
+           clip-path="none"
+           mask="none" />
+        <rect
+           mask="none"
+           clip-path="none"
+           rx="6.0620885"
+           y="687.12103"
+           x="227.73466"
+           height="12.093904"
+           width="27.461296"
+           id="rect8956"
+           style="fill:url(#linearGradient8966);fill-opacity:1;stroke:none"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian-1.png"
+           inkscape:export-xdpi="76"
+           inkscape:export-ydpi="76" />
+      </g>
+      <g
+         id="g8905"
+         transform="translate(1.0368466,5.278492)"
+         style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none">
+        <rect
+           style="fill:url(#radialGradient8921);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="rect8907"
+           width="27.461296"
+           height="12.093904"
+           x="227.73466"
+           y="671.12103"
+           rx="6.0620885"
+           clip-path="none"
+           mask="none" />
+        <rect
+           inkscape:export-ydpi="76"
+           inkscape:export-xdpi="76"
+           inkscape:export-filename="/media/pros/pyfl/art/civilian-1.png"
+           mask="none"
+           clip-path="none"
+           rx="6.0620885"
+           y="671.12103"
+           x="227.73466"
+           height="12.093904"
+           width="27.461296"
+           id="rect8909"
+           style="fill:url(#linearGradient8923);fill-opacity:1;stroke:none" />
+      </g>
     </g>
   </g>
 </svg>

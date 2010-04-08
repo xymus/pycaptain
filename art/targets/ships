@@ -1,6 +1,7 @@
 human-frigate-0
 human-scaffolding
 human-builder
+human-transport
 human-base-military
 human-base-cargo
 human-base-carrier
@@ -8,15 +9,18 @@ ai-frigate-0
 ai-scaffolding
 ai-base-military
 ai-builder
+ai-transport
 ai-base-cargo
 nomad-frigate-0
 nomad-scaffolding
 nomad-base-military
 nomad-builder
+nomad-transport
 nomad-base-cargo
 evolved-scaffolding
 evolved-frigate-0
 evolved-builder
+evolved-transport
 evolved-base-military
 evolved-base-heavy-military
 evolved-base-cargo

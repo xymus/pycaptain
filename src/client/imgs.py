@@ -111,6 +111,7 @@ class Imgs( Rc ):
         self[ ids.S_AI_FS_2] = self.loadImage( "ships/ai-fs-2.png" )
         self[ ids.S_AI_HARVESTER] = self.loadImage( "ships/ai-harvester.png" )
         self[ ids.S_AI_BUILDER] = self.loadImage( "ships/ai-builder.png" )
+        self[ ids.S_AI_TRANSPORTER] = self.loadImage( "ships/ai-transport.png" )
         self[ ids.S_AI_FRIGATE_0 ] = self.loadImage( "ships/ai-frigate-0.png" )
         self[ ids.S_AI_SCAFFOLDING ] = self.loadImage( "ships/ai-scaffolding.png" )
         self[ ids.S_AI_BASE_MILITARY ] 	= self.loadImage( "ships/ai-base-military.png" )
@@ -124,6 +125,7 @@ class Imgs( Rc ):
         self[ ids.S_NOMAD_HARVESTER] = self.loadImage( "ships/nomad-harvester-0.png" )
         self[ ids.S_NOMAD_HARVESTER_1] = self.loadImage( "ships/nomad-harvester-1.png" )
         self[ ids.S_NOMAD_BUILDER] = self.loadImage( "ships/nomad-builder.png" )
+        self[ ids.S_NOMAD_TRANSPORTER] = self.loadImage( "ships/nomad-transport.png" )
         self[ ids.S_NOMAD_FRIGATE_0 ] = self.loadImage( "ships/nomad-frigate-0.png" )
         self[ ids.S_NOMAD_SCAFFOLDING ] = self.loadImage( "ships/nomad-scaffolding.png" )
         self[ ids.S_NOMAD_BASE_MILITARY ] 	= self.loadImage( "ships/nomad-base-military.png" )
@@ -137,6 +139,7 @@ class Imgs( Rc ):
         self[ ids.S_EVOLVED_FS_2 ] 	= self.loadImage( "ships/evolved-fs-2.png" )
         self[ ids.S_EVOLVED_HARVESTER] = self.loadImage( "ships/evolved-harvester.png" )
         self[ ids.S_EVOLVED_BUILDER] = self.loadImage( "ships/evolved-builder.png" )
+        self[ ids.S_EVOLVED_TRANSPORTER] = self.loadImage( "ships/evolved-transport.png" )
         self[ ids.S_EVOLVED_FRIGATE_0 ] = self.loadImage( "ships/evolved-frigate-0.png" )
         self[ ids.S_EVOLVED_SCAFFOLDING ] = self.loadImage( "ships/evolved-scaffolding.png" )
         self[ ids.S_EVOLVED_BASE_MILITARY ] 	= self.loadImage( "ships/evolved-base-military.png" )
@@ -161,6 +164,7 @@ class Imgs( Rc ):
         self[ ids.S_HUMAN_PIRATE ] = self.loadImage( "ships/human-pirate.png" ) 
         self[ ids.S_HARVESTER ] = self.loadImage( "ships/harvester.png" ) 
         self[ ids.S_HUMAN_BUILDER ] = self.loadImage( "ships/human-builder.png" )
+        self[ ids.S_HUMAN_TRANSPORTER ] = self.loadImage( "ships/human-transport.png" )
         self[ ids.S_HUMAN_FIGHTER ] = self.loadImage( "ships/human-fighter.png" ) 
         self[ ids.S_HUMAN_BOMBER ] = self.loadImage( "ships/human-bomber.png" ) 
         self[ ids.S_HUMAN_FS_0 ] = self.loadImage( "ships/human-fs-0.png" ) 
@@ -556,21 +560,25 @@ class Imgs( Rc ):
                             ids.S_HUMAN_BOMBER: self.loadImageWithDisplay( "icons/ships/bomber.png" ),
                             ids.S_HARVESTER: self.loadImageWithDisplay( "icons/ships/harvester.png" ),
                             ids.S_HUMAN_BUILDER: self.loadImageWithDisplay( "icons/ships/human-builder.png" ),
+                            ids.S_HUMAN_TRANSPORTER: self.loadImageWithDisplay( "icons/ships/human-transport.png" ),
 
                             ids.S_EVOLVED_FIGHTER: self.loadImageWithDisplay( "icons/ships/evolved-fighter.png" ),
                             ids.S_EVOLVED_BOMBER: self.loadImageWithDisplay( "icons/ships/evolved-bomber.png" ),
                             ids.S_EVOLVED_HARVESTER: self.loadImageWithDisplay( "icons/ships/evolved-harvester.png" ),
                             ids.S_EVOLVED_BUILDER: self.loadImageWithDisplay( "icons/ships/evolved-builder.png" ),
+                            ids.S_EVOLVED_TRANSPORTER: self.loadImageWithDisplay( "icons/ships/evolved-transport.png" ),
                             
                             ids.S_AI_FIGHTER: self.loadImageWithDisplay( "icons/ships/ai-fighter.png" ),
                             ids.S_AI_BOMBER: self.loadImageWithDisplay( "icons/ships/ai-bomber.png" ),
                             ids.S_AI_HARVESTER: self.loadImageWithDisplay( "icons/ships/ai-harvester.png" ),
                             ids.S_AI_BUILDER: self.loadImageWithDisplay( "icons/ships/ai-builder.png" ),
+                            ids.S_AI_TRANSPORTER: self.loadImageWithDisplay( "icons/ships/ai-transport.png" ),
                             
                             ids.S_NOMAD_FIGHTER: self.loadImageWithDisplay( "icons/ships/nomad-fighter.png" ),
                             ids.S_NOMAD_HARVESTER: self.loadImageWithDisplay( "icons/ships/nomad-harvester-0.png" ),
                             ids.S_NOMAD_HARVESTER_1: self.loadImageWithDisplay( "icons/ships/nomad-harvester-1.png" ),
                             ids.S_NOMAD_BUILDER: self.loadImageWithDisplay( "icons/ships/nomad-builder.png" ),
+                            ids.S_NOMAD_TRANSPORTER: self.loadImageWithDisplay( "icons/ships/nomad-transport.png" ),
                             }
 
         yield 96
