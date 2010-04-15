@@ -190,9 +190,12 @@ class LocalConverter( Converter ):
                         break
                 
                 
-            pstats = COPlayerStatus( game.tick, False, player.flagship.ore, player.flagship.stats.maxOre, player.flagship.energy, player.flagship.stats.maxEnergy, 
-shieldStrength, player.flagship.hull/player.flagship.stats.maxHull,  player.flagship.canJump( game ),
-player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), shipsSpace, missilesSpace, 100*player.flagship.jumpCharge/player.flagship.jumpChargeDelay, 100*player.flagship.jumpRecover/player.flagship.jumpRecoverDelay, oreProcess, turrets, missiles, ships, radars, ennemyInRadar, dangerInRadar )
+            pstats = COPlayerStatus( game.tick, False, player.flagship.ore, player.flagship.stats.maxOre, 
+player.flagship.energy, player.flagship.stats.maxEnergy, shieldStrength, player.flagship.hull/player.flagship.stats.maxHull,  
+player.flagship.canJump( game ), player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSpace(), 
+shipsSpace, missilesSpace, 100*player.flagship.jumpCharge/player.flagship.jumpChargeDelay, 100*player.flagship.jumpRecover/player.flagship.jumpRecoverDelay, 
+oreProcess, turrets, missiles, ships, 
+radars, ennemyInRadar, dangerInRadar )
             t7 = time()
 
         else:
