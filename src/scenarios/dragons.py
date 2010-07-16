@@ -27,7 +27,6 @@ class Dragons( Scenario ):
         
         steps = []
         for i in xrange( 8 ):
-            print i
             steps.append( Step( 
                 goal=lambda self, game: not filter( lambda ship: ship.alive, self.ennemyShips ),
                 onBegin=lambda self, game, stepNbr=i+1: self.stepFunction( game, stepNbr ),

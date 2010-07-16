@@ -454,7 +454,6 @@ class ExplodingBullet( Object ):
             if obj.alive and obj.player != None and obj.player != self.launcher.player:
                 (ao0, ro0, ag0) = explode( self, game, self.weapon.stats.projectile.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
                 (ao, ro, ag) = (ao+ao0, ro+ro0, ag+ag0)
-                print "exploding!"
 
         if self.alive and self.ttl == 0:
             (ao0, ro0, ag0) = explode( self, game, self.weapon.stats.projectile.explosionRange, energyDamage=self.weapon.stats.energyDamage, massDamage=self.weapon.stats.massDamage, sender=self.launcher.player, sound=ids.S_EX_FIRE )
