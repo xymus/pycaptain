@@ -74,9 +74,9 @@ class ObjectManager:
             dist = maxDist
             
         closestObj = None
-        for x in xrange( pos[0]-dist, pos[0]+dist+self.areaSize, self.areaSize):
+        for x in xrange( int(pos[0]-dist), int(pos[0]+dist+self.areaSize), int(self.areaSize)):
             x = int(x)//self.areaSize
-            for y in xrange( pos[1]-dist, pos[1]+dist+self.areaSize, self.areaSize):
+            for y in xrange( int(pos[1]-dist), int(pos[1]+dist+self.areaSize), int(self.areaSize)):
                 y = int(y)//self.areaSize
                 area = self.getArea( (x, y) )
                 if area:

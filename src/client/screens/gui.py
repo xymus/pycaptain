@@ -354,7 +354,7 @@ class Gui( ControlFrame ):
             dy = y - self.display.resolution[1]/2
             x = self.display.resolution[0]/2 + dx * self.zv /(self.zv-z)
             y = self.display.resolution[1]/2 + dy * self.zv /(self.zv-z)
-            return (x,y)
+            return (int(x),int(y))
 
     def getVirtualPos( self, (x,y) ):
       if self.fullscreenRadar:

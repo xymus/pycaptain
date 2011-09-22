@@ -1,4 +1,5 @@
 from time import time
+from math import floor
 
 from . import Converter
 from common.comms import * 
@@ -87,7 +88,7 @@ class LocalConverter( Converter ):
         if player.flagship:
             oreProcess = [0]*20
             for ob in player.flagship.oreProcess:
-                p = int(len(oreProcess)*ob.pos / player.flagship.processLength)
+                p = int(floor(len(oreProcess)*ob.pos / player.flagship.processLength))
                 oreProcess[ p ] = oreProcess[ p ] + ob.amount
 
             t3 = time()

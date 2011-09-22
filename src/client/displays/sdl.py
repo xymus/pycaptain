@@ -138,7 +138,7 @@ class Sdl( Display ):
         pygame.draw.line( self.screen, color, o, d, width )
 
     def drawCircle( self, color, o, radius, width=0):
-        pygame.draw.circle( self.screen, color, o, radius, width )
+        pygame.draw.circle( self.screen, color, (int(o[0]),int(o[1])), int(radius), int(width) )
 
     def drawArc( self, color, o, radius, minAngle, maxAngle, width=1):
         pygame.draw.arc( self.screen, color, (o[0]-radius, o[1]-radius, 2*radius, 2*radius ), minAngle, maxAngle, width )
