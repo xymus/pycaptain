@@ -4,7 +4,7 @@ from gfxs import *
 import ids
 
 local_version = "v0.6.0" # major version
-revision = "$Revision$" # updated by subversion
+revision = "$Revision: 107 $" # updated by subversion
 
 revisionSplitted = revision.split()
 if len(revisionSplitted) > 2:

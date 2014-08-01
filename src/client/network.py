@@ -45,7 +45,7 @@ class Network:
         
         self.connectState = (None,"waiting for server version")
         sleep( 0.1 )
-        msgs = self.socket.recv( 10 )
+        msgs = self.socket.recv( 32 )
         if not len( msgs ):
             self.connectState = (False,"unable to get server version")
             return None
@@ -159,7 +159,6 @@ class Network:
                     except Exception, ex:
                        print "loading players failed, string:", msg[6:], ex
                 elif word == "astres":
-                    print "network: astres!"
                     try:
                         self.astres = LoadCOObjects( msg[len(word)+1:] ).coobjects
                     except Exception, ex:
@@ -177,7 +176,6 @@ class Network:
                 elif word == "downdone":
                     sleep( 0.01)
           msgs = ''
-        print "fManageConnection thread done"
 
      #   t = time()-timeStartWaiting
      #   if t>self.timeout*0.9:

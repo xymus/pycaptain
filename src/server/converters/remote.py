@@ -202,7 +202,6 @@ player.flagship.repairing, player.flagship.charging, player.flagship.getHangarSp
             player.needToUpdatePossibles = False
             for p,c in game.stats.PlayableShips.items():
             #   c = stats.PlayableShips[ p ]
-               print c.stats.img, player.points, c.points
                if player.points >= c.points:
                  possibles.append( COPossible( c.stats.img, c.race.type, c.turrets, c.speed, c.shield, c.hull, c.hangar, c.canJump, c.civilians  ) )
             

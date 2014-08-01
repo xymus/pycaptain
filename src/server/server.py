@@ -6,9 +6,8 @@ from md5 import md5
 from network import Network
 from game import Game
 from players import Player, Human
-from common import comms
-
-from common import config
+from common import comms, config, ids
+from common.comms import version
 
 from converters.remote import RemoteConverter
 from converters.local import LocalConverter
@@ -46,14 +45,13 @@ class Server:
         
         self.converter = None
         
-        
         global ty, tx, tz
         ty = tx = tz = 0
  
     def run(self):
       optimalFrame = 1.0/config.fps
 
-      self.network = self.networkType( self.game, self.addresses, self.port, comms.version, self.adminPassword )
+      self.network = self.networkType( self.game, self.addresses, self.port, version, self.adminPassword )
       self.converter = self.network.converterType() # load according to network type
 
       if not self.network.listening and not self.force:
@@ -122,8 +120,8 @@ class Server:
               tts = optimalFrame - t
               if t < optimalFrame:
                   sleep( tts )
-             # elif tts < -0.0015:
-               #   self.network.sendSysmsg( "%.1ffps"%(1.0/t) )
+              elif tts < -0.0015:
+                  self.network.sendSysmsg( "%.1ffps"%(1.0/t) )
 
       except KeyboardInterrupt:
           print "KeyboardInterrupt received"

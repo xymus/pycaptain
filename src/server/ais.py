@@ -242,9 +242,10 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
 
         for x in game.objects.getAccording( ship.pos, dist=dist, # , "frigate"
                            func=lambda x: x.stats.buildAsHint in ("flagship", "base" ) \
+                           				  and x != ship \
                                           and x.player == ship.player \
                                          # and x.ore < self.flagship.ore \
-                                          and x.ore < 4*x.stats.maxOre/5 ):
+                                          and x.ore < 0.8*x.stats.maxOre ):
             return True
 
         return False
@@ -255,16 +256,48 @@ Can change self.goingTo. May change self.attacking and self.dockingTo."""
 
         inNeedOfOre = [ x for x in game.objects.getAccording( ship.pos, dist=dist, # , "frigate"
                            func=lambda x: x.stats.buildAsHint in ("flagship", "base" ) \
+                           				  and x != ship \
+                           				  and self.caresAboutShipNeeds( ship, x ) \
                                           and x.player == ship.player \
                                          # and x.ore < self.flagship.ore \
-                                          and x.ore + ship.ore < x.stats.maxOre ) ]
-
+                                          and x.ore + ship.ore <= x.stats.maxOre ) ]
+        
         # TODO sort in order of need and/or proximity
         #for inNeed in inNeedOfOre:
         if len(inNeedOfOre)>0:
             return choice(inNeedOfOre)
         else:
             return None
+
+    def getNeediestShip( self, ship, game, dist=None ):
+        if not dist:
+            dist = self.getSearchRange( ship )
+
+        inNeedOfOre = [ x for x in game.objects.getAccording( ship.pos, dist=dist, # , "frigate"
+                           func=lambda x: x.stats.buildAsHint in ("flagship", "base" ) \
+                           				  and x != ship \
+                           				  and self.caresAboutShipNeeds( ship, x ) \
+                                          and x.player == ship.player \
+                                         # and x.ore < self.flagship.ore \
+                                          and x.ore + ship.ore <= x.stats.maxOre ) ]
+        
+        # TODO sort in order of need and/or proximity
+        #for inNeed in inNeedOfOre:
+        if len(inNeedOfOre)>0:
+        
+            mostInNeed = inNeedOfOre[0]
+            lastNeed = 10 * mostInNeed.ore / mostInNeed.stats.maxOre
+            for s in inNeedOfOre[1:]:
+                if 10 * s.ore / s.stats.maxOre < lastNeed:
+                    mostInNeed = s
+                    lastNeed = 10 * mostInNeed.ore / mostInNeed.stats.maxOre
+                   
+            return mostInNeed
+        else:
+            return None
+            
+    def caresAboutShipNeeds( self, ship, otherShip ):
+    	return True 
 
     def getSearchRange( self, ship ):
         return ship.stats.radarRange
@@ -577,13 +610,13 @@ class AiCaptain( AiShipWithTurrets ):
     def manageTurretsUpgrades( self, ship ):
         if self.isSafe( ship ) \
          and ship.ore > 2*ship.stats.maxOre/4: # ore > 3/4
-            print "has 3/4"
+            #print "has 3/4"
             choices = []
             for turret in ship.turrets:
                 if not turret.building and turret.install:
-                    print "turret", turret.install
+                    #print "turret", turret.install
                     for possible in ship.player.race.turrets:
-                        print "p", possible.upgradeFrom
+                        #print "p", possible.upgradeFrom
                         if turret.install.stats == possible.upgradeFrom \
                          and possible.weapon \
                          and ship.canBuildTurret( turret, possible ):
@@ -644,15 +677,18 @@ class AiGovernor( AiCaptain ):
 
                 ### harvesters
                 #recallHarvesters = False
-                if ship.noOreCloseAt < game.tick - 15*config.fps: # there may be ore around
-                    oreClose = self.hasAsteroidsInSight( ship, game )
-                    if not oreClose:
-                        ship.noOreCloseAt = tick
+                if ship.ore < ship.stats.maxOre - 1:
+                    if ship.noOreCloseAt < game.tick - 15*config.fps: # there may be ore around
+                        oreClose = self.hasAsteroidsInSight( ship, game )
+                        if not oreClose:
+                            ship.noOreCloseAt = tick
+                    else:
+                        oreClose = False
+                        
+                    launchHarvesters = oreClose
                 else:
-                    oreClose = False
-                    
-                launchHarvesters = oreClose
-                recallHarvesters = not oreClose
+                    launchHarvesters = False
+                recallHarvesters = not launchHarvesters
 
                 ### builders
                 recallBuilders = False
@@ -677,8 +713,8 @@ class AiGovernor( AiCaptain ):
                 recallFighters = False
 
             if self.hasShipInNeedInSight( ship, game ): # there is need
-                launchTransports = ship.ore >= 3*ship.stats.maxOre/4 # is wealthy
-                recallTransports = ship.ore < 1*ship.stats.maxOre/4 # is poor
+                launchTransports = ship.ore >= 0.6*ship.stats.maxOre # is wealthy
+                recallTransports = ship.ore < 0.2*ship.stats.maxOre # is poor
             else:
                 launchTransports = False
                 recallTransports = True
@@ -1099,15 +1135,39 @@ class AiPilotTransporter( AiPilotCivilian ):
         AiPilotCivilian.__init__(self,flagship)
 
     def doTurn( self, ship, game ):
+        if game.tick % 21 == 0:
 
-        if not self.dockingTo:
-            if ship.ore < 1:
-                self.dockingTo = self.flagship
-            else:
-                # find other flagship in need
-                inNeedOfOre = self.getRandomShipInNeed( ship, game )
+           # self.idle = not self.working
+            if not self.dockingTo: # and self.idle: # not self.dockingTo: # dockingTo: self.working or
+                
+                if ship.ore < 1:
+                    self.dockingTo = self.flagship
+                    self.working = False
+            #        print "go back to flagship"
+                else:
+                    # find other flagship in need
+                    foundInNeed = self.getNeediestShip( ship, game )
+                    self.working = foundInNeed
+                    self.dockingTo = foundInNeed
+                    self.idle = True
+                   # if foundInNeed:
+                        #self.goTo( ship, inNeedOfOre )
+                   #     print "transport to ", foundInNeed
+                    #else:
+                        #self.dockingTo = self.flagship
+                       # self.working = False
+            #            print "nothing found"
+            #else:
+            #    print "a"
+                            
+            #self.idle = not self.working
+            #print self, self.idle, self.working, self.dockingTo
 
         return AiPilotCivilian.doTurn( self, ship, game )
+            
+    def caresAboutShipNeeds( self, ship, otherShip ):
+        print "cares? ",  otherShip != self.flagship 
+    	return otherShip != self.flagship 
 
 
 # from ais import AiCaptain
