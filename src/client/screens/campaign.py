@@ -72,11 +72,13 @@ class CampaignMenu( Screen ):
         self.campaigns = []
         
         ## load all previous campaigns
-        for path in os.listdir( os.path.join( sys.path[0], "client", "saves", "campaigns" ) ):
-            if ".campaign.pyfl" in path:
-                campaign = campaigns.LoadCampaignHead( os.path.join( sys.path[0], "client", "saves", "campaigns", path ) )
-                if campaign:
-                    self.campaigns.append( campaign )
+        campaigns_path = os.path.join( sys.path[0], "client", "saves", "campaigns" )
+        if os.path.exists(campaigns_path):
+            for path in os.listdir(campaigns_path):
+                if ".campaign.pyfl" in path:
+                    campaign = campaigns.LoadCampaignHead( os.path.join( sys.path[0], "client", "saves", "campaigns", path ) )
+                    if campaign:
+                        self.campaigns.append( campaign )
         
         ## list current campaigns
         for campaignName in campaigns.campaignNames:
