@@ -3,13 +3,13 @@
 
 Install pygame with: `apt-get install python-pygame`
 
-## On windows
+## On Windows
 
-Install the latest version of Python 2.x from python.org and the latest stable version of pygame from pygame.org. Note that it may be impossible to launch a server or use the quick play function from a windows machine.
+Install Python 2.7 from python.org and the latest stable version of pygame from pygame.org. Note that it may be impossible to launch a server from a Windows machine.
 
 ## On Mac OSX
 
-Install the latest version of Python 2.x from python.org and you may need to compile pygame from source, which can be found at pygame.org.
+Install Python 2.7 from python.org and you may need to compile pygame from source, which can be found at pygame.org.
 
 # How to play
 ## Launch a local game
