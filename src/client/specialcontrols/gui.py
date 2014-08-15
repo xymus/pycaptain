@@ -423,24 +423,14 @@ class JumpControl( Container ):
         
         self.butOpen = RoundControl(imgs.ctrlJumpRegular, center, 29, self.eOpen)
         self.butClose = RoundControl(imgs.ctrlJumpReturn, center, 29, self.eClose)
-       # self.ctrlBack = RectControl( None, (0,0), (1600, 1200), self.eJumpTarget ) # self.eJumpTarget, fDownEvent=self.eClose )
         self.ctrlBack = TargettingScreen( imgs, eLeftClick=self.eJumpTarget )
         
         self.reset()
         
     def draw( self, display, focused=False, over=False, mouse=(0,0) ):
-      #  if self.justOpened:
-      #      self.justOpened = False
-      #      display.setCursor( display.cursorAim )
-      #  elif self.justClosed:
-      #      self.justClosed = False
-      #      display.setCursor()
-            
         Container.draw( self, display, focused=focused, over=over, mouse=mouse )
         
     def reset( self ):
-     #   self.justOpened = False
-     #   self.justClosed = False
         self.eClose( self, (0,0) )
         
     def update( self, (left, top, width, height), canRegularJump=False,  ):
@@ -451,12 +441,10 @@ class JumpControl( Container ):
         
     def eOpen( self, sender, (x,y) ):
         self.open = True
-     #   self.justOpened = True
         self.controls = [ self.ctrlBack, self.butClose ]
         
     def eClose( self, sender, (x,y) ):
         self.open = False
-     #   self.justClosed = True
         self.controls = [ self.butOpen ]
         
     def eJumpTarget( self, sender, (x,y) ):
@@ -549,13 +537,11 @@ class ChatBox( Container ):
             
 class TargettingScreen( Container ):
     def __init__( self, imgs, eLeftClick=None, eRightClick=None ):
-    #    RectControl.__init__( self, None, (0,0), (1600, 1200), eLeftClick )
         Container.__init__( self )
         
         self.imgCenter = imgs.ctrlAimCenter
         self.imgArm = imgs.ctrlAimArm
         self.offset = ( (0,56) ) # center position
-       # self.offset = ( (76,73) ) # center position
         
         self.ctrlBack = RectControl( None, (0,0), (-1, -1), eLeftClick )
         self.lblRadius = 60
@@ -569,8 +555,6 @@ class TargettingScreen( Container ):
         if mouse != (0,0):
             ix = mouse[0]-self.offset[0]
             iy = mouse[1]-self.offset[1]
-          #  for y in xrange( iy-display.getHeight(self.imgArm), 0-display.getHeight(self.imgArm), -1*display.getHeight(self.imgArm) ):
-          #      display.draw( self.imgArm, (ix+1,y) )
             display.draw( self.imgCenter, (ix,iy) )
             
             self.lblX.topLeft = (mouse[0]+self.lblRadius*cos(0.2),mouse[1]+self.lblRadius*sin(0.2))
@@ -592,8 +576,8 @@ class ChatControl( Container ):
         Container.__init__( self )
         self.center = center
         
-        self.fOutBroadcast = fBroadcast # args = text
-        self.fOutDirectedCast = fDirectedCast # args = text, dest
+        self.fOutBroadcast = fBroadcast
+        self.fOutDirectedCast = fDirectedCast
         self.eOutOpen = eOpen
         self.eOutClose = eClose
     

@@ -188,9 +188,6 @@ class Control( ControlBase ):
         
         self.stickLeft = True
         self.stickTop = True
-        
-  #  def fIn( self, (x,y) ):
-  #      return False
 
     def hits( self, up=None, down=None ):
         hit = False
@@ -199,12 +196,10 @@ class Control( ControlBase ):
                 hit = self
                 if self.enabled and self.fUpEvent:
                     self.fUpEvent( self, up )
-                  #  print "up!!!!", up, down, self.fUpEvent
             if down and self.fIn( self, down ):
                 hit = self
                 if self.enabled and self.fDownEvent:
                     self.fDownEvent( self, down )
-                 #   print "down!!!!", up, down, self.fDownEvent
         return hit
 
     def draw( self, display, focused=False, over=False, mouse=None ):
@@ -219,7 +214,6 @@ class Control( ControlBase ):
         display.drawClipped( self.img, self.topLeft, rect )
 
     def keyInput( self, key, letter=None ):
-   # def keyHits( self, key, letter=None ):
         return False
 
 class RoundControl( Control ):
@@ -228,7 +222,6 @@ class RoundControl( Control ):
             dist = hypot( y-self.center[1], x-self.center[0] )
             return dist <= self.radius
         
-     #   self.center = center
         self.radius = radius
         Control.__init__( self, img, (center[0]-radius,center[1]-radius), fIn, fUpEvent, fDownEvent, uid=uid )
     center = property( fget=lambda self: (self.topLeft[0]+self.radius, self.topLeft[1]+self.radius ) )
@@ -394,22 +387,6 @@ class KeyCatcher( ControlBase ):
             return True
         return False
 
-#class Panel( RectControl ):
-#    def __init__( self, (x,y), (rw,rh) ):
-#        self.selectable = False
-#        self.controls = []
-        
-#    def draw( self, display, focused=False, over=False, mouse=None ):
-#        for control in self.controls: 
-     #       print control
-#            control.draw( display, focused, over, mouse )
-
-#    def hits( self, up=None, down=None ):
-#        for control in self.controls: 
-#            if control.hits( up=up, down=down ):
-#                return True
-#        return False
-
 class Container( Control ):
     def __init__( self ):
         Control.__init__( self, None, (0,0), None )
@@ -429,37 +406,12 @@ class Container( Control ):
         return False
         
     def keyInput( self, key, letter=None ):
-        #used = False
-      #  if letter == "\r":
-      #      if not self.selected or not self.selected.eEnter:
-      #          if self.eEnter:
-      #              self.eEnter( self, (0,0) )
-      #      elif self.selected and self.selected.eEnter:
-      #          self.selected.eEnter( self, (0,0) )
-      #  if self.selected:
-      #      if letter == "\t":
-      #          prevSlected = self.selected
-      #          self.selected = self.tabOrder[ self.selected ]
-      #          while prevSlected != self.selected and not self.selected.enabled:
-      #              self.selected = self.tabOrder[ self.selected ]
-      #      else:
-      #  used = self.selected.keyInput( key, letter )
-       # print "kaaaaaey a", used
-             
-      #  if not used:
-      #  print "kaaaaaey c"
-      #  for control in self.controls:
-      #      if isinstance( control, KeyCatcher ):
-      #          control.keyInput( key, letter )
-      #          return True
         return False
-        
 
 class ImageHolder( RectControl ):
     def __init__( self, img, topLeft, size=(0,0) ):
         if not topLeft:
             topLeft=(0,0)
-      #  print topLeft, size
         RectControl.__init__( self, img, topLeft, size, None )
         self.enabled = False
         self.selectable = False
@@ -471,7 +423,6 @@ class ImageHolder( RectControl ):
 class Slider( RectControl ):
     def __init__( self, imgs, topLeft, width, values, defaultValue=None, eChangedValue=None, rounded=False ):
         RectControl.__init__( self, None, topLeft, (width,20), self.eClick )
-       # self.width = width
         self.imgs = imgs
         self.values = values # min, max
         self.rounded = rounded
