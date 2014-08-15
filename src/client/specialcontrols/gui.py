@@ -557,7 +557,7 @@ class TargettingScreen( Container ):
         self.offset = ( (0,56) ) # center position
        # self.offset = ( (76,73) ) # center position
         
-        self.ctrlBack = RectControl( None, (0,0), (1600, 1200), eLeftClick )
+        self.ctrlBack = RectControl( None, (0,0), (-1, -1), eLeftClick )
         self.lblRadius = 60
         self.lblX = LabelImage( imgs.ctrlLabelX, (0,0), 60, "" )
         self.lblY = LabelImage( imgs.ctrlLabelY, (0,0), 60, "" )

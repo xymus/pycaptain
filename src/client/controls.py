@@ -238,8 +238,8 @@ class RectControl( Control ):
         def fIn( self, (x, y) ):
             return x >= self.topLeft[0] \
                and y >= self.topLeft[1] \
-               and x <= self.topLeft[0] + self.rw \
-               and y <= self.topLeft[1] + self.rh
+               and (self.rw == -1 or x <= self.topLeft[0] + self.rw) \
+               and (self.rh == -1 or y <= self.topLeft[1] + self.rh)
         self.rw = rw
         self.rh = rh
         self.rx = rx
