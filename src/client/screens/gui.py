@@ -715,7 +715,6 @@ class Gui( ControlFrame ):
 
 
     ## hangars
-
         self.display.drawRepeated( self.imgs.uiTubeBottom2, 
                         ( self.anchorBottom+100, self.display.resolution[1]-20),
                         repeatx=self.display.resolution[0]-self.display.getWidth( self.imgs.uiBottomRight1 )-(self.anchorBottom+100) )
@@ -723,13 +722,9 @@ class Gui( ControlFrame ):
      ## turrets
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
 
+      # Background
         if len(self.butsBuildTurret) != len( self.playerStatus.turrets ):
-        #  for control in self.butsBuildTurret:
-        #    self.removeControl( control )
           self.butsBuildTurret = []
-          
-        #  for control in self.butsActivate:
-        #    self.removeControl( control )
           self.butsActivate = []
           
           for k, turret in zip( range( 0, len( self.playerStatus.turrets ) ), self.playerStatus.turrets ):
@@ -740,21 +735,17 @@ class Gui( ControlFrame ):
             butTurret = TurretButton( self.imgs.uiTurret, (self.display.resolution[0]-59+16,p+16), 16, self.eBuildTurret, img, uid=k )
             butTurret.stickLeft = False
             self.butsBuildTurret.append( butTurret )
-           # self.addControl( butTurret )
             
             butActivate = RectControl(  None, (self.display.resolution[0]-47+22,p+5), (177-22,33+10), self.eActivate, uid=k )
             butActivate.stickLeft = False
             self.butsActivate.append( butActivate )
-           # self.addControl( butActivate )
             p = p+33+8
-      #    for k, turret in zip( range( 0, tc ), self.playerStatus.turrets ):
-      #      self.display.draw( self.imgs.uiTurret, (self.display.resolution[0]-59, p) )
 
-
+      # Turret itself and on/off button
         p = self.display.getHeight( self.imgs.uiTopRight0 )+10
         for k, turret in zip( range( 0, len( self.playerStatus.turrets ) ), self.playerStatus.turrets ):
           if turret.type:
-              turretImg =  self.imgs[turret.type]
+              turretImg = self.imgs[turret.type]
           else:
               turretImg = None
 
@@ -772,7 +763,6 @@ class Gui( ControlFrame ):
           if turret.buildPerc != -1:
                 self.ctrlsBuildGauge.append( ((self.display.resolution[0]-59+16,p+16), turret.buildPerc) )
           p = p+33+8
-
 
      ## build options
         if self.build and len(self.lastOptions) == len(self.playerStatus.turrets[ self.build ].buildables):
