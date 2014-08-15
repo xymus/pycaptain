@@ -73,7 +73,6 @@ class Server:
               for player in newPlayers:
                   self.updatingPlayer[ player ] = False
                   player.connect()
-              #    print "adding", player
 
               for player, choice in shipChoices:
                   self.game.giveShip( player, choice )
@@ -88,18 +87,22 @@ class Server:
               tb = time()
 
              ### do turn
-              self.game.doTurn( inputs )
+              online = False
+              for player in self.game.players:
+                  if isinstance(player, Human) and self.network.isConnected(player):
+                      online = True
+                      break
+
+              if online:
+                  self.game.doTurn( inputs )
+
               tc = time()
 
              ### update remote players
-           #   ty = tx = tz = 0
               for player in self.game.players:
-               #   if isinstance( player, Player ) and self.network.isConnected( player ):
-               #       print self.updatingPlayer.has_key( player ), player
                   if isinstance( player, Human ) and self.network.isConnected( player ) and self.updatingPlayer.has_key( player ) and not self.updatingPlayer[ player ]:
                       thread = Thread( name="update %s"%player.username, target=self.fUpdatePlayer, args=(player,) )
                       thread.start()
-
 
              ### sleep and performance calculation
               t1 = time()
