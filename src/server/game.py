@@ -153,7 +153,7 @@ class Game:
         if not player.flagship and player.points >= self.stats.PlayableShips[ shipId ].points:
             self.scenario.spawn( self, player, shipId )
         else:
-            raise Warning( "giveShip aborted, already has ship (%s) or selected ship unplayable (%s)." % (player.flagship, player.points < self.stats.PlayableShips[ shipId ].points)  )
+            print "giveShip ignored, already has ship (%s) or selected ship unplayable (%s)." % (player.flagship, player.points < self.stats.PlayableShips[ shipId ].points)
 
     def addPlayer( self, player ):
         self.relations[ player ] = {}
