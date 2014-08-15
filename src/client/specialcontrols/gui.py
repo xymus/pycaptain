@@ -163,6 +163,12 @@ class RadarControl( Container ):
     def eClose( self, sender, pos ):
         self.controls = [self.ctrlRadarScreen, self.ctrlOpenFullscreen, self.lblX, self.lblY, self.lblRange]
         self.eOutCloseFullscreen( sender, pos )
+    
+    def eSwitch(self, sender, pos):
+        if self.ctrlOpenFullscreen in self.controls:
+            self.eOpen(sender, pos)
+        else:
+            self.eClose(sender, pos)
 
 class SelfDestructControl( Container ):
     def __init__( self, imgs, center, explodeEvent, uid=None ):
@@ -401,6 +407,12 @@ class GameMenuControl( Container ):
         self.open = False
         if self.eOutClose:
             self.eOutClose( self, mousePos )
+
+    def eSwitch(self, sender, (x,y)):
+        if self.open:
+            self.eClose(sender, (x,y))
+        else:
+            self.eOpen(sender, (x,y))
 
 class JumpControl( Container ):
     def __init__( self, imgs, center, fJump=None ):

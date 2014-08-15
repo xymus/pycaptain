@@ -1,6 +1,7 @@
 from math import pi, sqrt, cos, sin, hypot
 from random import randint, random, choice
 from time import time
+import pygame
 
 from client.mixer import Mixer
 from client.controls import *
@@ -54,8 +55,7 @@ class Gui( ControlFrame ):
             eLaunchMissile=self.launchMissile, eLaunchShip=self.launchShips, eRecallShip=self.recallShips, eBuildShip=self.buildShip, eBuildMissile=self.buildMissile )
         self.ctrlHangar.stickTop = False
 
-        self.controlsMain = [#self.butCallFighters,
-                         # self.butCallHarvesters,
+        self.controlsMain = [
                           self.butRepair,
                           self.butCharge,
                     #      self.ctrlRelation,
@@ -68,13 +68,13 @@ class Gui( ControlFrame ):
 
                           ### keyboard shortcuts
                           # program logic
-                          KeyCatcher( eSave, letter="s" ),
-                         #  KeyCatcher( eQuit, letter="q" ),
+                          #KeyCatcher( eSave, letter="s" ),
                           KeyCatcher( eScreenshot, letter="p" ),
-                        #  KeyCatcher( eFullscreen, letter="f" ),
+                          KeyCatcher( self.ctrlGameMenu.eSwitch, key=pygame.K_ESCAPE),
 
                           # gameplay
-                          KeyCatcher( self.eStop, letter=" " ),
+                          KeyCatcher( self.eStop, letter="s" ),
+                          KeyCatcher( self.ctrlRadar.eSwitch, letter=" " ),
                           KeyCatcher( self.ctrlJump.eSwitch, letter="j" ),
 
                           # missiles
