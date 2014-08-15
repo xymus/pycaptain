@@ -13,13 +13,13 @@ Install the latest version of Python 2.x from python.org and you may need to com
 
 # How to play
 ## Launch a local game
-Execute pyfl.py and use the quick play function.
+Execute `pycaptain.py` and launch a scenario or use the quick play function.
 
 ## Join a network game
-Execute pyfl.py and connect to a known server.
+Execute `pycaptain.py` and connect to a known server.
 
 ## Launch a server
-Execute pyfl_server.py -a 192.xxx.xxx.xxx, specifying the address of the interface to use.
+Execute `pycaptain_server.py -a 192.xxx.xxx.xxx`, specifying the address of the interface to use.
 
 # In-game shortcuts
 
