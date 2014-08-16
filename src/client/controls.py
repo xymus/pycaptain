@@ -124,10 +124,8 @@ class ControlFrame:
         if not self.lastResolution:
             self.lastResolution = display.resolution
         elif self.lastResolution != display.resolution:
-        #    print "moving controls"
             diffWidth = display.resolution[0]-self.lastResolution[0]
             diffHeight = display.resolution[1]-self.lastResolution[1]
-         #   print diffWidth, diffHeight, self.lastResolution, display.resolution
             for control in self.controls:
                 if isinstance( control, Control ):
                     if not control.stickLeft: # sticks to the right of the screen

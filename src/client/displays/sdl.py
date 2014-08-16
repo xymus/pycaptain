@@ -368,4 +368,3 @@ class Sdl( Display ):
             for y in xrange( 0, repeaty ):
                 yp = pos[1]+self.getHeight(img)*y
                 self.screen.blit( img, (xp,yp) )
-        

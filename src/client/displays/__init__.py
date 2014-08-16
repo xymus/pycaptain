@@ -93,7 +93,6 @@ class Display:
             for y in range( bgy - self.getHeight( self.background ), bgy+self.resolution[ 1 ], self.getHeight( self.background ) ):
                 self._draw( self.background, (x,y) )
 
-
     def getWidth(self, img):
         raise Exception( "Abstract function, should not be used" )
 
