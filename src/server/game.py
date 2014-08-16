@@ -1,6 +1,7 @@
 from time import time
 from random import randint
-import pickle # using pickle instead of cPickle for saving/loading since cpickle raised undescriptive errors
+#import pickle # use pickle instead of cPickle to have better errors
+import cPickle as pickle
 from gzip import open
 
 from players import *
