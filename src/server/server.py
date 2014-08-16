@@ -2,9 +2,10 @@ from time import sleep, time
 from sys import argv, exit
 from threading import Thread
 from md5 import md5
+import os
 
 from network import Network
-from game import Game
+from game import Game, LoadGame
 from players import Player, Human
 from common import comms, config, ids
 from common.comms import version
@@ -13,7 +14,7 @@ from converters.remote import RemoteConverter
 from converters.local import LocalConverter
 
 class Server:
-    def __init__( self, Scenario=None, scenarioName="Dragons", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network, game=None ):
+    def __init__( self, Scenario=None, scenarioName="Dragons", addresses=['localhost'], port=config.port, force=False, private=False, adminPassword=None, networkType=Network, game=None, savePath=None ):
         # TODO implement private, port
         
         self.updatingPlayer = {}
@@ -33,11 +34,15 @@ class Server:
         
         if not Scenario:
             exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
-            
-        if game:
+
+        if savePath:
+            self.savePath = savePath
+            if os.path.exists(savePath):
+                self.game = LoadGame(savePath)
+            else:
+                self.game = Game(Scenario)
+        elif game:
             self.game = game
-        #    if Scenario:
-                
         else:
             self.game = Game( Scenario )
             
@@ -103,6 +108,9 @@ class Server:
                   if isinstance( player, Human ) and self.network.isConnected( player ) and self.updatingPlayer.has_key( player ) and not self.updatingPlayer[ player ]:
                       thread = Thread( name="update %s"%player.username, target=self.fUpdatePlayer, args=(player,) )
                       thread.start()
+
+              if self.savePath and not self.game.tick % config.fps*120 and online: 
+                  self.game.save(self.savePath)
 
              ### sleep and performance calculation
               t1 = time()
