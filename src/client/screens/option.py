@@ -22,7 +22,11 @@ class OptionMenu( Screen ):
         
         self.ctrlLanguages = Selector( (40, 40), display, imgs, _("Language"), [], eSelectedChanged=None )
         self.ctrlDisplay = Selector( (360, 40), display, imgs, _("Graphics"), [], eSelectedChanged=None )
-        self.ctrlResolution = Selector( (360, 280), display, imgs, _("Resolution"), [("800x600","800x600"),("1024x768","1024x768"),("1280x800","1280x800"),], eSelectedChanged=None )
+        self.ctrlResolution = Selector( (360, 280), display, imgs, _("Resolution"), [
+            ("800x600","800x600"), ("1024x768","1024x768"),
+            ("1080x768","1080x768"), ("1280x800","1280x800"),
+            ("1920x1080","1920x1080"), ("2560x1440","2560x1440"),
+            ], eSelectedChanged=None )
         self.ctrlFullscreen = Selector( (40, 280), display, imgs, _("Window mode"), [("True","Fullscreen"),("False","Windowed"),], eSelectedChanged=None )
         self.ctrlVolume = Selector( (680, 40), display, imgs, _("Sound volume"), [("0",_("mute")),]+[ (str(v), str(v)+_("%")) for v in xrange( 5, 101, 5 ) ], eSelectedChanged=None )
         
