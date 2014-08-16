@@ -19,9 +19,6 @@ from common import config
 from objectmanager import ObjectManager
 from communications import CommunicationManager
 
-
-
-
 class Game:
     def __init__(self, scenarioType=None ):
 
@@ -42,7 +39,6 @@ class Game:
       ### loading world according to scenario
         if scenarioType:
             self.scenario = scenarioType( self )
-        
 
     def doTurn(self,playerInputs):
         addedObjects = []
@@ -110,7 +106,6 @@ class Game:
                 elif not isinstance( o1.player, Faction ):
                     print "not human"
                     self.removePlayer( o1.player )
-
             
             self.objects.remove( o1 ) # WARNING: this assumes harvestable and astres objects won't be removed
             
@@ -128,7 +123,6 @@ class Game:
                     rel = self.getRelationBetween( p1, p0 )
                     if rel < self.stats.Relations[ p1.race ][ p0.race ]:
                        self.setRelationBetween( p1, p0, rel + 1)
-                 #      self.setRelationBetween( p0, p1, rel + 1)
 
        ### Scenario
         self.scenario.doTurn( self )
@@ -178,30 +172,17 @@ class Game:
 
     def getPlayer( self, name ):
         for p in self.players:
-        #    if isinstance( p, Human ) and p.username == username:
             if p.name == name:
                 return p
 
     def removePlayer( self, player ):
-     #   self.players.remove( player )
         pass
-     #   print "removing player"
-    #    for k, r in self.relations:
-     #       if k == player: # r.has_key( player ):
-     #           del( r[ player ] )
-      #  del( self.relations[ player ] )
-
 
     def getRelationBetween( self, p0, p1 ):
-   #     print p0, p1
         if p0 == p1:
             return 101
         else:
-           # try:
-                return self.relations[ p0 ][ p1 ]
-         #   except KeyError, e:
-         #       print "KeyError in getRelationBetween for", p0, p1, e 
-         #       return 0
+            return self.relations[ p0 ][ p1 ]
 
     def setRelationBetween( self, p0, p1, rel=20 ): 
         if p0 and p1 and p0 != p1 and (isinstance( p0, Human ) or isinstance( p1, Human )):
@@ -220,6 +201,7 @@ class Game:
         success = False
         if f:
             success = self.dump( f )
+            f.close
         
         return success
 
@@ -237,7 +219,6 @@ class Game:
             hadSteps = False
             
         try:
-        
             title = self.scenario.title
             year = self.scenario.year
             timePlayed = self.tick/config.fps
@@ -296,4 +277,3 @@ def LoadGame( path ):
         game = Load( f )
         
     return game
-
