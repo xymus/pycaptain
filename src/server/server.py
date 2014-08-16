@@ -35,8 +35,8 @@ class Server:
         if not Scenario:
             exec( "from scenarios.%s import %s as Scenario" % (scenarioName.lower(), scenarioName) )
 
+        self.savePath = savePath
         if savePath:
-            self.savePath = savePath
             if os.path.exists(savePath):
                 self.game = LoadGame(savePath)
             else:
