@@ -24,7 +24,7 @@ class JoinMenu( ControlFrame ):
         self.ctrlBack =     LightControlRight( (600,550), eBack, "Back to main menu", imgs )
 
             
-        controls = [    ImageHolder( imgs.splashBack, (0,0) ),
+        controls = [    ImageHolder( imgs.splashBack, (0,0), fillScreen=True ),
                         ImageHolder( imgs.gameTitle, (40,40) ),
                         self.cUser,
                         self.cPassword,

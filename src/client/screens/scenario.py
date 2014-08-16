@@ -24,7 +24,7 @@ class ScenarioMenu( ControlFrame ):
         self.lblDescription =      Label( (58,100), "", maxWidth=380, maxHeight=300 )
         
       #  self.imgScreen = ImageHolder( None, (620,60) )
-        self.imgBack = ImageHolder( imgs.splashBack, (0,0) )
+        self.imgBack = ImageHolder( imgs.splashBack, (0,0), fillScreen=True )
         
         controls =   [  self.imgBack,
                         Box( imgs, (40,40), (425,320) ),

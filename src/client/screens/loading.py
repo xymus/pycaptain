@@ -18,7 +18,11 @@ class LoadingScreen:
             
     def drawStaticSplash( self, defPerc=0, text=None ):
         self.display.beginDraw()
-        self.display.draw( self.imgs.splashBack, ( (self.display.resolution[0]-self.display.getWidth(self.imgs.splashBack))/2, (self.display.resolution[1]-self.display.getHeight(self.imgs.splashBack))/2 ) )
+
+        rx = self.display.resolution[0] / self.display.getWidth(self.imgs.splashBack) + 1
+        ry = self.display.resolution[1] / self.display.getHeight(self.imgs.splashBack) + 1
+        self.display.drawRepeated(self.imgs.splashBack, (0, 0), repeatx=rx, repeaty=ry)
+
         self.display.draw( self.imgs.gameTitle, (40,40) )
         self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200+2, self.display.resolution[1]-80+2), color=(0,0,0), size=14 )
         self.display.drawText( self.txtAuthor, (self.display.resolution[0]-200, self.display.resolution[1]-80), color=(255,255,255), size=14 )

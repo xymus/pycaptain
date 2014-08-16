@@ -66,7 +66,7 @@ class LoadMenu( Screen ):
         self.imgShip = RotatingImageHolder( None, (655, display.resolution[1]/2), ri=0.005 )
         self.imgs = imgs
         
-        controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
+        controls =   [  ImageHolder( imgs.splashBack, (0,0), fillScreen=True ),
                         Box( imgs, (390,66), (530,200) ),
                    #     ImageHolder( imgs.gameTitle, (40,40) ),
                         self.crtlLoad,

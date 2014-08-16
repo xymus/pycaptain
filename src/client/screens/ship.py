@@ -24,10 +24,8 @@ class MenuShips( ControlFrame ):
        self.ctrlNext =  LightControlRight( (-30,500), self.eNext, _( "Next" ), imgs )
        
        self.ctrlShip = RotatingImageHolder( None, (display.resolution[0]/4,display.resolution[1]/2), ri=0.01 )
-       
-
         
-       controls = [    ImageHolder( imgs.splashBack, (0,0) ),
+       controls = [    ImageHolder(imgs.splashBack, (0,0), fillScreen=True),
        
                        self.ctrlOk,
                        self.ctrlQuit,

@@ -20,7 +20,7 @@ class CampaignMenu( Screen ):
         Screen.__init__( self )
 
         self.ePlayOut = ePlay
-        self.imgBack = ImageHolder( imgs.splashBack, (0,0) )
+        self.imgBack = ImageHolder( imgs.splashBack, (0,0), fillScreen=True )
 
         self.lblCampaignTitle =     Label( (250,56), "lblCampaignTitle", textSize=20 )
         self.lblCampaignPlayer =    Label( (256,82), "lblCampaignPlayer" )

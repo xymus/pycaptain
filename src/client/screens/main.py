@@ -19,12 +19,10 @@ class MainMenu( Screen ):
         self.ctrlOptions =  LightControlLeft( (260,550), eOptions, _("Options"), imgs )
         self.ctrlQuit =     LightControlRight( (600,550), eQuit, _("Quit"), imgs )
         
-       # self.ctrlCampaign.enabled = False
-       # self.ctrlOptions.enabled = False
         self.ctrlHost.enabled = False
         
-        controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
-                        ImageHolder( imgs.gameTitle, (40,40) ),
+        controls =   [  ImageHolder(imgs.splashBack, (0,0), fillScreen=True),
+                        ImageHolder(imgs.gameTitle, (40,40)),
                         self.ctrlQuickPlay,
                         self.ctrlLoad,
                         self.ctrlScenario,
@@ -39,9 +37,3 @@ class MainMenu( Screen ):
                         ]
 
         self.addControls( controls )
-
-   
-   # def manageInputs( self, display ):
-   #     self.quit = ControlFrame.manageInputs( self, display ) or self.quit
-
-

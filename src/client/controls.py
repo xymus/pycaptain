@@ -409,16 +409,22 @@ class Container( Control ):
         return False
 
 class ImageHolder( RectControl ):
-    def __init__( self, img, topLeft, size=(0,0) ):
+    def __init__(self, img, topLeft, size=(0,0), fillScreen=False):
         if not topLeft:
             topLeft=(0,0)
         RectControl.__init__( self, img, topLeft, size, None )
         self.enabled = False
         self.selectable = False
+        self.fillScreen = fillScreen
 
-    def draw( self, display, focused=False, over=False, mouse=None ):
+    def draw(self, display, focused=False, over=False, mouse=None):
         if self.visible and self.img:
-            display.draw( self.img, self.topLeft )
+            if self.fillScreen:
+                rx = display.resolution[0] / display.getWidth(self.img) + 1
+                ry = display.resolution[1] / display.getHeight(self.img) + 1
+                display.drawRepeated(self.img, self.topLeft, repeatx=rx, repeaty=ry)
+            else:
+                display.draw( self.img, self.topLeft )
             
 class Slider( RectControl ):
     def __init__( self, imgs, topLeft, width, values, defaultValue=None, eChangedValue=None, rounded=False ):

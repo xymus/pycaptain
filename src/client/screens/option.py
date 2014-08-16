@@ -26,7 +26,7 @@ class OptionMenu( Screen ):
         self.ctrlFullscreen = Selector( (40, 280), display, imgs, _("Window mode"), [("True","Fullscreen"),("False","Windowed"),], eSelectedChanged=None )
         self.ctrlVolume = Selector( (680, 40), display, imgs, _("Sound volume"), [("0",_("mute")),]+[ (str(v), str(v)+_("%")) for v in xrange( 5, 101, 5 ) ], eSelectedChanged=None )
         
-        controls =   [  ImageHolder( imgs.splashBack, (0,0) ),
+        controls =   [  ImageHolder( imgs.splashBack, (0,0), fillScreen=True ),
         
                         self.crtlSave,
                         self.ctrlCancel,
