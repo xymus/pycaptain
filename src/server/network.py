@@ -311,7 +311,7 @@ class Network:
         print( "msgall %s" % text )
         for pCon in self.playerCons:
           try:
-            pCon.connection[0].send( "msgall %s %s\n" % (senderName,text) )
+            pCon.connection[0].send( "msgall %s %s\n" % (senderName.translate(None, " "),text) )
           except Exception, ex:
             print "failed sendSysmsg", ex
 
@@ -324,7 +324,7 @@ class Network:
         print( "sendMsg msg %s %i %i %s\n" % (senderName,sendAt,receivedAt,text) )
         if pCon: # for pCon in self.playerCons:
           try:
-            pCon.connection[0].send( "msg %s %i %i %s\n" % (senderName,sendAt,receivedAt,text) )
+            pCon.connection[0].send( "msg %s %i %i %s\n" % (senderName.translate(None, " "),sendAt,receivedAt,text) )
           except Exception, ex:
             print "failed sendMsg", ex
 
