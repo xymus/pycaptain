@@ -138,8 +138,12 @@ class Server:
       except KeyboardInterrupt:
           print "KeyboardInterrupt received"
      # except Exception, ex:
-    #      self.network.shutdown()
+     #     self.network.shutdown()
      #     raise ex
+
+      if self.savePath: 
+          self.game.save(self.savePath)
+          self.network.sendSysmsg("Saving...")
 
       print "shutting down self.network" # shutdown order received, closing connections"
       self.network.shutdown()
