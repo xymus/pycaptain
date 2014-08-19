@@ -109,8 +109,9 @@ class Server:
                       thread = Thread( name="update %s"%player.username, target=self.fUpdatePlayer, args=(player,) )
                       thread.start()
 
-              if self.savePath and not self.game.tick % config.fps*120 and online: 
+              if self.savePath and self.game.tick % (config.fps*120) == 100 and online: 
                   self.game.save(self.savePath)
+                  self.network.sendSysmsg("Saving...")
 
              ### sleep and performance calculation
               t1 = time()
