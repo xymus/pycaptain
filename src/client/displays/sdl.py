@@ -14,6 +14,24 @@ from client.imgs import Animation
 
 from . import Display
 
+from collections import OrderedDict
+
+# copied from <http://stackoverflow.com/questions/2437617/limiting-the-size-of-a-python-dictionary#answer-2437645>
+class LimitedSizeDict(OrderedDict):
+    def __init__(self, *args, **kwds):
+        self.size_limit = kwds.pop("size_limit", None)
+        OrderedDict.__init__(self, *args, **kwds)
+        self._check_size_limit()
+
+    def __setitem__(self, key, value):
+        OrderedDict.__setitem__(self, key, value)
+        self._check_size_limit()
+
+    def _check_size_limit(self):
+        if self.size_limit is not None:
+            while len(self) > self.size_limit:
+                self.popitem(last=False)
+
 class Sdl( Display ):
     name = "sdl"
     title = "SDL via PyGame"
@@ -22,6 +40,7 @@ class Sdl( Display ):
         Display.__init__(self)
         self.nfsResolution = resolution
         self.resolution = resolution
+        self.imageCache = LimitedSizeDict(size_limit = 1000)
 
         if __debug__:
             print "SDL v%i.%i.%i" % pygame.get_sdl_version()
@@ -342,10 +361,9 @@ class Sdl( Display ):
             corrPosition = ( pos[0]-self.getWidth( tempSurface )/2, pos[1]-self.getHeight( tempSurface )/2 )
             self.screen.blit( tempSurface, corrPosition, ( 0, 0, self.getWidth( tempSurface )/2, self.getHeight( tempSurface ) ) )
 
-
     def drawRoIfIn( self, img, pos, rotation, (xm, ym), alpha=1 ):
         if rotation != 0:
-            tempSurface = pygame.transform.rotate( img, degrees(rotation) )
+            tempSurface = self.rotate( img, rotation )
         else:
             tempSurface = img
 
@@ -371,3 +389,13 @@ class Sdl( Display ):
         RANGE_Y = xrange( 0, repeaty )
         [[self.screen.blit(img, (POS_0+IMG_WIDTH*x,POS_1+IMG_HEIGHT*y))
           for y in RANGE_Y] for x in RANGE_X]
+
+    def rotate( self, img, rotation ):
+        angle = int(degrees(rotation))
+        key = (hash(img), angle)
+        try:
+            tempSurface = self.imageCache[key]
+        except KeyError:
+            tempSurface = pygame.transform.rotate( img, angle )
+            self.imageCache[key] = tempSurface
+        return tempSurface
