@@ -363,8 +363,11 @@ class Sdl( Display ):
         self.screen.blit( tempSurface, corrPosition )
 
     def drawRepeated( self, img, pos, repeatx=1, repeaty=1 ):
-        for x in xrange( 0, repeatx ):
-            xp = pos[0]+self.getWidth(img)*x
-            for y in xrange( 0, repeaty ):
-                yp = pos[1]+self.getHeight(img)*y
-                self.screen.blit( img, (xp,yp) )
+        POS_0 = pos[0]
+        POS_1 = pos[1]
+        IMG_WIDTH = self.getWidth(img)
+        IMG_HEIGHT = self.getHeight(img)
+        RANGE_X = xrange( 0, repeatx )
+        RANGE_Y = xrange( 0, repeaty )
+        [[self.screen.blit(img, (POS_0+IMG_WIDTH*x,POS_1+IMG_HEIGHT*y))
+          for y in RANGE_Y] for x in RANGE_X]
