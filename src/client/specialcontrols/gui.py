@@ -506,11 +506,14 @@ class ChatBox( Container ):
        # for i in xrange( 0,  ):
        #     display.draw( self.imgs., ()+i,) )
 
+        CTRL_CHAT_BACK_LEFT_WIDTH = display.getWidth( self.imgs.ctrlChatBackLeft )
+        CTRL_CHAT_BACK_RIGHT_WIDTH = display.getWidth( self.imgs.ctrlChatBackRight )
+
         display.drawRepeated( self.imgs.ctrlChatBackCenter, 
-                    ( self.topLeft[0]+display.getWidth( self.imgs.ctrlChatBackLeft ), self.topLeft[1] ),
-                    repeatx=self.width-display.getWidth( self.imgs.ctrlChatBackLeft )-display.getWidth( self.imgs.ctrlChatBackRight ) )
+                    ( self.topLeft[0]+CTRL_CHAT_BACK_LEFT_WIDTH, self.topLeft[1] ),
+                    repeatx=self.width-CTRL_CHAT_BACK_LEFT_WIDTH-CTRL_CHAT_BACK_RIGHT_WIDTH )
                         
-        display.draw( self.imgs.ctrlChatBackRight, (self.topLeft[0]+self.width-display.getWidth( self.imgs.ctrlChatBackRight ), self.topLeft[1] ) )
+        display.draw( self.imgs.ctrlChatBackRight, (self.topLeft[0]+CTRL_CHAT_BACK_RIGHT_WIDTH, self.topLeft[1] ) )
         
         for control, xd, yd in self.relativeControls:
             control.topLeft = ( self.topLeft[0]+xd, self.topLeft[1]+yd )
@@ -843,13 +846,23 @@ class HangarControl( Container ):
        # self.slotWidth = display.getWidth(self.imgs.ctrlHangarSlot)
         self.missileSlots = []
         self.shipSlots = []
-    
-        self.size = (display.getWidth(self.imgs.ctrlHangarLeft)+display.getWidth(self.imgs.ctrlHangarCenter)+display.getWidth(self.imgs.ctrlHangarRight)+display.getWidth(self.imgs.ctrlHangarSlot)*(len(self.playerStatus.missiles)+len(self.playerStatus.ships)),
-                     display.getHeight(self.imgs.ctrlHangarCenter))
+
+        HANGAR_LEFT_WIDTH = display.getWidth(self.imgs.ctrlHangarLeft)
+        HANGAR_CENTER_WIDTH = display.getWidth(self.imgs.ctrlHangarCenter)
+        HANGAR_RIGHT_WIDTH = display.getWidth(self.imgs.ctrlHangarRight)
+        HANGAR_SLOT_WIDTH = display.getWidth(self.imgs.ctrlHangarSlot)
+
+        HANGAR_LEFT_HEIGHT = display.getHeight(self.imgs.ctrlHangarLeft)
+        HANGAR_CENTER_HEIGHT = display.getHeight(self.imgs.ctrlHangarCenter)
+        HANGAR_RIGHT_HEIGHT = display.getHeight(self.imgs.ctrlHangarRight)
+        HANGAR_SLOT_HEIGHT = display.getHeight(self.imgs.ctrlHangarSlot)
+
+        self.size = (HANGAR_LEFT_WIDTH+HANGAR_CENTER_WIDTH+HANGAR_RIGHT_WIDTH+HANGAR_SLOT_WIDTH*(len(self.playerStatus.missiles)+len(self.playerStatus.ships)),
+                     HANGAR_CENTER_HEIGHT)
         
         display.draw( self.imgs.ctrlHangarLeft, 
-            (self.center[0]-display.getWidth(self.imgs.ctrlHangarLeft)-display.getWidth(self.imgs.ctrlHangarCenter)/2-(len(self.playerStatus.missiles)+1)*display.getWidth(self.imgs.ctrlHangarSlot),
-             self.center[1]-display.getHeight(self.imgs.ctrlHangarLeft)) )
+            (self.center[0]-HANGAR_LEFT_WIDTH-HANGAR_CENTER_WIDTH/2-(len(self.playerStatus.missiles)+1)*HANGAR_SLOT_WIDTH,
+             self.center[1]-HANGAR_LEFT_HEIGHT) )
         
         # missiles
         builderCount = 0
@@ -859,40 +872,40 @@ class HangarControl( Container ):
 
         for missile in self.playerStatus.missiles:
             if self.missileIsBuilder( missile ): # builder missile 
-                slotLeft = self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(builderTotal-builderCount+1+combatTotal)*display.getWidth(self.imgs.ctrlHangarSlot)
+                slotLeft = self.center[0]-HANGAR_CENTER_WIDTH/2-(builderTotal-builderCount+1+combatTotal)*HANGAR_SLOT_WIDTH
                 builderCount += 1
             else: # conbat missile
-                slotLeft = self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(combatTotal-combatCount)*display.getWidth(self.imgs.ctrlHangarSlot)
+                slotLeft = self.center[0]-HANGAR_CENTER_WIDTH/2-(combatTotal-combatCount)*HANGAR_SLOT_WIDTH
                 combatCount += 1
             
             self.missileSlots.append( (
                 slotLeft,
-                self.center[1]-display.getHeight(self.imgs.ctrlHangarSlot),
-                display.getWidth(self.imgs.ctrlHangarSlot),
-                display.getHeight(self.imgs.ctrlHangarSlot)) )
+                self.center[1]-HANGAR_SLOT_HEIGHT,
+                HANGAR_SLOT_WIDTH,
+                HANGAR_SLOT_HEIGHT) )
                 
         display.draw( self.imgs.uiHangarMissilesSeparator, 
-            (self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2-(combatTotal+1)*display.getWidth(self.imgs.ctrlHangarSlot),
-             self.center[1]-display.getHeight(self.imgs.ctrlHangarCenter)) )
+            (self.center[0]-HANGAR_CENTER_WIDTH/2-(combatTotal+1)*HANGAR_SLOT_WIDTH,
+             self.center[1]-HANGAR_CENTER_HEIGHT) )
         
         display.draw( self.imgs.ctrlHangarCenter, 
-            (self.center[0]-display.getWidth(self.imgs.ctrlHangarCenter)/2,
-             self.center[1]-display.getHeight(self.imgs.ctrlHangarCenter)) )
+            (self.center[0]-HANGAR_CENTER_WIDTH/2,
+             self.center[1]-HANGAR_CENTER_HEIGHT) )
         
         for k,ship in enumerate( self.playerStatus.ships ):
             self.shipSlots.append( (
-                self.center[0]+display.getWidth(self.imgs.ctrlHangarCenter)/2+k*display.getWidth(self.imgs.ctrlHangarSlot),
-                self.center[1]-display.getHeight(self.imgs.ctrlHangarSlot),
-                display.getWidth(self.imgs.ctrlHangarSlot),
-                display.getHeight(self.imgs.ctrlHangarSlot)) )
+                self.center[0]+HANGAR_CENTER_WIDTH/2+k*HANGAR_SLOT_WIDTH,
+                self.center[1]-HANGAR_SLOT_HEIGHT,
+                HANGAR_SLOT_WIDTH,
+                HANGAR_SLOT_HEIGHT) )
                 
            # display.draw( self.imgs.ctrlHangarSlot, 
            #     (self.center[0]+display.getWidth(self.imgs.ctrlHangarCenter)/2+k*display.getWidth(self.imgs.ctrlHangarSlot),
            #      self.center[1]-display.getHeight(self.imgs.ctrlHangarSlot)) )
         
         display.draw( self.imgs.ctrlHangarRight, 
-            (self.center[0]+display.getWidth(self.imgs.ctrlHangarCenter)/2+len(self.playerStatus.ships)*display.getWidth(self.imgs.ctrlHangarSlot),
-             self.center[1]-display.getHeight(self.imgs.ctrlHangarRight)) )
+            (self.center[0]+HANGAR_CENTER_WIDTH/2+len(self.playerStatus.ships)*HANGAR_SLOT_WIDTH,
+             self.center[1]-HANGAR_RIGHT_HEIGHT) )
              
         if self.playerStatus.hangarSpace:
             self.display.drawDoubleIncompletePie( (self.imgs.ctrlHangarMissilesFill, self.imgs.ctrlHangarShipsFill), (self.center[0], self.center[1] - 23), (100*self.playerStatus.missilesSpace/self.playerStatus.hangarSpace,100*self.playerStatus.shipsSpace/self.playerStatus.hangarSpace) ) 
