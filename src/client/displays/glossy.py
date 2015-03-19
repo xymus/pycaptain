@@ -1,3 +1,7 @@
+# Uses Gloss for a smooth OpenGL display
+#
+# The pie-chart-like displays for the hull and shield health are not yet implemented.
+
 import os
 import sys
 from math import degrees, pi, hypot, cos, sin, radians, fabs
@@ -6,7 +10,7 @@ from time import time
 try:
     from gloss import *
 except:
-    print "Make sure Gloss is available to use the Gloss display"
+    print "Make sure Gloss and OpenGL is available to use the Gloss display"
     raise
 
 from common.comms import COObject, COInput
@@ -16,7 +20,7 @@ from . import Display
 
 class Glossy( Display ):
     name = "glossy"
-    title = "OpenGL via Gloss"
+    title = "OpenGL via Gloss (incomplete)"
     
     def __init__(self, resolution=( 640, 640 ), fullscreen=False, title="Game"):
         Display.__init__(self)
@@ -244,15 +248,17 @@ class Glossy( Display ):
         img[0].drawPie( position=pos, perc=100 )
 
     def drawPie( self, img, pos, perc ):
+        # TODO
         img[0].drawPie( position=pos, perc=perc )
 
     def drawIncompletePie( self, img, pos, perc0, angleRange=100, angleCut=60 ):
+        # TODO
         img[0].drawPie( position=pos, perc=perc0 )
 
     def drawDoubleIncompletePie( self, (img0,img1), pos, (perc0,perc1) ):
+        # TODO
         img0[0].drawPie( position=pos, perc=perc0 )
         img1[0].drawPie( position=pos, perc=perc1 )
-
 
     def drawRoIfIn( self, img, pos, rotation, (xm, ym), alpha=1 ):
         w = self.getWidth( img )
