@@ -8,7 +8,7 @@ from math import degrees, pi, hypot, cos, sin, radians, fabs
 from time import time
 
 try:
-    from gloss import *
+    from external.gloss import *
 except:
     print "Make sure Gloss and OpenGL is available to use the Gloss display"
     raise
