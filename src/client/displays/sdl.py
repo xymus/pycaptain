@@ -387,8 +387,8 @@ class Sdl( Display ):
         IMG_HEIGHT = self.getHeight(img)
         RANGE_X = xrange( 0, repeatx )
         RANGE_Y = xrange( 0, repeaty )
-        [[self.screen.blit(img, (POS_0+IMG_WIDTH*x,POS_1+IMG_HEIGHT*y))
-          for y in RANGE_Y] for x in RANGE_X]
+        [self.screen.blit(img, (POS_0+IMG_WIDTH*x,POS_1+IMG_HEIGHT*y))
+         for y in RANGE_Y for x in RANGE_X]
 
     def rotate( self, img, rotation ):
         angle = int(degrees(rotation))
