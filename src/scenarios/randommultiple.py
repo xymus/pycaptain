@@ -27,16 +27,11 @@ class Randommultiple( Scenario ):
     year = 2544
     name = "RandomMultiple"
 
+    def __init__( self, game, nPlanets=12, nAsteroidFields=16 ):
 
-    
-    def __init__( self, game, nSystems=3, nPlanets=12, nAsteroidFields=9 ):
-    
-        self.nSystems = nSystems
         self.nPlanets = nPlanets
         self.nAsteroidFields = nAsteroidFields
 
-        self.distBetweenSuns = 30000
-        self.distBetweenSunsMod = 4000
         self.planetDistFromSun = 9000 # also asteroids
         self.planetDistFromSunMod = 5000 # also asteroids
         self.minDistBetweenPlanets = 1000
@@ -44,7 +39,7 @@ class Randommultiple( Scenario ):
         self.player = None
 
         self.harvestersAtSpawn = 4
-        self.wantedBadGuys = 0
+        self.wantedBadGuys = 4
 
         Scenario.__init__(self, game )
         
@@ -56,22 +51,13 @@ class Randommultiple( Scenario ):
 
         self.generate( game )
 
-
     def generate( self, game ):
 
         ### systems ###
-        for s in xrange( self.nSystems ):
-            if s == 0:
-                ## first sun
-                pos = ( randint(-1*universeWidth+self.distBetweenSuns, universeWidth-self.distBetweenSuns), 
-                        randint(-1*universeHeight+self.distBetweenSuns, universeHeight-self.distBetweenSuns) )
-            else:
-                ## others
-                ## find another spot
-                pos, orbitable = self.getPosition( self.suns, self.distBetweenSuns, self.distBetweenSunsMod, self.suns, self.distBetweenSuns-self.distBetweenSunsMod, self.distBetweenSunsMod/2 )
-
+        for pos in [(-0.7*universeWidth, -0.3*universeHeight),
+                    (0, 0.3*universeHeight),
+                    ( 0.7*universeWidth, -0.3*universeHeight)]:
             sun = Sun( game.stats.S_SOL, pos[0], pos[1] )
-
             self.suns.append( sun )
             game.astres.append( sun )
 
@@ -88,7 +74,7 @@ class Randommultiple( Scenario ):
         ### asteroids fields ###
         for af in xrange( self.nAsteroidFields ):
 
-            if randint( 0, 4 ) == 0:
+            if randint( 0, 2 ) == 0:
                 ## around planet
                 orbited = choice( self.planets )
                 radius = orbited.stats.radius*2.5
@@ -103,14 +89,17 @@ class Randommultiple( Scenario ):
                                   self.planetDistFromSun+self.planetDistFromSunMod ) 
                 radiusMod = randint( 100, 300 )
 
-                size = randint( 10, 70 ) # %!
-                count = size*3
+                size = randint( 8, 24 ) # % of the circumference
+                count = size*8
                 minAngle = random()*2*pi
                 maxAngle = minAngle + 2*pi*size/100
 
             self.fillAsteroidField( game, orbited, radius, radiusMod, count, minAngle, maxAngle )
 
         game.astres = self.planets + self.suns
+
+        for i in xrange( self.wantedBadGuys ):
+            self.addRandomNpc( game )
 
 
     def getPosition( self, orbitableTargets, dist, distMod, toAvoid, minDistWithToAvoid, border ):
@@ -193,3 +182,80 @@ class Randommultiple( Scenario ):
                                AiEscortFrigate( player ), x+100, y+100 )
             game.objects.append( frigate )
 
+    def doTurn( self, game ):
+        if not game.tick%(config.fps*5):
+           ## manage npcs numbers
+            npcCount = 0
+            for o0 in game.objects.objects:
+                if o0.player and isinstance( o0, FlagShip ) and isinstance( o0.player, Computer ):
+                    npcCount = npcCount + 1
+
+            for i in range( npcCount, self.wantedBadGuys ):
+                self.addRandomNpc( game )
+
+    def addRandomNpc( self, game, race=None, loc=None ):
+      # position
+      if loc:
+          (x,y) = loc
+      else:
+        valid = False
+
+        spots = []
+        for o in game.astres:
+          if isinstance( o, Planet ) and not isinstance( o, Sun ):
+              spots.append( o )
+        spot = choice( spots )
+
+        while not valid:
+          dist = randint( 100, 800 )
+          angle = 2*pi*random()
+
+          (x,y) = (spot.xp+dist*cos(angle), spot.yp+dist*sin(angle))
+
+          valid = True
+          for o in game.astres:
+              if ( isinstance( o, Sun ) and distLowerThan( (x,y), (o.xp,o.yp), o.stats.damageRadius*1.2 )) \
+                or (o.player and not isinstance( o.player, Computer ) and distLowerThan( (x,y), (o.xp,o.yp), 500 )):
+                  valid = False
+                  break
+
+      # kind of npc
+      i = randint( 1, 3 )
+
+      player = GetComputerPlayer( game )
+      if i < 2:
+        flagship = FlagShip( player, game.stats.HUMAN_FS_0, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship.ore = flagship.stats.maxOre
+        for t in flagship.turrets[2:4]:
+            t.buildInstall( game.stats.T_LASER_MR_0 )
+        for t in flagship.turrets[:2]+flagship.turrets[-2:]:
+            t.buildInstall( game.stats.T_LASER_SR_0 )
+            
+      elif i < 3:
+        flagship = FlagShip( player, game.stats.HUMAN_FS_2, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship.ore = flagship.stats.maxOre
+        for t in flagship.turrets:
+            t.buildInstall( game.stats.T_MASS_SR_0 )
+        for i in range(10):
+           fighter = ShipSingleWeapon(flagship.player, game.stats.HUMAN_FIGHTER, AiPilotFighter(flagship),0,0,0, 4, 0.0,0.0,0.0, 0)
+           flagship.shipyards[ ids.S_HUMAN_FIGHTER ].docked.append( fighter )
+        for i in range(4):
+           harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
+           flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
+
+      elif i < 4:
+        flagship = FlagShip( player, game.stats.HUMAN_FS_1, AiCaptain( player ),x,y,0, 0, 0.0,0.0,0.0, 0)
+        flagship.ore = flagship.stats.maxOre
+        for t in flagship.turrets[:-2]:
+            t.buildInstall( game.stats.T_MASS_MR_0 )
+        for t in flagship.turrets[-2:]:
+            t.buildInstall( game.stats.T_LASER_SR_0 )
+        for i in range(4):
+           harvester = HarvesterShip(player, player.race.defaultHarvester, AiPilotHarvester(flagship), 0,0,0, 4, 0.0,0.0,0.0, 0)
+           flagship.shipyards[ harvester.stats.img ].docked.append( harvester )
+
+      flagship.ore = 5000
+      flagship.ori = 2*pi*random()
+      player.flagship = flagship
+      game.objects.append( flagship )
+      game.addPlayer( player )
