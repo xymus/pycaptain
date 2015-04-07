@@ -117,7 +117,7 @@ class Server:
               t1 = time()
               t = (t1-t0)
 
-              if __debug__:
+              if __debug__ and online:
                 ts.insert(0, [t,ta-t0, tb-ta, tc-tb, t1-tc, ty-tx, tz-ty])
                 if len( ts ) > config.fps*3:
                  ts.pop()
