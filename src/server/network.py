@@ -210,25 +210,19 @@ class Network:
         msgs = ""
         while not self.shutdownOrder and not closing \
          and not playerCon.loseConnection:
-        #    print "a"
             tmpMsg = "a"
             while len(tmpMsg)==0 or tmpMsg[-1] != "\n":
-            #    print "b"
                 try:
                     tmpMsg = playerCon.connection[ 0 ].recv( 1024 )
                     msgs = msgs + tmpMsg
 
-                except IOError, ex:
-                    if ex.errno == errno.EPIPE:
-                        self.playerCons.remove( playerCon )
-                        playerCon.close()
-                        self.sendSysmsg( "%s timedout" % playerCon.player.username )
-                    else:
-                    #    playerCon.errors += 1
-                        tmpMsg = ""
-                except:
-                    tmpMsg = ""
-            
+                except Exception, ex:
+                    print "error in managePlayerConnection:", ex
+                    self.playerCons.remove( playerCon )
+                    playerCon.close()
+                    self.sendSysmsg( "%s timedout" % playerCon.player.username )
+                    return
+
             if len(msgs) > 0:
                for msg in msgs.splitlines():
                  words = msg.split()
@@ -371,20 +365,11 @@ class Network:
 
             pCon.connection[0].send( string )
 
-          except IOError, ex:
-            if ex.errno == errno.EPIPE:
-         # except socket.error, ex:
-            # broken pipe
-          #  if ex[1] == 32 \
-          #  or pCon.errors > config.fps*2:
-                self.playerCons.remove( pCon )
-                pCon.close()
-                self.sendSysmsg( "%s timedout" % pCon.player.username )
-                print "error in updatePlayer identified", ex
-            else:
-                pCon.errors += 1
-                print "error in updatePlayer", ex
-     #   self.updating[ player ] = False
+          except Exception, ex:
+              print "error in updatePlayer:", ex
+              self.playerCons.remove( pCon )
+              pCon.close()
+              self.sendSysmsg( "%s timedout" % pCon.player.username )
 
     def briefPlayer( self, pCon, astres ):
         pCon = self.getPlayerConFromPlayer( player)
